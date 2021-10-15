@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facturix Salários", "Facturix Salários.csproj", "{08EB61B3-7521-4762-BBBA-9E277A4DDC7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08EB61B3-7521-4762-BBBA-9E277A4DDC7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08EB61B3-7521-4762-BBBA-9E277A4DDC7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08EB61B3-7521-4762-BBBA-9E277A4DDC7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08EB61B3-7521-4762-BBBA-9E277A4DDC7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A010F6F5-5F67-4D13-B253-FFDAF37DCA51}
+	EndGlobalSection
+EndGlobal
