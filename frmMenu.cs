@@ -69,5 +69,35 @@ namespace Facturix_Salários
             frmVisualizarFuncionario f = new frmVisualizarFuncionario();
             f.Show();
         }
+
+        private void segurosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarSeguro f = new frmCadastrarSeguro();
+            f.Show();
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarCategoria f = new frmCadastrarCategoria();
+            f.Show();
+        }
+
+        private void contratosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarContrato f = new frmCadastrarContrato();
+            f.Show();
+        }
+
+        private void profissãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarProfissao f = new frmCadastrarProfissao();
+            f.Show();
+        }
+
+        private void habilitaçõToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarHabilitacoes f = new frmCadastrarHabilitacoes();
+            f.Show();
+        }
     }
 }

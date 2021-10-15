@@ -16,5 +16,40 @@ namespace Facturix_Salários
         {
             InitializeComponent();
         }
+
+        public void gravar()
+        {
+            int id = int.Parse(txtCodigo.Text);
+            String regime = txtNome.Text;
+            ControllerCategoria.gravar(id, regime);
+        }
+
+        public void eliminar()
+        {
+            int id = int.Parse(txtCodigo.Text);
+            ControllerCategoria.remover(id);
+        }
+
+        public void atualizar()
+        {
+            int id = int.Parse(txtCodigo.Text);
+            String regime = txtNome.Text;
+            ControllerCategoria.atualizar(id, regime);
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            gravar();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            eliminar();
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            atualizar();
+        }
     }
 }

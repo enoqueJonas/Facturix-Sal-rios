@@ -4,46 +4,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Facturix_Salários
 {
-    class ControllerSeguro
+    class ControllerHabilitacoes
     {
-        public static void gravar(int id, String seguro) 
+        public static void gravar(int id, String habilitacao)
         {
             MySqlConnection conexao = Conexao.conectar();
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into seguro(id, tipoSeguro) values(?,?)";
+                String sqlInsert = "INSERT into habilitacao(id, tipoHabilitacao) values(?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", id);
-                comando.Parameters.AddWithValue("seguro", seguro);
+                comando.Parameters.AddWithValue("tipoHabilitacao", habilitacao);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar seguro");
+                MessageBox.Show(err.Message, "Nao foi possivel cadastrar habilitacao");
             }
-            finally 
+            finally
             {
                 if (conexao != null)
                     conexao.Close();
             }
         }
 
-        public static void atualizar(int id,  String seguro)
+        public static void atualizar(int id, String habilitacao)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE seguro SET tipoSeguro=? WHERE id=?";
+                String sqlInsert = "UPDATE seguro SET tipoHabilitacao=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
-                comando.Parameters.AddWithValue(" tipoSeguro", seguro);
+                comando.Parameters.AddWithValue(" tipoHabilitacao", habilitacao);
                 comando.Parameters.AddWithValue("id", id);
                 comando.ExecuteNonQuery();
             }
@@ -61,30 +61,30 @@ namespace Facturix_Salários
         public static ArrayList recuperar()
         {
             MySqlConnection conexao = Conexao.conectar();
-            ArrayList listaSeguros = new ArrayList();
+            ArrayList listaHabilitacoes = new ArrayList();
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from seguro";
+                String sqlSelect = "SELECT * from habilitacao";
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    String seguro = leitor.GetString(1);
-                    listaSeguros.Add(new ModeloSeguro(id, seguro));
+                    String habilitacao = leitor.GetString(1);
+                    listaHabilitacoes.Add(new ModeloHabilitacao(id, habilitacao));
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar contas!");
+                MessageBox.Show(err.Message, "Nao foi possivel recuperar habilitacao!");
             }
             finally
             {
                 if (conexao != null)
                     conexao.Close();
             }
-            return listaSeguros;
+            return listaHabilitacoes;
         }
 
         public static void remover(int id)
@@ -93,14 +93,14 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String SqlDelete = "DELETE from seguro WHERE id=?";
+                String SqlDelete = "DELETE from habilitacao WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
                 comando.Parameters.Add(new MySqlParameter("id", id));
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover o seguro!");
+                MessageBox.Show(err.Message, "Nao foi possivel remover a Habilitacoes!");
             }
             finally
             {
@@ -116,19 +116,19 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from seguro WHERE id="+codigo;
+                String sqlSelect = "SELECT * from habilitacao WHERE id=" + codigo;
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
                     String seguro = leitor.GetString(1);
-                    listaSeguros.Add(new ModeloSeguro(id, seguro));
+                    listaSeguros.Add(new ModeloHabilitacao(id, seguro));
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar seguros!");
+                MessageBox.Show(err.Message, "Nao foi possivel recuperar Habilitacoes!");
             }
             finally
             {

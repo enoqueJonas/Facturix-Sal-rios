@@ -182,8 +182,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllerConta.cs" />
+    <Compile Include="ControllerContrato.cs" />
     <Compile Include="ControllerFuncionario.cs" />
+    <Compile Include="ControllerHabilitacoes.cs" />
     <Compile Include="ControllerMorada.cs" />
+    <Compile Include="ControllerProfissao.cs" />
+    <Compile Include="ControllerCategoria.cs" />
     <Compile Include="ControllerSeguro.cs" />
     <Compile Include="frmCadastrarCategoria.cs">
       <SubType>Form</SubType>
@@ -209,6 +213,12 @@
     <Compile Include="frmCadastrarProfissao.Designer.cs">
       <DependentUpon>frmCadastrarProfissao.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCadastrarSeguro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastrarSeguro.Designer.cs">
+      <DependentUpon>frmCadastrarSeguro.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReportFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,7 +228,7 @@
     <Compile Include="ModeloContrato.cs" />
     <Compile Include="ModeloHabilitacao.cs" />
     <Compile Include="ModeloProfissao.cs" />
-    <Compile Include="ModeloRegime.cs" />
+    <Compile Include="ModeloCategoria.cs" />
     <Compile Include="ModeloSeguro.cs" />
     <Compile Include="reportFuncionario.cs">
       <AutoGen>True</AutoGen>
@@ -267,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCadastrarProfissao.resx">
       <DependentUpon>frmCadastrarProfissao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastrarSeguro.resx">
+      <DependentUpon>frmCadastrarSeguro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportFuncionario.resx">
       <DependentUpon>frmReportFuncionario.cs</DependentUpon>

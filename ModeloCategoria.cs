@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Facturix_Salários
 {
-    class ModeloRegime
+    class ModeloCategoria
     {
         private int id;
-        private String regime;
+        private String categoria;
 
-        public ModeloRegime(int id, String regime)
+        public ModeloCategoria(int id, String categoria)
         {
             this.id = id;
-            this.regime = regime;
+            this.categoria = categoria;
         }
 
         public int getId()
@@ -24,7 +24,7 @@ namespace Facturix_Salários
 
         public String getProfissao()
         {
-            return regime;
+            return categoria;
         }
     }
 }

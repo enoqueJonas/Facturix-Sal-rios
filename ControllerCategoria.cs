@@ -4,52 +4,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Facturix_Salários
 {
-    class ControllerSeguro
+    class ControllerCategoria
     {
-        public static void gravar(int id, String seguro) 
+        public static void gravar(int id, String categoria)
         {
             MySqlConnection conexao = Conexao.conectar();
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into seguro(id, tipoSeguro) values(?,?)";
+                String sqlInsert = "INSERT into categoria(id, tipoCategoria) values(?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", id);
-                comando.Parameters.AddWithValue("seguro", seguro);
+                comando.Parameters.AddWithValue("tipoCategoria", categoria);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar seguro");
+                MessageBox.Show(err.Message, "Nao foi possivel cadastrar categoria");
             }
-            finally 
+            finally
             {
                 if (conexao != null)
                     conexao.Close();
             }
         }
 
-        public static void atualizar(int id,  String seguro)
+        public static void atualizar(int id, String categoria)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE seguro SET tipoSeguro=? WHERE id=?";
+                String sqlInsert = "UPDATE categoria SET tipoCategoria=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
-                comando.Parameters.AddWithValue(" tipoSeguro", seguro);
+                comando.Parameters.AddWithValue(" tipoRegime", categoria);
                 comando.Parameters.AddWithValue("id", id);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel atualizar o seguro!");
+                MessageBox.Show(err.Message, "Nao foi possivel atualizar a categoria!");
             }
             finally
             {
@@ -61,30 +61,30 @@ namespace Facturix_Salários
         public static ArrayList recuperar()
         {
             MySqlConnection conexao = Conexao.conectar();
-            ArrayList listaSeguros = new ArrayList();
+            ArrayList listaCategorias = new ArrayList();
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from seguro";
+                String sqlSelect = "SELECT * from categoria";
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    String seguro = leitor.GetString(1);
-                    listaSeguros.Add(new ModeloSeguro(id, seguro));
+                    String categoria = leitor.GetString(1);
+                    listaCategorias.Add(new ModeloCategoria(id, categoria));
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar contas!");
+                MessageBox.Show(err.Message, "Nao foi possivel recuperar categorias!");
             }
             finally
             {
                 if (conexao != null)
                     conexao.Close();
             }
-            return listaSeguros;
+            return listaCategorias;
         }
 
         public static void remover(int id)
@@ -93,14 +93,14 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String SqlDelete = "DELETE from seguro WHERE id=?";
+                String SqlDelete = "DELETE from categoria WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
                 comando.Parameters.Add(new MySqlParameter("id", id));
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover o seguro!");
+                MessageBox.Show(err.Message, "Nao foi possivel remover a categoria!");
             }
             finally
             {
@@ -112,30 +112,30 @@ namespace Facturix_Salários
         public static ArrayList recuperarComCod(int codigo)
         {
             MySqlConnection conexao = Conexao.conectar();
-            ArrayList listaSeguros = new ArrayList();
+            ArrayList listaCategorias = new ArrayList();
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from seguro WHERE id="+codigo;
+                String sqlSelect = "SELECT * from categoria WHERE id=" + codigo;
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    String seguro = leitor.GetString(1);
-                    listaSeguros.Add(new ModeloSeguro(id, seguro));
+                    String categoria = leitor.GetString(1);
+                    listaCategorias.Add(new ModeloCategoria(id, categoria));
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar seguros!");
+                MessageBox.Show(err.Message, "Nao foi possivel recuperar categorias!");
             }
             finally
             {
                 if (conexao != null)
                     conexao.Close();
             }
-            return listaSeguros;
+            return listaCategorias;
         }
     }
 }

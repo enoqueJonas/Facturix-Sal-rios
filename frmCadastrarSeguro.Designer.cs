@@ -1,6 +1,6 @@
 ﻿namespace Facturix_Salários
 {
-    partial class frmCadastrarContrato
+    partial class frmCadastrarSeguro
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.cbRegime = new System.Windows.Forms.ComboBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
@@ -40,43 +41,50 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.cbContrato = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // cbRegime
+            // 
+            this.cbRegime.FormattingEnabled = true;
+            this.cbRegime.Location = new System.Drawing.Point(95, 110);
+            this.cbRegime.Name = "cbRegime";
+            this.cbRegime.Size = new System.Drawing.Size(173, 21);
+            this.cbRegime.TabIndex = 234;
+            // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(107, 75);
+            this.txtNome.Location = new System.Drawing.Point(95, 71);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(310, 20);
-            this.txtNome.TabIndex = 228;
+            this.txtNome.TabIndex = 230;
             // 
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(107, 36);
+            this.txtCodigo.Location = new System.Drawing.Point(95, 32);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(41, 20);
-            this.txtCodigo.TabIndex = 229;
+            this.txtCodigo.TabIndex = 231;
             this.txtCodigo.TabStop = false;
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(37, 82);
+            this.Label2.Location = new System.Drawing.Point(25, 78);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(53, 13);
-            this.Label2.TabIndex = 231;
+            this.Label2.TabIndex = 233;
             this.Label2.Text = "Profissão:";
             // 
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(37, 43);
+            this.Label1.Location = new System.Drawing.Point(25, 39);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(59, 13);
-            this.Label1.TabIndex = 230;
+            this.Label1.TabIndex = 232;
             this.Label1.Text = "Registo nº:";
             // 
             // panel1
@@ -89,11 +97,11 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(11, 188);
+            this.panel1.Location = new System.Drawing.Point(4, 178);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(517, 74);
-            this.panel1.TabIndex = 227;
+            this.panel1.Size = new System.Drawing.Size(520, 74);
+            this.panel1.TabIndex = 229;
             // 
             // btnRegressar
             // 
@@ -104,6 +112,7 @@
             this.btnRegressar.TabIndex = 900;
             this.btnRegressar.Text = "Regressar(ESC)";
             this.btnRegressar.UseVisualStyleBackColor = true;
+            this.btnRegressar.Click += new System.EventHandler(this.btnRegressar_Click);
             // 
             // btnConfirmar
             // 
@@ -168,27 +177,19 @@
             this.btnAdicionar.Text = "Adicionar(F1)";
             this.btnAdicionar.UseVisualStyleBackColor = true;
             // 
-            // cbContrato
-            // 
-            this.cbContrato.FormattingEnabled = true;
-            this.cbContrato.Location = new System.Drawing.Point(107, 112);
-            this.cbContrato.Name = "cbContrato";
-            this.cbContrato.Size = new System.Drawing.Size(173, 21);
-            this.cbContrato.TabIndex = 232;
-            // 
-            // frmCadastrarContrato
+            // frmCadastrarSeguro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 261);
-            this.Controls.Add(this.cbContrato);
+            this.ClientSize = new System.Drawing.Size(526, 261);
+            this.Controls.Add(this.cbRegime);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.panel1);
-            this.Name = "frmCadastrarContrato";
-            this.Text = "Contrato";
+            this.Name = "frmCadastrarSeguro";
+            this.Text = "Seguro";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -197,6 +198,7 @@
 
         #endregion
 
+        private System.Windows.Forms.ComboBox cbRegime;
         internal System.Windows.Forms.TextBox txtNome;
         internal System.Windows.Forms.TextBox txtCodigo;
         internal System.Windows.Forms.Label Label2;
@@ -209,6 +211,5 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.ComboBox cbContrato;
     }
 }

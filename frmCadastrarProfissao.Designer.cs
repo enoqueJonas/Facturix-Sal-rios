@@ -40,6 +40,7 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
+            this.cbProfissao = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +79,7 @@
             this.btnConfirmar.TabIndex = 700;
             this.btnConfirmar.Text = "Confirmar(F5)";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // btnMostrar
             // 
@@ -108,6 +110,7 @@
             this.btnAtualizar.TabIndex = 2000;
             this.btnAtualizar.Text = "Modificar(F3)";
             this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // btnEliminar
             // 
@@ -118,6 +121,7 @@
             this.btnEliminar.TabIndex = 1000;
             this.btnEliminar.Text = "Eliminar(F6)";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAdicionar
             // 
@@ -164,18 +168,27 @@
             this.Label1.TabIndex = 220;
             this.Label1.Text = "Registo nº:";
             // 
+            // cbProfissao
+            // 
+            this.cbProfissao.FormattingEnabled = true;
+            this.cbProfissao.Location = new System.Drawing.Point(92, 113);
+            this.cbProfissao.Name = "cbProfissao";
+            this.cbProfissao.Size = new System.Drawing.Size(173, 21);
+            this.cbProfissao.TabIndex = 228;
+            // 
             // frmCadastrarProfissao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 261);
+            this.Controls.Add(this.cbProfissao);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.panel1);
             this.Name = "frmCadastrarProfissao";
-            this.Text = "frmCadastrarProfissao";
+            this.Text = "Profissão";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -196,5 +209,6 @@
         internal System.Windows.Forms.TextBox txtCodigo;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
+        private System.Windows.Forms.ComboBox cbProfissao;
     }
 }

@@ -40,6 +40,7 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
+            this.cbHabilitacoes = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,6 +114,7 @@
             this.btnConfirmar.TabIndex = 700;
             this.btnConfirmar.Text = "Confirmar(F5)";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // btnMostrar
             // 
@@ -143,6 +145,7 @@
             this.btnAtualizar.TabIndex = 2000;
             this.btnAtualizar.Text = "Modificar(F3)";
             this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // btnEliminar
             // 
@@ -153,6 +156,7 @@
             this.btnEliminar.TabIndex = 1000;
             this.btnEliminar.Text = "Eliminar(F6)";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAdicionar
             // 
@@ -164,18 +168,27 @@
             this.btnAdicionar.Text = "Adicionar(F1)";
             this.btnAdicionar.UseVisualStyleBackColor = true;
             // 
+            // cbHabilitacoes
+            // 
+            this.cbHabilitacoes.FormattingEnabled = true;
+            this.cbHabilitacoes.Location = new System.Drawing.Point(94, 116);
+            this.cbHabilitacoes.Name = "cbHabilitacoes";
+            this.cbHabilitacoes.Size = new System.Drawing.Size(173, 21);
+            this.cbHabilitacoes.TabIndex = 228;
+            // 
             // frmCadastrarHabilitacoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 261);
+            this.Controls.Add(this.cbHabilitacoes);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Name = "frmCadastrarHabilitacoes";
-            this.Text = "frmCadastrarHabilitacoes";
+            this.Text = "Habilitações";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -196,5 +209,6 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.ComboBox cbHabilitacoes;
     }
 }

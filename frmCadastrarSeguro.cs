@@ -10,32 +10,33 @@ using System.Windows.Forms;
 
 namespace Facturix_Salários
 {
-    public partial class frmCadastrarProfissao : Form
+    public partial class frmCadastrarSeguro : Form
     {
-        public frmCadastrarProfissao()
+        public frmCadastrarSeguro()
         {
             InitializeComponent();
         }
 
-        public void gravar()
+        public void gravar() 
         {
             int id = int.Parse(txtCodigo.Text);
             String regime = txtNome.Text;
-            ControllerProfissao.gravar(id, regime);
+            ControllerSeguro.gravar(id, regime);
         }
 
-        public void eliminar()
+        public void eliminar() 
         {
             int id = int.Parse(txtCodigo.Text);
-            ControllerProfissao.remover(id);
+            ControllerSeguro.remover(id);
         }
 
         public void atualizar()
         {
             int id = int.Parse(txtCodigo.Text);
             String regime = txtNome.Text;
-            ControllerProfissao.atualizar(id, regime);
+            ControllerSeguro.atualizar(id, regime);
         }
+
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
@@ -49,6 +50,11 @@ namespace Facturix_Salários
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             atualizar();
+        }
+
+        private void btnRegressar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
