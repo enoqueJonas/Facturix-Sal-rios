@@ -22,6 +22,7 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("id", id);
                 comando.Parameters.AddWithValue("tipoCategoria", categoria);
                 comando.ExecuteNonQuery();
+                MessageBox.Show("Categoria cadastrada com sucesso!");
             }
             catch (Exception err)
             {

@@ -36,7 +36,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
-            this.btnMostrar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -58,6 +57,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(310, 20);
             this.txtNome.TabIndex = 230;
+            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtCodigo
             // 
@@ -74,9 +74,9 @@
             this.Label2.AutoSize = true;
             this.Label2.Location = new System.Drawing.Point(25, 78);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(53, 13);
+            this.Label2.Size = new System.Drawing.Size(44, 13);
             this.Label2.TabIndex = 233;
-            this.Label2.Text = "Profissão:";
+            this.Label2.Text = "Seguro:";
             // 
             // Label1
             // 
@@ -92,7 +92,6 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnRegressar);
             this.panel1.Controls.Add(this.btnConfirmar);
-            this.panel1.Controls.Add(this.btnMostrar);
             this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
@@ -116,7 +115,7 @@
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(295, 6);
+            this.btnConfirmar.Location = new System.Drawing.Point(264, 7);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(69, 60);
@@ -125,19 +124,9 @@
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // btnMostrar
-            // 
-            this.btnMostrar.Location = new System.Drawing.Point(76, 6);
-            this.btnMostrar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(69, 60);
-            this.btnMostrar.TabIndex = 20000;
-            this.btnMostrar.Text = "Consultar(F2)";
-            this.btnMostrar.UseVisualStyleBackColor = true;
-            // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(222, 6);
+            this.btnCancelar.Location = new System.Drawing.Point(179, 6);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(69, 60);
@@ -147,7 +136,7 @@
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(149, 7);
+            this.btnAtualizar.Location = new System.Drawing.Point(90, 7);
             this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(69, 60);
@@ -158,7 +147,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(368, 7);
+            this.btnEliminar.Location = new System.Drawing.Point(355, 6);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(69, 60);
@@ -189,7 +178,10 @@
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.panel1);
             this.Name = "frmCadastrarSeguro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seguro";
+            this.Load += new System.EventHandler(this.frmCadastrarSeguro_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarSeguro_KeyDown);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -206,7 +198,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnRegressar;
         private System.Windows.Forms.Button btnConfirmar;
-        private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;

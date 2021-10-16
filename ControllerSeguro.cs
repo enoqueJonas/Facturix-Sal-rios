@@ -22,6 +22,7 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("id", id);
                 comando.Parameters.AddWithValue("seguro", seguro);
                 comando.ExecuteNonQuery();
+                MessageBox.Show("Seguro cadastrado com sucesso!");
             }
             catch (Exception err)
             {

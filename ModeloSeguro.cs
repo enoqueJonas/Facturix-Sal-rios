@@ -22,7 +22,7 @@ namespace Facturix_Salários
             return id;
         }
 
-        public String getProfissao()
+        public String getSeguro()
         {
             return seguro;
         }

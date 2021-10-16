@@ -22,6 +22,7 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("id", id);
                 comando.Parameters.AddWithValue("profissao", profissao);
                 comando.ExecuteNonQuery();
+                MessageBox.Show("Profissao cadastrada com sucesso!");
             }
             catch (Exception err)
             {

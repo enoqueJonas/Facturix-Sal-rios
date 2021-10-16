@@ -17,26 +17,40 @@ namespace Facturix_Salários
     public partial class frmCadastrarFuncionarios : Form
     {
         String linkImagem = "";
+        ArrayList listaCategorias = ControllerCategoria.recuperar();
+        ArrayList listaContratos = ControllerContrato.recuperar();
+        ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
+        ArrayList listaProfissao = ControllerProfissao.recuperar();
+        ArrayList listaSeguros = ControllerSeguro.recuperar();
         public frmCadastrarFuncionarios()
         {
             InitializeComponent();
             setCod();
             impedirBotoes();
-            lerItems();
+            adicionarItemsCb();
         }
 
-        private void lerItems() 
+        private void adicionarItemsCb() 
         {
-            ArrayList listaFunc = ControllerFuncionario.recuperar();
-            foreach (ModeloFuncionario func in listaFunc) 
+            foreach (ModeloCategoria cat in listaCategorias)
             {
-                cbCategoria.Items.Add(func.getCategoria());
-                cbContrato.Items.Add(func.getTipoContrato());
-                cbProfissao.Items.Add(func.getProfissao());
-                cbSeguro.Items.Add(func.getSeguro());
-                cbLocalTrabalho.Items.Add(func.getLocalTrabalho());
-                cbRegime.Items.Add(func.getRegime());
-                cbHabilitacoes.Items.Add(func.getHabilitacoes());
+                cbCategoria.Items.Add(cat.getCategoria());
+            }
+            foreach (ModeloContrato cont in listaContratos)
+            {
+                cbContrato.Items.Add(cont.getContrato());
+            }
+            foreach (ModeloHabilitacao hab in listaHabilitacoes)
+            {
+                cbHabilitacoes.Items.Add(hab.getHabilitacao());
+            }
+            foreach (ModeloProfissao prof in listaProfissao)
+            {
+                cbProfissao.Items.Add(prof.getProfissao());
+            }
+            foreach (ModeloSeguro seg in listaSeguros)
+            {
+                cbSeguro.Items.Add(seg.getSeguro());
             }
         }
 

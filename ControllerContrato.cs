@@ -22,6 +22,7 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("id", id);
                 comando.Parameters.AddWithValue("tipoContrato", contrato);
                 comando.ExecuteNonQuery();
+                MessageBox.Show("Contrato cadastrada com sucesso!");
             }
             catch (Exception err)
             {
