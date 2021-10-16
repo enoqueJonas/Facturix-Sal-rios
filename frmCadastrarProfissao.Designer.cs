@@ -164,6 +164,7 @@
             this.cbProfissao.Name = "cbProfissao";
             this.cbProfissao.Size = new System.Drawing.Size(173, 21);
             this.cbProfissao.TabIndex = 228;
+            this.cbProfissao.SelectedIndexChanged += new System.EventHandler(this.cbProfissao_SelectedIndexChanged);
             // 
             // frmCadastrarProfissao
             // 

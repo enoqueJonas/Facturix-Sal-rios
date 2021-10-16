@@ -42,7 +42,7 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE seguro SET tipoHabilitacao=? WHERE id=?";
+                String sqlInsert = "UPDATE habilitacao SET tipoHabilitacao=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue(" tipoHabilitacao", habilitacao);
                 comando.Parameters.AddWithValue("id", id);

@@ -164,6 +164,7 @@
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(173, 21);
             this.cbCategoria.TabIndex = 227;
+            this.cbCategoria.SelectedIndexChanged += new System.EventHandler(this.cbCategoria_SelectedIndexChanged);
             // 
             // frmCadastrarCategoria
             // 

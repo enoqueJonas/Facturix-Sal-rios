@@ -76,6 +76,7 @@ namespace Facturix_Salários
         {
             setCod();
             txtNome.Text = "";
+            cbProfissao.Text = "";
         }
 
         private void cancelar()
@@ -106,24 +107,35 @@ namespace Facturix_Salários
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
+            adicionarItemsCb();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
+            adicionarItemsCb();
+            adicionar();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
+            adicionarItemsCb();
+            adicionar();
+        }
+
+        private void adicionarItemsCb() 
+        {
+            cbProfissao.Items.Clear();
+            foreach (ModeloProfissao prof in listaProfissao)
+            {
+                cbProfissao.Items.Add(prof.getProfissao());
+            }
         }
 
         private void frmCadastrarProfissao_Load(object sender, EventArgs e)
         {
-            foreach (ModeloProfissao prof in listaProfissao) 
-            {
-                cbProfissao.Items.Add(prof.getProfissao());
-            }
+            adicionarItemsCb();
             impedirBotoes();
         }
 
@@ -165,6 +177,18 @@ namespace Facturix_Salários
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             impedirBotoes();
+        }
+
+        private void cbProfissao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ModeloProfissao seg in listaProfissao)
+            {
+                if (cbProfissao.Text == seg.getProfissao())
+                {
+                    txtCodigo.Text = seg.getId() + "";
+                    txtNome.Text = seg.getProfissao();
+                }
+            }
         }
     }
 }

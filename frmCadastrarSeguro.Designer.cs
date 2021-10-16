@@ -50,6 +50,7 @@
             this.cbRegime.Name = "cbRegime";
             this.cbRegime.Size = new System.Drawing.Size(173, 21);
             this.cbRegime.TabIndex = 234;
+            this.cbRegime.SelectedIndexChanged += new System.EventHandler(this.cbRegime_SelectedIndexChanged);
             // 
             // txtNome
             // 

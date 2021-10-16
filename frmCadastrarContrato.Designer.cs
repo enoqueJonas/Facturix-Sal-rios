@@ -164,6 +164,7 @@
             this.cbContrato.Name = "cbContrato";
             this.cbContrato.Size = new System.Drawing.Size(173, 21);
             this.cbContrato.TabIndex = 232;
+            this.cbContrato.SelectedIndexChanged += new System.EventHandler(this.cbContrato_SelectedIndexChanged);
             // 
             // frmCadastrarContrato
             // 

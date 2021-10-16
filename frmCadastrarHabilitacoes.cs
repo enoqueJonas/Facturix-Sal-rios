@@ -41,6 +41,7 @@ namespace Facturix_Salários
         {
             setCod();
             txtNome.Text = "";
+            cbHabilitacoes.Text = "";
         }
 
         private void impedirBotoes()
@@ -106,24 +107,35 @@ namespace Facturix_Salários
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
+            adicionarItemsCb();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
+            adicionarItemsCb();
+            adicionar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
+            adicionarItemsCb();
+            adicionar();
+        }
+
+        private void adicionarItemsCb() 
+        {
+            cbHabilitacoes.Items.Clear();
+            foreach (ModeloHabilitacao hab in listaHabilitacoes)
+            {
+                cbHabilitacoes.Items.Add(hab.getHabilitacao());
+            }
         }
 
         private void frmCadastrarHabilitacoes_Load(object sender, EventArgs e)
         {
-            foreach (ModeloHabilitacao hab in listaHabilitacoes) 
-            {
-                cbHabilitacoes.Items.Add(hab.getHabilitacao());
-            }
+            adicionarItemsCb();
             impedirBotoes();
         }
 
@@ -165,6 +177,18 @@ namespace Facturix_Salários
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             impedirBotoes();
+        }
+
+        private void cbHabilitacoes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ModeloHabilitacao seg in listaHabilitacoes)
+            {
+                if (cbHabilitacoes.Text == seg.getHabilitacao())
+                {
+                    txtCodigo.Text = seg.getId() + "";
+                    txtNome.Text = seg.getHabilitacao();
+                }
+            }
         }
     }
 }

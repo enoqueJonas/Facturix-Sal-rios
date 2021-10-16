@@ -54,6 +54,7 @@ namespace Facturix_Salários
         {
             setCod();
             txtNome.Text = "";
+            cbCategoria.Text = "";
         }
 
         private void cancelar()
@@ -106,24 +107,34 @@ namespace Facturix_Salários
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
+            adicionarItemsCb();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            modificar();
+            eliminar();
+            adicionarItemsCb();
+            adicionar();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
+            adicionarItemsCb();
+            adicionar();
         }
 
-        private void frmCadastrarCategoria_Load(object sender, EventArgs e)
+        private void adicionarItemsCb() 
         {
-            foreach (ModeloCategoria cat in listaCategorias) 
+            cbCategoria.Items.Clear();
+            foreach (ModeloCategoria cat in listaCategorias)
             {
                 cbCategoria.Items.Add(cat.getCategoria());
             }
+        }
+        private void frmCadastrarCategoria_Load(object sender, EventArgs e)
+        {
+            adicionarItemsCb();
             impedirBotoes();
         }
 
@@ -165,6 +176,18 @@ namespace Facturix_Salários
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             impedirBotoes();
+        }
+
+        private void cbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ModeloCategoria seg in listaCategorias)
+            {
+                if (cbCategoria.Text == seg.getCategoria())
+                {
+                    txtCodigo.Text = seg.getId() + "";
+                    txtNome.Text = seg.getCategoria();
+                }
+            }
         }
     }
 }

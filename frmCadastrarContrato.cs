@@ -77,6 +77,7 @@ namespace Facturix_Salários
         {
             setCod();
             txtNome.Text = "";
+            cbContrato.Text = "";
         }
 
         private void cancelar()
@@ -107,24 +108,34 @@ namespace Facturix_Salários
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
+            adcionarItemsCb();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
+            adcionarItemsCb();
+            adicionar();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
+            adcionarItemsCb();
+            adicionar();
         }
 
-        private void frmCadastrarContrato_Load(object sender, EventArgs e)
+        private void adcionarItemsCb() 
         {
-            foreach (ModeloContrato cont in listaContratos) 
+            cbContrato.Items.Clear();
+            foreach (ModeloContrato cont in listaContratos)
             {
                 cbContrato.Items.Add(cont.getContrato());
             }
+        }
+        private void frmCadastrarContrato_Load(object sender, EventArgs e)
+        {
+            adcionarItemsCb();
             impedirBotoes();
         }
 
@@ -166,6 +177,18 @@ namespace Facturix_Salários
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             impedirBotoes();
+        }
+
+        private void cbContrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ModeloContrato seg in listaContratos)
+            {
+                if (cbContrato.Text == seg.getContrato())
+                {
+                    txtCodigo.Text = seg.getId() + "";
+                    txtNome.Text = seg.getContrato();
+                }
+            }
         }
     }
 }

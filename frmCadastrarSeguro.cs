@@ -71,6 +71,7 @@ namespace Facturix_Salários
         {
             setCod();
             txtNome.Text = "";
+            cbRegime.Text = "";
         }
 
         private void cancelar() 
@@ -105,16 +106,21 @@ namespace Facturix_Salários
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
+            adicionarItemsCb();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
+            adicionarItemsCb();
+            adicionar();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
+            adicionarItemsCb();
+            adicionar();
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -122,12 +128,18 @@ namespace Facturix_Salários
             this.Close();
         }
 
-        private void frmCadastrarSeguro_Load(object sender, EventArgs e)
+        private void adicionarItemsCb() 
         {
-            foreach (ModeloSeguro seg in listaSeguros) 
+            cbRegime.Items.Clear();
+            foreach (ModeloSeguro seg in listaSeguros)
             {
                 cbRegime.Items.Add(seg.getSeguro());
             }
+        }
+
+        private void frmCadastrarSeguro_Load(object sender, EventArgs e)
+        {
+            adicionarItemsCb();
             impedirBotoes();
         }
 
@@ -169,6 +181,18 @@ namespace Facturix_Salários
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             impedirBotoes();
+        }
+
+        private void cbRegime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ModeloSeguro seg in listaSeguros) 
+            {
+                if (cbRegime.Text == seg.getSeguro())
+                {
+                    txtCodigo.Text = seg.getId()+"";
+                    txtNome.Text = seg.getSeguro();
+                }
+            }
         }
     }
 }

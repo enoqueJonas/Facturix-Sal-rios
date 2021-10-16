@@ -94,7 +94,7 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String SqlDelete = "DELETE from profisao WHERE id=?";
+                String SqlDelete = "DELETE from profissao WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
                 comando.Parameters.Add(new MySqlParameter("id", id));
                 comando.ExecuteNonQuery();

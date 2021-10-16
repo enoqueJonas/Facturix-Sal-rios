@@ -164,6 +164,7 @@
             this.cbHabilitacoes.Name = "cbHabilitacoes";
             this.cbHabilitacoes.Size = new System.Drawing.Size(173, 21);
             this.cbHabilitacoes.TabIndex = 228;
+            this.cbHabilitacoes.SelectedIndexChanged += new System.EventHandler(this.cbHabilitacoes_SelectedIndexChanged);
             // 
             // frmCadastrarHabilitacoes
             // 
