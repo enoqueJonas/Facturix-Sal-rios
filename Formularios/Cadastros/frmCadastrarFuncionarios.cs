@@ -453,7 +453,7 @@ namespace Facturix_Salários
                     MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
                     DataSet ds = new DataSet();
                     adapter.Fill(ds, "funcionario");
-                    reportFuncionario rep = new reportFuncionario();
+                    Reports.reportFuncionario rep = new Reports.reportFuncionario();
                     rep.SetDataSource(ds);
                     f.crDataTable.ReportSource = rep;
                     f.crDataTable.Refresh();
@@ -1132,6 +1132,15 @@ namespace Facturix_Salários
         private void txtLink_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbSeguro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ModeloSeguro seg in listaSeguros)
+            {
+                if (cbSeguro.Text == seg.getSeguro())
+                    txtSeguro.Text = seg.getPercentagem() + "";
+            }
         }
     }
 }

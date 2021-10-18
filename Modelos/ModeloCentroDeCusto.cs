@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace Facturix_Salários
 {
-    class ModeloSeguro
+    class ModeloCentroDeCusto
     {
-        private int id;
-        private String seguro;
 
-        public ModeloSeguro(int id, String seguro)
+        private int id;
+        private String centroDeCusto;
+
+        public ModeloCentroDeCusto(int id, String centroDeCusto)
         {
             this.id = id;
-            this.seguro = seguro;
+            this.centroDeCusto = centroDeCusto;
         }
 
         public int getId()
@@ -22,9 +23,9 @@ namespace Facturix_Salários
             return id;
         }
 
-        public String getSeguro()
+        public String getCentroDeCusto()
         {
-            return seguro;
+            return centroDeCusto;
         }
     }
 }

@@ -17,7 +17,6 @@ namespace Facturix_Salários
         public frmCadastrarContrato()
         {
             InitializeComponent();
-            setCod();
             this.ActiveControl = txtNome;
         }
 
@@ -25,12 +24,10 @@ namespace Facturix_Salários
         {
             if (txtNome.Text == "")
             {
-                btnAdicionar.Enabled = false;
                 btnAtualizar.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnConfirmar.Enabled = false;
                 btnCancelar.Enabled = false;
-                btnAdicionar.FlatStyle = FlatStyle.Flat;
                 btnAtualizar.FlatStyle = FlatStyle.Flat;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
                 btnConfirmar.FlatStyle = FlatStyle.Flat;
@@ -38,12 +35,11 @@ namespace Facturix_Salários
             }
             else
             {
-                btnAdicionar.Enabled = true;
                 btnAtualizar.Enabled = true;
                 btnEliminar.Enabled = true;
                 btnConfirmar.Enabled = true;
                 btnCancelar.Enabled = true;
-                btnAdicionar.FlatStyle = FlatStyle.Standard;
+
                 btnAtualizar.FlatStyle = FlatStyle.Standard;
                 btnEliminar.FlatStyle = FlatStyle.Standard;
                 btnConfirmar.FlatStyle = FlatStyle.Standard;
@@ -77,20 +73,20 @@ namespace Facturix_Salários
         {
             setCod();
             txtNome.Text = "";
-            cbContrato.Text = "";
         }
 
         private void cancelar()
         {
             txtCodigo.Text = "";
             txtNome.Text = "";
+            cbContrato.Text = "";
         }
 
         public void gravar()
         {
             int id = int.Parse(txtCodigo.Text);
-            String regime = txtNome.Text;
-            ControllerContrato.gravar(id, regime);
+            String contrato = txtNome.Text;
+            ControllerContrato.gravar(id, contrato);
         }
 
         public void eliminar()
@@ -105,38 +101,41 @@ namespace Facturix_Salários
             String regime = txtNome.Text;
             ControllerContrato.atualizar(id, regime);
         }
+
+        private void adicionarItemsCb()
+        {
+            foreach (ModeloContrato hab in listaContratos)
+            {
+                cbContrato.Items.Add(hab.getContrato());
+            }
+        }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
-            adcionarItemsCb();
+            adicionarItemsCb();
+            adicionar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
-            adcionarItemsCb();
-            adicionar();
+            cancelar();
+            adicionarItemsCb();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
-            adcionarItemsCb();
             adicionar();
+            adicionarItemsCb();
+            cancelar();
         }
 
-        private void adcionarItemsCb() 
-        {
-            cbContrato.Items.Clear();
-            foreach (ModeloContrato cont in listaContratos)
-            {
-                cbContrato.Items.Add(cont.getContrato());
-            }
-        }
         private void frmCadastrarContrato_Load(object sender, EventArgs e)
         {
-            adcionarItemsCb();
             impedirBotoes();
+            setCod();
+            adicionarItemsCb();
         }
 
         private void frmCadastrarContrato_KeyDown(object sender, KeyEventArgs e)
@@ -181,6 +180,10 @@ namespace Facturix_Salários
 
         private void cbContrato_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void cbContrato_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
             foreach (ModeloContrato seg in listaContratos)
             {
                 if (cbContrato.Text == seg.getContrato())
@@ -189,6 +192,22 @@ namespace Facturix_Salários
                     txtNome.Text = seg.getContrato();
                 }
             }
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            adicionarItemsCb();
+            adicionar();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            cancelar();
+        }
+
+        private void btnRegressar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -32,6 +32,8 @@ namespace Facturix_Salários
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbSindicato = new System.Windows.Forms.ComboBox();
+            this.label42 = new System.Windows.Forms.Label();
             this.txtUltimo = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.txtSeguro = new System.Windows.Forms.TextBox();
@@ -175,6 +177,8 @@ namespace Facturix_Salários
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cbSindicato);
+            this.groupBox3.Controls.Add(this.label42);
             this.groupBox3.Controls.Add(this.txtUltimo);
             this.groupBox3.Controls.Add(this.label30);
             this.groupBox3.Controls.Add(this.txtSeguro);
@@ -210,6 +214,23 @@ namespace Facturix_Salários
             this.groupBox3.TabIndex = 202;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dados Profissionais";
+            // 
+            // cbSindicato
+            // 
+            this.cbSindicato.FormattingEnabled = true;
+            this.cbSindicato.Location = new System.Drawing.Point(306, 143);
+            this.cbSindicato.Name = "cbSindicato";
+            this.cbSindicato.Size = new System.Drawing.Size(113, 21);
+            this.cbSindicato.TabIndex = 231;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(226, 143);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(54, 13);
+            this.label42.TabIndex = 230;
+            this.label42.Text = "Sindicato:";
             // 
             // txtUltimo
             // 
@@ -302,6 +323,7 @@ namespace Facturix_Salários
             this.cbSeguro.Name = "cbSeguro";
             this.cbSeguro.Size = new System.Drawing.Size(78, 21);
             this.cbSeguro.TabIndex = 22;
+            this.cbSeguro.SelectedIndexChanged += new System.EventHandler(this.cbSeguro_SelectedIndexChanged);
             this.cbSeguro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbSeguro_KeyDown);
             // 
             // Label26
@@ -1246,7 +1268,7 @@ namespace Facturix_Salários
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCadastrarFuncionarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastrar Funcionários";
+            this.Text = "Cadastras De Funcionários";
             this.Load += new System.EventHandler(this.f_funcionarios_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFuncionarios_KeyDown);
             this.tabControl1.ResumeLayout(false);
@@ -1372,5 +1394,7 @@ namespace Facturix_Salários
         internal System.Windows.Forms.Label Label34;
         private System.Windows.Forms.Button btnRegressar;
         private System.Windows.Forms.GroupBox groupBox4;
+        internal System.Windows.Forms.Label label42;
+        public System.Windows.Forms.ComboBox cbSindicato;
     }
 }

@@ -11,17 +11,39 @@ using System.Collections;
 
 namespace Facturix_Salários
 {
-    public partial class frmCadastrarCategoria : Form
+    public partial class frmCadastrarHabilitacoes : Form
     {
-        ArrayList listaCategorias = ControllerCategoria.recuperar();
-        public frmCadastrarCategoria()
+        ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
+        public frmCadastrarHabilitacoes()
         {
             InitializeComponent();
             setCod();
             this.ActiveControl = txtNome;
         }
 
-        private void impedirBotoes() 
+        private int getCod()
+        {
+            int cod = 0;
+            foreach (ModeloHabilitacao cat in listaHabilitacoes)
+            {
+                if (cat.getId() != 0)
+                {
+                    cod = cat.getId();
+                }
+                else
+                {
+                    cod = 0;
+                }
+            }
+            return cod;
+        }
+        private void adicionar()
+        {
+            setCod();
+            txtNome.Text = "";
+        }
+
+        private void impedirBotoes()
         {
             if (txtNome.Text == "")
             {
@@ -36,7 +58,7 @@ namespace Facturix_Salários
                 btnConfirmar.FlatStyle = FlatStyle.Flat;
                 btnCancelar.FlatStyle = FlatStyle.Flat;
             }
-            else 
+            else
             {
                 btnAdicionar.Enabled = true;
                 btnAtualizar.Enabled = true;
@@ -50,58 +72,45 @@ namespace Facturix_Salários
                 btnCancelar.FlatStyle = FlatStyle.Standard;
             }
         }
-        private void adicionar()
-        {
-            setCod();
-            txtNome.Text = "";
-            cbCategoria.Text = "";
-        }
-
         private void cancelar()
         {
             txtCodigo.Text = "";
             txtNome.Text = "";
         }
-        private int getCod() 
-        {
-            int cod = 0;
-            foreach (ModeloCategoria cat in listaCategorias) 
-            {
-                if (cat.getId() != 0)
-                {
-                    cod = cat.getId();
-                }
-                else 
-                {
-                    cod = 0;
-                }
-            }
-            return cod;
-        }
 
-        private void setCod() 
+
+        private void setCod()
         {
-            txtCodigo.Text = getCod() +  1 + "";
+            txtCodigo.Text = getCod() + 1 + "";
         }
 
         public void gravar()
         {
             int id = int.Parse(txtCodigo.Text);
             String regime = txtNome.Text;
-            ControllerCategoria.gravar(id, regime);
+            ControllerHabilitacoes.gravar(id, regime);
         }
 
         public void eliminar()
         {
             int id = int.Parse(txtCodigo.Text);
-            ControllerCategoria.remover(id);
+            ControllerHabilitacoes.remover(id);
         }
 
         public void modificar()
         {
             int id = int.Parse(txtCodigo.Text);
             String regime = txtNome.Text;
-            ControllerCategoria.atualizar(id, regime);
+            ControllerHabilitacoes.atualizar(id, regime);
+        }
+
+        private void adicionarItemsCb()
+        {
+            cbHabilitacoes.Items.Clear();
+            foreach (ModeloHabilitacao hab in listaHabilitacoes)
+            {
+                cbHabilitacoes.Items.Add(hab.getHabilitacao());
+            }
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -110,35 +119,27 @@ namespace Facturix_Salários
             adicionarItemsCb();
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            eliminar();
-            adicionarItemsCb();
-            adicionar();
-        }
-
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
-            adicionarItemsCb();
             adicionar();
-        }
-
-        private void adicionarItemsCb() 
-        {
-            cbCategoria.Items.Clear();
-            foreach (ModeloCategoria cat in listaCategorias)
-            {
-                cbCategoria.Items.Add(cat.getCategoria());
-            }
-        }
-        private void frmCadastrarCategoria_Load(object sender, EventArgs e)
-        {
             adicionarItemsCb();
-            impedirBotoes();
         }
 
-        private void frmCadastrarCategoria_KeyDown(object sender, KeyEventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            eliminar();
+            adicionar();
+            adicionarItemsCb();
+        }
+
+        private void frmCadastrarHabilitacoes_Load(object sender, EventArgs e)
+        {
+            impedirBotoes();
+            adicionarItemsCb();
+        }
+
+        private void frmCadastrarHabilitacoes_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode.ToString() == "F1")
             {
@@ -178,16 +179,25 @@ namespace Facturix_Salários
             impedirBotoes();
         }
 
-        private void cbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbHabilitacoes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ModeloCategoria seg in listaCategorias)
+        }
+
+        private void cbHabilitacoes_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            foreach (ModeloHabilitacao seg in listaHabilitacoes)
             {
-                if (cbCategoria.Text == seg.getCategoria())
+                if (cbHabilitacoes.Text == seg.getHabilitacao())
                 {
                     txtCodigo.Text = seg.getId() + "";
-                    txtNome.Text = seg.getCategoria();
+                    txtNome.Text = seg.getHabilitacao();
                 }
             }
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            adicionar();
         }
     }
 }

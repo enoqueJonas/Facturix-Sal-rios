@@ -99,5 +99,23 @@ namespace Facturix_Salários
             frmCadastrarHabilitacoes f = new frmCadastrarHabilitacoes();
             f.Show();
         }
+
+        private void sindicatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarSundicatos f = new frmCadastrarSundicatos();
+            f.Show();
+        }
+
+        private void estabelecimentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarEstabelecimentos f = new frmCadastrarEstabelecimentos();
+            f.Show();
+        }
+
+        private void centrosDeCustoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarCentrosDeCusto f = new frmCadastrarCentrosDeCusto();
+            f.Show();
+        }
     }
 }

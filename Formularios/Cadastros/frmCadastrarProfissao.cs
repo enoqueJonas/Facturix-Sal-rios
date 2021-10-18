@@ -46,12 +46,10 @@ namespace Facturix_Salários
         {
             if (txtNome.Text == "")
             {
-                btnAdicionar.Enabled = false;
                 btnAtualizar.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnConfirmar.Enabled = false;
                 btnCancelar.Enabled = false;
-                btnAdicionar.FlatStyle = FlatStyle.Flat;
                 btnAtualizar.FlatStyle = FlatStyle.Flat;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
                 btnConfirmar.FlatStyle = FlatStyle.Flat;
@@ -59,12 +57,10 @@ namespace Facturix_Salários
             }
             else
             {
-                btnAdicionar.Enabled = true;
                 btnAtualizar.Enabled = true;
                 btnEliminar.Enabled = true;
                 btnConfirmar.Enabled = true;
                 btnCancelar.Enabled = true;
-                btnAdicionar.FlatStyle = FlatStyle.Standard;
                 btnAtualizar.FlatStyle = FlatStyle.Standard;
                 btnEliminar.FlatStyle = FlatStyle.Standard;
                 btnConfirmar.FlatStyle = FlatStyle.Standard;
@@ -76,7 +72,6 @@ namespace Facturix_Salários
         {
             setCod();
             txtNome.Text = "";
-            cbProfissao.Text = "";
         }
 
         private void cancelar()
@@ -90,6 +85,7 @@ namespace Facturix_Salários
             int id = int.Parse(txtCodigo.Text);
             String regime = txtNome.Text;
             ControllerProfissao.gravar(id, regime);
+            adicionar();
         }
 
         public void eliminar()
@@ -104,6 +100,14 @@ namespace Facturix_Salários
             String regime = txtNome.Text;
             ControllerProfissao.atualizar(id, regime);
         }
+        private void adicionarItemsCb()
+        {
+            cbProfissoes.Items.Clear();
+            foreach (ModeloProfissao hab in listaProfissao)
+            {
+                cbProfissoes.Items.Add(hab.getProfissao());
+            }
+        }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
@@ -113,30 +117,21 @@ namespace Facturix_Salários
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
+            cancelar();
             adicionarItemsCb();
-            adicionar();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
+            cancelar();
             adicionarItemsCb();
-            adicionar();
-        }
-
-        private void adicionarItemsCb() 
-        {
-            cbProfissao.Items.Clear();
-            foreach (ModeloProfissao prof in listaProfissao)
-            {
-                cbProfissao.Items.Add(prof.getProfissao());
-            }
         }
 
         private void frmCadastrarProfissao_Load(object sender, EventArgs e)
         {
-            adicionarItemsCb();
             impedirBotoes();
+            adicionarItemsCb();
         }
 
         private void frmCadastrarProfissao_KeyDown(object sender, KeyEventArgs e)
@@ -181,14 +176,28 @@ namespace Facturix_Salários
 
         private void cbProfissao_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void cbProfissoes_SelectedIndexChanged(object sender, EventArgs e)
+        {
             foreach (ModeloProfissao seg in listaProfissao)
             {
-                if (cbProfissao.Text == seg.getProfissao())
+                if (cbProfissoes.Text == seg.getProfissao())
                 {
                     txtCodigo.Text = seg.getId() + "";
                     txtNome.Text = seg.getProfissao();
                 }
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            cancelar();
+        }
+
+        private void btnRegressar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

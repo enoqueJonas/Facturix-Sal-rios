@@ -9,24 +9,24 @@ using MySql.Data.MySqlClient;
 
 namespace Facturix_Salários
 {
-    class ControllerContrato
+    class ControllerEstabelecimento
     {
-        public static void gravar(int id, String contrato)
+        public static void gravar(int id, String estabelecimento)
         {
             MySqlConnection conexao = Conexao.conectar();
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into contrato(id, tipoContrato) values(?,?)";
+                String sqlInsert = "INSERT into estabelecimento(id, estabelecimento) values(?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", id);
-                comando.Parameters.AddWithValue("tipoContrato", contrato);
+                comando.Parameters.AddWithValue("estabelecimento", estabelecimento);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Contrato cadastrada com sucesso!");
+                MessageBox.Show("Estabelecimento cadastrada com sucesso!");
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar contrato");
+                MessageBox.Show(err.Message, "Nao foi possivel cadastrar estabelecimento");
             }
             finally
             {
@@ -35,22 +35,22 @@ namespace Facturix_Salários
             }
         }
 
-        public static void atualizar(int id, String contrato)
+        public static void atualizar(int id, String estabelecimento)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE contrato SET tipoContrato=? WHERE id=?";
+                String sqlInsert = "UPDATE estabelecimento SET estabelecimento=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
-                comando.Parameters.AddWithValue(" tipoContrato", contrato);
-                comando.Parameters.AddWithValue("ido", id);
+                comando.Parameters.AddWithValue("estabelecimento", estabelecimento);
+                comando.Parameters.AddWithValue("id", id);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel atualizar o contrato!");
+                MessageBox.Show(err.Message, "Nao foi possivel atualizar o estabelecimento!");
             }
             finally
             {
@@ -62,30 +62,30 @@ namespace Facturix_Salários
         public static ArrayList recuperar()
         {
             MySqlConnection conexao = Conexao.conectar();
-            ArrayList listaContratos = new ArrayList();
+            ArrayList listaEstabelecimentos = new ArrayList();
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from contrato";
+                String sqlSelect = "SELECT * from estabelecimento";
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    String contrato = leitor.GetString(1);
-                    listaContratos.Add(new ModeloContrato(id, contrato));
+                    String estabelecimento = leitor.GetString(1);
+                    listaEstabelecimentos.Add(new ModeloEstabelecimento(id, estabelecimento));
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar contratos!");
+                MessageBox.Show(err.Message, "Nao foi possivel recuperar estabelecimento!");
             }
             finally
             {
                 if (conexao != null)
                     conexao.Close();
             }
-            return listaContratos;
+            return listaEstabelecimentos;
         }
 
         public static void remover(int id)
@@ -94,14 +94,14 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String SqlDelete = "DELETE from contrato WHERE id=?";
+                String SqlDelete = "DELETE from estabelecimento WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
                 comando.Parameters.Add(new MySqlParameter("id", id));
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover o contrato!");
+                MessageBox.Show(err.Message, "Nao foi possivel remover o estabelecimento!");
             }
             finally
             {
@@ -113,30 +113,30 @@ namespace Facturix_Salários
         public static ArrayList recuperarComCod(int codigo)
         {
             MySqlConnection conexao = Conexao.conectar();
-            ArrayList listaSeguros = new ArrayList();
+            ArrayList listaEstabelecimentos = new ArrayList();
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from contrato WHERE id=" + codigo;
+                String sqlSelect = "SELECT * from estabelecimento WHERE id=" + codigo;
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    String contrato = leitor.GetString(1);
-                    listaSeguros.Add(new ModeloContrato(id, contrato));
+                    String estabelecimento = leitor.GetString(1);
+                    listaEstabelecimentos.Add(new ModeloEstabelecimento(id, estabelecimento));
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar contratos!");
+                MessageBox.Show(err.Message, "Nao foi possivel recuperar estabelecimentos!");
             }
             finally
             {
                 if (conexao != null)
                     conexao.Close();
             }
-            return listaSeguros;
+            return listaEstabelecimentos;
         }
     }
 }

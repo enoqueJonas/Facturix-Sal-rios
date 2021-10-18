@@ -262,7 +262,7 @@ namespace Facturix_Salários
                 MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
                 DataSet ds = new DataSet();
                 adapter.Fill(ds, "funcionario");
-                reportFuncionario rep = new reportFuncionario();
+                Reports.reportFuncionario rep = new Reports.reportFuncionario();
                 rep.SetDataSource(ds);
                 f.crDataTable.ReportSource = rep;
                 f.crDataTable.Refresh();

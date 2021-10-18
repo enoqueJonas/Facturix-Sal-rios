@@ -39,7 +39,7 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.cbCategoria = new System.Windows.Forms.ComboBox();
+            this.cbCentro = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(36, 81);
+            this.Label2.Location = new System.Drawing.Point(36, 77);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(55, 13);
             this.Label2.TabIndex = 226;
@@ -73,7 +73,7 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(36, 42);
+            this.Label1.Location = new System.Drawing.Point(36, 38);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(59, 13);
             this.Label1.TabIndex = 225;
@@ -124,6 +124,7 @@
             this.btnCancelar.TabIndex = 3000;
             this.btnCancelar.Text = "Cancelar(F4)";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAtualizar
             // 
@@ -156,22 +157,23 @@
             this.btnAdicionar.TabIndex = 3000;
             this.btnAdicionar.Text = "Adicionar(F1)";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // cbCategoria
+            // cbCentro
             // 
-            this.cbCategoria.FormattingEnabled = true;
-            this.cbCategoria.Location = new System.Drawing.Point(106, 111);
-            this.cbCategoria.Name = "cbCategoria";
-            this.cbCategoria.Size = new System.Drawing.Size(173, 21);
-            this.cbCategoria.TabIndex = 227;
-            this.cbCategoria.SelectedIndexChanged += new System.EventHandler(this.cbCategoria_SelectedIndexChanged);
+            this.cbCentro.FormattingEnabled = true;
+            this.cbCentro.Location = new System.Drawing.Point(106, 114);
+            this.cbCentro.Name = "cbCentro";
+            this.cbCentro.Size = new System.Drawing.Size(121, 21);
+            this.cbCentro.TabIndex = 227;
+            this.cbCentro.SelectedIndexChanged += new System.EventHandler(this.cbCentro_SelectedIndexChanged);
             // 
             // frmCadastrarCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 261);
-            this.Controls.Add(this.cbCategoria);
+            this.Controls.Add(this.cbCentro);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.Label2);
@@ -179,7 +181,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmCadastrarCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Categoria";
+            this.Text = "Categorias";
             this.Load += new System.EventHandler(this.frmCadastrarCategoria_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarCategoria_KeyDown);
             this.panel1.ResumeLayout(false);
@@ -201,6 +203,6 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.ComboBox cbCategoria;
+        private System.Windows.Forms.ComboBox cbCentro;
     }
 }

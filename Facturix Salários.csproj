@@ -181,123 +181,156 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerConta.cs" />
-    <Compile Include="ControllerContrato.cs" />
-    <Compile Include="ControllerFuncionario.cs" />
-    <Compile Include="ControllerHabilitacoes.cs" />
-    <Compile Include="ControllerMorada.cs" />
-    <Compile Include="ControllerProfissao.cs" />
-    <Compile Include="ControllerCategoria.cs" />
-    <Compile Include="ControllerSeguro.cs" />
-    <Compile Include="frmCadastrarCategoria.cs">
+    <Compile Include="Controllers\ControllerCentroDeCusto.cs" />
+    <Compile Include="Controllers\ControllerConta.cs" />
+    <Compile Include="Controllers\ControllerContrato.cs" />
+    <Compile Include="Controllers\ControllerEstabelecimento.cs" />
+    <Compile Include="Controllers\ControllerFuncionario.cs" />
+    <Compile Include="Controllers\ControllerHabilitacoes.cs" />
+    <Compile Include="Controllers\ControllerMorada.cs" />
+    <Compile Include="Controllers\ControllerProfissao.cs" />
+    <Compile Include="Controllers\ControllerCategoria.cs" />
+    <Compile Include="Controllers\ControllerSeguro.cs" />
+    <Compile Include="Controllers\ControllerSindicato.cs" />
+    <Compile Include="Formularios\Cadastros\frmCadastrarCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCadastrarCategoria.Designer.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarCategoria.Designer.cs">
       <DependentUpon>frmCadastrarCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCadastrarContrato.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarCentrosDeCusto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCadastrarContrato.Designer.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarCentrosDeCusto.Designer.cs">
+      <DependentUpon>frmCadastrarCentrosDeCusto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Cadastros\frmCadastrarContrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Cadastros\frmCadastrarContrato.Designer.cs">
       <DependentUpon>frmCadastrarContrato.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCadastrarHabilitacoes.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarEstabelecimentos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCadastrarHabilitacoes.Designer.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarEstabelecimentos.Designer.cs">
+      <DependentUpon>frmCadastrarEstabelecimentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Cadastros\frmCadastrarHabilitacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Cadastros\frmCadastrarHabilitacoes.Designer.cs">
       <DependentUpon>frmCadastrarHabilitacoes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCadastrarProfissao.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarProfissao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCadastrarProfissao.Designer.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarProfissao.Designer.cs">
       <DependentUpon>frmCadastrarProfissao.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCadastrarSeguro.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarSeguro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCadastrarSeguro.Designer.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarSeguro.Designer.cs">
       <DependentUpon>frmCadastrarSeguro.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReportFuncionario.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarSundicatos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReportFuncionario.Designer.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarSundicatos.Designer.cs">
+      <DependentUpon>frmCadastrarSundicatos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ReportViews\frmReportFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ReportViews\frmReportFuncionario.Designer.cs">
       <DependentUpon>frmReportFuncionario.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModeloContrato.cs" />
-    <Compile Include="ModeloHabilitacao.cs" />
-    <Compile Include="ModeloProfissao.cs" />
-    <Compile Include="ModeloCategoria.cs" />
-    <Compile Include="ModeloSeguro.cs" />
-    <Compile Include="reportFuncionario.cs">
+    <Compile Include="Modelos\ModeloCentroDeCusto.cs" />
+    <Compile Include="Modelos\ModeloContrato.cs" />
+    <Compile Include="Modelos\ModeloEstabelecimento.cs" />
+    <Compile Include="Modelos\ModeloHabilitacao.cs" />
+    <Compile Include="Modelos\ModeloProfissao.cs" />
+    <Compile Include="Modelos\ModeloCategoria.cs" />
+    <Compile Include="Modelos\ModeloSeguro.cs" />
+    <Compile Include="Modelos\ModeloSindicato.cs" />
+    <Compile Include="Reports\reportFuncionario.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>reportFuncionario.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="frmNumeroRegisto.cs">
+    <Compile Include="Formularios\Pesquisas\frmNumeroRegisto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNumeroRegisto.Designer.cs">
+    <Compile Include="Formularios\Pesquisas\frmNumeroRegisto.Designer.cs">
       <DependentUpon>frmNumeroRegisto.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVisualizarFuncionario.cs">
+    <Compile Include="Formularios\Visualizacoes\frmVisualizarFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVisualizarFuncionario.Designer.cs">
+    <Compile Include="Formularios\Visualizacoes\frmVisualizarFuncionario.Designer.cs">
       <DependentUpon>frmVisualizarFuncionario.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCadastrarFuncionarios.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCadastrarFuncionarios.Designer.cs">
+    <Compile Include="Formularios\Cadastros\frmCadastrarFuncionarios.Designer.cs">
       <DependentUpon>frmCadastrarFuncionarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMenu.cs">
+    <Compile Include="Formularios\Menus\frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMenu.Designer.cs">
+    <Compile Include="Formularios\Menus\frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModeloConta.cs" />
-    <Compile Include="ModeloFuncionario.cs" />
-    <Compile Include="ModeloMorada.cs" />
-    <Compile Include="Conexao.cs" />
+    <Compile Include="Modelos\ModeloConta.cs" />
+    <Compile Include="Modelos\ModeloFuncionario.cs" />
+    <Compile Include="Modelos\ModeloMorada.cs" />
+    <Compile Include="Conexoes\Conexao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmCadastrarCategoria.resx">
+    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarCategoria.resx">
       <DependentUpon>frmCadastrarCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCadastrarContrato.resx">
+    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarCentrosDeCusto.resx">
+      <DependentUpon>frmCadastrarCentrosDeCusto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarContrato.resx">
       <DependentUpon>frmCadastrarContrato.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCadastrarHabilitacoes.resx">
+    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarEstabelecimentos.resx">
+      <DependentUpon>frmCadastrarEstabelecimentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarHabilitacoes.resx">
       <DependentUpon>frmCadastrarHabilitacoes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCadastrarProfissao.resx">
+    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarProfissao.resx">
       <DependentUpon>frmCadastrarProfissao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCadastrarSeguro.resx">
+    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarSeguro.resx">
       <DependentUpon>frmCadastrarSeguro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReportFuncionario.resx">
+    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarSundicatos.resx">
+      <DependentUpon>frmCadastrarSundicatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ReportViews\frmReportFuncionario.resx">
       <DependentUpon>frmReportFuncionario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="reportFuncionario.rpt">
+    <EmbeddedResource Include="Reports\reportFuncionario.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>reportFuncionario.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNumeroRegisto.resx">
+    <EmbeddedResource Include="Formularios\Pesquisas\frmNumeroRegisto.resx">
       <DependentUpon>frmNumeroRegisto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVisualizarFuncionario.resx">
+    <EmbeddedResource Include="Formularios\Visualizacoes\frmVisualizarFuncionario.resx">
       <DependentUpon>frmVisualizarFuncionario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCadastrarFuncionarios.resx">
+    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarFuncionarios.resx">
       <DependentUpon>frmCadastrarFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMenu.resx">
+    <EmbeddedResource Include="Formularios\Menus\frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -341,5 +374,6 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.crDataTable = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.reportFuncionario1 = new Facturix_Salários.reportFuncionario();
+            this.reportFuncionario1 = new Facturix_Salários.Reports.reportFuncionario();
             this.SuspendLayout();
             // 
             // crDataTable
@@ -61,6 +61,6 @@
         #endregion
 
         public CrystalDecisions.Windows.Forms.CrystalReportViewer crDataTable;
-        private reportFuncionario reportFuncionario1;
+        private Reports.reportFuncionario reportFuncionario1;
     }
 }

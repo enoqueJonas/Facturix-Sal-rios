@@ -19,6 +19,7 @@ namespace Facturix_Salários
             InitializeComponent();
             setCod();
             this.ActiveControl = txtNome;
+            impedirBotoes();
         }
 
         private int getCod()
@@ -42,42 +43,51 @@ namespace Facturix_Salários
         {
             if (txtNome.Text == "")
             {
-                btnAdicionar.Enabled = false;
+                btnCancelar.Enabled = false;
                 btnAtualizar.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnConfirmar.Enabled = false;
-                btnCancelar.Enabled = false;
-                btnAdicionar.FlatStyle = FlatStyle.Flat;
-                btnAtualizar.FlatStyle = FlatStyle.Flat;
-                btnEliminar.FlatStyle = FlatStyle.Flat;
-                btnConfirmar.FlatStyle = FlatStyle.Flat;
                 btnCancelar.FlatStyle = FlatStyle.Flat;
+                btnConfirmar.FlatStyle = FlatStyle.Flat;
+                btnEliminar.FlatStyle = FlatStyle.Flat;
+                btnAtualizar.FlatStyle = FlatStyle.Flat;
             }
             else
             {
-                btnAdicionar.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnCancelar.FlatStyle = FlatStyle.Standard;
+            }
+            if (txtNome.Text != "" && txtPercentagem.Text != "")
+            {
                 btnAtualizar.Enabled = true;
                 btnEliminar.Enabled = true;
                 btnConfirmar.Enabled = true;
-                btnCancelar.Enabled = true;
-                btnAdicionar.FlatStyle = FlatStyle.Standard;
-                btnAtualizar.FlatStyle = FlatStyle.Standard;
-                btnEliminar.FlatStyle = FlatStyle.Standard;
                 btnConfirmar.FlatStyle = FlatStyle.Standard;
-                btnCancelar.FlatStyle = FlatStyle.Standard;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnAtualizar.FlatStyle = FlatStyle.Standard;
+            }
+            else 
+            {
+                btnAtualizar.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnConfirmar.Enabled = false;
+                btnConfirmar.FlatStyle = FlatStyle.Flat;
+                btnEliminar.FlatStyle = FlatStyle.Flat;
+                btnAtualizar.FlatStyle = FlatStyle.Flat;
             }
         }
         private void adicionar() 
         {
+            cancelar();
             setCod();
-            txtNome.Text = "";
-            cbRegime.Text = "";
         }
 
         private void cancelar() 
         {
             txtCodigo.Text = "";
             txtNome.Text = "";
+            txtPercentagem.Text = "";
+            cbSeguros.Text = "";
         }
         private void setCod()
         {
@@ -87,7 +97,8 @@ namespace Facturix_Salários
         {
             int id = int.Parse(txtCodigo.Text);
             String regime = txtNome.Text;
-            ControllerSeguro.gravar(id, regime);
+            float percentagem = float.Parse(txtPercentagem.Text) ;
+            ControllerSeguro.gravar(id, regime, percentagem);
         }
 
         public void eliminar() 
@@ -100,10 +111,19 @@ namespace Facturix_Salários
         {
             int id = int.Parse(txtCodigo.Text);
             String regime = txtNome.Text;
-            ControllerSeguro.atualizar(id, regime);
+            float percentagem = float.Parse(txtPercentagem.Text);
+            ControllerSeguro.atualizar(id, regime, percentagem);
         }
 
-        private void btnConfirmar_Click(object sender, EventArgs e)
+        private void adicionarItemsCb()
+        {
+            cbSeguros.Items.Clear();
+            foreach (ModeloSeguro hab in listaSeguros)
+            {
+                cbSeguros.Items.Add(hab.getSeguro());
+            }
+        }
+            private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
             adicionarItemsCb();
@@ -112,15 +132,15 @@ namespace Facturix_Salários
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
-            adicionarItemsCb();
             adicionar();
+            adicionarItemsCb();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
-            adicionarItemsCb();
             adicionar();
+            adicionarItemsCb();
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -128,19 +148,10 @@ namespace Facturix_Salários
             this.Close();
         }
 
-        private void adicionarItemsCb() 
-        {
-            cbRegime.Items.Clear();
-            foreach (ModeloSeguro seg in listaSeguros)
-            {
-                cbRegime.Items.Add(seg.getSeguro());
-            }
-        }
-
         private void frmCadastrarSeguro_Load(object sender, EventArgs e)
         {
-            adicionarItemsCb();
             impedirBotoes();
+            adicionarItemsCb();
         }
 
         private void frmCadastrarSeguro_KeyDown(object sender, KeyEventArgs e)
@@ -185,12 +196,33 @@ namespace Facturix_Salários
 
         private void cbRegime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ModeloSeguro seg in listaSeguros) 
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            adicionar();
+            impedirBotoes();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            cancelar();
+        }
+
+        private void txtPercentagem_TextChanged(object sender, EventArgs e)
+        {
+            impedirBotoes();
+        }
+
+        private void cbSeguros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ModeloSeguro seg in listaSeguros)
             {
-                if (cbRegime.Text == seg.getSeguro())
+                if (cbSeguros.Text == seg.getSeguro())
                 {
-                    txtCodigo.Text = seg.getId()+"";
+                    txtCodigo.Text = seg.getId() + "";
                     txtNome.Text = seg.getSeguro();
+                    txtPercentagem.Text = seg.getPercentagem() + "";
                 }
             }
         }

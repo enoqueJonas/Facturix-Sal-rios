@@ -1,6 +1,6 @@
 ﻿namespace Facturix_Salários
 {
-    partial class frmCadastrarContrato
+    partial class frmCadastrarCentrosDeCusto
     {
         /// <summary>
         /// Required designer variable.
@@ -39,44 +39,43 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.cbContrato = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(107, 75);
+            this.txtNome.Location = new System.Drawing.Point(109, 70);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(310, 20);
-            this.txtNome.TabIndex = 228;
+            this.txtNome.TabIndex = 238;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(107, 36);
+            this.txtCodigo.Location = new System.Drawing.Point(109, 31);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(41, 20);
-            this.txtCodigo.TabIndex = 229;
+            this.txtCodigo.TabIndex = 239;
             this.txtCodigo.TabStop = false;
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(37, 82);
+            this.Label2.Location = new System.Drawing.Point(39, 73);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(50, 13);
-            this.Label2.TabIndex = 231;
-            this.Label2.Text = "Contrato:";
+            this.Label2.Size = new System.Drawing.Size(54, 13);
+            this.Label2.TabIndex = 241;
+            this.Label2.Text = "Sindicato:";
             // 
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(37, 43);
+            this.Label1.Location = new System.Drawing.Point(39, 34);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(59, 13);
-            this.Label1.TabIndex = 230;
+            this.Label1.TabIndex = 240;
             this.Label1.Text = "Registo nº:";
             // 
             // panel1
@@ -88,11 +87,11 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(11, 188);
+            this.panel1.Location = new System.Drawing.Point(4, 177);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(517, 74);
-            this.panel1.TabIndex = 227;
+            this.panel1.TabIndex = 237;
             // 
             // btnRegressar
             // 
@@ -103,10 +102,11 @@
             this.btnRegressar.TabIndex = 900;
             this.btnRegressar.Text = "Regressar(ESC)";
             this.btnRegressar.UseVisualStyleBackColor = true;
+            this.btnRegressar.Click += new System.EventHandler(this.btnRegressar_Click);
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(263, 7);
+            this.btnConfirmar.Location = new System.Drawing.Point(262, 6);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(69, 60);
@@ -124,10 +124,11 @@
             this.btnCancelar.TabIndex = 3000;
             this.btnCancelar.Text = "Cancelar(F4)";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(86, 6);
+            this.btnAtualizar.Location = new System.Drawing.Point(89, 6);
             this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(69, 60);
@@ -138,7 +139,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(350, 7);
+            this.btnEliminar.Location = new System.Drawing.Point(354, 6);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(69, 60);
@@ -156,32 +157,23 @@
             this.btnAdicionar.TabIndex = 3000;
             this.btnAdicionar.Text = "Adicionar(F1)";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // cbContrato
-            // 
-            this.cbContrato.FormattingEnabled = true;
-            this.cbContrato.Location = new System.Drawing.Point(107, 112);
-            this.cbContrato.Name = "cbContrato";
-            this.cbContrato.Size = new System.Drawing.Size(173, 21);
-            this.cbContrato.TabIndex = 232;
-            this.cbContrato.SelectedIndexChanged += new System.EventHandler(this.cbContrato_SelectedIndexChanged);
-            // 
-            // frmCadastrarContrato
+            // frmCadastrarCentrosDeCusto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 261);
-            this.Controls.Add(this.cbContrato);
+            this.ClientSize = new System.Drawing.Size(526, 261);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.panel1);
-            this.Name = "frmCadastrarContrato";
+            this.Name = "frmCadastrarCentrosDeCusto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Contrato";
-            this.Load += new System.EventHandler(this.frmCadastrarContrato_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarContrato_KeyDown);
+            this.Text = "frmCadastrarCentrosDeCusto";
+            this.Load += new System.EventHandler(this.frmCadastrarCentrosDeCusto_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarCentrosDeCusto_KeyDown);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -201,6 +193,5 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.ComboBox cbContrato;
     }
 }

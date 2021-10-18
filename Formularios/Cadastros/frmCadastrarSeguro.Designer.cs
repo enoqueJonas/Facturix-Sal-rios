@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbRegime = new System.Windows.Forms.ComboBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
@@ -40,21 +39,15 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
+            this.txtPercentagem = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbSeguros = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // cbRegime
-            // 
-            this.cbRegime.FormattingEnabled = true;
-            this.cbRegime.Location = new System.Drawing.Point(95, 110);
-            this.cbRegime.Name = "cbRegime";
-            this.cbRegime.Size = new System.Drawing.Size(173, 21);
-            this.cbRegime.TabIndex = 234;
-            this.cbRegime.SelectedIndexChanged += new System.EventHandler(this.cbRegime_SelectedIndexChanged);
-            // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(95, 71);
+            this.txtNome.Location = new System.Drawing.Point(104, 71);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(310, 20);
             this.txtNome.TabIndex = 230;
@@ -63,7 +56,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(95, 32);
+            this.txtCodigo.Location = new System.Drawing.Point(104, 32);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(41, 20);
@@ -73,7 +66,7 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(25, 78);
+            this.Label2.Location = new System.Drawing.Point(25, 74);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(44, 13);
             this.Label2.TabIndex = 233;
@@ -82,7 +75,7 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(25, 39);
+            this.Label1.Location = new System.Drawing.Point(25, 35);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(59, 13);
             this.Label1.TabIndex = 232;
@@ -134,6 +127,7 @@
             this.btnCancelar.TabIndex = 3000;
             this.btnCancelar.Text = "Cancelar(F4)";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAtualizar
             // 
@@ -166,13 +160,42 @@
             this.btnAdicionar.TabIndex = 3000;
             this.btnAdicionar.Text = "Adicionar(F1)";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            // 
+            // txtPercentagem
+            // 
+            this.txtPercentagem.Location = new System.Drawing.Point(104, 108);
+            this.txtPercentagem.Name = "txtPercentagem";
+            this.txtPercentagem.Size = new System.Drawing.Size(41, 20);
+            this.txtPercentagem.TabIndex = 234;
+            this.txtPercentagem.TextChanged += new System.EventHandler(this.txtPercentagem_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 111);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.TabIndex = 235;
+            this.label3.Text = "Percentagem:";
+            // 
+            // cbSeguros
+            // 
+            this.cbSeguros.FormattingEnabled = true;
+            this.cbSeguros.Location = new System.Drawing.Point(104, 143);
+            this.cbSeguros.Name = "cbSeguros";
+            this.cbSeguros.Size = new System.Drawing.Size(121, 21);
+            this.cbSeguros.TabIndex = 236;
+            this.cbSeguros.SelectedIndexChanged += new System.EventHandler(this.cbSeguros_SelectedIndexChanged);
             // 
             // frmCadastrarSeguro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 261);
-            this.Controls.Add(this.cbRegime);
+            this.Controls.Add(this.cbSeguros);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtPercentagem);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.Label2);
@@ -180,7 +203,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmCadastrarSeguro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Seguro";
+            this.Text = "Seguros";
             this.Load += new System.EventHandler(this.frmCadastrarSeguro_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarSeguro_KeyDown);
             this.panel1.ResumeLayout(false);
@@ -190,8 +213,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cbRegime;
         internal System.Windows.Forms.TextBox txtNome;
         internal System.Windows.Forms.TextBox txtCodigo;
         internal System.Windows.Forms.Label Label2;
@@ -203,5 +224,8 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.TextBox txtPercentagem;
+        internal System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbSeguros;
     }
 }

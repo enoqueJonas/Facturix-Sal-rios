@@ -1,6 +1,6 @@
 ﻿namespace Facturix_Salários
 {
-    partial class frmCadastrarHabilitacoes
+    partial class frmCadastrarSundicatos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Label2 = new System.Windows.Forms.Label();
+            this.Label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
@@ -39,45 +39,45 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.cbHabilitacoes = new System.Windows.Forms.ComboBox();
+            this.cbSindicatos = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Habilitações:";
-            // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(94, 73);
+            this.txtNome.Location = new System.Drawing.Point(107, 73);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(310, 20);
-            this.txtNome.TabIndex = 223;
+            this.txtNome.TabIndex = 228;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(94, 34);
+            this.txtCodigo.Location = new System.Drawing.Point(107, 34);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(41, 20);
-            this.txtCodigo.TabIndex = 224;
+            this.txtCodigo.TabIndex = 229;
             this.txtCodigo.TabStop = false;
             // 
-            // label3
+            // Label2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 41);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 13);
-            this.label3.TabIndex = 225;
-            this.label3.Text = "Registo nº:";
+            this.Label2.AutoSize = true;
+            this.Label2.Location = new System.Drawing.Point(37, 76);
+            this.Label2.Name = "Label2";
+            this.Label2.Size = new System.Drawing.Size(54, 13);
+            this.Label2.TabIndex = 231;
+            this.Label2.Text = "Sindicato:";
+            // 
+            // Label1
+            // 
+            this.Label1.AutoSize = true;
+            this.Label1.Location = new System.Drawing.Point(37, 37);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(59, 13);
+            this.Label1.TabIndex = 230;
+            this.Label1.Text = "Registo nº:";
             // 
             // panel1
             // 
@@ -88,11 +88,11 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(3, 180);
+            this.panel1.Location = new System.Drawing.Point(2, 180);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(520, 74);
-            this.panel1.TabIndex = 222;
+            this.panel1.Size = new System.Drawing.Size(517, 74);
+            this.panel1.TabIndex = 227;
             // 
             // btnRegressar
             // 
@@ -103,10 +103,11 @@
             this.btnRegressar.TabIndex = 900;
             this.btnRegressar.Text = "Regressar(ESC)";
             this.btnRegressar.UseVisualStyleBackColor = true;
+            this.btnRegressar.Click += new System.EventHandler(this.btnRegressar_Click);
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(266, 6);
+            this.btnConfirmar.Location = new System.Drawing.Point(262, 6);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(69, 60);
@@ -117,17 +118,18 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(174, 6);
+            this.btnCancelar.Location = new System.Drawing.Point(175, 6);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(69, 60);
             this.btnCancelar.TabIndex = 3000;
             this.btnCancelar.Text = "Cancelar(F4)";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(90, 7);
+            this.btnAtualizar.Location = new System.Drawing.Point(89, 6);
             this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(69, 60);
@@ -138,7 +140,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(358, 7);
+            this.btnEliminar.Location = new System.Drawing.Point(354, 6);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(69, 60);
@@ -156,32 +158,33 @@
             this.btnAdicionar.TabIndex = 3000;
             this.btnAdicionar.Text = "Adicionar(F1)";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // cbHabilitacoes
+            // cbSindicatos
             // 
-            this.cbHabilitacoes.FormattingEnabled = true;
-            this.cbHabilitacoes.Location = new System.Drawing.Point(94, 116);
-            this.cbHabilitacoes.Name = "cbHabilitacoes";
-            this.cbHabilitacoes.Size = new System.Drawing.Size(173, 21);
-            this.cbHabilitacoes.TabIndex = 228;
-            this.cbHabilitacoes.SelectedIndexChanged += new System.EventHandler(this.cbHabilitacoes_SelectedIndexChanged);
+            this.cbSindicatos.FormattingEnabled = true;
+            this.cbSindicatos.Location = new System.Drawing.Point(107, 108);
+            this.cbSindicatos.Name = "cbSindicatos";
+            this.cbSindicatos.Size = new System.Drawing.Size(121, 21);
+            this.cbSindicatos.TabIndex = 233;
+            this.cbSindicatos.SelectedIndexChanged += new System.EventHandler(this.cbSindicatos_SelectedIndexChanged);
             // 
-            // frmCadastrarHabilitacoes
+            // frmCadastrarSundicatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 261);
-            this.Controls.Add(this.cbHabilitacoes);
+            this.Controls.Add(this.cbSindicatos);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Label2);
+            this.Controls.Add(this.Label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
-            this.Name = "frmCadastrarHabilitacoes";
+            this.Name = "frmCadastrarSundicatos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Habilitações";
-            this.Load += new System.EventHandler(this.frmCadastrarHabilitacoes_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarHabilitacoes_KeyDown);
+            this.Text = "Sindicatos";
+            this.Load += new System.EventHandler(this.frmCadastrarSundicatos_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarSundicatos_KeyDown);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -190,10 +193,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         internal System.Windows.Forms.TextBox txtNome;
         internal System.Windows.Forms.TextBox txtCodigo;
-        internal System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.Label Label2;
+        internal System.Windows.Forms.Label Label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnRegressar;
         private System.Windows.Forms.Button btnConfirmar;
@@ -201,6 +204,6 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.ComboBox cbHabilitacoes;
+        private System.Windows.Forms.ComboBox cbSindicatos;
     }
 }

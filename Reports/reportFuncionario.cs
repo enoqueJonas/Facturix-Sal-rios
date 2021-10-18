@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Facturix_Salários {
+namespace Facturix_Salários.Reports {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace Facturix_Salários {
         
         public override string FullResourceName {
             get {
-                return "Facturix_Salários.reportFuncionario.rpt";
+                return "Facturix_Salários.Reports.reportFuncionario.rpt";
             }
             set {
                 // Do nothing
