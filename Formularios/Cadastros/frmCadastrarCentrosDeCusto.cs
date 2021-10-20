@@ -13,12 +13,30 @@ namespace Facturix_Salários
 {
     public partial class frmCadastrarCentrosDeCusto : Form
     {
-        ArrayList listaCentrosDeCusto = ControllerCentroDeCusto.recuperar();
+        private int codigoCelSelecionada;
         public frmCadastrarCentrosDeCusto()
         {
             InitializeComponent();
         }
 
+        private void refrescar()
+        {
+            ArrayList listaCentrosDeCusto = ControllerCentroDeCusto.recuperar();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Centro De Custo");
+            foreach (ModeloCentroDeCusto func in listaCentrosDeCusto)
+            {
+                DataRow dRow = dt.NewRow();
+                dRow["ID"] = func.getId();
+                dRow["Centro de Custo"] = func.getCentroDeCusto();
+                dt.Rows.Add(dRow);
+            }
+            dataCentroDeCusto.DataSource = dt;
+            dataCentroDeCusto.Refresh();
+            dataCentroDeCusto.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataCentroDeCusto.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+        }
         public void gravar()
         {
             int id = int.Parse(txtCodigo.Text);
@@ -41,6 +59,7 @@ namespace Facturix_Salários
 
         private int getCod()
         {
+            ArrayList listaCentrosDeCusto = ControllerCentroDeCusto.recuperar();
             int cod = 0;
             foreach (ModeloCentroDeCusto cat in listaCentrosDeCusto)
             {
@@ -75,18 +94,21 @@ namespace Facturix_Salários
         {
             gravar();
             adicionar();
+            refrescar();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
             cancelar();
+            refrescar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
             cancelar();
+            refrescar();
         }
 
         private void impedirBotoes()
@@ -118,6 +140,7 @@ namespace Facturix_Salários
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             adicionar();
+            refrescar();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -170,11 +193,25 @@ namespace Facturix_Salários
         {
             setCod();
             impedirBotoes();
+            refrescar();
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             impedirBotoes();
+        }
+
+        private void dataCentroDeCusto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataCentroDeCusto.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            ArrayList listaCentroComCod = ControllerCentroDeCusto.recuperarComCod(codigoCelSelecionada);
+            foreach (ModeloCentroDeCusto func in listaCentroComCod)
+            {
+                txtCodigo.Text = func.getId() + "";
+                txtNome.Text = func.getCentroDeCusto();
+            }
         }
     }
 }

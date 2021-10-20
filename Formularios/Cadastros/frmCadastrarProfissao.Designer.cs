@@ -39,8 +39,9 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
-            this.cbProfissoes = new System.Windows.Forms.ComboBox();
+            this.dataProfissao = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataProfissao)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -52,7 +53,7 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(1, 181);
+            this.panel1.Location = new System.Drawing.Point(0, 399);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(520, 74);
@@ -122,6 +123,7 @@
             this.btnAdicionar.TabIndex = 3000;
             this.btnAdicionar.Text = "Adicionar(F1)";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // txtNome
             // 
@@ -159,32 +161,35 @@
             this.Label1.TabIndex = 220;
             this.Label1.Text = "Registo nº:";
             // 
-            // cbProfissoes
+            // dataProfissao
             // 
-            this.cbProfissoes.FormattingEnabled = true;
-            this.cbProfissoes.Location = new System.Drawing.Point(92, 115);
-            this.cbProfissoes.Name = "cbProfissoes";
-            this.cbProfissoes.Size = new System.Drawing.Size(121, 21);
-            this.cbProfissoes.TabIndex = 222;
-            this.cbProfissoes.SelectedIndexChanged += new System.EventHandler(this.cbProfissoes_SelectedIndexChanged);
+            this.dataProfissao.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataProfissao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataProfissao.Location = new System.Drawing.Point(0, 135);
+            this.dataProfissao.Name = "dataProfissao";
+            this.dataProfissao.Size = new System.Drawing.Size(517, 259);
+            this.dataProfissao.TabIndex = 245;
+            this.dataProfissao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProfissao_CellDoubleClick);
             // 
             // frmCadastrarProfissao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 261);
-            this.Controls.Add(this.cbProfissoes);
+            this.ClientSize = new System.Drawing.Size(517, 473);
+            this.Controls.Add(this.dataProfissao);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "frmCadastrarProfissao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Profissões";
             this.Load += new System.EventHandler(this.frmCadastrarProfissao_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarProfissao_KeyDown);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataProfissao)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,6 +208,6 @@
         internal System.Windows.Forms.TextBox txtCodigo;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
-        private System.Windows.Forms.ComboBox cbProfissoes;
+        private System.Windows.Forms.DataGridView dataProfissao;
     }
 }

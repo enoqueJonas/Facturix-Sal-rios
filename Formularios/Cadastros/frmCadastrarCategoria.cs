@@ -13,7 +13,7 @@ namespace Facturix_Salários
 {
     public partial class frmCadastrarCategoria : Form
     {
-        ArrayList listaCategorias = ControllerCategoria.recuperar();
+        private int codigoCelSelecionada;
         public frmCadastrarCategoria()
         {
             InitializeComponent();
@@ -21,6 +21,24 @@ namespace Facturix_Salários
             this.ActiveControl = txtNome;
         }
 
+        private void refrescar()
+        {
+            ArrayList listaCategorias = ControllerCategoria.recuperar();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Categoria");
+            foreach (ModeloCategoria func in listaCategorias)
+            {
+                DataRow dRow = dt.NewRow();
+                dRow["ID"] = func.getId();
+                dRow["Categoria"] = func.getCategoria();
+                dt.Rows.Add(dRow);
+            }
+            dataCategorias.DataSource = dt;
+            dataCategorias.Refresh();
+            dataCategorias.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataCategorias.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+        }
         private void impedirBotoes() 
         {
             if (txtNome.Text == "")
@@ -56,10 +74,10 @@ namespace Facturix_Salários
         {
             txtCodigo.Text = "";
             txtNome.Text = "";
-            cbCentro.Text = "";
         }
         private int getCod() 
         {
+            ArrayList listaCategorias = ControllerCategoria.recuperar();
             int cod = 0;
             foreach (ModeloCategoria cat in listaCategorias) 
             {
@@ -100,42 +118,34 @@ namespace Facturix_Salários
             ControllerCategoria.atualizar(id, regime);
         }
 
-        private void adicionarItemsCb()
-        {
-            cbCentro.Items.Clear();
-            foreach (ModeloCategoria hab in listaCategorias)
-            {
-                cbCentro.Items.Add(hab.getCategoria());
-            }
-        }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
             cancelar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
             adicionar();
-            adicionarItemsCb();
             cancelar();
+            refrescar();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
             adicionar();
-            adicionarItemsCb();
             cancelar();
+            refrescar();
         }
 
         private void frmCadastrarCategoria_Load(object sender, EventArgs e)
         {
             impedirBotoes();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void frmCadastrarCategoria_KeyDown(object sender, KeyEventArgs e)
@@ -143,10 +153,6 @@ namespace Facturix_Salários
             if (e.KeyCode.ToString() == "F1")
             {
                 adicionar();
-            }
-            if (e.KeyCode.ToString() == "F2")
-            {
-
             }
             if (e.KeyCode.ToString() == "F3")
             {
@@ -185,7 +191,7 @@ namespace Facturix_Salários
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             adicionar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -195,13 +201,18 @@ namespace Facturix_Salários
 
         private void cbCentro_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ModeloCategoria seg in listaCategorias)
+        }
+
+        private void dataCategorias_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataCategorias.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            ArrayList listaCategoriaComCod = ControllerCategoria.recuperarComCod(codigoCelSelecionada);
+            foreach (ModeloCategoria func in listaCategoriaComCod)
             {
-                if (cbCentro.Text == seg.getCategoria())
-                {
-                    txtCodigo.Text = seg.getId() + "";
-                    txtNome.Text = seg.getCategoria();
-                }
+                txtCodigo.Text = func.getId()+"";
+                txtNome.Text = func.getCategoria();
             }
         }
     }

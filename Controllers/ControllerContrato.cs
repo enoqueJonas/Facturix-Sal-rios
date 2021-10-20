@@ -76,9 +76,9 @@ namespace Facturix_Salários
                     listaContratos.Add(new ModeloContrato(id, contrato));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar contratos!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar contratos!");
             }
             finally
             {
@@ -127,9 +127,9 @@ namespace Facturix_Salários
                     listaSeguros.Add(new ModeloContrato(id, contrato));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar contratos!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar contratos!");
             }
             finally
             {

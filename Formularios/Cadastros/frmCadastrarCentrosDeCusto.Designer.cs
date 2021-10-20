@@ -39,7 +39,9 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
+            this.dataCentroDeCusto = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataCentroDeCusto)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNome
@@ -87,7 +89,7 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(4, 177);
+            this.panel1.Location = new System.Drawing.Point(2, 404);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(517, 74);
@@ -159,22 +161,35 @@
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
+            // dataCentroDeCusto
+            // 
+            this.dataCentroDeCusto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataCentroDeCusto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataCentroDeCusto.Location = new System.Drawing.Point(2, 140);
+            this.dataCentroDeCusto.Name = "dataCentroDeCusto";
+            this.dataCentroDeCusto.Size = new System.Drawing.Size(517, 259);
+            this.dataCentroDeCusto.TabIndex = 242;
+            this.dataCentroDeCusto.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataCentroDeCusto_CellDoubleClick);
+            // 
             // frmCadastrarCentrosDeCusto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 261);
+            this.ClientSize = new System.Drawing.Size(517, 473);
+            this.Controls.Add(this.dataCentroDeCusto);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "frmCadastrarCentrosDeCusto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCadastrarCentrosDeCusto";
             this.Load += new System.EventHandler(this.frmCadastrarCentrosDeCusto_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarCentrosDeCusto_KeyDown);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataCentroDeCusto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +208,6 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.DataGridView dataCentroDeCusto;
     }
 }

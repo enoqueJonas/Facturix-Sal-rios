@@ -76,9 +76,9 @@ namespace Facturix_Salários
                     listaCategorias.Add(new ModeloCategoria(id, categoria));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar categorias!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar categorias!");
             }
             finally
             {
@@ -127,9 +127,9 @@ namespace Facturix_Salários
                     listaCategorias.Add(new ModeloCategoria(id, categoria));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar categorias!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar categorias!");
             }
             finally
             {

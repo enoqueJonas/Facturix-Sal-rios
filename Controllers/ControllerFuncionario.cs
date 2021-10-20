@@ -54,7 +54,8 @@ namespace Facturix_Salários
                 String turno,
                 float impostoMunicipal,
                 String centroDeCusto,
-                String segurancaSocial
+                String segurancaSocial,
+                String sindicato
             )
         {
             MySqlConnection conexao = Conexao.conectar();
@@ -62,7 +63,7 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into funcionario ( id, nome, cell, cellSec, telefone, email, estadoCivil, deficiencia, conjugue, sexo, dataNascimento, linkImagem, codigoPostal, bairro, localidade, moradaGen, tipoContrato,dataAdmissao, dataDemissao, profissao, categoria, seguro, localDeTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao , subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                String sqlInsert = "INSERT into funcionario ( id, nome, cell, cellSec, telefone, email, estadoCivil, deficiencia, conjugue, sexo, dataNascimento, linkImagem, codigoPostal, bairro, localidade, moradaGen, tipoContrato,dataAdmissao, dataDemissao, profissao, categoria, seguro, localDeTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao , subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", codigo);
                 comando.Parameters.AddWithValue("nome", nome);
@@ -103,6 +104,7 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("impostoMunicipal", impostoMunicipal);
                 comando.Parameters.AddWithValue("centroDeCusto", centroDeCusto);
                 comando.Parameters.AddWithValue("segurancaSocial", segurancaSocial);
+                comando.Parameters.AddWithValue("sindicato", sindicato);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Funcionario cadastrado com sucesso!");
             }
@@ -169,11 +171,12 @@ namespace Facturix_Salários
                     float impostoMunicipal = leitor.GetFloat(36);
                     String centroDeCusto = leitor.GetString(37);
                     String segurancaSocial = leitor.GetString(38);
-                    listaFuncionarios.Add(new ModeloFuncionario(codigo, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto,segurancaSocial));
+                    String sindicato = leitor.GetString(39);
+                    listaFuncionarios.Add(new ModeloFuncionario(codigo, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto,segurancaSocial, sindicato));
                 }
-            } catch (Exception err)
+            } catch (Exception)
             {
-                MessageBox.Show("Nao foi possival carregar lista de funcionarios! Contacte o tecnico!");
+                //MessageBox.Show("Nao foi possival carregar lista de funcionarios! Contacte o tecnico!");
             }
             finally{
                 if (conexao != null)
@@ -233,12 +236,13 @@ namespace Facturix_Salários
                     float impostoMunicipal = leitor.GetFloat(36);
                     String centroDeCusto = leitor.GetString(37);
                     String segurancaSocial = leitor.GetString(38);
-                    listaFuncionarios.Add(new ModeloFuncionario(codigo,nome,cell,cellSec,tel,email,estadoCivil,def,conjugue,sexo,dataNascimento,linkImagem,codPostal,bairro,localidade,moradaGen,tipoContrato,dataAdmissao,dataDemissao,profissao,categoria,seguro,localTrabalho,regime,bi,numeroBenificiario,numeroFiscal,vencimento,subAlimentacao,subTransporte,horas,dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial));
+                    String sindicato = leitor.GetString(39);
+                    listaFuncionarios.Add(new ModeloFuncionario(codigo,nome,cell,cellSec,tel,email,estadoCivil,def,conjugue,sexo,dataNascimento,linkImagem,codPostal,bairro,localidade,moradaGen,tipoContrato,dataAdmissao,dataDemissao,profissao,categoria,seguro,localTrabalho,regime,bi,numeroBenificiario,numeroFiscal,vencimento,subAlimentacao,subTransporte,horas,dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial,sindicato));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message,"Nao foi possival carregar lista de funcionarios!");
+                //MessageBox.Show(err.Message,"Nao foi possival carregar lista de funcionarios!");
             }
             finally
             {
@@ -299,12 +303,13 @@ namespace Facturix_Salários
                     float impostoMunicipal = leitor.GetFloat(36);
                     String centroDeCusto = leitor.GetString(37);
                     String segurancaSocial = leitor.GetString(38);
-                    listaFuncionarios.Add(new ModeloFuncionario(codigo, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial));
+                    String sindicato = leitor.GetString(39);
+                    listaFuncionarios.Add(new ModeloFuncionario(codigo, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial,sindicato));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possival carregar lista de funcionarios!");
+                //MessageBox.Show(err.Message, "Nao foi possival carregar lista de funcionarios!");
             }
             finally
             {
@@ -354,7 +359,8 @@ namespace Facturix_Salários
                 String turno,
                 float impostoMunicipal,
                 String centroDeCusto,
-                String segurancaSocial
+                String segurancaSocial,
+                String sindicato
             )
         {
             MySqlConnection conexao = Conexao.conectar();
@@ -394,7 +400,7 @@ namespace Facturix_Salários
                                     "subTransporte=?, " +
                                     "horas=?, " +
                                     "dependentes=?, " +
-                                    "habilitacoes=?, nacionalidade=?, ultimoEmprego=?, turno=?, impostoMunicipal=?, centroDeCusto=?, segurancaSocial=? WHERE id=?; ";
+                                    "habilitacoes=?, nacionalidade=?, ultimoEmprego=?, turno=?, impostoMunicipal=?, centroDeCusto=?, segurancaSocial=?, sindicato=? WHERE id=?; ";
                 MySqlCommand comando = new MySqlCommand(sqlUpdate, conexao);
                 comando.Parameters.AddWithValue("nome", nome);
                 comando.Parameters.AddWithValue("cell", cell);
@@ -434,6 +440,7 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("impostoMunicipal", impostoMunicipal);
                 comando.Parameters.AddWithValue("centroDeCusto", centroDeCusto);
                 comando.Parameters.AddWithValue("segurancaSocial", segurancaSocial);
+                comando.Parameters.AddWithValue("sindicato", sindicato);
                 comando.Parameters.AddWithValue("id", codigo);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Funcionario atualizado com sucesso!");

@@ -14,7 +14,6 @@ namespace Facturix_Salários
         public static String database;
         public static String user;
         public static String passwd;
-        public static String convert;
 
         public static MySqlConnection conectar()
         {
@@ -30,7 +29,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show("Nao foi possivel conectar a base de dados! Contacte o tecnico!");
+                MessageBox.Show(err.Message,"Nao foi possivel conectar a base de dados! Contacte o tecnico!");
             }
             finally
             {

@@ -13,13 +13,31 @@ namespace Facturix_Salários
 {
     public partial class frmCadastrarContrato : Form
     {
-        ArrayList listaContratos = ControllerContrato.recuperar();
+        private int codigoCelSelecionada;
         public frmCadastrarContrato()
         {
             InitializeComponent();
             this.ActiveControl = txtNome;
         }
 
+        private void refrescar()
+        {
+            ArrayList listaContratos = ControllerContrato.recuperar();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Contrato");
+            foreach (ModeloContrato func in listaContratos)
+            {
+                DataRow dRow = dt.NewRow();
+                dRow["ID"] = func.getId();
+                dRow["Contrato"] = func.getContrato();
+                dt.Rows.Add(dRow);
+            }
+            dataContrato.DataSource = dt;
+            dataContrato.Refresh();
+            dataContrato.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataContrato.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+        }
         private void impedirBotoes()
         {
             if (txtNome.Text == "")
@@ -49,6 +67,7 @@ namespace Facturix_Salários
 
         private int getCod()
         {
+            ArrayList listaContratos = ControllerContrato.recuperar();
             int cod = 0;
             foreach (ModeloContrato cat in listaContratos)
             {
@@ -79,7 +98,6 @@ namespace Facturix_Salários
         {
             txtCodigo.Text = "";
             txtNome.Text = "";
-            cbContrato.Text = "";
         }
 
         public void gravar()
@@ -104,16 +122,13 @@ namespace Facturix_Salários
 
         private void adicionarItemsCb()
         {
-            foreach (ModeloContrato hab in listaContratos)
-            {
-                cbContrato.Items.Add(hab.getContrato());
-            }
         }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
             adicionarItemsCb();
             adicionar();
+            refrescar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -121,6 +136,7 @@ namespace Facturix_Salários
             eliminar();
             cancelar();
             adicionarItemsCb();
+            refrescar();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -129,13 +145,14 @@ namespace Facturix_Salários
             adicionar();
             adicionarItemsCb();
             cancelar();
+            refrescar();
         }
 
         private void frmCadastrarContrato_Load(object sender, EventArgs e)
         {
             impedirBotoes();
             setCod();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void frmCadastrarContrato_KeyDown(object sender, KeyEventArgs e)
@@ -184,20 +201,13 @@ namespace Facturix_Salários
 
         private void cbContrato_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            foreach (ModeloContrato seg in listaContratos)
-            {
-                if (cbContrato.Text == seg.getContrato())
-                {
-                    txtCodigo.Text = seg.getId() + "";
-                    txtNome.Text = seg.getContrato();
-                }
-            }
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             adicionarItemsCb();
             adicionar();
+            refrescar();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -208,6 +218,19 @@ namespace Facturix_Salários
         private void btnRegressar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataContrato_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataContrato.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            ArrayList listaContratos = ControllerContrato.recuperarComCod(codigoCelSelecionada);
+            foreach (ModeloContrato func in listaContratos)
+            {
+                txtCodigo.Text = func.getId() + "";
+                txtNome.Text = func.getContrato();
+            }
         }
     }
 }

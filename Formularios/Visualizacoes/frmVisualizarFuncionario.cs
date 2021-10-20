@@ -23,6 +23,10 @@ namespace Facturix_Salários
         private void frmVisualizarF_Load(object sender, EventArgs e)
         {
             refrescar();
+            foreach (DataGridViewColumn col in dataFuncionarios.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void refrescar() 
@@ -42,6 +46,8 @@ namespace Facturix_Salários
             }
             dataFuncionarios.DataSource = dt;
             dataFuncionarios.Refresh();
+            dataFuncionarios.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataFuncionarios.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
 
         private void eliminar() {

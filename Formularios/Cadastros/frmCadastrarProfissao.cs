@@ -13,7 +13,7 @@ namespace Facturix_Salários
 {
     public partial class frmCadastrarProfissao : Form
     {
-        ArrayList listaProfissao = ControllerProfissao.recuperar();
+        private int codigoCelSelecionada;
         public frmCadastrarProfissao()
         {
             InitializeComponent();
@@ -21,8 +21,28 @@ namespace Facturix_Salários
             this.ActiveControl = txtNome;
         }
 
+        private void refrescar()
+        {
+            ArrayList listaProfissao = ControllerProfissao.recuperar();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Profissões");
+            foreach (ModeloProfissao func in listaProfissao)
+            {
+                DataRow dRow = dt.NewRow();
+                dRow["ID"] = func.getId();
+                dRow["Profissões"] = func.getProfissao();
+                dt.Rows.Add(dRow);
+            }
+            dataProfissao.DataSource = dt;
+            dataProfissao.Refresh();
+            dataProfissao.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataProfissao.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+        }
+
         private int getCod()
         {
+            ArrayList listaProfissao = ControllerProfissao.recuperar();
             int cod = 0;
             foreach (ModeloProfissao cat in listaProfissao)
             {
@@ -100,38 +120,30 @@ namespace Facturix_Salários
             String regime = txtNome.Text;
             ControllerProfissao.atualizar(id, regime);
         }
-        private void adicionarItemsCb()
-        {
-            cbProfissoes.Items.Clear();
-            foreach (ModeloProfissao hab in listaProfissao)
-            {
-                cbProfissoes.Items.Add(hab.getProfissao());
-            }
-        }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
             cancelar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
             cancelar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void frmCadastrarProfissao_Load(object sender, EventArgs e)
         {
             impedirBotoes();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void frmCadastrarProfissao_KeyDown(object sender, KeyEventArgs e)
@@ -180,14 +192,6 @@ namespace Facturix_Salários
 
         private void cbProfissoes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ModeloProfissao seg in listaProfissao)
-            {
-                if (cbProfissoes.Text == seg.getProfissao())
-                {
-                    txtCodigo.Text = seg.getId() + "";
-                    txtNome.Text = seg.getProfissao();
-                }
-            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -198,6 +202,25 @@ namespace Facturix_Salários
         private void btnRegressar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataProfissao_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataProfissao.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            ArrayList listaEst = ControllerProfissao.recuperarComCod(codigoCelSelecionada);
+            foreach (ModeloProfissao func in listaEst)
+            {
+                txtCodigo.Text = func.getId() + "";
+                txtNome.Text = func.getProfissao();
+            }
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            adicionar();
+            refrescar();
         }
     }
 }

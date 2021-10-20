@@ -76,9 +76,9 @@ namespace Facturix_Salários
                     listaCentrosDeCusto.Add(new ModeloCentroDeCusto(id, centroDeCusto));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar centros de custo!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar centros de custo!");
             }
             finally
             {
@@ -127,9 +127,9 @@ namespace Facturix_Salários
                     listaCentrosDeCusto.Add(new ModeloCentroDeCusto(id, centroDeCusto));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar centros de custo!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar centros de custo!");
             }
             finally
             {

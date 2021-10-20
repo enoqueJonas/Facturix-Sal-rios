@@ -76,9 +76,9 @@ namespace Facturix_Salários
                     listaHabilitacoes.Add(new ModeloHabilitacao(id, habilitacao));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar habilitacao!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar habilitacao!");
             }
             finally
             {
@@ -127,9 +127,9 @@ namespace Facturix_Salários
                     listaSeguros.Add(new ModeloHabilitacao(id, seguro));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar Habilitacoes!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar Habilitacoes!");
             }
             finally
             {

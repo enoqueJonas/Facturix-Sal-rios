@@ -41,6 +41,7 @@
             // 
             // dataFuncionarios
             // 
+            this.dataFuncionarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataFuncionarios.Location = new System.Drawing.Point(138, 58);
             this.dataFuncionarios.Name = "dataFuncionarios";

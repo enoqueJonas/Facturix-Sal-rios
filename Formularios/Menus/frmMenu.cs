@@ -22,7 +22,15 @@ namespace Facturix_Salários
 
         private void f_menu_Load(object sender, EventArgs e)
         {
-
+            MySqlConnection conexao = Conexao.conectar();
+            try
+            {
+                conexao.Open();
+            }
+            catch (Exception) 
+            {
+                MessageBox.Show("Nao foi possivel conectar a base de dados! Contacte o tecnico!");
+            }     
         }
 
         private void lista_SelectedIndexChanged(object sender, EventArgs e)

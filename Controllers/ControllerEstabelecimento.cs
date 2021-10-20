@@ -76,9 +76,9 @@ namespace Facturix_Salários
                     listaEstabelecimentos.Add(new ModeloEstabelecimento(id, estabelecimento));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar estabelecimento!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar estabelecimento!");
             }
             finally
             {
@@ -127,9 +127,9 @@ namespace Facturix_Salários
                     listaEstabelecimentos.Add(new ModeloEstabelecimento(id, estabelecimento));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar estabelecimentos!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar estabelecimentos!");
             }
             finally
             {

@@ -39,8 +39,9 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.cbCentro = new System.Windows.Forms.ComboBox();
+            this.dataCategorias = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataCategorias)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNome
@@ -88,7 +89,7 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(1, 181);
+            this.panel1.Location = new System.Drawing.Point(1, 399);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(517, 74);
@@ -159,32 +160,35 @@
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // cbCentro
+            // dataCategorias
             // 
-            this.cbCentro.FormattingEnabled = true;
-            this.cbCentro.Location = new System.Drawing.Point(106, 114);
-            this.cbCentro.Name = "cbCentro";
-            this.cbCentro.Size = new System.Drawing.Size(121, 21);
-            this.cbCentro.TabIndex = 227;
-            this.cbCentro.SelectedIndexChanged += new System.EventHandler(this.cbCentro_SelectedIndexChanged);
+            this.dataCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataCategorias.Location = new System.Drawing.Point(1, 135);
+            this.dataCategorias.Name = "dataCategorias";
+            this.dataCategorias.Size = new System.Drawing.Size(517, 259);
+            this.dataCategorias.TabIndex = 227;
+            this.dataCategorias.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataCategorias_CellDoubleClick);
             // 
             // frmCadastrarCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 261);
-            this.Controls.Add(this.cbCentro);
+            this.ClientSize = new System.Drawing.Size(517, 473);
+            this.Controls.Add(this.dataCategorias);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "frmCadastrarCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Categorias";
             this.Load += new System.EventHandler(this.frmCadastrarCategoria_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarCategoria_KeyDown);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataCategorias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,6 +207,6 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.ComboBox cbCentro;
+        private System.Windows.Forms.DataGridView dataCategorias;
     }
 }

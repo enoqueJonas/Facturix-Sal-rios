@@ -13,7 +13,7 @@ namespace Facturix_Salários
 {
     public partial class frmCadastrarHabilitacoes : Form
     {
-        ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
+        private int codigoCelSelecionada;
         public frmCadastrarHabilitacoes()
         {
             InitializeComponent();
@@ -21,8 +21,27 @@ namespace Facturix_Salários
             this.ActiveControl = txtNome;
         }
 
+        private void refrescar()
+        {
+            ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Habilitações");
+            foreach (ModeloHabilitacao func in listaHabilitacoes)
+            {
+                DataRow dRow = dt.NewRow();
+                dRow["ID"] = func.getId();
+                dRow["Habilitações"] = func.getHabilitacao();
+                dt.Rows.Add(dRow);
+            }
+            dataHabilitacoes.DataSource = dt;
+            dataHabilitacoes.Refresh();
+            dataHabilitacoes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataHabilitacoes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+        }
         private int getCod()
         {
+            ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
             int cod = 0;
             foreach (ModeloHabilitacao cat in listaHabilitacoes)
             {
@@ -45,31 +64,27 @@ namespace Facturix_Salários
 
         private void impedirBotoes()
         {
-            if (txtNome.Text == "")
+            if (txtNome.Text == "" || txtCodigo.Text == "")
             {
-                btnAdicionar.Enabled = false;
+                btnCancelar.Enabled = false;
                 btnAtualizar.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnConfirmar.Enabled = false;
-                btnCancelar.Enabled = false;
-                btnAdicionar.FlatStyle = FlatStyle.Flat;
-                btnAtualizar.FlatStyle = FlatStyle.Flat;
-                btnEliminar.FlatStyle = FlatStyle.Flat;
-                btnConfirmar.FlatStyle = FlatStyle.Flat;
                 btnCancelar.FlatStyle = FlatStyle.Flat;
+                btnConfirmar.FlatStyle = FlatStyle.Flat;
+                btnEliminar.FlatStyle = FlatStyle.Flat;
+                btnAtualizar.FlatStyle = FlatStyle.Flat;
             }
             else
             {
-                btnAdicionar.Enabled = true;
+                btnCancelar.Enabled = true;
                 btnAtualizar.Enabled = true;
                 btnEliminar.Enabled = true;
                 btnConfirmar.Enabled = true;
-                btnCancelar.Enabled = true;
-                btnAdicionar.FlatStyle = FlatStyle.Standard;
-                btnAtualizar.FlatStyle = FlatStyle.Standard;
-                btnEliminar.FlatStyle = FlatStyle.Standard;
-                btnConfirmar.FlatStyle = FlatStyle.Standard;
                 btnCancelar.FlatStyle = FlatStyle.Standard;
+                btnConfirmar.FlatStyle = FlatStyle.Standard;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnAtualizar.FlatStyle = FlatStyle.Standard;
             }
         }
         private void cancelar()
@@ -104,39 +119,31 @@ namespace Facturix_Salários
             ControllerHabilitacoes.atualizar(id, regime);
         }
 
-        private void adicionarItemsCb()
-        {
-            cbHabilitacoes.Items.Clear();
-            foreach (ModeloHabilitacao hab in listaHabilitacoes)
-            {
-                cbHabilitacoes.Items.Add(hab.getHabilitacao());
-            }
-        }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
             adicionar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
             adicionar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void frmCadastrarHabilitacoes_Load(object sender, EventArgs e)
         {
             impedirBotoes();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void frmCadastrarHabilitacoes_KeyDown(object sender, KeyEventArgs e)
@@ -185,19 +192,25 @@ namespace Facturix_Salários
 
         private void cbHabilitacoes_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            foreach (ModeloHabilitacao seg in listaHabilitacoes)
-            {
-                if (cbHabilitacoes.Text == seg.getHabilitacao())
-                {
-                    txtCodigo.Text = seg.getId() + "";
-                    txtNome.Text = seg.getHabilitacao();
-                }
-            }
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             adicionar();
+            refrescar();
+        }
+
+        private void dataHabilitacoes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataHabilitacoes.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperarComCod(codigoCelSelecionada);
+            foreach (ModeloHabilitacao func in listaHabilitacoes)
+            {
+                txtCodigo.Text = func.getId() + "";
+                txtNome.Text = func.getHabilitacao();
+            }
         }
     }
 }

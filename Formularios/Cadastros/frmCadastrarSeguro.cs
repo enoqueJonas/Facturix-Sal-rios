@@ -13,17 +13,38 @@ namespace Facturix_Salários
 {
     public partial class frmCadastrarSeguro : Form
     {
-        ArrayList listaSeguros = ControllerSeguro.recuperar();
+        private int codigoCelSelecionada;
         public frmCadastrarSeguro()
         {
             InitializeComponent();
             setCod();
-            this.ActiveControl = txtNome;
+            this.ActiveControl = txtPercentagem;
             impedirBotoes();
         }
 
+        private void refrescar()
+        {
+            ArrayList listaSeguros = ControllerSeguro.recuperar();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Seguros");
+            dt.Columns.Add("Percent.");
+            foreach (ModeloSeguro func in listaSeguros)
+            {
+                DataRow dRow = dt.NewRow();
+                dRow["ID"] = func.getId();
+                dRow["Seguros"] = func.getSeguro();
+                dRow["Percent."] = func.getPercentagem()+"%";
+                dt.Rows.Add(dRow);
+            }
+            dataSeguro.DataSource = dt;
+            dataSeguro.Refresh();
+            dataSeguro.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataSeguro.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+        }
         private int getCod()
         {
+            ArrayList listaSeguros = ControllerSeguro.recuperar();
             int cod = 0;
             foreach (ModeloSeguro cat in listaSeguros)
             {
@@ -87,7 +108,6 @@ namespace Facturix_Salários
             txtCodigo.Text = "";
             txtNome.Text = "";
             txtPercentagem.Text = "";
-            cbSeguros.Text = "";
         }
         private void setCod()
         {
@@ -115,32 +135,62 @@ namespace Facturix_Salários
             ControllerSeguro.atualizar(id, regime, percentagem);
         }
 
-        private void adicionarItemsCb()
+
+        Control ctrl;
+        private void mexerTeclado(object sender, KeyEventArgs e)
         {
-            cbSeguros.Items.Clear();
-            foreach (ModeloSeguro hab in listaSeguros)
+            ctrl = (Control)sender;
+            if (ctrl is TextBox)
             {
-                cbSeguros.Items.Add(hab.getSeguro());
+                if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down || e.Alt && e.KeyCode == Keys.Right)
+                {
+                    this.SelectNextControl(ctrl, true, true, true, true);
+                }
+                else if (e.Alt && e.KeyCode == Keys.Up || e.Alt && e.KeyCode == Keys.Left)
+                {
+                    this.SelectNextControl(ctrl, false, true, true, true);
+                }
+                else
+                    return;
             }
+            else
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    this.SelectNextControl(ctrl, true, true, true, true);
+                }
+                else if (e.KeyCode == Keys.Up && e.Control)
+                {
+                    this.SelectNextControl(ctrl, false, true, true, true);
+                }
+                else
+                    return;
+            }
+            e.Handled = true;
+            e.SuppressKeyPress = true;
         }
-            private void btnConfirmar_Click(object sender, EventArgs e)
+        private void txtNome_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+        }
+        private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
             adicionar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
-            adicionar();
-            adicionarItemsCb();
+            cancelar();
+            refrescar();
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -151,11 +201,12 @@ namespace Facturix_Salários
         private void frmCadastrarSeguro_Load(object sender, EventArgs e)
         {
             impedirBotoes();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void frmCadastrarSeguro_KeyDown(object sender, KeyEventArgs e)
         {
+            mexerTeclado(sender, e);
             if (e.KeyCode.ToString() == "F1")
             {
                 adicionar();
@@ -202,6 +253,7 @@ namespace Facturix_Salários
         {
             adicionar();
             impedirBotoes();
+            refrescar();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -216,15 +268,30 @@ namespace Facturix_Salários
 
         private void cbSeguros_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ModeloSeguro seg in listaSeguros)
+        }
+
+        private void dataSeguro_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataSeguro.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            ArrayList listaEst = ControllerSeguro.recuperarComCod(codigoCelSelecionada);
+            foreach (ModeloSeguro func in listaEst)
             {
-                if (cbSeguros.Text == seg.getSeguro())
-                {
-                    txtCodigo.Text = seg.getId() + "";
-                    txtNome.Text = seg.getSeguro();
-                    txtPercentagem.Text = seg.getPercentagem() + "";
-                }
+                txtCodigo.Text = func.getId() + "";
+                txtNome.Text = func.getSeguro();
+                txtPercentagem.Text = func.getPercentagem()+"";
             }
+        }
+
+        private void txtPercentagem_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+        }
+
+        private void txtNome_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
         }
     }
 }

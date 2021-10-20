@@ -42,7 +42,8 @@ namespace Facturix_Salários
             ultimoEmprego,
             turno,
             centroDeCusto,
-            segurancaSocial;
+            segurancaSocial,
+            sindicato;
         public ModeloFuncionario
             (
                 int codigo,
@@ -83,7 +84,8 @@ namespace Facturix_Salários
                 String turno, 
                 float impostoMunicipal,
                 String centroDeCusto,
-                String segurancaSocial
+                String segurancaSocial,
+                String sindicato
             )
         {
             this.codigo = codigo;
@@ -126,6 +128,7 @@ namespace Facturix_Salários
             this.impostoMunicipal = impostoMunicipal;
             this.centroDeCusto = centroDeCusto;
             this.segurancaSocial = segurancaSocial;
+            this.sindicato = sindicato;
         }
 
         public int getCodigo() { return codigo; }
@@ -205,5 +208,7 @@ namespace Facturix_Salários
         public String getCentroDeCusto() { return centroDeCusto;}
 
         public String getSegurancaSocial() { return segurancaSocial; }
+
+        public String getSindicato() { return sindicato; }
     }
 }

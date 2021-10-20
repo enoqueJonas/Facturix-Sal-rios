@@ -13,12 +13,30 @@ namespace Facturix_Salários
 {
     public partial class frmCadastrarEstabelecimentos : Form
     {
-        ArrayList listaEstabelecimentos = ControllerEstabelecimento.recuperar();
+        private int codigoCelSelecionada;
         public frmCadastrarEstabelecimentos()
         {
             InitializeComponent();
         }
 
+        private void refrescar()
+        {
+            ArrayList listaEstabelecimentos = ControllerEstabelecimento.recuperar();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Estabelecimento");
+            foreach (ModeloEstabelecimento func in listaEstabelecimentos)
+            {
+                DataRow dRow = dt.NewRow();
+                dRow["ID"] = func.getId();
+                dRow["Estabelecimento"] = func.getEstabelecimento();
+                dt.Rows.Add(dRow);
+            }
+            dataEst.DataSource = dt;
+            dataEst.Refresh();
+            dataEst.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataEst.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+        }
         public void gravar()
         {
             int id = int.Parse(txtCodigo.Text);
@@ -41,6 +59,7 @@ namespace Facturix_Salários
 
         private int getCod()
         {
+            ArrayList listaEstabelecimentos = ControllerEstabelecimento.recuperar();
             int cod = 0;
             foreach (ModeloEstabelecimento cat in listaEstabelecimentos)
             {
@@ -98,20 +117,11 @@ namespace Facturix_Salários
             }
         }
 
-        private void adicionarItemsCb()
-        {
-            cbEstabelecimento.Items.Clear();
-            foreach (ModeloEstabelecimento hab in listaEstabelecimentos)
-            {
-                cbEstabelecimento.Items.Add(hab.getEstabelecimento());
-            }
-        }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
             adicionar();
             impedirBotoes();
-            adicionarItemsCb();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -119,7 +129,7 @@ namespace Facturix_Salários
             modificar();
             cancelar();
             impedirBotoes();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -127,7 +137,7 @@ namespace Facturix_Salários
             eliminar();
             cancelar();
             impedirBotoes();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -139,7 +149,7 @@ namespace Facturix_Salários
         {
             adicionar();
             impedirBotoes();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -187,6 +197,7 @@ namespace Facturix_Salários
         {
             setCod();
             impedirBotoes();
+            refrescar();
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
@@ -196,13 +207,18 @@ namespace Facturix_Salários
 
         private void cbEstabelecimento_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ModeloEstabelecimento seg in listaEstabelecimentos)
+        }
+
+        private void dataEst_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataEst.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            ArrayList listaEst = ControllerEstabelecimento.recuperarComCod(codigoCelSelecionada);
+            foreach (ModeloEstabelecimento func in listaEst)
             {
-                if (cbEstabelecimento.Text == seg.getEstabelecimento())
-                {
-                    txtCodigo.Text = seg.getId() + "";
-                    txtNome.Text = seg.getEstabelecimento();
-                }
+                txtCodigo.Text = func.getId() + "";
+                txtNome.Text = func.getEstabelecimento();
             }
         }
     }

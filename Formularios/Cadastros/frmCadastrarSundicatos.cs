@@ -13,13 +13,31 @@ namespace Facturix_Salários
 {
     public partial class frmCadastrarSundicatos : Form
     {
-        ArrayList listaSindicatos = ControllerSindicato.recuperar();
+        private int codigoCelSelecionada;
         public frmCadastrarSundicatos()
         {
             InitializeComponent();
             impedirBotoes();
         }
 
+        private void refrescar()
+        {
+            ArrayList listaSindicatos = ControllerSindicato.recuperar();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Sindicatos");
+            foreach (ModeloSindicato func in listaSindicatos)
+            {
+                DataRow dRow = dt.NewRow();
+                dRow["ID"] = func.getId();
+                dRow["Sindicatos"] = func.getSindicato();
+                dt.Rows.Add(dRow);
+            }
+            dataGridView1.DataSource = dt;
+            dataGridView1.Refresh();
+            dataGridView1.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+        }
         public void gravar()
         {
             int id = int.Parse(txtCodigo.Text);
@@ -43,18 +61,19 @@ namespace Facturix_Salários
         {
             gravar();
             adicionar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
             cancelar();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private int getCod()
         {
+            ArrayList listaSindicatos = ControllerSindicato.recuperar();
             int cod = 0;
             foreach (ModeloSindicato cat in listaSindicatos)
             {
@@ -84,15 +103,6 @@ namespace Facturix_Salários
         {
             txtCodigo.Text = "";
             txtNome.Text = "";
-        }
-
-        private void adicionarItemsCb()
-        {
-            cbSindicatos.Items.Clear();
-            foreach (ModeloSindicato hab in listaSindicatos)
-            {
-                cbSindicatos.Items.Add(hab.getSindicato());
-            }
         }
 
         private void impedirBotoes()
@@ -125,13 +135,14 @@ namespace Facturix_Salários
         {
             modificar();
             cancelar();
+            refrescar();
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             adicionar();
             impedirBotoes();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -183,7 +194,7 @@ namespace Facturix_Salários
         private void frmCadastrarSundicatos_Load(object sender, EventArgs e)
         {
             setCod();
-            adicionarItemsCb();
+            refrescar();
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
@@ -193,13 +204,18 @@ namespace Facturix_Salários
 
         private void cbSindicatos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ModeloSindicato seg in listaSindicatos)
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataGridView1.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            ArrayList listaEst = ControllerSindicato.recuperarComCod(codigoCelSelecionada);
+            foreach (ModeloSindicato func in listaEst)
             {
-                if (cbSindicatos.Text == seg.getSindicato())
-                {
-                    txtCodigo.Text = seg.getId() + "";
-                    txtNome.Text = seg.getSindicato();
-                }
+                txtCodigo.Text = func.getId() + "";
+                txtNome.Text = func.getSindicato();
             }
         }
     }

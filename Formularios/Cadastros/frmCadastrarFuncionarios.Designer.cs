@@ -125,6 +125,18 @@ namespace Facturix_Salários
             this.label35 = new System.Windows.Forms.Label();
             this.txtSubTransporte = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataDependentes = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnEliminarDep = new System.Windows.Forms.Button();
+            this.btnCancelarDep = new System.Windows.Forms.Button();
+            this.btnModificarDep = new System.Windows.Forms.Button();
+            this.btnAdicionarDep = new System.Windows.Forms.Button();
+            this.cbParentescoDep = new System.Windows.Forms.ComboBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.dtNascimentoDep = new System.Windows.Forms.DateTimePicker();
+            this.txtNomeDep = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
@@ -143,6 +155,9 @@ namespace Facturix_Salários
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataDependentes)).BeginInit();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -206,11 +221,11 @@ namespace Facturix_Salários
             this.groupBox3.Controls.Add(this.Label19);
             this.groupBox3.Controls.Add(this.txtBi);
             this.groupBox3.Controls.Add(this.Label13);
-            this.groupBox3.Location = new System.Drawing.Point(33, 259);
+            this.groupBox3.Location = new System.Drawing.Point(23, 259);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(625, 208);
+            this.groupBox3.Size = new System.Drawing.Size(635, 208);
             this.groupBox3.TabIndex = 202;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dados Profissionais";
@@ -514,11 +529,11 @@ namespace Facturix_Salários
             this.groupBox1.Controls.Add(this.Label3);
             this.groupBox1.Controls.Add(this.Label2);
             this.groupBox1.Controls.Add(this.Label1);
-            this.groupBox1.Location = new System.Drawing.Point(33, 21);
+            this.groupBox1.Location = new System.Drawing.Point(23, 21);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(625, 233);
+            this.groupBox1.Size = new System.Drawing.Size(635, 233);
             this.groupBox1.TabIndex = 201;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
@@ -1120,12 +1135,136 @@ namespace Facturix_Salários
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage3.Controls.Add(this.dataDependentes);
+            this.tabPage3.Controls.Add(this.panel2);
+            this.tabPage3.Controls.Add(this.cbParentescoDep);
+            this.tabPage3.Controls.Add(this.label45);
+            this.tabPage3.Controls.Add(this.label44);
+            this.tabPage3.Controls.Add(this.dtNascimentoDep);
+            this.tabPage3.Controls.Add(this.txtNomeDep);
+            this.tabPage3.Controls.Add(this.label43);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(846, 474);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Dependentes";
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // dataDependentes
+            // 
+            this.dataDependentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataDependentes.Location = new System.Drawing.Point(23, 111);
+            this.dataDependentes.Name = "dataDependentes";
+            this.dataDependentes.Size = new System.Drawing.Size(711, 327);
+            this.dataDependentes.TabIndex = 7;
+            this.dataDependentes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataDependentes_CellDoubleClick_1);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnEliminarDep);
+            this.panel2.Controls.Add(this.btnCancelarDep);
+            this.panel2.Controls.Add(this.btnModificarDep);
+            this.panel2.Controls.Add(this.btnAdicionarDep);
+            this.panel2.Location = new System.Drawing.Point(740, 111);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(87, 327);
+            this.panel2.TabIndex = 6;
+            // 
+            // btnEliminarDep
+            // 
+            this.btnEliminarDep.Location = new System.Drawing.Point(12, 257);
+            this.btnEliminarDep.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminarDep.Name = "btnEliminarDep";
+            this.btnEliminarDep.Size = new System.Drawing.Size(69, 60);
+            this.btnEliminarDep.TabIndex = 50001;
+            this.btnEliminarDep.Text = "&Eliminar";
+            this.btnEliminarDep.UseVisualStyleBackColor = true;
+            this.btnEliminarDep.Click += new System.EventHandler(this.btnEliminarDep_Click);
+            // 
+            // btnCancelarDep
+            // 
+            this.btnCancelarDep.Location = new System.Drawing.Point(12, 168);
+            this.btnCancelarDep.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelarDep.Name = "btnCancelarDep";
+            this.btnCancelarDep.Size = new System.Drawing.Size(69, 60);
+            this.btnCancelarDep.TabIndex = 50001;
+            this.btnCancelarDep.Text = "&Cancelar";
+            this.btnCancelarDep.UseVisualStyleBackColor = true;
+            this.btnCancelarDep.Click += new System.EventHandler(this.btnCancelarDep_Click);
+            // 
+            // btnModificarDep
+            // 
+            this.btnModificarDep.Location = new System.Drawing.Point(12, 88);
+            this.btnModificarDep.Margin = new System.Windows.Forms.Padding(2);
+            this.btnModificarDep.Name = "btnModificarDep";
+            this.btnModificarDep.Size = new System.Drawing.Size(69, 60);
+            this.btnModificarDep.TabIndex = 50001;
+            this.btnModificarDep.Text = "&Modificar";
+            this.btnModificarDep.UseVisualStyleBackColor = true;
+            this.btnModificarDep.Click += new System.EventHandler(this.btnModificarDep_Click);
+            // 
+            // btnAdicionarDep
+            // 
+            this.btnAdicionarDep.Location = new System.Drawing.Point(12, 7);
+            this.btnAdicionarDep.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdicionarDep.Name = "btnAdicionarDep";
+            this.btnAdicionarDep.Size = new System.Drawing.Size(69, 60);
+            this.btnAdicionarDep.TabIndex = 50001;
+            this.btnAdicionarDep.Text = "&Confirmar";
+            this.btnAdicionarDep.UseVisualStyleBackColor = true;
+            this.btnAdicionarDep.Click += new System.EventHandler(this.btnAdicionarDep_Click);
+            // 
+            // cbParentescoDep
+            // 
+            this.cbParentescoDep.FormattingEnabled = true;
+            this.cbParentescoDep.Location = new System.Drawing.Point(690, 41);
+            this.cbParentescoDep.Name = "cbParentescoDep";
+            this.cbParentescoDep.Size = new System.Drawing.Size(137, 21);
+            this.cbParentescoDep.TabIndex = 43;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(594, 44);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(90, 13);
+            this.label45.TabIndex = 4;
+            this.label45.Text = "Grau Parentesco:";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(398, 44);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(64, 13);
+            this.label44.TabIndex = 3;
+            this.label44.Text = "Data Nasc.:";
+            // 
+            // dtNascimentoDep
+            // 
+            this.dtNascimentoDep.CustomFormat = "yyyy-MM-dd";
+            this.dtNascimentoDep.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtNascimentoDep.Location = new System.Drawing.Point(468, 42);
+            this.dtNascimentoDep.Name = "dtNascimentoDep";
+            this.dtNascimentoDep.Size = new System.Drawing.Size(112, 20);
+            this.dtNascimentoDep.TabIndex = 42;
+            // 
+            // txtNomeDep
+            // 
+            this.txtNomeDep.Location = new System.Drawing.Point(64, 39);
+            this.txtNomeDep.Name = "txtNomeDep";
+            this.txtNomeDep.Size = new System.Drawing.Size(328, 20);
+            this.txtNomeDep.TabIndex = 41;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(20, 42);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(38, 13);
+            this.label43.TabIndex = 0;
+            this.label43.Text = "Nome:";
             // 
             // panel1
             // 
@@ -1148,7 +1287,7 @@ namespace Facturix_Salários
             // 
             // btnRegressar
             // 
-            this.btnRegressar.Location = new System.Drawing.Point(514, 6);
+            this.btnRegressar.Location = new System.Drawing.Point(537, 6);
             this.btnRegressar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegressar.Name = "btnRegressar";
             this.btnRegressar.Size = new System.Drawing.Size(69, 60);
@@ -1159,7 +1298,7 @@ namespace Facturix_Salários
             // 
             // btnImprimir
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(441, 7);
+            this.btnImprimir.Location = new System.Drawing.Point(464, 7);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(2);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(69, 60);
@@ -1171,7 +1310,7 @@ namespace Facturix_Salários
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(295, 6);
+            this.btnConfirmar.Location = new System.Drawing.Point(318, 6);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(69, 60);
@@ -1182,7 +1321,7 @@ namespace Facturix_Salários
             // 
             // btnMostrar
             // 
-            this.btnMostrar.Location = new System.Drawing.Point(76, 6);
+            this.btnMostrar.Location = new System.Drawing.Point(99, 6);
             this.btnMostrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(69, 60);
@@ -1193,7 +1332,7 @@ namespace Facturix_Salários
             // 
             // btnProximo
             // 
-            this.btnProximo.Location = new System.Drawing.Point(774, 25);
+            this.btnProximo.Location = new System.Drawing.Point(749, 25);
             this.btnProximo.Name = "btnProximo";
             this.btnProximo.Size = new System.Drawing.Size(75, 23);
             this.btnProximo.TabIndex = 50000;
@@ -1213,7 +1352,7 @@ namespace Facturix_Salários
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(222, 6);
+            this.btnCancelar.Location = new System.Drawing.Point(245, 6);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(69, 60);
@@ -1224,7 +1363,7 @@ namespace Facturix_Salários
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(149, 7);
+            this.btnAtualizar.Location = new System.Drawing.Point(172, 7);
             this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(69, 60);
@@ -1235,7 +1374,7 @@ namespace Facturix_Salários
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(368, 7);
+            this.btnEliminar.Location = new System.Drawing.Point(391, 7);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(69, 60);
@@ -1246,7 +1385,7 @@ namespace Facturix_Salários
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(3, 6);
+            this.btnAdicionar.Location = new System.Drawing.Point(26, 6);
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(69, 60);
@@ -1268,7 +1407,7 @@ namespace Facturix_Salários
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCadastrarFuncionarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastras De Funcionários";
+            this.Text = "Cadastro De Funcionários";
             this.Load += new System.EventHandler(this.f_funcionarios_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFuncionarios_KeyDown);
             this.tabControl1.ResumeLayout(false);
@@ -1282,6 +1421,10 @@ namespace Facturix_Salários
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataDependentes)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1396,5 +1539,17 @@ namespace Facturix_Salários
         private System.Windows.Forms.GroupBox groupBox4;
         internal System.Windows.Forms.Label label42;
         public System.Windows.Forms.ComboBox cbSindicato;
+        private System.Windows.Forms.ComboBox cbParentescoDep;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.DateTimePicker dtNascimentoDep;
+        private System.Windows.Forms.TextBox txtNomeDep;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnEliminarDep;
+        private System.Windows.Forms.Button btnCancelarDep;
+        private System.Windows.Forms.Button btnModificarDep;
+        private System.Windows.Forms.Button btnAdicionarDep;
+        private System.Windows.Forms.DataGridView dataDependentes;
     }
 }

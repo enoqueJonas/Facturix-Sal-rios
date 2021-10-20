@@ -39,8 +39,9 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.cbHabilitacoes = new System.Windows.Forms.ComboBox();
+            this.dataHabilitacoes = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataHabilitacoes)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -88,7 +89,7 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(3, 180);
+            this.panel1.Location = new System.Drawing.Point(1, 402);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(520, 74);
@@ -158,32 +159,35 @@
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // cbHabilitacoes
+            // dataHabilitacoes
             // 
-            this.cbHabilitacoes.FormattingEnabled = true;
-            this.cbHabilitacoes.Location = new System.Drawing.Point(94, 114);
-            this.cbHabilitacoes.Name = "cbHabilitacoes";
-            this.cbHabilitacoes.Size = new System.Drawing.Size(121, 21);
-            this.cbHabilitacoes.TabIndex = 226;
-            this.cbHabilitacoes.SelectedIndexChanged += new System.EventHandler(this.cbHabilitacoes_SelectedIndexChanged_1);
+            this.dataHabilitacoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataHabilitacoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataHabilitacoes.Location = new System.Drawing.Point(1, 138);
+            this.dataHabilitacoes.Name = "dataHabilitacoes";
+            this.dataHabilitacoes.Size = new System.Drawing.Size(517, 259);
+            this.dataHabilitacoes.TabIndex = 244;
+            this.dataHabilitacoes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataHabilitacoes_CellDoubleClick);
             // 
             // frmCadastrarHabilitacoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 261);
-            this.Controls.Add(this.cbHabilitacoes);
+            this.ClientSize = new System.Drawing.Size(517, 473);
+            this.Controls.Add(this.dataHabilitacoes);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "frmCadastrarHabilitacoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Habilitações";
             this.Load += new System.EventHandler(this.frmCadastrarHabilitacoes_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarHabilitacoes_KeyDown);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataHabilitacoes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,6 +206,6 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.ComboBox cbHabilitacoes;
+        private System.Windows.Forms.DataGridView dataHabilitacoes;
     }
 }

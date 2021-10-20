@@ -3,32 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Collections;
+using MySql.Data.MySqlClient;
+using Facturix_Salários.Modelos;
 
-namespace Facturix_Salários
+namespace Facturix_Salários.Controllers
 {
-    class ControllerConta
+    class ControllerDependente
     {
-        public static void Guardar(int idFuncionario, String banco, String nib, String conta)
+        public static void Guardar(int idFuncionario, String nome, String dataNascimneto, String grauParentesco)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into conta (idFuncionario, banco, nib, conta) values(?,?,?,?)";
+                String sqlInsert = "INSERT into dependente (idFuncionario, nome, dataNascimento, grauParentesco) values(?,?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("idFuncionario", idFuncionario);
-                comando.Parameters.AddWithValue(" banco", banco);
-                comando.Parameters.AddWithValue("nib", nib);
-                comando.Parameters.AddWithValue("conta", conta);
+                comando.Parameters.AddWithValue("nome", nome);
+                comando.Parameters.AddWithValue("dataNascimento", dataNascimneto);
+                comando.Parameters.AddWithValue("grauParentesco", grauParentesco);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar o funcionario!");
+                MessageBox.Show(err.Message, "Nao foi possivel cadastrar o dependente!");
             }
             finally
             {
@@ -37,24 +38,24 @@ namespace Facturix_Salários
             }
         }
 
-        public static void atualizar(int idFuncionario, String banco, String nib, String conta)
+        public static void atualizar(int idFuncionario, String nome, String dataNascimneto, String grauParentesco)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE conta SET banco=?, nib=?, conta=? WHERE idFuncionario=?";
+                String sqlInsert = "UPDATE dependente SET nome=?, dataNascimento=?, grauParentesco=? WHERE idFuncionario=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
-                comando.Parameters.AddWithValue(" banco", banco);
-                comando.Parameters.AddWithValue("nib", nib);
-                comando.Parameters.AddWithValue("conta", conta);
+                comando.Parameters.AddWithValue("nome", nome);
+                comando.Parameters.AddWithValue("dataNascimento", dataNascimneto);
+                comando.Parameters.AddWithValue("grauParentesco", grauParentesco);
                 comando.Parameters.AddWithValue("idFuncionario", idFuncionario);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel atualizar o conta!");
+                MessageBox.Show(err.Message, "Nao foi possivel atualizar o dependente!");
             }
             finally
             {
@@ -69,22 +70,22 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from conta";
+                String sqlSelect = "SELECT * from dependente";
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
                     int idFuncionario = leitor.GetInt16(1);
-                    String banco = leitor.GetString(2);
-                    String nib = leitor.GetString(3);
-                    String conta = leitor.GetString(4);
-                    listaContas.Add(new ModeloConta(id, idFuncionario, banco, nib, conta));
+                    String nome = leitor.GetString(2);
+                    String dataNascimento = leitor.GetString(3);
+                    String grauParentesco = leitor.GetString(4);
+                    listaContas.Add(new ModeloDependente(id, idFuncionario, nome, dataNascimento, grauParentesco));
                 }
             }
             catch (Exception)
             {
-                //MessageBox.Show(err.Message, "Nao foi possivel recuperar contas!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar dependentes!");
             }
             finally
             {
@@ -101,22 +102,22 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from conta WHERE idFuncionario="+idFunc+"";
+                String sqlSelect = "SELECT * from dependente WHERE id=" + idFunc + "";
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
                     int idFuncionario = leitor.GetInt16(1);
-                    String banco = leitor.GetString(2);
-                    String nib = leitor.GetString(3);
-                    String conta = leitor.GetString(4);
-                    listaContas.Add(new ModeloConta(id, idFuncionario, banco, nib, conta));
+                    String nome = leitor.GetString(2);
+                    String dataNascimento = leitor.GetString(3);
+                    String grauParentesco = leitor.GetString(4);
+                    listaContas.Add(new ModeloDependente(id, idFuncionario, nome, dataNascimento, grauParentesco));
                 }
             }
             catch (Exception)
             {
-                //MessageBox.Show(err.Message, "Nao foi possivel recuperar contas!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar dependentes!");
             }
             finally
             {
@@ -132,14 +133,14 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String SqlDelete = "DELETE from conta WHERE idFuncionario=?";
+                String SqlDelete = "DELETE from dependente WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
-                comando.Parameters.Add(new MySqlParameter("idFuncionario", codigo));
+                comando.Parameters.Add(new MySqlParameter("id", codigo));
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover a conta!");
+                MessageBox.Show(err.Message, "Nao foi possivel remover o dependente!");
             }
             finally
             {

@@ -76,9 +76,9 @@ namespace Facturix_Salários
                     listaProfissoes.Add(new ModeloProfissao(id, profissao));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar profissoes!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar profissoes!");
             }
             finally
             {
@@ -127,9 +127,9 @@ namespace Facturix_Salários
                     listaSeguros.Add(new ModeloProfissao(id, seguro));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar contas!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar contas!");
             }
             finally
             {

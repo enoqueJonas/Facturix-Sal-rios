@@ -79,9 +79,9 @@ namespace Facturix_Salários
                     listaSeguros.Add(new ModeloSeguro(id, seguro, percentagem));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar contas!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar contas!");
             }
             finally
             {
@@ -131,9 +131,9 @@ namespace Facturix_Salários
                     listaSeguros.Add(new ModeloSeguro(id, seguro, percentagem));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar seguros!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar seguros!");
             }
             finally
             {

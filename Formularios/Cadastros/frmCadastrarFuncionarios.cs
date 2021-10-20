@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.Collections;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.IO;
+using Facturix_Salários.Controllers;
+using Facturix_Salários.Modelos;
 
 namespace Facturix_Salários
 {
@@ -22,12 +24,40 @@ namespace Facturix_Salários
         ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
         ArrayList listaProfissao = ControllerProfissao.recuperar();
         ArrayList listaSeguros = ControllerSeguro.recuperar();
+        private int codigoCelSelecionada;
         public frmCadastrarFuncionarios()
         {
             InitializeComponent();
             setCod();
             impedirBotoes();
             adicionarItemsCb();
+        }
+
+        private void refrescarDependentes() 
+        {
+            int idFunc = int.Parse(txtCodigo.Text);
+            ArrayList listaDependentes = ControllerDependente.recuperar();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Nome");
+            dt.Columns.Add("Data Nasc.");
+            dt.Columns.Add("Grau Parent.");
+            foreach (ModeloDependente func in listaDependentes)
+            {
+                if (idFunc == func.getIdFuncionario()) 
+                {
+                    DataRow dRow = dt.NewRow();
+                    dRow["ID"] = func.getId();
+                    dRow["Nome"] = func.getNome();
+                    dRow["Data Nasc."] = Convert.ToDateTime(func.getDataNascimento());
+                    dRow["Grau Parent."] = func.getGrauParentesco();
+                    dt.Rows.Add(dRow);
+                }
+            }
+            dataDependentes.DataSource = dt;
+            dataDependentes.Refresh();
+            dataDependentes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataDependentes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
 
         private void adicionarItemsCb() 
@@ -148,10 +178,10 @@ namespace Facturix_Salários
             {
                 conj = txtConjugue.Text;
             }
-            String dataNasc = dtNascimento.Text;
+            String dataNasc = dtNascimento.Value.ToString("yyyy/MM/dd");
             String tipoContrato = cbContrato.Text;
-            String dataAdmissao = dtDataAdmissao.Text;
-            String dataDemissao = dtDataDemissao.Text;
+            String dataAdmissao = dtDataAdmissao.Value.ToString("yyyy/MM/dd");
+            String dataDemissao = dtDataDemissao.Value.ToString("yyyy/MM/dd");
             String profissao = cbProfissao.Text;
             String categoria = cbCategoria.Text;
             String seguro = cbSeguro.Text;
@@ -193,6 +223,7 @@ namespace Facturix_Salários
             String turno = cbTurno.Text;
             String centroDeCusto = cbCentrocusto.Text;
             String segurancaSocial = txtSeguranca.Text;
+            String sindicato = cbSindicato.Text;
             if (getCod() == codigo)
             {
                 MessageBox.Show("Funcionario ja esta registado! Clique no botao adicionar para poder adicionar novo funcionario!");
@@ -203,7 +234,7 @@ namespace Facturix_Salários
             }
             else 
             {
-                ControllerFuncionario.Guardar(codigo, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal,centroDeCusto, segurancaSocial);
+                ControllerFuncionario.Guardar(codigo, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal,centroDeCusto, segurancaSocial, sindicato);
                 ControllerConta.Guardar(codigo, banco, nib, conta);
                 adicionar();
                 setCod();
@@ -423,8 +454,9 @@ namespace Facturix_Salários
             String turno = cbTurno.Text;
             String centroDeCusto = cbCentrocusto.Text;
             String segurancaSocial = txtSeguranca.Text;
+            String sindicato = cbSindicato.Text;
             float impostoMunicipal = float.Parse(txtImpostoM.Text);
-            ControllerFuncionario.atualizar(codigo, nome, cell, cellSec, telefone, email, estadoCivil, deficiencia, conjugue, sexo, dataNasc, linkImagem, codigoPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial);
+            ControllerFuncionario.atualizar(codigo, nome, cell, cellSec, telefone, email, estadoCivil, deficiencia, conjugue, sexo, dataNasc, linkImagem, codigoPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato);
             ControllerConta.atualizar(codigo, banco, nib, conta);
         }
 
@@ -518,6 +550,7 @@ namespace Facturix_Salários
             cbTurno.Text = "";
             cbCentrocusto.Text = "";
             txtSeguranca.Text = "";
+            cbSindicato.Text = "";
             setCod();
             porFoco();
         }
@@ -568,6 +601,7 @@ namespace Facturix_Salários
             cbTurno.Text = "";
             cbCentrocusto.Text = "";
             txtSeguranca.Text = "";
+            cbSindicato.Text = "";
             porFoco();
         }
         private void remover()
@@ -577,6 +611,46 @@ namespace Facturix_Salários
             ControllerConta.remover(codigo);
             ControllerFuncionario.remover(codigo);
             cancelar();
+        }
+
+        private void gravarDependente() 
+        {
+            ArrayList listaFunc = ControllerFuncionario.recuperar();
+            int cod=0;
+            int idFunc = int.Parse(txtCodigo.Text);
+            String nome = txtNomeDep.Text;
+            string dataNasc = dtNascimentoDep.Value.ToString("yyyy/MM/dd");
+            string grauParen = cbParentescoDep.Text;
+            foreach (ModeloFuncionario func in listaFunc) 
+            {
+                if (idFunc == func.getCodigo())
+                {
+                    cod = func.getCodigo();
+                }
+            }
+            if (idFunc == cod)
+            {
+                ControllerDependente.Guardar(idFunc, nome, dataNasc, grauParen);
+                cancelarDependente();
+                refrescarDependentes();
+            }
+            else
+            {
+                MessageBox.Show("Escolha Invalida! Selecione um funcionário cadastrado no sistema!");
+            }
+        }
+
+        private void modificarDependente() 
+        {
+            int idFunc = int.Parse(txtCodigo.Text);
+            String nome = txtNomeDep.Text;
+            string dataNasc = dtNascimentoDep.Text;
+            string grauParen = cbParentescoDep.Text;
+            ControllerDependente.atualizar(idFunc, nome, dataNasc, grauParen);
+            txtNome.Text = "";
+            cbParentescoDep.Text = "";
+            dtNascimentoDep.Value = DateTime.Now;
+            refrescarDependentes();
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -598,6 +672,7 @@ namespace Facturix_Salários
             }
             procurar(cod);
             impedirBotoes();
+            refrescarDependentes();
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
@@ -613,6 +688,7 @@ namespace Facturix_Salários
             }
             procurar(cod);
             impedirBotoes();
+            refrescarDependentes();
         }
 
         private void txtNovo_Click(object sender, EventArgs e)
@@ -659,6 +735,22 @@ namespace Facturix_Salários
                 this.ActiveControl = btnCarregarImagem;
                 e.SuppressKeyPress = true;
             }
+            if (e.Alt && e.KeyCode == Keys.C) 
+            {
+                gravarDependente();
+            }
+            if (e.Alt && e.KeyCode == Keys.M)
+            {
+                modificarDependente();
+            }
+            if (e.Alt && e.KeyCode == Keys.C)
+            {
+                cancelarDependente();
+            }
+            if (e.Alt && e.KeyCode == Keys.E)
+            {
+                eliminarDependente();
+            }
         }
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
@@ -680,6 +772,19 @@ namespace Facturix_Salários
         {
             porFoco();
             impedirBotoes();
+            refrescarDependentes();
+            foreach (DataGridViewColumn col in dataDependentes.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            dataDependentes.Columns["ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataDependentes.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataDependentes.Columns["Data Nasc."].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataDependentes.Columns["Grau Parent."].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataDependentes.Columns["ID"].Width = 70;
+            dataDependentes.Columns["Nome"].Width = 330;
+            dataDependentes.Columns["Data Nasc."].Width = 105;
+            dataDependentes.Columns["Grau Parent."].Width = 163;
         }
 
         private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1140,6 +1245,68 @@ namespace Facturix_Salários
             {
                 if (cbSeguro.Text == seg.getSeguro())
                     txtSeguro.Text = seg.getPercentagem() + "";
+            }
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdicionarDep_Click(object sender, EventArgs e)
+        {
+            gravarDependente();
+        }
+
+        private void btnModificarDep_Click(object sender, EventArgs e)
+        {
+            modificarDependente();
+        }
+
+        private void cancelarDependente() 
+        {
+            txtNome.Text = "";
+            cbParentescoDep.Text = "";
+            dtNascimentoDep.Value = DateTime.Now;
+        }
+
+        private void eliminarDependente() 
+        {
+            String nome = txtNomeDep.Text;
+            int idfun = int.Parse(txtCodigo.Text);
+            int idDep = 0;
+            ArrayList listaDependentes = ControllerDependente.recuperarComCod(idfun);
+            foreach (ModeloDependente func in listaDependentes)
+            {
+                if (nome == func.getNome())
+                {
+                    idDep = func.getId();
+                }
+            }
+            ControllerDependente.remover(idDep);
+            refrescarDependentes();
+        }
+        private void btnCancelarDep_Click(object sender, EventArgs e)
+        {
+            cancelarDependente();
+        }
+
+        private void btnEliminarDep_Click(object sender, EventArgs e)
+        {
+            modificarDependente();
+        }
+
+        private void dataDependentes_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataDependentes.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            ArrayList listaDependentes = ControllerDependente.recuperarComCod(codigoCelSelecionada);
+            foreach (ModeloDependente func in listaDependentes)
+            {
+                txtNomeDep.Text = func.getNome();
+                dtNascimentoDep.Value = Convert.ToDateTime(func.getDataNascimento());
+                cbParentescoDep.Text = func.getGrauParentesco();
             }
         }
     }

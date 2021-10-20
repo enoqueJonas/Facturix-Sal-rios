@@ -76,9 +76,9 @@ namespace Facturix_Salários
                     listaSindicatos.Add(new ModeloSindicato(id, sindicato));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar sindicatos!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar sindicatos!");
             }
             finally
             {
@@ -127,9 +127,9 @@ namespace Facturix_Salários
                     listaSindicatos.Add(new ModeloSindicato(id, sindicato));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar os sindicatos!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar os sindicatos!");
             }
             finally
             {
