@@ -89,6 +89,21 @@ namespace Facturix_Salários
             return cod;
         }
 
+        private void confirmarFechamento()
+        {
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+                frmMenu f = new frmMenu();
+                f.TopMost = true;
+                f.Show();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
         private void setCod()
         {
             txtCodigo.Text = getCod() + 1 + "";
@@ -152,7 +167,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            confirmarFechamento();
         }
 
         private void frmCadastrarSundicatos_KeyDown(object sender, KeyEventArgs e)
@@ -187,7 +202,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                confirmarFechamento();
             }
         }
 
@@ -195,6 +210,10 @@ namespace Facturix_Salários
         {
             setCod();
             refrescar();
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)

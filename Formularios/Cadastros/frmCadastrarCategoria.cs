@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using Facturix_Salários;
 
 namespace Facturix_Salários
 {
@@ -19,6 +20,22 @@ namespace Facturix_Salários
             InitializeComponent();
             setCod();
             this.ActiveControl = txtNome;
+        }
+
+        private void confirmarFechamento() 
+        {
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+                frmMenu f = new frmMenu();
+                f.TopMost = true;
+                f.Show();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                
+            }
         }
 
         private void refrescar()
@@ -36,6 +53,11 @@ namespace Facturix_Salários
             }
             dataCategorias.DataSource = dt;
             dataCategorias.Refresh();
+            tirarFocoCelula();
+        }
+
+        private void tirarFocoCelula() 
+        {
             dataCategorias.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
             dataCategorias.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
@@ -146,6 +168,10 @@ namespace Facturix_Salários
         {
             impedirBotoes();
             refrescar();
+            foreach (DataGridViewColumn col in dataCategorias.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void frmCadastrarCategoria_KeyDown(object sender, KeyEventArgs e)
@@ -175,7 +201,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                confirmarFechamento();
             }
         }
 
@@ -214,6 +240,11 @@ namespace Facturix_Salários
                 txtCodigo.Text = func.getId()+"";
                 txtNome.Text = func.getCategoria();
             }
+        }
+
+        private void btnRegressar_Click(object sender, EventArgs e)
+        {
+            confirmarFechamento();
         }
     }
 }

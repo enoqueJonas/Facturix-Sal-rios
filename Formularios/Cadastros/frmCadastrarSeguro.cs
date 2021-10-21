@@ -28,13 +28,13 @@ namespace Facturix_Salários
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("Seguros");
-            dt.Columns.Add("Percent.");
+            dt.Columns.Add("Percentagem");
             foreach (ModeloSeguro func in listaSeguros)
             {
                 DataRow dRow = dt.NewRow();
                 dRow["ID"] = func.getId();
                 dRow["Seguros"] = func.getSeguro();
-                dRow["Percent."] = func.getPercentagem()+"%";
+                dRow["Percentagem"] = func.getPercentagem()+"%";
                 dt.Rows.Add(dRow);
             }
             dataSeguro.DataSource = dt;
@@ -135,6 +135,22 @@ namespace Facturix_Salários
             ControllerSeguro.atualizar(id, regime, percentagem);
         }
 
+        private void confirmarFechamento()
+        {
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+                frmMenu f = new frmMenu();
+                f.TopMost = true;
+                f.Show();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
+
 
         Control ctrl;
         private void mexerTeclado(object sender, KeyEventArgs e)
@@ -195,13 +211,17 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            confirmarFechamento();
         }
 
         private void frmCadastrarSeguro_Load(object sender, EventArgs e)
         {
             impedirBotoes();
             refrescar();
+            foreach (DataGridViewColumn col in dataSeguro.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void frmCadastrarSeguro_KeyDown(object sender, KeyEventArgs e)
@@ -236,7 +256,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                confirmarFechamento();
             }
         }
 

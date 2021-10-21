@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataFuncionarios = new System.Windows.Forms.DataGridView();
             this.txtLocalizar = new System.Windows.Forms.TextBox();
             this.btnAdicionar = new System.Windows.Forms.Button();
@@ -36,15 +37,29 @@
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblNumeroFuncionarios = new System.Windows.Forms.Label();
+            this.txtNumeroFuncionarios = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataFuncionarios)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataFuncionarios
             // 
             this.dataFuncionarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataFuncionarios.Location = new System.Drawing.Point(138, 58);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataFuncionarios.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataFuncionarios.Location = new System.Drawing.Point(160, 45);
             this.dataFuncionarios.Name = "dataFuncionarios";
+            this.dataFuncionarios.RowHeadersVisible = false;
             this.dataFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataFuncionarios.Size = new System.Drawing.Size(971, 536);
             this.dataFuncionarios.TabIndex = 0;
@@ -53,7 +68,7 @@
             // 
             // txtLocalizar
             // 
-            this.txtLocalizar.Location = new System.Drawing.Point(190, 19);
+            this.txtLocalizar.Location = new System.Drawing.Point(212, 19);
             this.txtLocalizar.Name = "txtLocalizar";
             this.txtLocalizar.Size = new System.Drawing.Size(919, 20);
             this.txtLocalizar.TabIndex = 1;
@@ -61,7 +76,7 @@
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(12, 58);
+            this.btnAdicionar.Location = new System.Drawing.Point(12, 26);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(102, 23);
             this.btnAdicionar.TabIndex = 2;
@@ -71,7 +86,7 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(12, 96);
+            this.btnConsultar.Location = new System.Drawing.Point(12, 64);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(102, 23);
             this.btnConsultar.TabIndex = 3;
@@ -83,7 +98,7 @@
             // 
             this.btnEliminar.Enabled = false;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(12, 138);
+            this.btnEliminar.Location = new System.Drawing.Point(12, 106);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(102, 23);
             this.btnEliminar.TabIndex = 4;
@@ -95,7 +110,7 @@
             // 
             this.btnImprimir.Enabled = false;
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Location = new System.Drawing.Point(12, 181);
+            this.btnImprimir.Location = new System.Drawing.Point(12, 149);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(102, 23);
             this.btnImprimir.TabIndex = 5;
@@ -105,7 +120,7 @@
             // 
             // btnRegressar
             // 
-            this.btnRegressar.Location = new System.Drawing.Point(12, 224);
+            this.btnRegressar.Location = new System.Drawing.Point(12, 192);
             this.btnRegressar.Name = "btnRegressar";
             this.btnRegressar.Size = new System.Drawing.Size(102, 23);
             this.btnRegressar.TabIndex = 6;
@@ -117,32 +132,73 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(135, 22);
+            this.label1.Location = new System.Drawing.Point(157, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Localizar";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 452);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 26);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Número de Funcionários \r\n          cadastrados ";
+            // 
+            // lblNumeroFuncionarios
+            // 
+            this.lblNumeroFuncionarios.AutoSize = true;
+            this.lblNumeroFuncionarios.Location = new System.Drawing.Point(68, 492);
+            this.lblNumeroFuncionarios.Name = "lblNumeroFuncionarios";
+            this.lblNumeroFuncionarios.Size = new System.Drawing.Size(0, 13);
+            this.lblNumeroFuncionarios.TabIndex = 9;
+            // 
+            // txtNumeroFuncionarios
+            // 
+            this.txtNumeroFuncionarios.Enabled = false;
+            this.txtNumeroFuncionarios.Location = new System.Drawing.Point(52, 481);
+            this.txtNumeroFuncionarios.Name = "txtNumeroFuncionarios";
+            this.txtNumeroFuncionarios.ReadOnly = true;
+            this.txtNumeroFuncionarios.Size = new System.Drawing.Size(57, 20);
+            this.txtNumeroFuncionarios.TabIndex = 10;
+            this.txtNumeroFuncionarios.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnConsultar);
+            this.panel1.Controls.Add(this.btnAdicionar);
+            this.panel1.Controls.Add(this.btnEliminar);
+            this.panel1.Controls.Add(this.btnImprimir);
+            this.panel1.Controls.Add(this.btnRegressar);
+            this.panel1.Location = new System.Drawing.Point(12, 83);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(132, 245);
+            this.panel1.TabIndex = 11;
+            // 
             // frmVisualizarFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1121, 606);
+            this.ClientSize = new System.Drawing.Size(1143, 606);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.txtNumeroFuncionarios);
+            this.Controls.Add(this.lblNumeroFuncionarios);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnRegressar);
-            this.Controls.Add(this.btnImprimir);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnConsultar);
-            this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.txtLocalizar);
             this.Controls.Add(this.dataFuncionarios);
             this.KeyPreview = true;
             this.Name = "frmVisualizarFuncionario";
-            this.Text = "frmVisualizarF";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Visualização de Funcionários";
             this.Load += new System.EventHandler(this.frmVisualizarF_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmVisualizarF_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmVisualizarF_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.dataFuncionarios)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,5 +214,9 @@
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnRegressar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblNumeroFuncionarios;
+        private System.Windows.Forms.TextBox txtNumeroFuncionarios;
+        private System.Windows.Forms.Panel panel1;
     }
 }

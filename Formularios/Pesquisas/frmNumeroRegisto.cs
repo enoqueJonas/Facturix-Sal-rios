@@ -30,5 +30,14 @@ namespace Facturix_Salários
         {
 
         }
+
+        private void frmNumeroRegisto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) 
+            {
+                enterdCod = int.Parse(txtNrRegisto.Text);
+                this.Close();
+            }
+        }
     }
 }

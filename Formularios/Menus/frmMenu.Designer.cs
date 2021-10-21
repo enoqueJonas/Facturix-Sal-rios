@@ -67,68 +67,68 @@ namespace Facturix_Salários
             this.centrosDeCustoToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.cadastrosToolStripMenuItem.Text = "Cadastros";
+            this.cadastrosToolStripMenuItem.Text = "&Cadastros";
             // 
             // funcionariosToolStripMenuItem
             // 
             this.funcionariosToolStripMenuItem.Name = "funcionariosToolStripMenuItem";
-            this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.funcionariosToolStripMenuItem.Text = "Funcionários";
             this.funcionariosToolStripMenuItem.Click += new System.EventHandler(this.funcionariosToolStripMenuItem_Click);
             // 
             // segurosToolStripMenuItem
             // 
             this.segurosToolStripMenuItem.Name = "segurosToolStripMenuItem";
-            this.segurosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.segurosToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.segurosToolStripMenuItem.Text = "Seguros";
             this.segurosToolStripMenuItem.Click += new System.EventHandler(this.segurosToolStripMenuItem_Click);
             // 
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.categoriasToolStripMenuItem.Text = "Categorias";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // contratosToolStripMenuItem
             // 
             this.contratosToolStripMenuItem.Name = "contratosToolStripMenuItem";
-            this.contratosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.contratosToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.contratosToolStripMenuItem.Text = "Contratos";
             this.contratosToolStripMenuItem.Click += new System.EventHandler(this.contratosToolStripMenuItem_Click);
             // 
             // profissãoToolStripMenuItem
             // 
             this.profissãoToolStripMenuItem.Name = "profissãoToolStripMenuItem";
-            this.profissãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.profissãoToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.profissãoToolStripMenuItem.Text = "Profissões";
             this.profissãoToolStripMenuItem.Click += new System.EventHandler(this.profissãoToolStripMenuItem_Click);
             // 
             // habilitaçõToolStripMenuItem
             // 
             this.habilitaçõToolStripMenuItem.Name = "habilitaçõToolStripMenuItem";
-            this.habilitaçõToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.habilitaçõToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.habilitaçõToolStripMenuItem.Text = "Habilitações";
             this.habilitaçõToolStripMenuItem.Click += new System.EventHandler(this.habilitaçõToolStripMenuItem_Click);
             // 
             // sindicatosToolStripMenuItem
             // 
             this.sindicatosToolStripMenuItem.Name = "sindicatosToolStripMenuItem";
-            this.sindicatosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sindicatosToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.sindicatosToolStripMenuItem.Text = "Sindicatos";
             this.sindicatosToolStripMenuItem.Click += new System.EventHandler(this.sindicatosToolStripMenuItem_Click);
             // 
             // estabelecimentosToolStripMenuItem
             // 
             this.estabelecimentosToolStripMenuItem.Name = "estabelecimentosToolStripMenuItem";
-            this.estabelecimentosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.estabelecimentosToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.estabelecimentosToolStripMenuItem.Text = "Estabelecimentos";
             this.estabelecimentosToolStripMenuItem.Click += new System.EventHandler(this.estabelecimentosToolStripMenuItem_Click);
             // 
             // centrosDeCustoToolStripMenuItem
             // 
             this.centrosDeCustoToolStripMenuItem.Name = "centrosDeCustoToolStripMenuItem";
-            this.centrosDeCustoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.centrosDeCustoToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.centrosDeCustoToolStripMenuItem.Text = "Centros de custo";
             this.centrosDeCustoToolStripMenuItem.Click += new System.EventHandler(this.centrosDeCustoToolStripMenuItem_Click);
             // 
@@ -138,11 +138,14 @@ namespace Facturix_Salários
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 618);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Geral - Facturix Salários";
             this.Load += new System.EventHandler(this.f_menu_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMenu_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

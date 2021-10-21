@@ -29,7 +29,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message,"Nao foi possivel conectar a base de dados! Contacte o tecnico!");
+                MessageBox.Show(err.Message, "Não foi possível conectar a base de dados! Contacte o técnico!");
             }
             finally
             {

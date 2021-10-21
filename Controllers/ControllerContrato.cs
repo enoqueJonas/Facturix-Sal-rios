@@ -22,11 +22,11 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("id", id);
                 comando.Parameters.AddWithValue("tipoContrato", contrato);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Contrato cadastrad com sucesso!");
+                MessageBox.Show("Contrato cadastrado com sucesso!");
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar contrato");
+                MessageBox.Show(err.Message, "Não foi possível cadastrar o contrato! Contacte o técnico!");
             }
             finally
             {
@@ -50,7 +50,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel atualizar o contrato!");
+                MessageBox.Show(err.Message, "Não foi possível atualizar o contrato! Contacte o técnico!!");
             }
             finally
             {
@@ -101,7 +101,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover o contrato!");
+                MessageBox.Show(err.Message, "Não foi possível remover o contrato! Contacte o técnico!");
             }
             finally
             {

@@ -27,7 +27,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar seguro");
+                MessageBox.Show(err.Message, "Não foi possível cadastrar o seguro! Contacte o técnico!");
             }
             finally 
             {
@@ -52,7 +52,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel atualizar o seguro!");
+                MessageBox.Show(err.Message, "Não foi possível atualizar o seguro! Contacte o técnico!!");
             }
             finally
             {
@@ -104,7 +104,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover o seguro!");
+                MessageBox.Show(err.Message, "Não foi possível remover o seguro! Contacte o técnico!");
             }
             finally
             {

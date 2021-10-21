@@ -47,34 +47,34 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 76);
+            this.label1.Location = new System.Drawing.Point(21, 74);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Habilitações:";
+            this.label1.Text = "Habilitação:";
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(94, 73);
+            this.txtNome.Location = new System.Drawing.Point(96, 71);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(310, 20);
+            this.txtNome.Size = new System.Drawing.Size(445, 20);
             this.txtNome.TabIndex = 223;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(94, 34);
+            this.txtCodigo.Location = new System.Drawing.Point(96, 32);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(41, 20);
+            this.txtCodigo.Size = new System.Drawing.Size(54, 20);
             this.txtCodigo.TabIndex = 224;
             this.txtCodigo.TabStop = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 37);
+            this.label3.Location = new System.Drawing.Point(21, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 225;
@@ -89,7 +89,7 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(1, 402);
+            this.panel1.Location = new System.Drawing.Point(24, 396);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(520, 74);
@@ -104,6 +104,7 @@
             this.btnRegressar.TabIndex = 900;
             this.btnRegressar.Text = "Regressar(ESC)";
             this.btnRegressar.UseVisualStyleBackColor = true;
+            this.btnRegressar.Click += new System.EventHandler(this.btnRegressar_Click);
             // 
             // btnConfirmar
             // 
@@ -163,8 +164,9 @@
             // 
             this.dataHabilitacoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataHabilitacoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataHabilitacoes.Location = new System.Drawing.Point(1, 138);
+            this.dataHabilitacoes.Location = new System.Drawing.Point(24, 132);
             this.dataHabilitacoes.Name = "dataHabilitacoes";
+            this.dataHabilitacoes.RowHeadersVisible = false;
             this.dataHabilitacoes.Size = new System.Drawing.Size(517, 259);
             this.dataHabilitacoes.TabIndex = 244;
             this.dataHabilitacoes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataHabilitacoes_CellDoubleClick);
@@ -173,7 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 473);
+            this.ClientSize = new System.Drawing.Size(566, 473);
             this.Controls.Add(this.dataHabilitacoes);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
@@ -183,7 +185,7 @@
             this.KeyPreview = true;
             this.Name = "frmCadastrarHabilitacoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Habilitações";
+            this.Text = "Cadastro de Habilitações";
             this.Load += new System.EventHandler(this.frmCadastrarHabilitacoes_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarHabilitacoes_KeyDown);
             this.panel1.ResumeLayout(false);

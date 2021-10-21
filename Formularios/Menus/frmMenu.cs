@@ -29,7 +29,7 @@ namespace Facturix_Salários
             }
             catch (Exception) 
             {
-                MessageBox.Show("Nao foi possivel conectar a base de dados! Contacte o tecnico!");
+                MessageBox.Show("Não foi possível conectar a base de dados! Contacte o técnico!");
             }     
         }
 
@@ -124,6 +124,11 @@ namespace Facturix_Salários
         {
             frmCadastrarCentrosDeCusto f = new frmCadastrarCentrosDeCusto();
             f.Show();
+        }
+
+        private void frmMenu_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }

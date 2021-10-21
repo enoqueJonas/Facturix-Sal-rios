@@ -46,16 +46,16 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(108, 74);
+            this.txtNome.Location = new System.Drawing.Point(115, 65);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(310, 20);
+            this.txtNome.Size = new System.Drawing.Size(427, 20);
             this.txtNome.TabIndex = 233;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(108, 35);
+            this.txtCodigo.Location = new System.Drawing.Point(115, 26);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(41, 20);
@@ -65,16 +65,16 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(38, 77);
+            this.Label2.Location = new System.Drawing.Point(22, 68);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(54, 13);
+            this.Label2.Size = new System.Drawing.Size(88, 13);
             this.Label2.TabIndex = 236;
-            this.Label2.Text = "Sindicato:";
+            this.Label2.Text = "Estabelecimento:";
             // 
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(38, 38);
+            this.Label1.Location = new System.Drawing.Point(22, 29);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(59, 13);
             this.Label1.TabIndex = 235;
@@ -89,7 +89,7 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(0, 406);
+            this.panel1.Location = new System.Drawing.Point(25, 398);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(517, 74);
@@ -165,8 +165,9 @@
             // 
             this.dataEst.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataEst.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataEst.Location = new System.Drawing.Point(0, 142);
+            this.dataEst.Location = new System.Drawing.Point(25, 134);
             this.dataEst.Name = "dataEst";
+            this.dataEst.RowHeadersVisible = false;
             this.dataEst.Size = new System.Drawing.Size(517, 259);
             this.dataEst.TabIndex = 243;
             this.dataEst.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataEst_CellDoubleClick);
@@ -175,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 473);
+            this.ClientSize = new System.Drawing.Size(566, 473);
             this.Controls.Add(this.dataEst);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
@@ -185,7 +186,7 @@
             this.KeyPreview = true;
             this.Name = "frmCadastrarEstabelecimentos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Estabelecimentos";
+            this.Text = "Cadastro de Estabelecimentos";
             this.Load += new System.EventHandler(this.frmCadastrarEstabelecimentos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarEstabelecimentos_KeyDown);
             this.panel1.ResumeLayout(false);

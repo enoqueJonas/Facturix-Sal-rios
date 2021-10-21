@@ -57,6 +57,22 @@ namespace Facturix_Salários
             ControllerCentroDeCusto.atualizar(id, regime);
         }
 
+        private void confirmarFechamento()
+        {
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+                frmMenu f = new frmMenu();
+                f.TopMost = true;
+                f.Show();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
+
         private int getCod()
         {
             ArrayList listaCentrosDeCusto = ControllerCentroDeCusto.recuperar();
@@ -150,7 +166,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            confirmarFechamento();
         }
 
         private void frmCadastrarCentrosDeCusto_KeyDown(object sender, KeyEventArgs e)
@@ -184,7 +200,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                confirmarFechamento();
             }
             impedirBotoes();
         }
@@ -194,6 +210,10 @@ namespace Facturix_Salários
             setCod();
             impedirBotoes();
             refrescar();
+            foreach (DataGridViewColumn col in dataCentroDeCusto.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -9,7 +8,6 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Collections;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.IO;
 using Facturix_Salários.Controllers;
 using Facturix_Salários.Modelos;
@@ -49,7 +47,7 @@ namespace Facturix_Salários
                     DataRow dRow = dt.NewRow();
                     dRow["ID"] = func.getId();
                     dRow["Nome"] = func.getNome();
-                    dRow["Data Nasc."] = Convert.ToDateTime(func.getDataNascimento());
+                    dRow["Data Nasc."] = func.getDataNascimento();
                     dRow["Grau Parent."] = func.getGrauParentesco();
                     dt.Rows.Add(dRow);
                 }
@@ -118,7 +116,8 @@ namespace Facturix_Salários
         }
         public void impedirBotoes()
         {
-                if (txtNome.Text == "" || txtNrFiscal.Text == "")
+            //|| txtNrFiscal.Text == ""
+            if (txtNome.Text == "" )
                 {
                     btnAtualizar.Enabled = false;
                     btnCancelar.Enabled = false;
@@ -132,7 +131,7 @@ namespace Facturix_Salários
                     btnImprimir.FlatStyle = FlatStyle.Flat;
                 }
             else
-                if (txtNome.Text != "" && txtNrFiscal.Text != "" )
+                if (txtNome.Text != "" )
                 {
                     btnAtualizar.Enabled = true;
                     btnCancelar.Enabled = true;
@@ -156,7 +155,7 @@ namespace Facturix_Salários
             int codPostal;
             if (txtCodPostal.Text == "")
             {
-                codPostal = 0;
+                codPostal = 0000;
             }
             else {
                 codPostal = int.Parse(txtCodPostal.Text);
@@ -178,10 +177,10 @@ namespace Facturix_Salários
             {
                 conj = txtConjugue.Text;
             }
-            String dataNasc = dtNascimento.Value.ToString("yyyy/MM/dd");
+            String dataNasc = dtNascimento.Value.ToString("yyyy-MM-dd");
             String tipoContrato = cbContrato.Text;
-            String dataAdmissao = dtDataAdmissao.Value.ToString("yyyy/MM/dd");
-            String dataDemissao = dtDataDemissao.Value.ToString("yyyy/MM/dd");
+            String dataAdmissao = dtDataAdmissao.Value.ToString("yyyy-MM-dd");
+            String dataDemissao = dtDataDemissao.Value.ToString("yyyy-MM-dd");
             String profissao = cbProfissao.Text;
             String categoria = cbCategoria.Text;
             String seguro = cbSeguro.Text;
@@ -195,9 +194,50 @@ namespace Facturix_Salários
             double subTransporte = 0;
             float horas = 0;
             float impostoMunicipal = 0;
+            if (txtVencimento.Text == "")
+            {
+                vencimento = 0;
+            }
+            else 
+            {
+                vencimento = double.Parse(txtVencimento.Text);
+            }
+            if (txtAlimentacao.Text == "")
+            {
+                subAlimentacao = 0;
+            }
+            else 
+            {
+                subAlimentacao = double.Parse(txtAlimentacao.Text);
+            }
+            if (txtSubTransporte.Text == "")
+            {
+                subTransporte = 0;
+            }
+            else 
+            {
+                subTransporte = double.Parse(txtSubTransporte.Text);
+            }
+            if (txtHoraSemana.Text == "")
+            {
+                horas = 0;
+            }
+            else 
+            {
+                horas = float.Parse(txtHoraSemana.Text);
+            }
+            if (txtImpostoM.Text == "")
+            {
+                impostoMunicipal = 0;
+            }
+            else 
+            {
+                impostoMunicipal = float.Parse(txtImpostoM.Text);
+            }
+            /*
             if (txtVencimento.Text == "" || txtAlimentacao.Text == "" || txtSubTransporte.Text == "" || txtHoraSemana.Text == "" || txtImpostoM.Text == "")
             {
-                MessageBox.Show("Prencha os dados do salarios do funcionario!");
+                MessageBox.Show("Prencha os dados do salario do funcionario!");
             }
             else { 
                 vencimento = double.Parse(txtVencimento.Text);
@@ -206,6 +246,7 @@ namespace Facturix_Salários
                 horas = float.Parse(txtHoraSemana.Text);
                 impostoMunicipal = float.Parse(txtImpostoM.Text);
             }
+            */
             int dependentes;
             if (cbDependentes.Text == "")
             {
@@ -226,12 +267,15 @@ namespace Facturix_Salários
             String sindicato = cbSindicato.Text;
             if (getCod() == codigo)
             {
-                MessageBox.Show("Funcionario ja esta registado! Clique no botao adicionar para poder adicionar novo funcionario!");
+                //MessageBox.Show("Funcionário já está registado! Clique no botão adicionar para poder adicionar um novo funcionário!");
+                codigo += 1;
             }
-            else if (linkImagem == "")
+            //Condicao para exigir imagem do funcionario
+            /*else if (linkImagem == "")
             {
-                MessageBox.Show("Adcione a foto do funcionario!");
-            }
+                //MessageBox.Show("Adicione a foto do funcionário!");
+                linkImagem = @"C:\Users\Utilizador\Downloads\default.png";
+            }*/
             else 
             {
                 ControllerFuncionario.Guardar(codigo, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal,centroDeCusto, segurancaSocial, sindicato);
@@ -261,7 +305,10 @@ namespace Facturix_Salários
                 cbEstadoCivil.Text = func.getEstadoCivil();
                 cbDeficiencia.Text = func.getDeficiencia();
                 dtNascimento.Value = Convert.ToDateTime(func.getDataNascimento());
-                pbFoto.Image = Image.FromFile(func.getLinkImagem());
+                if (System.IO.File.Exists(func.getLinkImagem()))
+                {
+                    pbFoto.Image = Image.FromFile(func.getLinkImagem());
+                }
                 txtCodPostal.Text = func.getCodigoPostal() + "";
                 txtMorada.Text = func.getMoradaGen();
                 txtBairro.Text = func.getBairro();
@@ -316,7 +363,10 @@ namespace Facturix_Salários
                 cbEstadoCivil.Text = func.getEstadoCivil();
                 cbDeficiencia.Text = func.getDeficiencia();
                 dtNascimento.Value = Convert.ToDateTime(func.getDataNascimento());
-                pbFoto.Image = Image.FromFile(func.getLinkImagem());
+                if (System.IO.File.Exists(func.getLinkImagem()))
+                {
+                    pbFoto.Image = Image.FromFile(func.getLinkImagem());
+                }
                 txtCodPostal.Text = func.getCodigoPostal() + "";
                 txtMorada.Text = func.getMoradaGen();
                 txtBairro.Text = func.getBairro();
@@ -373,7 +423,10 @@ namespace Facturix_Salários
                 cbEstadoCivil.Text = func.getEstadoCivil();
                 cbDeficiencia.Text = func.getDeficiencia();
                 dtNascimento.Value = Convert.ToDateTime(func.getDataNascimento());
-                pbFoto.Image = Image.FromFile(func.getLinkImagem());
+                if (System.IO.File.Exists(func.getLinkImagem()))
+                {
+                    pbFoto.Image = Image.FromFile(func.getLinkImagem());
+                }
                 txtCodPostal.Text = func.getCodigoPostal() + "";
                 txtMorada.Text = func.getMoradaGen();
                 txtBairro.Text = func.getBairro();
@@ -428,10 +481,10 @@ namespace Facturix_Salários
             String bairro = txtBairro.Text;
             String localidade = txtLocalidade.Text;
             int codigoPostal = int.Parse(txtCodPostal.Text);
-            String dataNasc = dtNascimento.Text;
+            String dataNasc = dtNascimento.Value.ToString("yyyy-MM-dd");
             String tipoContrato = cbContrato.Text;
-            String dataAdmissao = dtDataAdmissao.Text;
-            String dataDemissao = dtDataDemissao.Text;
+            String dataAdmissao = dtDataAdmissao.Value.ToString("yyyy-MM-dd");
+            String dataDemissao = dtDataDemissao.Value.ToString("yyyy-MM-dd");
             String profissao = cbProfissao.Text;
             String categoria = cbCategoria.Text;
             String seguro = cbSeguro.Text;
@@ -502,7 +555,7 @@ namespace Facturix_Salários
             }
             else
             {
-                MessageBox.Show("Nenhum funcionário com esse numero de registo existe na base de dados! Selecione um funcionário válido!");
+                MessageBox.Show("Nenhum funcionário com esse número de registo existe na base de dados! Selecione um funcionário válido!");
             }
         }
         private void adicionar()
@@ -616,28 +669,14 @@ namespace Facturix_Salários
         private void gravarDependente() 
         {
             ArrayList listaFunc = ControllerFuncionario.recuperar();
-            int cod=0;
             int idFunc = int.Parse(txtCodigo.Text);
             String nome = txtNomeDep.Text;
-            string dataNasc = dtNascimentoDep.Value.ToString("yyyy/MM/dd");
-            string grauParen = cbParentescoDep.Text;
-            foreach (ModeloFuncionario func in listaFunc) 
-            {
-                if (idFunc == func.getCodigo())
-                {
-                    cod = func.getCodigo();
-                }
-            }
-            if (idFunc == cod)
-            {
-                ControllerDependente.Guardar(idFunc, nome, dataNasc, grauParen);
-                cancelarDependente();
-                refrescarDependentes();
-            }
-            else
-            {
-                MessageBox.Show("Escolha Invalida! Selecione um funcionário cadastrado no sistema!");
-            }
+            String dt = dtNascimentoDep.Value.Date.ToString("yyyy-MM-dd");
+            String dataNasc = dt.Substring(0,9);
+            String grauParen = cbParentescoDep.Text;
+            ControllerDependente.Guardar(idFunc, nome, dataNasc, grauParen);
+            cancelarDependente();
+            refrescarDependentes();
         }
 
         private void modificarDependente() 
@@ -728,7 +767,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                confirmarFechamento();
             }
             if (e.Alt && e.KeyCode == Keys.I)
             {
@@ -768,6 +807,22 @@ namespace Facturix_Salários
             impedirBotoes();
         }
 
+        private void confirmarFechamento()
+        {
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+                frmMenu f = new frmMenu();
+                f.TopMost = true;
+                f.Show();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
+
         private void f_funcionarios_Load(object sender, EventArgs e)
         {
             porFoco();
@@ -777,16 +832,20 @@ namespace Facturix_Salários
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            mudarLarguraCelulas();
+        }
+
+        private void mudarLarguraCelulas() 
+        {
             dataDependentes.Columns["ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataDependentes.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataDependentes.Columns["Data Nasc."].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataDependentes.Columns["Grau Parent."].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataDependentes.Columns["ID"].Width = 70;
-            dataDependentes.Columns["Nome"].Width = 330;
+            dataDependentes.Columns["Nome"].Width = 370;
             dataDependentes.Columns["Data Nasc."].Width = 105;
-            dataDependentes.Columns["Grau Parent."].Width = 163;
+            dataDependentes.Columns["Grau Parent."].Width = 170;
         }
-
         private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -978,7 +1037,7 @@ namespace Facturix_Salários
         {
             OpenFileDialog opFile = new OpenFileDialog();
             string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\ProImages\";
-            opFile.Title = "Select a Image";
+            opFile.Title = "Selecione uma imagem";
             opFile.Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
             if (Directory.Exists(appPath) == false)
             {
@@ -995,7 +1054,7 @@ namespace Facturix_Salários
                 }
                 catch (Exception exp)
                 {
-                    MessageBox.Show("Nao foi possivel carregar a imagem " + exp.Message);
+                    MessageBox.Show("Não foi possível carregar a imagem " + exp.Message);
                 }
             }
             else
@@ -1108,7 +1167,7 @@ namespace Facturix_Salários
                     txtLink.Text = "";
                 }
                 else {
-                    MessageBox.Show("Link de imagem invalido!");
+                    MessageBox.Show("Link de imagem inválido!");
                 }
                 e.SuppressKeyPress = true;
             }
@@ -1121,7 +1180,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            confirmarFechamento();
         }
 
         private void txtNrFiscal_TextChanged_1(object sender, EventArgs e)
@@ -1265,7 +1324,7 @@ namespace Facturix_Salários
 
         private void cancelarDependente() 
         {
-            txtNome.Text = "";
+            txtNomeDep.Text = "";
             cbParentescoDep.Text = "";
             dtNascimentoDep.Value = DateTime.Now;
         }
@@ -1308,6 +1367,21 @@ namespace Facturix_Salários
                 dtNascimentoDep.Value = Convert.ToDateTime(func.getDataNascimento());
                 cbParentescoDep.Text = func.getGrauParentesco();
             }
+        }
+
+        private void txtNomeDep_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+        }
+
+        private void dtNascimentoDep_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+        }
+
+        private void cbParentescoDep_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
         }
     }
 }

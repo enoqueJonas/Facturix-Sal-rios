@@ -248,6 +248,7 @@
     <Compile Include="Formularios\ReportViews\frmReportFuncionario.Designer.cs">
       <DependentUpon>frmReportFuncionario.cs</DependentUpon>
     </Compile>
+    <Compile Include="MessageBoxManager.cs" />
     <Compile Include="Modelos\ModeloCentroDeCusto.cs" />
     <Compile Include="Modelos\ModeloContrato.cs" />
     <Compile Include="Modelos\ModeloDependente.cs" />

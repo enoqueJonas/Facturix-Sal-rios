@@ -14,6 +14,9 @@ namespace Facturix_Salários
         [STAThread]
         static void Main()
         {
+            MessageBoxManager.Yes = "Sim";
+            MessageBoxManager.No = "Não";
+            MessageBoxManager.Register();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMenu());

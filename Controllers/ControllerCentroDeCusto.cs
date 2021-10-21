@@ -26,7 +26,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar centro de custo");
+                MessageBox.Show(err.Message, "Não foi possível cadastrar o centro de custo! Contacte o técnico");
             }
             finally
             {
@@ -50,7 +50,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel atualizar o centro de custo!");
+                MessageBox.Show(err.Message, "Não foi possível atualizar o centro de custo! Contacte o técnico!");
             }
             finally
             {
@@ -101,7 +101,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover o centro de custo!");
+                MessageBox.Show(err.Message, "Não foi possível remover o centro de custo! Contacte o técnico!");
             }
             finally
             {

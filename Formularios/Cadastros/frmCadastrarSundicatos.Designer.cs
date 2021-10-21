@@ -46,16 +46,16 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(107, 73);
+            this.txtNome.Location = new System.Drawing.Point(100, 69);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(310, 20);
+            this.txtNome.Size = new System.Drawing.Size(443, 20);
             this.txtNome.TabIndex = 228;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(107, 34);
+            this.txtCodigo.Location = new System.Drawing.Point(100, 33);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(41, 20);
@@ -65,7 +65,7 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(37, 76);
+            this.Label2.Location = new System.Drawing.Point(23, 72);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(54, 13);
             this.Label2.TabIndex = 231;
@@ -74,7 +74,7 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(37, 37);
+            this.Label1.Location = new System.Drawing.Point(23, 36);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(59, 13);
             this.Label1.TabIndex = 230;
@@ -89,7 +89,7 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(1, 403);
+            this.panel1.Location = new System.Drawing.Point(26, 402);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(517, 74);
@@ -165,8 +165,9 @@
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(1, 139);
+            this.dataGridView1.Location = new System.Drawing.Point(26, 138);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(517, 259);
             this.dataGridView1.TabIndex = 247;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -175,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 473);
+            this.ClientSize = new System.Drawing.Size(566, 473);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
@@ -185,7 +186,7 @@
             this.KeyPreview = true;
             this.Name = "frmCadastrarSundicatos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sindicatos";
+            this.Text = "Cadastro de Sindicatos";
             this.Load += new System.EventHandler(this.frmCadastrarSundicatos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarSundicatos_KeyDown);
             this.panel1.ResumeLayout(false);

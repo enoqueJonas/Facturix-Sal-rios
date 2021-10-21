@@ -29,7 +29,7 @@ namespace Facturix_Salários.Controllers
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar o dependente!");
+                MessageBox.Show(err.Message, "Não foi possível cadastrar o dependente! Contacte o técnico!");
             }
             finally
             {
@@ -55,7 +55,7 @@ namespace Facturix_Salários.Controllers
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel atualizar o dependente!");
+                MessageBox.Show(err.Message, "Não foi possível atualizar o dependente! Contacte o técnico!");
             }
             finally
             {
@@ -79,8 +79,9 @@ namespace Facturix_Salários.Controllers
                     int idFuncionario = leitor.GetInt16(1);
                     String nome = leitor.GetString(2);
                     String dataNascimento = leitor.GetString(3);
+                    String dt = dataNascimento.Substring(0, 10);
                     String grauParentesco = leitor.GetString(4);
-                    listaContas.Add(new ModeloDependente(id, idFuncionario, nome, dataNascimento, grauParentesco));
+                    listaContas.Add(new ModeloDependente(id, idFuncionario, nome, dt, grauParentesco));
                 }
             }
             catch (Exception)
@@ -111,8 +112,9 @@ namespace Facturix_Salários.Controllers
                     int idFuncionario = leitor.GetInt16(1);
                     String nome = leitor.GetString(2);
                     String dataNascimento = leitor.GetString(3);
+                    String dt = dataNascimento.Substring(0, 10);
                     String grauParentesco = leitor.GetString(4);
-                    listaContas.Add(new ModeloDependente(id, idFuncionario, nome, dataNascimento, grauParentesco));
+                    listaContas.Add(new ModeloDependente(id, idFuncionario, nome, dt, grauParentesco));
                 }
             }
             catch (Exception)
@@ -140,7 +142,7 @@ namespace Facturix_Salários.Controllers
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover o dependente!");
+                MessageBox.Show(err.Message, "Não foi possível atualizar o dependente! Contacte o técnico!");
             }
             finally
             {

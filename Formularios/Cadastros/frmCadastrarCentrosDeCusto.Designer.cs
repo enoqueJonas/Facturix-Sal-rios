@@ -46,35 +46,35 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(109, 70);
+            this.txtNome.Location = new System.Drawing.Point(133, 60);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(310, 20);
+            this.txtNome.Size = new System.Drawing.Size(408, 20);
             this.txtNome.TabIndex = 238;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(109, 31);
+            this.txtCodigo.Location = new System.Drawing.Point(133, 21);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(41, 20);
+            this.txtCodigo.Size = new System.Drawing.Size(63, 20);
             this.txtCodigo.TabIndex = 239;
             this.txtCodigo.TabStop = false;
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(39, 73);
+            this.Label2.Location = new System.Drawing.Point(25, 60);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(54, 13);
+            this.Label2.Size = new System.Drawing.Size(88, 13);
             this.Label2.TabIndex = 241;
-            this.Label2.Text = "Sindicato:";
+            this.Label2.Text = "Centro De Custo:";
             // 
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(39, 34);
+            this.Label1.Location = new System.Drawing.Point(25, 24);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(59, 13);
             this.Label1.TabIndex = 240;
@@ -89,7 +89,7 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(2, 404);
+            this.panel1.Location = new System.Drawing.Point(24, 394);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(517, 74);
@@ -165,8 +165,9 @@
             // 
             this.dataCentroDeCusto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataCentroDeCusto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataCentroDeCusto.Location = new System.Drawing.Point(2, 140);
+            this.dataCentroDeCusto.Location = new System.Drawing.Point(24, 130);
             this.dataCentroDeCusto.Name = "dataCentroDeCusto";
+            this.dataCentroDeCusto.RowHeadersVisible = false;
             this.dataCentroDeCusto.Size = new System.Drawing.Size(517, 259);
             this.dataCentroDeCusto.TabIndex = 242;
             this.dataCentroDeCusto.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataCentroDeCusto_CellDoubleClick);
@@ -175,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 473);
+            this.ClientSize = new System.Drawing.Size(566, 473);
             this.Controls.Add(this.dataCentroDeCusto);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
@@ -185,7 +186,7 @@
             this.KeyPreview = true;
             this.Name = "frmCadastrarCentrosDeCusto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCadastrarCentrosDeCusto";
+            this.Text = "Cadastro de Centros de Custo";
             this.Load += new System.EventHandler(this.frmCadastrarCentrosDeCusto_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarCentrosDeCusto_KeyDown);
             this.panel1.ResumeLayout(false);

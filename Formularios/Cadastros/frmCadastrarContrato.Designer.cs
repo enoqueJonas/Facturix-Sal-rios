@@ -46,26 +46,26 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(107, 75);
+            this.txtNome.Location = new System.Drawing.Point(94, 66);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(310, 20);
+            this.txtNome.Size = new System.Drawing.Size(446, 20);
             this.txtNome.TabIndex = 228;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(107, 36);
+            this.txtCodigo.Location = new System.Drawing.Point(94, 23);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(41, 20);
+            this.txtCodigo.Size = new System.Drawing.Size(58, 20);
             this.txtCodigo.TabIndex = 229;
             this.txtCodigo.TabStop = false;
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(37, 78);
+            this.Label2.Location = new System.Drawing.Point(20, 69);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(50, 13);
             this.Label2.TabIndex = 231;
@@ -74,7 +74,7 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(37, 39);
+            this.Label1.Location = new System.Drawing.Point(20, 30);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(59, 13);
             this.Label1.TabIndex = 230;
@@ -89,7 +89,7 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(0, 405);
+            this.panel1.Location = new System.Drawing.Point(23, 396);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(517, 74);
@@ -165,8 +165,9 @@
             // 
             this.dataContrato.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataContrato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataContrato.Location = new System.Drawing.Point(0, 141);
+            this.dataContrato.Location = new System.Drawing.Point(23, 132);
             this.dataContrato.Name = "dataContrato";
+            this.dataContrato.RowHeadersVisible = false;
             this.dataContrato.Size = new System.Drawing.Size(517, 259);
             this.dataContrato.TabIndex = 243;
             this.dataContrato.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataContrato_CellDoubleClick);
@@ -175,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 473);
+            this.ClientSize = new System.Drawing.Size(566, 473);
             this.Controls.Add(this.dataContrato);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
@@ -185,7 +186,7 @@
             this.KeyPreview = true;
             this.Name = "frmCadastrarContrato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Contratos";
+            this.Text = "Cadastro de Contratos";
             this.Load += new System.EventHandler(this.frmCadastrarContrato_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarContrato_KeyDown);
             this.panel1.ResumeLayout(false);

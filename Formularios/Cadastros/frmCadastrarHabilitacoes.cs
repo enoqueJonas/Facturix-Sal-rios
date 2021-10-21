@@ -119,6 +119,21 @@ namespace Facturix_Salários
             ControllerHabilitacoes.atualizar(id, regime);
         }
 
+        private void confirmarFechamento()
+        {
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+                frmMenu f = new frmMenu();
+                f.TopMost = true;
+                f.Show();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
@@ -144,6 +159,10 @@ namespace Facturix_Salários
         {
             impedirBotoes();
             refrescar();
+            foreach (DataGridViewColumn col in dataHabilitacoes.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void frmCadastrarHabilitacoes_KeyDown(object sender, KeyEventArgs e)
@@ -177,7 +196,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                confirmarFechamento();
             }
         }
 
@@ -211,6 +230,11 @@ namespace Facturix_Salários
                 txtCodigo.Text = func.getId() + "";
                 txtNome.Text = func.getHabilitacao();
             }
+        }
+
+        private void btnRegressar_Click(object sender, EventArgs e)
+        {
+            confirmarFechamento();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar profissao");
+                MessageBox.Show(err.Message, "Não foi possível cadastrar a profissão! Contacte o técnico!");
             }
             finally
             {
@@ -50,7 +50,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel atualizar a profissao!");
+                MessageBox.Show(err.Message, "Não foi possível atualizar a profissão! Contacte o técnico!");
             }
             finally
             {
@@ -101,7 +101,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover a profissao!");
+                MessageBox.Show(err.Message, "Não foi possível remover a profissão! Contacte o técnico!");
             }
             finally
             {

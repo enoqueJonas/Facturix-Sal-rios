@@ -20,6 +20,21 @@ namespace Facturix_Salários
             this.ActiveControl = txtNome;
         }
 
+        private void confirmarFechamento()
+        {
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+                frmMenu f = new frmMenu();
+                f.TopMost = true;
+                f.Show();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
         private void refrescar()
         {
             ArrayList listaContratos = ControllerContrato.recuperar();
@@ -153,6 +168,10 @@ namespace Facturix_Salários
             impedirBotoes();
             setCod();
             refrescar();
+            foreach (DataGridViewColumn col in dataContrato.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void frmCadastrarContrato_KeyDown(object sender, KeyEventArgs e)
@@ -186,7 +205,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                confirmarFechamento();
             }
         }
 
@@ -217,7 +236,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            confirmarFechamento();
         }
 
         private void dataContrato_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

@@ -48,9 +48,9 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(102, 102);
+            this.txtNome.Location = new System.Drawing.Point(101, 97);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(310, 20);
+            this.txtNome.Size = new System.Drawing.Size(440, 20);
             this.txtNome.TabIndex = 3;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown_1);
@@ -58,7 +58,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(102, 25);
+            this.txtCodigo.Location = new System.Drawing.Point(101, 21);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(41, 20);
@@ -68,7 +68,7 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(23, 105);
+            this.Label2.Location = new System.Drawing.Point(21, 104);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(44, 13);
             this.Label2.TabIndex = 233;
@@ -77,7 +77,7 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(23, 28);
+            this.Label1.Location = new System.Drawing.Point(21, 24);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(59, 13);
             this.Label1.TabIndex = 232;
@@ -92,7 +92,7 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(0, 399);
+            this.panel1.Location = new System.Drawing.Point(24, 398);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(520, 74);
@@ -166,7 +166,7 @@
             // 
             // txtPercentagem
             // 
-            this.txtPercentagem.Location = new System.Drawing.Point(102, 64);
+            this.txtPercentagem.Location = new System.Drawing.Point(101, 60);
             this.txtPercentagem.Name = "txtPercentagem";
             this.txtPercentagem.Size = new System.Drawing.Size(41, 20);
             this.txtPercentagem.TabIndex = 2;
@@ -176,7 +176,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 67);
+            this.label3.Location = new System.Drawing.Point(21, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 235;
@@ -186,8 +186,9 @@
             // 
             this.dataSeguro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataSeguro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataSeguro.Location = new System.Drawing.Point(0, 135);
+            this.dataSeguro.Location = new System.Drawing.Point(24, 134);
             this.dataSeguro.Name = "dataSeguro";
+            this.dataSeguro.RowHeadersVisible = false;
             this.dataSeguro.Size = new System.Drawing.Size(517, 259);
             this.dataSeguro.TabIndex = 246;
             this.dataSeguro.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataSeguro_CellDoubleClick);
@@ -196,7 +197,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 473);
+            this.ClientSize = new System.Drawing.Size(566, 473);
             this.Controls.Add(this.dataSeguro);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPercentagem);
@@ -208,7 +209,7 @@
             this.KeyPreview = true;
             this.Name = "frmCadastrarSeguro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Seguros";
+            this.Text = "Cadastro de Seguros";
             this.Load += new System.EventHandler(this.frmCadastrarSeguro_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarSeguro_KeyDown);
             this.panel1.ResumeLayout(false);

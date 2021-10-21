@@ -622,7 +622,9 @@ namespace Facturix_Salários
             this.cbEstadoCivil.FormattingEnabled = true;
             this.cbEstadoCivil.Items.AddRange(new object[] {
             "Solteiro",
-            "Casado"});
+            "Casado",
+            "Divorciado",
+            "Viúvo"});
             this.cbEstadoCivil.Location = new System.Drawing.Point(482, 132);
             this.cbEstadoCivil.Name = "cbEstadoCivil";
             this.cbEstadoCivil.Size = new System.Drawing.Size(136, 21);
@@ -937,6 +939,7 @@ namespace Facturix_Salários
             // 
             this.txtAlimentacao.Location = new System.Drawing.Point(109, 59);
             this.txtAlimentacao.Name = "txtAlimentacao";
+            this.txtAlimentacao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAlimentacao.Size = new System.Drawing.Size(135, 20);
             this.txtAlimentacao.TabIndex = 32;
             this.txtAlimentacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAlimentacao_KeyDown);
@@ -945,6 +948,9 @@ namespace Facturix_Salários
             // cbTurno
             // 
             this.cbTurno.FormattingEnabled = true;
+            this.cbTurno.Items.AddRange(new object[] {
+            "Sim",
+            "Não"});
             this.cbTurno.Location = new System.Drawing.Point(400, 151);
             this.cbTurno.Margin = new System.Windows.Forms.Padding(2);
             this.cbTurno.Name = "cbTurno";
@@ -983,7 +989,7 @@ namespace Facturix_Salários
             // 
             this.txtImpostoM.Location = new System.Drawing.Point(109, 180);
             this.txtImpostoM.Name = "txtImpostoM";
-            this.txtImpostoM.Size = new System.Drawing.Size(31, 20);
+            this.txtImpostoM.Size = new System.Drawing.Size(132, 20);
             this.txtImpostoM.TabIndex = 40;
             this.txtImpostoM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImpostoM_KeyDown);
             this.txtImpostoM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImpostoM_KeyPress);
@@ -1057,13 +1063,14 @@ namespace Facturix_Salários
             this.cbCentrocusto.Margin = new System.Windows.Forms.Padding(2);
             this.cbCentrocusto.Name = "cbCentrocusto";
             this.cbCentrocusto.Size = new System.Drawing.Size(132, 21);
-            this.cbCentrocusto.TabIndex = 38;
+            this.cbCentrocusto.TabIndex = 36;
             this.cbCentrocusto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbCentrocusto_KeyDown);
             // 
             // txtVencimento
             // 
             this.txtVencimento.Location = new System.Drawing.Point(109, 32);
             this.txtVencimento.Name = "txtVencimento";
+            this.txtVencimento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtVencimento.Size = new System.Drawing.Size(135, 20);
             this.txtVencimento.TabIndex = 30;
             this.txtVencimento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVencimento_KeyDown);
@@ -1091,8 +1098,8 @@ namespace Facturix_Salários
             // 
             this.txtHoraSemana.Location = new System.Drawing.Point(109, 151);
             this.txtHoraSemana.Name = "txtHoraSemana";
-            this.txtHoraSemana.Size = new System.Drawing.Size(31, 20);
-            this.txtHoraSemana.TabIndex = 36;
+            this.txtHoraSemana.Size = new System.Drawing.Size(132, 20);
+            this.txtHoraSemana.TabIndex = 38;
             this.txtHoraSemana.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtHoraSemana_KeyDown);
             this.txtHoraSemana.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoraSemana_KeyPress);
             // 
@@ -1127,6 +1134,7 @@ namespace Facturix_Salários
             // 
             this.txtSubTransporte.Location = new System.Drawing.Point(109, 88);
             this.txtSubTransporte.Name = "txtSubTransporte";
+            this.txtSubTransporte.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtSubTransporte.Size = new System.Drawing.Size(135, 20);
             this.txtSubTransporte.TabIndex = 34;
             this.txtSubTransporte.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSubTransporte_KeyDown);
@@ -1156,12 +1164,14 @@ namespace Facturix_Salários
             this.dataDependentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataDependentes.Location = new System.Drawing.Point(23, 111);
             this.dataDependentes.Name = "dataDependentes";
+            this.dataDependentes.RowHeadersVisible = false;
             this.dataDependentes.Size = new System.Drawing.Size(711, 327);
             this.dataDependentes.TabIndex = 7;
             this.dataDependentes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataDependentes_CellDoubleClick_1);
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.btnEliminarDep);
             this.panel2.Controls.Add(this.btnCancelarDep);
             this.panel2.Controls.Add(this.btnModificarDep);
@@ -1173,7 +1183,7 @@ namespace Facturix_Salários
             // 
             // btnEliminarDep
             // 
-            this.btnEliminarDep.Location = new System.Drawing.Point(12, 257);
+            this.btnEliminarDep.Location = new System.Drawing.Point(10, 253);
             this.btnEliminarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarDep.Name = "btnEliminarDep";
             this.btnEliminarDep.Size = new System.Drawing.Size(69, 60);
@@ -1184,7 +1194,7 @@ namespace Facturix_Salários
             // 
             // btnCancelarDep
             // 
-            this.btnCancelarDep.Location = new System.Drawing.Point(12, 168);
+            this.btnCancelarDep.Location = new System.Drawing.Point(10, 164);
             this.btnCancelarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarDep.Name = "btnCancelarDep";
             this.btnCancelarDep.Size = new System.Drawing.Size(69, 60);
@@ -1195,7 +1205,7 @@ namespace Facturix_Salários
             // 
             // btnModificarDep
             // 
-            this.btnModificarDep.Location = new System.Drawing.Point(12, 88);
+            this.btnModificarDep.Location = new System.Drawing.Point(10, 84);
             this.btnModificarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificarDep.Name = "btnModificarDep";
             this.btnModificarDep.Size = new System.Drawing.Size(69, 60);
@@ -1206,7 +1216,7 @@ namespace Facturix_Salários
             // 
             // btnAdicionarDep
             // 
-            this.btnAdicionarDep.Location = new System.Drawing.Point(12, 7);
+            this.btnAdicionarDep.Location = new System.Drawing.Point(10, 3);
             this.btnAdicionarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdicionarDep.Name = "btnAdicionarDep";
             this.btnAdicionarDep.Size = new System.Drawing.Size(69, 60);
@@ -1218,19 +1228,24 @@ namespace Facturix_Salários
             // cbParentescoDep
             // 
             this.cbParentescoDep.FormattingEnabled = true;
+            this.cbParentescoDep.Items.AddRange(new object[] {
+            "Filho\\a",
+            "Irmão\\ã",
+            "Sobrinho\\a"});
             this.cbParentescoDep.Location = new System.Drawing.Point(690, 41);
             this.cbParentescoDep.Name = "cbParentescoDep";
             this.cbParentescoDep.Size = new System.Drawing.Size(137, 21);
             this.cbParentescoDep.TabIndex = 43;
+            this.cbParentescoDep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbParentescoDep_KeyDown);
             // 
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(594, 44);
+            this.label45.Location = new System.Drawing.Point(586, 44);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(90, 13);
+            this.label45.Size = new System.Drawing.Size(107, 13);
             this.label45.TabIndex = 4;
-            this.label45.Text = "Grau Parentesco:";
+            this.label45.Text = "Grau De Parentesco:";
             // 
             // label44
             // 
@@ -1249,6 +1264,7 @@ namespace Facturix_Salários
             this.dtNascimentoDep.Name = "dtNascimentoDep";
             this.dtNascimentoDep.Size = new System.Drawing.Size(112, 20);
             this.dtNascimentoDep.TabIndex = 42;
+            this.dtNascimentoDep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtNascimentoDep_KeyDown);
             // 
             // txtNomeDep
             // 
@@ -1256,6 +1272,7 @@ namespace Facturix_Salários
             this.txtNomeDep.Name = "txtNomeDep";
             this.txtNomeDep.Size = new System.Drawing.Size(328, 20);
             this.txtNomeDep.TabIndex = 41;
+            this.txtNomeDep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNomeDep_KeyDown);
             // 
             // label43
             // 
@@ -1407,7 +1424,7 @@ namespace Facturix_Salários
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCadastrarFuncionarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro De Funcionários";
+            this.Text = "Cadastro de Funcionários";
             this.Load += new System.EventHandler(this.f_funcionarios_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFuncionarios_KeyDown);
             this.tabControl1.ResumeLayout(false);

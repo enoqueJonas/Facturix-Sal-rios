@@ -26,7 +26,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar estabelecimento");
+                MessageBox.Show(err.Message, "Não foi possível cadastrar o estabelecimento! Contacte o técnico!");
             }
             finally
             {
@@ -50,7 +50,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel atualizar o estabelecimento!");
+                MessageBox.Show(err.Message, "Não foi possível atualizar o estabelecimento! Contacte o técnico!");
             }
             finally
             {
@@ -101,7 +101,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover o estabelecimento!");
+                MessageBox.Show(err.Message, "Não foi possível remover o estabelecimento! Contacte o técnico!");
             }
             finally
             {

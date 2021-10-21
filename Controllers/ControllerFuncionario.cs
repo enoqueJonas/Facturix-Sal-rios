@@ -106,11 +106,11 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("segurancaSocial", segurancaSocial);
                 comando.Parameters.AddWithValue("sindicato", sindicato);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Funcionario cadastrado com sucesso!");
+                MessageBox.Show("Funcionário cadastrado com sucesso!");
             }
             catch(Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel fazer o cadastro do funcionario!");
+                MessageBox.Show(err.Message, "Não foi possível cadastrar o  Funcionário! Contacte o técnico!");
             }
             finally
             {
@@ -447,7 +447,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel actualizar o funcionario!");
+                MessageBox.Show(err.Message, "Não foi possível atualizar o  Funcionário! Contacte o técnico!!");
             }
             finally
             {
@@ -470,7 +470,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover o funcionario!");
+                MessageBox.Show(err.Message, "Não foi possível remover o  Funcionário! Contacte o técnico!!");
             }
             finally
             {

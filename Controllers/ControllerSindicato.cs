@@ -26,7 +26,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar sindicato");
+                MessageBox.Show(err.Message, "Não foi possível cadastrar o sindicato! Contacte o técnico!");
             }
             finally
             {
@@ -50,7 +50,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel atualizar o sindicato!");
+                MessageBox.Show(err.Message, "Não foi possível atualizar o sindicato! Contacte o técnico!");
             }
             finally
             {
@@ -101,7 +101,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover o sindicato!");
+                MessageBox.Show(err.Message, "Não foi possível remover o sindicato! Contacte o técnico!");
             }
             finally
             {

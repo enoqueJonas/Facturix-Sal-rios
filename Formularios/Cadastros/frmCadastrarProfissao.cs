@@ -120,6 +120,22 @@ namespace Facturix_Salários
             String regime = txtNome.Text;
             ControllerProfissao.atualizar(id, regime);
         }
+
+        private void confirmarFechamento()
+        {
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+                frmMenu f = new frmMenu();
+                f.TopMost = true;
+                f.Show();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
@@ -144,6 +160,10 @@ namespace Facturix_Salários
         {
             impedirBotoes();
             refrescar();
+            foreach (DataGridViewColumn col in dataProfissao.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void frmCadastrarProfissao_KeyDown(object sender, KeyEventArgs e)
@@ -177,7 +197,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+               confirmarFechamento();
             }
         }
 
@@ -201,7 +221,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            confirmarFechamento();
         }
 
         private void dataProfissao_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

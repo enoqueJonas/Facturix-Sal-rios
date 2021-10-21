@@ -28,7 +28,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel cadastrar o funcionario!");
+                MessageBox.Show(err.Message, "Não foi possível cadastrar a conta! Contacte o técnico!");
             }
             finally
             {
@@ -54,7 +54,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel atualizar o conta!");
+                MessageBox.Show(err.Message, "Não foi possível atualizar a conta! Contacte o técnico!");
             }
             finally
             {
@@ -139,7 +139,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel remover a conta!");
+                MessageBox.Show(err.Message, "Não foi possível remover a conta! Contacte o técnico!!");
             }
             finally
             {

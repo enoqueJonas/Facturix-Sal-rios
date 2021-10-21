@@ -14,6 +14,7 @@ namespace Facturix_Salários
 {
     public partial class frmVisualizarFuncionario : Form
     {
+        private int numeroFuncionarios = 0;
         public frmVisualizarFuncionario()
         {
             InitializeComponent();
@@ -27,6 +28,8 @@ namespace Facturix_Salários
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            this.ActiveControl = txtLocalizar;
+            txtNumeroFuncionarios.Text = numeroFuncionarios + "";
         }
 
         private void refrescar() 
@@ -43,11 +46,10 @@ namespace Facturix_Salários
                 dRow["Nome"] = func.getNome();
                 dRow["Telefone"] = func.getTel();
                 dt.Rows.Add(dRow);
+                numeroFuncionarios += 1;
             }
             dataFuncionarios.DataSource = dt;
             dataFuncionarios.Refresh();
-            dataFuncionarios.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataFuncionarios.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
 
         private void eliminar() {
@@ -81,6 +83,22 @@ namespace Facturix_Salários
             }
         }
 
+        private void confirmarFechamento()
+        {
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+                frmMenu f = new frmMenu();
+                f.TopMost = true;
+                f.Show();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+        }
+
         private void fecharJanela(KeyEventArgs e)
         {
                 if (e.KeyCode == Keys.Escape)
@@ -110,7 +128,10 @@ namespace Facturix_Salários
                 f.cbEstadoCivil.Text = func.getEstadoCivil();
                 f.cbDeficiencia.Text = func.getDeficiencia();
                 f.dtNascimento.Value = Convert.ToDateTime(func.getDataNascimento());
-                f.pbFoto.Image = Image.FromFile(func.getLinkImagem());
+                if (System.IO.File.Exists(func.getLinkImagem()))
+                {
+                    f.pbFoto.Image = Image.FromFile(func.getLinkImagem());
+                }
                 f.txtCodPostal.Text = func.getCodigoPostal() + "";
                 f.txtMorada.Text = func.getMoradaGen();
                 f.txtBairro.Text = func.getBairro();
@@ -154,7 +175,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            confirmarFechamento();
         }
 
         private void frmVisualizarF_KeyDown(object sender, KeyEventArgs e)
@@ -190,7 +211,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                confirmarFechamento();
             }
         }
 
@@ -230,9 +251,9 @@ namespace Facturix_Salários
                 dRow["Nome"] = func.getNome();
                 dRow["Telefone"] = func.getTel();
                 dt.Rows.Add(dRow);
-                dataFuncionarios.DataSource = dt;
-                dataFuncionarios.Refresh();
             }
+            dataFuncionarios.DataSource = dt;
+            dataFuncionarios.Refresh();
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)

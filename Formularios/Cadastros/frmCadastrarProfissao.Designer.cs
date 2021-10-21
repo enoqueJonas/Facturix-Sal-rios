@@ -53,7 +53,7 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(0, 399);
+            this.panel1.Location = new System.Drawing.Point(27, 390);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(520, 74);
@@ -127,26 +127,26 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(92, 74);
+            this.txtNome.Location = new System.Drawing.Point(106, 62);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(310, 20);
+            this.txtNome.Size = new System.Drawing.Size(438, 20);
             this.txtNome.TabIndex = 218;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(92, 35);
+            this.txtCodigo.Location = new System.Drawing.Point(106, 26);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(41, 20);
+            this.txtCodigo.Size = new System.Drawing.Size(53, 20);
             this.txtCodigo.TabIndex = 219;
             this.txtCodigo.TabStop = false;
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(22, 77);
+            this.Label2.Location = new System.Drawing.Point(24, 65);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(53, 13);
             this.Label2.TabIndex = 221;
@@ -155,7 +155,7 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(22, 38);
+            this.Label1.Location = new System.Drawing.Point(28, 29);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(59, 13);
             this.Label1.TabIndex = 220;
@@ -165,8 +165,9 @@
             // 
             this.dataProfissao.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataProfissao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataProfissao.Location = new System.Drawing.Point(0, 135);
+            this.dataProfissao.Location = new System.Drawing.Point(27, 126);
             this.dataProfissao.Name = "dataProfissao";
+            this.dataProfissao.RowHeadersVisible = false;
             this.dataProfissao.Size = new System.Drawing.Size(517, 259);
             this.dataProfissao.TabIndex = 245;
             this.dataProfissao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProfissao_CellDoubleClick);
@@ -175,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 473);
+            this.ClientSize = new System.Drawing.Size(566, 473);
             this.Controls.Add(this.dataProfissao);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtCodigo);
@@ -185,7 +186,7 @@
             this.KeyPreview = true;
             this.Name = "frmCadastrarProfissao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Profissões";
+            this.Text = "Cadastro de Profissões";
             this.Load += new System.EventHandler(this.frmCadastrarProfissao_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarProfissao_KeyDown);
             this.panel1.ResumeLayout(false);
