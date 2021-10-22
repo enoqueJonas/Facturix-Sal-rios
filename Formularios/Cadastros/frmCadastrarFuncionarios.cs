@@ -54,7 +54,7 @@ namespace Facturix_Salários
             }
             dataDependentes.DataSource = dt;
             dataDependentes.Refresh();
-            dataDependentes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataDependentes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataDependentes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
 
@@ -194,6 +194,8 @@ namespace Facturix_Salários
             double subTransporte = 0;
             float horas = 0;
             float impostoMunicipal = 0;
+            if (txtImpostoM.Text == "%")
+                txtImpostoM.Text = "";
             if (txtVencimento.Text == "")
             {
                 vencimento = 0;
@@ -248,12 +250,12 @@ namespace Facturix_Salários
             }
             */
             int dependentes;
-            if (cbDependentes.Text == "")
+            if (txtNrDependentes.Text == "")
             {
                 dependentes = 0;
             }
             else {
-                dependentes = int.Parse(cbDependentes.Text);
+                dependentes = int.Parse(txtNrDependentes.Text);
             }
             String habilitacoes = cbHabilitacoes.Text;
             String banco = txtBanco.Text;
@@ -285,13 +287,8 @@ namespace Facturix_Salários
             }
         }
 
-        public void mostrar()
+        private void montarCaixasDeTexto(ArrayList listaFuncionarios, ArrayList listaContas, int cod) 
         {
-            frmNumeroRegisto f = new frmNumeroRegisto();
-            f.ShowDialog();
-            int cod = f.enterdCod;
-            ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(cod);
-            ArrayList listaContas = ControllerConta.recuperarComCod(cod);
             foreach (ModeloFuncionario func in listaFuncionarios)
             {
                 txtCodigo.Text = func.getCodigo() + "";
@@ -309,63 +306,9 @@ namespace Facturix_Salários
                 {
                     pbFoto.Image = Image.FromFile(func.getLinkImagem());
                 }
-                txtCodPostal.Text = func.getCodigoPostal() + "";
-                txtMorada.Text = func.getMoradaGen();
-                txtBairro.Text = func.getBairro();
-                txtLocalidade.Text = func.getLocalidade();
-                cbContrato.Text = func.getTipoContrato();
-                dtDataAdmissao.Value = Convert.ToDateTime(func.getDataAdmissao());
-                dtDataDemissao.Value = Convert.ToDateTime(func.getDataDemissao());
-                cbProfissao.Text = func.getProfissao();
-                cbCategoria.Text = func.getCategoria();
-                cbSeguro.Text = func.getSeguro();
-                cbLocalTrabalho.Text = func.getLocalTrabalho();
-                cbRegime.Text = func.getRegime();
-                txtBi.Text = func.getBi();
-                txtNrBenificiario.Text = func.getNumeroBenificiario();
-                txtNrFiscal.Text = func.getNumeroFiscal()+"";
-                txtVencimento.Text = func.getVencimento()+"";
-                txtAlimentacao.Text = func.getSubAlimentacao()+"";
-                txtSubTransporte.Text = func.getSubTransporte() + "";
-                txtHoraSemana.Text = func.getHoras()+"";
-                cbDependentes.Text = func.getDependentes()+"";
-                txtNacionalidade.Text = func.getNacionalidade();
-                txtUltimo.Text = func.getUltimoEmprego();
-                cbTurno.Text = func.getTurno();
-                txtImpostoM.Text = func.getImpostoMunicipal() + "";
-                cbCentrocusto.Text = func.getCentroDeCusto();
-                txtSeguranca.Text = func.getSegurancaSocial();
-                foreach (ModeloConta conta in listaContas) {
-                    if (cod == conta.idFuncionario) {
-                        txtNrConta.Text = conta.conta;
-                        txtNib.Text = conta.nib;
-                        txtBanco.Text = conta.banco;
-                    }
-                }
-            }
-        }
-
-        private void procurar(int cod)
-        {
-            //Procura na lista de funcionarios
-            ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(cod);
-            ArrayList listaContas = ControllerConta.recuperarComCod(cod);
-            foreach (ModeloFuncionario func in listaFuncionarios)
-            {
-                txtCodigo.Text = func.getCodigo() + "";
-                txtNome.Text = func.getNome();
-                txtConjugue.Text = func.getConjugue();
-                txtEmail.Text = func.getEmail();
-                txtCell.Text = func.getCell();
-                txtCellSec.Text = func.getCellSec();
-                txtTel.Text = func.getTel();
-                cbSexo.Text = func.getSexo();
-                cbEstadoCivil.Text = func.getEstadoCivil();
-                cbDeficiencia.Text = func.getDeficiencia();
-                dtNascimento.Value = Convert.ToDateTime(func.getDataNascimento());
-                if (System.IO.File.Exists(func.getLinkImagem()))
+                else 
                 {
-                    pbFoto.Image = Image.FromFile(func.getLinkImagem());
+                    pbFoto.Image = null;
                 }
                 txtCodPostal.Text = func.getCodigoPostal() + "";
                 txtMorada.Text = func.getMoradaGen();
@@ -386,8 +329,7 @@ namespace Facturix_Salários
                 txtAlimentacao.Text = func.getSubAlimentacao() + "";
                 txtSubTransporte.Text = func.getSubTransporte() + "";
                 txtHoraSemana.Text = func.getHoras() + "";
-                cbDependentes.Text = func.getDependentes()+"";
-                cbHabilitacoes.Text = func.getHabilitacoes();
+                txtNrDependentes.Text = func.getDependentes() + "";
                 txtNacionalidade.Text = func.getNacionalidade();
                 txtUltimo.Text = func.getUltimoEmprego();
                 cbTurno.Text = func.getTurno();
@@ -405,64 +347,23 @@ namespace Facturix_Salários
                 }
             }
         }
-
-        private void visualizar()
+        public void mostrar()
         {
-            ArrayList listaFuncionarios = ControllerFuncionario.recuperar();
-            ArrayList listaContas = ControllerConta.recuperar();
-            foreach (ModeloFuncionario func in listaFuncionarios)
-            {
-                txtCodigo.Text = func.getCodigo() + "";
-                txtNome.Text = func.getNome();
-                txtConjugue.Text = func.getConjugue();
-                txtEmail.Text = func.getEmail();
-                txtCell.Text = func.getCell();
-                txtCellSec.Text = func.getCellSec();
-                txtTel.Text = func.getTel();
-                cbSexo.Text = func.getSexo();
-                cbEstadoCivil.Text = func.getEstadoCivil();
-                cbDeficiencia.Text = func.getDeficiencia();
-                dtNascimento.Value = Convert.ToDateTime(func.getDataNascimento());
-                if (System.IO.File.Exists(func.getLinkImagem()))
-                {
-                    pbFoto.Image = Image.FromFile(func.getLinkImagem());
-                }
-                txtCodPostal.Text = func.getCodigoPostal() + "";
-                txtMorada.Text = func.getMoradaGen();
-                txtBairro.Text = func.getBairro();
-                txtLocalidade.Text = func.getLocalidade();
-                cbContrato.Text = func.getTipoContrato();
-                dtDataAdmissao.Value = Convert.ToDateTime(func.getDataAdmissao());
-                dtDataDemissao.Value = Convert.ToDateTime(func.getDataDemissao());
-                cbProfissao.Text = func.getProfissao();
-                cbCategoria.Text = func.getCategoria();
-                cbSeguro.Text = func.getSeguro();
-                cbLocalTrabalho.Text = func.getLocalTrabalho();
-                cbRegime.Text = func.getRegime();
-                txtBi.Text = func.getBi();
-                txtNrBenificiario.Text = func.getNumeroBenificiario();
-                txtNrFiscal.Text = func.getNumeroFiscal() + "";
-                txtVencimento.Text = func.getVencimento() + "";
-                txtAlimentacao.Text = func.getSubAlimentacao() + "";
-                txtSubTransporte.Text = func.getSubTransporte() + "";
-                txtHoraSemana.Text = func.getHoras() + "";
-                int dependentes = int.Parse(cbDependentes.Text);
-                txtNacionalidade.Text = func.getNacionalidade();
-                txtUltimo.Text = func.getUltimoEmprego();
-                cbTurno.Text = func.getTurno();
-                txtImpostoM.Text = func.getImpostoMunicipal()+"";
-                cbCentrocusto.Text = func.getCentroDeCusto();
-                txtSeguranca.Text = func.getSegurancaSocial();
-                foreach (ModeloConta conta in listaContas)
-                {
-                    if (func.getCodigo() == conta.idFuncionario)
-                    {
-                        txtNrConta.Text = conta.conta;
-                        txtNib.Text = conta.nib;
-                        txtBanco.Text = conta.banco;
-                    }
-                }
-            }
+            frmNumeroRegisto f = new frmNumeroRegisto();
+            f.ShowDialog();
+            int cod = f.enterdCod;
+            ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(cod);
+            ArrayList listaContas = ControllerConta.recuperarComCod(cod);
+            montarCaixasDeTexto(listaFuncionarios, listaContas, cod);
+        }
+
+        private void procurar(int cod)
+        {
+            //Procura na lista de funcionarios
+            ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(cod);
+            ArrayList listaContas = ControllerConta.recuperarComCod(cod);
+            montarCaixasDeTexto(listaFuncionarios, listaContas, cod);
+            limparCaixasDependente();
         }
 
         private void modificar()
@@ -497,7 +398,7 @@ namespace Facturix_Salários
             double subAlimentacao = double.Parse(txtAlimentacao.Text);
             double subTransporte = double.Parse(txtSubTransporte.Text);
             float horas = float.Parse(txtHoraSemana.Text);
-            int dependentes = int.Parse(cbDependentes.Text);
+            int dependentes = int.Parse(txtNrDependentes.Text);
             String habilitacoes = cbHabilitacoes.Text;
             String banco = txtBanco.Text;
             String nib = txtNib.Text;
@@ -560,55 +461,12 @@ namespace Facturix_Salários
         }
         private void adicionar()
         {
-            txtNome.Text = "";
-            txtMorada.Text = "";
-            txtBairro.Text = "";
-            txtCodPostal.Text = "";
-            txtCell.Text = "";
-            txtTel.Text = "";
-            txtEmail.Text = "";
-            txtCellSec.Text = "";
-            cbSexo.Text = "";
-            txtLocalidade.Text = "";
-            cbEstadoCivil.Text = "";
-            cbDeficiencia.Text = "";
-            txtConjugue.Text = "";
-            pbFoto.Image = null;
-            cbHabilitacoes.Text = "";
-            cbLocalTrabalho.Text = "";
-            cbDependentes.Text = "";
-            cbProfissao.Text = "";
-            txtNib.Text = "";
-            txtNrBenificiario.Text = "";
-            txtNrFiscal.Text = "";
-            txtVencimento.Text = "";
-            txtSubTransporte.Text = "";
-            txtAlimentacao.Text = "";
-            txtHoraSemana.Text = "";
-            dtNascimento.Value = DateTime.Now;
-            dtDataAdmissao.Value = DateTime.Now;
-            dtDataDemissao.Value = DateTime.Now;
-            cbContrato.Text = "";
-            cbLocalTrabalho.Text = "";
-            cbSeguro.Text = "";
-            cbHabilitacoes.Text = "";
-            txtBi.Text = "";
-            txtNrConta.Text = "";
-            txtBanco.Text = "";
-            cbCategoria.Text = "";
-            cbRegime.Text = "";
-            txtUltimo.Text = "";
-            txtNacionalidade.Text = "";
-            txtImpostoM.Text = "";
-            cbTurno.Text = "";
-            cbCentrocusto.Text = "";
-            txtSeguranca.Text = "";
-            cbSindicato.Text = "";
+            limparCaixas();
             setCod();
             porFoco();
         }
 
-        private void cancelar()
+        private void limparCaixas()
         {
             txtCodigo.Text = "";
             txtNome.Text = "";
@@ -627,7 +485,7 @@ namespace Facturix_Salários
             pbFoto.Image = null;
             cbHabilitacoes.Text = "";
             cbLocalTrabalho.Text = "";
-            cbDependentes.Text = "";
+            txtNrDependentes.Text = "";
             cbProfissao.Text = "";
             txtNib.Text = "";
             txtNrBenificiario.Text = "";
@@ -659,11 +517,10 @@ namespace Facturix_Salários
         }
         private void remover()
         {
-            
-            int codigo = int.Parse(txtCodigo.Text);
-            ControllerConta.remover(codigo);
-            ControllerFuncionario.remover(codigo);
-            cancelar();
+            int codigoFun = int.Parse(txtCodigo.Text);
+            ControllerConta.remover(codigoFun);
+            ControllerFuncionario.remover(codigoFun);
+            limparCaixas();
         }
 
         private void gravarDependente() 
@@ -675,20 +532,17 @@ namespace Facturix_Salários
             String dataNasc = dt.Substring(0,9);
             String grauParen = cbParentescoDep.Text;
             ControllerDependente.Guardar(idFunc, nome, dataNasc, grauParen);
-            cancelarDependente();
+            limparCaixasDependente();
             refrescarDependentes();
         }
 
         private void modificarDependente() 
         {
-            int idFunc = int.Parse(txtCodigo.Text);
             String nome = txtNomeDep.Text;
             string dataNasc = dtNascimentoDep.Text;
             string grauParen = cbParentescoDep.Text;
-            ControllerDependente.atualizar(idFunc, nome, dataNasc, grauParen);
-            txtNome.Text = "";
-            cbParentescoDep.Text = "";
-            dtNascimentoDep.Value = DateTime.Now;
+            ControllerDependente.atualizar(codigoCelSelecionada, nome, dataNasc, grauParen);
+            limparCaixasDependente();
             refrescarDependentes();
         }
 
@@ -732,7 +586,7 @@ namespace Facturix_Salários
 
         private void txtNovo_Click(object sender, EventArgs e)
         {
-            cancelar();
+            limparCaixas();
             impedirBotoes();
         }
 
@@ -752,7 +606,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode.ToString() == "F4")
             {
-                cancelar();
+                limparCaixas();
             }
             if (e.KeyCode.ToString() == "F5")
             {
@@ -784,7 +638,7 @@ namespace Facturix_Salários
             }
             if (e.Alt && e.KeyCode == Keys.C)
             {
-                cancelarDependente();
+                limparCaixasDependente();
             }
             if (e.Alt && e.KeyCode == Keys.E)
             {
@@ -793,8 +647,9 @@ namespace Facturix_Salários
         }
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
+            int cod = int.Parse(txtCodigo.Text);
             modificar();
-            visualizar();
+            procurar(cod);
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
@@ -815,7 +670,6 @@ namespace Facturix_Salários
                 this.Close();
                 frmMenu f = new frmMenu();
                 f.TopMost = true;
-                f.Show();
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -1164,6 +1018,8 @@ namespace Facturix_Salários
                 {
                     pbFoto.ImageLocation = txtLink.Text;
                     linkImagem = txtLink.Text;
+                    string iName = Path.GetExtension(linkImagem);
+                    File.Copy(linkImagem, appPath + iName);
                     txtLink.Text = "";
                 }
                 else {
@@ -1281,6 +1137,7 @@ namespace Facturix_Salários
         private void txtImpostoM_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            txtSeguro.Text = "";
         }
 
         private void btnImprimir_KeyDown(object sender, KeyEventArgs e)
@@ -1322,7 +1179,7 @@ namespace Facturix_Salários
             modificarDependente();
         }
 
-        private void cancelarDependente() 
+        private void limparCaixasDependente() 
         {
             txtNomeDep.Text = "";
             cbParentescoDep.Text = "";
@@ -1331,28 +1188,17 @@ namespace Facturix_Salários
 
         private void eliminarDependente() 
         {
-            String nome = txtNomeDep.Text;
-            int idfun = int.Parse(txtCodigo.Text);
-            int idDep = 0;
-            ArrayList listaDependentes = ControllerDependente.recuperarComCod(idfun);
-            foreach (ModeloDependente func in listaDependentes)
-            {
-                if (nome == func.getNome())
-                {
-                    idDep = func.getId();
-                }
-            }
-            ControllerDependente.remover(idDep);
+            ControllerDependente.remover(codigoCelSelecionada);
             refrescarDependentes();
         }
         private void btnCancelarDep_Click(object sender, EventArgs e)
         {
-            cancelarDependente();
+            limparCaixasDependente();
         }
 
         private void btnEliminarDep_Click(object sender, EventArgs e)
         {
-            modificarDependente();
+            eliminarDependente();
         }
 
         private void dataDependentes_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)

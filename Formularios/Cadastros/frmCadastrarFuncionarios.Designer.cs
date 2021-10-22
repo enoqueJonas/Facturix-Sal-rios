@@ -66,7 +66,6 @@ namespace Facturix_Salários
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dtNascimento = new System.Windows.Forms.DateTimePicker();
-            this.cbDependentes = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
             this.cbDeficiencia = new System.Windows.Forms.ComboBox();
             this.Label36 = new System.Windows.Forms.Label();
@@ -148,6 +147,7 @@ namespace Facturix_Salários
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
+            this.txtNrDependentes = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -277,7 +277,7 @@ namespace Facturix_Salários
             // 
             // dtDataDemissao
             // 
-            this.dtDataDemissao.CustomFormat = "yyyy-MM-dd";
+            this.dtDataDemissao.CustomFormat = "dd-MM-yyyy";
             this.dtDataDemissao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtDataDemissao.Location = new System.Drawing.Point(496, 28);
             this.dtDataDemissao.Name = "dtDataDemissao";
@@ -287,7 +287,7 @@ namespace Facturix_Salários
             // 
             // dtDataAdmissao
             // 
-            this.dtDataAdmissao.CustomFormat = "yyyy-MM-dd";
+            this.dtDataAdmissao.CustomFormat = "dd-MM-yyyy";
             this.dtDataAdmissao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtDataAdmissao.Location = new System.Drawing.Point(306, 28);
             this.dtDataAdmissao.Name = "dtDataAdmissao";
@@ -494,11 +494,11 @@ namespace Facturix_Salários
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtNrDependentes);
             this.groupBox1.Controls.Add(this.txtNacionalidade);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.dtNascimento);
-            this.groupBox1.Controls.Add(this.cbDependentes);
             this.groupBox1.Controls.Add(this.label31);
             this.groupBox1.Controls.Add(this.cbDeficiencia);
             this.groupBox1.Controls.Add(this.Label36);
@@ -568,7 +568,7 @@ namespace Facturix_Salários
             // 
             // dtNascimento
             // 
-            this.dtNascimento.CustomFormat = "yyyy-MM-dd";
+            this.dtNascimento.CustomFormat = "dd-MM-yyyy";
             this.dtNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtNascimento.Location = new System.Drawing.Point(77, 132);
             this.dtNascimento.MaxDate = new System.DateTime(2025, 12, 25, 0, 0, 0, 0);
@@ -576,16 +576,6 @@ namespace Facturix_Salários
             this.dtNascimento.Size = new System.Drawing.Size(136, 20);
             this.dtNascimento.TabIndex = 10;
             this.dtNascimento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtNascimento_KeyDown);
-            // 
-            // cbDependentes
-            // 
-            this.cbDependentes.FormattingEnabled = true;
-            this.cbDependentes.Location = new System.Drawing.Point(77, 184);
-            this.cbDependentes.Name = "cbDependentes";
-            this.cbDependentes.Size = new System.Drawing.Size(40, 21);
-            this.cbDependentes.TabIndex = 14;
-            this.cbDependentes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbDependentes_KeyDown);
-            this.cbDependentes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbDependentes_KeyPress);
             // 
             // label31
             // 
@@ -989,8 +979,10 @@ namespace Facturix_Salários
             // 
             this.txtImpostoM.Location = new System.Drawing.Point(109, 180);
             this.txtImpostoM.Name = "txtImpostoM";
-            this.txtImpostoM.Size = new System.Drawing.Size(132, 20);
+            this.txtImpostoM.Size = new System.Drawing.Size(44, 20);
             this.txtImpostoM.TabIndex = 40;
+            this.txtImpostoM.Text = "%";
+            this.txtImpostoM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtImpostoM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImpostoM_KeyDown);
             this.txtImpostoM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImpostoM_KeyPress);
             // 
@@ -1183,7 +1175,7 @@ namespace Facturix_Salários
             // 
             // btnEliminarDep
             // 
-            this.btnEliminarDep.Location = new System.Drawing.Point(10, 253);
+            this.btnEliminarDep.Location = new System.Drawing.Point(8, 253);
             this.btnEliminarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarDep.Name = "btnEliminarDep";
             this.btnEliminarDep.Size = new System.Drawing.Size(69, 60);
@@ -1194,7 +1186,7 @@ namespace Facturix_Salários
             // 
             // btnCancelarDep
             // 
-            this.btnCancelarDep.Location = new System.Drawing.Point(10, 164);
+            this.btnCancelarDep.Location = new System.Drawing.Point(8, 164);
             this.btnCancelarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarDep.Name = "btnCancelarDep";
             this.btnCancelarDep.Size = new System.Drawing.Size(69, 60);
@@ -1205,7 +1197,7 @@ namespace Facturix_Salários
             // 
             // btnModificarDep
             // 
-            this.btnModificarDep.Location = new System.Drawing.Point(10, 84);
+            this.btnModificarDep.Location = new System.Drawing.Point(8, 84);
             this.btnModificarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificarDep.Name = "btnModificarDep";
             this.btnModificarDep.Size = new System.Drawing.Size(69, 60);
@@ -1216,7 +1208,7 @@ namespace Facturix_Salários
             // 
             // btnAdicionarDep
             // 
-            this.btnAdicionarDep.Location = new System.Drawing.Point(10, 3);
+            this.btnAdicionarDep.Location = new System.Drawing.Point(8, 3);
             this.btnAdicionarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdicionarDep.Name = "btnAdicionarDep";
             this.btnAdicionarDep.Size = new System.Drawing.Size(69, 60);
@@ -1258,7 +1250,7 @@ namespace Facturix_Salários
             // 
             // dtNascimentoDep
             // 
-            this.dtNascimentoDep.CustomFormat = "yyyy-MM-dd";
+            this.dtNascimentoDep.CustomFormat = "dd-MM-yyyy";
             this.dtNascimentoDep.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtNascimentoDep.Location = new System.Drawing.Point(468, 42);
             this.dtNascimentoDep.Name = "dtNascimentoDep";
@@ -1411,6 +1403,13 @@ namespace Facturix_Salários
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
+            // txtNrDependentes
+            // 
+            this.txtNrDependentes.Location = new System.Drawing.Point(77, 184);
+            this.txtNrDependentes.Name = "txtNrDependentes";
+            this.txtNrDependentes.Size = new System.Drawing.Size(42, 20);
+            this.txtNrDependentes.TabIndex = 234;
+            // 
             // frmCadastrarFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1496,7 +1495,6 @@ namespace Facturix_Salários
         internal System.Windows.Forms.Label label14;
         internal System.Windows.Forms.TextBox txtNacionalidade;
         public System.Windows.Forms.DateTimePicker dtNascimento;
-        public System.Windows.Forms.ComboBox cbDependentes;
         internal System.Windows.Forms.Label label31;
         internal System.Windows.Forms.ComboBox cbDeficiencia;
         internal System.Windows.Forms.Label Label36;
@@ -1568,5 +1566,6 @@ namespace Facturix_Salários
         private System.Windows.Forms.Button btnModificarDep;
         private System.Windows.Forms.Button btnAdicionarDep;
         private System.Windows.Forms.DataGridView dataDependentes;
+        public System.Windows.Forms.TextBox txtNrDependentes;
     }
 }

@@ -45,12 +45,12 @@ namespace Facturix_Salários.Controllers
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE dependente SET nome=?, dataNascimento=?, grauParentesco=? WHERE idFuncionario=?";
+                String sqlInsert = "UPDATE dependente SET nome=?, dataNascimento=?, grauParentesco=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("nome", nome);
                 comando.Parameters.AddWithValue("dataNascimento", dataNascimneto);
                 comando.Parameters.AddWithValue("grauParentesco", grauParentesco);
-                comando.Parameters.AddWithValue("idFuncionario", idFuncionario);
+                comando.Parameters.AddWithValue("id", idFuncionario);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
@@ -129,6 +129,39 @@ namespace Facturix_Salários.Controllers
             return listaContas;
         }
 
+        public static ArrayList recuperarComCodFuncionario(int idFunc)
+        {
+            MySqlConnection conexao = Conexao.conectar();
+            ArrayList listaContas = new ArrayList();
+            try
+            {
+                conexao.Open();
+                String sqlSelect = "SELECT * from dependente WHERE idFuncionario=" + idFunc + "";
+                MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
+                MySqlDataReader leitor = comando.ExecuteReader();
+                while (leitor.Read())
+                {
+                    int id = leitor.GetInt16(0);
+                    int idFuncionario = leitor.GetInt16(1);
+                    String nome = leitor.GetString(2);
+                    String dataNascimento = leitor.GetString(3);
+                    String dt = dataNascimento.Substring(0, 10);
+                    String grauParentesco = leitor.GetString(4);
+                    listaContas.Add(new ModeloDependente(id, idFuncionario, nome, dt, grauParentesco));
+                }
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar dependentes!");
+            }
+            finally
+            {
+                if (conexao != null)
+                    conexao.Close();
+            }
+            return listaContas;
+        }
+
         public static void remover(int codigo)
         {
             MySqlConnection conexao = Conexao.conectar();
@@ -142,7 +175,7 @@ namespace Facturix_Salários.Controllers
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Não foi possível atualizar o dependente! Contacte o técnico!");
+                MessageBox.Show(err.Message, "Não foi possível remover o dependente! Contacte o técnico!");
             }
             finally
             {

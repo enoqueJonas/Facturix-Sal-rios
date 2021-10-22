@@ -29,27 +29,38 @@ namespace Facturix_Salários
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
             this.ActiveControl = txtLocalizar;
+            mostrarNumeroFuncionarios();
+        }
+
+        private void mostrarNumeroFuncionarios() 
+        {
             txtNumeroFuncionarios.Text = numeroFuncionarios + "";
         }
 
-        private void refrescar() 
+        private void montarDataGridView(ArrayList listaRecebida) 
         {
-            ArrayList listaFuncionarios = ControllerFuncionario.recuperar();
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("Nome");
             dt.Columns.Add("Telefone");
-            foreach (ModeloFuncionario func in listaFuncionarios)
+            foreach (ModeloFuncionario func in listaRecebida)
             {
                 DataRow dRow = dt.NewRow();
-                dRow["ID"]= func.getCodigo();
+                dRow["ID"] = func.getCodigo();
                 dRow["Nome"] = func.getNome();
                 dRow["Telefone"] = func.getTel();
                 dt.Rows.Add(dRow);
                 numeroFuncionarios += 1;
             }
+            dataFuncionarios.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
+            dataFuncionarios.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             dataFuncionarios.DataSource = dt;
             dataFuncionarios.Refresh();
+        }
+        private void refrescar() 
+        {
+            ArrayList listaFuncionarios = ControllerFuncionario.recuperar();
+            montarDataGridView(listaFuncionarios);
         }
 
         private void eliminar() {
@@ -63,24 +74,7 @@ namespace Facturix_Salários
             f.ShowDialog();
             int cod = f.enterdCod;
             ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(cod);
-            foreach (ModeloFuncionario func in listaFuncionarios)
-            {
-
-                DataTable dt = new DataTable();
-                dt.Columns.Add("ID");
-                dt.Columns.Add("Nome");
-                dt.Columns.Add("Telefone");
-                for (int i = 0; i < listaFuncionarios.Count; i++)
-                {
-                    DataRow dRow = dt.NewRow();
-                    dRow["ID"] = func.getCodigo();
-                    dRow["Nome"] = func.getNome();
-                    dRow["Telefone"] = func.getTel();
-                    dt.Rows.Add(dRow);
-                }
-                dataFuncionarios.DataSource = dt;
-                dataFuncionarios.Refresh();
-            }
+            montarDataGridView(listaFuncionarios);
         }
 
         private void confirmarFechamento()
@@ -151,7 +145,7 @@ namespace Facturix_Salários
                 f.txtAlimentacao.Text = func.getSubAlimentacao() + "";
                 f.txtSubTransporte.Text = func.getSubTransporte() + "";
                 f.txtHoraSemana.Text = func.getHoras() + "";
-                f.cbDependentes.Text = func.getDependentes() + "";
+                f.txtNrDependentes.Text = func.getDependentes() + "";
                 f.cbHabilitacoes.Text = func.getHabilitacoes();
                 f.txtNacionalidade.Text = func.getNacionalidade();
                 f.txtUltimo.Text = func.getUltimoEmprego();
@@ -240,20 +234,7 @@ namespace Facturix_Salários
         {
             String procura = txtLocalizar.Text;
             ArrayList listaFuncionarios = ControllerFuncionario.recuperarComString(procura);
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
-            dt.Columns.Add("Nome");
-            dt.Columns.Add("Telefone");
-            foreach (ModeloFuncionario func in listaFuncionarios)
-            {
-                DataRow dRow = dt.NewRow();
-                dRow["ID"] = func.getCodigo();
-                dRow["Nome"] = func.getNome();
-                dRow["Telefone"] = func.getTel();
-                dt.Rows.Add(dRow);
-            }
-            dataFuncionarios.DataSource = dt;
-            dataFuncionarios.Refresh();
+            montarDataGridView(listaFuncionarios);
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
@@ -264,6 +245,7 @@ namespace Facturix_Salários
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
+            mostrarNumeroFuncionarios();
         }
 
         private void dataFuncionarios_CellClick(object sender, DataGridViewCellEventArgs e)

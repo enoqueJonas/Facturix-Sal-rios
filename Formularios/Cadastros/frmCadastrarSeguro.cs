@@ -143,7 +143,6 @@ namespace Facturix_Salários
                 this.Close();
                 frmMenu f = new frmMenu();
                 f.TopMost = true;
-                f.Show();
             }
             else if (dialogResult == DialogResult.No)
             {

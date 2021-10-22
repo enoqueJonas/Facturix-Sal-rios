@@ -26,12 +26,12 @@ namespace Facturix_Salários
             ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
-            dt.Columns.Add("Habilitações");
+            dt.Columns.Add("Habilitação");
             foreach (ModeloHabilitacao func in listaHabilitacoes)
             {
                 DataRow dRow = dt.NewRow();
                 dRow["ID"] = func.getId();
-                dRow["Habilitações"] = func.getHabilitacao();
+                dRow["Habilitação"] = func.getHabilitacao();
                 dt.Rows.Add(dRow);
             }
             dataHabilitacoes.DataSource = dt;
@@ -127,7 +127,6 @@ namespace Facturix_Salários
                 this.Close();
                 frmMenu f = new frmMenu();
                 f.TopMost = true;
-                f.Show();
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -139,6 +138,7 @@ namespace Facturix_Salários
         {
             gravar();
             refrescar();
+            porFoco();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -146,6 +146,7 @@ namespace Facturix_Salários
             modificar();
             adicionar();
             refrescar();
+            porFoco();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -153,6 +154,11 @@ namespace Facturix_Salários
             eliminar();
             adicionar();
             refrescar();
+        }
+
+        private void porFoco()
+        {
+            this.ActiveControl = txtNome;
         }
 
         private void frmCadastrarHabilitacoes_Load(object sender, EventArgs e)
@@ -163,6 +169,7 @@ namespace Facturix_Salários
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            porFoco();
         }
 
         private void frmCadastrarHabilitacoes_KeyDown(object sender, KeyEventArgs e)
@@ -217,6 +224,7 @@ namespace Facturix_Salários
         {
             adicionar();
             refrescar();
+            porFoco();
         }
 
         private void dataHabilitacoes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

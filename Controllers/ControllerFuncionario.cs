@@ -443,7 +443,7 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("sindicato", sindicato);
                 comando.Parameters.AddWithValue("id", codigo);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Funcionario atualizado com sucesso!");
+                MessageBox.Show("Funcionário atualizado com sucesso!");
             }
             catch (Exception err)
             {
@@ -466,7 +466,7 @@ namespace Facturix_Salários
                 MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
                 comando.Parameters.Add(new MySqlParameter("id", codigo));
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Funcionaro removido!");
+                MessageBox.Show("Funcionário removido!");
             }
             catch (Exception err)
             {

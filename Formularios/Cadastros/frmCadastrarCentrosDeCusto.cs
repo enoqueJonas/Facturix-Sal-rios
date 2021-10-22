@@ -65,7 +65,6 @@ namespace Facturix_Salários
                 this.Close();
                 frmMenu f = new frmMenu();
                 f.TopMost = true;
-                f.Show();
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -111,6 +110,7 @@ namespace Facturix_Salários
             gravar();
             adicionar();
             refrescar();
+            porFoco();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -118,6 +118,7 @@ namespace Facturix_Salários
             modificar();
             cancelar();
             refrescar();
+            porFoco();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -157,6 +158,7 @@ namespace Facturix_Salários
         {
             adicionar();
             refrescar();
+            porFoco();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -205,6 +207,10 @@ namespace Facturix_Salários
             impedirBotoes();
         }
 
+        private void porFoco()
+        {
+            this.ActiveControl = txtNome;
+        }
         private void frmCadastrarCentrosDeCusto_Load(object sender, EventArgs e)
         {
             setCod();
@@ -214,6 +220,7 @@ namespace Facturix_Salários
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            porFoco();
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)

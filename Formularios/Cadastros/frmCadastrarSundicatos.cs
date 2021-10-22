@@ -25,12 +25,12 @@ namespace Facturix_Salários
             ArrayList listaSindicatos = ControllerSindicato.recuperar();
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
-            dt.Columns.Add("Sindicatos");
+            dt.Columns.Add("Sindicato");
             foreach (ModeloSindicato func in listaSindicatos)
             {
                 DataRow dRow = dt.NewRow();
                 dRow["ID"] = func.getId();
-                dRow["Sindicatos"] = func.getSindicato();
+                dRow["Sindicato"] = func.getSindicato();
                 dt.Rows.Add(dRow);
             }
             dataGridView1.DataSource = dt;
@@ -62,12 +62,13 @@ namespace Facturix_Salários
             gravar();
             adicionar();
             refrescar();
+            porFoco();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
-            cancelar();
+            limparCaixas();
             refrescar();
         }
 
@@ -96,8 +97,7 @@ namespace Facturix_Salários
             {
                 this.Close();
                 frmMenu f = new frmMenu();
-                f.TopMost = true;
-                f.Show();
+                f.Focus();
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -110,16 +110,20 @@ namespace Facturix_Salários
         }
         private void adicionar()
         {
+            limparCaixas();
             setCod();
-            txtNome.Text = "";
         }
 
-        private void cancelar()
+        private void limparCaixas()
         {
             txtCodigo.Text = "";
             txtNome.Text = "";
         }
 
+        private void porFoco() 
+        {
+            this.ActiveControl = txtNome;
+        }
         private void impedirBotoes()
         {
             if (txtNome.Text == "" || txtCodigo.Text == "")
@@ -149,8 +153,9 @@ namespace Facturix_Salários
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             modificar();
-            cancelar();
+            limparCaixas();
             refrescar();
+            porFoco();
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -158,11 +163,12 @@ namespace Facturix_Salários
             adicionar();
             impedirBotoes();
             refrescar();
+            porFoco();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            cancelar();
+            limparCaixas();
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -187,7 +193,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode.ToString() == "F4")
             {
-                cancelar();
+                limparCaixas();
             }
             if (e.KeyCode.ToString() == "F5")
             {
@@ -214,6 +220,7 @@ namespace Facturix_Salários
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            porFoco();
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
