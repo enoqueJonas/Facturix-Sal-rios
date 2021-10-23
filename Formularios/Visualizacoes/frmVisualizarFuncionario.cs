@@ -84,8 +84,8 @@ namespace Facturix_Salários
             {
                 this.Close();
                 frmMenu f = new frmMenu();
-                f.TopMost = true;
-                f.Show();
+                f.Focus();
+                f.ShowDialog();
             }
             else if (dialogResult == DialogResult.No)
             {

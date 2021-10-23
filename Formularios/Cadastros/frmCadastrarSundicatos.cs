@@ -17,7 +17,6 @@ namespace Facturix_Salários
         public frmCadastrarSundicatos()
         {
             InitializeComponent();
-            impedirBotoes();
         }
 
         private void refrescar()
@@ -35,14 +34,35 @@ namespace Facturix_Salários
             }
             dataGridView1.DataSource = dt;
             dataGridView1.Refresh();
-            dataGridView1.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridView1.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataGridView1.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
         public void gravar()
         {
+            ArrayList listaSindicatos = ControllerSindicato.recuperar();
             int id = int.Parse(txtCodigo.Text);
             String regime = txtNome.Text;
-            ControllerSindicato.gravar(id, regime);
+            int cod = 0;
+            foreach (ModeloSindicato func in listaSindicatos)
+            {
+                if (func.getId() == id)
+                {
+                    cod = func.getId();
+                }
+            }
+            if (cod != 0)
+            {
+                ControllerSindicato.atualizar(id, regime);
+                limparCaixas();
+                mudarVisibilidadeLabels(false);
+                refrescar();
+            }
+            else
+            {
+                ControllerSindicato.gravar(id, regime);
+                adicionar();
+                refrescar();
+            }
         }
 
         public void eliminar()
@@ -51,18 +71,13 @@ namespace Facturix_Salários
             ControllerSindicato.remover(id);
         }
 
-        public void modificar()
-        {
-            int id = int.Parse(txtCodigo.Text);
-            String regime = txtNome.Text;
-            ControllerSindicato.atualizar(id, regime);
-        }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
             adicionar();
             refrescar();
             porFoco();
+            impedirBotoes();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -70,6 +85,7 @@ namespace Facturix_Salários
             eliminar();
             limparCaixas();
             refrescar();
+            impedirBotoes();
         }
 
         private int getCod()
@@ -98,6 +114,7 @@ namespace Facturix_Salários
                 this.Close();
                 frmMenu f = new frmMenu();
                 f.Focus();
+                f.ShowDialog();
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -128,11 +145,13 @@ namespace Facturix_Salários
         {
             if (txtNome.Text == "" || txtCodigo.Text == "")
             {
+                btnAdicionar.Enabled = true;
                 btnCancelar.Enabled = false;
                 btnAtualizar.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnConfirmar.Enabled = false;
                 btnCancelar.FlatStyle = FlatStyle.Flat;
+                btnAdicionar.FlatStyle = FlatStyle.Standard;
                 btnConfirmar.FlatStyle = FlatStyle.Flat;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
                 btnAtualizar.FlatStyle = FlatStyle.Flat;
@@ -150,12 +169,32 @@ namespace Facturix_Salários
             }
         }
 
+        private void mudarVisibilidadeLabels(Boolean estado) 
+        {
+            lbl1.Visible = estado;
+        }
+
+        private void atualizarBotoes() 
+        {
+            if (lbl1.Visible == true)
+            {
+                btnAdicionar.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnEliminar.FlatStyle = FlatStyle.Flat;
+                btnAdicionar.FlatStyle = FlatStyle.Flat;
+            }
+            else 
+            {
+                btnAdicionar.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnAdicionar.FlatStyle = FlatStyle.Standard;
+            }
+        }
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            modificar();
-            limparCaixas();
-            refrescar();
-            porFoco();
+            mudarVisibilidadeLabels(true);
+            atualizarBotoes();
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -169,6 +208,7 @@ namespace Facturix_Salários
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             limparCaixas();
+            impedirBotoes();
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -189,15 +229,18 @@ namespace Facturix_Salários
             }
             if (e.KeyCode.ToString() == "F3")
             {
-                modificar();
+                mudarVisibilidadeLabels(true);
+                atualizarBotoes();
             }
             if (e.KeyCode.ToString() == "F4")
             {
                 limparCaixas();
+                impedirBotoes();
             }
             if (e.KeyCode.ToString() == "F5")
             {
                 gravar();
+                impedirBotoes();
             }
             if (e.KeyCode.ToString() == "F6")
             {
@@ -214,6 +257,7 @@ namespace Facturix_Salários
 
         private void frmCadastrarSundicatos_Load(object sender, EventArgs e)
         {
+            impedirBotoes();
             setCod();
             refrescar();
             foreach (DataGridViewColumn col in dataGridView1.Columns)
@@ -226,6 +270,7 @@ namespace Facturix_Salários
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             impedirBotoes();
+            atualizarBotoes();
         }
 
         private void cbSindicatos_SelectedIndexChanged(object sender, EventArgs e)

@@ -27,7 +27,6 @@ namespace Facturix_Salários
         {
             InitializeComponent();
             setCod();
-            impedirBotoes();
             adicionarItemsCb();
         }
 
@@ -82,6 +81,51 @@ namespace Facturix_Salários
             }
         }
 
+        private void mostrarLabels(Boolean estado) 
+        {
+            lblMod1.Visible = estado;
+            lblMod2.Visible = estado;
+            lblMod3.Visible = estado;
+            lblMod4.Visible = estado;
+            lblMod5.Visible = estado;
+            lblMod6.Visible = estado;
+            lblMod7.Visible = estado;
+            lblMod8.Visible = estado;
+            lblMod9.Visible = estado;
+            lblMod10.Visible = estado;
+            lblMod11.Visible = estado;
+            lblMod12.Visible = estado;
+            lblMod13.Visible = estado;
+            lblMod14.Visible = estado;
+            lblMod15.Visible = estado;
+            lblMod16.Visible = estado;
+            lblMod17.Visible = estado;
+            lblMod18.Visible = estado;
+            lblMod19.Visible = estado;
+            lblMod20.Visible = estado;
+            lblMod21.Visible = estado;
+            lblMod22.Visible = estado;
+            lblMod23.Visible = estado;
+            lblMod24.Visible = estado;
+            lblMod25.Visible = estado;
+            lblMod26.Visible = estado;
+            lblMod27.Visible = estado;
+            lblMod28.Visible = estado;
+            lblMod29.Visible = estado;
+            lblMod30.Visible = estado;
+            lblMod31.Visible = estado;
+            lblMod32.Visible = estado;
+            lblMod33.Visible = estado;
+            lblMod34.Visible = estado;
+            lblMod35.Visible = estado;
+            lblMod36.Visible = estado;
+            lblMod37.Visible = estado;
+            lblMod38.Visible = estado;
+            lblMod39.Visible = estado;
+            lblMod40.Visible = estado;
+            lblMod41.Visible = estado;
+            lblMod42.Visible = estado;
+        }
         private void porFoco() 
         {
             this.ActiveControl = txtNome;
@@ -119,11 +163,13 @@ namespace Facturix_Salários
             //|| txtNrFiscal.Text == ""
             if (txtNome.Text == "" )
                 {
+                    btnAdicionar.Enabled = true;
                     btnAtualizar.Enabled = false;
                     btnCancelar.Enabled = false;
                     btnConfirmar.Enabled = false;
                     btnEliminar.Enabled = false;
                     btnImprimir.Enabled = false;
+                    btnAdicionar.FlatStyle = FlatStyle.Standard;
                     btnAtualizar.FlatStyle = FlatStyle.Flat;
                     btnCancelar.FlatStyle = FlatStyle.Flat;
                     btnConfirmar.FlatStyle = FlatStyle.Flat;
@@ -267,17 +313,21 @@ namespace Facturix_Salários
             String centroDeCusto = cbCentrocusto.Text;
             String segurancaSocial = txtSeguranca.Text;
             String sindicato = cbSindicato.Text;
-            if (getCod() == codigo)
+            int cod = 0;
+            foreach (ModeloFuncionario func in listaFuncionarios)
             {
-                //MessageBox.Show("Funcionário já está registado! Clique no botão adicionar para poder adicionar um novo funcionário!");
-                codigo += 1;
+                if (func.getCodigo() == codigo) 
+                {
+                    cod = func.getCodigo();
+                }
             }
-            //Condicao para exigir imagem do funcionario
-            /*else if (linkImagem == "")
+            if (cod!=0)
             {
-                //MessageBox.Show("Adicione a foto do funcionário!");
-                linkImagem = @"C:\Users\Utilizador\Downloads\default.png";
-            }*/
+                ControllerFuncionario.atualizar(codigo, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato);
+                ControllerConta.Guardar(codigo, banco, nib, conta);
+                limparCaixas();
+                mostrarLabels(false);
+            }
             else 
             {
                 ControllerFuncionario.Guardar(codigo, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal,centroDeCusto, segurancaSocial, sindicato);
@@ -364,54 +414,6 @@ namespace Facturix_Salários
             ArrayList listaContas = ControllerConta.recuperarComCod(cod);
             montarCaixasDeTexto(listaFuncionarios, listaContas, cod);
             limparCaixasDependente();
-        }
-
-        private void modificar()
-        {
-            int codigo = int.Parse(txtCodigo.Text);
-            String nome = txtNome.Text;
-            String cell = txtCell.Text;
-            String cellSec = txtCellSec.Text;
-            String telefone = txtTel.Text;
-            String email = txtEmail.Text;
-            String estadoCivil = cbEstadoCivil.Text;
-            String deficiencia = cbDeficiencia.Text;
-            String conjugue = txtConjugue.Text;
-            String sexo = cbSexo.Text;
-            String moradaGen = txtMorada.Text;
-            String bairro = txtBairro.Text;
-            String localidade = txtLocalidade.Text;
-            int codigoPostal = int.Parse(txtCodPostal.Text);
-            String dataNasc = dtNascimento.Value.ToString("yyyy-MM-dd");
-            String tipoContrato = cbContrato.Text;
-            String dataAdmissao = dtDataAdmissao.Value.ToString("yyyy-MM-dd");
-            String dataDemissao = dtDataDemissao.Value.ToString("yyyy-MM-dd");
-            String profissao = cbProfissao.Text;
-            String categoria = cbCategoria.Text;
-            String seguro = cbSeguro.Text;
-            String localTrabalho = cbLocalTrabalho.Text;
-            String regime = cbRegime.Text;
-            String bi = txtBi.Text;
-            String numeroBenificiario = txtNrBenificiario.Text;
-            String numeroFiscal = txtNrFiscal.Text;
-            double vencimento = double.Parse(txtVencimento.Text);
-            double subAlimentacao = double.Parse(txtAlimentacao.Text);
-            double subTransporte = double.Parse(txtSubTransporte.Text);
-            float horas = float.Parse(txtHoraSemana.Text);
-            int dependentes = int.Parse(txtNrDependentes.Text);
-            String habilitacoes = cbHabilitacoes.Text;
-            String banco = txtBanco.Text;
-            String nib = txtNib.Text;
-            String conta = txtNrConta.Text;
-            String nacionalidade = txtNacionalidade.Text;
-            String ultimoEmprego = txtUltimo.Text;
-            String turno = cbTurno.Text;
-            String centroDeCusto = cbCentrocusto.Text;
-            String segurancaSocial = txtSeguranca.Text;
-            String sindicato = cbSindicato.Text;
-            float impostoMunicipal = float.Parse(txtImpostoM.Text);
-            ControllerFuncionario.atualizar(codigo, nome, cell, cellSec, telefone, email, estadoCivil, deficiencia, conjugue, sexo, dataNasc, linkImagem, codigoPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato);
-            ControllerConta.atualizar(codigo, banco, nib, conta);
         }
 
         private void imprimir() 
@@ -588,6 +590,7 @@ namespace Facturix_Salários
         {
             limparCaixas();
             impedirBotoes();
+            mostrarLabels(false);
         }
 
         private void frmFuncionarios_KeyDown(object sender, KeyEventArgs e)
@@ -602,7 +605,8 @@ namespace Facturix_Salários
             }
             if (e.KeyCode.ToString() == "F3")
             {
-                modificar();
+                mostrarLabels(true);
+                atualizarBotoes();
             }
             if (e.KeyCode.ToString() == "F4")
             {
@@ -647,14 +651,14 @@ namespace Facturix_Salários
         }
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            int cod = int.Parse(txtCodigo.Text);
-            modificar();
-            procurar(cod);
+            mostrarLabels(true);
+            atualizarBotoes();
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            remover(); 
+            remover();
+            impedirBotoes();
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
@@ -669,7 +673,8 @@ namespace Facturix_Salários
             {
                 this.Close();
                 frmMenu f = new frmMenu();
-                f.TopMost = true;
+                f.Focus();
+                f.ShowDialog();
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -677,6 +682,30 @@ namespace Facturix_Salários
             }
         }
 
+        private void atualizarBotoes()
+        {
+            if (lblMod1.Visible == true)
+            {
+                btnAdicionar.Enabled = true;
+                btnImprimir.Enabled = false;
+                btnMostrar.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnAdicionar.FlatStyle = FlatStyle.Standard;
+                btnEliminar.FlatStyle = FlatStyle.Flat;
+                btnMostrar.FlatStyle = FlatStyle.Flat;
+                btnImprimir.FlatStyle = FlatStyle.Flat;
+                btnAdicionar.FlatStyle = FlatStyle.Flat;
+            }
+            else
+            {
+                btnMostrar.Enabled = true;
+                btnImprimir.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnImprimir.FlatStyle = FlatStyle.Standard;
+                btnMostrar.FlatStyle = FlatStyle.Standard;
+            }
+        }
         private void f_funcionarios_Load(object sender, EventArgs e)
         {
             porFoco();
@@ -698,7 +727,7 @@ namespace Facturix_Salários
             dataDependentes.Columns["ID"].Width = 70;
             dataDependentes.Columns["Nome"].Width = 370;
             dataDependentes.Columns["Data Nasc."].Width = 105;
-            dataDependentes.Columns["Grau Parent."].Width = 170;
+            dataDependentes.Columns["Grau Parent."].Width = 163;
         }
         private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -880,6 +909,7 @@ namespace Facturix_Salários
         private void btnMostrar_Click(object sender, EventArgs e)
         {
             mostrar();
+            impedirBotoes();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -1047,6 +1077,7 @@ namespace Facturix_Salários
         private void txtNome_TextChanged_1(object sender, EventArgs e)
         {
             impedirBotoes();
+            atualizarBotoes();
         }
 
         private void txtHoraSemana_KeyPress(object sender, KeyPressEventArgs e)
@@ -1228,6 +1259,74 @@ namespace Facturix_Salários
         private void cbParentescoDep_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+        }
+
+        private void txtMorada_TextChanged_1(object sender, EventArgs e)
+        {
+        }
+
+        private void txtBairro_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtCodPostal_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtLocalidade_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtCell_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtCellSec_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtTel_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void dtNascimento_ValueChanged_1(object sender, EventArgs e)
+        {
+        }
+
+        private void cbSexo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void cbEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtConjugue_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtNrDependentes_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void cbDeficiencia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtNacionalidade_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void cbContrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void dtDataAdmissao_ValueChanged(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -117,7 +117,7 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from seguro WHERE id=" + codigo;
+                String sqlSelect = "SELECT * from profissao WHERE id=" + codigo;
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())

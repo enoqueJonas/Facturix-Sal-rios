@@ -19,7 +19,6 @@ namespace Facturix_Salários
             InitializeComponent();
             setCod();
             this.ActiveControl = txtPercentagem;
-            impedirBotoes();
         }
 
         private void refrescar()
@@ -39,7 +38,8 @@ namespace Facturix_Salários
             }
             dataSeguro.DataSource = dt;
             dataSeguro.Refresh();
-            dataSeguro.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataSeguro.Columns["Percentagem"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataSeguro.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataSeguro.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
         private int getCod()
@@ -64,10 +64,12 @@ namespace Facturix_Salários
         {
             if (txtNome.Text == "")
             {
+                btnAdicionar.Enabled = true;
                 btnCancelar.Enabled = false;
                 btnAtualizar.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnConfirmar.Enabled = false;
+                btnAdicionar.FlatStyle = FlatStyle.Standard;
                 btnCancelar.FlatStyle = FlatStyle.Flat;
                 btnConfirmar.FlatStyle = FlatStyle.Flat;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
@@ -99,11 +101,11 @@ namespace Facturix_Salários
         }
         private void adicionar() 
         {
-            cancelar();
+            limparCaixas();
             setCod();
         }
 
-        private void cancelar() 
+        private void limparCaixas() 
         {
             txtCodigo.Text = "";
             txtNome.Text = "";
@@ -118,21 +120,40 @@ namespace Facturix_Salários
             int id = int.Parse(txtCodigo.Text);
             String regime = txtNome.Text;
             float percentagem = float.Parse(txtPercentagem.Text) ;
-            ControllerSeguro.gravar(id, regime, percentagem);
+            ArrayList listaSeguros = ControllerSeguro.recuperar();
+            int cod = 0;
+            foreach (ModeloSeguro func in listaSeguros)
+            {
+                if (func.getId() == id)
+                {
+                    cod = func.getId();
+                }
+            }
+            if (cod != 0)
+            {
+                ControllerSeguro.atualizar(id, regime, percentagem);
+                limparCaixas();
+                mudarVisibilidadeLabels(false);
+                refrescar();
+            }
+            else
+            {
+                ControllerCategoria.gravar(id, regime);
+                adicionar();
+                refrescar();
+            }
+        }
+
+        private void mudarVisibilidadeLabels(Boolean estado) 
+        {
+            lbl1.Visible = estado;
+            lbl2.Visible = estado;
         }
 
         public void eliminar() 
         {
             int id = int.Parse(txtCodigo.Text);
             ControllerSeguro.remover(id);
-        }
-
-        public void modificar()
-        {
-            int id = int.Parse(txtCodigo.Text);
-            String regime = txtNome.Text;
-            float percentagem = float.Parse(txtPercentagem.Text);
-            ControllerSeguro.atualizar(id, regime, percentagem);
         }
 
         private void confirmarFechamento()
@@ -142,7 +163,8 @@ namespace Facturix_Salários
             {
                 this.Close();
                 frmMenu f = new frmMenu();
-                f.TopMost = true;
+                f.Focus();
+                f.ShowDialog(); ;
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -184,6 +206,23 @@ namespace Facturix_Salários
             e.Handled = true;
             e.SuppressKeyPress = true;
         }
+        private void atualizarBotoes()
+        {
+            if (lbl1.Visible == true)
+            {
+                btnAdicionar.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnEliminar.FlatStyle = FlatStyle.Flat;
+                btnAdicionar.FlatStyle = FlatStyle.Flat;
+            }
+            else
+            {
+                btnAdicionar.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnAdicionar.FlatStyle = FlatStyle.Standard;
+            }
+        }
         private void txtNome_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
@@ -192,6 +231,7 @@ namespace Facturix_Salários
         {
             gravar();
             refrescar();
+            impedirBotoes();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -199,13 +239,13 @@ namespace Facturix_Salários
             eliminar();
             adicionar();
             refrescar();
+            impedirBotoes();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            modificar();
-            cancelar();
-            refrescar();
+            mudarVisibilidadeLabels(true);
+            atualizarBotoes();
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -236,11 +276,13 @@ namespace Facturix_Salários
             }
             if (e.KeyCode.ToString() == "F3")
             {
-                modificar();
+                mudarVisibilidadeLabels(true);
+                atualizarBotoes();
             }
             if (e.KeyCode.ToString() == "F4")
             {
-                cancelar();
+                limparCaixas();
+                impedirBotoes();
             }
             if (e.KeyCode.ToString() == "F5")
             {
@@ -262,6 +304,7 @@ namespace Facturix_Salários
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             impedirBotoes();
+            atualizarBotoes();
         }
 
         private void cbRegime_SelectedIndexChanged(object sender, EventArgs e)
@@ -277,12 +320,14 @@ namespace Facturix_Salários
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            cancelar();
+            limparCaixas();
+            impedirBotoes();
         }
 
         private void txtPercentagem_TextChanged(object sender, EventArgs e)
         {
             impedirBotoes();
+            atualizarBotoes();
         }
 
         private void cbSeguros_SelectedIndexChanged(object sender, EventArgs e)

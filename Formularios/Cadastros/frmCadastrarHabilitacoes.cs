@@ -36,7 +36,7 @@ namespace Facturix_Salários
             }
             dataHabilitacoes.DataSource = dt;
             dataHabilitacoes.Refresh();
-            dataHabilitacoes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataHabilitacoes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataHabilitacoes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
         private int getCod()
@@ -66,10 +66,12 @@ namespace Facturix_Salários
         {
             if (txtNome.Text == "" || txtCodigo.Text == "")
             {
+                btnAdicionar.Enabled = true;
                 btnCancelar.Enabled = false;
                 btnAtualizar.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnConfirmar.Enabled = false;
+                btnAdicionar.FlatStyle = FlatStyle.Standard;
                 btnCancelar.FlatStyle = FlatStyle.Flat;
                 btnConfirmar.FlatStyle = FlatStyle.Flat;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
@@ -87,7 +89,25 @@ namespace Facturix_Salários
                 btnAtualizar.FlatStyle = FlatStyle.Standard;
             }
         }
-        private void cancelar()
+
+        private void atualizarBotoes()
+        {
+            if (lbl1.Visible == true)
+            {
+                btnAdicionar.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnEliminar.FlatStyle = FlatStyle.Flat;
+                btnAdicionar.FlatStyle = FlatStyle.Flat;
+            }
+            else
+            {
+                btnAdicionar.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnAdicionar.FlatStyle = FlatStyle.Standard;
+            }
+        }
+        private void limparCaixas()
         {
             txtCodigo.Text = "";
             txtNome.Text = "";
@@ -101,22 +121,36 @@ namespace Facturix_Salários
 
         public void gravar()
         {
+            ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
             int id = int.Parse(txtCodigo.Text);
-            String regime = txtNome.Text;
-            ControllerHabilitacoes.gravar(id, regime);
+            String habilitacoes = txtNome.Text;
+            int cod = 0;
+            foreach (ModeloHabilitacao func in listaHabilitacoes)
+            {
+                if (func.getId() == id)
+                {
+                    cod = func.getId();
+                }
+            }
+            if (cod != 0)
+            {
+                ControllerHabilitacoes.atualizar(id, habilitacoes);
+                limparCaixas();
+                mudarVisibilidadeLabels(false);
+                refrescar();
+            }
+            else
+            {
+                ControllerHabilitacoes.gravar(id, habilitacoes);
+                adicionar();
+                refrescar();
+            }
         }
 
         public void eliminar()
         {
             int id = int.Parse(txtCodigo.Text);
             ControllerHabilitacoes.remover(id);
-        }
-
-        public void modificar()
-        {
-            int id = int.Parse(txtCodigo.Text);
-            String regime = txtNome.Text;
-            ControllerHabilitacoes.atualizar(id, regime);
         }
 
         private void confirmarFechamento()
@@ -126,7 +160,8 @@ namespace Facturix_Salários
             {
                 this.Close();
                 frmMenu f = new frmMenu();
-                f.TopMost = true;
+                f.Focus();
+                f.ShowDialog();
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -134,19 +169,23 @@ namespace Facturix_Salários
             }
         }
 
+        private void mudarVisibilidadeLabels(Boolean estado) 
+        {
+            lbl1.Visible = estado;
+        }
+
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
             refrescar();
             porFoco();
+            impedirBotoes();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            modificar();
-            adicionar();
-            refrescar();
-            porFoco();
+            mudarVisibilidadeLabels(true);
+            atualizarBotoes();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -154,6 +193,7 @@ namespace Facturix_Salários
             eliminar();
             adicionar();
             refrescar();
+            impedirBotoes();
         }
 
         private void porFoco()
@@ -184,11 +224,13 @@ namespace Facturix_Salários
             }
             if (e.KeyCode.ToString() == "F3")
             {
-                modificar();
+                mudarVisibilidadeLabels(true);
+                atualizarBotoes();
             }
             if (e.KeyCode.ToString() == "F4")
             {
-                cancelar();
+                limparCaixas();
+                impedirBotoes();
             }
             if (e.KeyCode.ToString() == "F5")
             {
@@ -210,6 +252,7 @@ namespace Facturix_Salários
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
             impedirBotoes();
+            atualizarBotoes();
         }
 
         private void cbHabilitacoes_SelectedIndexChanged(object sender, EventArgs e)
@@ -243,6 +286,12 @@ namespace Facturix_Salários
         private void btnRegressar_Click(object sender, EventArgs e)
         {
             confirmarFechamento();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            limparCaixas();
+            impedirBotoes();
         }
     }
 }
