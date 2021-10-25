@@ -618,54 +618,37 @@ namespace Facturix_Salários
 
         private void frmFuncionarios_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode.ToString() == "F1")
+            if (e.KeyCode.ToString() == "F1" && btnAdicionar.Enabled)
             {
-                if (btnAdicionar.Enabled) 
-                {
-                    porFoco();
-                    adicionar();
-                }
+                porFoco();
+                adicionar();
             }
-            if (e.KeyCode.ToString() == "F2")
+            if (e.KeyCode.ToString() == "F2" && btnMostrar.Enabled)
             {
-                if (btnMostrar.Enabled) 
-                {
-                    mostrar();
-                }
+                mostrar();
             }
-            if (e.KeyCode.ToString() == "F3")
+            if (e.KeyCode.ToString() == "F3" && btnAtualizar.Enabled)
             {
-                if (btnAtualizar.Enabled) 
-                {
-                    mostrarLabels(true);
-                    atualizarBotoes();
-                }
+                mostrarLabels(true);
+                atualizarBotoes();
             }
-            if (e.KeyCode.ToString() == "F4")
+            if (e.KeyCode.ToString() == "F4" && btnCancelar.Enabled)
             {
-                if (btnCancelar.Enabled) 
-                {
-                    limparCaixas();
-                    mostrarLabels(false);
-                }
+                limparCaixas();
+                mostrarLabels(false);
             }
-            if (e.KeyCode.ToString() == "F5")
+            if (e.KeyCode.ToString() == "F5" && btnConfirmar.Enabled)
             {
-                if (btnConfirmar.Enabled) 
-                {
-                    gravar();
-                    impedirBotoes();
-                }
+                gravar();
+                impedirBotoes();
             }
-            if (e.KeyCode.ToString() == "F6")
+            if (e.KeyCode.ToString() == "F6" && btnEliminar.Enabled)
             {
-                if (btnEliminar.Enabled) 
-                {
-                    remover();
-                }
+                remover();
             }
-            if (e.KeyCode.ToString() == "F7")
+            if (e.KeyCode.ToString() == "F7" && btnImprimir.Enabled)
             {
+                imprimir();
             }
             if (e.KeyCode == Keys.Escape)
             {

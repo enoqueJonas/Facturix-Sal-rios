@@ -1822,7 +1822,7 @@ namespace Facturix_Salários
             // dataDependentes
             // 
             this.dataDependentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataDependentes.Location = new System.Drawing.Point(14, 10);
+            this.dataDependentes.Location = new System.Drawing.Point(15, 10);
             this.dataDependentes.Name = "dataDependentes";
             this.dataDependentes.RowHeadersVisible = false;
             this.dataDependentes.Size = new System.Drawing.Size(711, 327);
@@ -1971,6 +1971,7 @@ namespace Facturix_Salários
             // 
             // btnRegressar
             // 
+            this.btnRegressar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRegressar.BackgroundImage")));
             this.btnRegressar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRegressar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegressar.ForeColor = System.Drawing.Color.Black;

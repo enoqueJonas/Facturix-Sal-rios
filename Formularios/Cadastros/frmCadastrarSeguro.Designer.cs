@@ -105,6 +105,8 @@
             // 
             // btnRegressar
             // 
+            this.btnRegressar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRegressar.BackgroundImage")));
+            this.btnRegressar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRegressar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegressar.Location = new System.Drawing.Point(462, 6);
             this.btnRegressar.Margin = new System.Windows.Forms.Padding(2);

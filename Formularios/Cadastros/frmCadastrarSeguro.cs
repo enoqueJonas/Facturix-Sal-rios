@@ -270,44 +270,29 @@ namespace Facturix_Salários
 
         private void frmCadastrarSeguro_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode.ToString() == "F1")
+            if (e.KeyCode.ToString() == "F1" && btnAdicionar.Enabled)
             {
-                if (btnAdicionar.Enabled)
-                {
-                    adicionar();
-                }
+                adicionar();
             }
-            if (e.KeyCode.ToString() == "F3")
+            if (e.KeyCode.ToString() == "F3" && btnAtualizar.Enabled)
             {
-                if (btnAtualizar.Enabled)
-                {
-                    mudarVisibilidadeLabels(true);
-                    atualizarBotoes();
-                }
+                mudarVisibilidadeLabels(true);
+                atualizarBotoes();
             }
-            if (e.KeyCode.ToString() == "F4")
+            if (e.KeyCode.ToString() == "F4" && btnCancelar.Enabled)
             {
-                if (btnCancelar.Enabled)
-                {
-                    limparCaixas();
-                    impedirBotoes();
-                    mudarVisibilidadeLabels(false);
-                }
+                limparCaixas();
+                impedirBotoes();
+                mudarVisibilidadeLabels(false);
             }
-            if (e.KeyCode.ToString() == "F5")
+            if (e.KeyCode.ToString() == "F5" && btnConfirmar.Enabled)
             {
-                if (btnConfirmar.Enabled)
-                {
-                    gravar();
-                    impedirBotoes();
-                }
+                gravar();
+                impedirBotoes();
             }
-            if (e.KeyCode.ToString() == "F6")
+            if (e.KeyCode.ToString() == "F6" && btnEliminar.Enabled)
             {
-                if (btnEliminar.Enabled)
-                {
-                    eliminar();
-                }
+                eliminar();
             }
             if (e.KeyCode.ToString() == "F7")
             {
