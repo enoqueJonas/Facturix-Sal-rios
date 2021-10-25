@@ -29,7 +29,8 @@ namespace Facturix_Salários
             setCod();
             adicionarItemsCb();
         }
-
+        
+        /// <summary>Monta a lista de dependestes na DataGridView.</summary>
         private void refrescarDependentes() 
         {
             int idFunc = int.Parse(txtCodigo.Text);
@@ -57,6 +58,7 @@ namespace Facturix_Salários
             dataDependentes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
 
+        /// <summary>Adiciona Items como seguro, contrato... nas ComboBox.</summary>
         private void adicionarItemsCb() 
         {
             foreach (ModeloCategoria cat in listaCategorias)
@@ -81,6 +83,7 @@ namespace Facturix_Salários
             }
         }
 
+        /// <summary>Ativa ou distativa(dependendo do parametro recebiodo) as labels do modo edição.</summary>
         private void mostrarLabels(Boolean estado) 
         {
             lblMod1.Visible = estado;
@@ -126,17 +129,22 @@ namespace Facturix_Salários
             lblMod41.Visible = estado;
             lblMod42.Visible = estado;
         }
+
+        /// <summary>Foca na TextBox txtNome.</summary>
         private void porFoco() 
         {
             this.ActiveControl = txtNome;
         }
 
+        /// <summary>Restringe Textboxs para apenas aceitar números.</summary>
         private void aceitarApenasNumeros(KeyPressEventArgs e) {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&(e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
         }
+
+        /// <summary>Adiciona na TextBox txtCodigo o ID do registo a seguir.</summary>
         private void setCod()
         {
             int cod = 0;
@@ -148,6 +156,7 @@ namespace Facturix_Salários
             txtCodigo.Text = cod + 1 + ""; ;
         }
 
+        /// <summary>Procura o último ID do do registo.</summary>
         private int getCod() 
         {
             int cod = 0;
@@ -158,6 +167,8 @@ namespace Facturix_Salários
             }
             return cod;
         }
+
+        /// <summary>Controla que botões ficam ativos dependendo das TextBox preenchidas.</summary>
         public void impedirBotoes()
         {
             //|| txtNrFiscal.Text == ""
@@ -175,7 +186,11 @@ namespace Facturix_Salários
                     btnConfirmar.FlatStyle = FlatStyle.Flat;
                     btnEliminar.FlatStyle = FlatStyle.Flat;
                     btnImprimir.FlatStyle = FlatStyle.Flat;
-                }
+                    btnCancelar.Cursor = System.Windows.Forms.Cursors.Default;
+                    btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+                    btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
+                    btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
+            }
             else
                 if (txtNome.Text != "" )
                 {
@@ -189,8 +204,14 @@ namespace Facturix_Salários
                     btnConfirmar.FlatStyle = FlatStyle.Standard;
                     btnEliminar.FlatStyle = FlatStyle.Standard;
                     btnImprimir.FlatStyle = FlatStyle.Standard;
-                }
+                    btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+                    btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+                    btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+                    btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
+            }
         }
+
+        /// <summary>Grava na base de dados se o registo não existie, e atualiza se existir.</summary>
         private void gravar  ()
         {
             ArrayList listaFuncionarios = ControllerFuncionario.recuperar();
@@ -337,6 +358,7 @@ namespace Facturix_Salários
             }
         }
 
+        /// <summary>Monta no form os dados do registo.</summary>
         private void montarCaixasDeTexto(ArrayList listaFuncionarios, ArrayList listaContas, int cod) 
         {
             foreach (ModeloFuncionario func in listaFuncionarios)
@@ -397,6 +419,8 @@ namespace Facturix_Salários
                 }
             }
         }
+
+        /// <summary>Permite pesquisar no registo.</summary>
         public void mostrar()
         {
             frmNumeroRegisto f = new frmNumeroRegisto();
@@ -465,7 +489,6 @@ namespace Facturix_Salários
         {
             limparCaixas();
             setCod();
-            porFoco();
         }
 
         private void limparCaixas()
@@ -597,28 +620,49 @@ namespace Facturix_Salários
         {
             if (e.KeyCode.ToString() == "F1")
             {
-                adicionar();
+                if (btnAdicionar.Enabled) 
+                {
+                    porFoco();
+                    adicionar();
+                }
             }
             if (e.KeyCode.ToString() == "F2")
             {
-                mostrar();
+                if (btnMostrar.Enabled) 
+                {
+                    mostrar();
+                }
             }
             if (e.KeyCode.ToString() == "F3")
             {
-                mostrarLabels(true);
-                atualizarBotoes();
+                if (btnAtualizar.Enabled) 
+                {
+                    mostrarLabels(true);
+                    atualizarBotoes();
+                }
             }
             if (e.KeyCode.ToString() == "F4")
             {
-                limparCaixas();
+                if (btnCancelar.Enabled) 
+                {
+                    limparCaixas();
+                    mostrarLabels(false);
+                }
             }
             if (e.KeyCode.ToString() == "F5")
             {
-                gravar();
+                if (btnConfirmar.Enabled) 
+                {
+                    gravar();
+                    impedirBotoes();
+                }
             }
             if (e.KeyCode.ToString() == "F6")
             {
-                remover();
+                if (btnEliminar.Enabled) 
+                {
+                    remover();
+                }
             }
             if (e.KeyCode.ToString() == "F7")
             {
@@ -686,7 +730,7 @@ namespace Facturix_Salários
         {
             if (lblMod1.Visible == true)
             {
-                btnAdicionar.Enabled = true;
+                btnAdicionar.Enabled = false;
                 btnImprimir.Enabled = false;
                 btnMostrar.Enabled = false;
                 btnEliminar.Enabled = false;
@@ -695,6 +739,10 @@ namespace Facturix_Salários
                 btnMostrar.FlatStyle = FlatStyle.Flat;
                 btnImprimir.FlatStyle = FlatStyle.Flat;
                 btnAdicionar.FlatStyle = FlatStyle.Flat;
+                btnAdicionar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnImprimir.Cursor = System.Windows.Forms.Cursors.Default;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
             }
             else
             {
@@ -704,11 +752,14 @@ namespace Facturix_Salários
                 btnEliminar.FlatStyle = FlatStyle.Standard;
                 btnImprimir.FlatStyle = FlatStyle.Standard;
                 btnMostrar.FlatStyle = FlatStyle.Standard;
+                btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnMostrar.Cursor = System.Windows.Forms.Cursors.Hand;
             }
         }
         private void f_funcionarios_Load(object sender, EventArgs e)
         {
-            porFoco();
+            //porFoco();
             impedirBotoes();
             refrescarDependentes();
             foreach (DataGridViewColumn col in dataDependentes.Columns)
@@ -718,6 +769,7 @@ namespace Facturix_Salários
             mudarLarguraCelulas();
         }
 
+        /// <summary>Muda Largura das DataGridView Cells.</summary>
         private void mudarLarguraCelulas() 
         {
             dataDependentes.Columns["ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -735,6 +787,7 @@ namespace Facturix_Salários
         }
 
         Control ctrl;
+        /// <summary>Permite navegar no Form usando setas e o ENTER.</summary>
         private void mexerTeclado(object sender, KeyEventArgs e)
         {
             ctrl = (Control)sender;

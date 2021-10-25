@@ -257,6 +257,8 @@ namespace Facturix_Salários
             btnEliminar.FlatStyle = FlatStyle.Standard;
             btnImprimir.Enabled = true;
             btnImprimir.FlatStyle = FlatStyle.Standard;
+            btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)

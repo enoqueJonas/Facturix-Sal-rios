@@ -162,6 +162,10 @@ namespace Facturix_Salários
                 btnConfirmar.FlatStyle = FlatStyle.Flat;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
                 btnAtualizar.FlatStyle = FlatStyle.Flat;
+                btnCancelar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
             }
             else
             {
@@ -173,6 +177,10 @@ namespace Facturix_Salários
                 btnConfirmar.FlatStyle = FlatStyle.Standard;
                 btnEliminar.FlatStyle = FlatStyle.Standard;
                 btnAtualizar.FlatStyle = FlatStyle.Standard;
+                btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
             }
         }
 
@@ -184,6 +192,8 @@ namespace Facturix_Salários
                 btnEliminar.Enabled = false;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
                 btnAdicionar.FlatStyle = FlatStyle.Flat;
+                btnAdicionar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
             }
             else
             {
@@ -191,6 +201,8 @@ namespace Facturix_Salários
                 btnEliminar.Enabled = true;
                 btnEliminar.FlatStyle = FlatStyle.Standard;
                 btnAdicionar.FlatStyle = FlatStyle.Standard;
+                btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             }
         }
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -204,6 +216,7 @@ namespace Facturix_Salários
         {
             limparCaixas();
             impedirBotoes();
+            mudarVisibilidadeLabels(false);
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -215,29 +228,42 @@ namespace Facturix_Salários
         {
             if (e.KeyCode.ToString() == "F1")
             {
-                adicionar();
-            }
-            if (e.KeyCode.ToString() == "F2")
-            {
-
+                if (btnAdicionar.Enabled)
+                {
+                    adicionar();
+                }
             }
             if (e.KeyCode.ToString() == "F3")
             {
-                mudarVisibilidadeLabels(true);
-                atualizarBotoes();
+                if (btnAtualizar.Enabled)
+                {
+                    mudarVisibilidadeLabels(true);
+                    atualizarBotoes();
+                }
             }
             if (e.KeyCode.ToString() == "F4")
             {
-                limparCaixas();
-                impedirBotoes();
+                if (btnCancelar.Enabled)
+                {
+                    limparCaixas();
+                    impedirBotoes();
+                    mudarVisibilidadeLabels(false);
+                }
             }
             if (e.KeyCode.ToString() == "F5")
             {
-                gravar();
+                if (btnConfirmar.Enabled)
+                {
+                    gravar();
+                    impedirBotoes();
+                }
             }
             if (e.KeyCode.ToString() == "F6")
             {
-                eliminar();
+                if (btnEliminar.Enabled)
+                {
+                    eliminar();
+                }
             }
             if (e.KeyCode.ToString() == "F7")
             {
@@ -246,7 +272,6 @@ namespace Facturix_Salários
             {
                 confirmarFechamento();
             }
-            impedirBotoes();
         }
 
         private void porFoco()

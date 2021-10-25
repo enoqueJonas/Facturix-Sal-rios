@@ -1226,6 +1226,7 @@ namespace Facturix_Salários
             // 
             // txtCodigo
             // 
+            this.txtCodigo.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Location = new System.Drawing.Point(77, 31);
             this.txtCodigo.Name = "txtCodigo";
@@ -1841,7 +1842,8 @@ namespace Facturix_Salários
             // 
             // btnEliminarDep
             // 
-            this.btnEliminarDep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(102)))));
+            this.btnEliminarDep.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarDep.ForeColor = System.Drawing.Color.Black;
             this.btnEliminarDep.Location = new System.Drawing.Point(8, 268);
             this.btnEliminarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarDep.Name = "btnEliminarDep";
@@ -1853,7 +1855,8 @@ namespace Facturix_Salários
             // 
             // btnCancelarDep
             // 
-            this.btnCancelarDep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(102)))));
+            this.btnCancelarDep.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelarDep.ForeColor = System.Drawing.Color.Black;
             this.btnCancelarDep.Location = new System.Drawing.Point(8, 179);
             this.btnCancelarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarDep.Name = "btnCancelarDep";
@@ -1865,7 +1868,8 @@ namespace Facturix_Salários
             // 
             // btnModificarDep
             // 
-            this.btnModificarDep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(102)))));
+            this.btnModificarDep.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModificarDep.ForeColor = System.Drawing.Color.Black;
             this.btnModificarDep.Location = new System.Drawing.Point(8, 99);
             this.btnModificarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificarDep.Name = "btnModificarDep";
@@ -1877,7 +1881,8 @@ namespace Facturix_Salários
             // 
             // btnAdicionarDep
             // 
-            this.btnAdicionarDep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(102)))));
+            this.btnAdicionarDep.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdicionarDep.ForeColor = System.Drawing.Color.Black;
             this.btnAdicionarDep.Location = new System.Drawing.Point(8, 18);
             this.btnAdicionarDep.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdicionarDep.Name = "btnAdicionarDep";
@@ -1967,6 +1972,7 @@ namespace Facturix_Salários
             // btnRegressar
             // 
             this.btnRegressar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRegressar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegressar.ForeColor = System.Drawing.Color.Black;
             this.btnRegressar.Location = new System.Drawing.Point(537, 6);
             this.btnRegressar.Margin = new System.Windows.Forms.Padding(2);
@@ -1982,6 +1988,7 @@ namespace Facturix_Salários
             // 
             this.btnImprimir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnImprimir.BackgroundImage")));
             this.btnImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImprimir.ForeColor = System.Drawing.Color.Black;
             this.btnImprimir.Location = new System.Drawing.Point(464, 7);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(2);
@@ -1998,6 +2005,7 @@ namespace Facturix_Salários
             // 
             this.btnConfirmar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.BackgroundImage")));
             this.btnConfirmar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfirmar.ForeColor = System.Drawing.Color.Black;
             this.btnConfirmar.Location = new System.Drawing.Point(318, 6);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
@@ -2013,6 +2021,7 @@ namespace Facturix_Salários
             // 
             this.btnMostrar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMostrar.BackgroundImage")));
             this.btnMostrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnMostrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMostrar.ForeColor = System.Drawing.Color.Black;
             this.btnMostrar.Location = new System.Drawing.Point(99, 6);
             this.btnMostrar.Margin = new System.Windows.Forms.Padding(2);
@@ -2026,6 +2035,7 @@ namespace Facturix_Salários
             // 
             // btnProximo
             // 
+            this.btnProximo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnProximo.ForeColor = System.Drawing.Color.Black;
             this.btnProximo.Location = new System.Drawing.Point(759, 25);
             this.btnProximo.Name = "btnProximo";
@@ -2037,6 +2047,7 @@ namespace Facturix_Salários
             // 
             // btnAnterior
             // 
+            this.btnAnterior.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAnterior.ForeColor = System.Drawing.Color.Black;
             this.btnAnterior.Location = new System.Drawing.Point(655, 25);
             this.btnAnterior.Name = "btnAnterior";
@@ -2050,6 +2061,7 @@ namespace Facturix_Salários
             // 
             this.btnCancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancelar.BackgroundImage")));
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Location = new System.Drawing.Point(245, 6);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
@@ -2065,6 +2077,7 @@ namespace Facturix_Salários
             // 
             this.btnAtualizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAtualizar.BackgroundImage")));
             this.btnAtualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAtualizar.ForeColor = System.Drawing.Color.Black;
             this.btnAtualizar.Location = new System.Drawing.Point(172, 7);
             this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2);
@@ -2080,6 +2093,7 @@ namespace Facturix_Salários
             // 
             this.btnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminar.BackgroundImage")));
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.ForeColor = System.Drawing.Color.Black;
             this.btnEliminar.Location = new System.Drawing.Point(391, 7);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
@@ -2095,6 +2109,7 @@ namespace Facturix_Salários
             // 
             this.btnAdicionar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.BackgroundImage")));
             this.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdicionar.ForeColor = System.Drawing.Color.Black;
             this.btnAdicionar.Location = new System.Drawing.Point(26, 6);
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2);

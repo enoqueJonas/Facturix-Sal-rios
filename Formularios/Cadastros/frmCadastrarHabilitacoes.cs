@@ -216,29 +216,42 @@ namespace Facturix_Salários
         {
             if (e.KeyCode.ToString() == "F1")
             {
-                adicionar();
-            }
-            if (e.KeyCode.ToString() == "F2")
-            {
-
+                if (btnAdicionar.Enabled)
+                {
+                    adicionar();
+                }
             }
             if (e.KeyCode.ToString() == "F3")
             {
-                mudarVisibilidadeLabels(true);
-                atualizarBotoes();
+                if (btnAtualizar.Enabled)
+                {
+                    mudarVisibilidadeLabels(true);
+                    atualizarBotoes();
+                }
             }
             if (e.KeyCode.ToString() == "F4")
             {
-                limparCaixas();
-                impedirBotoes();
+                if (btnCancelar.Enabled)
+                {
+                    limparCaixas();
+                    impedirBotoes();
+                    mudarVisibilidadeLabels(false);
+                }
             }
             if (e.KeyCode.ToString() == "F5")
             {
-                gravar();
+                if (btnConfirmar.Enabled)
+                {
+                    gravar();
+                    impedirBotoes();
+                }
             }
             if (e.KeyCode.ToString() == "F6")
             {
-                eliminar();
+                if (btnEliminar.Enabled)
+                {
+                    eliminar();
+                }
             }
             if (e.KeyCode.ToString() == "F7")
             {
@@ -292,6 +305,7 @@ namespace Facturix_Salários
         {
             limparCaixas();
             impedirBotoes();
+            mudarVisibilidadeLabels(false);
         }
     }
 }
