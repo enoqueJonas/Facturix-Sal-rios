@@ -475,7 +475,6 @@ namespace Facturix_Salários
             this.dtDataAdmissao.Name = "dtDataAdmissao";
             this.dtDataAdmissao.Size = new System.Drawing.Size(106, 20);
             this.dtDataAdmissao.TabIndex = 18;
-            this.dtDataAdmissao.ValueChanged += new System.EventHandler(this.dtDataAdmissao_ValueChanged);
             this.dtDataAdmissao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtDataAdmissao_KeyDown);
             // 
             // label29
@@ -636,7 +635,7 @@ namespace Facturix_Salários
             // 
             this.txtNrFiscal.Location = new System.Drawing.Point(532, 115);
             this.txtNrFiscal.Name = "txtNrFiscal";
-            this.txtNrFiscal.Size = new System.Drawing.Size(106, 20);
+            this.txtNrFiscal.Size = new System.Drawing.Size(107, 20);
             this.txtNrFiscal.TabIndex = 28;
             this.txtNrFiscal.TextChanged += new System.EventHandler(this.txtNrFiscal_TextChanged_1);
             this.txtNrFiscal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNrFiscal_KeyDown);
@@ -1058,7 +1057,7 @@ namespace Facturix_Salários
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(2, 184);
+            this.label31.Location = new System.Drawing.Point(2, 189);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(74, 13);
             this.label31.TabIndex = 231;
@@ -1080,7 +1079,7 @@ namespace Facturix_Salários
             // Label36
             // 
             this.Label36.AutoSize = true;
-            this.Label36.Location = new System.Drawing.Point(138, 186);
+            this.Label36.Location = new System.Drawing.Point(138, 189);
             this.Label36.Name = "Label36";
             this.Label36.Size = new System.Drawing.Size(58, 13);
             this.Label36.TabIndex = 230;
@@ -1121,7 +1120,6 @@ namespace Facturix_Salários
             this.cbSexo.Name = "cbSexo";
             this.cbSexo.Size = new System.Drawing.Size(117, 21);
             this.cbSexo.TabIndex = 11;
-            this.cbSexo.SelectedIndexChanged += new System.EventHandler(this.cbSexo_SelectedIndexChanged);
             this.cbSexo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbSexo_KeyDown);
             // 
             // Label20

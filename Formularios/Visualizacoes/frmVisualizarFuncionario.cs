@@ -23,13 +23,17 @@ namespace Facturix_Salários
         int codigoCelSelecionada;
         private void frmVisualizarF_Load(object sender, EventArgs e)
         {
-            refrescar();
-            foreach (DataGridViewColumn col in dataFuncionarios.Columns)
+            frmMenu m = new frmMenu();
+            if (m.ligacaoBaseDados == true) 
             {
-                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                refrescar();
+                foreach (DataGridViewColumn col in dataFuncionarios.Columns)
+                {
+                    col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+                this.ActiveControl = txtLocalizar;
+                mostrarNumeroFuncionarios();
             }
-            this.ActiveControl = txtLocalizar;
-            mostrarNumeroFuncionarios();
         }
 
         private void mostrarNumeroFuncionarios() 

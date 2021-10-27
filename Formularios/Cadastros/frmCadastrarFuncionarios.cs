@@ -1,16 +1,12 @@
-﻿using System;
-using System.ComponentModel;
+﻿using Facturix_Salários.Controllers;
+using Facturix_Salários.Modelos;
+using MySql.Data.MySqlClient;
+using System;
+using System.Collections;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
-using System.Windows.Forms;
-using System.Collections;
 using System.IO;
-using Facturix_Salários.Controllers;
-using Facturix_Salários.Modelos;
+using System.Windows.Forms;
 
 namespace Facturix_Salários
 {
@@ -26,8 +22,6 @@ namespace Facturix_Salários
         public frmCadastrarFuncionarios()
         {
             InitializeComponent();
-            setCod();
-            adicionarItemsCb();
         }
         
         /// <summary>Monta a lista de dependestes na DataGridView.</summary>
@@ -742,14 +736,20 @@ namespace Facturix_Salários
         }
         private void f_funcionarios_Load(object sender, EventArgs e)
         {
-            //porFoco();
+            porFoco();
             impedirBotoes();
-            refrescarDependentes();
-            foreach (DataGridViewColumn col in dataDependentes.Columns)
+            frmMenu m = new frmMenu();
+            if (m.ligacaoBaseDados == true)
             {
-                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                refrescarDependentes();
+                mudarLarguraCelulas();
+                foreach (DataGridViewColumn col in dataDependentes.Columns)
+                {
+                    col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+                setCod();
+                adicionarItemsCb();
             }
-            mudarLarguraCelulas();
         }
 
         /// <summary>Muda Largura das DataGridView Cells.</summary>
@@ -1358,10 +1358,6 @@ namespace Facturix_Salários
         }
 
         private void cbContrato_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void dtDataAdmissao_ValueChanged(object sender, EventArgs e)
         {
         }
     }

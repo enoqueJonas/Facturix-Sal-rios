@@ -40,13 +40,16 @@ namespace Facturix_Salários
             this.sindicatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estabelecimentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.centrosDeCustoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.definiçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastrosToolStripMenuItem});
+            this.cadastrosToolStripMenuItem,
+            this.definiçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1041, 24);
@@ -132,6 +135,21 @@ namespace Facturix_Salários
             this.centrosDeCustoToolStripMenuItem.Text = "Centros de custo";
             this.centrosDeCustoToolStripMenuItem.Click += new System.EventHandler(this.centrosDeCustoToolStripMenuItem_Click);
             // 
+            // definiçõesToolStripMenuItem
+            // 
+            this.definiçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestToolStripMenuItem});
+            this.definiçõesToolStripMenuItem.Name = "definiçõesToolStripMenuItem";
+            this.definiçõesToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.definiçõesToolStripMenuItem.Text = "Configurador";
+            // 
+            // gestToolStripMenuItem
+            // 
+            this.gestToolStripMenuItem.Name = "gestToolStripMenuItem";
+            this.gestToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.gestToolStripMenuItem.Text = "Gestão de Utilizadores";
+            this.gestToolStripMenuItem.Click += new System.EventHandler(this.gestToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,6 +185,8 @@ namespace Facturix_Salários
         private System.Windows.Forms.ToolStripMenuItem sindicatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estabelecimentosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem centrosDeCustoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem definiçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestToolStripMenuItem;
     }
 }
 

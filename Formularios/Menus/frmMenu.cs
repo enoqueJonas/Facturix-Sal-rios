@@ -9,17 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Collections;
-using Facturix_Salários;
+using Facturix_Salários.Formularios.Definicoes;
 
 namespace Facturix_Salários
 {
     public partial class frmMenu : Form
     {
+        public Boolean ligacaoBaseDados;
+        private string tel = "+258 863451038";
         public frmMenu()
         {
             InitializeComponent();
         }
-
         private void f_menu_Load(object sender, EventArgs e)
         {
             MySqlConnection conexao = Conexao.conectar();
@@ -27,9 +28,16 @@ namespace Facturix_Salários
             {
                 conexao.Open();
             }
-            catch (Exception) 
+            catch (Exception)
             {
-                MessageBox.Show("Não foi possível conectar a base de dados! Contacte o técnico!");
+                MessageBox.Show("Não foi possível conectar a base de dados! Contacte o suporte técnico!" +tel);
+            }
+            finally 
+            {
+                if (conexao != null)
+                {
+                    conexao.Close();
+                }
             }     
         }
 
@@ -129,6 +137,12 @@ namespace Facturix_Salários
         private void frmMenu_KeyDown(object sender, KeyEventArgs e)
         {
             
+        }
+
+        private void gestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestaoUtilizador f = new frmGestaoUtilizador();
+            f.Show();
         }
     }
 }

@@ -18,7 +18,6 @@ namespace Facturix_Salários
         public frmCadastrarCategoria()
         {
             InitializeComponent();
-            setCod();
             this.ActiveControl = txtNome;
         }
 
@@ -201,7 +200,6 @@ namespace Facturix_Salários
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminar();
-            adicionar();
             limparCaixas();
             refrescar();
             impedirBotoes();
@@ -217,6 +215,7 @@ namespace Facturix_Salários
         {
             impedirBotoes();
             refrescar();
+            setCod();
             foreach (DataGridViewColumn col in dataCategorias.Columns)
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
