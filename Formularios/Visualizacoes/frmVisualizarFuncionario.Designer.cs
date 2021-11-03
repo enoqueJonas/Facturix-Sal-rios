@@ -90,9 +90,9 @@
             this.btnAdicionar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.BackgroundImage")));
             this.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionar.Location = new System.Drawing.Point(12, 23);
+            this.btnAdicionar.Location = new System.Drawing.Point(8, 23);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(102, 40);
+            this.btnAdicionar.Size = new System.Drawing.Size(110, 40);
             this.btnAdicionar.TabIndex = 2;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -105,9 +105,9 @@
             this.btnConsultar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnConsultar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConsultar.Location = new System.Drawing.Point(12, 81);
+            this.btnConsultar.Location = new System.Drawing.Point(8, 81);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(102, 40);
+            this.btnConsultar.Size = new System.Drawing.Size(110, 40);
             this.btnConsultar.TabIndex = 3;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -121,9 +121,9 @@
             this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnEliminar.Enabled = false;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(12, 137);
+            this.btnEliminar.Location = new System.Drawing.Point(8, 137);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(102, 40);
+            this.btnEliminar.Size = new System.Drawing.Size(110, 40);
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -137,9 +137,9 @@
             this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnImprimir.Enabled = false;
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Location = new System.Drawing.Point(12, 200);
+            this.btnImprimir.Location = new System.Drawing.Point(8, 200);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(102, 40);
+            this.btnImprimir.Size = new System.Drawing.Size(110, 40);
             this.btnImprimir.TabIndex = 5;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -150,9 +150,11 @@
             // 
             this.btnRegressar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnRegressar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRegressar.Location = new System.Drawing.Point(12, 259);
+            this.btnRegressar.Image = ((System.Drawing.Image)(resources.GetObject("btnRegressar.Image")));
+            this.btnRegressar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRegressar.Location = new System.Drawing.Point(7, 259);
             this.btnRegressar.Name = "btnRegressar";
-            this.btnRegressar.Size = new System.Drawing.Size(102, 40);
+            this.btnRegressar.Size = new System.Drawing.Size(111, 40);
             this.btnRegressar.TabIndex = 6;
             this.btnRegressar.Text = "Regressar";
             this.btnRegressar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -253,6 +255,7 @@
             this.Name = "frmVisualizarFuncionario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visualização de Funcionários";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVisualizarFuncionario_FormClosing);
             this.Load += new System.EventHandler(this.frmVisualizarF_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmVisualizarF_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmVisualizarF_KeyPress);

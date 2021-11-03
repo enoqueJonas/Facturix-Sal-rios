@@ -29,13 +29,13 @@ namespace Facturix_Salários
         {
             ArrayList listaSeguros = ControllerSeguro.recuperar();
             DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
+            dt.Columns.Add("Registo n°");
             dt.Columns.Add("Seguros");
             dt.Columns.Add("Percentagem");
             foreach (ModeloSeguro func in listaSeguros)
             {
                 DataRow dRow = dt.NewRow();
-                dRow["ID"] = func.getId();
+                dRow["Registo n°"] = func.getId();
                 dRow["Seguros"] = func.getSeguro();
                 dRow["Percentagem"] = func.getPercentagem()+"%";
                 dt.Rows.Add(dRow);
@@ -162,7 +162,7 @@ namespace Facturix_Salários
 
         private void confirmarFechamento()
         {
-            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário Cadastro de Seguros?", "Atenção!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
@@ -254,7 +254,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            confirmarFechamento();
+            this.Close();
         }
 
         private void frmCadastrarSeguro_Load(object sender, EventArgs e)
@@ -299,7 +299,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                confirmarFechamento();
+                this.Close();
             }
         }
 
@@ -360,6 +360,21 @@ namespace Facturix_Salários
         private void txtNome_KeyDown_1(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+        }
+
+        private void frmCadastrarSeguro_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende fechar o formulário Cadastro de Seguros?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
+            }
         }
     }
 }

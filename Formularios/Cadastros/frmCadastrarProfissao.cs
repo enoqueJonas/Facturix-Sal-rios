@@ -25,12 +25,12 @@ namespace Facturix_Salários
         {
             ArrayList listaProfissao = ControllerProfissao.recuperar();
             DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
+            dt.Columns.Add("Registo n°");
             dt.Columns.Add("Profissões");
             foreach (ModeloProfissao func in listaProfissao)
             {
                 DataRow dRow = dt.NewRow();
-                dRow["ID"] = func.getId();
+                dRow["Registo n°"] = func.getId();
                 dRow["Profissões"] = func.getProfissao();
                 dt.Rows.Add(dRow);
             }
@@ -146,7 +146,7 @@ namespace Facturix_Salários
 
         private void confirmarFechamento()
         {
-            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário Cadastro de Profissões?", "Atenção!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
@@ -243,7 +243,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                confirmarFechamento();
+                this.Close();
             }
         }
 
@@ -270,7 +270,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            confirmarFechamento();
+            this.Close();
         }
 
         private void dataProfissao_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -290,6 +290,21 @@ namespace Facturix_Salários
         {
             adicionar();
             refrescar();
+        }
+
+        private void frmCadastrarProfissao_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende fechar o formulário Cadastro de Profissões?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
+            }
         }
     }
 }

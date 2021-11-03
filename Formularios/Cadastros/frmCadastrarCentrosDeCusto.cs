@@ -23,12 +23,12 @@ namespace Facturix_Salários
         {
             ArrayList listaCentrosDeCusto = ControllerCentroDeCusto.recuperar();
             DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
+            dt.Columns.Add("Registo n°");
             dt.Columns.Add("Centro De Custo");
             foreach (ModeloCentroDeCusto func in listaCentrosDeCusto)
             {
                 DataRow dRow = dt.NewRow();
-                dRow["ID"] = func.getId();
+                dRow["Registo n°"] = func.getId();
                 dRow["Centro de Custo"] = func.getCentroDeCusto();
                 dt.Rows.Add(dRow);
             }
@@ -78,7 +78,7 @@ namespace Facturix_Salários
 
         private void confirmarFechamento()
         {
-            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário Centros de Custo?", "Atenção!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
@@ -221,7 +221,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            confirmarFechamento();
+            this.Close();
         }
 
         private void frmCadastrarCentrosDeCusto_KeyDown(object sender, KeyEventArgs e)
@@ -255,7 +255,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                confirmarFechamento();
+                this.Close();
             }
         }
 
@@ -291,6 +291,21 @@ namespace Facturix_Salários
             {
                 txtCodigo.Text = func.getId() + "";
                 txtNome.Text = func.getCentroDeCusto();
+            }
+        }
+
+        private void frmCadastrarCentrosDeCusto_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende fechar o formulário Centros de Custo?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
             }
         }
     }

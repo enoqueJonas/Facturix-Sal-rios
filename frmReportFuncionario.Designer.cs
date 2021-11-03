@@ -54,6 +54,7 @@
             this.Controls.Add(this.crDataTable);
             this.Name = "frmReportFuncionario";
             this.Text = "frmReportFuncionario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmReportFuncionario_FormClosing);
             this.ResumeLayout(false);
 
         }

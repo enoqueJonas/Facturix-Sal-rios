@@ -176,7 +176,7 @@ namespace Facturix_Salários
                 }
             } catch (Exception)
             {
-                //MessageBox.Show("Nao foi possival carregar lista de funcionarios! Contacte o tecnico!");
+               
             }
             finally{
                 if (conexao != null)
@@ -242,7 +242,7 @@ namespace Facturix_Salários
             }
             catch (Exception)
             {
-                //MessageBox.Show(err.Message,"Nao foi possival carregar lista de funcionarios!");
+                
             }
             finally
             {

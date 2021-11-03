@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Collections;
 using Facturix_Salários.Formularios.Definicoes;
+using Facturix_Salários.Formularios.Cadastros;
+using Facturix_Salários.Controllers;
+using Facturix_Salários.Modelos;
 
 namespace Facturix_Salários
 {
@@ -27,18 +30,74 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
+                gravarItems();
             }
             catch (Exception)
             {
                 MessageBox.Show("Não foi possível conectar a base de dados! Contacte o suporte técnico!" +tel);
             }
-            finally 
+            finally
             {
                 if (conexao != null)
                 {
                     conexao.Close();
                 }
-            }     
+            }
+            //carregarMenu();
+        }
+
+        private void carregarMenu() 
+        {
+            ArrayList listaMenus = ControllerPermissao.recuperar();
+            foreach (ModeloPermissao f in listaMenus) 
+            {
+                for (int i = 0; i<menuStrip1.Items.Count; i++) 
+                {
+                    if (f.getCabecalho().ToLower().Equals(menuStrip1.Items[i].Text.ToLower()))
+                    {
+                        menuStrip1.Items[i].Visible = true;
+                    }
+                    else 
+                    {
+                        menuStrip1.Items[i].Visible = false;
+                    }
+                }
+            }
+        }
+        private int getCod()
+        {
+            int cod = 0;
+            ArrayList listaTabelas = ControllerTabela.recuperar();
+            foreach (ModeloTabela cat in listaTabelas)
+            {
+                if (cat.getId() != 0)
+                {
+                    cod = cat.getId();
+                }
+                else
+                {
+                    cod = 0;
+                }
+            }
+            return cod;
+        }
+
+        private void gravarItems() 
+        {
+            ControllerTabela.remover();
+            int id;
+            String nome, label;
+            ArrayList listaTabelas = ControllerTabela.recuperar();
+            foreach (ToolStripMenuItem itm in menuStrip1.Items)
+            {
+                foreach (ToolStripDropDownItem item in itm.DropDownItems)
+                {
+                    id = getCod() + 1;
+                    nome = item.Name;
+                    label = item.Text;
+                    ControllerTabela.gravar(id, nome, label);
+                }
+            }
         }
 
         private void lista_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,6 +201,27 @@ namespace Facturix_Salários
         private void gestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmGestaoUtilizador f = new frmGestaoUtilizador();
+            f.Show();
+        }
+
+        private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende fechar o Menu?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
+            }
+        }
+
+        private void iRPSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarIRPS f = new frmCadastrarIRPS();
             f.Show();
         }
     }

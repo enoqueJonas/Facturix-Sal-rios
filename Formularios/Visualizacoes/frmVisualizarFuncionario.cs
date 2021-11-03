@@ -44,13 +44,13 @@ namespace Facturix_Salários
         private void montarDataGridView(ArrayList listaRecebida) 
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
+            dt.Columns.Add("Registo n°");
             dt.Columns.Add("Nome");
             dt.Columns.Add("Telefone");
             foreach (ModeloFuncionario func in listaRecebida)
             {
                 DataRow dRow = dt.NewRow();
-                dRow["ID"] = func.getCodigo();
+                dRow["Registo n°"] = func.getCodigo();
                 dRow["Nome"] = func.getNome();
                 dRow["Telefone"] = func.getTel();
                 dt.Rows.Add(dRow);
@@ -79,22 +79,6 @@ namespace Facturix_Salários
             int cod = f.enterdCod;
             ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(cod);
             montarDataGridView(listaFuncionarios);
-        }
-
-        private void confirmarFechamento()
-        {
-            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.Close();
-                frmMenu f = new frmMenu();
-                f.Focus();
-                f.ShowDialog();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-
-            }
         }
 
         private void fecharJanela(KeyEventArgs e)
@@ -173,7 +157,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            confirmarFechamento();
+            this.Close();
         }
 
         private void frmVisualizarF_KeyDown(object sender, KeyEventArgs e)
@@ -209,7 +193,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                confirmarFechamento();
+                this.Close();
             }
         }
 
@@ -292,5 +276,20 @@ namespace Facturix_Salários
                     conexao.Close();
             }
         }
+
+        private void frmVisualizarFuncionario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+                switch (e.CloseReason)
+                {
+                    case CloseReason.UserClosing:
+                        if (MessageBox.Show("Pretende fechar o formulário Visualização de Funcionários?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Question) == DialogResult.No)
+                        {
+                            e.Cancel = true;
+                        }
+                        break;
+                }
+            }
     }
 }

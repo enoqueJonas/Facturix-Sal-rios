@@ -28,21 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Funcionários");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Categorias");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Centros de custo");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Estabelecimentos");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Profissões");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Sindicatos");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Habilitações");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Cadastros", new System.Windows.Forms.TreeNode[] {
-            treeNode25,
-            treeNode26,
-            treeNode27,
-            treeNode28,
-            treeNode29,
-            treeNode30,
-            treeNode31});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Funcionários");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Categorias");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Centros de custo");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Estabelecimentos");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Profissões");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Sindicatos");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Habilitações");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Cadastros", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode7});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Gestão de Utilizadores");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Configurador", new System.Windows.Forms.TreeNode[] {
+            treeNode9});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestaoUtilizador));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.dataUtilizadores = new System.Windows.Forms.DataGridView();
@@ -81,7 +84,7 @@
             this.txtNomeUtilizador = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtConfirmar = new System.Windows.Forms.TextBox();
             this.lbl7 = new System.Windows.Forms.Label();
             this.lbl8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -97,27 +100,33 @@
             this.treeView1.CheckBoxes = true;
             this.treeView1.Location = new System.Drawing.Point(735, 15);
             this.treeView1.Name = "treeView1";
-            treeNode25.Checked = true;
-            treeNode25.Name = "funcionarios";
-            treeNode25.Text = "Funcionários";
-            treeNode26.Name = "categorias";
-            treeNode26.Text = "Categorias";
-            treeNode27.Name = "centrosDeCusto";
-            treeNode27.Text = "Centros de custo";
-            treeNode28.Name = "estabelecimentos";
-            treeNode28.Text = "Estabelecimentos";
-            treeNode29.Name = "profissoes";
-            treeNode29.Text = "Profissões";
-            treeNode30.Name = "sindicatos";
-            treeNode30.Text = "Sindicatos";
-            treeNode31.Name = "habilitacoes";
-            treeNode31.Text = "Habilitações";
-            treeNode32.Name = "nodeCadastros";
-            treeNode32.Text = "Cadastros";
+            treeNode1.Checked = true;
+            treeNode1.Name = "funcionarios";
+            treeNode1.Text = "Funcionários";
+            treeNode2.Name = "categorias";
+            treeNode2.Text = "Categorias";
+            treeNode3.Name = "centrosDeCusto";
+            treeNode3.Text = "Centros de custo";
+            treeNode4.Name = "estabelecimentos";
+            treeNode4.Text = "Estabelecimentos";
+            treeNode5.Name = "profissoes";
+            treeNode5.Text = "Profissões";
+            treeNode6.Name = "sindicatos";
+            treeNode6.Text = "Sindicatos";
+            treeNode7.Name = "habilitacoes";
+            treeNode7.Text = "Habilitações";
+            treeNode8.Name = "nodeCadastros";
+            treeNode8.Text = "Cadastros";
+            treeNode9.Name = "Gestão de Utilizadores";
+            treeNode9.Text = "Gestão de Utilizadores";
+            treeNode10.Name = "Configurador";
+            treeNode10.Text = "Configurador";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode32});
+            treeNode8,
+            treeNode10});
             this.treeView1.Size = new System.Drawing.Size(264, 597);
             this.treeView1.TabIndex = 251;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // dataUtilizadores
             // 
@@ -148,9 +157,10 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConsultar.BackgroundImage")));
             this.btnConsultar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnConsultar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConsultar.Image = ((System.Drawing.Image)(resources.GetObject("btnConsultar.Image")));
+            this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnConsultar.Location = new System.Drawing.Point(119, 6);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(69, 60);
@@ -162,9 +172,10 @@
             // 
             // btnRegressar
             // 
-            this.btnRegressar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRegressar.BackgroundImage")));
             this.btnRegressar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRegressar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegressar.Image = ((System.Drawing.Image)(resources.GetObject("btnRegressar.Image")));
+            this.btnRegressar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnRegressar.Location = new System.Drawing.Point(592, 6);
             this.btnRegressar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegressar.Name = "btnRegressar";
@@ -177,9 +188,10 @@
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.BackgroundImage")));
             this.btnConfirmar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
+            this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnConfirmar.Location = new System.Drawing.Point(405, 6);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
@@ -192,9 +204,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancelar.BackgroundImage")));
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCancelar.Location = new System.Drawing.Point(308, 6);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
@@ -207,9 +220,10 @@
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAtualizar.BackgroundImage")));
             this.btnAtualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAtualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAtualizar.Image")));
+            this.btnAtualizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAtualizar.Location = new System.Drawing.Point(213, 6);
             this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtualizar.Name = "btnAtualizar";
@@ -222,9 +236,10 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminar.BackgroundImage")));
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnEliminar.Location = new System.Drawing.Point(498, 6);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
@@ -237,9 +252,10 @@
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.BackgroundImage")));
             this.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
+            this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAdicionar.Location = new System.Drawing.Point(26, 6);
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdicionar.Name = "btnAdicionar";
@@ -269,7 +285,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 67);
+            this.label3.Location = new System.Drawing.Point(38, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 242;
@@ -295,7 +311,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(57, 142);
+            this.label4.Location = new System.Drawing.Point(38, 126);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 234;
@@ -303,7 +319,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(263, 28);
+            this.txtNome.Location = new System.Drawing.Point(263, 31);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(430, 20);
             this.txtNome.TabIndex = 244;
@@ -312,7 +328,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(219, 31);
+            this.label2.Location = new System.Drawing.Point(219, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 238;
@@ -321,7 +337,7 @@
             // txtRegisto
             // 
             this.txtRegisto.Enabled = false;
-            this.txtRegisto.Location = new System.Drawing.Point(138, 28);
+            this.txtRegisto.Location = new System.Drawing.Point(138, 31);
             this.txtRegisto.Name = "txtRegisto";
             this.txtRegisto.ReadOnly = true;
             this.txtRegisto.Size = new System.Drawing.Size(55, 20);
@@ -376,7 +392,7 @@
             this.lbl1.AutoSize = true;
             this.lbl1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lbl1.Location = new System.Drawing.Point(200, 31);
+            this.lbl1.Location = new System.Drawing.Point(200, 34);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(13, 13);
             this.lbl1.TabIndex = 241;
@@ -385,7 +401,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 31);
+            this.label1.Location = new System.Drawing.Point(55, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 239;
@@ -399,13 +415,15 @@
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.lbl9);
             this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.txtEmail);
+            this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.lbl4);
             this.panel3.Controls.Add(this.txtNomeUtilizador);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.txtConfirmar);
             this.panel3.Controls.Add(this.lbl7);
             this.panel3.Controls.Add(this.lbl8);
             this.panel3.Controls.Add(this.label10);
@@ -418,7 +436,7 @@
             // 
             this.dtNascimento.CustomFormat = "dd-MM-yyyy";
             this.dtNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtNascimento.Location = new System.Drawing.Point(472, 162);
+            this.dtNascimento.Location = new System.Drawing.Point(472, 166);
             this.dtNascimento.Name = "dtNascimento";
             this.dtNascimento.Size = new System.Drawing.Size(204, 20);
             this.dtNascimento.TabIndex = 7;
@@ -430,7 +448,7 @@
             this.cbNivel.Items.AddRange(new object[] {
             "Admin",
             "Normal"});
-            this.cbNivel.Location = new System.Drawing.Point(121, 162);
+            this.cbNivel.Location = new System.Drawing.Point(121, 166);
             this.cbNivel.Name = "cbNivel";
             this.cbNivel.Size = new System.Drawing.Size(214, 21);
             this.cbNivel.TabIndex = 6;
@@ -439,7 +457,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(366, 165);
+            this.label12.Location = new System.Drawing.Point(366, 169);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(92, 13);
             this.label12.TabIndex = 0;
@@ -450,7 +468,7 @@
             this.lbl9.AutoSize = true;
             this.lbl9.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl9.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lbl9.Location = new System.Drawing.Point(350, 164);
+            this.lbl9.Location = new System.Drawing.Point(350, 168);
             this.lbl9.Name = "lbl9";
             this.lbl9.Size = new System.Drawing.Size(13, 13);
             this.lbl9.TabIndex = 0;
@@ -459,7 +477,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(40, 165);
+            this.label7.Location = new System.Drawing.Point(38, 168);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 13);
             this.label7.TabIndex = 0;
@@ -467,7 +485,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(121, 83);
+            this.txtEmail.Location = new System.Drawing.Point(121, 87);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(214, 20);
             this.txtEmail.TabIndex = 2;
@@ -476,7 +494,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(366, 86);
+            this.label6.Location = new System.Drawing.Point(366, 90);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 0;
@@ -487,7 +505,7 @@
             this.lbl4.AutoSize = true;
             this.lbl4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl4.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lbl4.Location = new System.Drawing.Point(23, 86);
+            this.lbl4.Location = new System.Drawing.Point(23, 90);
             this.lbl4.Name = "lbl4";
             this.lbl4.Size = new System.Drawing.Size(13, 13);
             this.lbl4.TabIndex = 0;
@@ -495,7 +513,7 @@
             // 
             // txtNomeUtilizador
             // 
-            this.txtNomeUtilizador.Location = new System.Drawing.Point(472, 48);
+            this.txtNomeUtilizador.Location = new System.Drawing.Point(472, 52);
             this.txtNomeUtilizador.Name = "txtNomeUtilizador";
             this.txtNomeUtilizador.Size = new System.Drawing.Size(204, 20);
             this.txtNomeUtilizador.TabIndex = 3;
@@ -504,7 +522,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(366, 51);
+            this.label8.Location = new System.Drawing.Point(366, 55);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 13);
             this.label8.TabIndex = 0;
@@ -513,27 +531,27 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 86);
+            this.label5.Location = new System.Drawing.Point(38, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "Email:";
             // 
-            // textBox2
+            // txtConfirmar
             // 
-            this.textBox2.Location = new System.Drawing.Point(472, 119);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(204, 20);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtConfirmar.Location = new System.Drawing.Point(472, 123);
+            this.txtConfirmar.Name = "txtConfirmar";
+            this.txtConfirmar.PasswordChar = '*';
+            this.txtConfirmar.Size = new System.Drawing.Size(204, 20);
+            this.txtConfirmar.TabIndex = 4;
+            this.txtConfirmar.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // lbl7
             // 
             this.lbl7.AutoSize = true;
             this.lbl7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl7.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lbl7.Location = new System.Drawing.Point(352, 124);
+            this.lbl7.Location = new System.Drawing.Point(352, 128);
             this.lbl7.Name = "lbl7";
             this.lbl7.Size = new System.Drawing.Size(13, 13);
             this.lbl7.TabIndex = 0;
@@ -544,7 +562,7 @@
             this.lbl8.AutoSize = true;
             this.lbl8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl8.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lbl8.Location = new System.Drawing.Point(24, 165);
+            this.lbl8.Location = new System.Drawing.Point(24, 169);
             this.lbl8.Name = "lbl8";
             this.lbl8.Size = new System.Drawing.Size(13, 13);
             this.lbl8.TabIndex = 236;
@@ -553,7 +571,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(367, 124);
+            this.label10.Location = new System.Drawing.Point(367, 128);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(106, 13);
             this.label10.TabIndex = 0;
@@ -570,10 +588,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.txtApelido);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtContacto);
             this.Controls.Add(this.txtPass);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtRegisto);
@@ -587,7 +603,8 @@
             this.KeyPreview = true;
             this.Name = "frmGestaoUtilizador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestaoã de Utilizadores";
+            this.Text = "Gestão de Utilizadores";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGestaoUtilizador_FormClosing);
             this.Load += new System.EventHandler(this.frmGestaoUtilizador_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmGestaoUtilizador_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataUtilizadores)).EndInit();
@@ -600,8 +617,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.DataGridView dataUtilizadores;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnConsultar;
@@ -637,10 +652,11 @@
         private System.Windows.Forms.TextBox txtNomeUtilizador;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtConfirmar;
         private System.Windows.Forms.Label lbl7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lbl8;
         public System.Windows.Forms.DateTimePicker dtNascimento;
+        public System.Windows.Forms.TreeView treeView1;
     }
 }

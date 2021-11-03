@@ -13,11 +13,6 @@ namespace Facturix_Salários
     public partial class frmCadastrarFuncionarios : Form
     {
         String linkImagem = "";
-        ArrayList listaCategorias = ControllerCategoria.recuperar();
-        ArrayList listaContratos = ControllerContrato.recuperar();
-        ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
-        ArrayList listaProfissao = ControllerProfissao.recuperar();
-        ArrayList listaSeguros = ControllerSeguro.recuperar();
         private int codigoCelSelecionada;
         public frmCadastrarFuncionarios()
         {
@@ -30,7 +25,7 @@ namespace Facturix_Salários
             int idFunc = int.Parse(txtCodigo.Text);
             ArrayList listaDependentes = ControllerDependente.recuperar();
             DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
+            dt.Columns.Add("Registo n°");
             dt.Columns.Add("Nome");
             dt.Columns.Add("Data Nasc.");
             dt.Columns.Add("Grau Parent.");
@@ -39,7 +34,7 @@ namespace Facturix_Salários
                 if (idFunc == func.getIdFuncionario()) 
                 {
                     DataRow dRow = dt.NewRow();
-                    dRow["ID"] = func.getId();
+                    dRow["Registo n°"] = func.getId();
                     dRow["Nome"] = func.getNome();
                     dRow["Data Nasc."] = func.getDataNascimento();
                     dRow["Grau Parent."] = func.getGrauParentesco();
@@ -55,6 +50,11 @@ namespace Facturix_Salários
         /// <summary>Adiciona Items como seguro, contrato... nas ComboBox.</summary>
         private void adicionarItemsCb() 
         {
+            ArrayList listaCategorias = ControllerCategoria.recuperar();
+            ArrayList listaContratos = ControllerContrato.recuperar();
+            ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
+            ArrayList listaProfissao = ControllerProfissao.recuperar();
+            ArrayList listaSeguros = ControllerSeguro.recuperar();
             foreach (ModeloCategoria cat in listaCategorias)
             {
                 cbCategoria.Items.Add(cat.getCategoria());
@@ -646,7 +646,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                confirmarFechamento();
+                this.Close();
             }
             if (e.Alt && e.KeyCode == Keys.I)
             {
@@ -689,7 +689,7 @@ namespace Facturix_Salários
 
         private void confirmarFechamento()
         {
-            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário Cadastro de Funcionários?", "Atenção!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
@@ -736,11 +736,12 @@ namespace Facturix_Salários
         }
         private void f_funcionarios_Load(object sender, EventArgs e)
         {
-            porFoco();
             impedirBotoes();
             frmMenu m = new frmMenu();
-            if (m.ligacaoBaseDados == true)
+            MySqlConnection conexao = Conexao.conectar();
+            try
             {
+                conexao.Open();
                 refrescarDependentes();
                 mudarLarguraCelulas();
                 foreach (DataGridViewColumn col in dataDependentes.Columns)
@@ -749,6 +750,16 @@ namespace Facturix_Salários
                 }
                 setCod();
                 adicionarItemsCb();
+                porFoco();
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show("Não foi possível conectar a base de dados! Contacte o suporte técnico!" );
+            }
+            finally 
+            {
+                if (conexao != null)
+                    conexao.Close();
             }
         }
 
@@ -1102,7 +1113,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            confirmarFechamento();
+            this.Close();
         }
 
         private void txtNrFiscal_TextChanged_1(object sender, EventArgs e)
@@ -1224,10 +1235,25 @@ namespace Facturix_Salários
 
         private void cbSeguro_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ModeloSeguro seg in listaSeguros)
+            MySqlConnection conexao = Conexao.conectar();
+            try
             {
-                if (cbSeguro.Text == seg.getSeguro())
-                    txtSeguro.Text = seg.getPercentagem() + "";
+                conexao.Open();
+                ArrayList listaSeguros = ControllerSeguro.recuperar();
+                foreach (ModeloSeguro seg in listaSeguros)
+                {
+                    if (cbSeguro.Text == seg.getSeguro())
+                        txtSeguro.Text = seg.getPercentagem() + "";
+                }
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show("Não foi possível conectar a base de dados! Contacte o suporte técnico!" );
+            }
+            finally
+            {
+                if (conexao != null)
+                    conexao.Close();
             }
         }
 
@@ -1359,6 +1385,21 @@ namespace Facturix_Salários
 
         private void cbContrato_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void frmCadastrarFuncionarios_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende fechar o formulário Cadastro de funcionários?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
+            }
         }
     }
 }

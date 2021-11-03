@@ -190,12 +190,17 @@
     <Compile Include="Controllers\ControllerEstabelecimento.cs" />
     <Compile Include="Controllers\ControllerFuncionario.cs" />
     <Compile Include="Controllers\ControllerHabilitacoes.cs" />
+    <Compile Include="Controllers\ControllerIntervalo.cs" />
+    <Compile Include="Controllers\ControllerIRPS.cs" />
     <Compile Include="Controllers\ControllerMorada.cs" />
+    <Compile Include="Controllers\ControllerPermissao.cs" />
     <Compile Include="Controllers\ControllerProfissao.cs" />
     <Compile Include="Controllers\ControllerCategoria.cs" />
     <Compile Include="Controllers\ControllerSeguro.cs" />
     <Compile Include="Controllers\ControllerSindicato.cs" />
+    <Compile Include="Controllers\ControllerTabela.cs" />
     <Compile Include="Controllers\ControllerUtilizador.cs" />
+    <Compile Include="Controllers\ControllerValor_Intervalo.cs" />
     <Compile Include="Formularios\Cadastros\frmCadastrarCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +231,12 @@
     <Compile Include="Formularios\Cadastros\frmCadastrarHabilitacoes.Designer.cs">
       <DependentUpon>frmCadastrarHabilitacoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Cadastros\frmCadastrarIRPS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Cadastros\frmCadastrarIRPS.Designer.cs">
+      <DependentUpon>frmCadastrarIRPS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Cadastros\frmCadastrarProfissao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,10 +261,10 @@
     <Compile Include="Formularios\Definicoes\frmGestaoUtilizador.Designer.cs">
       <DependentUpon>frmGestaoUtilizador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\ReportViews\frmReportFuncionario.cs">
+    <Compile Include="frmReportFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\ReportViews\frmReportFuncionario.Designer.cs">
+    <Compile Include="frmReportFuncionario.Designer.cs">
       <DependentUpon>frmReportFuncionario.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxManager.cs" />
@@ -263,11 +274,16 @@
     <Compile Include="Modelos\ModeloDependente.cs" />
     <Compile Include="Modelos\ModeloEstabelecimento.cs" />
     <Compile Include="Modelos\ModeloHabilitacao.cs" />
+    <Compile Include="Modelos\ModeloIntervalo.cs" />
+    <Compile Include="Modelos\ModeloIRPS.cs" />
+    <Compile Include="Modelos\ModeloPermissao.cs" />
     <Compile Include="Modelos\ModeloProfissao.cs" />
     <Compile Include="Modelos\ModeloCategoria.cs" />
     <Compile Include="Modelos\ModeloSeguro.cs" />
     <Compile Include="Modelos\ModeloSindicato.cs" />
+    <Compile Include="Modelos\ModeloTabela.cs" />
     <Compile Include="Modelos\ModeloUtilizador.cs" />
+    <Compile Include="Modelos\ModeloValor_Intervalo.cs" />
     <Compile Include="Reports\reportFuncionario.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -319,6 +335,9 @@
     <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarHabilitacoes.resx">
       <DependentUpon>frmCadastrarHabilitacoes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarIRPS.resx">
+      <DependentUpon>frmCadastrarIRPS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarProfissao.resx">
       <DependentUpon>frmCadastrarProfissao.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,7 +350,7 @@
     <EmbeddedResource Include="Formularios\Definicoes\frmGestaoUtilizador.resx">
       <DependentUpon>frmGestaoUtilizador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\ReportViews\frmReportFuncionario.resx">
+    <EmbeddedResource Include="frmReportFuncionario.resx">
       <DependentUpon>frmReportFuncionario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\reportFuncionario.rpt">
@@ -392,6 +411,7 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Formularios\ReportViews\" />
     <Folder Include="teste\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -25,12 +25,12 @@ namespace Facturix_Salários
         {
             ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
             DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
+            dt.Columns.Add("Registo n°");
             dt.Columns.Add("Habilitação");
             foreach (ModeloHabilitacao func in listaHabilitacoes)
             {
                 DataRow dRow = dt.NewRow();
-                dRow["ID"] = func.getId();
+                dRow["Registo n°"] = func.getId();
                 dRow["Habilitação"] = func.getHabilitacao();
                 dt.Rows.Add(dRow);
             }
@@ -155,7 +155,7 @@ namespace Facturix_Salários
 
         private void confirmarFechamento()
         {
-            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário Cadastro de Habilitações?", "Atenção!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
@@ -243,7 +243,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                confirmarFechamento();
+                this.Close();
             }
         }
 
@@ -283,7 +283,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            confirmarFechamento();
+            this.Close();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -291,6 +291,21 @@ namespace Facturix_Salários
             limparCaixas();
             impedirBotoes();
             mudarVisibilidadeLabels(false);
+        }
+
+        private void frmCadastrarHabilitacoes_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende fechar o formulário Cadastro de Habilitações?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
+            }
         }
     }
 }

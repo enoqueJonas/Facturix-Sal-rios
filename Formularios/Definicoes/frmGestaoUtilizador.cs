@@ -29,7 +29,9 @@ namespace Facturix_Salários.Formularios.Definicoes
                 btnAtualizar.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnConfirmar.Enabled = false;
+                btnConsultar.Enabled = true;
                 btnAdicionar.FlatStyle = FlatStyle.Standard;
+                btnConsultar.FlatStyle = FlatStyle.Standard;
                 btnAtualizar.FlatStyle = FlatStyle.Flat;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
                 btnConfirmar.FlatStyle = FlatStyle.Flat;
@@ -38,6 +40,7 @@ namespace Facturix_Salários.Formularios.Definicoes
                 btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnConsultar.Cursor = System.Windows.Forms.Cursors.Hand;
             }
             else
             {
@@ -107,6 +110,8 @@ namespace Facturix_Salários.Formularios.Definicoes
             txtEmail.Text = "";
             txtContacto.Text = "";
             cbNivel.Text = "";
+            txtPass.Text = "";
+            txtConfirmar.Text = "";
         }
 
         private void adicionar()
@@ -127,9 +132,45 @@ namespace Facturix_Salários.Formularios.Definicoes
             lbl9.Visible = estado;
         }
 
+        private void gravarPermissoes(TreeNodeCollection nodes, int idUsuario, Boolean activo) 
+        {
+            foreach (TreeNode node in nodes) 
+            {
+                for (int i=0; i< node.Nodes.Count; i++) 
+                {
+                    if (node.Nodes[i].Checked)
+                    {
+                        ControllerPermissao.gravar(idUsuario, node.Nodes[i].Text, activo, node.Text);
+                    }
+                }
+            }
+        }
+        
+        private void lerPermissoes(TreeNodeCollection nodes) 
+        {
+            ArrayList listaPermissoes = ControllerPermissao.recuperar();
+            //int cod = int.Parse(txtRegisto.Text);
+            foreach (TreeNode node in nodes)
+            {
+                foreach (ModeloPermissao f in listaPermissoes)
+                {
+                    for (int i = 0; i < node.Nodes.Count; i++)
+                    {
+                        if (f.getTabela() == node.Nodes[i].Text && f.getIdUsuario() == codigoCelSelecionada)
+                        {
+                            node.Nodes[i].Checked = true;
+                        }
+                        else 
+                        {
+                            node.Nodes[i].Checked = false;
+                        }
+                    }
+                }
+            }
+        }
         private void confirmarFechamento()
         {
-            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário Gestão de Utilizadores?", "Atenção!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
@@ -174,6 +215,7 @@ namespace Facturix_Salários.Formularios.Definicoes
             {
                 ControllerUtilizador.Guardar(id, nome, apelido, password, email, contacto, nivel, nomeUtilizador, dataNascimento);
                 limparCaixas();
+                gravarPermissoes(treeView1.Nodes, id, true);
             }
             else
             {
@@ -189,32 +231,44 @@ namespace Facturix_Salários.Formularios.Definicoes
             {
                 btnAdicionar.Enabled = false;
                 btnEliminar.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnConsultar.Enabled = false;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
                 btnAdicionar.FlatStyle = FlatStyle.Flat;
+                btnAtualizar.FlatStyle = FlatStyle.Flat;
+                btnConsultar.FlatStyle = FlatStyle.Flat;
                 btnAdicionar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnConsultar.Cursor = System.Windows.Forms.Cursors.Default;
             }
             else
             {
                 btnAdicionar.Enabled = true;
                 btnEliminar.Enabled = true;
+                btnAtualizar.Enabled = true;
+                btnConsultar.Enabled = true;
                 btnEliminar.FlatStyle = FlatStyle.Standard;
                 btnAdicionar.FlatStyle = FlatStyle.Standard;
+                btnAtualizar.FlatStyle = FlatStyle.Standard;
+                btnConsultar.FlatStyle = FlatStyle.Standard;
                 btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
                 btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnConsultar.Cursor = System.Windows.Forms.Cursors.Hand;
             }
         }
 
         private void montarDataGridView(ArrayList lista)
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
+            dt.Columns.Add("Registo n°");
             dt.Columns.Add("Nome");
             dt.Columns.Add("Nível");
             foreach (ModeloUtilizador func in lista)
             {
                 DataRow dRow = dt.NewRow();
-                dRow["ID"] = func.getId();
+                dRow["Registo n°"] = func.getId();
                 dRow["Nome"] = func.getNome();
                 dRow["Nível"] = func.getNivel();
                 dt.Rows.Add(dRow);
@@ -297,7 +351,7 @@ namespace Facturix_Salários.Formularios.Definicoes
             }
             if (e.KeyCode == Keys.Escape)
             {
-                confirmarFechamento();
+                this.Close();
             }
         }
 
@@ -347,7 +401,7 @@ namespace Facturix_Salários.Formularios.Definicoes
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            confirmarFechamento();
+            this.Close();
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
@@ -407,6 +461,27 @@ namespace Facturix_Salários.Formularios.Definicoes
             codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
             ArrayList listaUtilizadores = ControllerUtilizador.recuperarComCodigo(codigoCelSelecionada);
             montarTextBoxs(listaUtilizadores);
+            lerPermissoes(treeView1.Nodes);
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void frmGestaoUtilizador_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende fechar o formulário Gestão de Utilizadores?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
+            }
         }
     }
 }

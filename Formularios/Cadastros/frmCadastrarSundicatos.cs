@@ -23,12 +23,12 @@ namespace Facturix_Salários
         {
             ArrayList listaSindicatos = ControllerSindicato.recuperar();
             DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
+            dt.Columns.Add("Registo n°");
             dt.Columns.Add("Sindicato");
             foreach (ModeloSindicato func in listaSindicatos)
             {
                 DataRow dRow = dt.NewRow();
-                dRow["ID"] = func.getId();
+                dRow["Registo n°"] = func.getId();
                 dRow["Sindicato"] = func.getSindicato();
                 dt.Rows.Add(dRow);
             }
@@ -108,7 +108,7 @@ namespace Facturix_Salários
 
         private void confirmarFechamento()
         {
-            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário?", "Atenção!", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Pretende fechar o formulário Cadastro de Seguros?", "Atenção!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
@@ -214,7 +214,7 @@ namespace Facturix_Salários
 
         private void btnRegressar_Click(object sender, EventArgs e)
         {
-            confirmarFechamento();
+            this.Close();
         }
 
         private void frmCadastrarSundicatos_KeyDown(object sender, KeyEventArgs e)
@@ -249,7 +249,7 @@ namespace Facturix_Salários
             }
             if (e.KeyCode == Keys.Escape)
             {
-                confirmarFechamento();
+                this.Close();
             }
         }
 
@@ -285,6 +285,21 @@ namespace Facturix_Salários
             {
                 txtCodigo.Text = func.getId() + "";
                 txtNome.Text = func.getSindicato();
+            }
+        }
+
+        private void frmCadastrarSundicatos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende fechar o formulário Cadastro de Sindicatos?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
             }
         }
     }
