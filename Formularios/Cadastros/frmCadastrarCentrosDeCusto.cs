@@ -33,6 +33,7 @@ namespace Facturix_Salários
                 dt.Rows.Add(dRow);
             }
             dataCentroDeCusto.DataSource = dt;
+            dataCentroDeCusto.AllowUserToAddRows = false;
             dataCentroDeCusto.Refresh();
             dataCentroDeCusto.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataCentroDeCusto.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;

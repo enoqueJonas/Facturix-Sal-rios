@@ -43,14 +43,16 @@
             this.dataHabilitacoes = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataHabilitacoes)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 74);
+            this.label1.Location = new System.Drawing.Point(34, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
@@ -58,7 +60,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(96, 71);
+            this.txtNome.Location = new System.Drawing.Point(109, 53);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(445, 20);
             this.txtNome.TabIndex = 223;
@@ -68,7 +70,7 @@
             // 
             this.txtCodigo.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(96, 32);
+            this.txtCodigo.Location = new System.Drawing.Point(109, 7);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(54, 20);
@@ -78,7 +80,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 35);
+            this.label3.Location = new System.Drawing.Point(34, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 225;
@@ -93,10 +95,10 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(12, 424);
+            this.panel1.Location = new System.Drawing.Point(12, 461);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(550, 74);
+            this.panel1.Size = new System.Drawing.Size(592, 74);
             this.panel1.TabIndex = 222;
             // 
             // btnRegressar
@@ -105,7 +107,7 @@
             this.btnRegressar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegressar.Image = ((System.Drawing.Image)(resources.GetObject("btnRegressar.Image")));
             this.btnRegressar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRegressar.Location = new System.Drawing.Point(462, 6);
+            this.btnRegressar.Location = new System.Drawing.Point(485, 6);
             this.btnRegressar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegressar.Name = "btnRegressar";
             this.btnRegressar.Size = new System.Drawing.Size(69, 60);
@@ -121,7 +123,7 @@
             this.btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConfirmar.Location = new System.Drawing.Point(282, 6);
+            this.btnConfirmar.Location = new System.Drawing.Point(308, 6);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(69, 60);
@@ -137,7 +139,7 @@
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(194, 6);
+            this.btnCancelar.Location = new System.Drawing.Point(219, 6);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(69, 60);
@@ -153,7 +155,7 @@
             this.btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAtualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAtualizar.Image")));
             this.btnAtualizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAtualizar.Location = new System.Drawing.Point(107, 6);
+            this.btnAtualizar.Location = new System.Drawing.Point(127, 6);
             this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(69, 60);
@@ -169,7 +171,7 @@
             this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEliminar.Location = new System.Drawing.Point(374, 6);
+            this.btnEliminar.Location = new System.Drawing.Point(396, 6);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(69, 60);
@@ -185,7 +187,7 @@
             this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionar.Location = new System.Drawing.Point(18, 6);
+            this.btnAdicionar.Location = new System.Drawing.Point(37, 6);
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(69, 60);
@@ -199,7 +201,7 @@
             // 
             this.dataHabilitacoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataHabilitacoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataHabilitacoes.Location = new System.Drawing.Point(28, 133);
+            this.dataHabilitacoes.Location = new System.Drawing.Point(48, 152);
             this.dataHabilitacoes.Name = "dataHabilitacoes";
             this.dataHabilitacoes.RowHeadersVisible = false;
             this.dataHabilitacoes.Size = new System.Drawing.Size(517, 259);
@@ -211,7 +213,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Location = new System.Drawing.Point(12, 117);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(550, 290);
+            this.panel2.Size = new System.Drawing.Size(592, 323);
             this.panel2.TabIndex = 245;
             // 
             // lbl1
@@ -220,26 +222,35 @@
             this.lbl1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lbl1.Location = new System.Drawing.Point(4, 73);
+            this.lbl1.Location = new System.Drawing.Point(18, 51);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(15, 15);
             this.lbl1.TabIndex = 3006;
             this.lbl1.Text = "1";
             this.lbl1.Visible = false;
             // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.txtNome);
+            this.panel3.Controls.Add(this.lbl1);
+            this.panel3.Controls.Add(this.txtCodigo);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Location = new System.Drawing.Point(12, 12);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(592, 82);
+            this.panel3.TabIndex = 3007;
+            // 
             // frmCadastrarHabilitacoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(574, 509);
-            this.Controls.Add(this.lbl1);
+            this.ClientSize = new System.Drawing.Size(616, 546);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataHabilitacoes);
-            this.Controls.Add(this.txtNome);
-            this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.KeyPreview = true;
             this.Name = "frmCadastrarHabilitacoes";
@@ -250,8 +261,9 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarHabilitacoes_KeyDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataHabilitacoes)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -271,5 +283,6 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Panel panel3;
     }
 }

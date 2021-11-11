@@ -8,7 +8,7 @@ namespace Facturix_Salários
 {
     public class ModeloFuncionario 
     {
-        private int codigo, codigoPostal, dependentes;
+        private int codigo, codigoPostal, dependentes, idIRPS;
         private double vencimento, subTransporte, subAlimentacao;
         private float horas, impostoMunicipal;
         private String 
@@ -47,6 +47,7 @@ namespace Facturix_Salários
         public ModeloFuncionario
             (
                 int codigo,
+                int idIRPS,
                 String nome,
                 String cell,
                 String cellSec,
@@ -129,9 +130,11 @@ namespace Facturix_Salários
             this.centroDeCusto = centroDeCusto;
             this.segurancaSocial = segurancaSocial;
             this.sindicato = sindicato;
+            this.idIRPS = idIRPS;
         }
 
         public int getCodigo() { return codigo; }
+        public int getIdIRPS() { return idIRPS; }
 
         public String getNome() { return nome; }
 

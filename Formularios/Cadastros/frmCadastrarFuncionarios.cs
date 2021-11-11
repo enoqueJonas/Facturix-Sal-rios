@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Riss.Devices;
 
 namespace Facturix_Salários
 {
@@ -18,11 +19,24 @@ namespace Facturix_Salários
         {
             InitializeComponent();
         }
-        
+        Device device = new Device();
+        DeviceConnection deviceConnection;
+        public void initializeDevice() 
+        {
+            object extraProperty = new object();
+            object extraData = new object();
+            object result = deviceConnection.SetProperty(DeviceProperty.InitSettings, extraProperty, device,
+            extraData);
+        }
+
         /// <summary>Monta a lista de dependestes na DataGridView.</summary>
         private void refrescarDependentes() 
         {
-            int idFunc = int.Parse(txtCodigo.Text);
+            int idFunc = 0;
+            if (txtCodigo.Text != "") 
+            {
+                idFunc = int.Parse(txtCodigo.Text);
+            }
             ArrayList listaDependentes = ControllerDependente.recuperar();
             DataTable dt = new DataTable();
             dt.Columns.Add("Registo n°");
@@ -43,6 +57,7 @@ namespace Facturix_Salários
             }
             dataDependentes.DataSource = dt;
             dataDependentes.Refresh();
+            dataDependentes.AllowUserToAddRows = false;
             dataDependentes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataDependentes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
@@ -55,6 +70,8 @@ namespace Facturix_Salários
             ArrayList listaHabilitacoes = ControllerHabilitacoes.recuperar();
             ArrayList listaProfissao = ControllerProfissao.recuperar();
             ArrayList listaSeguros = ControllerSeguro.recuperar();
+            ArrayList listaSindicatos = ControllerSindicato.recuperar();
+            ArrayList listaCebtrosDeCusto = ControllerCentroDeCusto.recuperar();
             foreach (ModeloCategoria cat in listaCategorias)
             {
                 cbCategoria.Items.Add(cat.getCategoria());
@@ -74,6 +91,14 @@ namespace Facturix_Salários
             foreach (ModeloSeguro seg in listaSeguros)
             {
                 cbSeguro.Items.Add(seg.getSeguro());
+            }
+            foreach (ModeloSindicato seg in listaSindicatos)
+            {
+                cbSindicato.Items.Add(seg.getSindicato());
+            }
+            foreach (ModeloCentroDeCusto seg in listaCebtrosDeCusto)
+            {
+                cbCentrocusto.Items.Add(seg.getCentroDeCusto());
             }
         }
 
@@ -139,7 +164,7 @@ namespace Facturix_Salários
         }
 
         /// <summary>Adiciona na TextBox txtCodigo o ID do registo a seguir.</summary>
-        private void setCod()
+        public void setCod()
         {
             int cod = 0;
             ArrayList listaFunc = ControllerFuncionario.recuperar();
@@ -209,7 +234,7 @@ namespace Facturix_Salários
         private void gravar  ()
         {
             ArrayList listaFuncionarios = ControllerFuncionario.recuperar();
-            int codigo = int.Parse(txtCodigo.Text);
+            int id = int.Parse(txtCodigo.Text);
             String nome = txtNome.Text;
             String morada = txtMorada.Text;
             String bairro = txtBairro.Text;
@@ -329,24 +354,36 @@ namespace Facturix_Salários
             String segurancaSocial = txtSeguranca.Text;
             String sindicato = cbSindicato.Text;
             int cod = 0;
+            int idIRPS = 0;
             foreach (ModeloFuncionario func in listaFuncionarios)
             {
-                if (func.getCodigo() == codigo) 
+                if (func.getCodigo() == id) 
                 {
                     cod = func.getCodigo();
                 }
             }
+            ArrayList listaIRPS = ControllerIRPS.recuperar();
+            foreach (ModeloIRPS f in listaIRPS)
+            {
+                if (vencimento >= f.getSalarioMin() && vencimento <= f.getSalarioMax())
+                {
+                    if (dependentes == f.getNrDependentes())
+                    {
+                        idIRPS = f.getId();
+                    }
+                }
+            }
             if (cod!=0)
             {
-                ControllerFuncionario.atualizar(codigo, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato);
-                ControllerConta.Guardar(codigo, banco, nib, conta);
+                ControllerFuncionario.atualizar(cod, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato);
+                ControllerConta.atualizar(cod, banco, nib, conta);
                 limparCaixas();
                 mostrarLabels(false);
             }
             else 
             {
-                ControllerFuncionario.Guardar(codigo, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal,centroDeCusto, segurancaSocial, sindicato);
-                ControllerConta.Guardar(codigo, banco, nib, conta);
+                ControllerFuncionario.Guardar(id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal,centroDeCusto, segurancaSocial, sindicato);
+                ControllerConta.Guardar(id, banco, nib, conta);
                 adicionar();
                 setCod();
             }
@@ -737,7 +774,16 @@ namespace Facturix_Salários
         private void f_funcionarios_Load(object sender, EventArgs e)
         {
             impedirBotoes();
-            frmMenu m = new frmMenu();
+            refrescarDependentes();
+            mudarLarguraCelulas();
+            foreach (DataGridViewColumn col in dataDependentes.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            //setCod();
+            adicionarItemsCb();
+            porFoco();
+            /*
             MySqlConnection conexao = Conexao.conectar();
             try
             {
@@ -761,16 +807,17 @@ namespace Facturix_Salários
                 if (conexao != null)
                     conexao.Close();
             }
+            */
         }
 
         /// <summary>Muda Largura das DataGridView Cells.</summary>
         private void mudarLarguraCelulas() 
         {
-            dataDependentes.Columns["ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataDependentes.Columns["Registo n°"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataDependentes.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataDependentes.Columns["Data Nasc."].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataDependentes.Columns["Grau Parent."].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataDependentes.Columns["ID"].Width = 70;
+            dataDependentes.Columns["Registo n°"].Width = 70;
             dataDependentes.Columns["Nome"].Width = 370;
             dataDependentes.Columns["Data Nasc."].Width = 105;
             dataDependentes.Columns["Grau Parent."].Width = 163;
@@ -1399,6 +1446,14 @@ namespace Facturix_Salários
                         e.Cancel = true;
                     }
                     break;
+            }
+        }
+
+        private void txtImpostoM_TextChanged(object sender, EventArgs e)
+        {
+            if (txtImpostoM.Text == "%") 
+            {
+                txtImpostoM.Text = "";
             }
         }
     }

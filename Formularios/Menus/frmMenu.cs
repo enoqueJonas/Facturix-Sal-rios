@@ -13,6 +13,7 @@ using Facturix_Salários.Formularios.Definicoes;
 using Facturix_Salários.Formularios.Cadastros;
 using Facturix_Salários.Controllers;
 using Facturix_Salários.Modelos;
+using Facturix_Salários.Conexoes;
 
 namespace Facturix_Salários
 {
@@ -222,6 +223,12 @@ namespace Facturix_Salários
         private void iRPSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmCadastrarIRPS f = new frmCadastrarIRPS();
+            f.Show();
+        }
+
+        private void conectarScannerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConectarFPScanner f = new frmConectarFPScanner();
             f.Show();
         }
     }

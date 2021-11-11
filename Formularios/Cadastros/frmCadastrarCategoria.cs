@@ -51,6 +51,7 @@ namespace Facturix_Salários
                 dt.Rows.Add(dRow);
             }
             dataCategorias.DataSource = dt;
+            dataCategorias.AllowUserToAddRows = false;
             dataCategorias.Refresh();
             tirarFocoCelula();
         }

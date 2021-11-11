@@ -85,13 +85,13 @@ namespace Facturix_Salários.Controllers
                     double salMax = leitor.GetFloat(2);
                     float valor = leitor.GetFloat(3);
                     int nrDependentes = leitor.GetInt16(4);
-                    float coeficiente = leitor.GetInt16(5);
+                    float coeficiente = leitor.GetFloat(5);
                     listaIRPS.Add(new ModeloIRPS(id, salMin, salMax, valor, nrDependentes, coeficiente));
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Nao foi possivel recuperar irps!");
+                //MessageBox.Show(err.Message, "Nao foi possivel recuperar irps!");
             }
             finally
             {
@@ -141,7 +141,7 @@ namespace Facturix_Salários.Controllers
                     float valor = leitor.GetFloat(3);
                     Convert.ToDecimal(valor);
                     int nrDependentes = leitor.GetInt16(4);
-                    float coeficiente = leitor.GetInt16(5);
+                    float coeficiente = leitor.GetFloat(5);
                     listaIRPS.Add(new ModeloIRPS(id, salMin, salMax, valor, nrDependentes, coeficiente));
                 }
             }
@@ -174,7 +174,7 @@ namespace Facturix_Salários.Controllers
                     double salMax = leitor.GetFloat(2);
                     float valor = leitor.GetFloat(3);
                     int nrDependentes = leitor.GetInt16(4);
-                    float coeficiente = leitor.GetInt16(5);
+                    float coeficiente = leitor.GetFloat(5);
                     listaIRPS.Add(new ModeloIRPS(id, salMin, salMax, valor, nrDependentes, coeficiente));
                 }
             }

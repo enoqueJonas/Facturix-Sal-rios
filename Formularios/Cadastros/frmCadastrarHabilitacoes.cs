@@ -35,6 +35,7 @@ namespace Facturix_Salários
                 dt.Rows.Add(dRow);
             }
             dataHabilitacoes.DataSource = dt;
+            dataHabilitacoes.AllowUserToAddRows = false;
             dataHabilitacoes.Refresh();
             dataHabilitacoes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataHabilitacoes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;

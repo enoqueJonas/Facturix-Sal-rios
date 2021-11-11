@@ -46,13 +46,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl2 = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSeguro)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(101, 97);
+            this.txtNome.Location = new System.Drawing.Point(121, 74);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(440, 20);
             this.txtNome.TabIndex = 3;
@@ -63,7 +65,7 @@
             // 
             this.txtCodigo.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(101, 21);
+            this.txtCodigo.Location = new System.Drawing.Point(121, 12);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(41, 20);
@@ -73,7 +75,7 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(21, 104);
+            this.Label2.Location = new System.Drawing.Point(41, 77);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(44, 13);
             this.Label2.TabIndex = 233;
@@ -82,7 +84,7 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(21, 24);
+            this.Label1.Location = new System.Drawing.Point(41, 12);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(59, 13);
             this.Label1.TabIndex = 232;
@@ -97,10 +99,10 @@
             this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnAdicionar);
-            this.panel1.Location = new System.Drawing.Point(11, 424);
+            this.panel1.Location = new System.Drawing.Point(12, 461);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(551, 74);
+            this.panel1.Size = new System.Drawing.Size(592, 74);
             this.panel1.TabIndex = 229;
             // 
             // btnRegressar
@@ -201,7 +203,7 @@
             // 
             // txtPercentagem
             // 
-            this.txtPercentagem.Location = new System.Drawing.Point(101, 60);
+            this.txtPercentagem.Location = new System.Drawing.Point(121, 44);
             this.txtPercentagem.Name = "txtPercentagem";
             this.txtPercentagem.Size = new System.Drawing.Size(41, 20);
             this.txtPercentagem.TabIndex = 2;
@@ -211,7 +213,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 63);
+            this.label3.Location = new System.Drawing.Point(41, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 235;
@@ -221,7 +223,7 @@
             // 
             this.dataSeguro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataSeguro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataSeguro.Location = new System.Drawing.Point(27, 138);
+            this.dataSeguro.Location = new System.Drawing.Point(48, 152);
             this.dataSeguro.Name = "dataSeguro";
             this.dataSeguro.RowHeadersVisible = false;
             this.dataSeguro.Size = new System.Drawing.Size(517, 259);
@@ -233,7 +235,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Location = new System.Drawing.Point(12, 123);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(550, 287);
+            this.panel2.Size = new System.Drawing.Size(592, 323);
             this.panel2.TabIndex = 10;
             // 
             // lbl2
@@ -242,7 +244,7 @@
             this.lbl2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lbl2.Location = new System.Drawing.Point(4, 102);
+            this.lbl2.Location = new System.Drawing.Point(20, 77);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(15, 15);
             this.lbl2.TabIndex = 3005;
@@ -255,30 +257,39 @@
             this.lbl1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lbl1.Location = new System.Drawing.Point(4, 63);
+            this.lbl1.Location = new System.Drawing.Point(20, 47);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(15, 15);
             this.lbl1.TabIndex = 3007;
             this.lbl1.Text = "1";
             this.lbl1.Visible = false;
             // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.lbl1);
+            this.panel3.Controls.Add(this.Label1);
+            this.panel3.Controls.Add(this.txtCodigo);
+            this.panel3.Controls.Add(this.txtNome);
+            this.panel3.Controls.Add(this.lbl2);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.txtPercentagem);
+            this.panel3.Controls.Add(this.Label2);
+            this.panel3.Location = new System.Drawing.Point(12, 10);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(592, 105);
+            this.panel3.TabIndex = 3008;
+            // 
             // frmCadastrarSeguro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(574, 509);
-            this.Controls.Add(this.lbl1);
-            this.Controls.Add(this.lbl2);
+            this.ClientSize = new System.Drawing.Size(616, 546);
             this.Controls.Add(this.dataSeguro);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtPercentagem);
-            this.Controls.Add(this.txtNome);
-            this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.Label2);
-            this.Controls.Add(this.Label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
             this.KeyPreview = true;
             this.Name = "frmCadastrarSeguro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -288,8 +299,9 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCadastrarSeguro_KeyDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataSeguro)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -311,5 +323,6 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Panel panel3;
     }
 }

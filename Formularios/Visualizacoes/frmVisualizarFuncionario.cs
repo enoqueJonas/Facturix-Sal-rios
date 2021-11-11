@@ -23,9 +23,6 @@ namespace Facturix_Salários
         int codigoCelSelecionada;
         private void frmVisualizarF_Load(object sender, EventArgs e)
         {
-            frmMenu m = new frmMenu();
-            if (m.ligacaoBaseDados == true) 
-            {
                 refrescar();
                 foreach (DataGridViewColumn col in dataFuncionarios.Columns)
                 {
@@ -33,7 +30,6 @@ namespace Facturix_Salários
                 }
                 this.ActiveControl = txtLocalizar;
                 mostrarNumeroFuncionarios();
-            }
         }
 
         private void mostrarNumeroFuncionarios() 
@@ -58,6 +54,7 @@ namespace Facturix_Salários
             }
             dataFuncionarios.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataFuncionarios.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataFuncionarios.AllowUserToAddRows = false;
             dataFuncionarios.DataSource = dt;
             dataFuncionarios.Refresh();
         }
@@ -215,6 +212,7 @@ namespace Facturix_Salários
         {
             frmCadastrarFuncionarios f = new frmCadastrarFuncionarios();
             f.Show();
+            f.setCod();
             this.Close();
         }
 
@@ -279,6 +277,7 @@ namespace Facturix_Salários
 
         private void frmVisualizarFuncionario_FormClosing(object sender, FormClosingEventArgs e)
         {
+            /*
                 switch (e.CloseReason)
                 {
                     case CloseReason.UserClosing:
@@ -290,6 +289,7 @@ namespace Facturix_Salários
                         }
                         break;
                 }
+                */
             }
     }
 }

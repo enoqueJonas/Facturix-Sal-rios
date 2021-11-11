@@ -167,7 +167,7 @@ namespace Facturix_Salários.Formularios.Cadastros
             dtViewIRPS.Columns["2"].Width = 90;
             dtViewIRPS.Columns["3"].Width = 90;
             dtViewIRPS.Columns["4 ou mais"].Width = 90;
-            dtViewIRPS.Columns["Coeficiente aplicável à cada unidade adicional do limite inferior do salário bruto"].Width = 155;
+            dtViewIRPS.Columns["Coeficiente aplicável à cada unidade adicional do limite inferior do salário bruto"].Width = 160;
         }
 
         Control ctrl;
@@ -223,37 +223,49 @@ namespace Facturix_Salários.Formularios.Cadastros
                 DataRow dRow = dt.NewRow();
                 salarioMin = ir.getSalarioMin();
                 listaIrpsSalMin = ControllerIRPS.recuperarComSalMin(salarioMin);
-                dRow["Limites dos Intervalos de Salário bruto mensal (MTS)"] ="De "+ Math.Round(ir.getSalarioMin(), 1) + " até "+ Math.Round(ir.getSalarioMax(), 1);
+                if (ir.getSalarioMin() < 20250)
+                {
+                    dRow["Limites dos Intervalos de Salário bruto mensal (MTS)"] = "Até " + Math.Round(ir.getSalarioMin(), 1) + "";
+                }
+                else if (ir.getSalarioMin() >= 144750)
+                {
+                    dRow["Limites dos Intervalos de Salário bruto mensal (MTS)"] = "De  " + Math.Round(ir.getSalarioMin(), 1) + " em diante";
+                }
+                else 
+                {
+                    dRow["Limites dos Intervalos de Salário bruto mensal (MTS)"] = "De  " + Math.Round(ir.getSalarioMin(), 1) + " até " + Math.Round(ir.getSalarioMax(), 1);
+                }                
                 foreach (ModeloIRPS f in listaIrpsSalMin) 
                 {
                     if (f.getNrDependentes() == 0) 
                     {
-                        dRow["0"] = Convert.ToDecimal(f.getValor()) + "";
+                        dRow["0"] = string.Format("{0:D2}", f.getValor()+".00");
                     }else
                     if (f.getNrDependentes() == 1) 
                     {
-                        dRow["1"] = f.getValor() + "";
+                        dRow["1"] = f.getValor() + ".00";
                     }else
                     if (f.getNrDependentes() == 2) 
                     {
-                        dRow["2"] = f.getValor() + "";
+                        dRow["2"] = f.getValor() + ".00";
                     }else
                     if (f.getNrDependentes() == 3) 
                     {
-                        dRow["3"] = f.getValor() + "";
+                        dRow["3"] = f.getValor() + ".00";
                     }else
                     if (f.getNrDependentes() >= 4) 
                     {
-                        dRow["4 ou mais"] = f.getValor() + "";
+                        dRow["4 ou mais"] = f.getValor() + ".00";
                     }
                 }
-                dRow["Coeficiente aplicável à cada unidade adicional do limite inferior do salário bruto"] = ir.getCoeficiente() + "";
+                dRow["Coeficiente aplicável à cada unidade adicional do limite inferior do salário bruto"] = Math.Round(ir.getCoeficiente(), 2) + "";
                 dt.Rows.Add(dRow);
             }
             DataView dtView = new DataView(dt);
             DataTable dtTable = dtView.ToTable(true, "Limites dos Intervalos de Salário bruto mensal (MTS)", "0", "1", "2", "3", "4 ou mais", "Coeficiente aplicável à cada unidade adicional do limite inferior do salário bruto");
             dtViewIRPS.DataSource = dtTable;
             dtViewIRPS.Refresh();
+            dtViewIRPS.AllowUserToAddRows = false;
             dtViewIRPS.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dtViewIRPS.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
@@ -337,7 +349,7 @@ namespace Facturix_Salários.Formularios.Cadastros
             int w2 = dtViewIRPS.GetCellDisplayRectangle(2, -1, true).Width;
             r1.X += 1;
             r1.Y += 1;
-            r1.Width = r1.Width + 280 + w2 -2;
+            r1.Width = r1.Width + 273 + w2 -2;
             r1.Height = r1.Height / 2 - 2;
             e.Graphics.FillRectangle(new SolidBrush(Color.GhostWhite), r1);
             StringFormat format = new StringFormat();
@@ -482,7 +494,7 @@ namespace Facturix_Salários.Formularios.Cadastros
             switch (e.CloseReason)
             {
                 case CloseReason.UserClosing:
-                    if (MessageBox.Show("Pretende fechar o formulário Cadastro de Categorias?", "Atenção!",
+                    if (MessageBox.Show("Pretende fechar o formulário Cadastro de IRPS?", "Atenção!",
                                         MessageBoxButtons.YesNo,
                                         MessageBoxIcon.Question) == DialogResult.No)
                     {

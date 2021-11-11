@@ -16,7 +16,8 @@ namespace Facturix_Salários
     {
         public static void Guardar
             (
-                int codigo, 
+                int codigo,
+                int idIRPS,
                 String nome, 
                 String cell, 
                 String cellSec, 
@@ -63,9 +64,10 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into funcionario ( id, nome, cell, cellSec, telefone, email, estadoCivil, deficiencia, conjugue, sexo, dataNascimento, linkImagem, codigoPostal, bairro, localidade, moradaGen, tipoContrato,dataAdmissao, dataDemissao, profissao, categoria, seguro, localDeTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao , subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                String sqlInsert = "INSERT into funcionario ( id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, deficiencia, conjugue, sexo, dataNascimento, linkImagem, codigoPostal, bairro, localidade, moradaGen, tipoContrato,dataAdmissao, dataDemissao, profissao, categoria, seguro, localDeTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao , subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", codigo);
+                comando.Parameters.AddWithValue("idIRPS", idIRPS);
                 comando.Parameters.AddWithValue("nome", nome);
                 comando.Parameters.AddWithValue("cell", cell);
                 comando.Parameters.AddWithValue("cellSec", cellSec);
@@ -133,46 +135,47 @@ namespace Facturix_Salários
                 while (leitor.Read())
                 {
                     int codigo = leitor.GetInt16(0);
-                    String nome = leitor.GetString(1) + "";
-                    int codPostal = leitor.GetInt16(2);
-                    String cell = leitor.GetString(3) + "";
-                    String cellSec = leitor.GetString(4) + "";
-                    String tel = leitor.GetString(5) + "";
-                    String email = leitor.GetString(6) + "";
-                    String estadoCivil = leitor.GetString(7) + "";
-                    String def = leitor.GetString(8) + "";
-                    String conjugue = leitor.GetString(9) + "";
-                    String sexo = leitor.GetString(10) + "";
-                    String dataNascimento = leitor.GetString(11) + "";
-                    String linkImagem = leitor.GetString(12) + "";
-                    String bairro = leitor.GetString(13) + "";
-                    String localidade = leitor.GetString(14) + "";
-                    String moradaGen = leitor.GetString(15) + "";
-                    String tipoContrato = leitor.GetString(16) + "";
-                    String dataAdmissao = leitor.GetString(17) + "";
-                    String dataDemissao = leitor.GetString(18) + "";
-                    String profissao = leitor.GetString(19) + "";
-                    String categoria = leitor.GetString(20) + "";
-                    String seguro = leitor.GetString(21) + "";
-                    String localTrabalho = leitor.GetString(22) + "";
-                    String regime = leitor.GetString(23) + "";
-                    String bi = leitor.GetString(24) + "";
-                    String numeroBenificiario = leitor.GetString(25) + "";
-                    String numeroFiscal = leitor.GetString(26)+"";
-                    double vencimento = leitor.GetDouble(27);
-                    double subAlimentacao = leitor.GetDouble(28);
-                    double subTransporte = leitor.GetDouble(29);
-                    float horas = leitor.GetFloat(30);
-                    int dependentes = leitor.GetInt16(31);
-                    String habilitacoes = leitor.GetString(32);
-                    String nacionalidade = leitor.GetString(33);
-                    String ultimoEmprego = leitor.GetString(34);
-                    String turno = leitor.GetString(35);
-                    float impostoMunicipal = leitor.GetFloat(36);
-                    String centroDeCusto = leitor.GetString(37);
-                    String segurancaSocial = leitor.GetString(38);
-                    String sindicato = leitor.GetString(39);
-                    listaFuncionarios.Add(new ModeloFuncionario(codigo, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto,segurancaSocial, sindicato));
+                    int idIRPS = leitor.GetInt16(1);
+                    String nome = leitor.GetString(2) + "";
+                    int codPostal = leitor.GetInt16(3);
+                    String cell = leitor.GetString(4) + "";
+                    String cellSec = leitor.GetString(5) + "";
+                    String tel = leitor.GetString(6) + "";
+                    String email = leitor.GetString(7) + "";
+                    String estadoCivil = leitor.GetString(8) + "";
+                    String def = leitor.GetString(9) + "";
+                    String conjugue = leitor.GetString(10) + "";
+                    String sexo = leitor.GetString(11) + "";
+                    String dataNascimento = leitor.GetString(12) + "";
+                    String linkImagem = leitor.GetString(13) + "";
+                    String bairro = leitor.GetString(14) + "";
+                    String localidade = leitor.GetString(15) + "";
+                    String moradaGen = leitor.GetString(16) + "";
+                    String tipoContrato = leitor.GetString(17) + "";
+                    String dataAdmissao = leitor.GetString(18) + "";
+                    String dataDemissao = leitor.GetString(19) + "";
+                    String profissao = leitor.GetString(20) + "";
+                    String categoria = leitor.GetString(21) + "";
+                    String seguro = leitor.GetString(22) + "";
+                    String localTrabalho = leitor.GetString(23) + "";
+                    String regime = leitor.GetString(24) + "";
+                    String bi = leitor.GetString(25) + "";
+                    String numeroBenificiario = leitor.GetString(26) + "";
+                    String numeroFiscal = leitor.GetString(27)+"";
+                    double vencimento = leitor.GetDouble(28);
+                    double subAlimentacao = leitor.GetDouble(29);
+                    double subTransporte = leitor.GetDouble(30);
+                    float horas = leitor.GetFloat(31);
+                    int dependentes = leitor.GetInt16(32);
+                    String habilitacoes = leitor.GetString(33);
+                    String nacionalidade = leitor.GetString(34);
+                    String ultimoEmprego = leitor.GetString(35);
+                    String turno = leitor.GetString(36);
+                    float impostoMunicipal = leitor.GetFloat(37);
+                    String centroDeCusto = leitor.GetString(38);
+                    String segurancaSocial = leitor.GetString(39);
+                    String sindicato = leitor.GetString(40);
+                    listaFuncionarios.Add(new ModeloFuncionario(codigo, idIRPS, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto,segurancaSocial, sindicato));
                 }
             } catch (Exception)
             {
@@ -198,46 +201,47 @@ namespace Facturix_Salários
                 while (leitor.Read())
                 {
                     int codigo = leitor.GetInt16(0);
-                    String nome = leitor.GetString(1) + "";
-                    int codPostal = leitor.GetInt16(2);
-                    String cell = leitor.GetString(3) + "";
-                    String cellSec = leitor.GetString(4) + "";
-                    String tel = leitor.GetString(5) + "";
-                    String email = leitor.GetString(6) + "";
-                    String estadoCivil = leitor.GetString(7) + "";
-                    String def = leitor.GetString(8) + "";
-                    String conjugue = leitor.GetString(9) + "";
-                    String sexo = leitor.GetString(10) + "";
-                    String dataNascimento = leitor.GetString(11) + "";
-                    String linkImagem = leitor.GetString(12) + "";
-                    String bairro = leitor.GetString(13) + "";
-                    String localidade = leitor.GetString(14) + "";
-                    String moradaGen = leitor.GetString(15) + "";
-                    String tipoContrato = leitor.GetString(16) + "";
-                    String dataAdmissao = leitor.GetString(17) + "";
-                    String dataDemissao = leitor.GetString(18) + "";
-                    String profissao = leitor.GetString(19) + "";
-                    String categoria = leitor.GetString(20) + "";
-                    String seguro = leitor.GetString(21) + "";
-                    String localTrabalho = leitor.GetString(22) + "";
-                    String regime = leitor.GetString(23) + "";
-                    String bi = leitor.GetString(24) + "";
-                    String numeroBenificiario = leitor.GetString(25) + "";
-                    String numeroFiscal = leitor.GetString(26) + "";
-                    double vencimento = leitor.GetDouble(27);
-                    double subAlimentacao = leitor.GetDouble(28);
-                    double subTransporte = leitor.GetDouble(29);
-                    float horas = leitor.GetFloat(30);
-                    int dependentes = leitor.GetInt16(31);
-                    String habilitacoes = leitor.GetString(32);
-                    String nacionalidade = leitor.GetString(33);
-                    String ultimoEmprego = leitor.GetString(34);
-                    String turno = leitor.GetString(35);
-                    float impostoMunicipal = leitor.GetFloat(36);
-                    String centroDeCusto = leitor.GetString(37);
-                    String segurancaSocial = leitor.GetString(38);
-                    String sindicato = leitor.GetString(39);
-                    listaFuncionarios.Add(new ModeloFuncionario(codigo,nome,cell,cellSec,tel,email,estadoCivil,def,conjugue,sexo,dataNascimento,linkImagem,codPostal,bairro,localidade,moradaGen,tipoContrato,dataAdmissao,dataDemissao,profissao,categoria,seguro,localTrabalho,regime,bi,numeroBenificiario,numeroFiscal,vencimento,subAlimentacao,subTransporte,horas,dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial,sindicato));
+                    int idIRPS = leitor.GetInt16(1);
+                    String nome = leitor.GetString(2) + "";
+                    int codPostal = leitor.GetInt16(3);
+                    String cell = leitor.GetString(4) + "";
+                    String cellSec = leitor.GetString(5) + "";
+                    String tel = leitor.GetString(6) + "";
+                    String email = leitor.GetString(7) + "";
+                    String estadoCivil = leitor.GetString(8) + "";
+                    String def = leitor.GetString(9) + "";
+                    String conjugue = leitor.GetString(10) + "";
+                    String sexo = leitor.GetString(11) + "";
+                    String dataNascimento = leitor.GetString(12) + "";
+                    String linkImagem = leitor.GetString(13) + "";
+                    String bairro = leitor.GetString(14) + "";
+                    String localidade = leitor.GetString(15) + "";
+                    String moradaGen = leitor.GetString(16) + "";
+                    String tipoContrato = leitor.GetString(17) + "";
+                    String dataAdmissao = leitor.GetString(18) + "";
+                    String dataDemissao = leitor.GetString(19) + "";
+                    String profissao = leitor.GetString(20) + "";
+                    String categoria = leitor.GetString(21) + "";
+                    String seguro = leitor.GetString(22) + "";
+                    String localTrabalho = leitor.GetString(23) + "";
+                    String regime = leitor.GetString(24) + "";
+                    String bi = leitor.GetString(25) + "";
+                    String numeroBenificiario = leitor.GetString(26) + "";
+                    String numeroFiscal = leitor.GetString(27) + "";
+                    double vencimento = leitor.GetDouble(28);
+                    double subAlimentacao = leitor.GetDouble(29);
+                    double subTransporte = leitor.GetDouble(30);
+                    float horas = leitor.GetFloat(31);
+                    int dependentes = leitor.GetInt16(32);
+                    String habilitacoes = leitor.GetString(33);
+                    String nacionalidade = leitor.GetString(34);
+                    String ultimoEmprego = leitor.GetString(35);
+                    String turno = leitor.GetString(36);
+                    float impostoMunicipal = leitor.GetFloat(37);
+                    String centroDeCusto = leitor.GetString(38);
+                    String segurancaSocial = leitor.GetString(39);
+                    String sindicato = leitor.GetString(40);
+                    listaFuncionarios.Add(new ModeloFuncionario(codigo, idIRPS, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato));
                 }
             }
             catch (Exception)
@@ -265,46 +269,47 @@ namespace Facturix_Salários
                 while (leitor.Read())
                 {
                     int codigo = leitor.GetInt16(0);
-                    String nome = leitor.GetString(1) + "";
-                    int codPostal = leitor.GetInt16(2);
-                    String cell = leitor.GetString(3) + "";
-                    String cellSec = leitor.GetString(4) + "";
-                    String tel = leitor.GetString(5) + "";
-                    String email = leitor.GetString(6) + "";
-                    String estadoCivil = leitor.GetString(7) + "";
-                    String def = leitor.GetString(8) + "";
-                    String conjugue = leitor.GetString(9) + "";
-                    String sexo = leitor.GetString(10) + "";
-                    String dataNascimento = leitor.GetString(11) + "";
-                    String linkImagem = leitor.GetString(12) + "";
-                    String bairro = leitor.GetString(13) + "";
-                    String localidade = leitor.GetString(14) + "";
-                    String moradaGen = leitor.GetString(15) + "";
-                    String tipoContrato = leitor.GetString(16) + "";
-                    String dataAdmissao = leitor.GetString(17) + "";
-                    String dataDemissao = leitor.GetString(18) + "";
-                    String profissao = leitor.GetString(19) + "";
-                    String categoria = leitor.GetString(20) + "";
-                    String seguro = leitor.GetString(21) + "";
-                    String localTrabalho = leitor.GetString(22) + "";
-                    String regime = leitor.GetString(23) + "";
-                    String bi = leitor.GetString(24) + "";
-                    String numeroBenificiario = leitor.GetString(25) + "";
-                    String numeroFiscal = leitor.GetString(26) + "";
-                    double vencimento = leitor.GetDouble(27);
-                    double subAlimentacao = leitor.GetDouble(28);
-                    double subTransporte = leitor.GetDouble(29);
-                    float horas = leitor.GetFloat(30);
-                    int dependentes = leitor.GetInt16(31);
-                    String habilitacoes = leitor.GetString(32);
-                    String nacionalidade = leitor.GetString(33);
-                    String ultimoEmprego = leitor.GetString(34);
-                    String turno = leitor.GetString(35);
-                    float impostoMunicipal = leitor.GetFloat(36);
-                    String centroDeCusto = leitor.GetString(37);
-                    String segurancaSocial = leitor.GetString(38);
-                    String sindicato = leitor.GetString(39);
-                    listaFuncionarios.Add(new ModeloFuncionario(codigo, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial,sindicato));
+                    int idIRPS = leitor.GetInt16(1);
+                    String nome = leitor.GetString(2) + "";
+                    int codPostal = leitor.GetInt16(3);
+                    String cell = leitor.GetString(4) + "";
+                    String cellSec = leitor.GetString(5) + "";
+                    String tel = leitor.GetString(6) + "";
+                    String email = leitor.GetString(7) + "";
+                    String estadoCivil = leitor.GetString(8) + "";
+                    String def = leitor.GetString(9) + "";
+                    String conjugue = leitor.GetString(10) + "";
+                    String sexo = leitor.GetString(11) + "";
+                    String dataNascimento = leitor.GetString(12) + "";
+                    String linkImagem = leitor.GetString(13) + "";
+                    String bairro = leitor.GetString(14) + "";
+                    String localidade = leitor.GetString(15) + "";
+                    String moradaGen = leitor.GetString(16) + "";
+                    String tipoContrato = leitor.GetString(17) + "";
+                    String dataAdmissao = leitor.GetString(18) + "";
+                    String dataDemissao = leitor.GetString(19) + "";
+                    String profissao = leitor.GetString(20) + "";
+                    String categoria = leitor.GetString(21) + "";
+                    String seguro = leitor.GetString(22) + "";
+                    String localTrabalho = leitor.GetString(23) + "";
+                    String regime = leitor.GetString(24) + "";
+                    String bi = leitor.GetString(25) + "";
+                    String numeroBenificiario = leitor.GetString(26) + "";
+                    String numeroFiscal = leitor.GetString(27) + "";
+                    double vencimento = leitor.GetDouble(28);
+                    double subAlimentacao = leitor.GetDouble(29);
+                    double subTransporte = leitor.GetDouble(30);
+                    float horas = leitor.GetFloat(31);
+                    int dependentes = leitor.GetInt16(32);
+                    String habilitacoes = leitor.GetString(33);
+                    String nacionalidade = leitor.GetString(34);
+                    String ultimoEmprego = leitor.GetString(35);
+                    String turno = leitor.GetString(36);
+                    float impostoMunicipal = leitor.GetFloat(37);
+                    String centroDeCusto = leitor.GetString(38);
+                    String segurancaSocial = leitor.GetString(39);
+                    String sindicato = leitor.GetString(40);
+                    listaFuncionarios.Add(new ModeloFuncionario(codigo, idIRPS, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato));
                 }
             }
             catch (Exception)
@@ -321,7 +326,8 @@ namespace Facturix_Salários
 
         public static void atualizar
             (
-                int codigo, 
+                int codigo,
+                int idIRPS,
                 String nome, 
                 String cell, 
                 String cellSec, 
@@ -369,7 +375,7 @@ namespace Facturix_Salários
             {
                 conexao.Open();
                 String sqlUpdate = "UPDATE funcionario " +
-                                    "SET nome=?, " +
+                                    "SET idIRPS=?, nome=?, " +
                                     "cell=?, " +
                                     "cellSec=?, " +
                                     "telefone=?, " +
@@ -402,6 +408,7 @@ namespace Facturix_Salários
                                     "dependentes=?, " +
                                     "habilitacoes=?, nacionalidade=?, ultimoEmprego=?, turno=?, impostoMunicipal=?, centroDeCusto=?, segurancaSocial=?, sindicato=? WHERE id=?; ";
                 MySqlCommand comando = new MySqlCommand(sqlUpdate, conexao);
+                comando.Parameters.AddWithValue("idIRPS", idIRPS);
                 comando.Parameters.AddWithValue("nome", nome);
                 comando.Parameters.AddWithValue("cell", cell);
                 comando.Parameters.AddWithValue("cellSec", cellSec);

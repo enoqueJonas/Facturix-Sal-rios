@@ -33,6 +33,7 @@ namespace Facturix_Salários
                 dt.Rows.Add(dRow);
             }
             dataGridView1.DataSource = dt;
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.Refresh();
             dataGridView1.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataGridView1.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;

@@ -41,6 +41,7 @@ namespace Facturix_Salários
                 dt.Rows.Add(dRow);
             }
             dataSeguro.DataSource = dt;
+            dataSeguro.AllowUserToAddRows = false;
             dataSeguro.Refresh();
             dataSeguro.Columns["Percentagem"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataSeguro.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;

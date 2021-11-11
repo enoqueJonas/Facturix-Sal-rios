@@ -1602,7 +1602,7 @@ namespace Facturix_Salários
             this.cbTurno.Location = new System.Drawing.Point(525, 157);
             this.cbTurno.Margin = new System.Windows.Forms.Padding(2);
             this.cbTurno.Name = "cbTurno";
-            this.cbTurno.Size = new System.Drawing.Size(252, 21);
+            this.cbTurno.Size = new System.Drawing.Size(253, 21);
             this.cbTurno.TabIndex = 39;
             this.cbTurno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbTurno_KeyDown);
             // 
@@ -1641,6 +1641,7 @@ namespace Facturix_Salários
             this.txtImpostoM.TabIndex = 40;
             this.txtImpostoM.Text = "%";
             this.txtImpostoM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtImpostoM.TextChanged += new System.EventHandler(this.txtImpostoM_TextChanged);
             this.txtImpostoM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImpostoM_KeyDown);
             this.txtImpostoM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImpostoM_KeyPress);
             // 
@@ -1675,7 +1676,7 @@ namespace Facturix_Salários
             // 
             this.txtSeguranca.Location = new System.Drawing.Point(525, 121);
             this.txtSeguranca.Name = "txtSeguranca";
-            this.txtSeguranca.Size = new System.Drawing.Size(252, 20);
+            this.txtSeguranca.Size = new System.Drawing.Size(253, 20);
             this.txtSeguranca.TabIndex = 37;
             this.txtSeguranca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeguranca_KeyDown);
             // 
@@ -1712,7 +1713,7 @@ namespace Facturix_Salários
             this.cbCentrocusto.Location = new System.Drawing.Point(153, 120);
             this.cbCentrocusto.Margin = new System.Windows.Forms.Padding(2);
             this.cbCentrocusto.Name = "cbCentrocusto";
-            this.cbCentrocusto.Size = new System.Drawing.Size(233, 21);
+            this.cbCentrocusto.Size = new System.Drawing.Size(236, 21);
             this.cbCentrocusto.TabIndex = 36;
             this.cbCentrocusto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbCentrocusto_KeyDown);
             // 
@@ -1748,7 +1749,8 @@ namespace Facturix_Salários
             // 
             this.txtHoraSemana.Location = new System.Drawing.Point(153, 152);
             this.txtHoraSemana.Name = "txtHoraSemana";
-            this.txtHoraSemana.Size = new System.Drawing.Size(233, 20);
+            this.txtHoraSemana.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtHoraSemana.Size = new System.Drawing.Size(236, 20);
             this.txtHoraSemana.TabIndex = 38;
             this.txtHoraSemana.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtHoraSemana_KeyDown);
             this.txtHoraSemana.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoraSemana_KeyPress);
@@ -2135,7 +2137,7 @@ namespace Facturix_Salários
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(891, 609);
+            this.ClientSize = new System.Drawing.Size(877, 609);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
