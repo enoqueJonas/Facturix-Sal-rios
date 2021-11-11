@@ -399,7 +399,7 @@
             this.txt_IP.Name = "txt_IP";
             this.txt_IP.Size = new System.Drawing.Size(144, 20);
             this.txt_IP.TabIndex = 12;
-            this.txt_IP.Text = "192.168.1.225";
+            this.txt_IP.Text = "192.168.001.235";
             // 
             // lbl_Port
             // 
@@ -446,7 +446,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(600, 360);
+            this.ClientSize = new System.Drawing.Size(599, 360);
             this.Controls.Add(this.btn_RealTimeLog);
             this.Controls.Add(this.group);
             this.Controls.Add(this.btn_CloseDevice);

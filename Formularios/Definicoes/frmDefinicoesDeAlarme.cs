@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Facturix_Salários.Business;
-using Facturix_Salários.Entity;
+using ZDC2911Demo.Entity;
 using Riss.Devices;
 
 

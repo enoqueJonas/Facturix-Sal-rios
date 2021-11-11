@@ -213,7 +213,7 @@
             // 
             // btn_OpenOneEnroll
             // 
-            this.btn_OpenOneEnroll.Location = new System.Drawing.Point(716, 6);
+            this.btn_OpenOneEnroll.Location = new System.Drawing.Point(716, 1);
             this.btn_OpenOneEnroll.Name = "btn_OpenOneEnroll";
             this.btn_OpenOneEnroll.Size = new System.Drawing.Size(105, 25);
             this.btn_OpenOneEnroll.TabIndex = 106;
@@ -223,7 +223,7 @@
             // 
             // btn_SaveOneEnroll
             // 
-            this.btn_SaveOneEnroll.Location = new System.Drawing.Point(625, 713);
+            this.btn_SaveOneEnroll.Location = new System.Drawing.Point(625, 701);
             this.btn_SaveOneEnroll.Name = "btn_SaveOneEnroll";
             this.btn_SaveOneEnroll.Size = new System.Drawing.Size(105, 25);
             this.btn_SaveOneEnroll.TabIndex = 105;
@@ -285,7 +285,7 @@
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(382, 714);
+            this.btn_Save.Location = new System.Drawing.Point(382, 702);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(105, 25);
             this.btn_Save.TabIndex = 102;
@@ -295,7 +295,7 @@
             // 
             // btn_Open
             // 
-            this.btn_Open.Location = new System.Drawing.Point(500, 714);
+            this.btn_Open.Location = new System.Drawing.Point(502, 702);
             this.btn_Open.Name = "btn_Open";
             this.btn_Open.Size = new System.Drawing.Size(105, 25);
             this.btn_Open.TabIndex = 101;
@@ -305,7 +305,7 @@
             // 
             // btn_Select
             // 
-            this.btn_Select.Location = new System.Drawing.Point(265, 714);
+            this.btn_Select.Location = new System.Drawing.Point(265, 702);
             this.btn_Select.Name = "btn_Select";
             this.btn_Select.Size = new System.Drawing.Size(105, 25);
             this.btn_Select.TabIndex = 100;
@@ -785,7 +785,7 @@
             // 
             // btn_OpenFpData
             // 
-            this.btn_OpenFpData.Location = new System.Drawing.Point(21, 8);
+            this.btn_OpenFpData.Location = new System.Drawing.Point(21, 3);
             this.btn_OpenFpData.Name = "btn_OpenFpData";
             this.btn_OpenFpData.Size = new System.Drawing.Size(95, 25);
             this.btn_OpenFpData.TabIndex = 77;
@@ -795,7 +795,7 @@
             // 
             // btn_SaveFpData
             // 
-            this.btn_SaveFpData.Location = new System.Drawing.Point(130, 8);
+            this.btn_SaveFpData.Location = new System.Drawing.Point(130, 3);
             this.btn_SaveFpData.Name = "btn_SaveFpData";
             this.btn_SaveFpData.Size = new System.Drawing.Size(95, 25);
             this.btn_SaveFpData.TabIndex = 78;
@@ -1024,9 +1024,9 @@
             this.panel3.Controls.Add(this.btn_OpenFpData);
             this.panel3.Controls.Add(this.btn_SaveFpData);
             this.panel3.Controls.Add(this.btn_OpenOneEnroll);
-            this.panel3.Location = new System.Drawing.Point(24, 706);
+            this.panel3.Location = new System.Drawing.Point(23, 699);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(841, 39);
+            this.panel3.Size = new System.Drawing.Size(841, 33);
             this.panel3.TabIndex = 117;
             // 
             // frmGestaoDeFuncionarios
@@ -1034,7 +1034,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(888, 749);
+            this.ClientSize = new System.Drawing.Size(888, 737);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_SaveOneEnroll);

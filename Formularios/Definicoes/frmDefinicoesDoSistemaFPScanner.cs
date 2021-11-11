@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using Riss.Devices;
-using Facturix_Salários.Entity;
+using ZDC2911Demo.Entity;
 using Facturix_Salários.IConvert;
 using Facturix_Salários.Business;
 using System.Text;

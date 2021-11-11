@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Riss.Devices;
-using Facturix_Salários.Entity;
+using ZDC2911Demo.Entity;
 using Facturix_Salários.IConvert;
 using Facturix_Salários.Formularios.Definicoes;
 
@@ -130,7 +130,7 @@ namespace Facturix_Salários.Conexoes
 
         private void btn_EnrollManagement_Click(object sender, EventArgs e)
         {
-            frmGestaoDeFuncionarios f = new frmGestaoDeFuncionarios();
+            frmGestaoDeFuncionarios f = new frmGestaoDeFuncionarios(deviceEty);       
             f.Show();
         }
 

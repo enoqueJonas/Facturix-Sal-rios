@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using Facturix_Salários.IConvert;
-using Facturix_Salários.Entity;
+using ZDC2911Demo.Entity;
 using ZDC2911Demo.SysEnum;
 using Riss.Devices;
 using System.Drawing;
@@ -20,9 +20,13 @@ namespace Facturix_Salários.Formularios.Definicoes
 
         private const int ImageFpWidth = 242;
         private const int ImageFpHeight = 266;
-        public frmGestaoDeFuncionarios()
+        public frmGestaoDeFuncionarios(DeviceCommEty deviceEty)
         {
             InitializeComponent();
+            device = deviceEty.Device;
+            deviceConnection = deviceEty.DeviceConnection;
+            fpBytes = new byte[Zd2911Utils.MaxFingerprintLength];
+            enrollFileMgr = new Zd2911EnrollFileManagement();
         }
 
         private void frmGestaoDeFuncionarios_Load(object sender, EventArgs e)
