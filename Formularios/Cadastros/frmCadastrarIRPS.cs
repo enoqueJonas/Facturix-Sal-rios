@@ -208,7 +208,7 @@ namespace Facturix_Salários.Formularios.Cadastros
         {
             ArrayList listaIRPS = ControllerIRPS.recuperar();
             ArrayList listaIrpsSalMin;
-            double salarioMin, co;
+            double salarioMin;
             DataTable dt = new DataTable();
             //dt.Columns.Add("ID");
             dt.Columns.Add("Limites dos Intervalos de Salário bruto mensal (MTS)");

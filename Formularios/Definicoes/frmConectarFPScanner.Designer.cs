@@ -148,6 +148,7 @@
             this.btn_AccessSetting.TabIndex = 2;
             this.btn_AccessSetting.Text = "Access Control Settings";
             this.btn_AccessSetting.UseVisualStyleBackColor = true;
+            this.btn_AccessSetting.Click += new System.EventHandler(this.btn_AccessSetting_Click);
             // 
             // btn_SystemSetting
             // 
@@ -165,7 +166,7 @@
             this.btn_CloseDevice.Name = "btn_CloseDevice";
             this.btn_CloseDevice.Size = new System.Drawing.Size(95, 25);
             this.btn_CloseDevice.TabIndex = 7;
-            this.btn_CloseDevice.Text = "Disconectar";
+            this.btn_CloseDevice.Text = "Disconnect";
             this.btn_CloseDevice.UseVisualStyleBackColor = true;
             this.btn_CloseDevice.Click += new System.EventHandler(this.btn_CloseDevice_Click_1);
             // 
@@ -175,7 +176,7 @@
             this.btn_OpenDevice.Name = "btn_OpenDevice";
             this.btn_OpenDevice.Size = new System.Drawing.Size(95, 25);
             this.btn_OpenDevice.TabIndex = 6;
-            this.btn_OpenDevice.Text = "Conectar";
+            this.btn_OpenDevice.Text = "Connect";
             this.btn_OpenDevice.UseVisualStyleBackColor = true;
             this.btn_OpenDevice.Click += new System.EventHandler(this.btn_OpenDevice_Click);
             // 

@@ -19,16 +19,6 @@ namespace Facturix_Salários
         {
             InitializeComponent();
         }
-        Device device = new Device();
-        DeviceConnection deviceConnection;
-        public void initializeDevice() 
-        {
-            object extraProperty = new object();
-            object extraData = new object();
-            object result = deviceConnection.SetProperty(DeviceProperty.InitSettings, extraProperty, device,
-            extraData);
-        }
-
         /// <summary>Monta a lista de dependestes na DataGridView.</summary>
         private void refrescarDependentes() 
         {

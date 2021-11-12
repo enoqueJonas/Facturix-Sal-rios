@@ -89,7 +89,7 @@ namespace Facturix_Salários.Controllers
                     listaIRPS.Add(new ModeloIRPS(id, salMin, salMax, valor, nrDependentes, coeficiente));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 //MessageBox.Show(err.Message, "Nao foi possivel recuperar irps!");
             }

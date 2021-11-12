@@ -136,7 +136,8 @@ namespace Facturix_Salários.Conexoes
 
         private void btn_AlarmSetting_Click(object sender, EventArgs e)
         {
-
+            frmDefinicoesDeAlarme f = new frmDefinicoesDeAlarme();
+            f.Show();
         }
 
         private void btn_CloseDevice_Click_1(object sender, EventArgs e)
@@ -148,6 +149,12 @@ namespace Facturix_Salários.Conexoes
             device = null;
             deviceConnection = null;
             deviceEty = null;
+        }
+
+        private void btn_AccessSetting_Click(object sender, EventArgs e)
+        {
+            frmDefinicoesDeControleDeAcesso f = new frmDefinicoesDeControleDeAcesso(deviceEty);
+            f.Show();
         }
     }
 }

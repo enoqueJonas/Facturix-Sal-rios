@@ -191,6 +191,12 @@
     <Compile Include="Formularios\Definicoes\frmDefinicoesDeAlarme.Designer.cs">
       <DependentUpon>frmDefinicoesDeAlarme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Definicoes\frmDefinicoesDeControleDeAcesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Definicoes\frmDefinicoesDeControleDeAcesso.Designer.cs">
+      <DependentUpon>frmDefinicoesDeControleDeAcesso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Definicoes\frmDefinicoesDoSistemaFPScanner.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -390,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Definicoes\frmDefinicoesDeAlarme.resx">
       <DependentUpon>frmDefinicoesDeAlarme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Definicoes\frmDefinicoesDeControleDeAcesso.resx">
+      <DependentUpon>frmDefinicoesDeControleDeAcesso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Definicoes\frmDefinicoesDoSistemaFPScanner.resx">
       <DependentUpon>frmDefinicoesDoSistemaFPScanner.cs</DependentUpon>
