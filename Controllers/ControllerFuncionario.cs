@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using Facturix_Salários;
 
 namespace Facturix_Salários
 {
@@ -56,7 +54,8 @@ namespace Facturix_Salários
                 float impostoMunicipal,
                 String centroDeCusto,
                 String segurancaSocial,
-                String sindicato
+                String sindicato,
+                double subComunicacao
             )
         {
             MySqlConnection conexao = Conexao.conectar();
@@ -64,7 +63,7 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into funcionario ( id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, deficiencia, conjugue, sexo, dataNascimento, linkImagem, codigoPostal, bairro, localidade, moradaGen, tipoContrato,dataAdmissao, dataDemissao, profissao, categoria, seguro, localDeTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao , subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                String sqlInsert = "INSERT into funcionario ( id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, deficiencia, conjugue, sexo, dataNascimento, linkImagem, codigoPostal, bairro, localidade, moradaGen, tipoContrato,dataAdmissao, dataDemissao, profissao, categoria, seguro, localDeTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao , subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", codigo);
                 comando.Parameters.AddWithValue("idIRPS", idIRPS);
@@ -107,6 +106,7 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("centroDeCusto", centroDeCusto);
                 comando.Parameters.AddWithValue("segurancaSocial", segurancaSocial);
                 comando.Parameters.AddWithValue("sindicato", sindicato);
+                comando.Parameters.AddWithValue("subComunicacao", subComunicacao);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Funcionário cadastrado com sucesso!");
             }
@@ -175,7 +175,8 @@ namespace Facturix_Salários
                     String centroDeCusto = leitor.GetString(38);
                     String segurancaSocial = leitor.GetString(39);
                     String sindicato = leitor.GetString(40);
-                    listaFuncionarios.Add(new ModeloFuncionario(codigo, idIRPS, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto,segurancaSocial, sindicato));
+                    double subComunicacao = leitor.GetDouble(41);
+                    listaFuncionarios.Add(new ModeloFuncionario(codigo, idIRPS, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto,segurancaSocial, sindicato, subComunicacao));
                 }
             } catch (Exception)
             {
@@ -241,7 +242,8 @@ namespace Facturix_Salários
                     String centroDeCusto = leitor.GetString(38);
                     String segurancaSocial = leitor.GetString(39);
                     String sindicato = leitor.GetString(40);
-                    listaFuncionarios.Add(new ModeloFuncionario(codigo, idIRPS, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato));
+                    double subComunicacao = leitor.GetDouble(41);
+                    listaFuncionarios.Add(new ModeloFuncionario(codigo, idIRPS, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao));
                 }
             }
             catch (Exception)
@@ -309,7 +311,8 @@ namespace Facturix_Salários
                     String centroDeCusto = leitor.GetString(38);
                     String segurancaSocial = leitor.GetString(39);
                     String sindicato = leitor.GetString(40);
-                    listaFuncionarios.Add(new ModeloFuncionario(codigo, idIRPS, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato));
+                    double subComunicacao = leitor.GetDouble(41);
+                    listaFuncionarios.Add(new ModeloFuncionario(codigo, idIRPS, nome, cell, cellSec, tel, email, estadoCivil, def, conjugue, sexo, dataNascimento, linkImagem, codPostal, bairro, localidade, moradaGen, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao));
                 }
             }
             catch (Exception)
@@ -366,7 +369,8 @@ namespace Facturix_Salários
                 float impostoMunicipal,
                 String centroDeCusto,
                 String segurancaSocial,
-                String sindicato
+                String sindicato,
+                double subComunicacao
             )
         {
             MySqlConnection conexao = Conexao.conectar();
@@ -406,7 +410,7 @@ namespace Facturix_Salários
                                     "subTransporte=?, " +
                                     "horas=?, " +
                                     "dependentes=?, " +
-                                    "habilitacoes=?, nacionalidade=?, ultimoEmprego=?, turno=?, impostoMunicipal=?, centroDeCusto=?, segurancaSocial=?, sindicato=? WHERE id=?; ";
+                                    "habilitacoes=?, nacionalidade=?, ultimoEmprego=?, turno=?, impostoMunicipal=?, centroDeCusto=?, segurancaSocial=?, sindicato=?, subComunicacao=? WHERE id=?; ";
                 MySqlCommand comando = new MySqlCommand(sqlUpdate, conexao);
                 comando.Parameters.AddWithValue("idIRPS", idIRPS);
                 comando.Parameters.AddWithValue("nome", nome);
@@ -448,6 +452,7 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("centroDeCusto", centroDeCusto);
                 comando.Parameters.AddWithValue("segurancaSocial", segurancaSocial);
                 comando.Parameters.AddWithValue("sindicato", sindicato);
+                comando.Parameters.AddWithValue("subComunicacao", subComunicacao);
                 comando.Parameters.AddWithValue("id", codigo);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Funcionário atualizado com sucesso!");

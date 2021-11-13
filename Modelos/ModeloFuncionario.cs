@@ -9,7 +9,7 @@ namespace Facturix_Salários
     public class ModeloFuncionario 
     {
         private int codigo, codigoPostal, dependentes, idIRPS;
-        private double vencimento, subTransporte, subAlimentacao;
+        private double vencimento, subTransporte, subAlimentacao, subComunicacao;
         private float horas, impostoMunicipal;
         private String 
             nome, 
@@ -86,7 +86,8 @@ namespace Facturix_Salários
                 float impostoMunicipal,
                 String centroDeCusto,
                 String segurancaSocial,
-                String sindicato
+                String sindicato,
+                double subComunicacao
             )
         {
             this.codigo = codigo;
@@ -131,6 +132,7 @@ namespace Facturix_Salários
             this.segurancaSocial = segurancaSocial;
             this.sindicato = sindicato;
             this.idIRPS = idIRPS;
+            this.subComunicacao = subComunicacao;
         }
 
         public int getCodigo() { return codigo; }
@@ -195,6 +197,8 @@ namespace Facturix_Salários
         public double getSubAlimentacao() { return subAlimentacao; }
 
         public double getHoras() { return horas; }
+
+        public double getSubComunicacao() { return subComunicacao; }
 
         public int getDependentes() { return dependentes; }
 

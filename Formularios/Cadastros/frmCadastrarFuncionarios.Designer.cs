@@ -30,6 +30,9 @@ namespace Facturix_Salários
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastrarFuncionarios));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -192,6 +195,10 @@ namespace Facturix_Salários
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
+            this.dataSubsidios = new System.Windows.Forms.DataGridView();
+            this.txtSubComunicacao = new System.Windows.Forms.TextBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.lbl43 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -204,6 +211,7 @@ namespace Facturix_Salários
             ((System.ComponentModel.ISupportInitialize)(this.dataDependentes)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSubsidios)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1400,7 +1408,9 @@ namespace Facturix_Salários
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.groupBox4.Controls.Add(this.dataSubsidios);
             this.groupBox4.Controls.Add(this.lblMod42);
+            this.groupBox4.Controls.Add(this.lbl43);
             this.groupBox4.Controls.Add(this.lblMod41);
             this.groupBox4.Controls.Add(this.lblMod40);
             this.groupBox4.Controls.Add(this.lblMod37);
@@ -1431,7 +1441,9 @@ namespace Facturix_Salários
             this.groupBox4.Controls.Add(this.txtHoraSemana);
             this.groupBox4.Controls.Add(this.Label18);
             this.groupBox4.Controls.Add(this.label37);
+            this.groupBox4.Controls.Add(this.label46);
             this.groupBox4.Controls.Add(this.label35);
+            this.groupBox4.Controls.Add(this.txtSubComunicacao);
             this.groupBox4.Controls.Add(this.txtSubTransporte);
             this.groupBox4.Location = new System.Drawing.Point(23, 21);
             this.groupBox4.Name = "groupBox4";
@@ -1459,7 +1471,7 @@ namespace Facturix_Salários
             this.lblMod41.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblMod41.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMod41.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod41.Location = new System.Drawing.Point(426, 159);
+            this.lblMod41.Location = new System.Drawing.Point(426, 153);
             this.lblMod41.Name = "lblMod41";
             this.lblMod41.Size = new System.Drawing.Size(21, 15);
             this.lblMod41.TabIndex = 3009;
@@ -1585,7 +1597,7 @@ namespace Facturix_Salários
             // 
             // txtAlimentacao
             // 
-            this.txtAlimentacao.Location = new System.Drawing.Point(153, 60);
+            this.txtAlimentacao.Location = new System.Drawing.Point(171, 59);
             this.txtAlimentacao.Name = "txtAlimentacao";
             this.txtAlimentacao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAlimentacao.Size = new System.Drawing.Size(236, 20);
@@ -1599,10 +1611,10 @@ namespace Facturix_Salários
             this.cbTurno.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.cbTurno.Location = new System.Drawing.Point(525, 157);
+            this.cbTurno.Location = new System.Drawing.Point(542, 151);
             this.cbTurno.Margin = new System.Windows.Forms.Padding(2);
             this.cbTurno.Name = "cbTurno";
-            this.cbTurno.Size = new System.Drawing.Size(253, 21);
+            this.cbTurno.Size = new System.Drawing.Size(236, 21);
             this.cbTurno.TabIndex = 39;
             this.cbTurno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbTurno_KeyDown);
             // 
@@ -1618,7 +1630,7 @@ namespace Facturix_Salários
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(459, 165);
+            this.label41.Location = new System.Drawing.Point(452, 155);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(35, 13);
             this.label41.TabIndex = 233;
@@ -1626,20 +1638,19 @@ namespace Facturix_Salários
             // 
             // txtNib
             // 
-            this.txtNib.Location = new System.Drawing.Point(525, 63);
+            this.txtNib.Location = new System.Drawing.Point(542, 63);
             this.txtNib.Name = "txtNib";
-            this.txtNib.Size = new System.Drawing.Size(253, 20);
+            this.txtNib.Size = new System.Drawing.Size(236, 20);
             this.txtNib.TabIndex = 33;
             this.txtNib.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNib_KeyDown);
             this.txtNib.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNib_KeyPress);
             // 
             // txtImpostoM
             // 
-            this.txtImpostoM.Location = new System.Drawing.Point(153, 181);
+            this.txtImpostoM.Location = new System.Drawing.Point(171, 181);
             this.txtImpostoM.Name = "txtImpostoM";
             this.txtImpostoM.Size = new System.Drawing.Size(44, 20);
             this.txtImpostoM.TabIndex = 40;
-            this.txtImpostoM.Text = "%";
             this.txtImpostoM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtImpostoM.TextChanged += new System.EventHandler(this.txtImpostoM_TextChanged);
             this.txtImpostoM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImpostoM_KeyDown);
@@ -1659,24 +1670,24 @@ namespace Facturix_Salários
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(55, 184);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(94, 13);
+            this.label39.Size = new System.Drawing.Size(120, 13);
             this.label39.TabIndex = 232;
-            this.label39.Text = "Imposto municipal:";
+            this.label39.Text = "Imposto municipal (IPA):";
             // 
             // txtNrConta
             // 
-            this.txtNrConta.Location = new System.Drawing.Point(526, 92);
+            this.txtNrConta.Location = new System.Drawing.Point(542, 92);
             this.txtNrConta.Name = "txtNrConta";
-            this.txtNrConta.Size = new System.Drawing.Size(252, 20);
+            this.txtNrConta.Size = new System.Drawing.Size(236, 20);
             this.txtNrConta.TabIndex = 35;
             this.txtNrConta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNrConta_KeyDown);
             this.txtNrConta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNrConta_KeyPress);
             // 
             // txtSeguranca
             // 
-            this.txtSeguranca.Location = new System.Drawing.Point(525, 121);
+            this.txtSeguranca.Location = new System.Drawing.Point(542, 121);
             this.txtSeguranca.Name = "txtSeguranca";
-            this.txtSeguranca.Size = new System.Drawing.Size(253, 20);
+            this.txtSeguranca.Size = new System.Drawing.Size(236, 20);
             this.txtSeguranca.TabIndex = 37;
             this.txtSeguranca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeguranca_KeyDown);
             // 
@@ -1700,9 +1711,9 @@ namespace Facturix_Salários
             // 
             // txtBanco
             // 
-            this.txtBanco.Location = new System.Drawing.Point(525, 36);
+            this.txtBanco.Location = new System.Drawing.Point(542, 36);
             this.txtBanco.Name = "txtBanco";
-            this.txtBanco.Size = new System.Drawing.Size(253, 20);
+            this.txtBanco.Size = new System.Drawing.Size(236, 20);
             this.txtBanco.TabIndex = 31;
             this.txtBanco.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBanco_KeyDown);
             this.txtBanco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBanco_KeyPress);
@@ -1710,7 +1721,7 @@ namespace Facturix_Salários
             // cbCentrocusto
             // 
             this.cbCentrocusto.FormattingEnabled = true;
-            this.cbCentrocusto.Location = new System.Drawing.Point(153, 120);
+            this.cbCentrocusto.Location = new System.Drawing.Point(542, 181);
             this.cbCentrocusto.Margin = new System.Windows.Forms.Padding(2);
             this.cbCentrocusto.Name = "cbCentrocusto";
             this.cbCentrocusto.Size = new System.Drawing.Size(236, 21);
@@ -1719,7 +1730,7 @@ namespace Facturix_Salários
             // 
             // txtVencimento
             // 
-            this.txtVencimento.Location = new System.Drawing.Point(153, 33);
+            this.txtVencimento.Location = new System.Drawing.Point(171, 33);
             this.txtVencimento.Name = "txtVencimento";
             this.txtVencimento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtVencimento.Size = new System.Drawing.Size(236, 20);
@@ -1730,7 +1741,7 @@ namespace Facturix_Salários
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(55, 123);
+            this.label32.Location = new System.Drawing.Point(453, 184);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(85, 13);
             this.label32.TabIndex = 227;
@@ -1747,7 +1758,7 @@ namespace Facturix_Salários
             // 
             // txtHoraSemana
             // 
-            this.txtHoraSemana.Location = new System.Drawing.Point(153, 152);
+            this.txtHoraSemana.Location = new System.Drawing.Point(171, 152);
             this.txtHoraSemana.Name = "txtHoraSemana";
             this.txtHoraSemana.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtHoraSemana.Size = new System.Drawing.Size(236, 20);
@@ -1760,9 +1771,9 @@ namespace Facturix_Salários
             this.Label18.AutoSize = true;
             this.Label18.Location = new System.Drawing.Point(55, 63);
             this.Label18.Name = "Label18";
-            this.Label18.Size = new System.Drawing.Size(90, 13);
+            this.Label18.Size = new System.Drawing.Size(93, 13);
             this.Label18.TabIndex = 224;
-            this.Label18.Text = "Sub.Alimentação:";
+            this.Label18.Text = "Sub. Alimentação:";
             // 
             // label37
             // 
@@ -1784,7 +1795,7 @@ namespace Facturix_Salários
             // 
             // txtSubTransporte
             // 
-            this.txtSubTransporte.Location = new System.Drawing.Point(153, 89);
+            this.txtSubTransporte.Location = new System.Drawing.Point(171, 90);
             this.txtSubTransporte.Name = "txtSubTransporte";
             this.txtSubTransporte.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtSubTransporte.Size = new System.Drawing.Size(236, 20);
@@ -1823,10 +1834,10 @@ namespace Facturix_Salários
             // dataDependentes
             // 
             this.dataDependentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataDependentes.Location = new System.Drawing.Point(15, 10);
+            this.dataDependentes.Location = new System.Drawing.Point(15, 18);
             this.dataDependentes.Name = "dataDependentes";
             this.dataDependentes.RowHeadersVisible = false;
-            this.dataDependentes.Size = new System.Drawing.Size(711, 327);
+            this.dataDependentes.Size = new System.Drawing.Size(711, 310);
             this.dataDependentes.TabIndex = 7;
             this.dataDependentes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataDependentes_CellDoubleClick_1);
             // 
@@ -2132,6 +2143,66 @@ namespace Facturix_Salários
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
+            // dataSubsidios
+            // 
+            this.dataSubsidios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataSubsidios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataSubsidios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataSubsidios.Location = new System.Drawing.Point(8, 228);
+            this.dataSubsidios.Name = "dataSubsidios";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataSubsidios.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataSubsidios.RowHeadersVisible = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataSubsidios.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataSubsidios.Size = new System.Drawing.Size(806, 199);
+            this.dataSubsidios.TabIndex = 3014;
+            // 
+            // txtSubComunicacao
+            // 
+            this.txtSubComunicacao.Location = new System.Drawing.Point(171, 121);
+            this.txtSubComunicacao.Name = "txtSubComunicacao";
+            this.txtSubComunicacao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtSubComunicacao.Size = new System.Drawing.Size(236, 20);
+            this.txtSubComunicacao.TabIndex = 34;
+            this.txtSubComunicacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSubTransporte_KeyDown);
+            this.txtSubComunicacao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSubTransporte_KeyPress);
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(55, 123);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(100, 13);
+            this.label46.TabIndex = 225;
+            this.label46.Text = "Sub. Comunicação:";
+            // 
+            // lbl43
+            // 
+            this.lbl43.AutoSize = true;
+            this.lbl43.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl43.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lbl43.Location = new System.Drawing.Point(426, 182);
+            this.lbl43.Name = "lbl43";
+            this.lbl43.Size = new System.Drawing.Size(21, 15);
+            this.lbl43.TabIndex = 3009;
+            this.lbl43.Text = "43";
+            this.lbl43.Visible = false;
+            // 
             // frmCadastrarFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2166,6 +2237,7 @@ namespace Facturix_Salários
             ((System.ComponentModel.ISupportInitialize)(this.dataDependentes)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataSubsidios)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2334,5 +2406,9 @@ namespace Facturix_Salários
         internal System.Windows.Forms.Label lblMod39;
         internal System.Windows.Forms.Label lblMod35;
         internal System.Windows.Forms.Label lblMod33;
+        private System.Windows.Forms.DataGridView dataSubsidios;
+        internal System.Windows.Forms.Label label46;
+        internal System.Windows.Forms.TextBox txtSubComunicacao;
+        internal System.Windows.Forms.Label lbl43;
     }
 }

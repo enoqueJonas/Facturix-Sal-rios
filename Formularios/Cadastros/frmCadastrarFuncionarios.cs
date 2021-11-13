@@ -51,6 +51,30 @@ namespace Facturix_Salários
             dataDependentes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataDependentes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
+        private void refrescarVencimento() 
+        {
+            int idFunc = 0;
+            if (txtCodigo.Text != "") 
+            {
+                idFunc = int.Parse(txtCodigo.Text);
+            }
+            ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(idFunc);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Designação");
+            dt.Columns.Add("Vencimento");
+            foreach (ModeloFuncionario func in listaFuncionarios)
+            {
+                DataRow dRow = dt.NewRow();
+                dRow["Designação"] = func.getCodigo();
+                dRow["Vencimento"] = func.getVencimento();
+                dt.Rows.Add(dRow);
+            }
+            dataSubsidios.DataSource = dt;
+            dataSubsidios.Refresh();
+            dataSubsidios.AllowUserToAddRows = false;
+            dataSubsidios.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
+            dataSubsidios.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+        }
 
         /// <summary>Adiciona Items como seguro, contrato... nas ComboBox.</summary>
         private void adicionarItemsCb() 
@@ -268,6 +292,7 @@ namespace Facturix_Salários
             double vencimento = 0;
             double subAlimentacao = 0;
             double subTransporte = 0;
+            double subComunicacao = 0;
             float horas = 0;
             float impostoMunicipal = 0;
             if (txtImpostoM.Text == "%")
@@ -295,6 +320,14 @@ namespace Facturix_Salários
             else 
             {
                 subTransporte = double.Parse(txtSubTransporte.Text);
+            }
+            if (txtSubComunicacao.Text == "")
+            {
+                subComunicacao = 0;
+            }
+            else 
+            {
+                subComunicacao = double.Parse(txtSubComunicacao.Text);
             }
             if (txtHoraSemana.Text == "")
             {
@@ -365,14 +398,14 @@ namespace Facturix_Salários
             }
             if (cod!=0)
             {
-                ControllerFuncionario.atualizar(cod, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato);
+                ControllerFuncionario.atualizar(cod, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao);
                 ControllerConta.atualizar(cod, banco, nib, conta);
                 limparCaixas();
                 mostrarLabels(false);
             }
             else 
             {
-                ControllerFuncionario.Guardar(id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal,centroDeCusto, segurancaSocial, sindicato);
+                ControllerFuncionario.Guardar(id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal,centroDeCusto, segurancaSocial, sindicato, subComunicacao);
                 ControllerConta.Guardar(id, banco, nib, conta);
                 adicionar();
                 setCod();
@@ -429,6 +462,7 @@ namespace Facturix_Salários
                 txtImpostoM.Text = func.getImpostoMunicipal() + "";
                 cbCentrocusto.Text = func.getCentroDeCusto();
                 txtSeguranca.Text = func.getSegurancaSocial();
+                txtSubComunicacao.Text = func.getSubComunicacao()+"";
                 foreach (ModeloConta conta in listaContas)
                 {
                     if (cod == conta.idFuncionario)
@@ -612,6 +646,7 @@ namespace Facturix_Salários
             procurar(cod);
             impedirBotoes();
             refrescarDependentes();
+            refrescarVencimento();
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
@@ -628,6 +663,7 @@ namespace Facturix_Salários
             procurar(cod);
             impedirBotoes();
             refrescarDependentes();
+            refrescarVencimento();
         }
 
         private void txtNovo_Click(object sender, EventArgs e)
@@ -707,6 +743,7 @@ namespace Facturix_Salários
         {
             remover();
             impedirBotoes();
+            refrescarVencimento();
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
@@ -765,6 +802,7 @@ namespace Facturix_Salários
         {
             impedirBotoes();
             refrescarDependentes();
+            refrescarVencimento();
             mudarLarguraCelulas();
             foreach (DataGridViewColumn col in dataDependentes.Columns)
             {
@@ -1035,6 +1073,7 @@ namespace Facturix_Salários
         {
             gravar();
             impedirBotoes();
+            refrescarVencimento();
         }
 
         private void cbDeficiencia_KeyDown(object sender, KeyEventArgs e)
