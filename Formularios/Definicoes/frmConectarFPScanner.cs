@@ -156,5 +156,17 @@ namespace Facturix_Salários.Conexoes
             frmDefinicoesDeControleDeAcesso f = new frmDefinicoesDeControleDeAcesso(deviceEty);
             f.Show();
         }
+
+        private void btn_GlogManagement_Click(object sender, EventArgs e)
+        {
+            frmGlog f = new frmGlog(deviceEty);
+            f.Show();
+        }
+
+        private void btn_SlogManagement_Click(object sender, EventArgs e)
+        {
+            frmSlog f = new frmSlog(deviceEty);
+            f.Show();
+        }
     }
 }

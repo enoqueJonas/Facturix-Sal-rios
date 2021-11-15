@@ -54,9 +54,10 @@ namespace Facturix_Salários
         private void refrescarVencimento() 
         {
             int idFunc = 0;
-            if (txtCodigo.Text != "") 
+            //double valor = 0;
+            if (txtCodigo.Text != "")
             {
-                idFunc = int.Parse(txtCodigo.Text);
+                idFunc = int.Parse(txtCodigo.Text);  
             }
             ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(idFunc);
             DataTable dt = new DataTable();
@@ -64,12 +65,31 @@ namespace Facturix_Salários
             dt.Columns.Add("Vencimento");
             foreach (ModeloFuncionario func in listaFuncionarios)
             {
-                DataRow dRow = dt.NewRow();
-                dRow["Designação"] = func.getCodigo();
-                dRow["Vencimento"] = func.getVencimento();
-                dt.Rows.Add(dRow);
+                if (lblSubComunicacao.Text.Equals("Sub. Comunicação:"))
+                {
+                    DataRow dRow = dt.NewRow();
+                    dRow["Designação"] = "Subsídio de Comunicação";
+                    dRow["Vencimento"] = func.getVencimento();
+                    dt.Rows.Add(dRow);
+                }
+                if (lblSubTransporte.Text.Equals("Sub. Transporte:"))
+                {
+                    DataRow dRow = dt.NewRow();
+                    dRow["Designação"] = "Subsídio de Transporte";
+                    dRow["Vencimento"] = func.getSubTransporte();
+                    dt.Rows.Add(dRow);
+                }
+                if (lblSubAlimentacao.Text.Equals("Sub. Alimentação:"))
+                {
+                    DataRow dRow = dt.NewRow();
+                    dRow["Designação"] = "Subsídio de Alimentação";
+                    dRow["Vencimento"] = func.getSubAlimentacao();
+                    dt.Rows.Add(dRow);
+                }
             }
             dataSubsidios.DataSource = dt;
+            if (dt == null)
+                dt.Clear();
             dataSubsidios.Refresh();
             dataSubsidios.AllowUserToAddRows = false;
             dataSubsidios.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
@@ -671,6 +691,7 @@ namespace Facturix_Salários
             limparCaixas();
             impedirBotoes();
             mostrarLabels(false);
+            refrescarVencimento();
         }
 
         private void frmFuncionarios_KeyDown(object sender, KeyEventArgs e)

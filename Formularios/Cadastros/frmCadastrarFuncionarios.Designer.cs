@@ -29,10 +29,10 @@ namespace Facturix_Salários
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastrarFuncionarios));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -137,7 +137,9 @@ namespace Facturix_Salários
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dataSubsidios = new System.Windows.Forms.DataGridView();
             this.lblMod42 = new System.Windows.Forms.Label();
+            this.lbl43 = new System.Windows.Forms.Label();
             this.lblMod41 = new System.Windows.Forms.Label();
             this.lblMod40 = new System.Windows.Forms.Label();
             this.lblMod37 = new System.Windows.Forms.Label();
@@ -166,9 +168,11 @@ namespace Facturix_Salários
             this.label32 = new System.Windows.Forms.Label();
             this.Label28 = new System.Windows.Forms.Label();
             this.txtHoraSemana = new System.Windows.Forms.TextBox();
-            this.Label18 = new System.Windows.Forms.Label();
+            this.lblSubAlimentacao = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
+            this.lblSubComunicacao = new System.Windows.Forms.Label();
+            this.lblSubTransporte = new System.Windows.Forms.Label();
+            this.txtSubComunicacao = new System.Windows.Forms.TextBox();
             this.txtSubTransporte = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -195,10 +199,6 @@ namespace Facturix_Salários
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.dataSubsidios = new System.Windows.Forms.DataGridView();
-            this.txtSubComunicacao = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.lbl43 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -206,12 +206,12 @@ namespace Facturix_Salários
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSubsidios)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDependentes)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSubsidios)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1439,18 +1439,46 @@ namespace Facturix_Salários
             this.groupBox4.Controls.Add(this.label32);
             this.groupBox4.Controls.Add(this.Label28);
             this.groupBox4.Controls.Add(this.txtHoraSemana);
-            this.groupBox4.Controls.Add(this.Label18);
+            this.groupBox4.Controls.Add(this.lblSubAlimentacao);
             this.groupBox4.Controls.Add(this.label37);
-            this.groupBox4.Controls.Add(this.label46);
-            this.groupBox4.Controls.Add(this.label35);
+            this.groupBox4.Controls.Add(this.lblSubComunicacao);
+            this.groupBox4.Controls.Add(this.lblSubTransporte);
             this.groupBox4.Controls.Add(this.txtSubComunicacao);
             this.groupBox4.Controls.Add(this.txtSubTransporte);
-            this.groupBox4.Location = new System.Drawing.Point(23, 21);
+            this.groupBox4.Location = new System.Drawing.Point(13, 21);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(819, 441);
             this.groupBox4.TabIndex = 235;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dados Financeiros";
+            // 
+            // dataSubsidios
+            // 
+            this.dataSubsidios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataSubsidios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataSubsidios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataSubsidios.Location = new System.Drawing.Point(8, 228);
+            this.dataSubsidios.Name = "dataSubsidios";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataSubsidios.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dataSubsidios.RowHeadersVisible = false;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataSubsidios.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataSubsidios.Size = new System.Drawing.Size(806, 199);
+            this.dataSubsidios.TabIndex = 3014;
             // 
             // lblMod42
             // 
@@ -1464,6 +1492,19 @@ namespace Facturix_Salários
             this.lblMod42.TabIndex = 3010;
             this.lblMod42.Text = "42";
             this.lblMod42.Visible = false;
+            // 
+            // lbl43
+            // 
+            this.lbl43.AutoSize = true;
+            this.lbl43.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl43.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lbl43.Location = new System.Drawing.Point(426, 182);
+            this.lbl43.Name = "lbl43";
+            this.lbl43.Size = new System.Drawing.Size(21, 15);
+            this.lbl43.TabIndex = 3009;
+            this.lbl43.Text = "43";
+            this.lbl43.Visible = false;
             // 
             // lblMod41
             // 
@@ -1668,7 +1709,7 @@ namespace Facturix_Salários
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(55, 184);
+            this.label39.Location = new System.Drawing.Point(54, 184);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(120, 13);
             this.label39.TabIndex = 232;
@@ -1750,7 +1791,7 @@ namespace Facturix_Salários
             // Label28
             // 
             this.Label28.AutoSize = true;
-            this.Label28.Location = new System.Drawing.Point(55, 36);
+            this.Label28.Location = new System.Drawing.Point(54, 36);
             this.Label28.Name = "Label28";
             this.Label28.Size = new System.Drawing.Size(66, 13);
             this.Label28.TabIndex = 223;
@@ -1766,32 +1807,51 @@ namespace Facturix_Salários
             this.txtHoraSemana.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtHoraSemana_KeyDown);
             this.txtHoraSemana.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoraSemana_KeyPress);
             // 
-            // Label18
+            // lblSubAlimentacao
             // 
-            this.Label18.AutoSize = true;
-            this.Label18.Location = new System.Drawing.Point(55, 63);
-            this.Label18.Name = "Label18";
-            this.Label18.Size = new System.Drawing.Size(93, 13);
-            this.Label18.TabIndex = 224;
-            this.Label18.Text = "Sub. Alimentação:";
+            this.lblSubAlimentacao.AutoSize = true;
+            this.lblSubAlimentacao.Location = new System.Drawing.Point(54, 63);
+            this.lblSubAlimentacao.Name = "lblSubAlimentacao";
+            this.lblSubAlimentacao.Size = new System.Drawing.Size(93, 13);
+            this.lblSubAlimentacao.TabIndex = 224;
+            this.lblSubAlimentacao.Text = "Sub. Alimentação:";
             // 
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(55, 155);
+            this.label37.Location = new System.Drawing.Point(54, 155);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(98, 13);
             this.label37.TabIndex = 226;
             this.label37.Text = "Horas por Semana:";
             // 
-            // label35
+            // lblSubComunicacao
             // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(55, 92);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(83, 13);
-            this.label35.TabIndex = 225;
-            this.label35.Text = "Sub.Transporte:";
+            this.lblSubComunicacao.AutoSize = true;
+            this.lblSubComunicacao.Location = new System.Drawing.Point(54, 123);
+            this.lblSubComunicacao.Name = "lblSubComunicacao";
+            this.lblSubComunicacao.Size = new System.Drawing.Size(100, 13);
+            this.lblSubComunicacao.TabIndex = 225;
+            this.lblSubComunicacao.Text = "Sub. Comunicação:";
+            // 
+            // lblSubTransporte
+            // 
+            this.lblSubTransporte.AutoSize = true;
+            this.lblSubTransporte.Location = new System.Drawing.Point(54, 92);
+            this.lblSubTransporte.Name = "lblSubTransporte";
+            this.lblSubTransporte.Size = new System.Drawing.Size(86, 13);
+            this.lblSubTransporte.TabIndex = 225;
+            this.lblSubTransporte.Text = "Sub. Transporte:";
+            // 
+            // txtSubComunicacao
+            // 
+            this.txtSubComunicacao.Location = new System.Drawing.Point(171, 121);
+            this.txtSubComunicacao.Name = "txtSubComunicacao";
+            this.txtSubComunicacao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtSubComunicacao.Size = new System.Drawing.Size(236, 20);
+            this.txtSubComunicacao.TabIndex = 34;
+            this.txtSubComunicacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSubTransporte_KeyDown);
+            this.txtSubComunicacao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSubTransporte_KeyPress);
             // 
             // txtSubTransporte
             // 
@@ -2143,66 +2203,6 @@ namespace Facturix_Salários
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // dataSubsidios
-            // 
-            this.dataSubsidios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataSubsidios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataSubsidios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataSubsidios.Location = new System.Drawing.Point(8, 228);
-            this.dataSubsidios.Name = "dataSubsidios";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataSubsidios.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataSubsidios.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataSubsidios.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataSubsidios.Size = new System.Drawing.Size(806, 199);
-            this.dataSubsidios.TabIndex = 3014;
-            // 
-            // txtSubComunicacao
-            // 
-            this.txtSubComunicacao.Location = new System.Drawing.Point(171, 121);
-            this.txtSubComunicacao.Name = "txtSubComunicacao";
-            this.txtSubComunicacao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSubComunicacao.Size = new System.Drawing.Size(236, 20);
-            this.txtSubComunicacao.TabIndex = 34;
-            this.txtSubComunicacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSubTransporte_KeyDown);
-            this.txtSubComunicacao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSubTransporte_KeyPress);
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(55, 123);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(100, 13);
-            this.label46.TabIndex = 225;
-            this.label46.Text = "Sub. Comunicação:";
-            // 
-            // lbl43
-            // 
-            this.lbl43.AutoSize = true;
-            this.lbl43.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl43.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lbl43.Location = new System.Drawing.Point(426, 182);
-            this.lbl43.Name = "lbl43";
-            this.lbl43.Size = new System.Drawing.Size(21, 15);
-            this.lbl43.TabIndex = 3009;
-            this.lbl43.Text = "43";
-            this.lbl43.Visible = false;
-            // 
             // frmCadastrarFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2231,13 +2231,13 @@ namespace Facturix_Salários
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSubsidios)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataDependentes)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSubsidios)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2335,9 +2335,9 @@ namespace Facturix_Salários
         internal System.Windows.Forms.TextBox txtHoraSemana;
         internal System.Windows.Forms.Label label37;
         internal System.Windows.Forms.TextBox txtSubTransporte;
-        internal System.Windows.Forms.Label label35;
+        internal System.Windows.Forms.Label lblSubTransporte;
         internal System.Windows.Forms.TextBox txtAlimentacao;
-        internal System.Windows.Forms.Label Label18;
+        internal System.Windows.Forms.Label lblSubAlimentacao;
         internal System.Windows.Forms.Label Label28;
         internal System.Windows.Forms.TextBox txtVencimento;
         internal System.Windows.Forms.TextBox txtBanco;
@@ -2407,7 +2407,7 @@ namespace Facturix_Salários
         internal System.Windows.Forms.Label lblMod35;
         internal System.Windows.Forms.Label lblMod33;
         private System.Windows.Forms.DataGridView dataSubsidios;
-        internal System.Windows.Forms.Label label46;
+        internal System.Windows.Forms.Label lblSubComunicacao;
         internal System.Windows.Forms.TextBox txtSubComunicacao;
         internal System.Windows.Forms.Label lbl43;
     }

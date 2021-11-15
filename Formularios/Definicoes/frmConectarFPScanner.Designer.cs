@@ -101,6 +101,7 @@
             this.btn_GlogManagement.TabIndex = 6;
             this.btn_GlogManagement.Text = "GLog Management";
             this.btn_GlogManagement.UseVisualStyleBackColor = true;
+            this.btn_GlogManagement.Click += new System.EventHandler(this.btn_GlogManagement_Click);
             // 
             // btn_SlogManagement
             // 
@@ -110,6 +111,7 @@
             this.btn_SlogManagement.TabIndex = 5;
             this.btn_SlogManagement.Text = "SLog Mangement";
             this.btn_SlogManagement.UseVisualStyleBackColor = true;
+            this.btn_SlogManagement.Click += new System.EventHandler(this.btn_SlogManagement_Click);
             // 
             // btn_AlarmSetting
             // 
