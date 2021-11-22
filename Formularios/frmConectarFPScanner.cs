@@ -168,5 +168,10 @@ namespace Facturix_Salários.Conexoes
             frmSlog f = new frmSlog(deviceEty);
             f.Show();
         }
+
+        private void btn_AttendanceSetting_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

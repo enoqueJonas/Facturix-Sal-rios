@@ -185,41 +185,60 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formularios\Definicoes\frmDefinicoesDeAlarme.cs">
+    <Compile Include="Controllers\ControllerRelogioDePonto.cs" />
+    <Compile Include="Formularios\frmDefinicoesDeAlarme.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmDefinicoesDeAlarme.Designer.cs">
+    <Compile Include="Formularios\frmDefinicoesDeAlarme.Designer.cs">
       <DependentUpon>frmDefinicoesDeAlarme.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmDefinicoesDeControleDeAcesso.cs">
+    <Compile Include="Formularios\frmDefinicoesDeControleDeAcesso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmDefinicoesDeControleDeAcesso.Designer.cs">
+    <Compile Include="Formularios\frmDefinicoesDeControleDeAcesso.Designer.cs">
       <DependentUpon>frmDefinicoesDeControleDeAcesso.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmDefinicoesDoSistemaFPScanner.cs">
+    <Compile Include="Formularios\frmDefinicoesDoSistemaFPScanner.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmDefinicoesDoSistemaFPScanner.Designer.cs">
+    <Compile Include="Formularios\frmDefinicoesDoSistemaFPScanner.Designer.cs">
       <DependentUpon>frmDefinicoesDoSistemaFPScanner.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmEnrollDetail.cs">
+    <Compile Include="Formularios\frmEnrollDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmEnrollDetail.Designer.cs">
+    <Compile Include="Formularios\frmEnrollDetail.Designer.cs">
       <DependentUpon>frmEnrollDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmGestaoDeFuncionarios.cs">
+    <Compile Include="Formularios\frmGestaoDeFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmGestaoDeFuncionarios.Designer.cs">
+    <Compile Include="Formularios\frmGestaoDeFuncionarios.Designer.cs">
       <DependentUpon>frmGestaoDeFuncionarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="InitData.cs" />
-    <Compile Include="Formularios\Definicoes\frmConectarFPScanner.cs">
+    <Compile Include="Formularios\frmGlog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmConectarFPScanner.Designer.cs">
+    <Compile Include="Formularios\frmGlog.Designer.cs">
+      <DependentUpon>frmGlog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRelatorioClockIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRelatorioClockIn.Designer.cs">
+      <DependentUpon>frmRelatorioClockIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmSlog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmSlog.Designer.cs">
+      <DependentUpon>frmSlog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InitData.cs" />
+    <Compile Include="Formularios\frmConectarFPScanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmConectarFPScanner.Designer.cs">
       <DependentUpon>frmConectarFPScanner.cs</DependentUpon>
     </Compile>
     <Compile Include="ControllerModulo.cs" />
@@ -242,64 +261,64 @@
     <Compile Include="Controllers\ControllerUtilizador.cs" />
     <Compile Include="Controllers\ControllerValor_Intervalo.cs" />
     <Compile Include="DeviceCommEty.cs" />
-    <Compile Include="Formularios\Cadastros\frmCadastrarCategoria.cs">
+    <Compile Include="Formularios\frmCadastrarCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarCategoria.Designer.cs">
+    <Compile Include="Formularios\frmCadastrarCategoria.Designer.cs">
       <DependentUpon>frmCadastrarCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarCentrosDeCusto.cs">
+    <Compile Include="Formularios\frmCadastrarCentrosDeCusto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarCentrosDeCusto.Designer.cs">
+    <Compile Include="Formularios\frmCadastrarCentrosDeCusto.Designer.cs">
       <DependentUpon>frmCadastrarCentrosDeCusto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarContrato.cs">
+    <Compile Include="Formularios\frmCadastrarContrato.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarContrato.Designer.cs">
+    <Compile Include="Formularios\frmCadastrarContrato.Designer.cs">
       <DependentUpon>frmCadastrarContrato.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarEstabelecimentos.cs">
+    <Compile Include="Formularios\frmCadastrarEstabelecimentos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarEstabelecimentos.Designer.cs">
+    <Compile Include="Formularios\frmCadastrarEstabelecimentos.Designer.cs">
       <DependentUpon>frmCadastrarEstabelecimentos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarHabilitacoes.cs">
+    <Compile Include="Formularios\frmCadastrarHabilitacoes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarHabilitacoes.Designer.cs">
+    <Compile Include="Formularios\frmCadastrarHabilitacoes.Designer.cs">
       <DependentUpon>frmCadastrarHabilitacoes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarIRPS.cs">
+    <Compile Include="Formularios\frmCadastrarIRPS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarIRPS.Designer.cs">
+    <Compile Include="Formularios\frmCadastrarIRPS.Designer.cs">
       <DependentUpon>frmCadastrarIRPS.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarProfissao.cs">
+    <Compile Include="Formularios\frmCadastrarProfissao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarProfissao.Designer.cs">
+    <Compile Include="Formularios\frmCadastrarProfissao.Designer.cs">
       <DependentUpon>frmCadastrarProfissao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarSeguro.cs">
+    <Compile Include="Formularios\frmCadastrarSeguro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarSeguro.Designer.cs">
+    <Compile Include="Formularios\frmCadastrarSeguro.Designer.cs">
       <DependentUpon>frmCadastrarSeguro.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarSundicatos.cs">
+    <Compile Include="Formularios\frmCadastrarSundicatos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarSundicatos.Designer.cs">
+    <Compile Include="Formularios\frmCadastrarSundicatos.Designer.cs">
       <DependentUpon>frmCadastrarSundicatos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmGestaoUtilizador.cs">
+    <Compile Include="Formularios\frmGestaoUtilizador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Definicoes\frmGestaoUtilizador.Designer.cs">
+    <Compile Include="Formularios\frmGestaoUtilizador.Designer.cs">
       <DependentUpon>frmGestaoUtilizador.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReportFuncionario.cs">
@@ -322,6 +341,7 @@
     <Compile Include="Modelos\ModeloPermissao.cs" />
     <Compile Include="Modelos\ModeloProfissao.cs" />
     <Compile Include="Modelos\ModeloCategoria.cs" />
+    <Compile Include="Modelos\ModeloRelogioDePonto.cs" />
     <Compile Include="Modelos\ModeloSeguro.cs" />
     <Compile Include="Modelos\ModeloSindicato.cs" />
     <Compile Include="Modelos\ModeloTabela.cs" />
@@ -333,28 +353,28 @@
       <DependentUpon>reportFuncionario.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Formularios\Pesquisas\frmNumeroRegisto.cs">
+    <Compile Include="Formularios\frmNumeroRegisto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Pesquisas\frmNumeroRegisto.Designer.cs">
+    <Compile Include="Formularios\frmNumeroRegisto.Designer.cs">
       <DependentUpon>frmNumeroRegisto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Visualizacoes\frmVisualizarFuncionario.cs">
+    <Compile Include="Formularios\frmVisualizarFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Visualizacoes\frmVisualizarFuncionario.Designer.cs">
+    <Compile Include="Formularios\frmVisualizarFuncionario.Designer.cs">
       <DependentUpon>frmVisualizarFuncionario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarFuncionarios.cs">
+    <Compile Include="Formularios\frmCadastrarFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Cadastros\frmCadastrarFuncionarios.Designer.cs">
+    <Compile Include="Formularios\frmCadastrarFuncionarios.Designer.cs">
       <DependentUpon>frmCadastrarFuncionarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Menus\frmMenu.cs">
+    <Compile Include="Formularios\frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Menus\frmMenu.Designer.cs">
+    <Compile Include="Formularios\frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ModeloConta.cs" />
@@ -364,53 +384,62 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserPrivilege.cs" />
-    <EmbeddedResource Include="Formularios\Definicoes\frmConectarFPScanner.resx">
+    <EmbeddedResource Include="Formularios\frmConectarFPScanner.resx">
       <DependentUpon>frmConectarFPScanner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarCategoria.resx">
+    <EmbeddedResource Include="Formularios\frmCadastrarCategoria.resx">
       <DependentUpon>frmCadastrarCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarCentrosDeCusto.resx">
+    <EmbeddedResource Include="Formularios\frmCadastrarCentrosDeCusto.resx">
       <DependentUpon>frmCadastrarCentrosDeCusto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarContrato.resx">
+    <EmbeddedResource Include="Formularios\frmCadastrarContrato.resx">
       <DependentUpon>frmCadastrarContrato.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarEstabelecimentos.resx">
+    <EmbeddedResource Include="Formularios\frmCadastrarEstabelecimentos.resx">
       <DependentUpon>frmCadastrarEstabelecimentos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarHabilitacoes.resx">
+    <EmbeddedResource Include="Formularios\frmCadastrarHabilitacoes.resx">
       <DependentUpon>frmCadastrarHabilitacoes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarIRPS.resx">
+    <EmbeddedResource Include="Formularios\frmCadastrarIRPS.resx">
       <DependentUpon>frmCadastrarIRPS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarProfissao.resx">
+    <EmbeddedResource Include="Formularios\frmCadastrarProfissao.resx">
       <DependentUpon>frmCadastrarProfissao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarSeguro.resx">
+    <EmbeddedResource Include="Formularios\frmCadastrarSeguro.resx">
       <DependentUpon>frmCadastrarSeguro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarSundicatos.resx">
+    <EmbeddedResource Include="Formularios\frmCadastrarSundicatos.resx">
       <DependentUpon>frmCadastrarSundicatos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Definicoes\frmDefinicoesDeAlarme.resx">
+    <EmbeddedResource Include="Formularios\frmDefinicoesDeAlarme.resx">
       <DependentUpon>frmDefinicoesDeAlarme.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Definicoes\frmDefinicoesDeControleDeAcesso.resx">
+    <EmbeddedResource Include="Formularios\frmDefinicoesDeControleDeAcesso.resx">
       <DependentUpon>frmDefinicoesDeControleDeAcesso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Definicoes\frmDefinicoesDoSistemaFPScanner.resx">
+    <EmbeddedResource Include="Formularios\frmDefinicoesDoSistemaFPScanner.resx">
       <DependentUpon>frmDefinicoesDoSistemaFPScanner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Definicoes\frmEnrollDetail.resx">
+    <EmbeddedResource Include="Formularios\frmEnrollDetail.resx">
       <DependentUpon>frmEnrollDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Definicoes\frmGestaoDeFuncionarios.resx">
+    <EmbeddedResource Include="Formularios\frmGestaoDeFuncionarios.resx">
       <DependentUpon>frmGestaoDeFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Definicoes\frmGestaoUtilizador.resx">
+    <EmbeddedResource Include="Formularios\frmGestaoUtilizador.resx">
       <DependentUpon>frmGestaoUtilizador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGlog.resx">
+      <DependentUpon>frmGlog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRelatorioClockIn.resx">
+      <DependentUpon>frmRelatorioClockIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmSlog.resx">
+      <DependentUpon>frmSlog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportFuncionario.resx">
       <DependentUpon>frmReportFuncionario.cs</DependentUpon>
@@ -419,16 +448,16 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>reportFuncionario.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Pesquisas\frmNumeroRegisto.resx">
+    <EmbeddedResource Include="Formularios\frmNumeroRegisto.resx">
       <DependentUpon>frmNumeroRegisto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Visualizacoes\frmVisualizarFuncionario.resx">
+    <EmbeddedResource Include="Formularios\frmVisualizarFuncionario.resx">
       <DependentUpon>frmVisualizarFuncionario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Cadastros\frmCadastrarFuncionarios.resx">
+    <EmbeddedResource Include="Formularios\frmCadastrarFuncionarios.resx">
       <DependentUpon>frmCadastrarFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Menus\frmMenu.resx">
+    <EmbeddedResource Include="Formularios\frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -473,8 +502,6 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Formularios\ReportViews\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -115,14 +115,14 @@
             this.btn_SystemGet.Name = "btn_SystemGet";
             this.btn_SystemGet.Size = new System.Drawing.Size(75, 25);
             this.btn_SystemGet.TabIndex = 18;
-            this.btn_SystemGet.Text = "Get";
+            this.btn_SystemGet.Text = "Recuperar";
             this.btn_SystemGet.UseVisualStyleBackColor = true;
             this.btn_SystemGet.Click += new System.EventHandler(this.btn_SystemGet_Click);
             // 
             // txt_PwdCount
             // 
             this.txt_PwdCount.BackColor = System.Drawing.Color.White;
-            this.txt_PwdCount.Location = new System.Drawing.Point(410, 51);
+            this.txt_PwdCount.Location = new System.Drawing.Point(412, 51);
             this.txt_PwdCount.Name = "txt_PwdCount";
             this.txt_PwdCount.ReadOnly = true;
             this.txt_PwdCount.Size = new System.Drawing.Size(100, 20);
@@ -158,7 +158,7 @@
             // txt_ExitCount
             // 
             this.txt_ExitCount.BackColor = System.Drawing.Color.White;
-            this.txt_ExitCount.Location = new System.Drawing.Point(410, 78);
+            this.txt_ExitCount.Location = new System.Drawing.Point(412, 78);
             this.txt_ExitCount.Name = "txt_ExitCount";
             this.txt_ExitCount.ReadOnly = true;
             this.txt_ExitCount.Size = new System.Drawing.Size(100, 20);
@@ -167,7 +167,7 @@
             // txt_AdminCount
             // 
             this.txt_AdminCount.BackColor = System.Drawing.Color.White;
-            this.txt_AdminCount.Location = new System.Drawing.Point(410, 22);
+            this.txt_AdminCount.Location = new System.Drawing.Point(412, 22);
             this.txt_AdminCount.Name = "txt_AdminCount";
             this.txt_AdminCount.ReadOnly = true;
             this.txt_AdminCount.Size = new System.Drawing.Size(100, 20);
@@ -178,9 +178,9 @@
             this.lbl_SoundType.AutoSize = true;
             this.lbl_SoundType.Location = new System.Drawing.Point(6, 25);
             this.lbl_SoundType.Name = "lbl_SoundType";
-            this.lbl_SoundType.Size = new System.Drawing.Size(34, 13);
+            this.lbl_SoundType.Size = new System.Drawing.Size(31, 13);
             this.lbl_SoundType.TabIndex = 0;
-            this.lbl_SoundType.Text = "Type:";
+            this.lbl_SoundType.Text = "Tipo:";
             this.lbl_SoundType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btn_Reset
@@ -205,7 +205,7 @@
             // 
             // txt_Welcome
             // 
-            this.txt_Welcome.Location = new System.Drawing.Point(101, 22);
+            this.txt_Welcome.Location = new System.Drawing.Point(119, 22);
             this.txt_Welcome.MaxLength = 32;
             this.txt_Welcome.Name = "txt_Welcome";
             this.txt_Welcome.Size = new System.Drawing.Size(238, 20);
@@ -214,7 +214,7 @@
             // txt_HisExitCount
             // 
             this.txt_HisExitCount.BackColor = System.Drawing.Color.White;
-            this.txt_HisExitCount.Location = new System.Drawing.Point(410, 107);
+            this.txt_HisExitCount.Location = new System.Drawing.Point(412, 107);
             this.txt_HisExitCount.Name = "txt_HisExitCount";
             this.txt_HisExitCount.ReadOnly = true;
             this.txt_HisExitCount.Size = new System.Drawing.Size(100, 20);
@@ -237,7 +237,7 @@
             this.groupBox6.Size = new System.Drawing.Size(752, 108);
             this.groupBox6.TabIndex = 14;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Device Information";
+            this.groupBox6.Text = "Informações do Dispositivo";
             // 
             // btn_ModelSet
             // 
@@ -245,7 +245,7 @@
             this.btn_ModelSet.Name = "btn_ModelSet";
             this.btn_ModelSet.Size = new System.Drawing.Size(75, 25);
             this.btn_ModelSet.TabIndex = 6;
-            this.btn_ModelSet.Text = "Set";
+            this.btn_ModelSet.Text = "Definir";
             this.btn_ModelSet.UseVisualStyleBackColor = true;
             this.btn_ModelSet.Click += new System.EventHandler(this.btn_ModelSet_Click);
             // 
@@ -255,7 +255,7 @@
             this.btn_ModelGet.Name = "btn_ModelGet";
             this.btn_ModelGet.Size = new System.Drawing.Size(75, 25);
             this.btn_ModelGet.TabIndex = 5;
-            this.btn_ModelGet.Text = "Get";
+            this.btn_ModelGet.Text = "Recuperar";
             this.btn_ModelGet.UseVisualStyleBackColor = true;
             this.btn_ModelGet.Click += new System.EventHandler(this.btn_ModelGet_Click);
             // 
@@ -272,9 +272,9 @@
             // 
             this.getSerialNoButton.Location = new System.Drawing.Point(666, 22);
             this.getSerialNoButton.Name = "getSerialNoButton";
-            this.getSerialNoButton.Size = new System.Drawing.Size(60, 25);
+            this.getSerialNoButton.Size = new System.Drawing.Size(75, 25);
             this.getSerialNoButton.TabIndex = 2;
-            this.getSerialNoButton.Text = "Get";
+            this.getSerialNoButton.Text = "Recuperar";
             this.getSerialNoButton.UseVisualStyleBackColor = true;
             this.getSerialNoButton.Click += new System.EventHandler(this.getSerialNoButton_Click);
             // 
@@ -284,18 +284,18 @@
             this.btn_FirmwareVersionGet.Name = "btn_FirmwareVersionGet";
             this.btn_FirmwareVersionGet.Size = new System.Drawing.Size(75, 25);
             this.btn_FirmwareVersionGet.TabIndex = 2;
-            this.btn_FirmwareVersionGet.Text = "Get";
+            this.btn_FirmwareVersionGet.Text = "Recuperar";
             this.btn_FirmwareVersionGet.UseVisualStyleBackColor = true;
             this.btn_FirmwareVersionGet.Click += new System.EventHandler(this.btn_FirmwareVersionGet_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(464, 28);
+            this.label2.Location = new System.Drawing.Point(454, 28);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "SerialNo:";
+            this.label2.Text = "Nr. de Série:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl_Model
@@ -303,9 +303,9 @@
             this.lbl_Model.AutoSize = true;
             this.lbl_Model.Location = new System.Drawing.Point(66, 56);
             this.lbl_Model.Name = "lbl_Model";
-            this.lbl_Model.Size = new System.Drawing.Size(39, 13);
+            this.lbl_Model.Size = new System.Drawing.Size(45, 13);
             this.lbl_Model.TabIndex = 3;
-            this.lbl_Model.Text = "Model:";
+            this.lbl_Model.Text = "Modelo:";
             this.lbl_Model.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // serialNoTextBox
@@ -331,18 +331,18 @@
             this.lbl_FirmwareVersion.AutoSize = true;
             this.lbl_FirmwareVersion.Location = new System.Drawing.Point(6, 25);
             this.lbl_FirmwareVersion.Name = "lbl_FirmwareVersion";
-            this.lbl_FirmwareVersion.Size = new System.Drawing.Size(87, 13);
+            this.lbl_FirmwareVersion.Size = new System.Drawing.Size(106, 13);
             this.lbl_FirmwareVersion.TabIndex = 0;
-            this.lbl_FirmwareVersion.Text = "FirmwareVersion:";
+            this.lbl_FirmwareVersion.Text = "Versão de FirmWare:";
             this.lbl_FirmwareVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btn_StandbySet
             // 
-            this.btn_StandbySet.Location = new System.Drawing.Point(426, 50);
+            this.btn_StandbySet.Location = new System.Drawing.Point(444, 50);
             this.btn_StandbySet.Name = "btn_StandbySet";
             this.btn_StandbySet.Size = new System.Drawing.Size(75, 23);
             this.btn_StandbySet.TabIndex = 7;
-            this.btn_StandbySet.Text = "Set";
+            this.btn_StandbySet.Text = "Definir";
             this.btn_StandbySet.UseVisualStyleBackColor = true;
             this.btn_StandbySet.Click += new System.EventHandler(this.btn_StandbySet_Click);
             // 
@@ -362,7 +362,7 @@
             this.btn_UploadSound.Name = "btn_UploadSound";
             this.btn_UploadSound.Size = new System.Drawing.Size(75, 25);
             this.btn_UploadSound.TabIndex = 2;
-            this.btn_UploadSound.Text = "Upload";
+            this.btn_UploadSound.Text = "Carregar";
             this.btn_UploadSound.UseVisualStyleBackColor = true;
             this.btn_UploadSound.Click += new System.EventHandler(this.btn_UploadSound_Click);
             // 
@@ -388,15 +388,15 @@
             this.groupBox7.Size = new System.Drawing.Size(752, 55);
             this.groupBox7.TabIndex = 15;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Upload Sound";
+            this.groupBox7.Text = "Carregar Som";
             // 
             // btn_WelcomeGet
             // 
-            this.btn_WelcomeGet.Location = new System.Drawing.Point(345, 21);
+            this.btn_WelcomeGet.Location = new System.Drawing.Point(363, 21);
             this.btn_WelcomeGet.Name = "btn_WelcomeGet";
             this.btn_WelcomeGet.Size = new System.Drawing.Size(75, 23);
             this.btn_WelcomeGet.TabIndex = 2;
-            this.btn_WelcomeGet.Text = "Get";
+            this.btn_WelcomeGet.Text = "Recuperar";
             this.btn_WelcomeGet.UseVisualStyleBackColor = true;
             this.btn_WelcomeGet.Click += new System.EventHandler(this.btn_WelcomeGet_Click);
             // 
@@ -405,14 +405,14 @@
             this.lbl_WelCome.AutoSize = true;
             this.lbl_WelCome.Location = new System.Drawing.Point(6, 25);
             this.lbl_WelCome.Name = "lbl_WelCome";
-            this.lbl_WelCome.Size = new System.Drawing.Size(78, 13);
+            this.lbl_WelCome.Size = new System.Drawing.Size(106, 13);
             this.lbl_WelCome.TabIndex = 0;
-            this.lbl_WelCome.Text = "Welcome Title:";
+            this.lbl_WelCome.Text = "Título de Recepção:";
             this.lbl_WelCome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txt_Standby
             // 
-            this.txt_Standby.Location = new System.Drawing.Point(101, 51);
+            this.txt_Standby.Location = new System.Drawing.Point(119, 51);
             this.txt_Standby.MaxLength = 32;
             this.txt_Standby.Name = "txt_Standby";
             this.txt_Standby.Size = new System.Drawing.Size(238, 20);
@@ -420,11 +420,11 @@
             // 
             // btn_StandbyGet
             // 
-            this.btn_StandbyGet.Location = new System.Drawing.Point(345, 50);
+            this.btn_StandbyGet.Location = new System.Drawing.Point(363, 50);
             this.btn_StandbyGet.Name = "btn_StandbyGet";
             this.btn_StandbyGet.Size = new System.Drawing.Size(75, 23);
             this.btn_StandbyGet.TabIndex = 6;
-            this.btn_StandbyGet.Text = "Get";
+            this.btn_StandbyGet.Text = "Recuperar";
             this.btn_StandbyGet.UseVisualStyleBackColor = true;
             this.btn_StandbyGet.Click += new System.EventHandler(this.btn_StandbyGet_Click);
             // 
@@ -433,18 +433,18 @@
             this.lbl_Standby.AutoSize = true;
             this.lbl_Standby.Location = new System.Drawing.Point(6, 54);
             this.lbl_Standby.Name = "lbl_Standby";
-            this.lbl_Standby.Size = new System.Drawing.Size(72, 13);
+            this.lbl_Standby.Size = new System.Drawing.Size(89, 13);
             this.lbl_Standby.TabIndex = 4;
-            this.lbl_Standby.Text = "Standby Title:";
+            this.lbl_Standby.Text = "Título de Espera:";
             this.lbl_Standby.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btn_WelcomeSet
             // 
-            this.btn_WelcomeSet.Location = new System.Drawing.Point(426, 21);
+            this.btn_WelcomeSet.Location = new System.Drawing.Point(444, 21);
             this.btn_WelcomeSet.Name = "btn_WelcomeSet";
             this.btn_WelcomeSet.Size = new System.Drawing.Size(75, 23);
             this.btn_WelcomeSet.TabIndex = 3;
-            this.btn_WelcomeSet.Text = "Set";
+            this.btn_WelcomeSet.Text = "Definir";
             this.btn_WelcomeSet.UseVisualStyleBackColor = true;
             this.btn_WelcomeSet.Click += new System.EventHandler(this.btn_WelcomeSet_Click);
             // 
@@ -472,16 +472,16 @@
             this.groupBox5.Size = new System.Drawing.Size(752, 85);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Title Settings";
+            this.groupBox5.Text = "Definições de Título";
             // 
             // chk_Power
             // 
             this.chk_Power.AutoSize = true;
             this.chk_Power.Location = new System.Drawing.Point(47, 106);
             this.chk_Power.Name = "chk_Power";
-            this.chk_Power.Size = new System.Drawing.Size(59, 17);
+            this.chk_Power.Size = new System.Drawing.Size(63, 17);
             this.chk_Power.TabIndex = 8;
-            this.chk_Power.Text = "Enable";
+            this.chk_Power.Text = " Permitir";
             this.chk_Power.UseVisualStyleBackColor = true;
             // 
             // btn_PowerGet
@@ -490,7 +490,7 @@
             this.btn_PowerGet.Name = "btn_PowerGet";
             this.btn_PowerGet.Size = new System.Drawing.Size(75, 25);
             this.btn_PowerGet.TabIndex = 8;
-            this.btn_PowerGet.Text = "Get";
+            this.btn_PowerGet.Text = "Recuperar";
             this.btn_PowerGet.UseVisualStyleBackColor = true;
             this.btn_PowerGet.Click += new System.EventHandler(this.btn_PowerGet_Click);
             // 
@@ -500,7 +500,7 @@
             this.btn_PowerSet.Name = "btn_PowerSet";
             this.btn_PowerSet.Size = new System.Drawing.Size(75, 25);
             this.btn_PowerSet.TabIndex = 9;
-            this.btn_PowerSet.Text = "Set";
+            this.btn_PowerSet.Text = "Definir";
             this.btn_PowerSet.UseVisualStyleBackColor = true;
             this.btn_PowerSet.Click += new System.EventHandler(this.btn_PowerSet_Click);
             // 
@@ -569,26 +569,26 @@
             this.groupBox4.Size = new System.Drawing.Size(521, 169);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Device Record Information Settings";
+            this.groupBox4.Text = " Configurações de Informações de Registro do Dispositivo";
             // 
             // lbl_PwdCount
             // 
             this.lbl_PwdCount.AutoSize = true;
-            this.lbl_PwdCount.Location = new System.Drawing.Point(339, 54);
+            this.lbl_PwdCount.Location = new System.Drawing.Point(254, 53);
             this.lbl_PwdCount.Name = "lbl_PwdCount";
-            this.lbl_PwdCount.Size = new System.Drawing.Size(67, 13);
+            this.lbl_PwdCount.Size = new System.Drawing.Size(110, 13);
             this.lbl_PwdCount.TabIndex = 6;
-            this.lbl_PwdCount.Text = "PWD Count:";
+            this.lbl_PwdCount.Text = "Nr. de Palavra Passe:";
             this.lbl_PwdCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_CardCount
             // 
             this.lbl_CardCount.AutoSize = true;
-            this.lbl_CardCount.Location = new System.Drawing.Point(54, 83);
+            this.lbl_CardCount.Location = new System.Drawing.Point(10, 83);
             this.lbl_CardCount.Name = "lbl_CardCount";
-            this.lbl_CardCount.Size = new System.Drawing.Size(63, 13);
+            this.lbl_CardCount.Size = new System.Drawing.Size(78, 13);
             this.lbl_CardCount.TabIndex = 8;
-            this.lbl_CardCount.Text = "Card Count:";
+            this.lbl_CardCount.Text = "Nr. de Cartões:";
             this.lbl_CardCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_HisManageCount
@@ -596,39 +596,39 @@
             this.lbl_HisManageCount.AutoSize = true;
             this.lbl_HisManageCount.Location = new System.Drawing.Point(6, 142);
             this.lbl_HisManageCount.Name = "lbl_HisManageCount";
-            this.lbl_HisManageCount.Size = new System.Drawing.Size(101, 13);
+            this.lbl_HisManageCount.Size = new System.Drawing.Size(106, 13);
             this.lbl_HisManageCount.TabIndex = 16;
-            this.lbl_HisManageCount.Text = "History SLog Count:";
+            this.lbl_HisManageCount.Text = "Histórico de Sistema:";
             this.lbl_HisManageCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_HisExitCount
             // 
             this.lbl_HisExitCount.AutoSize = true;
-            this.lbl_HisExitCount.Location = new System.Drawing.Point(285, 113);
+            this.lbl_HisExitCount.Location = new System.Drawing.Point(253, 112);
             this.lbl_HisExitCount.Name = "lbl_HisExitCount";
-            this.lbl_HisExitCount.Size = new System.Drawing.Size(102, 13);
+            this.lbl_HisExitCount.Size = new System.Drawing.Size(162, 13);
             this.lbl_HisExitCount.TabIndex = 14;
-            this.lbl_HisExitCount.Text = "History GLog Count:";
+            this.lbl_HisExitCount.Text = "Histórico de Rel. De Utilizadores:";
             this.lbl_HisExitCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_ManageCount
             // 
             this.lbl_ManageCount.AutoSize = true;
-            this.lbl_ManageCount.Location = new System.Drawing.Point(54, 113);
+            this.lbl_ManageCount.Location = new System.Drawing.Point(10, 114);
             this.lbl_ManageCount.Name = "lbl_ManageCount";
-            this.lbl_ManageCount.Size = new System.Drawing.Size(66, 13);
+            this.lbl_ManageCount.Size = new System.Drawing.Size(118, 13);
             this.lbl_ManageCount.TabIndex = 12;
-            this.lbl_ManageCount.Text = "SLog Count:";
+            this.lbl_ManageCount.Text = "Nr. de Rel. Do Sistema:";
             this.lbl_ManageCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_ExitCount
             // 
             this.lbl_ExitCount.AutoSize = true;
-            this.lbl_ExitCount.Location = new System.Drawing.Point(333, 83);
+            this.lbl_ExitCount.Location = new System.Drawing.Point(254, 80);
             this.lbl_ExitCount.Name = "lbl_ExitCount";
-            this.lbl_ExitCount.Size = new System.Drawing.Size(67, 13);
+            this.lbl_ExitCount.Size = new System.Drawing.Size(156, 13);
             this.lbl_ExitCount.TabIndex = 10;
-            this.lbl_ExitCount.Text = "GLog Count:";
+            this.lbl_ExitCount.Text = "Nr. de Relatório de Utilizadores:";
             this.lbl_ExitCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txt_UserCount
@@ -643,31 +643,31 @@
             // lbl_AdminCount
             // 
             this.lbl_AdminCount.AutoSize = true;
-            this.lbl_AdminCount.Location = new System.Drawing.Point(351, 25);
+            this.lbl_AdminCount.Location = new System.Drawing.Point(254, 25);
             this.lbl_AdminCount.Name = "lbl_AdminCount";
-            this.lbl_AdminCount.Size = new System.Drawing.Size(52, 13);
+            this.lbl_AdminCount.Size = new System.Drawing.Size(48, 13);
             this.lbl_AdminCount.TabIndex = 2;
-            this.lbl_AdminCount.Text = "Manager:";
+            this.lbl_AdminCount.Text = "Gerente:";
             this.lbl_AdminCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_FingerCount
             // 
             this.lbl_FingerCount.AutoSize = true;
-            this.lbl_FingerCount.Location = new System.Drawing.Point(66, 54);
+            this.lbl_FingerCount.Location = new System.Drawing.Point(10, 54);
             this.lbl_FingerCount.Name = "lbl_FingerCount";
-            this.lbl_FingerCount.Size = new System.Drawing.Size(54, 13);
+            this.lbl_FingerCount.Size = new System.Drawing.Size(85, 13);
             this.lbl_FingerCount.TabIndex = 4;
-            this.lbl_FingerCount.Text = "FP Count:";
+            this.lbl_FingerCount.Text = "Nr. IMp. Digitais:";
             this.lbl_FingerCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_UserCount
             // 
             this.lbl_UserCount.AutoSize = true;
-            this.lbl_UserCount.Location = new System.Drawing.Point(90, 25);
+            this.lbl_UserCount.Location = new System.Drawing.Point(10, 25);
             this.lbl_UserCount.Name = "lbl_UserCount";
-            this.lbl_UserCount.Size = new System.Drawing.Size(32, 13);
+            this.lbl_UserCount.Size = new System.Drawing.Size(53, 13);
             this.lbl_UserCount.TabIndex = 0;
-            this.lbl_UserCount.Text = "User:";
+            this.lbl_UserCount.Text = "Utilizador:";
             this.lbl_UserCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_ParamGet
@@ -676,7 +676,7 @@
             this.btn_ParamGet.Name = "btn_ParamGet";
             this.btn_ParamGet.Size = new System.Drawing.Size(75, 25);
             this.btn_ParamGet.TabIndex = 4;
-            this.btn_ParamGet.Text = "Get";
+            this.btn_ParamGet.Text = "Recuperar";
             this.btn_ParamGet.UseVisualStyleBackColor = true;
             this.btn_ParamGet.Click += new System.EventHandler(this.btn_ParamGet_Click);
             // 
@@ -686,7 +686,7 @@
             this.btn_ParamSet.Name = "btn_ParamSet";
             this.btn_ParamSet.Size = new System.Drawing.Size(75, 25);
             this.btn_ParamSet.TabIndex = 5;
-            this.btn_ParamSet.Text = "Set";
+            this.btn_ParamSet.Text = "Definir";
             this.btn_ParamSet.UseVisualStyleBackColor = true;
             this.btn_ParamSet.Click += new System.EventHandler(this.btn_ParamSet_Click);
             // 
@@ -748,11 +748,11 @@
             // lbl_ParamValue
             // 
             this.lbl_ParamValue.AutoSize = true;
-            this.lbl_ParamValue.Location = new System.Drawing.Point(30, 53);
+            this.lbl_ParamValue.Location = new System.Drawing.Point(6, 53);
             this.lbl_ParamValue.Name = "lbl_ParamValue";
-            this.lbl_ParamValue.Size = new System.Drawing.Size(37, 13);
+            this.lbl_ParamValue.Size = new System.Drawing.Size(34, 13);
             this.lbl_ParamValue.TabIndex = 2;
-            this.lbl_ParamValue.Text = "Value:";
+            this.lbl_ParamValue.Text = "Valor:";
             this.lbl_ParamValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_Param
@@ -762,7 +762,7 @@
             this.lbl_Param.Name = "lbl_Param";
             this.lbl_Param.Size = new System.Drawing.Size(58, 13);
             this.lbl_Param.TabIndex = 0;
-            this.lbl_Param.Text = "Parameter:";
+            this.lbl_Param.Text = "Parametro:";
             this.lbl_Param.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
@@ -778,7 +778,7 @@
             this.groupBox1.Size = new System.Drawing.Size(289, 113);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "System Parameter Settings";
+            this.groupBox1.Text = "Definições de Parametros do Sistema";
             // 
             // label1
             // 
@@ -809,7 +809,7 @@
             this.groupBox2.Size = new System.Drawing.Size(225, 169);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Timer On/Off Settings";
+            this.groupBox2.Text = "Definições de Temporizador";
             // 
             // lbl_Status
             // 
@@ -825,15 +825,15 @@
             this.lbl_Time.AutoSize = true;
             this.lbl_Time.Location = new System.Drawing.Point(6, 80);
             this.lbl_Time.Name = "lbl_Time";
-            this.lbl_Time.Size = new System.Drawing.Size(33, 13);
+            this.lbl_Time.Size = new System.Drawing.Size(43, 13);
             this.lbl_Time.TabIndex = 4;
-            this.lbl_Time.Text = "Time:";
+            this.lbl_Time.Text = "Tempo:";
             this.lbl_Time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_DN
             // 
             this.lbl_DN.AutoSize = true;
-            this.lbl_DN.Location = new System.Drawing.Point(18, 53);
+            this.lbl_DN.Location = new System.Drawing.Point(6, 54);
             this.lbl_DN.Name = "lbl_DN";
             this.lbl_DN.Size = new System.Drawing.Size(25, 13);
             this.lbl_DN.TabIndex = 2;
@@ -845,9 +845,9 @@
             this.lbl_PowerType.AutoSize = true;
             this.lbl_PowerType.Location = new System.Drawing.Point(6, 25);
             this.lbl_PowerType.Name = "lbl_PowerType";
-            this.lbl_PowerType.Size = new System.Drawing.Size(34, 13);
+            this.lbl_PowerType.Size = new System.Drawing.Size(31, 13);
             this.lbl_PowerType.TabIndex = 0;
-            this.lbl_PowerType.Text = "Type:";
+            this.lbl_PowerType.Text = "Tipo:";
             this.lbl_PowerType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_TimeSet
@@ -856,7 +856,7 @@
             this.btn_TimeSet.Name = "btn_TimeSet";
             this.btn_TimeSet.Size = new System.Drawing.Size(189, 25);
             this.btn_TimeSet.TabIndex = 3;
-            this.btn_TimeSet.Text = "Synchronize the device time";
+            this.btn_TimeSet.Text = "Sincornizar Hora do Dispositivo";
             this.btn_TimeSet.UseVisualStyleBackColor = true;
             this.btn_TimeSet.Click += new System.EventHandler(this.btn_TimeSet_Click);
             // 
@@ -874,9 +874,9 @@
             this.lbl_DeviceTime.AutoSize = true;
             this.lbl_DeviceTime.Location = new System.Drawing.Point(6, 25);
             this.lbl_DeviceTime.Name = "lbl_DeviceTime";
-            this.lbl_DeviceTime.Size = new System.Drawing.Size(33, 13);
+            this.lbl_DeviceTime.Size = new System.Drawing.Size(43, 13);
             this.lbl_DeviceTime.TabIndex = 0;
-            this.lbl_DeviceTime.Text = "Time:";
+            this.lbl_DeviceTime.Text = "Tempo:";
             this.lbl_DeviceTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btn_TimeGet
@@ -885,7 +885,7 @@
             this.btn_TimeGet.Name = "btn_TimeGet";
             this.btn_TimeGet.Size = new System.Drawing.Size(75, 25);
             this.btn_TimeGet.TabIndex = 2;
-            this.btn_TimeGet.Text = "Get";
+            this.btn_TimeGet.Text = "Recuperar";
             this.btn_TimeGet.UseVisualStyleBackColor = true;
             this.btn_TimeGet.Click += new System.EventHandler(this.btn_TimeGet_Click);
             // 
@@ -900,7 +900,7 @@
             this.groupBox3.Size = new System.Drawing.Size(457, 113);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Time Settings";
+            this.groupBox3.Text = "Definições de Tempo";
             // 
             // frmDefinicoesDoSistemaFPScanner
             // 

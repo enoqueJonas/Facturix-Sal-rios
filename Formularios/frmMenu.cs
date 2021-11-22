@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Collections;
 using Facturix_Salários.Formularios.Definicoes;
 using Facturix_Salários.Formularios.Cadastros;
+using Facturix_Salários.Formularios;
 using Facturix_Salários.Controllers;
 using Facturix_Salários.Modelos;
 using Facturix_Salários.Conexoes;
+using ZDC2911Demo.Entity;
 
 namespace Facturix_Salários
 {
@@ -230,6 +225,10 @@ namespace Facturix_Salários
         {
             frmConectarFPScanner f = new frmConectarFPScanner();
             f.Show();
+        }
+
+        private void relógioDePontoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
         }
     }
 }

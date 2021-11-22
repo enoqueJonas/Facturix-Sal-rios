@@ -300,7 +300,7 @@ namespace Facturix_Salários
             switch (e.CloseReason)
             {
                 case CloseReason.UserClosing:
-                    if (MessageBox.Show("Pretende fechar o formulário Centros de Custo?", "Atenção!",
+                    if (MessageBox.Show("Pretende fechar o formulário Cadastro de Centros de Custo?", "Atenção!",
                                         MessageBoxButtons.YesNo,
                                         MessageBoxIcon.Question) == DialogResult.No)
                     {

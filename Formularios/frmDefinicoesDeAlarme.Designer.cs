@@ -98,7 +98,7 @@
             this.btn_UserGet.Name = "btn_UserGet";
             this.btn_UserGet.Size = new System.Drawing.Size(75, 25);
             this.btn_UserGet.TabIndex = 4;
-            this.btn_UserGet.Text = "Get";
+            this.btn_UserGet.Text = "Recuperar";
             this.btn_UserGet.UseVisualStyleBackColor = true;
             this.btn_UserGet.Click += new System.EventHandler(this.btn_UserGet_Click);
             // 
@@ -108,7 +108,7 @@
             this.btn_UserSet.Name = "btn_UserSet";
             this.btn_UserSet.Size = new System.Drawing.Size(75, 25);
             this.btn_UserSet.TabIndex = 5;
-            this.btn_UserSet.Text = "Set";
+            this.btn_UserSet.Text = "Definir";
             this.btn_UserSet.UseVisualStyleBackColor = true;
             this.btn_UserSet.Click += new System.EventHandler(this.btn_UserSet_Click);
             // 
@@ -129,9 +129,9 @@
             this.lbl_UserId.AutoSize = true;
             this.lbl_UserId.Location = new System.Drawing.Point(6, 25);
             this.lbl_UserId.Name = "lbl_UserId";
-            this.lbl_UserId.Size = new System.Drawing.Size(46, 13);
+            this.lbl_UserId.Size = new System.Drawing.Size(64, 13);
             this.lbl_UserId.TabIndex = 0;
-            this.lbl_UserId.Text = "User ID:";
+            this.lbl_UserId.Text = "ID Utilizador";
             this.lbl_UserId.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox3
@@ -147,7 +147,7 @@
             this.groupBox3.Size = new System.Drawing.Size(544, 87);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "User Attendance Type Settings";
+            this.groupBox3.Text = "Definições de Comparecimento do Utilizador";
             this.groupBox3.Visible = false;
             // 
             // lbl_UserType
@@ -155,9 +155,9 @@
             this.lbl_UserType.AutoSize = true;
             this.lbl_UserType.Location = new System.Drawing.Point(337, 25);
             this.lbl_UserType.Name = "lbl_UserType";
-            this.lbl_UserType.Size = new System.Drawing.Size(34, 13);
+            this.lbl_UserType.Size = new System.Drawing.Size(28, 13);
             this.lbl_UserType.TabIndex = 2;
-            this.lbl_UserType.Text = "Type:";
+            this.lbl_UserType.Text = "Tipo";
             this.lbl_UserType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_AttGet
@@ -166,7 +166,7 @@
             this.btn_AttGet.Name = "btn_AttGet";
             this.btn_AttGet.Size = new System.Drawing.Size(75, 25);
             this.btn_AttGet.TabIndex = 12;
-            this.btn_AttGet.Text = "Get";
+            this.btn_AttGet.Text = "Recuperar";
             this.btn_AttGet.UseVisualStyleBackColor = true;
             this.btn_AttGet.Click += new System.EventHandler(this.btn_AttGet_Click);
             // 
@@ -176,7 +176,7 @@
             this.btn_AttSet.Name = "btn_AttSet";
             this.btn_AttSet.Size = new System.Drawing.Size(75, 25);
             this.btn_AttSet.TabIndex = 13;
-            this.btn_AttSet.Text = "Set";
+            this.btn_AttSet.Text = "Definir";
             this.btn_AttSet.UseVisualStyleBackColor = true;
             this.btn_AttSet.Click += new System.EventHandler(this.btn_AttSet_Click);
             // 
@@ -210,7 +210,7 @@
             this.groupBox2.Size = new System.Drawing.Size(544, 117);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Valid Attendance Time Settings";
+            this.groupBox2.Text = "Definições de Tempo";
             this.groupBox2.Visible = false;
             // 
             // cbo_EndHour
@@ -235,11 +235,11 @@
             // lbl_EndTime
             // 
             this.lbl_EndTime.AutoSize = true;
-            this.lbl_EndTime.Location = new System.Drawing.Point(313, 53);
+            this.lbl_EndTime.Location = new System.Drawing.Point(349, 53);
             this.lbl_EndTime.Name = "lbl_EndTime";
-            this.lbl_EndTime.Size = new System.Drawing.Size(55, 13);
+            this.lbl_EndTime.Size = new System.Drawing.Size(23, 13);
             this.lbl_EndTime.TabIndex = 8;
-            this.lbl_EndTime.Text = "End Time:";
+            this.lbl_EndTime.Text = "Até";
             this.lbl_EndTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cbo_BeginMinute
@@ -273,11 +273,11 @@
             // lbl_BeginTime
             // 
             this.lbl_BeginTime.AutoSize = true;
-            this.lbl_BeginTime.Location = new System.Drawing.Point(6, 53);
+            this.lbl_BeginTime.Location = new System.Drawing.Point(42, 53);
             this.lbl_BeginTime.Name = "lbl_BeginTime";
-            this.lbl_BeginTime.Size = new System.Drawing.Size(63, 13);
+            this.lbl_BeginTime.Size = new System.Drawing.Size(26, 13);
             this.lbl_BeginTime.TabIndex = 4;
-            this.lbl_BeginTime.Text = "Begin Time:";
+            this.lbl_BeginTime.Text = "Das";
             this.lbl_BeginTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cbo_AttDN
@@ -316,9 +316,9 @@
             this.lbl_AttType.AutoSize = true;
             this.lbl_AttType.Location = new System.Drawing.Point(42, 25);
             this.lbl_AttType.Name = "lbl_AttType";
-            this.lbl_AttType.Size = new System.Drawing.Size(34, 13);
+            this.lbl_AttType.Size = new System.Drawing.Size(31, 13);
             this.lbl_AttType.TabIndex = 0;
-            this.lbl_AttType.Text = "Type:";
+            this.lbl_AttType.Text = "Tipo:";
             this.lbl_AttType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_AlarmDN
@@ -336,9 +336,9 @@
             this.lbl_AlarmDelay.AutoSize = true;
             this.lbl_AlarmDelay.Location = new System.Drawing.Point(331, 55);
             this.lbl_AlarmDelay.Name = "lbl_AlarmDelay";
-            this.lbl_AlarmDelay.Size = new System.Drawing.Size(37, 13);
+            this.lbl_AlarmDelay.Size = new System.Drawing.Size(40, 13);
             this.lbl_AlarmDelay.TabIndex = 8;
-            this.lbl_AlarmDelay.Text = "Delay:";
+            this.lbl_AlarmDelay.Text = "Atraso:";
             this.lbl_AlarmDelay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
@@ -360,7 +360,7 @@
             this.groupBox1.Size = new System.Drawing.Size(544, 118);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Alarm Settings";
+            this.groupBox1.Text = "Definições de Alarme";
             // 
             // nud_AlarmDelay
             // 
@@ -380,7 +380,7 @@
             this.btn_AlarmGet.Name = "btn_AlarmGet";
             this.btn_AlarmGet.Size = new System.Drawing.Size(75, 25);
             this.btn_AlarmGet.TabIndex = 10;
-            this.btn_AlarmGet.Text = "Get";
+            this.btn_AlarmGet.Text = "Recuperar";
             this.btn_AlarmGet.UseVisualStyleBackColor = true;
             this.btn_AlarmGet.Click += new System.EventHandler(this.btn_AlarmGet_Click);
             // 
@@ -390,7 +390,7 @@
             this.btn_AlarmSet.Name = "btn_AlarmSet";
             this.btn_AlarmSet.Size = new System.Drawing.Size(75, 25);
             this.btn_AlarmSet.TabIndex = 11;
-            this.btn_AlarmSet.Text = "Set";
+            this.btn_AlarmSet.Text = "Definir";
             this.btn_AlarmSet.UseVisualStyleBackColor = true;
             this.btn_AlarmSet.Click += new System.EventHandler(this.btn_AlarmSet_Click);
             // 
@@ -427,9 +427,9 @@
             this.lbl_AlarmTime.AutoSize = true;
             this.lbl_AlarmTime.Location = new System.Drawing.Point(337, 25);
             this.lbl_AlarmTime.Name = "lbl_AlarmTime";
-            this.lbl_AlarmTime.Size = new System.Drawing.Size(33, 13);
+            this.lbl_AlarmTime.Size = new System.Drawing.Size(27, 13);
             this.lbl_AlarmTime.TabIndex = 2;
-            this.lbl_AlarmTime.Text = "Time:";
+            this.lbl_AlarmTime.Text = "Hra:";
             this.lbl_AlarmTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cbo_AlarmCycle
@@ -464,9 +464,9 @@
             this.lbl_AlarmCycle.AutoSize = true;
             this.lbl_AlarmCycle.Location = new System.Drawing.Point(6, 55);
             this.lbl_AlarmCycle.Name = "lbl_AlarmCycle";
-            this.lbl_AlarmCycle.Size = new System.Drawing.Size(36, 13);
+            this.lbl_AlarmCycle.Size = new System.Drawing.Size(33, 13);
             this.lbl_AlarmCycle.TabIndex = 6;
-            this.lbl_AlarmCycle.Text = "Cycle:";
+            this.lbl_AlarmCycle.Text = "Ciclo:";
             this.lbl_AlarmCycle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmDefinicoesDeAlarme
@@ -480,7 +480,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmDefinicoesDeAlarme";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmDefinicoesDeAlarme";
+            this.Text = "Definições de Alarme";
             ((System.ComponentModel.ISupportInitialize)(this.nud_DIN)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

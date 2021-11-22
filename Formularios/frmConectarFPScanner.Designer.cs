@@ -69,87 +69,89 @@
             // 
             // btn_RealTimeLog
             // 
-            this.btn_RealTimeLog.Location = new System.Drawing.Point(262, 213);
+            this.btn_RealTimeLog.Location = new System.Drawing.Point(262, 246);
             this.btn_RealTimeLog.Name = "btn_RealTimeLog";
             this.btn_RealTimeLog.Size = new System.Drawing.Size(156, 25);
             this.btn_RealTimeLog.TabIndex = 9;
-            this.btn_RealTimeLog.Text = "Real Time Log";
+            this.btn_RealTimeLog.Text = "Relatório em Tempo Real";
             this.btn_RealTimeLog.UseVisualStyleBackColor = true;
+            this.btn_RealTimeLog.Visible = false;
             this.btn_RealTimeLog.Click += new System.EventHandler(this.btn_RealTimeLog_Click);
             // 
             // group
             // 
             this.group.Controls.Add(this.btn_GlogManagement);
             this.group.Controls.Add(this.btn_SlogManagement);
-            this.group.Controls.Add(this.btn_AlarmSetting);
-            this.group.Controls.Add(this.btn_AttendanceSetting);
             this.group.Controls.Add(this.btn_EnrollManagement);
-            this.group.Controls.Add(this.btn_AccessSetting);
             this.group.Controls.Add(this.btn_SystemSetting);
             this.group.Location = new System.Drawing.Point(256, 57);
             this.group.Name = "group";
-            this.group.Size = new System.Drawing.Size(333, 151);
+            this.group.Size = new System.Drawing.Size(333, 94);
             this.group.TabIndex = 8;
             this.group.TabStop = false;
-            this.group.Text = "Function";
+            this.group.Text = "Funções";
             // 
             // btn_GlogManagement
             // 
-            this.btn_GlogManagement.Location = new System.Drawing.Point(6, 116);
+            this.btn_GlogManagement.Location = new System.Drawing.Point(6, 54);
             this.btn_GlogManagement.Name = "btn_GlogManagement";
             this.btn_GlogManagement.Size = new System.Drawing.Size(156, 25);
             this.btn_GlogManagement.TabIndex = 6;
-            this.btn_GlogManagement.Text = "GLog Management";
+            this.btn_GlogManagement.Text = "Relatório de Ponto";
             this.btn_GlogManagement.UseVisualStyleBackColor = true;
             this.btn_GlogManagement.Click += new System.EventHandler(this.btn_GlogManagement_Click);
             // 
             // btn_SlogManagement
             // 
-            this.btn_SlogManagement.Location = new System.Drawing.Point(168, 85);
+            this.btn_SlogManagement.Location = new System.Drawing.Point(173, 22);
             this.btn_SlogManagement.Name = "btn_SlogManagement";
             this.btn_SlogManagement.Size = new System.Drawing.Size(156, 25);
             this.btn_SlogManagement.TabIndex = 5;
-            this.btn_SlogManagement.Text = "SLog Mangement";
+            this.btn_SlogManagement.Text = "Relatório do Sistema";
             this.btn_SlogManagement.UseVisualStyleBackColor = true;
             this.btn_SlogManagement.Click += new System.EventHandler(this.btn_SlogManagement_Click);
             // 
             // btn_AlarmSetting
             // 
-            this.btn_AlarmSetting.Location = new System.Drawing.Point(168, 22);
+            this.btn_AlarmSetting.Location = new System.Drawing.Point(433, 246);
             this.btn_AlarmSetting.Name = "btn_AlarmSetting";
             this.btn_AlarmSetting.Size = new System.Drawing.Size(156, 25);
             this.btn_AlarmSetting.TabIndex = 1;
-            this.btn_AlarmSetting.Text = "Alarm Settings";
+            this.btn_AlarmSetting.Text = "Definições de Alarme";
             this.btn_AlarmSetting.UseVisualStyleBackColor = true;
+            this.btn_AlarmSetting.Visible = false;
             this.btn_AlarmSetting.Click += new System.EventHandler(this.btn_AlarmSetting_Click);
             // 
             // btn_AttendanceSetting
             // 
-            this.btn_AttendanceSetting.Location = new System.Drawing.Point(168, 53);
+            this.btn_AttendanceSetting.Location = new System.Drawing.Point(433, 215);
             this.btn_AttendanceSetting.Name = "btn_AttendanceSetting";
             this.btn_AttendanceSetting.Size = new System.Drawing.Size(156, 25);
             this.btn_AttendanceSetting.TabIndex = 3;
-            this.btn_AttendanceSetting.Text = "Message Settings";
+            this.btn_AttendanceSetting.Text = "Definições de Mensagens";
             this.btn_AttendanceSetting.UseVisualStyleBackColor = true;
+            this.btn_AttendanceSetting.Visible = false;
+            this.btn_AttendanceSetting.Click += new System.EventHandler(this.btn_AttendanceSetting_Click);
             // 
             // btn_EnrollManagement
             // 
-            this.btn_EnrollManagement.Location = new System.Drawing.Point(6, 85);
+            this.btn_EnrollManagement.Location = new System.Drawing.Point(173, 54);
             this.btn_EnrollManagement.Name = "btn_EnrollManagement";
             this.btn_EnrollManagement.Size = new System.Drawing.Size(156, 25);
             this.btn_EnrollManagement.TabIndex = 4;
-            this.btn_EnrollManagement.Text = "Employee Management";
+            this.btn_EnrollManagement.Text = "Gestão de Funcionários";
             this.btn_EnrollManagement.UseVisualStyleBackColor = true;
             this.btn_EnrollManagement.Click += new System.EventHandler(this.btn_EnrollManagement_Click);
             // 
             // btn_AccessSetting
             // 
-            this.btn_AccessSetting.Location = new System.Drawing.Point(6, 53);
+            this.btn_AccessSetting.Location = new System.Drawing.Point(262, 214);
             this.btn_AccessSetting.Name = "btn_AccessSetting";
             this.btn_AccessSetting.Size = new System.Drawing.Size(156, 25);
             this.btn_AccessSetting.TabIndex = 2;
-            this.btn_AccessSetting.Text = "Access Control Settings";
+            this.btn_AccessSetting.Text = "Controle de Acesso";
             this.btn_AccessSetting.UseVisualStyleBackColor = true;
+            this.btn_AccessSetting.Visible = false;
             this.btn_AccessSetting.Click += new System.EventHandler(this.btn_AccessSetting_Click);
             // 
             // btn_SystemSetting
@@ -158,7 +160,7 @@
             this.btn_SystemSetting.Name = "btn_SystemSetting";
             this.btn_SystemSetting.Size = new System.Drawing.Size(156, 25);
             this.btn_SystemSetting.TabIndex = 0;
-            this.btn_SystemSetting.Text = "System Settings";
+            this.btn_SystemSetting.Text = "Definições de Sistema";
             this.btn_SystemSetting.UseVisualStyleBackColor = true;
             this.btn_SystemSetting.Click += new System.EventHandler(this.btn_SystemSetting_Click);
             // 
@@ -168,7 +170,7 @@
             this.btn_CloseDevice.Name = "btn_CloseDevice";
             this.btn_CloseDevice.Size = new System.Drawing.Size(95, 25);
             this.btn_CloseDevice.TabIndex = 7;
-            this.btn_CloseDevice.Text = "Disconnect";
+            this.btn_CloseDevice.Text = "Disconectar";
             this.btn_CloseDevice.UseVisualStyleBackColor = true;
             this.btn_CloseDevice.Click += new System.EventHandler(this.btn_CloseDevice_Click_1);
             // 
@@ -178,7 +180,7 @@
             this.btn_OpenDevice.Name = "btn_OpenDevice";
             this.btn_OpenDevice.Size = new System.Drawing.Size(95, 25);
             this.btn_OpenDevice.TabIndex = 6;
-            this.btn_OpenDevice.Text = "Connect";
+            this.btn_OpenDevice.Text = "Conectar";
             this.btn_OpenDevice.UseVisualStyleBackColor = true;
             this.btn_OpenDevice.Click += new System.EventHandler(this.btn_OpenDevice_Click);
             // 
@@ -209,7 +211,7 @@
             this.groupBox1.Size = new System.Drawing.Size(238, 335);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Connection Information";
+            this.groupBox1.Text = "Informação da Conexão";
             // 
             // p2pServerTextBox
             // 
@@ -389,10 +391,10 @@
             this.rdb_USB.Checked = true;
             this.rdb_USB.Location = new System.Drawing.Point(8, 74);
             this.rdb_USB.Name = "rdb_USB";
-            this.rdb_USB.Size = new System.Drawing.Size(104, 17);
+            this.rdb_USB.Size = new System.Drawing.Size(92, 17);
             this.rdb_USB.TabIndex = 4;
             this.rdb_USB.TabStop = true;
-            this.rdb_USB.Text = "USB Connection";
+            this.rdb_USB.Text = "Conexão USB";
             this.rdb_USB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdb_USB.UseVisualStyleBackColor = true;
             // 
@@ -452,9 +454,12 @@
             this.ClientSize = new System.Drawing.Size(599, 360);
             this.Controls.Add(this.btn_RealTimeLog);
             this.Controls.Add(this.group);
+            this.Controls.Add(this.btn_AlarmSetting);
             this.Controls.Add(this.btn_CloseDevice);
             this.Controls.Add(this.btn_OpenDevice);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btn_AttendanceSetting);
+            this.Controls.Add(this.btn_AccessSetting);
             this.Name = "frmConectarFPScanner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conectar Scanner";

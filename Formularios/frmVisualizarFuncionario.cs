@@ -164,6 +164,7 @@ namespace Facturix_Salários
             {
                 frmCadastrarFuncionarios f = new frmCadastrarFuncionarios();
                 f.Show();
+                f.setCod();
                 this.Close();
             }
             if (e.KeyCode.ToString() == "F2")

@@ -7,6 +7,9 @@ using ZDC2911Demo.Entity;
 using ZDC2911Demo.SysEnum;
 using Riss.Devices;
 using System.Drawing;
+using System.Collections;
+using Facturix_Salários.Controllers;
+using Facturix_Salários.Modelos;
 
 namespace Facturix_Salários.Formularios.Definicoes
 {
@@ -31,7 +34,22 @@ namespace Facturix_Salários.Formularios.Definicoes
 
         private void frmGestaoDeFuncionarios_Load(object sender, EventArgs e)
         {
-
+            decimal nr = nud_DIN.Value;
+            ArrayList listaFunc = ControllerFuncionario.recuperar();
+            foreach (ModeloFuncionario func in listaFunc)
+            {
+                if (nr == func.getCodigo())
+                {
+                    txt_UserName.Text = func.getNome();
+                    ExtInfoTextBox.Text = func.getProfissao();
+                    break;
+                }
+                else
+                {
+                    txt_UserName.Text = "";
+                    ExtInfoTextBox.Text = "";
+                }
+            }
         }
 
         private void btn_ReadFp_Click(object sender, EventArgs e)
@@ -662,7 +680,7 @@ namespace Facturix_Salários.Formularios.Definicoes
                     txt_UserName.Text = user.UserName;
                     ExtInfoTextBox.Text = user.Comment;
                     userEnableComboBox.SelectedIndex = Convert.ToInt32(user.Enable);
-                    userAttTypeIdNumericUpDown.Value = user.AttType;
+                   // userAttTypeIdNumericUpDown.Value = user.AttType;
                     userAccessControlComboBox.SelectedIndex = user.AccessControl;
                     userPassZoneNumericUpDown.Value = user.AccessTimeZone;
                     userDeptIdNumericUpDown.Value = user.Department;
@@ -839,7 +857,7 @@ namespace Facturix_Salários.Formularios.Definicoes
 
             if (0 == lvw_UserList.CheckedItems.Count)
             {
-                MessageBox.Show("Please Select the Record After Operation", "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please Select the Record before Operation", "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -1374,6 +1392,26 @@ namespace Facturix_Salários.Formularios.Definicoes
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void nud_DIN_ValueChanged(object sender, EventArgs e)
+        {
+            decimal nr = nud_DIN.Value;
+            ArrayList listaFunc = ControllerFuncionario.recuperar();
+            foreach (ModeloFuncionario func in listaFunc) 
+            {
+                if (nr == func.getCodigo())
+                {
+                    txt_UserName.Text = func.getNome();
+                    ExtInfoTextBox.Text = func.getProfissao();
+                    break;
+                }
+                else 
+                {
+                    txt_UserName.Text ="";
+                    ExtInfoTextBox.Text = "";
+                }
             }
         }
     }

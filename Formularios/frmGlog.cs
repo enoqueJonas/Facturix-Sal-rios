@@ -6,6 +6,9 @@ using ZDC2911Demo.Entity;
 using Facturix_Salários.Business;
 using ZDC2911Demo.SysEnum;
 using Riss.Devices;
+using Facturix_Salários.Controllers;
+using Facturix_Salários.Modelos;
+using System.Collections;
 
 namespace Facturix_Salários.Formularios.Definicoes
 {
@@ -66,6 +69,28 @@ namespace Facturix_Salários.Formularios.Definicoes
             }
         }
 
+        private int getCod() 
+        {
+            int cod = 0;
+            ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperar();
+            foreach (ModeloRelogioDePonto m in listaRelogioDePonto) 
+            {
+                cod = m.getSn();
+            }
+            return cod;
+        }
+        private void gravarRelatorio(List<Record> recordList) 
+        {
+            ControllerRelogioDePonto.remover();
+            int no = 1;
+            foreach (Record record in recordList)
+            {
+                string type = ConvertObject.IOMode(record.Verify);
+                string mode = ConvertObject.GLogType(record.Action);
+                ControllerRelogioDePonto.Guardar(no, record.DIN, type, record.DN, mode, record.Clock.ToString("yyyy-MM-dd HH:mm:ss"));
+                no++;
+            }
+        }
         private void AddRecordToListView(List<Record> recordList)
         {
             lvw_GLogList.Items.Clear();
@@ -179,6 +204,7 @@ namespace Facturix_Salários.Formularios.Definicoes
                 {
                     List<Record> recordList = (List<Record>)extraData;
                     AddRecordToListView(recordList);
+                    gravarRelatorio(recordList);
                 }
                 else
                 {
@@ -225,6 +251,73 @@ namespace Facturix_Salários.Formularios.Definicoes
                 extraData = Global.DeviceIdle;
                 deviceConnection.SetProperty(DeviceProperty.Enable, extraProperty, device, extraData);
             }
+        }
+
+        private void mostrar()
+        {
+            frmNumeroRegisto f = new frmNumeroRegisto();
+            f.ShowDialog();
+            int cod = f.enterdCod;
+            ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(cod);
+        }
+
+        private void btnVerificar_Click(object sender, EventArgs e)
+        {
+            frmNumeroRegisto frm = new frmNumeroRegisto();
+            frm.ShowDialog();
+            int cod = frm.enterdCod;
+            ArrayList listaFuncionario = ControllerFuncionario.recuperarComCodigo(cod);
+            ArrayList listaPonto = ControllerRelogioDePonto.recuperar();
+            ArrayList novaListaPonto = new ArrayList();
+            //Boolean existe = false;
+            foreach (ModeloFuncionario f in listaFuncionario) 
+            {
+                foreach (ModeloRelogioDePonto m in listaPonto)
+                {
+                    if (f.getCodigo() == m.getIdUsuario())
+                    {
+                        //existe = true;
+                        novaListaPonto.Add(new ModeloRelogioDePonto(m.getSn(), m.getIdUsuario(), m.getEstado(), m.getNrDispositivo(), m.getAccao(), m.getData()));
+                    }
+                }
+            }
+            String[] horasEntrada = new string[60];
+            String[] horasSaida= new string[60];
+            int iE = 0;
+            int iS = 0;
+            DateTime data;
+            foreach (ModeloRelogioDePonto f in novaListaPonto) 
+            {
+                data = Convert.ToDateTime(f.getData());
+                if (data.Hour <= 10)
+                {
+                    horasEntrada[iE] = data.Hour.ToString();
+                    iE++;
+                } else if (data.Hour ==18) 
+                {
+                    horasSaida[iS] = data.Hour.ToString();
+                    iS++;
+                }
+            }
+            int[] horasEntradaInt = new int[60];
+            int[] horasSaidaInt = new int[60];
+            for (int j = 0; j<novaListaPonto.Count; j++) 
+            {
+                if (horasEntrada[j]!=null)
+                {
+                    horasEntradaInt[j] = int.Parse(horasEntrada[j]);
+                    horasSaidaInt[j] = int.Parse(horasSaida[j]);
+                } 
+            }
+            int presenca = 0;
+            for (int j = 0; j<novaListaPonto.Count; j++) 
+            {
+                if (horasEntradaInt[j] <= 10 && horasEntradaInt[j] >= 7 && horasSaidaInt[j+1] <=19 && horasSaidaInt[j+1] >=17) 
+                {
+                    presenca++;
+                } 
+            }
+            MessageBox.Show("Presente "+presenca+" dia/as");
         }
     }
 }

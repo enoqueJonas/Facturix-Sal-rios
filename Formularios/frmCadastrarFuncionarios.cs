@@ -94,6 +94,7 @@ namespace Facturix_Salários
             dataSubsidios.AllowUserToAddRows = false;
             dataSubsidios.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataSubsidios.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            //dataSubsidios.Columns["Vencimento"]
         }
 
         /// <summary>Adiciona Items como seguro, contrato... nas ComboBox.</summary>
@@ -396,39 +397,48 @@ namespace Facturix_Salários
             String centroDeCusto = cbCentrocusto.Text;
             String segurancaSocial = txtSeguranca.Text;
             String sindicato = cbSindicato.Text;
-            int cod = 0;
+            //int cod = 0;
+            Boolean existe = false;
             int idIRPS = 0;
             foreach (ModeloFuncionario func in listaFuncionarios)
             {
                 if (func.getCodigo() == id) 
                 {
-                    cod = func.getCodigo();
+                    existe = true;
                 }
             }
             ArrayList listaIRPS = ControllerIRPS.recuperar();
             foreach (ModeloIRPS f in listaIRPS)
             {
-                if (vencimento >= f.getSalarioMin() && vencimento <= f.getSalarioMax())
+                if (f.getSalarioMax() == 0 && vencimento < f.getSalarioMin()) 
+                {
+                    idIRPS = f.getId();
+                    break;
+                }
+                else if (vencimento >= f.getSalarioMin() && vencimento <= f.getSalarioMax() && f.getSalarioMax() != 0)
                 {
                     if (dependentes == f.getNrDependentes())
                     {
                         idIRPS = f.getId();
                     }
+                } else if (f.getSalarioMax() == 0 && vencimento >=f.getSalarioMin()) 
+                {
+                    idIRPS = f.getId();
                 }
             }
-            if (cod!=0)
+            if (existe == false)
             {
-                ControllerFuncionario.atualizar(cod, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao);
-                ControllerConta.atualizar(cod, banco, nib, conta);
-                limparCaixas();
-                mostrarLabels(false);
-            }
-            else 
-            {
-                ControllerFuncionario.Guardar(id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal,centroDeCusto, segurancaSocial, sindicato, subComunicacao);
+                ControllerFuncionario.Guardar(id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao);
                 ControllerConta.Guardar(id, banco, nib, conta);
                 adicionar();
                 setCod();
+            }
+            else 
+            {
+                ControllerFuncionario.atualizar(id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao);
+                ControllerConta.atualizar(id, banco, nib, conta);
+                limparCaixas();
+                mostrarLabels(false);
             }
         }
 
@@ -1180,6 +1190,7 @@ namespace Facturix_Salários
 
         private void txtLink_KeyDown(object sender, KeyEventArgs e)
         {
+            mexerTeclado(sender, e);
             OpenFileDialog opFile = new OpenFileDialog();
             string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\ProImages\";
             if (e.KeyCode == Keys.Enter)
@@ -1317,7 +1328,6 @@ namespace Facturix_Salários
 
         private void btnImprimir_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender, e);
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -1505,6 +1515,25 @@ namespace Facturix_Salários
             {
                 txtImpostoM.Text = "";
             }
+        }
+
+        private void txtNrDependentes_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+        }
+
+        private void cbSindicato_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+        }
+
+        private void btnAdicionar_KeyDown(object sender, KeyEventArgs e)
+        {
+        }
+
+        private void btnRegressar_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
         }
     }
 }
