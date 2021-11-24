@@ -32,11 +32,11 @@
             this.group = new System.Windows.Forms.GroupBox();
             this.btn_GlogManagement = new System.Windows.Forms.Button();
             this.btn_SlogManagement = new System.Windows.Forms.Button();
+            this.btn_EnrollManagement = new System.Windows.Forms.Button();
+            this.btn_SystemSetting = new System.Windows.Forms.Button();
             this.btn_AlarmSetting = new System.Windows.Forms.Button();
             this.btn_AttendanceSetting = new System.Windows.Forms.Button();
-            this.btn_EnrollManagement = new System.Windows.Forms.Button();
             this.btn_AccessSetting = new System.Windows.Forms.Button();
-            this.btn_SystemSetting = new System.Windows.Forms.Button();
             this.btn_CloseDevice = new System.Windows.Forms.Button();
             this.btn_OpenDevice = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -111,6 +111,26 @@
             this.btn_SlogManagement.UseVisualStyleBackColor = true;
             this.btn_SlogManagement.Click += new System.EventHandler(this.btn_SlogManagement_Click);
             // 
+            // btn_EnrollManagement
+            // 
+            this.btn_EnrollManagement.Location = new System.Drawing.Point(173, 54);
+            this.btn_EnrollManagement.Name = "btn_EnrollManagement";
+            this.btn_EnrollManagement.Size = new System.Drawing.Size(156, 25);
+            this.btn_EnrollManagement.TabIndex = 4;
+            this.btn_EnrollManagement.Text = "Gestão de Funcionários";
+            this.btn_EnrollManagement.UseVisualStyleBackColor = true;
+            this.btn_EnrollManagement.Click += new System.EventHandler(this.btn_EnrollManagement_Click);
+            // 
+            // btn_SystemSetting
+            // 
+            this.btn_SystemSetting.Location = new System.Drawing.Point(6, 22);
+            this.btn_SystemSetting.Name = "btn_SystemSetting";
+            this.btn_SystemSetting.Size = new System.Drawing.Size(156, 25);
+            this.btn_SystemSetting.TabIndex = 0;
+            this.btn_SystemSetting.Text = "Definições de Sistema";
+            this.btn_SystemSetting.UseVisualStyleBackColor = true;
+            this.btn_SystemSetting.Click += new System.EventHandler(this.btn_SystemSetting_Click);
+            // 
             // btn_AlarmSetting
             // 
             this.btn_AlarmSetting.Location = new System.Drawing.Point(433, 246);
@@ -133,16 +153,6 @@
             this.btn_AttendanceSetting.Visible = false;
             this.btn_AttendanceSetting.Click += new System.EventHandler(this.btn_AttendanceSetting_Click);
             // 
-            // btn_EnrollManagement
-            // 
-            this.btn_EnrollManagement.Location = new System.Drawing.Point(173, 54);
-            this.btn_EnrollManagement.Name = "btn_EnrollManagement";
-            this.btn_EnrollManagement.Size = new System.Drawing.Size(156, 25);
-            this.btn_EnrollManagement.TabIndex = 4;
-            this.btn_EnrollManagement.Text = "Gestão de Funcionários";
-            this.btn_EnrollManagement.UseVisualStyleBackColor = true;
-            this.btn_EnrollManagement.Click += new System.EventHandler(this.btn_EnrollManagement_Click);
-            // 
             // btn_AccessSetting
             // 
             this.btn_AccessSetting.Location = new System.Drawing.Point(262, 214);
@@ -153,16 +163,6 @@
             this.btn_AccessSetting.UseVisualStyleBackColor = true;
             this.btn_AccessSetting.Visible = false;
             this.btn_AccessSetting.Click += new System.EventHandler(this.btn_AccessSetting_Click);
-            // 
-            // btn_SystemSetting
-            // 
-            this.btn_SystemSetting.Location = new System.Drawing.Point(6, 22);
-            this.btn_SystemSetting.Name = "btn_SystemSetting";
-            this.btn_SystemSetting.Size = new System.Drawing.Size(156, 25);
-            this.btn_SystemSetting.TabIndex = 0;
-            this.btn_SystemSetting.Text = "Definições de Sistema";
-            this.btn_SystemSetting.UseVisualStyleBackColor = true;
-            this.btn_SystemSetting.Click += new System.EventHandler(this.btn_SystemSetting_Click);
             // 
             // btn_CloseDevice
             // 
@@ -215,7 +215,7 @@
             // 
             // p2pServerTextBox
             // 
-            this.p2pServerTextBox.Location = new System.Drawing.Point(82, 309);
+            this.p2pServerTextBox.Location = new System.Drawing.Point(88, 309);
             this.p2pServerTextBox.Name = "p2pServerTextBox";
             this.p2pServerTextBox.Size = new System.Drawing.Size(144, 20);
             this.p2pServerTextBox.TabIndex = 22;
@@ -226,13 +226,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 313);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 21;
-            this.label2.Text = "P2P Server:";
+            this.label2.Text = "Servidor P2P:";
             // 
             // p2pAddrTextBox
             // 
-            this.p2pAddrTextBox.Location = new System.Drawing.Point(82, 278);
+            this.p2pAddrTextBox.Location = new System.Drawing.Point(88, 278);
             this.p2pAddrTextBox.Name = "p2pAddrTextBox";
             this.p2pAddrTextBox.Size = new System.Drawing.Size(144, 20);
             this.p2pAddrTextBox.TabIndex = 20;
@@ -242,9 +242,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 282);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 19;
-            this.label1.Text = "P2P Addr:";
+            this.label1.Text = "P2P:";
             // 
             // p2pRadioButton
             // 
@@ -259,7 +259,7 @@
             // 
             // nud_Port
             // 
-            this.nud_Port.Location = new System.Drawing.Point(82, 231);
+            this.nud_Port.Location = new System.Drawing.Point(88, 231);
             this.nud_Port.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -281,7 +281,7 @@
             // 
             // nud_Pwd
             // 
-            this.nud_Pwd.Location = new System.Drawing.Point(82, 44);
+            this.nud_Pwd.Location = new System.Drawing.Point(88, 44);
             this.nud_Pwd.Maximum = new decimal(new int[] {
             99999999,
             0,
@@ -293,7 +293,7 @@
             // 
             // nud_DN
             // 
-            this.nud_DN.Location = new System.Drawing.Point(82, 15);
+            this.nud_DN.Location = new System.Drawing.Point(88, 15);
             this.nud_DN.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -318,7 +318,7 @@
             "38400",
             "57600",
             "115200"});
-            this.cbo_BaudRate.Location = new System.Drawing.Point(82, 150);
+            this.cbo_BaudRate.Location = new System.Drawing.Point(88, 150);
             this.cbo_BaudRate.Name = "cbo_BaudRate";
             this.cbo_BaudRate.Size = new System.Drawing.Size(120, 21);
             this.cbo_BaudRate.TabIndex = 9;
@@ -336,7 +336,7 @@
             "COM6",
             "COM7",
             "COM8"});
-            this.cbo_COMM.Location = new System.Drawing.Point(82, 121);
+            this.cbo_COMM.Location = new System.Drawing.Point(88, 121);
             this.cbo_COMM.Name = "cbo_COMM";
             this.cbo_COMM.Size = new System.Drawing.Size(120, 21);
             this.cbo_COMM.TabIndex = 7;
@@ -346,9 +346,9 @@
             this.lbl_BaudRate.AutoSize = true;
             this.lbl_BaudRate.Location = new System.Drawing.Point(13, 153);
             this.lbl_BaudRate.Name = "lbl_BaudRate";
-            this.lbl_BaudRate.Size = new System.Drawing.Size(53, 13);
+            this.lbl_BaudRate.Size = new System.Drawing.Size(78, 13);
             this.lbl_BaudRate.TabIndex = 8;
-            this.lbl_BaudRate.Text = "Baudrate:";
+            this.lbl_BaudRate.Text = "Taxa de trans.:";
             this.lbl_BaudRate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_COMM
@@ -366,10 +366,10 @@
             this.rdb_TCP.AutoSize = true;
             this.rdb_TCP.Location = new System.Drawing.Point(8, 178);
             this.rdb_TCP.Name = "rdb_TCP";
-            this.rdb_TCP.Size = new System.Drawing.Size(122, 17);
+            this.rdb_TCP.Size = new System.Drawing.Size(111, 17);
             this.rdb_TCP.TabIndex = 10;
             this.rdb_TCP.TabStop = true;
-            this.rdb_TCP.Text = "Network Connection";
+            this.rdb_TCP.Text = "Conexão de Rede";
             this.rdb_TCP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdb_TCP.UseVisualStyleBackColor = true;
             // 
@@ -378,10 +378,10 @@
             this.rdb_COMM.AutoSize = true;
             this.rdb_COMM.Location = new System.Drawing.Point(8, 98);
             this.rdb_COMM.Name = "rdb_COMM";
-            this.rdb_COMM.Size = new System.Drawing.Size(108, 17);
+            this.rdb_COMM.Size = new System.Drawing.Size(96, 17);
             this.rdb_COMM.TabIndex = 5;
             this.rdb_COMM.TabStop = true;
-            this.rdb_COMM.Text = "Serial Connection";
+            this.rdb_COMM.Text = "Conexão Serial";
             this.rdb_COMM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdb_COMM.UseVisualStyleBackColor = true;
             // 
@@ -400,7 +400,7 @@
             // 
             // txt_IP
             // 
-            this.txt_IP.Location = new System.Drawing.Point(82, 202);
+            this.txt_IP.Location = new System.Drawing.Point(88, 202);
             this.txt_IP.Name = "txt_IP";
             this.txt_IP.Size = new System.Drawing.Size(144, 20);
             this.txt_IP.TabIndex = 12;
@@ -411,19 +411,19 @@
             this.lbl_Port.AutoSize = true;
             this.lbl_Port.Location = new System.Drawing.Point(13, 233);
             this.lbl_Port.Name = "lbl_Port";
-            this.lbl_Port.Size = new System.Drawing.Size(55, 13);
+            this.lbl_Port.Size = new System.Drawing.Size(61, 13);
             this.lbl_Port.TabIndex = 13;
-            this.lbl_Port.Text = "UDP Port:";
+            this.lbl_Port.Text = "Porta UDP:";
             this.lbl_Port.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_IP
             // 
             this.lbl_IP.AutoSize = true;
-            this.lbl_IP.Location = new System.Drawing.Point(6, 206);
+            this.lbl_IP.Location = new System.Drawing.Point(13, 205);
             this.lbl_IP.Name = "lbl_IP";
-            this.lbl_IP.Size = new System.Drawing.Size(61, 13);
+            this.lbl_IP.Size = new System.Drawing.Size(20, 13);
             this.lbl_IP.TabIndex = 11;
-            this.lbl_IP.Text = "IP Address:";
+            this.lbl_IP.Text = "IP:";
             this.lbl_IP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_ConnectionPwd
@@ -431,9 +431,9 @@
             this.lbl_ConnectionPwd.AutoSize = true;
             this.lbl_ConnectionPwd.Location = new System.Drawing.Point(13, 47);
             this.lbl_ConnectionPwd.Name = "lbl_ConnectionPwd";
-            this.lbl_ConnectionPwd.Size = new System.Drawing.Size(60, 13);
+            this.lbl_ConnectionPwd.Size = new System.Drawing.Size(73, 13);
             this.lbl_ConnectionPwd.TabIndex = 2;
-            this.lbl_ConnectionPwd.Text = "Comm Key:";
+            this.lbl_ConnectionPwd.Text = "Chave Comm:";
             this.lbl_ConnectionPwd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_DeviceId
@@ -441,9 +441,9 @@
             this.lbl_DeviceId.AutoSize = true;
             this.lbl_DeviceId.Location = new System.Drawing.Point(13, 18);
             this.lbl_DeviceId.Name = "lbl_DeviceId";
-            this.lbl_DeviceId.Size = new System.Drawing.Size(58, 13);
+            this.lbl_DeviceId.Size = new System.Drawing.Size(63, 13);
             this.lbl_DeviceId.TabIndex = 0;
-            this.lbl_DeviceId.Text = "Device ID:";
+            this.lbl_DeviceId.Text = "ID do Disp.:";
             this.lbl_DeviceId.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmConectarFPScanner

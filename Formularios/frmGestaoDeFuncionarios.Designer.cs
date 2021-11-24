@@ -96,20 +96,20 @@
             this.lbl_FpNo = new System.Windows.Forms.Label();
             this.lbl_UserId = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.userAttTypeIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.userAttTypeIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.userResNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userGroupIdNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userDeptIdNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userPassZoneNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_DIN)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userAttTypeIdNumericUpDown)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.userAttTypeIdNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // userResNumericUpDown
@@ -297,10 +297,10 @@
             this.userAccessControlComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.userAccessControlComboBox.FormattingEnabled = true;
             this.userAccessControlComboBox.Items.AddRange(new object[] {
-            "None",
-            "lock 1 only",
-            "lock 2 only",
-            "lock 1 & 2"});
+            "Nenhum",
+            "Controlar 1",
+            "Controlar 2",
+            "Controlar 1 & 2"});
             this.userAccessControlComboBox.Location = new System.Drawing.Point(320, 156);
             this.userAccessControlComboBox.Name = "userAccessControlComboBox";
             this.userAccessControlComboBox.Size = new System.Drawing.Size(136, 21);
@@ -311,8 +311,8 @@
             this.userValidityPeriodComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.userValidityPeriodComboBox.FormattingEnabled = true;
             this.userValidityPeriodComboBox.Items.AddRange(new object[] {
-            "No",
-            "Yes"});
+            "Não",
+            "Sim"});
             this.userValidityPeriodComboBox.Location = new System.Drawing.Point(320, 183);
             this.userValidityPeriodComboBox.Name = "userValidityPeriodComboBox";
             this.userValidityPeriodComboBox.Size = new System.Drawing.Size(136, 21);
@@ -323,8 +323,8 @@
             this.userEnableComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.userEnableComboBox.FormattingEnabled = true;
             this.userEnableComboBox.Items.AddRange(new object[] {
-            "No",
-            "Yes"});
+            "Não",
+            "Sim"});
             this.userEnableComboBox.Location = new System.Drawing.Point(320, 38);
             this.userEnableComboBox.Name = "userEnableComboBox";
             this.userEnableComboBox.Size = new System.Drawing.Size(136, 21);
@@ -608,11 +608,9 @@
             this.cbo_Role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_Role.FormattingEnabled = true;
             this.cbo_Role.Items.AddRange(new object[] {
-            "User",
-            "Enroll User",
-            "View User",
-            "Super User",
-            "Customer"});
+            "Utilizador",
+            "Super Utilizador",
+            "Cliente"});
             this.cbo_Role.Location = new System.Drawing.Point(92, 95);
             this.cbo_Role.Name = "cbo_Role";
             this.cbo_Role.Size = new System.Drawing.Size(136, 21);
@@ -677,9 +675,9 @@
             this.lbl_FpData.AutoSize = true;
             this.lbl_FpData.Location = new System.Drawing.Point(15, 14);
             this.lbl_FpData.Name = "lbl_FpData";
-            this.lbl_FpData.Size = new System.Drawing.Size(88, 13);
+            this.lbl_FpData.Size = new System.Drawing.Size(87, 13);
             this.lbl_FpData.TabIndex = 75;
-            this.lbl_FpData.Text = "Fringerprint Data:";
+            this.lbl_FpData.Text = "Impressão Digital";
             this.lbl_FpData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_UserName
@@ -784,6 +782,14 @@
             this.panel1.Size = new System.Drawing.Size(895, 305);
             this.panel1.TabIndex = 115;
             // 
+            // userAttTypeIdNumericUpDown
+            // 
+            this.userAttTypeIdNumericUpDown.Location = new System.Drawing.Point(340, 280);
+            this.userAttTypeIdNumericUpDown.Name = "userAttTypeIdNumericUpDown";
+            this.userAttTypeIdNumericUpDown.Size = new System.Drawing.Size(81, 20);
+            this.userAttTypeIdNumericUpDown.TabIndex = 115;
+            this.userAttTypeIdNumericUpDown.Visible = false;
+            // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -824,14 +830,6 @@
             this.panel3.Size = new System.Drawing.Size(895, 33);
             this.panel3.TabIndex = 117;
             // 
-            // userAttTypeIdNumericUpDown
-            // 
-            this.userAttTypeIdNumericUpDown.Location = new System.Drawing.Point(340, 280);
-            this.userAttTypeIdNumericUpDown.Name = "userAttTypeIdNumericUpDown";
-            this.userAttTypeIdNumericUpDown.Size = new System.Drawing.Size(81, 20);
-            this.userAttTypeIdNumericUpDown.TabIndex = 115;
-            this.userAttTypeIdNumericUpDown.Visible = false;
-            // 
             // frmGestaoDeFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -852,11 +850,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_DIN)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userAttTypeIdNumericUpDown)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.userAttTypeIdNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }

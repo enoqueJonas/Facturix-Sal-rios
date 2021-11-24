@@ -94,7 +94,6 @@ namespace Facturix_Salários
             dataSubsidios.AllowUserToAddRows = false;
             dataSubsidios.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataSubsidios.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            //dataSubsidios.Columns["Vencimento"]
         }
 
         /// <summary>Adiciona Items como seguro, contrato... nas ComboBox.</summary>
@@ -839,6 +838,7 @@ namespace Facturix_Salários
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            dataSubsidios.Columns["Vencimento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //setCod();
             adicionarItemsCb();
             porFoco();
