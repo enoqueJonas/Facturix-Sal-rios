@@ -230,5 +230,11 @@ namespace Facturix_Salários
         private void relógioDePontoToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
+
+        private void configuraçToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConfiguracaoDoAPP f = new frmConfiguracaoDoAPP();
+            f.Show();
+        }
     }
 }

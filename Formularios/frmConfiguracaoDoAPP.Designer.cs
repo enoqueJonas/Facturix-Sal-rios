@@ -54,44 +54,45 @@
             this.label17 = new System.Windows.Forms.Label();
             this.dateTimeInicio = new System.Windows.Forms.DateTimePicker();
             this.dateTimeFim = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.Feriados = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnModifcarFeriado = new System.Windows.Forms.Button();
+            this.btnGravarFeriado = new System.Windows.Forms.Button();
+            this.btnCancelarFeriado = new System.Windows.Forms.Button();
+            this.btnEliminarFeriado = new System.Windows.Forms.Button();
+            this.lbl3Feriado = new System.Windows.Forms.Label();
+            this.lbl2Feriado = new System.Windows.Forms.Label();
+            this.lbl1Feriado = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnAdicionar = new System.Windows.Forms.Button();
-            this.Horario = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dtFeriados = new System.Windows.Forms.DataGridView();
-            this.dtHorarios = new System.Windows.Forms.DataGridView();
+            this.lbl9 = new System.Windows.Forms.Label();
+            this.lbl8 = new System.Windows.Forms.Label();
+            this.lbl7 = new System.Windows.Forms.Label();
+            this.lbl4 = new System.Windows.Forms.Label();
+            this.lbl6 = new System.Windows.Forms.Label();
+            this.lbl5 = new System.Windows.Forms.Label();
+            this.lbl3 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.lbl2 = new System.Windows.Forms.Label();
-            this.lbl3 = new System.Windows.Forms.Label();
-            this.lbl4 = new System.Windows.Forms.Label();
-            this.lbl5 = new System.Windows.Forms.Label();
-            this.lbl6 = new System.Windows.Forms.Label();
-            this.lbl7 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.lbl8 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.btnGravar = new System.Windows.Forms.Button();
+            this.nrSaidaH = new System.Windows.Forms.NumericUpDown();
+            this.nrEntradaH = new System.Windows.Forms.NumericUpDown();
+            this.nrSaidaM = new System.Windows.Forms.NumericUpDown();
+            this.nrEntradaM = new System.Windows.Forms.NumericUpDown();
             this.label26 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.lbl9 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.Horario = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dtHorarios = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dtFeriados = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.nrHorasTrabalho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrIntervaloMinimoBatida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrEntradaAtraso)).BeginInit();
@@ -100,18 +101,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.nrHorasExtra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrAlmoco)).BeginInit();
             this.Feriados.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nrSaidaH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrEntradaH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrSaidaM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrEntradaM)).BeginInit();
             this.Horario.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtHorarios)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtFeriados)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtHorarios)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -140,9 +141,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(39, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 13);
+            this.label2.Size = new System.Drawing.Size(152, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Intervalo Minimo para Batida:";
+            this.label2.Text = "Intervalo Minimo entre Batidas:";
             // 
             // label3
             // 
@@ -376,20 +377,20 @@
             this.dateTimeFim.Size = new System.Drawing.Size(54, 20);
             this.dateTimeFim.TabIndex = 3;
             // 
-            // textBox1
+            // txtNome
             // 
-            this.textBox1.Location = new System.Drawing.Point(83, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(309, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtNome.Location = new System.Drawing.Point(83, 30);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(309, 20);
+            this.txtNome.TabIndex = 4;
             // 
             // Feriados
             // 
             this.Feriados.Controls.Add(this.panel2);
-            this.Feriados.Controls.Add(this.label18);
-            this.Feriados.Controls.Add(this.label19);
-            this.Feriados.Controls.Add(this.label20);
-            this.Feriados.Controls.Add(this.textBox1);
+            this.Feriados.Controls.Add(this.lbl3Feriado);
+            this.Feriados.Controls.Add(this.lbl2Feriado);
+            this.Feriados.Controls.Add(this.lbl1Feriado);
+            this.Feriados.Controls.Add(this.txtNome);
             this.Feriados.Controls.Add(this.dateTimeFim);
             this.Feriados.Controls.Add(this.dateTimeInicio);
             this.Feriados.Controls.Add(this.label17);
@@ -401,6 +402,93 @@
             this.Feriados.TabIndex = 5;
             this.Feriados.TabStop = false;
             this.Feriados.Text = "Feriados";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btnModifcarFeriado);
+            this.panel2.Controls.Add(this.btnGravarFeriado);
+            this.panel2.Controls.Add(this.btnCancelarFeriado);
+            this.panel2.Controls.Add(this.btnEliminarFeriado);
+            this.panel2.Location = new System.Drawing.Point(465, 15);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(113, 138);
+            this.panel2.TabIndex = 12;
+            // 
+            // btnModifcarFeriado
+            // 
+            this.btnModifcarFeriado.Location = new System.Drawing.Point(14, 36);
+            this.btnModifcarFeriado.Name = "btnModifcarFeriado";
+            this.btnModifcarFeriado.Size = new System.Drawing.Size(87, 30);
+            this.btnModifcarFeriado.TabIndex = 5;
+            this.btnModifcarFeriado.Text = "Modificar";
+            this.btnModifcarFeriado.UseVisualStyleBackColor = true;
+            this.btnModifcarFeriado.Click += new System.EventHandler(this.btnModifcarFeriado_Click);
+            // 
+            // btnGravarFeriado
+            // 
+            this.btnGravarFeriado.Location = new System.Drawing.Point(14, 3);
+            this.btnGravarFeriado.Name = "btnGravarFeriado";
+            this.btnGravarFeriado.Size = new System.Drawing.Size(87, 30);
+            this.btnGravarFeriado.TabIndex = 5;
+            this.btnGravarFeriado.Text = "Gravar";
+            this.btnGravarFeriado.UseVisualStyleBackColor = true;
+            this.btnGravarFeriado.Click += new System.EventHandler(this.btnGravarFeriado_Click);
+            // 
+            // btnCancelarFeriado
+            // 
+            this.btnCancelarFeriado.Location = new System.Drawing.Point(14, 104);
+            this.btnCancelarFeriado.Name = "btnCancelarFeriado";
+            this.btnCancelarFeriado.Size = new System.Drawing.Size(87, 30);
+            this.btnCancelarFeriado.TabIndex = 5;
+            this.btnCancelarFeriado.Text = "Cancelar";
+            this.btnCancelarFeriado.UseVisualStyleBackColor = true;
+            this.btnCancelarFeriado.Click += new System.EventHandler(this.btnCancelarFeriado_Click);
+            // 
+            // btnEliminarFeriado
+            // 
+            this.btnEliminarFeriado.Location = new System.Drawing.Point(14, 70);
+            this.btnEliminarFeriado.Name = "btnEliminarFeriado";
+            this.btnEliminarFeriado.Size = new System.Drawing.Size(87, 30);
+            this.btnEliminarFeriado.TabIndex = 5;
+            this.btnEliminarFeriado.Text = "Eliminar";
+            this.btnEliminarFeriado.UseVisualStyleBackColor = true;
+            // 
+            // lbl3Feriado
+            // 
+            this.lbl3Feriado.AutoSize = true;
+            this.lbl3Feriado.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl3Feriado.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl3Feriado.Location = new System.Drawing.Point(20, 105);
+            this.lbl3Feriado.Name = "lbl3Feriado";
+            this.lbl3Feriado.Size = new System.Drawing.Size(13, 13);
+            this.lbl3Feriado.TabIndex = 9;
+            this.lbl3Feriado.Text = "3";
+            this.lbl3Feriado.Visible = false;
+            // 
+            // lbl2Feriado
+            // 
+            this.lbl2Feriado.AutoSize = true;
+            this.lbl2Feriado.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl2Feriado.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl2Feriado.Location = new System.Drawing.Point(20, 66);
+            this.lbl2Feriado.Name = "lbl2Feriado";
+            this.lbl2Feriado.Size = new System.Drawing.Size(13, 13);
+            this.lbl2Feriado.TabIndex = 10;
+            this.lbl2Feriado.Text = "2";
+            this.lbl2Feriado.Visible = false;
+            // 
+            // lbl1Feriado
+            // 
+            this.lbl1Feriado.AutoSize = true;
+            this.lbl1Feriado.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl1Feriado.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl1Feriado.Location = new System.Drawing.Point(20, 33);
+            this.lbl1Feriado.Name = "lbl1Feriado";
+            this.lbl1Feriado.Size = new System.Drawing.Size(13, 13);
+            this.lbl1Feriado.TabIndex = 11;
+            this.lbl1Feriado.Text = "1";
+            this.lbl1Feriado.Visible = false;
             // 
             // groupBox1
             // 
@@ -415,10 +503,10 @@
             this.groupBox1.Controls.Add(this.lbl2);
             this.groupBox1.Controls.Add(this.lbl1);
             this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Controls.Add(this.numericUpDown4);
-            this.groupBox1.Controls.Add(this.numericUpDown2);
-            this.groupBox1.Controls.Add(this.numericUpDown3);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.nrSaidaH);
+            this.groupBox1.Controls.Add(this.nrEntradaH);
+            this.groupBox1.Controls.Add(this.nrSaidaM);
+            this.groupBox1.Controls.Add(this.nrEntradaM);
             this.groupBox1.Controls.Add(this.nrAlmoco);
             this.groupBox1.Controls.Add(this.nrHorasExtra);
             this.groupBox1.Controls.Add(this.nrSaidaAdiantada);
@@ -453,23 +541,260 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Horário";
             // 
-            // btnEliminar
+            // lbl9
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(14, 100);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(87, 30);
-            this.btnEliminar.TabIndex = 5;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.lbl9.AutoSize = true;
+            this.lbl9.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl9.Location = new System.Drawing.Point(20, 304);
+            this.lbl9.Name = "lbl9";
+            this.lbl9.Size = new System.Drawing.Size(13, 13);
+            this.lbl9.TabIndex = 8;
+            this.lbl9.Text = "9";
+            this.lbl9.Visible = false;
             // 
-            // btnAdicionar
+            // lbl8
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(14, 8);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(87, 30);
-            this.btnAdicionar.TabIndex = 5;
-            this.btnAdicionar.Text = "Gravar";
-            this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.lbl8.AutoSize = true;
+            this.lbl8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl8.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl8.Location = new System.Drawing.Point(20, 269);
+            this.lbl8.Name = "lbl8";
+            this.lbl8.Size = new System.Drawing.Size(13, 13);
+            this.lbl8.TabIndex = 8;
+            this.lbl8.Text = "8";
+            this.lbl8.Visible = false;
+            // 
+            // lbl7
+            // 
+            this.lbl7.AutoSize = true;
+            this.lbl7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl7.Location = new System.Drawing.Point(20, 237);
+            this.lbl7.Name = "lbl7";
+            this.lbl7.Size = new System.Drawing.Size(13, 13);
+            this.lbl7.TabIndex = 8;
+            this.lbl7.Text = "7";
+            this.lbl7.Visible = false;
+            // 
+            // lbl4
+            // 
+            this.lbl4.AutoSize = true;
+            this.lbl4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl4.Location = new System.Drawing.Point(20, 134);
+            this.lbl4.Name = "lbl4";
+            this.lbl4.Size = new System.Drawing.Size(13, 13);
+            this.lbl4.TabIndex = 8;
+            this.lbl4.Text = "4";
+            this.lbl4.Visible = false;
+            // 
+            // lbl6
+            // 
+            this.lbl6.AutoSize = true;
+            this.lbl6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl6.Location = new System.Drawing.Point(20, 205);
+            this.lbl6.Name = "lbl6";
+            this.lbl6.Size = new System.Drawing.Size(13, 13);
+            this.lbl6.TabIndex = 8;
+            this.lbl6.Text = "6";
+            this.lbl6.Visible = false;
+            // 
+            // lbl5
+            // 
+            this.lbl5.AutoSize = true;
+            this.lbl5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl5.Location = new System.Drawing.Point(20, 169);
+            this.lbl5.Name = "lbl5";
+            this.lbl5.Size = new System.Drawing.Size(13, 13);
+            this.lbl5.TabIndex = 8;
+            this.lbl5.Text = "5";
+            this.lbl5.Visible = false;
+            // 
+            // lbl3
+            // 
+            this.lbl3.AutoSize = true;
+            this.lbl3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl3.Location = new System.Drawing.Point(20, 100);
+            this.lbl3.Name = "lbl3";
+            this.lbl3.Size = new System.Drawing.Size(13, 13);
+            this.lbl3.TabIndex = 8;
+            this.lbl3.Text = "3";
+            this.lbl3.Visible = false;
+            // 
+            // lbl2
+            // 
+            this.lbl2.AutoSize = true;
+            this.lbl2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl2.Location = new System.Drawing.Point(20, 64);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(13, 13);
+            this.lbl2.TabIndex = 8;
+            this.lbl2.Text = "2";
+            this.lbl2.Visible = false;
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl1.Location = new System.Drawing.Point(20, 30);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(13, 13);
+            this.lbl1.TabIndex = 8;
+            this.lbl1.Text = "1";
+            this.lbl1.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnModificar);
+            this.panel1.Controls.Add(this.btnGravar);
+            this.panel1.Location = new System.Drawing.Point(464, 96);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(113, 138);
+            this.panel1.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(14, 104);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 30);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(14, 54);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(87, 30);
+            this.btnModificar.TabIndex = 6;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnGravar
+            // 
+            this.btnGravar.Location = new System.Drawing.Point(14, 3);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(87, 30);
+            this.btnGravar.TabIndex = 6;
+            this.btnGravar.Text = "Gravar";
+            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
+            // 
+            // nrSaidaH
+            // 
+            this.nrSaidaH.Location = new System.Drawing.Point(98, 302);
+            this.nrSaidaH.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.nrSaidaH.Name = "nrSaidaH";
+            this.nrSaidaH.Size = new System.Drawing.Size(46, 20);
+            this.nrSaidaH.TabIndex = 1;
+            // 
+            // nrEntradaH
+            // 
+            this.nrEntradaH.Location = new System.Drawing.Point(98, 267);
+            this.nrEntradaH.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.nrEntradaH.Name = "nrEntradaH";
+            this.nrEntradaH.Size = new System.Drawing.Size(46, 20);
+            this.nrEntradaH.TabIndex = 1;
+            // 
+            // nrSaidaM
+            // 
+            this.nrSaidaM.Location = new System.Drawing.Point(218, 302);
+            this.nrSaidaM.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nrSaidaM.Name = "nrSaidaM";
+            this.nrSaidaM.Size = new System.Drawing.Size(46, 20);
+            this.nrSaidaM.TabIndex = 1;
+            // 
+            // nrEntradaM
+            // 
+            this.nrEntradaM.Location = new System.Drawing.Point(218, 267);
+            this.nrEntradaM.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nrEntradaM.Name = "nrEntradaM";
+            this.nrEntradaM.Size = new System.Drawing.Size(46, 20);
+            this.nrEntradaM.TabIndex = 1;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(39, 304);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(39, 13);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Saída:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(39, 269);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(47, 13);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "Entrada:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(159, 304);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(33, 13);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "horas";
+            this.label25.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(282, 304);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(43, 13);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "minutos";
+            this.label24.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(159, 269);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(33, 13);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "horas";
+            this.label23.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(282, 269);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(43, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "minutos";
+            this.label21.Click += new System.EventHandler(this.label3_Click);
             // 
             // Horario
             // 
@@ -493,6 +818,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Horário";
             // 
+            // dtHorarios
+            // 
+            this.dtHorarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtHorarios.Location = new System.Drawing.Point(18, 386);
+            this.dtHorarios.Name = "dtHorarios";
+            this.dtHorarios.RowHeadersVisible = false;
+            this.dtHorarios.Size = new System.Drawing.Size(601, 73);
+            this.dtHorarios.TabIndex = 7;
+            this.dtHorarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtHorarios_CellDoubleClick);
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -513,322 +848,6 @@
             this.dtFeriados.Size = new System.Drawing.Size(594, 258);
             this.dtFeriados.TabIndex = 6;
             // 
-            // dtHorarios
-            // 
-            this.dtHorarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtHorarios.Location = new System.Drawing.Point(18, 379);
-            this.dtHorarios.Name = "dtHorarios";
-            this.dtHorarios.Size = new System.Drawing.Size(601, 90);
-            this.dtHorarios.TabIndex = 7;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 30);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Gravar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(12, 50);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(87, 30);
-            this.btnModificar.TabIndex = 6;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(14, 53);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 30);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Modificar";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(12, 100);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 30);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Adicionar";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.btnModificar);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(464, 96);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(113, 138);
-            this.panel1.TabIndex = 7;
-            // 
-            // lbl1
-            // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl1.Location = new System.Drawing.Point(20, 30);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(13, 13);
-            this.lbl1.TabIndex = 8;
-            this.lbl1.Text = "1";
-            this.lbl1.Visible = false;
-            // 
-            // lbl2
-            // 
-            this.lbl2.AutoSize = true;
-            this.lbl2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl2.Location = new System.Drawing.Point(20, 64);
-            this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(13, 13);
-            this.lbl2.TabIndex = 8;
-            this.lbl2.Text = "2";
-            this.lbl2.Visible = false;
-            // 
-            // lbl3
-            // 
-            this.lbl3.AutoSize = true;
-            this.lbl3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl3.Location = new System.Drawing.Point(20, 100);
-            this.lbl3.Name = "lbl3";
-            this.lbl3.Size = new System.Drawing.Size(13, 13);
-            this.lbl3.TabIndex = 8;
-            this.lbl3.Text = "3";
-            this.lbl3.Visible = false;
-            // 
-            // lbl4
-            // 
-            this.lbl4.AutoSize = true;
-            this.lbl4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl4.Location = new System.Drawing.Point(20, 134);
-            this.lbl4.Name = "lbl4";
-            this.lbl4.Size = new System.Drawing.Size(13, 13);
-            this.lbl4.TabIndex = 8;
-            this.lbl4.Text = "4";
-            this.lbl4.Visible = false;
-            // 
-            // lbl5
-            // 
-            this.lbl5.AutoSize = true;
-            this.lbl5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl5.Location = new System.Drawing.Point(20, 169);
-            this.lbl5.Name = "lbl5";
-            this.lbl5.Size = new System.Drawing.Size(13, 13);
-            this.lbl5.TabIndex = 8;
-            this.lbl5.Text = "5";
-            this.lbl5.Visible = false;
-            // 
-            // lbl6
-            // 
-            this.lbl6.AutoSize = true;
-            this.lbl6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl6.Location = new System.Drawing.Point(20, 205);
-            this.lbl6.Name = "lbl6";
-            this.lbl6.Size = new System.Drawing.Size(13, 13);
-            this.lbl6.TabIndex = 8;
-            this.lbl6.Text = "6";
-            this.lbl6.Visible = false;
-            // 
-            // lbl7
-            // 
-            this.lbl7.AutoSize = true;
-            this.lbl7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl7.Location = new System.Drawing.Point(20, 237);
-            this.lbl7.Name = "lbl7";
-            this.lbl7.Size = new System.Drawing.Size(13, 13);
-            this.lbl7.TabIndex = 8;
-            this.lbl7.Text = "7";
-            this.lbl7.Visible = false;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label18.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label18.Location = new System.Drawing.Point(20, 105);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(13, 13);
-            this.label18.TabIndex = 9;
-            this.label18.Text = "3";
-            this.label18.Visible = false;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label19.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label19.Location = new System.Drawing.Point(20, 66);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(13, 13);
-            this.label19.TabIndex = 10;
-            this.label19.Text = "2";
-            this.label19.Visible = false;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label20.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label20.Location = new System.Drawing.Point(20, 33);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(13, 13);
-            this.label20.TabIndex = 11;
-            this.label20.Text = "1";
-            this.label20.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.btnAdicionar);
-            this.panel2.Controls.Add(this.btnEliminar);
-            this.panel2.Location = new System.Drawing.Point(465, 14);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(113, 138);
-            this.panel2.TabIndex = 12;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(282, 269);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(43, 13);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "minutos";
-            this.label21.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(39, 269);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(47, 13);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "Entrada:";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(218, 267);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(46, 20);
-            this.numericUpDown1.TabIndex = 1;
-            // 
-            // lbl8
-            // 
-            this.lbl8.AutoSize = true;
-            this.lbl8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl8.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl8.Location = new System.Drawing.Point(20, 269);
-            this.lbl8.Name = "lbl8";
-            this.lbl8.Size = new System.Drawing.Size(13, 13);
-            this.lbl8.TabIndex = 8;
-            this.lbl8.Text = "8";
-            this.lbl8.Visible = false;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(98, 267);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            23,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(46, 20);
-            this.numericUpDown2.TabIndex = 1;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(159, 269);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(33, 13);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "horas";
-            this.label23.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(282, 304);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(43, 13);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "minutos";
-            this.label24.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(159, 304);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(33, 13);
-            this.label25.TabIndex = 0;
-            this.label25.Text = "horas";
-            this.label25.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(39, 304);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(39, 13);
-            this.label26.TabIndex = 0;
-            this.label26.Text = "Saída:";
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Location = new System.Drawing.Point(218, 302);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(46, 20);
-            this.numericUpDown3.TabIndex = 1;
-            // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.Location = new System.Drawing.Point(98, 302);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
-            23,
-            0,
-            0,
-            0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(46, 20);
-            this.numericUpDown4.TabIndex = 1;
-            // 
-            // lbl9
-            // 
-            this.lbl9.AutoSize = true;
-            this.lbl9.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl9.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl9.Location = new System.Drawing.Point(20, 304);
-            this.lbl9.Name = "lbl9";
-            this.lbl9.Size = new System.Drawing.Size(13, 13);
-            this.lbl9.TabIndex = 8;
-            this.lbl9.Text = "9";
-            this.lbl9.Visible = false;
-            // 
             // frmConfiguracaoDoAPP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -838,6 +857,7 @@
             this.Controls.Add(this.Horario);
             this.Name = "frmConfiguracaoDoAPP";
             this.Text = "Configuração";
+            this.Load += new System.EventHandler(this.frmConfiguracaoDoAPP_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nrHorasTrabalho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrIntervaloMinimoBatida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrEntradaAtraso)).EndInit();
@@ -847,19 +867,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.nrAlmoco)).EndInit();
             this.Feriados.ResumeLayout(false);
             this.Feriados.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nrSaidaH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrEntradaH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrSaidaM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrEntradaM)).EndInit();
             this.Horario.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtHorarios)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtFeriados)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtHorarios)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -892,20 +912,19 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DateTimePicker dateTimeInicio;
         private System.Windows.Forms.DateTimePicker dateTimeFim;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.GroupBox Feriados;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnGravarFeriado;
+        private System.Windows.Forms.Button btnEliminarFeriado;
         private System.Windows.Forms.TabControl Horario;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dtHorarios;
         private System.Windows.Forms.DataGridView dtFeriados;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnGravar;
+        private System.Windows.Forms.Button btnModifcarFeriado;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbl7;
         private System.Windows.Forms.Label lbl4;
@@ -914,21 +933,23 @@
         private System.Windows.Forms.Label lbl3;
         private System.Windows.Forms.Label lbl2;
         private System.Windows.Forms.Label lbl1;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lbl3Feriado;
+        private System.Windows.Forms.Label lbl2Feriado;
+        private System.Windows.Forms.Label lbl1Feriado;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbl8;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nrEntradaM;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label lbl9;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown nrSaidaH;
+        private System.Windows.Forms.NumericUpDown nrEntradaH;
+        private System.Windows.Forms.NumericUpDown nrSaidaM;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button btnCancelarFeriado;
+        private System.Windows.Forms.Button button1;
     }
 }

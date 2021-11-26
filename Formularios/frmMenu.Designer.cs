@@ -44,6 +44,7 @@ namespace Facturix_Salários
             this.configurador = new System.Windows.Forms.ToolStripMenuItem();
             this.GestaoDeUtilizadores = new System.Windows.Forms.ToolStripMenuItem();
             this.conectarScannerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraçToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,70 +79,70 @@ namespace Facturix_Salários
             // Funcionarios
             // 
             this.Funcionarios.Name = "Funcionarios";
-            this.Funcionarios.Size = new System.Drawing.Size(166, 22);
+            this.Funcionarios.Size = new System.Drawing.Size(180, 22);
             this.Funcionarios.Text = "Funcionários";
             this.Funcionarios.Click += new System.EventHandler(this.funcionariosToolStripMenuItem_Click);
             // 
             // Seguros
             // 
             this.Seguros.Name = "Seguros";
-            this.Seguros.Size = new System.Drawing.Size(166, 22);
+            this.Seguros.Size = new System.Drawing.Size(180, 22);
             this.Seguros.Text = "Seguros";
             this.Seguros.Click += new System.EventHandler(this.segurosToolStripMenuItem_Click);
             // 
             // Categorias
             // 
             this.Categorias.Name = "Categorias";
-            this.Categorias.Size = new System.Drawing.Size(166, 22);
+            this.Categorias.Size = new System.Drawing.Size(180, 22);
             this.Categorias.Text = "Categorias";
             this.Categorias.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // Contratos
             // 
             this.Contratos.Name = "Contratos";
-            this.Contratos.Size = new System.Drawing.Size(166, 22);
+            this.Contratos.Size = new System.Drawing.Size(180, 22);
             this.Contratos.Text = "Contratos";
             this.Contratos.Click += new System.EventHandler(this.contratosToolStripMenuItem_Click);
             // 
             // Profissoes
             // 
             this.Profissoes.Name = "Profissoes";
-            this.Profissoes.Size = new System.Drawing.Size(166, 22);
+            this.Profissoes.Size = new System.Drawing.Size(180, 22);
             this.Profissoes.Text = "Profissões";
             this.Profissoes.Click += new System.EventHandler(this.profissãoToolStripMenuItem_Click);
             // 
             // Habilitacoes
             // 
             this.Habilitacoes.Name = "Habilitacoes";
-            this.Habilitacoes.Size = new System.Drawing.Size(166, 22);
+            this.Habilitacoes.Size = new System.Drawing.Size(180, 22);
             this.Habilitacoes.Text = "Habilitações";
             this.Habilitacoes.Click += new System.EventHandler(this.habilitaçõToolStripMenuItem_Click);
             // 
             // Sindicatos
             // 
             this.Sindicatos.Name = "Sindicatos";
-            this.Sindicatos.Size = new System.Drawing.Size(166, 22);
+            this.Sindicatos.Size = new System.Drawing.Size(180, 22);
             this.Sindicatos.Text = "Sindicatos";
             this.Sindicatos.Click += new System.EventHandler(this.sindicatosToolStripMenuItem_Click);
             // 
             // Estabelecimentos
             // 
             this.Estabelecimentos.Name = "Estabelecimentos";
-            this.Estabelecimentos.Size = new System.Drawing.Size(166, 22);
+            this.Estabelecimentos.Size = new System.Drawing.Size(180, 22);
             this.Estabelecimentos.Text = "Estabelecimentos";
             this.Estabelecimentos.Click += new System.EventHandler(this.estabelecimentosToolStripMenuItem_Click);
             // 
             // CentrosDeCusto
             // 
             this.CentrosDeCusto.Name = "CentrosDeCusto";
-            this.CentrosDeCusto.Size = new System.Drawing.Size(166, 22);
+            this.CentrosDeCusto.Size = new System.Drawing.Size(180, 22);
             this.CentrosDeCusto.Text = "Centros de custo";
             this.CentrosDeCusto.Click += new System.EventHandler(this.centrosDeCustoToolStripMenuItem_Click);
             // 
             // iRPSToolStripMenuItem
             // 
             this.iRPSToolStripMenuItem.Name = "iRPSToolStripMenuItem";
-            this.iRPSToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.iRPSToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.iRPSToolStripMenuItem.Text = "IRPS";
             this.iRPSToolStripMenuItem.Click += new System.EventHandler(this.iRPSToolStripMenuItem_Click);
             // 
@@ -149,7 +150,8 @@ namespace Facturix_Salários
             // 
             this.configurador.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.GestaoDeUtilizadores,
-            this.conectarScannerToolStripMenuItem});
+            this.conectarScannerToolStripMenuItem,
+            this.configuraçToolStripMenuItem});
             this.configurador.Name = "configurador";
             this.configurador.ShowShortcutKeys = false;
             this.configurador.Size = new System.Drawing.Size(90, 20);
@@ -168,6 +170,13 @@ namespace Facturix_Salários
             this.conectarScannerToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.conectarScannerToolStripMenuItem.Text = "Conectar Scanner";
             this.conectarScannerToolStripMenuItem.Click += new System.EventHandler(this.conectarScannerToolStripMenuItem_Click);
+            // 
+            // configuraçToolStripMenuItem
+            // 
+            this.configuraçToolStripMenuItem.Name = "configuraçToolStripMenuItem";
+            this.configuraçToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.configuraçToolStripMenuItem.Text = "Configuração do Horário";
+            this.configuraçToolStripMenuItem.Click += new System.EventHandler(this.configuraçToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -209,6 +218,7 @@ namespace Facturix_Salários
         private System.Windows.Forms.ToolStripMenuItem GestaoDeUtilizadores;
         private System.Windows.Forms.ToolStripMenuItem iRPSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem conectarScannerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configuraçToolStripMenuItem;
     }
 }
 

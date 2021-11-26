@@ -1,54 +1,57 @@
 ﻿using System;
-using System.Collections;
 using MySql.Data.MySqlClient;
+using System.Collections;
 using System.Windows.Forms;
+using Facturix_Salários.Modelos;
 
-namespace Facturix_Salários
+namespace Facturix_Salários.Controllers
 {
-    class ControllerSeguro
+    class ControllerFeriado
     {
-        public static void gravar(int id, String seguro, float percentagem) 
+        public static void gravar(int id, String nome, String dataInicio, String dataFim)
         {
             MySqlConnection conexao = Conexao.conectar();
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into seguro(id, tipoSeguro, percentagem) values(?,?,?)";
+                String sqlInsert = "INSERT into feriado(id, nome, dataInicio, dataFim) values(?,?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", id);
-                comando.Parameters.AddWithValue("seguro", seguro);
-                comando.Parameters.AddWithValue("percentagem", percentagem);
+                comando.Parameters.AddWithValue("nome", nome);
+                comando.Parameters.AddWithValue("dataInicio", dataInicio);
+                comando.Parameters.AddWithValue("dataFim", dataFim);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Seguro cadastrado com sucesso!");
+                MessageBox.Show("Feriado cadastrado com sucesso!");
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Não foi possível cadastrar o seguro! Contacte o técnico!");
+                MessageBox.Show(err.Message, "Não foi possível cadastrar o feriado! Contacte o técnico!");
             }
-            finally 
+            finally
             {
                 if (conexao != null)
                     conexao.Close();
             }
         }
 
-        public static void atualizar(int id,  String seguro, float percentagem)
+        public static void atualizar(int id, String nome, String dataInicio, String dataFim)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE seguro SET tipoSeguro=?, percentagem=? WHERE id=?";
+                String sqlInsert = "UPDATE seguro SET nome=?, dataInicio=?, dataFim=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
-                comando.Parameters.AddWithValue("tipoSeguro", seguro);
-                comando.Parameters.AddWithValue("percentagem", percentagem);
+                comando.Parameters.AddWithValue("nome", nome);
+                comando.Parameters.AddWithValue("dataInicio", dataInicio);
+                comando.Parameters.AddWithValue("dataFim", dataFim);
                 comando.Parameters.AddWithValue("id", id);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Não foi possível atualizar o seguro! Contacte o técnico!!");
+                MessageBox.Show(err.Message, "Não foi possível atualizar o feriado! Contacte o técnico!!");
             }
             finally
             {
@@ -60,19 +63,20 @@ namespace Facturix_Salários
         public static ArrayList recuperar()
         {
             MySqlConnection conexao = Conexao.conectar();
-            ArrayList listaSeguros = new ArrayList();
+            ArrayList listaFeriados = new ArrayList();
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from seguro";
+                String sqlSelect = "SELECT * from feriado";
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    String seguro = leitor.GetString(1);
-                    float percentagem = leitor.GetFloat(2);
-                    listaSeguros.Add(new ModeloSeguro(id, seguro, percentagem));
+                    String nome = leitor.GetString(1);
+                    String dataInicio = leitor.GetString(2);
+                    String dataFim = leitor.GetString(3);
+                    listaFeriados.Add(new ModeloFeriado(id, nome, dataInicio, dataFim));
                 }
             }
             catch (Exception)
@@ -84,7 +88,7 @@ namespace Facturix_Salários
                 if (conexao != null)
                     conexao.Close();
             }
-            return listaSeguros;
+            return listaFeriados;
         }
 
         public static void remover(int id)
@@ -93,14 +97,14 @@ namespace Facturix_Salários
             try
             {
                 conexao.Open();
-                String SqlDelete = "DELETE from seguro WHERE id=?";
+                String SqlDelete = "DELETE from feriado WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
                 comando.Parameters.Add(new MySqlParameter("id", id));
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Não foi possível remover o seguro! Contacte o técnico!");
+                MessageBox.Show(err.Message, "Não foi possível remover o feriado! Contacte o técnico!");
             }
             finally
             {
@@ -112,19 +116,20 @@ namespace Facturix_Salários
         public static ArrayList recuperarComCod(int codigo)
         {
             MySqlConnection conexao = Conexao.conectar();
-            ArrayList listaSeguros = new ArrayList();
+            ArrayList listaFeriados = new ArrayList();
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from seguro WHERE id="+codigo;
+                String sqlSelect = "SELECT * from feriado WHERE id=" + codigo;
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    String seguro = leitor.GetString(1);
-                    float percentagem = leitor.GetFloat(2);
-                    listaSeguros.Add(new ModeloSeguro(id, seguro, percentagem));
+                    String nome = leitor.GetString(1);
+                    String dataInicio = leitor.GetString(2);
+                    String dataFim = leitor.GetString(3);
+                    listaFeriados.Add(new ModeloFeriado(id, nome, dataInicio, dataFim));
                 }
             }
             catch (Exception)
@@ -136,7 +141,7 @@ namespace Facturix_Salários
                 if (conexao != null)
                     conexao.Close();
             }
-            return listaSeguros;
+            return listaFeriados;
         }
     }
 }

@@ -8,9 +8,10 @@ namespace Facturix_Salários.Modelos
 {
     class ModeloHorarios
     {
-        private int id, umDiaTrabalho, intervaloMinimo, atraso, falta, saidaAdiantada, horasExtra, almoco, entradaH, entradaM, saidaH, saidaM;
+        private int id;
+        private decimal umDiaTrabalho, intervaloMinimo, atraso, falta, saidaAdiantada, horasExtra, almoco, entradaH, entradaM, saidaH, saidaM;
 
-        public ModeloHorarios(int id, int umDiaTrabalho, int intervaloMinimo, int atraso, int falta, int saidaAdiantada, int horasExtra, int almoco, int entradaH, int entradaM, int saidaH, int saidaM) 
+        public ModeloHorarios(int id, decimal umDiaTrabalho, decimal intervaloMinimo, decimal atraso, decimal falta, decimal saidaAdiantada, decimal horasExtra, decimal almoco, decimal entradaH, decimal entradaM, decimal saidaH, decimal saidaM) 
         {
             this.id = id;
             this.umDiaTrabalho = umDiaTrabalho;
@@ -27,16 +28,16 @@ namespace Facturix_Salários.Modelos
         }
 
         public int getId() { return id; }
-        public int getUmdiaTrabalho() { return umDiaTrabalho; }
-        public int getIntervaloMinimo() { return intervaloMinimo; }
-        public int getAtraso() { return atraso; }
-        public int getFalta() { return falta; }
-        public int getSaidaAdiantada() { return saidaAdiantada; }
-        public int getHorasExtra() { return horasExtra; }
-        public int getAlmoco() { return almoco; }
-        public int getEntradaH() { return entradaH; }
-        public int getEntradaM() { return entradaM; }
-        public int getSaidaH() { return saidaH; }
-        public int getSaidaM() { return saidaM; }
+        public decimal getUmdiaTrabalho() { return umDiaTrabalho; }
+        public decimal getIntervaloMinimo() { return intervaloMinimo; }
+        public decimal getAtraso() { return atraso; }
+        public decimal getFalta() { return falta; }
+        public decimal getSaidaAdiantada() { return saidaAdiantada; }
+        public decimal getHorasExtra() { return horasExtra; }
+        public decimal getAlmoco() { return almoco; }
+        public decimal getEntradaH() { return entradaH; }
+        public decimal getEntradaM() { return entradaM; }
+        public decimal getSaidaH() { return saidaH; }
+        public decimal getSaidaM() { return saidaM; }
     }
 }

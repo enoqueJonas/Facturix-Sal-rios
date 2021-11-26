@@ -185,7 +185,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ControllerFeriado.cs" />
+    <Compile Include="Controllers\ControllerHorarios.cs" />
     <Compile Include="Controllers\ControllerRelogioDePonto.cs" />
+    <Compile Include="Formularios\frmConfiguracaoDoAPP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmConfiguracaoDoAPP.Designer.cs">
+      <DependentUpon>frmConfiguracaoDoAPP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmDefinicoesDeAlarme.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -335,7 +343,9 @@
     <Compile Include="Modelos\ModeloContrato.cs" />
     <Compile Include="Modelos\ModeloDependente.cs" />
     <Compile Include="Modelos\ModeloEstabelecimento.cs" />
+    <Compile Include="Modelos\ModeloFeriado.cs" />
     <Compile Include="Modelos\ModeloHabilitacao.cs" />
+    <Compile Include="Modelos\ModeloHorarios.cs" />
     <Compile Include="Modelos\ModeloIntervalo.cs" />
     <Compile Include="Modelos\ModeloIRPS.cs" />
     <Compile Include="Modelos\ModeloPermissao.cs" />
@@ -413,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmCadastrarSundicatos.resx">
       <DependentUpon>frmCadastrarSundicatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmConfiguracaoDoAPP.resx">
+      <DependentUpon>frmConfiguracaoDoAPP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmDefinicoesDeAlarme.resx">
       <DependentUpon>frmDefinicoesDeAlarme.cs</DependentUpon>

@@ -11,7 +11,7 @@ namespace Facturix_Salários.Controllers
 {
     class ControllerHorarios
     {
-        public static void Guardar(int id, int umDiaTrabalho, int intervaloMinimo, int atraso, int falta, int saidaAdiantada, int horasExtra, int almoco, int entradaH, int entradaM, int saidaH, int saidaM)
+        public static void Guardar(int id, decimal umDiaTrabalho, decimal intervaloMinimo, decimal atraso, decimal falta, decimal saidaAdiantada, decimal horasExtra, decimal almoco, decimal entradaH, decimal entradaM, decimal saidaH, decimal saidaM)
         {
             MySqlConnection conexao = Conexao.conectar();
 
@@ -45,7 +45,7 @@ namespace Facturix_Salários.Controllers
             }
         }
 
-        public static void atualizar(int id, int umDiaTrabalho, int intervaloMinimo, int atraso, int falta, int saidaAdiantada, int horasExtra, int almoco, int entradaH, int entradaM, int saidaH, int saidaM)
+        public static void atualizar(int id, decimal umDiaTrabalho, decimal intervaloMinimo, decimal atraso, decimal falta, decimal saidaAdiantada, decimal horasExtra, decimal almoco, decimal entradaH, decimal entradaM, decimal saidaH, decimal saidaM)
         {
             MySqlConnection conexao = Conexao.conectar();
 
@@ -91,17 +91,17 @@ namespace Facturix_Salários.Controllers
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    int umDiaTrabalho = leitor.GetInt16(1);
-                    int intervaloMinimo = leitor.GetInt16(2);
-                    int atraso = leitor.GetInt16(3);
-                    int falta = leitor.GetInt16(4);
-                    int saidaAdiantada = leitor.GetInt16(5);
-                    int horasExtra = leitor.GetInt16(6);
-                    int almoco = leitor.GetInt16(7);
-                    int entradaH = leitor.GetInt16(8);
-                    int entradaM = leitor.GetInt16(9);
-                    int saidaH = leitor.GetInt16(10);
-                    int saidaM = leitor.GetInt16(11);
+                    decimal umDiaTrabalho = leitor.GetDecimal(1);
+                    decimal intervaloMinimo = leitor.GetDecimal(2);
+                    decimal atraso = leitor.GetDecimal(3);
+                    decimal falta = leitor.GetDecimal(4);
+                    decimal saidaAdiantada = leitor.GetDecimal(5);
+                    decimal horasExtra = leitor.GetDecimal(6);
+                    decimal almoco = leitor.GetDecimal(7);
+                    decimal entradaH = leitor.GetDecimal(8);
+                    decimal entradaM = leitor.GetDecimal(9);
+                    decimal saidaH = leitor.GetDecimal(10);
+                    decimal saidaM = leitor.GetDecimal(11);
                     listaHorarios.Add(new ModeloHorarios(id, umDiaTrabalho, intervaloMinimo, atraso, falta, saidaAdiantada, horasExtra, almoco, entradaH, entradaM, saidaH, saidaM));
                 }
             }
@@ -130,17 +130,17 @@ namespace Facturix_Salários.Controllers
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    int umDiaTrabalho = leitor.GetInt16(1);
-                    int intervaloMinimo = leitor.GetInt16(2);
-                    int atraso = leitor.GetInt16(3);
-                    int falta = leitor.GetInt16(4);
-                    int saidaAdiantada = leitor.GetInt16(5);
-                    int horasExtra = leitor.GetInt16(6);
-                    int almoco = leitor.GetInt16(7);
-                    int entradaH = leitor.GetInt16(8);
-                    int entradaM = leitor.GetInt16(9);
-                    int saidaH = leitor.GetInt16(10);
-                    int saidaM = leitor.GetInt16(11);
+                    decimal umDiaTrabalho = leitor.GetDecimal(1);
+                    decimal intervaloMinimo = leitor.GetDecimal(2);
+                    decimal atraso = leitor.GetDecimal(3);
+                    decimal falta = leitor.GetDecimal(4);
+                    decimal saidaAdiantada = leitor.GetDecimal(5);
+                    decimal horasExtra = leitor.GetDecimal(6);
+                    decimal almoco = leitor.GetDecimal(7);
+                    decimal entradaH = leitor.GetDecimal(8);
+                    decimal entradaM = leitor.GetDecimal(9);
+                    decimal saidaH = leitor.GetDecimal(10);
+                    decimal saidaM = leitor.GetDecimal(11);
                     listaHorarios.Add(new ModeloHorarios(id, umDiaTrabalho, intervaloMinimo, atraso, falta, saidaAdiantada, horasExtra, almoco, entradaH, entradaM, saidaH, saidaM));
                 }
             }
