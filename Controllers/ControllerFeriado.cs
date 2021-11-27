@@ -75,8 +75,10 @@ namespace Facturix_Salários.Controllers
                     int id = leitor.GetInt16(0);
                     String nome = leitor.GetString(1);
                     String dataInicio = leitor.GetString(2);
-                    String dataFim = leitor.GetString(3);
-                    listaFeriados.Add(new ModeloFeriado(id, nome, dataInicio, dataFim));
+                    String dataFim = leitor.GetString(3); 
+                    String dtInicio = dataInicio.Substring(0, 5);
+                    String dtFim = dataFim.Substring(0, 5);
+                    listaFeriados.Add(new ModeloFeriado(id, nome, dtInicio, dtFim));
                 }
             }
             catch (Exception)

@@ -9,6 +9,7 @@ namespace Facturix_Salários.Formularios
 {
     public partial class frmConfiguracaoDoAPP : Form
     {
+        private int codigoCelSelecionada;
         public frmConfiguracaoDoAPP()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace Facturix_Salários.Formularios
         private void frmConfiguracaoDoAPP_Load(object sender, EventArgs e)
         {
             refrescar();
+            refrescarFeriado();
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -84,6 +86,29 @@ namespace Facturix_Salários.Formularios
             dtHorarios.Refresh();
             dtHorarios.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dtHorarios.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+        }
+        private void refrescarFeriado()
+        {
+            ArrayList listaFeriado = ControllerFeriado.recuperar();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Registo n°");
+            dt.Columns.Add("Nome");
+            dt.Columns.Add("Início");
+            dt.Columns.Add("Fim");
+            foreach (ModeloFeriado func in listaFeriado)
+            {
+                DataRow dRow = dt.NewRow();
+                dRow["Registo n°"] = func.getId();
+                dRow["Nome"] = func.getNome();
+                dRow["Início"] = func.getDataInicio();
+                dRow["Fim"] = func.getDataFim();
+                dt.Rows.Add(dRow);
+            }
+            dtFeriados.DataSource = dt;
+            dtFeriados.AllowUserToAddRows = false;
+            dtFeriados.Refresh();
+            dtFeriados.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
+            dtFeriados.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
 
         private int getCod()
@@ -189,6 +214,8 @@ namespace Facturix_Salários.Formularios
                 limparCaixasFeriado();
                 mostrarLabels(false);
             }
+            refrescarFeriado();
+            limparCaixasFeriado();
         }
 
         private int getCodFeriado()
@@ -219,6 +246,27 @@ namespace Facturix_Salários.Formularios
         private void btnCancelarFeriado_Click(object sender, EventArgs e)
         {
             mostrarLabels(false);
+            limparCaixasFeriado();
+        }
+
+        private void dtFeriados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dtFeriados.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            ArrayList listaFeriados = ControllerFeriado.recuperarComCod(codigoCelSelecionada);
+            foreach (ModeloFeriado func in listaFeriados)
+            {
+                txtNome.Text = func.getNome();
+                dateTimeInicio.Value = Convert.ToDateTime(func.getDataInicio());
+                dateTimeFim.Value = Convert.ToDateTime(func.getDataFim());
+            }
+        }
+
+        private void btnEliminarFeriado_Click(object sender, EventArgs e)
+        {
+            ControllerFeriado.remover(codigoCelSelecionada);
+            refrescarFeriado();
             limparCaixasFeriado();
         }
     }

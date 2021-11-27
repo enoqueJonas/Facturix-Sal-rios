@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.nrHorasTrabalho = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -453,6 +455,7 @@
             this.btnEliminarFeriado.TabIndex = 5;
             this.btnEliminarFeriado.Text = "Eliminar";
             this.btnEliminarFeriado.UseVisualStyleBackColor = true;
+            this.btnEliminarFeriado.Click += new System.EventHandler(this.btnEliminarFeriado_Click);
             // 
             // lbl3Feriado
             // 
@@ -820,6 +823,14 @@
             // 
             // dtHorarios
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtHorarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtHorarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtHorarios.Location = new System.Drawing.Point(18, 386);
             this.dtHorarios.Name = "dtHorarios";
@@ -842,18 +853,30 @@
             // 
             // dtFeriados
             // 
+            this.dtFeriados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtFeriados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtFeriados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtFeriados.Location = new System.Drawing.Point(21, 195);
             this.dtFeriados.Name = "dtFeriados";
+            this.dtFeriados.RowHeadersVisible = false;
+            this.dtFeriados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dtFeriados.Size = new System.Drawing.Size(594, 258);
             this.dtFeriados.TabIndex = 6;
+            this.dtFeriados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtFeriados_CellDoubleClick);
             // 
             // frmConfiguracaoDoAPP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(672, 537);
+            this.ClientSize = new System.Drawing.Size(670, 537);
             this.Controls.Add(this.Horario);
             this.Name = "frmConfiguracaoDoAPP";
             this.Text = "Configuração";
