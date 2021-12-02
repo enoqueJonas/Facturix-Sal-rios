@@ -185,14 +185,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ControllerDepartamento.cs" />
+    <Compile Include="Controllers\ControllerEmpresa.cs" />
     <Compile Include="Controllers\ControllerFeriado.cs" />
+    <Compile Include="Controllers\ControllerFinalDeSemana.cs" />
     <Compile Include="Controllers\ControllerHorarios.cs" />
+    <Compile Include="Controllers\ControllerRegrasDePonto.cs" />
     <Compile Include="Controllers\ControllerRelogioDePonto.cs" />
-    <Compile Include="Formularios\frmConfiguracaoDoAPP.cs">
+    <Compile Include="Controllers\ControllerTurno.cs" />
+    <Compile Include="Formularios\frmTempoDeServico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmConfiguracaoDoAPP.Designer.cs">
-      <DependentUpon>frmConfiguracaoDoAPP.cs</DependentUpon>
+    <Compile Include="Formularios\frmTempoDeServico.Designer.cs">
+      <DependentUpon>frmTempoDeServico.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmDefinicoesDeAlarme.cs">
       <SubType>Form</SubType>
@@ -212,11 +217,29 @@
     <Compile Include="Formularios\frmDefinicoesDoSistemaFPScanner.Designer.cs">
       <DependentUpon>frmDefinicoesDoSistemaFPScanner.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmDepartamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmDepartamentos.Designer.cs">
+      <DependentUpon>frmDepartamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmEnrollDetail.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmEnrollDetail.Designer.cs">
       <DependentUpon>frmEnrollDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmFeriados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmFeriados.Designer.cs">
+      <DependentUpon>frmFeriados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmFinalDeSemana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmFinalDeSemana.Designer.cs">
+      <DependentUpon>frmFinalDeSemana.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmGestaoDeFuncionarios.cs">
       <SubType>Form</SubType>
@@ -229,6 +252,18 @@
     </Compile>
     <Compile Include="Formularios\frmGlog.Designer.cs">
       <DependentUpon>frmGlog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmNomeDaEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmNomeDaEmpresa.Designer.cs">
+      <DependentUpon>frmNomeDaEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRegrasDeBatidaDePonto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRegrasDeBatidaDePonto.Designer.cs">
+      <DependentUpon>frmRegrasDeBatidaDePonto.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmRelatorioClockIn.cs">
       <SubType>Form</SubType>
@@ -341,9 +376,12 @@
     <Compile Include="ModeloModulo.cs" />
     <Compile Include="Modelos\ModeloCentroDeCusto.cs" />
     <Compile Include="Modelos\ModeloContrato.cs" />
+    <Compile Include="Modelos\ModeloDepartamento.cs" />
     <Compile Include="Modelos\ModeloDependente.cs" />
+    <Compile Include="Modelos\ModeloEmpresa.cs" />
     <Compile Include="Modelos\ModeloEstabelecimento.cs" />
     <Compile Include="Modelos\ModeloFeriado.cs" />
+    <Compile Include="Modelos\ModeloFinalDeSemana.cs" />
     <Compile Include="Modelos\ModeloHabilitacao.cs" />
     <Compile Include="Modelos\ModeloHorarios.cs" />
     <Compile Include="Modelos\ModeloIntervalo.cs" />
@@ -351,10 +389,12 @@
     <Compile Include="Modelos\ModeloPermissao.cs" />
     <Compile Include="Modelos\ModeloProfissao.cs" />
     <Compile Include="Modelos\ModeloCategoria.cs" />
+    <Compile Include="Modelos\ModeloRegrasDePonto.cs" />
     <Compile Include="Modelos\ModeloRelogioDePonto.cs" />
     <Compile Include="Modelos\ModeloSeguro.cs" />
     <Compile Include="Modelos\ModeloSindicato.cs" />
     <Compile Include="Modelos\ModeloTabela.cs" />
+    <Compile Include="Modelos\ModeloTurno.cs" />
     <Compile Include="Modelos\ModeloUtilizador.cs" />
     <Compile Include="Modelos\ModeloValor_Intervalo.cs" />
     <Compile Include="Reports\reportFuncionario.cs">
@@ -424,8 +464,8 @@
     <EmbeddedResource Include="Formularios\frmCadastrarSundicatos.resx">
       <DependentUpon>frmCadastrarSundicatos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmConfiguracaoDoAPP.resx">
-      <DependentUpon>frmConfiguracaoDoAPP.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\frmTempoDeServico.resx">
+      <DependentUpon>frmTempoDeServico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmDefinicoesDeAlarme.resx">
       <DependentUpon>frmDefinicoesDeAlarme.cs</DependentUpon>
@@ -436,8 +476,17 @@
     <EmbeddedResource Include="Formularios\frmDefinicoesDoSistemaFPScanner.resx">
       <DependentUpon>frmDefinicoesDoSistemaFPScanner.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmDepartamentos.resx">
+      <DependentUpon>frmDepartamentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmEnrollDetail.resx">
       <DependentUpon>frmEnrollDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmFeriados.resx">
+      <DependentUpon>frmFeriados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmFinalDeSemana.resx">
+      <DependentUpon>frmFinalDeSemana.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmGestaoDeFuncionarios.resx">
       <DependentUpon>frmGestaoDeFuncionarios.cs</DependentUpon>
@@ -447,6 +496,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmGlog.resx">
       <DependentUpon>frmGlog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmNomeDaEmpresa.resx">
+      <DependentUpon>frmNomeDaEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRegrasDeBatidaDePonto.resx">
+      <DependentUpon>frmRegrasDeBatidaDePonto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmRelatorioClockIn.resx">
       <DependentUpon>frmRelatorioClockIn.cs</DependentUpon>

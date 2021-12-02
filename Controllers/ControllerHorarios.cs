@@ -11,27 +11,26 @@ namespace Facturix_Salários.Controllers
 {
     class ControllerHorarios
     {
-        public static void Guardar(int id, decimal umDiaTrabalho, decimal intervaloMinimo, decimal atraso, decimal falta, decimal saidaAdiantada, decimal horasExtra, decimal almoco, decimal entradaH, decimal entradaM, decimal saidaH, decimal saidaM)
+        public static void Guardar(int id, decimal tempoServico, decimal emTempoH, decimal emTempoM, decimal foraDoTempoH, decimal foraDotempoM, Boolean marcarPonto, Boolean baterPonto, Boolean saidaAdiantada, Boolean atraso, Boolean ausencia)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into horario (id, umDiaTrabalho, intervaloMinimo, atraso, falta, saidaAdiantada, horasExtra, almoco, entradaH, entradaM, saidaH, saidaM) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+                String sqlInsert = "INSERT into horario (id, tempoServico, emTempoH, emTempoM, foraDoTempoH, foraDotempoM, marcarPonto, baterPonto, saidaAdiantada, atraso, ausencia) values(?,?,?,?,?,?,?,?,?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", id);
-                comando.Parameters.AddWithValue("umDiaTrabalho", umDiaTrabalho);
-                comando.Parameters.AddWithValue("intervaloMinimo", intervaloMinimo);
-                comando.Parameters.AddWithValue("atraso", atraso);
-                comando.Parameters.AddWithValue("falta", falta);
+                comando.Parameters.AddWithValue("tempoServico", tempoServico);
+                comando.Parameters.AddWithValue("emTempoH", emTempoH);
+                comando.Parameters.AddWithValue("emTempoM", emTempoM);
+                comando.Parameters.AddWithValue("foraDoTempoH", foraDoTempoH);
+                comando.Parameters.AddWithValue("foraDotempoM", foraDotempoM);
+                comando.Parameters.AddWithValue("marcarPonto", marcarPonto);
+                comando.Parameters.AddWithValue("baterPonto", baterPonto);
                 comando.Parameters.AddWithValue("saidaAdiantada", saidaAdiantada);
-                comando.Parameters.AddWithValue("horasExtra", horasExtra);
-                comando.Parameters.AddWithValue("almoco", almoco);
-                comando.Parameters.AddWithValue("entradaH", entradaH);
-                comando.Parameters.AddWithValue("entradaM", entradaM);
-                comando.Parameters.AddWithValue("saidaH", saidaH);
-                comando.Parameters.AddWithValue("saidaM", saidaM);
+                comando.Parameters.AddWithValue("atraso", atraso);
+                comando.Parameters.AddWithValue("ausencia", ausencia);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
@@ -45,26 +44,25 @@ namespace Facturix_Salários.Controllers
             }
         }
 
-        public static void atualizar(int id, decimal umDiaTrabalho, decimal intervaloMinimo, decimal atraso, decimal falta, decimal saidaAdiantada, decimal horasExtra, decimal almoco, decimal entradaH, decimal entradaM, decimal saidaH, decimal saidaM)
+        public static void atualizar(int id, decimal tempoServico, decimal emTempoH, decimal emTempoM, decimal foraDoTempoH, decimal foraDotempoM, Boolean marcarPonto, Boolean baterPonto, Boolean saidaAdiantada, Boolean atraso, Boolean ausencia)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE horario SET umDiaTrabalho=?, intervaloMinimo=?, atraso=?, falta=?, saidaAdiantada=?, horasExtra=?, almoco=?, entradaH=?, entradaM=?, saidaH=?, saidaM=? WHERE id=?";
+                String sqlInsert = "UPDATE horario SET tempoServico=?, emTempoH=?, emTempoM=?, foraDoTempoH=?, foraDotempoM=?, marcarPonto=?, baterPonto=?, saidaAdiantada=?, atraso=?, ausencia=?WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
-                comando.Parameters.AddWithValue("umDiaTrabalho", umDiaTrabalho);
-                comando.Parameters.AddWithValue("intervaloMinimo", intervaloMinimo);
-                comando.Parameters.AddWithValue("atraso", atraso);
-                comando.Parameters.AddWithValue("falta", falta);
+                comando.Parameters.AddWithValue("tempoServico", tempoServico);
+                comando.Parameters.AddWithValue("emTempoH", emTempoH);
+                comando.Parameters.AddWithValue("emTempoM", emTempoM);
+                comando.Parameters.AddWithValue("foraDoTempoH", foraDoTempoH);
+                comando.Parameters.AddWithValue("foraDotempoM", foraDotempoM);
+                comando.Parameters.AddWithValue("marcarPonto", marcarPonto);
+                comando.Parameters.AddWithValue("baterPonto", baterPonto);
                 comando.Parameters.AddWithValue("saidaAdiantada", saidaAdiantada);
-                comando.Parameters.AddWithValue("horasExtra", horasExtra);
-                comando.Parameters.AddWithValue("almoco", almoco);
-                comando.Parameters.AddWithValue("entradaH", entradaH);
-                comando.Parameters.AddWithValue("entradaM", entradaM);
-                comando.Parameters.AddWithValue("saidaH", saidaH);
-                comando.Parameters.AddWithValue("saidaM", saidaM);
+                comando.Parameters.AddWithValue("atraso", atraso);
+                comando.Parameters.AddWithValue("ausencia", ausencia);
                 comando.Parameters.AddWithValue("id", id);
                 comando.ExecuteNonQuery();
             }
@@ -91,18 +89,17 @@ namespace Facturix_Salários.Controllers
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    decimal umDiaTrabalho = leitor.GetDecimal(1);
-                    decimal intervaloMinimo = leitor.GetDecimal(2);
-                    decimal atraso = leitor.GetDecimal(3);
-                    decimal falta = leitor.GetDecimal(4);
-                    decimal saidaAdiantada = leitor.GetDecimal(5);
-                    decimal horasExtra = leitor.GetDecimal(6);
-                    decimal almoco = leitor.GetDecimal(7);
-                    decimal entradaH = leitor.GetDecimal(8);
-                    decimal entradaM = leitor.GetDecimal(9);
-                    decimal saidaH = leitor.GetDecimal(10);
-                    decimal saidaM = leitor.GetDecimal(11);
-                    listaHorarios.Add(new ModeloHorarios(id, umDiaTrabalho, intervaloMinimo, atraso, falta, saidaAdiantada, horasExtra, almoco, entradaH, entradaM, saidaH, saidaM));
+                    decimal tempoServico = leitor.GetDecimal(1);
+                    decimal emTempoH = leitor.GetDecimal(2);
+                    decimal emTempoM = leitor.GetDecimal(3);
+                    decimal foraDoTempoH = leitor.GetDecimal(4);
+                    decimal foraDoTempoM = leitor.GetDecimal(5);
+                    Boolean marcarPonto = leitor.GetBoolean(6);
+                    Boolean baterPonto = leitor.GetBoolean(7);
+                    Boolean saidaAdiantada = leitor.GetBoolean(8);
+                    Boolean atraso = leitor.GetBoolean(9);
+                    Boolean ausencia = leitor.GetBoolean(10);
+                    listaHorarios.Add(new ModeloHorarios(id, tempoServico, emTempoH, emTempoM, foraDoTempoH, foraDoTempoM, marcarPonto, baterPonto, saidaAdiantada, atraso, ausencia));
                 }
             }
             catch (Exception)
@@ -130,18 +127,17 @@ namespace Facturix_Salários.Controllers
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    decimal umDiaTrabalho = leitor.GetDecimal(1);
-                    decimal intervaloMinimo = leitor.GetDecimal(2);
-                    decimal atraso = leitor.GetDecimal(3);
-                    decimal falta = leitor.GetDecimal(4);
-                    decimal saidaAdiantada = leitor.GetDecimal(5);
-                    decimal horasExtra = leitor.GetDecimal(6);
-                    decimal almoco = leitor.GetDecimal(7);
-                    decimal entradaH = leitor.GetDecimal(8);
-                    decimal entradaM = leitor.GetDecimal(9);
-                    decimal saidaH = leitor.GetDecimal(10);
-                    decimal saidaM = leitor.GetDecimal(11);
-                    listaHorarios.Add(new ModeloHorarios(id, umDiaTrabalho, intervaloMinimo, atraso, falta, saidaAdiantada, horasExtra, almoco, entradaH, entradaM, saidaH, saidaM));
+                    decimal tempoServico = leitor.GetDecimal(1);
+                    decimal emTempoH = leitor.GetDecimal(2);
+                    decimal emTempoM = leitor.GetDecimal(3);
+                    decimal foraDoTempoH = leitor.GetDecimal(4);
+                    decimal foraDoTempoM = leitor.GetDecimal(5);
+                    Boolean marcarPonto = leitor.GetBoolean(6);
+                    Boolean baterPonto = leitor.GetBoolean(7);
+                    Boolean saidaAdiantada = leitor.GetBoolean(8);
+                    Boolean atraso = leitor.GetBoolean(9);
+                    Boolean ausencia = leitor.GetBoolean(10);
+                    listaHorarios.Add(new ModeloHorarios(id, tempoServico, emTempoH, emTempoM, foraDoTempoH, foraDoTempoM, marcarPonto, baterPonto, saidaAdiantada, atraso, ausencia));
                 }
             }
             catch (Exception)

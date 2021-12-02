@@ -233,7 +233,7 @@ namespace Facturix_Salários
 
         private void configuraçToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmConfiguracaoDoAPP f = new frmConfiguracaoDoAPP();
+            frmNomeDaEmpresa f = new frmNomeDaEmpresa();
             f.Show();
         }
     }

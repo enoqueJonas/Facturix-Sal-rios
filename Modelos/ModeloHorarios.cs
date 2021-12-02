@@ -9,35 +9,34 @@ namespace Facturix_Salários.Modelos
     class ModeloHorarios
     {
         private int id;
-        private decimal umDiaTrabalho, intervaloMinimo, atraso, falta, saidaAdiantada, horasExtra, almoco, entradaH, entradaM, saidaH, saidaM;
+        private decimal tempoServico, emTempoH, emTempoM, foraDoTempoH, foraDotempoM;
+        private Boolean marcarPonto, baterPonto, saidaAdiantada, ausencia, atraso;
 
-        public ModeloHorarios(int id, decimal umDiaTrabalho, decimal intervaloMinimo, decimal atraso, decimal falta, decimal saidaAdiantada, decimal horasExtra, decimal almoco, decimal entradaH, decimal entradaM, decimal saidaH, decimal saidaM) 
+        public ModeloHorarios(int id, decimal tempoServico, decimal emTempoH, decimal emTempoM, decimal foraDoTempoH, decimal foraDotempoM, Boolean marcarPonto, Boolean baterPonto, Boolean saidaAdiantada, Boolean atraso, Boolean ausencia) 
         {
             this.id = id;
-            this.umDiaTrabalho = umDiaTrabalho;
-            this.intervaloMinimo = intervaloMinimo;
-            this.atraso = atraso;
-            this.falta = falta;
+            this.tempoServico = tempoServico;
+            this.emTempoH = emTempoH;
+            this.emTempoM = emTempoM;
+            this.foraDoTempoH = foraDoTempoH;
+            this.foraDotempoM = foraDotempoM;
+            this.marcarPonto = marcarPonto;
+            this.baterPonto = baterPonto;
             this.saidaAdiantada = saidaAdiantada;
-            this.horasExtra = horasExtra;
-            this.almoco = almoco;
-            this.entradaH = entradaH;
-            this.entradaM = entradaM;
-            this.saidaH = saidaH;
-            this.saidaM = saidaM;
+            this.ausencia = ausencia;
+            this.atraso = atraso;
         }
 
         public int getId() { return id; }
-        public decimal getUmdiaTrabalho() { return umDiaTrabalho; }
-        public decimal getIntervaloMinimo() { return intervaloMinimo; }
-        public decimal getAtraso() { return atraso; }
-        public decimal getFalta() { return falta; }
-        public decimal getSaidaAdiantada() { return saidaAdiantada; }
-        public decimal getHorasExtra() { return horasExtra; }
-        public decimal getAlmoco() { return almoco; }
-        public decimal getEntradaH() { return entradaH; }
-        public decimal getEntradaM() { return entradaM; }
-        public decimal getSaidaH() { return saidaH; }
-        public decimal getSaidaM() { return saidaM; }
+        public decimal getTempoServico() { return tempoServico; }
+        public decimal getEmTempoH() { return emTempoH; }
+        public decimal getEmTempoM() { return emTempoM; }
+        public decimal getForaDoTempo() { return foraDoTempoH; }
+        public decimal getForaDoTempoM() { return foraDotempoM; }
+        public Boolean getMarcarPonto() { return marcarPonto; }
+        public Boolean getBaterPonto() { return baterPonto; }
+        public Boolean getSaidaAdiantada() { return saidaAdiantada; }
+        public Boolean getAusencia() { return ausencia; }
+        public Boolean getSaidaH() { return atraso; }
     }
 }
