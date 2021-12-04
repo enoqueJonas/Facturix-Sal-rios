@@ -35,6 +35,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblCancelar = new System.Windows.Forms.Label();
+            this.lblConfirmar = new System.Windows.Forms.Label();
+            this.lblRemover = new System.Windows.Forms.Label();
+            this.lblEditar = new System.Windows.Forms.Label();
+            this.lblAdicionar = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnCancelarHora = new System.Windows.Forms.Button();
             this.btnConfirmarHora = new System.Windows.Forms.Button();
@@ -66,17 +71,18 @@
             this.btnEditarTurno = new System.Windows.Forms.Button();
             this.btnAdicionarTurno = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chbNormal = new System.Windows.Forms.CheckBox();
-            this.chbNoite = new System.Windows.Forms.CheckBox();
-            this.chbTarde = new System.Windows.Forms.CheckBox();
-            this.chbManha = new System.Windows.Forms.CheckBox();
             this.cbTurno = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.lblCancelar = new System.Windows.Forms.Label();
-            this.lblConfirmar = new System.Windows.Forms.Label();
-            this.lblRemover = new System.Windows.Forms.Label();
-            this.lblEditar = new System.Windows.Forms.Label();
-            this.lblAdicionar = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
+            this.lbl3 = new System.Windows.Forms.Label();
+            this.lbl4 = new System.Windows.Forms.Label();
+            this.lbl5 = new System.Windows.Forms.Label();
+            this.lbl6 = new System.Windows.Forms.Label();
+            this.lbl7 = new System.Windows.Forms.Label();
+            this.lbl8 = new System.Windows.Forms.Label();
+            this.lbl9 = new System.Windows.Forms.Label();
+            this.lbl10 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -86,7 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nrTempoServicoH)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAnterior
@@ -164,6 +169,16 @@
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.lbl10);
+            this.tabPage1.Controls.Add(this.lbl9);
+            this.tabPage1.Controls.Add(this.lbl8);
+            this.tabPage1.Controls.Add(this.lbl7);
+            this.tabPage1.Controls.Add(this.lbl4);
+            this.tabPage1.Controls.Add(this.lbl6);
+            this.tabPage1.Controls.Add(this.lbl3);
+            this.tabPage1.Controls.Add(this.lbl5);
+            this.tabPage1.Controls.Add(this.lbl2);
+            this.tabPage1.Controls.Add(this.lbl1);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -174,6 +189,62 @@
             this.tabPage1.Text = "Hora de Trabalho";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // lblCancelar
+            // 
+            this.lblCancelar.AutoSize = true;
+            this.lblCancelar.BackColor = System.Drawing.Color.AliceBlue;
+            this.lblCancelar.Location = new System.Drawing.Point(177, 52);
+            this.lblCancelar.Name = "lblCancelar";
+            this.lblCancelar.Size = new System.Drawing.Size(49, 13);
+            this.lblCancelar.TabIndex = 47;
+            this.lblCancelar.Text = "Cancelar";
+            this.lblCancelar.Visible = false;
+            // 
+            // lblConfirmar
+            // 
+            this.lblConfirmar.AutoSize = true;
+            this.lblConfirmar.BackColor = System.Drawing.Color.AliceBlue;
+            this.lblConfirmar.Location = new System.Drawing.Point(139, 52);
+            this.lblConfirmar.Name = "lblConfirmar";
+            this.lblConfirmar.Size = new System.Drawing.Size(51, 13);
+            this.lblConfirmar.TabIndex = 48;
+            this.lblConfirmar.Text = "Confirmar";
+            this.lblConfirmar.Visible = false;
+            // 
+            // lblRemover
+            // 
+            this.lblRemover.AutoSize = true;
+            this.lblRemover.BackColor = System.Drawing.Color.AliceBlue;
+            this.lblRemover.Location = new System.Drawing.Point(100, 52);
+            this.lblRemover.Name = "lblRemover";
+            this.lblRemover.Size = new System.Drawing.Size(50, 13);
+            this.lblRemover.TabIndex = 49;
+            this.lblRemover.Text = "Remover";
+            this.lblRemover.Visible = false;
+            // 
+            // lblEditar
+            // 
+            this.lblEditar.AutoSize = true;
+            this.lblEditar.BackColor = System.Drawing.Color.AliceBlue;
+            this.lblEditar.Location = new System.Drawing.Point(63, 52);
+            this.lblEditar.Name = "lblEditar";
+            this.lblEditar.Size = new System.Drawing.Size(34, 13);
+            this.lblEditar.TabIndex = 50;
+            this.lblEditar.Text = "Editar";
+            this.lblEditar.Visible = false;
+            // 
+            // lblAdicionar
+            // 
+            this.lblAdicionar.AutoSize = true;
+            this.lblAdicionar.BackColor = System.Drawing.Color.AliceBlue;
+            this.lblAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdicionar.Location = new System.Drawing.Point(20, 52);
+            this.lblAdicionar.Name = "lblAdicionar";
+            this.lblAdicionar.Size = new System.Drawing.Size(51, 13);
+            this.lblAdicionar.TabIndex = 51;
+            this.lblAdicionar.Text = "Adicionar";
+            this.lblAdicionar.Visible = false;
+            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -182,7 +253,7 @@
             this.panel2.Controls.Add(this.btnRemoverHora);
             this.panel2.Controls.Add(this.btnEditarHora);
             this.panel2.Controls.Add(this.btnAdicionarHora);
-            this.panel2.Location = new System.Drawing.Point(20, 7);
+            this.panel2.Location = new System.Drawing.Point(23, 7);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(188, 37);
             this.panel2.TabIndex = 5;
@@ -199,6 +270,7 @@
             this.btnCancelarHora.Size = new System.Drawing.Size(30, 30);
             this.btnCancelarHora.TabIndex = 2;
             this.btnCancelarHora.UseVisualStyleBackColor = false;
+            this.btnCancelarHora.Click += new System.EventHandler(this.btnCancelarHora_Click);
             this.btnCancelarHora.MouseEnter += new System.EventHandler(this.btnCancelar_MouseEnter);
             this.btnCancelarHora.MouseLeave += new System.EventHandler(this.btnCancelar_MouseLeave);
             // 
@@ -214,6 +286,7 @@
             this.btnConfirmarHora.Size = new System.Drawing.Size(30, 30);
             this.btnConfirmarHora.TabIndex = 2;
             this.btnConfirmarHora.UseVisualStyleBackColor = false;
+            this.btnConfirmarHora.Click += new System.EventHandler(this.btnConfirmarHora_Click);
             this.btnConfirmarHora.MouseEnter += new System.EventHandler(this.btnConfirmar_MouseEnter);
             this.btnConfirmarHora.MouseLeave += new System.EventHandler(this.btnConfirmar_MouseLeave);
             // 
@@ -229,6 +302,7 @@
             this.btnRemoverHora.Size = new System.Drawing.Size(30, 30);
             this.btnRemoverHora.TabIndex = 2;
             this.btnRemoverHora.UseVisualStyleBackColor = false;
+            this.btnRemoverHora.Click += new System.EventHandler(this.btnRemoverHora_Click);
             this.btnRemoverHora.MouseEnter += new System.EventHandler(this.btnRemover_MouseEnter);
             this.btnRemoverHora.MouseLeave += new System.EventHandler(this.btnRemover_MouseLeave);
             // 
@@ -244,6 +318,7 @@
             this.btnEditarHora.Size = new System.Drawing.Size(30, 30);
             this.btnEditarHora.TabIndex = 2;
             this.btnEditarHora.UseVisualStyleBackColor = false;
+            this.btnEditarHora.Click += new System.EventHandler(this.btnEditarHora_Click);
             this.btnEditarHora.MouseEnter += new System.EventHandler(this.btnEditar_MouseEnter);
             this.btnEditarHora.MouseLeave += new System.EventHandler(this.btnEditar_MouseLeave);
             // 
@@ -259,13 +334,14 @@
             this.btnAdicionarHora.Size = new System.Drawing.Size(30, 30);
             this.btnAdicionarHora.TabIndex = 2;
             this.btnAdicionarHora.UseVisualStyleBackColor = false;
+            this.btnAdicionarHora.Click += new System.EventHandler(this.btnAdicionarHora_Click);
             this.btnAdicionarHora.MouseEnter += new System.EventHandler(this.btnAdicionar_MouseEnter);
             this.btnAdicionarHora.MouseLeave += new System.EventHandler(this.btnAdicionar_MouseLeave);
             // 
             // chbDeveCalcularAusencia
             // 
             this.chbDeveCalcularAusencia.AutoSize = true;
-            this.chbDeveCalcularAusencia.Location = new System.Drawing.Point(21, 293);
+            this.chbDeveCalcularAusencia.Location = new System.Drawing.Point(26, 293);
             this.chbDeveCalcularAusencia.Name = "chbDeveCalcularAusencia";
             this.chbDeveCalcularAusencia.Size = new System.Drawing.Size(110, 17);
             this.chbDeveCalcularAusencia.TabIndex = 4;
@@ -275,7 +351,7 @@
             // chbDeveCalcularAtraso
             // 
             this.chbDeveCalcularAtraso.AutoSize = true;
-            this.chbDeveCalcularAtraso.Location = new System.Drawing.Point(21, 260);
+            this.chbDeveCalcularAtraso.Location = new System.Drawing.Point(26, 259);
             this.chbDeveCalcularAtraso.Name = "chbDeveCalcularAtraso";
             this.chbDeveCalcularAtraso.Size = new System.Drawing.Size(96, 17);
             this.chbDeveCalcularAtraso.TabIndex = 4;
@@ -285,7 +361,7 @@
             // chbDeveCalcularSaidaAdiantada
             // 
             this.chbDeveCalcularSaidaAdiantada.AutoSize = true;
-            this.chbDeveCalcularSaidaAdiantada.Location = new System.Drawing.Point(21, 227);
+            this.chbDeveCalcularSaidaAdiantada.Location = new System.Drawing.Point(26, 226);
             this.chbDeveCalcularSaidaAdiantada.Name = "chbDeveCalcularSaidaAdiantada";
             this.chbDeveCalcularSaidaAdiantada.Size = new System.Drawing.Size(144, 17);
             this.chbDeveCalcularSaidaAdiantada.TabIndex = 4;
@@ -295,7 +371,7 @@
             // chbDeveBaterPonto
             // 
             this.chbDeveBaterPonto.AutoSize = true;
-            this.chbDeveBaterPonto.Location = new System.Drawing.Point(21, 195);
+            this.chbDeveBaterPonto.Location = new System.Drawing.Point(26, 194);
             this.chbDeveBaterPonto.Name = "chbDeveBaterPonto";
             this.chbDeveBaterPonto.Size = new System.Drawing.Size(118, 17);
             this.chbDeveBaterPonto.TabIndex = 4;
@@ -305,7 +381,7 @@
             // chbDeveMarcarPonto
             // 
             this.chbDeveMarcarPonto.AutoSize = true;
-            this.chbDeveMarcarPonto.Location = new System.Drawing.Point(21, 163);
+            this.chbDeveMarcarPonto.Location = new System.Drawing.Point(26, 161);
             this.chbDeveMarcarPonto.Name = "chbDeveMarcarPonto";
             this.chbDeveMarcarPonto.Size = new System.Drawing.Size(126, 17);
             this.chbDeveMarcarPonto.TabIndex = 4;
@@ -314,44 +390,48 @@
             // 
             // nrForaDeServicoM
             // 
-            this.nrForaDeServicoM.Location = new System.Drawing.Point(244, 127);
+            this.nrForaDeServicoM.Location = new System.Drawing.Point(273, 127);
             this.nrForaDeServicoM.Name = "nrForaDeServicoM";
             this.nrForaDeServicoM.Size = new System.Drawing.Size(45, 20);
             this.nrForaDeServicoM.TabIndex = 3;
             // 
             // nrTempoDeServicoM
             // 
-            this.nrTempoDeServicoM.Location = new System.Drawing.Point(244, 93);
+            this.nrTempoDeServicoM.Location = new System.Drawing.Point(273, 93);
             this.nrTempoDeServicoM.Name = "nrTempoDeServicoM";
             this.nrTempoDeServicoM.Size = new System.Drawing.Size(45, 20);
             this.nrTempoDeServicoM.TabIndex = 3;
             // 
             // nrForaDeServicoH
             // 
-            this.nrForaDeServicoH.Location = new System.Drawing.Point(157, 127);
+            this.nrForaDeServicoH.Location = new System.Drawing.Point(172, 127);
             this.nrForaDeServicoH.Name = "nrForaDeServicoH";
             this.nrForaDeServicoH.Size = new System.Drawing.Size(45, 20);
             this.nrForaDeServicoH.TabIndex = 3;
+            this.nrForaDeServicoH.ValueChanged += new System.EventHandler(this.nrForaDeServicoH_ValueChanged);
             // 
             // nrTempoServicoH
             // 
-            this.nrTempoServicoH.Location = new System.Drawing.Point(157, 93);
+            this.nrTempoServicoH.Location = new System.Drawing.Point(172, 93);
             this.nrTempoServicoH.Name = "nrTempoServicoH";
             this.nrTempoServicoH.Size = new System.Drawing.Size(45, 20);
             this.nrTempoServicoH.TabIndex = 3;
+            this.nrTempoServicoH.ValueChanged += new System.EventHandler(this.nrTempoServicoH_ValueChanged);
             // 
             // cbServico
             // 
             this.cbServico.FormattingEnabled = true;
-            this.cbServico.Location = new System.Drawing.Point(157, 63);
+            this.cbServico.Location = new System.Drawing.Point(162, 63);
             this.cbServico.Name = "cbServico";
-            this.cbServico.Size = new System.Drawing.Size(160, 21);
+            this.cbServico.Size = new System.Drawing.Size(188, 21);
             this.cbServico.TabIndex = 1;
+            this.cbServico.SelectedIndexChanged += new System.EventHandler(this.cbServico_SelectedIndexChanged);
+            this.cbServico.TextChanged += new System.EventHandler(this.cbServico_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(295, 129);
+            this.label8.Location = new System.Drawing.Point(319, 129);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(26, 13);
             this.label8.TabIndex = 0;
@@ -360,7 +440,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 129);
+            this.label4.Location = new System.Drawing.Point(23, 129);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 13);
             this.label4.TabIndex = 0;
@@ -369,7 +449,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(206, 129);
+            this.label7.Location = new System.Drawing.Point(221, 129);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 13);
             this.label7.TabIndex = 0;
@@ -378,7 +458,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(295, 95);
+            this.label6.Location = new System.Drawing.Point(319, 95);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 13);
             this.label6.TabIndex = 0;
@@ -387,7 +467,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(206, 95);
+            this.label5.Location = new System.Drawing.Point(221, 95);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(33, 13);
             this.label5.TabIndex = 0;
@@ -396,7 +476,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 96);
+            this.label3.Location = new System.Drawing.Point(23, 96);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 13);
             this.label3.TabIndex = 0;
@@ -405,7 +485,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 66);
+            this.label2.Location = new System.Drawing.Point(23, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 13);
             this.label2.TabIndex = 0;
@@ -516,54 +596,10 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.chbNormal);
-            this.panel1.Controls.Add(this.chbNoite);
-            this.panel1.Controls.Add(this.chbTarde);
-            this.panel1.Controls.Add(this.chbManha);
             this.panel1.Location = new System.Drawing.Point(21, 95);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(187, 166);
             this.panel1.TabIndex = 4;
-            // 
-            // chbNormal
-            // 
-            this.chbNormal.AutoSize = true;
-            this.chbNormal.Location = new System.Drawing.Point(14, 81);
-            this.chbNormal.Name = "chbNormal";
-            this.chbNormal.Size = new System.Drawing.Size(131, 17);
-            this.chbNormal.TabIndex = 0;
-            this.chbNormal.Text = "Normal (08:30 - 17:30)";
-            this.chbNormal.UseVisualStyleBackColor = true;
-            // 
-            // chbNoite
-            // 
-            this.chbNoite.AutoSize = true;
-            this.chbNoite.Location = new System.Drawing.Point(14, 58);
-            this.chbNoite.Name = "chbNoite";
-            this.chbNoite.Size = new System.Drawing.Size(123, 17);
-            this.chbNoite.TabIndex = 0;
-            this.chbNoite.Text = "Noite (19:00 - 23:00)";
-            this.chbNoite.UseVisualStyleBackColor = true;
-            // 
-            // chbTarde
-            // 
-            this.chbTarde.AutoSize = true;
-            this.chbTarde.Location = new System.Drawing.Point(14, 35);
-            this.chbTarde.Name = "chbTarde";
-            this.chbTarde.Size = new System.Drawing.Size(126, 17);
-            this.chbTarde.TabIndex = 0;
-            this.chbTarde.Text = "Tarde (13:00 - 17:30)";
-            this.chbTarde.UseVisualStyleBackColor = true;
-            // 
-            // chbManha
-            // 
-            this.chbManha.AutoSize = true;
-            this.chbManha.Location = new System.Drawing.Point(14, 12);
-            this.chbManha.Name = "chbManha";
-            this.chbManha.Size = new System.Drawing.Size(131, 17);
-            this.chbManha.TabIndex = 0;
-            this.chbManha.Text = "Manhã (08:30 - 12:00)";
-            this.chbManha.UseVisualStyleBackColor = true;
             // 
             // cbTurno
             // 
@@ -582,61 +618,125 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Turno:";
             // 
-            // lblCancelar
+            // lbl1
             // 
-            this.lblCancelar.AutoSize = true;
-            this.lblCancelar.BackColor = System.Drawing.Color.AliceBlue;
-            this.lblCancelar.Location = new System.Drawing.Point(173, 52);
-            this.lblCancelar.Name = "lblCancelar";
-            this.lblCancelar.Size = new System.Drawing.Size(49, 13);
-            this.lblCancelar.TabIndex = 47;
-            this.lblCancelar.Text = "Cancelar";
-            this.lblCancelar.Visible = false;
+            this.lbl1.AutoSize = true;
+            this.lbl1.BackColor = System.Drawing.Color.Black;
+            this.lbl1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl1.Location = new System.Drawing.Point(2, 66);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(13, 13);
+            this.lbl1.TabIndex = 0;
+            this.lbl1.Text = "1";
+            this.lbl1.Visible = false;
             // 
-            // lblConfirmar
+            // lbl2
             // 
-            this.lblConfirmar.AutoSize = true;
-            this.lblConfirmar.BackColor = System.Drawing.Color.AliceBlue;
-            this.lblConfirmar.Location = new System.Drawing.Point(135, 52);
-            this.lblConfirmar.Name = "lblConfirmar";
-            this.lblConfirmar.Size = new System.Drawing.Size(51, 13);
-            this.lblConfirmar.TabIndex = 48;
-            this.lblConfirmar.Text = "Confirmar";
-            this.lblConfirmar.Visible = false;
+            this.lbl2.AutoSize = true;
+            this.lbl2.BackColor = System.Drawing.Color.Black;
+            this.lbl2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl2.Location = new System.Drawing.Point(156, 96);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(13, 13);
+            this.lbl2.TabIndex = 0;
+            this.lbl2.Text = "2";
+            this.lbl2.Visible = false;
             // 
-            // lblRemover
+            // lbl3
             // 
-            this.lblRemover.AutoSize = true;
-            this.lblRemover.BackColor = System.Drawing.Color.AliceBlue;
-            this.lblRemover.Location = new System.Drawing.Point(96, 52);
-            this.lblRemover.Name = "lblRemover";
-            this.lblRemover.Size = new System.Drawing.Size(50, 13);
-            this.lblRemover.TabIndex = 49;
-            this.lblRemover.Text = "Remover";
-            this.lblRemover.Visible = false;
+            this.lbl3.AutoSize = true;
+            this.lbl3.BackColor = System.Drawing.Color.Black;
+            this.lbl3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl3.Location = new System.Drawing.Point(256, 96);
+            this.lbl3.Name = "lbl3";
+            this.lbl3.Size = new System.Drawing.Size(13, 13);
+            this.lbl3.TabIndex = 0;
+            this.lbl3.Text = "3";
+            this.lbl3.Visible = false;
             // 
-            // lblEditar
+            // lbl4
             // 
-            this.lblEditar.AutoSize = true;
-            this.lblEditar.BackColor = System.Drawing.Color.AliceBlue;
-            this.lblEditar.Location = new System.Drawing.Point(59, 52);
-            this.lblEditar.Name = "lblEditar";
-            this.lblEditar.Size = new System.Drawing.Size(34, 13);
-            this.lblEditar.TabIndex = 50;
-            this.lblEditar.Text = "Editar";
-            this.lblEditar.Visible = false;
+            this.lbl4.AutoSize = true;
+            this.lbl4.BackColor = System.Drawing.Color.Black;
+            this.lbl4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl4.Location = new System.Drawing.Point(156, 129);
+            this.lbl4.Name = "lbl4";
+            this.lbl4.Size = new System.Drawing.Size(13, 13);
+            this.lbl4.TabIndex = 0;
+            this.lbl4.Text = "4";
+            this.lbl4.Visible = false;
             // 
-            // lblAdicionar
+            // lbl5
             // 
-            this.lblAdicionar.AutoSize = true;
-            this.lblAdicionar.BackColor = System.Drawing.Color.AliceBlue;
-            this.lblAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdicionar.Location = new System.Drawing.Point(16, 52);
-            this.lblAdicionar.Name = "lblAdicionar";
-            this.lblAdicionar.Size = new System.Drawing.Size(51, 13);
-            this.lblAdicionar.TabIndex = 51;
-            this.lblAdicionar.Text = "Adicionar";
-            this.lblAdicionar.Visible = false;
+            this.lbl5.AutoSize = true;
+            this.lbl5.BackColor = System.Drawing.Color.Black;
+            this.lbl5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl5.Location = new System.Drawing.Point(256, 129);
+            this.lbl5.Name = "lbl5";
+            this.lbl5.Size = new System.Drawing.Size(13, 13);
+            this.lbl5.TabIndex = 0;
+            this.lbl5.Text = "5";
+            this.lbl5.Visible = false;
+            // 
+            // lbl6
+            // 
+            this.lbl6.AutoSize = true;
+            this.lbl6.BackColor = System.Drawing.Color.Black;
+            this.lbl6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl6.Location = new System.Drawing.Point(2, 162);
+            this.lbl6.Name = "lbl6";
+            this.lbl6.Size = new System.Drawing.Size(13, 13);
+            this.lbl6.TabIndex = 0;
+            this.lbl6.Text = "6";
+            this.lbl6.Visible = false;
+            // 
+            // lbl7
+            // 
+            this.lbl7.AutoSize = true;
+            this.lbl7.BackColor = System.Drawing.Color.Black;
+            this.lbl7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl7.Location = new System.Drawing.Point(2, 195);
+            this.lbl7.Name = "lbl7";
+            this.lbl7.Size = new System.Drawing.Size(13, 13);
+            this.lbl7.TabIndex = 0;
+            this.lbl7.Text = "7";
+            this.lbl7.Visible = false;
+            // 
+            // lbl8
+            // 
+            this.lbl8.AutoSize = true;
+            this.lbl8.BackColor = System.Drawing.Color.Black;
+            this.lbl8.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl8.Location = new System.Drawing.Point(2, 229);
+            this.lbl8.Name = "lbl8";
+            this.lbl8.Size = new System.Drawing.Size(13, 13);
+            this.lbl8.TabIndex = 0;
+            this.lbl8.Text = "8";
+            this.lbl8.Visible = false;
+            // 
+            // lbl9
+            // 
+            this.lbl9.AutoSize = true;
+            this.lbl9.BackColor = System.Drawing.Color.Black;
+            this.lbl9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl9.Location = new System.Drawing.Point(2, 260);
+            this.lbl9.Name = "lbl9";
+            this.lbl9.Size = new System.Drawing.Size(13, 13);
+            this.lbl9.TabIndex = 0;
+            this.lbl9.Text = "9";
+            this.lbl9.Visible = false;
+            // 
+            // lbl10
+            // 
+            this.lbl10.AutoSize = true;
+            this.lbl10.BackColor = System.Drawing.Color.Black;
+            this.lbl10.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl10.Location = new System.Drawing.Point(2, 294);
+            this.lbl10.Name = "lbl10";
+            this.lbl10.Size = new System.Drawing.Size(19, 13);
+            this.lbl10.TabIndex = 0;
+            this.lbl10.Text = "10";
+            this.lbl10.Visible = false;
             // 
             // frmTempoDeServico
             // 
@@ -652,6 +752,7 @@
             this.Name = "frmTempoDeServico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuração do Horário";
+            this.Load += new System.EventHandler(this.frmTempoDeServico_Load_1);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -663,8 +764,6 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -703,8 +802,6 @@
         private System.Windows.Forms.ComboBox cbTurno;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox chbTarde;
-        private System.Windows.Forms.CheckBox chbManha;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnCancelarTurno;
@@ -712,12 +809,20 @@
         private System.Windows.Forms.Button btnRemoverTurno;
         private System.Windows.Forms.Button btnEditarTurno;
         private System.Windows.Forms.Button btnAdicionarTurno;
-        private System.Windows.Forms.CheckBox chbNormal;
-        private System.Windows.Forms.CheckBox chbNoite;
         private System.Windows.Forms.Label lblCancelar;
         private System.Windows.Forms.Label lblConfirmar;
         private System.Windows.Forms.Label lblRemover;
         private System.Windows.Forms.Label lblEditar;
         private System.Windows.Forms.Label lblAdicionar;
+        private System.Windows.Forms.Label lbl8;
+        private System.Windows.Forms.Label lbl7;
+        private System.Windows.Forms.Label lbl4;
+        private System.Windows.Forms.Label lbl6;
+        private System.Windows.Forms.Label lbl3;
+        private System.Windows.Forms.Label lbl5;
+        private System.Windows.Forms.Label lbl2;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Label lbl10;
+        private System.Windows.Forms.Label lbl9;
     }
 }

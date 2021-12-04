@@ -30,6 +30,7 @@ namespace Facturix_Salários.Formularios
             {
                 txtNomeAbreviado.Text = f.getNomeAbreviado();
                 txtNomeDaEmpresa.Text = f.getNome();
+                txtNuit.Text = f.getNuit();
                 if (System.IO.File.Exists(f.getImagem()))
                 {
                     pbLogo.Image = Image.FromFile(f.getImagem());
@@ -50,7 +51,7 @@ namespace Facturix_Salários.Formularios
             String nome = txtNomeDaEmpresa.Text;
             String nomeAbreviado = txtNomeAbreviado.Text;
             Boolean logo = false;
-
+            String nuit = txtNuit.Text;
             if (cbLogo.Checked && pbLogo.Image!=null) 
             {
                 logo = true;
@@ -59,12 +60,12 @@ namespace Facturix_Salários.Formularios
             if (getCod() == 0)
             {
                 int id = getCod() + 1;
-                ControllerEmpresa.Guardar(id, nome, nomeAbreviado, logo, linkImagem);
+                ControllerEmpresa.Guardar(id, nome, nomeAbreviado, logo, linkImagem, nuit);
             }
             else 
             {
                 int id = getCod();
-                ControllerEmpresa.atualizar(id, nome, nomeAbreviado, logo, linkImagem);
+                ControllerEmpresa.atualizar(id, nome, nomeAbreviado, logo, linkImagem, nuit);
             }
         }
         private int getCod() 

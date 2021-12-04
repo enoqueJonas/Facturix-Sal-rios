@@ -241,6 +241,7 @@ namespace Facturix_Salários.Formularios
         {
             frmFeriados f = new frmFeriados();
             f.Show();
+            this.Close();
         }
 
         private void btnAdicionar_MouseEnter(object sender, EventArgs e)

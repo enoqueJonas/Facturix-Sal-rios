@@ -11,20 +11,21 @@ namespace Facturix_Salários.Controllers
 {
     class ControllerEmpresa
     {
-        public static void Guardar(int id, String nome, String nomeAbreviado, Boolean logo, String imagem)
+        public static void Guardar(int id, String nome, String nomeAbreviado, Boolean logo, String imagem, String nuit)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into informacao_da_empresa (id, nome, nomeAbreviado, logo, imagem) values(?,?,?,?,?)";
+                String sqlInsert = "INSERT into informacao_da_empresa (id, nome, nomeAbreviado, logo, imagem, nuit) values(?,?,?,?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", id);
                 comando.Parameters.AddWithValue("nome", nome);
                 comando.Parameters.AddWithValue("nomeAbreviado", nomeAbreviado);
                 comando.Parameters.AddWithValue("logo", logo);
                 comando.Parameters.AddWithValue("imagem", imagem);
+                comando.Parameters.AddWithValue("nuit", nuit);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
@@ -38,19 +39,20 @@ namespace Facturix_Salários.Controllers
             }
         }
 
-        public static void atualizar(int id, String nome, String nomeAbreviado, Boolean logo, String imagem)
+        public static void atualizar(int id, String nome, String nomeAbreviado, Boolean logo, String imagem, String nuit)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE informacao_da_empresa SET nome=?, nomeAbreviado=?, logo=?, imagem=? WHERE id=?";
+                String sqlInsert = "UPDATE informacao_da_empresa SET nome=?, nomeAbreviado=?, logo=?, imagem=?, nuit=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("nome", nome);
                 comando.Parameters.AddWithValue("nomeAbreviado", nomeAbreviado);
                 comando.Parameters.AddWithValue("logo", logo);
                 comando.Parameters.AddWithValue("imagem", imagem);
+                comando.Parameters.AddWithValue("nuit", nuit);
                 comando.Parameters.AddWithValue("id", id);
                 comando.ExecuteNonQuery();
             }
@@ -81,7 +83,8 @@ namespace Facturix_Salários.Controllers
                     String nomeAbreviado = leitor.GetString(2);
                     Boolean logo = leitor.GetBoolean(3);
                     String imagem = leitor.GetString(4);
-                    listaHorarios.Add(new ModeloEmpresa(id, nome, nomeAbreviado, logo, imagem));
+                    String nuit = leitor.GetString(4);
+                    listaHorarios.Add(new ModeloEmpresa(id, nome, nomeAbreviado, logo, imagem, nuit));
                 }
             }
             catch (Exception)
@@ -113,7 +116,8 @@ namespace Facturix_Salários.Controllers
                     String nomeAbreviado = leitor.GetString(2);
                     Boolean logo = leitor.GetBoolean(3);
                     String imagem = leitor.GetString(4);
-                    listaHorarios.Add(new ModeloEmpresa(id, nome, nomeAbreviado, logo, imagem));
+                    String nuit = leitor.GetString(4);
+                    listaHorarios.Add(new ModeloEmpresa(id, nome, nomeAbreviado, logo, imagem, nuit));
                 }
             }
             catch (Exception)

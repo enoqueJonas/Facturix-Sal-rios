@@ -420,9 +420,9 @@
             this.chbAlmoco.AutoSize = true;
             this.chbAlmoco.Location = new System.Drawing.Point(17, 52);
             this.chbAlmoco.Name = "chbAlmoco";
-            this.chbAlmoco.Size = new System.Drawing.Size(124, 17);
+            this.chbAlmoco.Size = new System.Drawing.Size(132, 17);
             this.chbAlmoco.TabIndex = 12;
-            this.chbAlmoco.Text = "Tempo para Almoço:";
+            this.chbAlmoco.Text = "Intervalo para Almoço:";
             this.chbAlmoco.UseVisualStyleBackColor = true;
             this.chbAlmoco.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
             // 

@@ -39,6 +39,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNuit = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,17 +100,17 @@
             // cbLogo
             // 
             this.cbLogo.AutoSize = true;
-            this.cbLogo.Location = new System.Drawing.Point(229, 94);
+            this.cbLogo.Location = new System.Drawing.Point(229, 119);
             this.cbLogo.Name = "cbLogo";
-            this.cbLogo.Size = new System.Drawing.Size(50, 17);
+            this.cbLogo.Size = new System.Drawing.Size(67, 17);
             this.cbLogo.TabIndex = 2;
-            this.cbLogo.Text = "Logo";
+            this.cbLogo.Text = "Logotipo";
             this.cbLogo.UseVisualStyleBackColor = true;
             // 
             // btnAdicionarFoto
             // 
             this.btnAdicionarFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionarFoto.Location = new System.Drawing.Point(392, 224);
+            this.btnAdicionarFoto.Location = new System.Drawing.Point(392, 249);
             this.btnAdicionarFoto.Name = "btnAdicionarFoto";
             this.btnAdicionarFoto.Size = new System.Drawing.Size(146, 23);
             this.btnAdicionarFoto.TabIndex = 3;
@@ -141,11 +143,27 @@
             // pbLogo
             // 
             this.pbLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbLogo.Location = new System.Drawing.Point(392, 94);
+            this.pbLogo.Location = new System.Drawing.Point(392, 119);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(146, 124);
             this.pbLogo.TabIndex = 4;
             this.pbLogo.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(226, 86);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "NUIT:";
+            // 
+            // txtNuit
+            // 
+            this.txtNuit.Location = new System.Drawing.Point(392, 83);
+            this.txtNuit.Name = "txtNuit";
+            this.txtNuit.Size = new System.Drawing.Size(266, 20);
+            this.txtNuit.TabIndex = 1;
             // 
             // frmNomeDaEmpresa
             // 
@@ -160,6 +178,8 @@
             this.Controls.Add(this.cbLogo);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.txtNomeDaEmpresa);
+            this.Controls.Add(this.txtNuit);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNomeAbreviado);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -187,5 +207,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pbLogo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtNuit;
     }
 }

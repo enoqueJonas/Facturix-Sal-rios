@@ -11,7 +11,7 @@ namespace Facturix_Salários.Controllers
 {
     class ControllerHorarios
     {
-        public static void Guardar(int id, decimal tempoServico, decimal emTempoH, decimal emTempoM, decimal foraDoTempoH, decimal foraDotempoM, Boolean marcarPonto, Boolean baterPonto, Boolean saidaAdiantada, Boolean atraso, Boolean ausencia)
+        public static void Guardar(int id, String tempoServico, decimal emTempoH, decimal emTempoM, decimal foraDoTempoH, decimal foraDotempoM, Boolean marcarPonto, Boolean baterPonto, Boolean saidaAdiantada, Boolean atraso, Boolean ausencia)
         {
             MySqlConnection conexao = Conexao.conectar();
 
@@ -44,7 +44,7 @@ namespace Facturix_Salários.Controllers
             }
         }
 
-        public static void atualizar(int id, decimal tempoServico, decimal emTempoH, decimal emTempoM, decimal foraDoTempoH, decimal foraDotempoM, Boolean marcarPonto, Boolean baterPonto, Boolean saidaAdiantada, Boolean atraso, Boolean ausencia)
+        public static void atualizar(int id, String tempoServico, decimal emTempoH, decimal emTempoM, decimal foraDoTempoH, decimal foraDotempoM, Boolean marcarPonto, Boolean baterPonto, Boolean saidaAdiantada, Boolean atraso, Boolean ausencia)
         {
             MySqlConnection conexao = Conexao.conectar();
 
@@ -89,7 +89,7 @@ namespace Facturix_Salários.Controllers
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    decimal tempoServico = leitor.GetDecimal(1);
+                    String tempoServico = leitor.GetString(1);
                     decimal emTempoH = leitor.GetDecimal(2);
                     decimal emTempoM = leitor.GetDecimal(3);
                     decimal foraDoTempoH = leitor.GetDecimal(4);
@@ -127,7 +127,7 @@ namespace Facturix_Salários.Controllers
                 while (leitor.Read())
                 {
                     int id = leitor.GetInt16(0);
-                    decimal tempoServico = leitor.GetDecimal(1);
+                    String tempoServico = leitor.GetString(1);
                     decimal emTempoH = leitor.GetDecimal(2);
                     decimal emTempoM = leitor.GetDecimal(3);
                     decimal foraDoTempoH = leitor.GetDecimal(4);
