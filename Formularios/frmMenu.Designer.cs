@@ -44,6 +44,9 @@ namespace Facturix_Salários
             this.configurador = new System.Windows.Forms.ToolStripMenuItem();
             this.conectarScannerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.processamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.processamentoSaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.individualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +54,8 @@ namespace Facturix_Salários
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastros,
-            this.configurador});
+            this.configurador,
+            this.processamentoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1091, 24);
@@ -169,6 +173,28 @@ namespace Facturix_Salários
             this.configuraçToolStripMenuItem.Text = "Informação da Empresa";
             this.configuraçToolStripMenuItem.Click += new System.EventHandler(this.configuraçToolStripMenuItem_Click);
             // 
+            // processamentoToolStripMenuItem
+            // 
+            this.processamentoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.processamentoSaToolStripMenuItem,
+            this.individualToolStripMenuItem});
+            this.processamentoToolStripMenuItem.Name = "processamentoToolStripMenuItem";
+            this.processamentoToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.processamentoToolStripMenuItem.Text = "Processamento";
+            // 
+            // processamentoSaToolStripMenuItem
+            // 
+            this.processamentoSaToolStripMenuItem.Name = "processamentoSaToolStripMenuItem";
+            this.processamentoSaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.processamentoSaToolStripMenuItem.Text = "Em lote";
+            this.processamentoSaToolStripMenuItem.Click += new System.EventHandler(this.processamentoSaToolStripMenuItem_Click);
+            // 
+            // individualToolStripMenuItem
+            // 
+            this.individualToolStripMenuItem.Name = "individualToolStripMenuItem";
+            this.individualToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.individualToolStripMenuItem.Text = "Individual";
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,6 +235,9 @@ namespace Facturix_Salários
         private System.Windows.Forms.ToolStripMenuItem iRPSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem conectarScannerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraçToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem processamentoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem processamentoSaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem individualToolStripMenuItem;
     }
 }
 

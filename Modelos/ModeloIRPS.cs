@@ -9,10 +9,10 @@ namespace Facturix_Salários.Modelos
     class ModeloIRPS
     {
         private int id , nrDependentes;
-        private float valor, coeficiente;
-        private double salarioMin, salarioMax;
+        private float coeficiente;
+        private double salarioMin, valor, salarioMax;
 
-        public ModeloIRPS(int id, double salarioMin, double salarioMax, float valor, int nrDependentes, float coeficiente)
+        public ModeloIRPS(int id, double salarioMin, double salarioMax, double valor, int nrDependentes, float coeficiente)
         {
             this.id = id;
             this.salarioMin = salarioMin;
@@ -41,7 +41,7 @@ namespace Facturix_Salários.Modelos
             return nrDependentes;
         }
 
-        public float getValor()
+        public double getValor()
         {
             return valor;
         }

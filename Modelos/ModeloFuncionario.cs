@@ -196,7 +196,7 @@ namespace Facturix_Salários
 
         public double getSubAlimentacao() { return subAlimentacao; }
 
-        public double getHoras() { return horas; }
+        public float getHoras() { return horas; }
 
         public double getSubComunicacao() { return subComunicacao; }
 

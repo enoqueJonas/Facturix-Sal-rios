@@ -12,7 +12,7 @@ namespace Facturix_Salários.Controllers
 {
     class ControllerIRPS
     {
-        public static void gravar(int idUsuario, double salMin, double salMax, float valor, int dependentes, float coeficiente)
+        public static void gravar(int idUsuario, double salMin, double salMax, double valor, int dependentes, float coeficiente)
         {
             MySqlConnection conexao = Conexao.conectar();
             try
@@ -40,7 +40,7 @@ namespace Facturix_Salários.Controllers
             }
         }
 
-        public static void atualizar(int idUsuario, double salMin, double salMax, float valor, int dependentes, float coeficiente)
+        public static void atualizar(int idUsuario, double salMin, double salMax, double valor, int dependentes, float coeficiente)
         {
             MySqlConnection conexao = Conexao.conectar();
 
@@ -83,7 +83,7 @@ namespace Facturix_Salários.Controllers
                     int id = leitor.GetInt16(0);
                     double salMin = leitor.GetFloat(1);
                     double salMax = leitor.GetFloat(2);
-                    float valor = leitor.GetFloat(3);
+                    double valor = leitor.GetDouble(3);
                     int nrDependentes = leitor.GetInt16(4);
                     float coeficiente = leitor.GetFloat(5);
                     listaIRPS.Add(new ModeloIRPS(id, salMin, salMax, valor, nrDependentes, coeficiente));
@@ -138,8 +138,7 @@ namespace Facturix_Salários.Controllers
                     int id = leitor.GetInt16(0);
                     double salMin = leitor.GetFloat(1);
                     double salMax = leitor.GetFloat(2);
-                    float valor = leitor.GetFloat(3);
-                    Convert.ToDecimal(valor);
+                    double valor = leitor.GetDouble(3);
                     int nrDependentes = leitor.GetInt16(4);
                     float coeficiente = leitor.GetFloat(5);
                     listaIRPS.Add(new ModeloIRPS(id, salMin, salMax, valor, nrDependentes, coeficiente));
@@ -172,7 +171,7 @@ namespace Facturix_Salários.Controllers
                     int id = leitor.GetInt16(0);
                     double salMin = leitor.GetFloat(1);
                     double salMax = leitor.GetFloat(2);
-                    float valor = leitor.GetFloat(3);
+                    double valor = leitor.GetFloat(3);
                     int nrDependentes = leitor.GetInt16(4);
                     float coeficiente = leitor.GetFloat(5);
                     listaIRPS.Add(new ModeloIRPS(id, salMin, salMax, valor, nrDependentes, coeficiente));

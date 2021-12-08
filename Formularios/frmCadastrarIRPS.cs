@@ -208,7 +208,7 @@ namespace Facturix_Salários.Formularios.Cadastros
         {
             ArrayList listaIRPS = ControllerIRPS.recuperar();
             ArrayList listaIrpsSalMin;
-            double salarioMin;
+            double salarioMin, valor;
             DataTable dt = new DataTable();
             //dt.Columns.Add("ID");
             dt.Columns.Add("Limites dos Intervalos de Salário bruto mensal (MTS)");
@@ -225,37 +225,42 @@ namespace Facturix_Salários.Formularios.Cadastros
                 listaIrpsSalMin = ControllerIRPS.recuperarComSalMin(salarioMin);
                 if (ir.getSalarioMin() < 20250)
                 {
-                    dRow["Limites dos Intervalos de Salário bruto mensal (MTS)"] = "Até " + Math.Round(ir.getSalarioMin(), 1) + "";
+                    dRow["Limites dos Intervalos de Salário bruto mensal (MTS)"] = "Até " + Math.Round(ir.getSalarioMin(), 2, MidpointRounding.AwayFromZero) + "";
                 }
                 else if (ir.getSalarioMin() >= 144750)
                 {
-                    dRow["Limites dos Intervalos de Salário bruto mensal (MTS)"] = "De  " + Math.Round(ir.getSalarioMin(), 1) + " em diante";
+                    dRow["Limites dos Intervalos de Salário bruto mensal (MTS)"] = "De  " + Math.Round(ir.getSalarioMin(), 2, MidpointRounding.AwayFromZero) + " em diante";
                 }
                 else 
                 {
-                    dRow["Limites dos Intervalos de Salário bruto mensal (MTS)"] = "De  " + Math.Round(ir.getSalarioMin(), 1) + " até " + Math.Round(ir.getSalarioMax(), 1);
+                    dRow["Limites dos Intervalos de Salário bruto mensal (MTS)"] = "De  " + Math.Round(ir.getSalarioMin(), 2) + " até " + Math.Round(ir.getSalarioMax(), 2, MidpointRounding.AwayFromZero);
                 }                
                 foreach (ModeloIRPS f in listaIrpsSalMin) 
                 {
                     if (f.getNrDependentes() == 0) 
                     {
-                        dRow["0"] = string.Format("{0:D2}", f.getValor()+".00");
+                        valor = Math.Round(f.getValor(), 2, MidpointRounding.AwayFromZero);
+                        dRow["0"] = valor;
                     }else
                     if (f.getNrDependentes() == 1) 
                     {
-                        dRow["1"] = f.getValor() + ".00";
+                        valor = Math.Round(f.getValor(), 2, MidpointRounding.AwayFromZero);
+                        dRow["1"] = valor;
                     }else
                     if (f.getNrDependentes() == 2) 
                     {
-                        dRow["2"] = f.getValor() + ".00";
+                        valor = Math.Round(f.getValor(), 2, MidpointRounding.AwayFromZero);
+                        dRow["2"] = valor;
                     }else
                     if (f.getNrDependentes() == 3) 
                     {
-                        dRow["3"] = f.getValor() + ".00";
+                        valor = Math.Round(f.getValor(), 2, MidpointRounding.AwayFromZero);
+                        dRow["3"] = valor;
                     }else
                     if (f.getNrDependentes() >= 4) 
                     {
-                        dRow["4 ou mais"] = f.getValor() + ".00";
+                        valor = Math.Round(f.getValor(), 2, MidpointRounding.AwayFromZero);
+                        dRow["4 ou mais"] = valor;
                     }
                 }
                 dRow["Coeficiente aplicável à cada unidade adicional do limite inferior do salário bruto"] = Math.Round(ir.getCoeficiente(), 2) + "";

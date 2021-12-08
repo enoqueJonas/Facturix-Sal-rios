@@ -236,5 +236,11 @@ namespace Facturix_Salários
             frmNomeDaEmpresa f = new frmNomeDaEmpresa();
             f.Show();
         }
+
+        private void processamentoSaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProcessamentoEmLote f = new frmProcessamentoEmLote();
+            f.Show();
+        }
     }
 }

@@ -105,7 +105,7 @@ namespace Facturix_Salários.Controllers
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from relogioDePonto WHERE sn=" + id + "";
+                String sqlSelect = "SELECT * from relogioDePonto WHERE idUsuario=" + id + "";
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
