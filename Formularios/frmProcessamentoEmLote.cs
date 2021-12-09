@@ -19,6 +19,28 @@ namespace Facturix_Salários.Formularios
         private String nomeDoTrabalhador, operacao, dataProcessamento;
         private double salarioBrutoMensal = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, irps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            cbOperacao.Text = "";
+            chbVencimento.Checked = false;
+            chbSubFerias.Checked = false;
+            chbExtraordinario.Checked = false;
+            cbMes.Text = "";
+            dtProcessamento.Value = DateTime.Now;
+            dtFaltasHorasExtra.Value = DateTime.Now;
+        }
+
+        private void btnRegressar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            frmReportProcessamento f = new frmReportProcessamento();
+            f.Show();
+        }
+
         private void cbOperacao_SelectedIndexChanged(object sender, EventArgs e)
         {
             refrescar();
@@ -184,8 +206,14 @@ namespace Facturix_Salários.Formularios
                 totalDescontar = valorIrps + f.getImpostoMunicipal() + emprestimoMedico + ipa + inss;
                 adiantamentos = 0;
                 importanciaAPagar = Math.Round((salarioBrutoMensal + totalRetribuicao) - totalDescontar, 2, MidpointRounding.AwayFromZero);
-                ControllerProcessamentoDeSalario.Guardar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioBrutoMensal, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, tipo);
-                id = id + 1;
+                if (cbOperacao.Text.Equals("Processar"))
+                {
+                                    id = id + 1;
+                    ControllerProcessamentoDeSalario.Guardar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioBrutoMensal, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, tipo);
+                } else if (cbOperacao.Text.Equals("Anular")) 
+                {
+                    ControllerProcessamentoDeSalario.atualizar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioBrutoMensal, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, tipo);
+                }
             }
         }
 
@@ -274,16 +302,21 @@ namespace Facturix_Salários.Formularios
                     foreach (ModeloProcessamentoDeSalario p in listaProcessamento) 
                     {
                         dataProcessamento = Convert.ToDateTime(p.getDataProcessamento());
-                        if (p.getOperacao().Equals("Processar") && cbOperacao.Text.Equals("Processar") || cbOperacao.Text == "")
+                        if (p.getOperacao().Equals("Processar") /* && cbOperacao.Text.Equals("Processar") || cbOperacao.Text == ""*/)
                         {
                             processaodo = true;
                         }
-                        else if (p.getOperacao().Equals("Processar") && cbOperacao.Text.Equals("Anular")) 
+                        /* else if (p.getOperacao().Equals("Processar") && cbOperacao.Text.Equals("Anular")) 
                         {
                             processaodo = false;
-                        }
+                        }*/
                     }
-                    if (dataAdimissao.Year <= ano && dataAdimissao.Month <= nrMes && dataRelogio.Month == nrMes && dataRelogio.Year == ano && processaodo == false)
+                    if (dataAdimissao.Year <= ano && dataAdimissao.Month <= nrMes && dataRelogio.Month == nrMes && dataRelogio.Year == ano && processaodo == false && cbOperacao.Text == "Processar")
+                    {
+                        funcionario.Add(f.getCodigo());
+                        listaCadastroFuncionarios.Add(new ModeloFuncionario(f.getCodigo(), f.getIdIRPS(), f.getNome(), f.getCell(), f.getCellSec(), f.getTel(), f.getEmail(), f.getEstadoCivil(), f.getDeficiencia(), f.getConjugue(), f.getSexo(), f.getDataNascimento(), f.getLinkImagem(), f.getCodigoPostal(), f.getBairro(), f.getLocalidade(), f.getMoradaGen(), f.getTipoContrato(), f.getDataAdmissao(), f.getDataDemissao(), f.getProfissao(), f.getCategoria(), f.getSeguro(), f.getLocalTrabalho(), f.getRegime(), f.getBi(), f.getNumeroBenificiario(), f.getNumeroFiscal(), f.getVencimento(), f.getSubAlimentacao(), f.getSubTransporte(), f.getHoras(), f.getDependentes(), f.getHabilitacoes(), f.getNacionalidade(), f.getUltimoEmprego(), f.getTurno(), f.getImpostoMunicipal(), f.getCentroDeCusto(), f.getSegurancaSocial(), f.getSindicato(), f.getSubComunicacao()));
+                        break;
+                    } else if (dataAdimissao.Year <= ano && dataAdimissao.Month <= nrMes && dataRelogio.Month == nrMes && dataRelogio.Year == ano && processaodo == true && cbOperacao.Text == "Anular") 
                     {
                         funcionario.Add(f.getCodigo());
                         listaCadastroFuncionarios.Add(new ModeloFuncionario(f.getCodigo(), f.getIdIRPS(), f.getNome(), f.getCell(), f.getCellSec(), f.getTel(), f.getEmail(), f.getEstadoCivil(), f.getDeficiencia(), f.getConjugue(), f.getSexo(), f.getDataNascimento(), f.getLinkImagem(), f.getCodigoPostal(), f.getBairro(), f.getLocalidade(), f.getMoradaGen(), f.getTipoContrato(), f.getDataAdmissao(), f.getDataDemissao(), f.getProfissao(), f.getCategoria(), f.getSeguro(), f.getLocalTrabalho(), f.getRegime(), f.getBi(), f.getNumeroBenificiario(), f.getNumeroFiscal(), f.getVencimento(), f.getSubAlimentacao(), f.getSubTransporte(), f.getHoras(), f.getDependentes(), f.getHabilitacoes(), f.getNacionalidade(), f.getUltimoEmprego(), f.getTurno(), f.getImpostoMunicipal(), f.getCentroDeCusto(), f.getSegurancaSocial(), f.getSindicato(), f.getSubComunicacao()));

@@ -61,7 +61,7 @@ namespace Facturix_Salários.Controllers
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE processamento_salario SET idFuncionario=?, nomeTrabalhador=?, diasDeTrabalho=?, salarioBrutoMensal=?, subsidioAlimentacao=?, ajudaDeCusto=?, ajudaDeDeslocacao=?, pagamentoFerias=?, diversosSubsidios=?, totalRetribuicao=?, emprestimoMedico=?, irps=?, ipa=?, inss=?, totalADescontar=?, adiantamentos=?, importanciaAPagar=?, dataProcessamento=? operacao=?, tipo=? WHERE id=?";
+                String sqlInsert = "UPDATE processamento_salario SET idFuncionario=?, nomeTrabalhador=?, diasDeTrabalho=?, salarioBrutoMensal=?, subsidioAlimentacao=?, ajudaDeCusto=?, ajudaDeDeslocacao=?, pagamentoFerias=?, diversosSubsidios=?, totalRetribuicao=?, emprestimoMedico=?, irps=?, ipa=?, inss=?, totalADescontar=?, adiantamentos=?, importanciaAPagar=?, operacao=?, dataProcessamento=?, tipo=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("idFuncionario", idFuncionario);
                 comando.Parameters.AddWithValue("nomeTrabalhador", nomeTrabalhador);

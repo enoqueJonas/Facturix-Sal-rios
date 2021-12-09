@@ -212,10 +212,10 @@
     <Compile Include="Formularios\frmProcessamentoIndividual.Designer.cs">
       <DependentUpon>frmProcessamentoIndividual.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmReportProcessamento.cs">
+    <Compile Include="frmReportProcessamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmReportProcessamento.Designer.cs">
+    <Compile Include="frmReportProcessamento.Designer.cs">
       <DependentUpon>frmReportProcessamento.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmTempoDeServico.cs">
@@ -505,7 +505,7 @@
     <EmbeddedResource Include="Formularios\frmProcessamentoIndividual.resx">
       <DependentUpon>frmProcessamentoIndividual.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmReportProcessamento.resx">
+    <EmbeddedResource Include="frmReportProcessamento.resx">
       <DependentUpon>frmReportProcessamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmTempoDeServico.resx">
