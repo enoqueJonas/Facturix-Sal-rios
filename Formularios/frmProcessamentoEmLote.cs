@@ -18,7 +18,13 @@ namespace Facturix_Salários.Formularios
         private int nrMes, idFuncionario, diasDeTrabalho;
         private String nomeDoTrabalhador, operacao, dataProcessamento;
         private double salarioBrutoMensal = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, irps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
-        ArrayList listaCadastroFuncionarios;
+
+        private void cbOperacao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            refrescar();
+        }
+
+        ArrayList listaCadastroFuncionarios = new ArrayList();
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
@@ -137,10 +143,23 @@ namespace Facturix_Salários.Formularios
 
         private void gravar() 
         {
-            int id = getCodProcessamento();
+            int id = getCodProcessamento() + 1;
             operacao = cbOperacao.Text;
-            dataProcessamento = dtProcessamento.Value.ToString("yyyy-MM-dd");
+            dataProcessamento = dtProcessamento.Value.Date.ToString("yyyy-MM-dd");
             double valorIrps = 0;
+            String tipo = "";
+            if (chbVencimento.Checked) 
+            {
+                tipo = "Vencimento";
+            }
+            if (chbSubFerias.Checked)
+            {
+                tipo = "Ferias";
+            }
+            if (chbVencimento.Checked)
+            {
+                tipo = "Extraordinario";
+            }
             ArrayList listaIrps = ControllerIRPS.recuperar();
             foreach (ModeloFuncionario f in listaCadastroFuncionarios) 
             {
@@ -161,11 +180,12 @@ namespace Facturix_Salários.Formularios
                         valorIrps = ir.getValor();
                 }
                 ipa = f.getImpostoMunicipal();
-                inss = f.getVencimento() * 0.07;
+                inss = Math.Round(f.getVencimento() * 0.07, 2, MidpointRounding.AwayFromZero);
                 totalDescontar = valorIrps + f.getImpostoMunicipal() + emprestimoMedico + ipa + inss;
                 adiantamentos = 0;
-                importanciaAPagar = (salarioBrutoMensal + totalRetribuicao) - totalDescontar;
-                ControllerProcessamentoDeSalario.Guardar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioBrutoMensal, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento);
+                importanciaAPagar = Math.Round((salarioBrutoMensal + totalRetribuicao) - totalDescontar, 2, MidpointRounding.AwayFromZero);
+                ControllerProcessamentoDeSalario.Guardar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioBrutoMensal, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, tipo);
+                id = id + 1;
             }
         }
 
@@ -254,15 +274,19 @@ namespace Facturix_Salários.Formularios
                     foreach (ModeloProcessamentoDeSalario p in listaProcessamento) 
                     {
                         dataProcessamento = Convert.ToDateTime(p.getDataProcessamento());
-                        if (dataProcessamento.Month == nrMes && dataProcessamento.Year == ano && f.getCodigo() == p.getIdFuncionario() && p.getOperacao().Equals("Processar")) 
+                        if (p.getOperacao().Equals("Processar") && cbOperacao.Text.Equals("Processar") || cbOperacao.Text == "")
                         {
                             processaodo = true;
+                        }
+                        else if (p.getOperacao().Equals("Processar") && cbOperacao.Text.Equals("Anular")) 
+                        {
+                            processaodo = false;
                         }
                     }
                     if (dataAdimissao.Year <= ano && dataAdimissao.Month <= nrMes && dataRelogio.Month == nrMes && dataRelogio.Year == ano && processaodo == false)
                     {
                         funcionario.Add(f.getCodigo());
-                        /*listaCadastroFuncionarios.Add(new ModeloFuncionario(f.getCodigo(), f.getIdIRPS(), f.getNome(), f.getCell(), f.getCellSec(), f.getTel(), f.getEmail(), f.getEstadoCivil(), f.getDeficiencia(), f.getConjugue(), f.getSexo(), f.getDataNascimento(), f.getLinkImagem(), f.getCodigoPostal(), f.getBairro(), f.getLocalidade(), f.getMoradaGen(), f.getTipoContrato(), f.getDataAdmissao(), f.getDataDemissao(), f.getProfissao(), f.getCategoria(), f.getSeguro(), f.getLocalTrabalho(), f.getRegime(), f.getBi(), f.getNumeroBenificiario(), f.getNumeroFiscal(), f.getVencimento(), f.getSubAlimentacao(), f.getSubTransporte(), f.getHoras(), f.getDependentes(), f.getHabilitacoes(), f.getNacionalidade(), f.getUltimoEmprego(), f.getTurno(), f.getImpostoMunicipal(), f.getCentroDeCusto(), f.getSegurancaSocial(), f.getSindicato(), f.getSubComunicacao())); */
+                        listaCadastroFuncionarios.Add(new ModeloFuncionario(f.getCodigo(), f.getIdIRPS(), f.getNome(), f.getCell(), f.getCellSec(), f.getTel(), f.getEmail(), f.getEstadoCivil(), f.getDeficiencia(), f.getConjugue(), f.getSexo(), f.getDataNascimento(), f.getLinkImagem(), f.getCodigoPostal(), f.getBairro(), f.getLocalidade(), f.getMoradaGen(), f.getTipoContrato(), f.getDataAdmissao(), f.getDataDemissao(), f.getProfissao(), f.getCategoria(), f.getSeguro(), f.getLocalTrabalho(), f.getRegime(), f.getBi(), f.getNumeroBenificiario(), f.getNumeroFiscal(), f.getVencimento(), f.getSubAlimentacao(), f.getSubTransporte(), f.getHoras(), f.getDependentes(), f.getHabilitacoes(), f.getNacionalidade(), f.getUltimoEmprego(), f.getTurno(), f.getImpostoMunicipal(), f.getCentroDeCusto(), f.getSegurancaSocial(), f.getSindicato(), f.getSubComunicacao()));
                         break;
                     }
                 }

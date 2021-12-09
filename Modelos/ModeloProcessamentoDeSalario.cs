@@ -8,11 +8,11 @@ namespace Facturix_Salários.Modelos
 {
     class ModeloProcessamentoDeSalario
     {
-        private String nomeDoTrabalhador, operacao, dataProcessamento;
+        private String nomeDoTrabalhador, operacao, dataProcessamento, tipo;
         private int id, idFuncionario, diasDeTrabalho;
         private double salarioBrutoMensal, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar;
 
-        public ModeloProcessamentoDeSalario(int id, int idFuncionario, String nomeDoTrabalhador, int diasDeTrabalho, double salarioBrutoMensal, double subAlimentacao, double ajudaDeCusto, double ajudaDeslocacao, double pagamentoFerias, double diversosSubsidios, double totalRetribuicao, double emprestimoMedico, double irps, double ipa, double inss, double totalDescontar, double adiantamentos, double importanciaAPagar, String operacao, String dataProcessamento) 
+        public ModeloProcessamentoDeSalario(int id, int idFuncionario, String nomeDoTrabalhador, int diasDeTrabalho, double salarioBrutoMensal, double subAlimentacao, double ajudaDeCusto, double ajudaDeslocacao, double pagamentoFerias, double diversosSubsidios, double totalRetribuicao, double emprestimoMedico, double irps, double ipa, double inss, double totalDescontar, double adiantamentos, double importanciaAPagar, String operacao, String dataProcessamento, String tipo) 
         {
             this.id = id;
             this.idFuncionario = idFuncionario;
@@ -34,6 +34,7 @@ namespace Facturix_Salários.Modelos
             this.importanciaAPagar = importanciaAPagar;
             this.operacao = operacao;
             this.dataProcessamento = dataProcessamento;
+            this.tipo = tipo;
         }
 
         public int getId() { return id; }
@@ -42,6 +43,7 @@ namespace Facturix_Salários.Modelos
         public String getNome() { return nomeDoTrabalhador; }
         public String getOperacao() { return operacao; }
         public String getDataProcessamento() { return dataProcessamento; }
+        public String getTipo() { return tipo; }
         public double getSalarioBrutoMensal() { return salarioBrutoMensal; }
         public double getSubAlimentacao() { return subAlimentacao; }
         public double getAjudaDeCusto() { return ajudaDeCusto; }

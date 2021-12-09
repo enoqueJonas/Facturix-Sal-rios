@@ -11,14 +11,14 @@ namespace Facturix_Salários.Controllers
 {
     class ControllerProcessamentoDeSalario
     {
-        public static void Guardar(int id, int idFuncionario, String nomeTrabalhador, int diasDeTrabalho, double salarioBrutoMensal, double subsidioAlimentacao,double ajudaDeCusto, double ajudaDeDeslocacao, double pagamentoFerias, double diversosSubsidios, double totalRetribuicao, double emprestimoMedico, double irps, double ipa, double inss, double totalADescontar, double adiantamentos, double importanciaAPagar, String operacao, String dataProcessamento)
+        public static void Guardar(int id, int idFuncionario, String nomeTrabalhador, int diasDeTrabalho, double salarioBrutoMensal, double subsidioAlimentacao,double ajudaDeCusto, double ajudaDeDeslocacao, double pagamentoFerias, double diversosSubsidios, double totalRetribuicao, double emprestimoMedico, double irps, double ipa, double inss, double totalADescontar, double adiantamentos, double importanciaAPagar, String operacao, String dataProcessamento, String tipo)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into processamento_salario (id, idFuncionario, nomeTrabalhador, diasDeTrabalho, subsidioAlimentacao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPaga, tempoAlmocotempoAlmocor, dataProcessamento) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                String sqlInsert = "INSERT into processamento_salario (id, idFuncionario, nomeTrabalhador, diasDeTrabalho, salarioBrutoMensal, subsidioAlimentacao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, tipo) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", id);
                 comando.Parameters.AddWithValue("idFuncionario", idFuncionario);
@@ -40,6 +40,7 @@ namespace Facturix_Salários.Controllers
                 comando.Parameters.AddWithValue("importanciaAPagar", importanciaAPagar);
                 comando.Parameters.AddWithValue("operacao", operacao);
                 comando.Parameters.AddWithValue("dataProcessamento", dataProcessamento);
+                comando.Parameters.AddWithValue("tipo", tipo);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
@@ -53,14 +54,14 @@ namespace Facturix_Salários.Controllers
             }
         }
 
-        public static void atualizar(int id, int idFuncionario, String nomeTrabalhador, int diasDeTrabalho, double salarioBrutoMensal, double subsidioAlimentacao, double ajudaDeCusto, double ajudaDeDeslocacao, double pagamentoFerias, double diversosSubsidios, double totalRetribuicao, double emprestimoMedico, double irps, double ipa, double inss, double totalADescontar, double adiantamentos, double importanciaAPagar, String operacao, String dataProcessamento)
+        public static void atualizar(int id, int idFuncionario, String nomeTrabalhador, int diasDeTrabalho, double salarioBrutoMensal, double subsidioAlimentacao, double ajudaDeCusto, double ajudaDeDeslocacao, double pagamentoFerias, double diversosSubsidios, double totalRetribuicao, double emprestimoMedico, double irps, double ipa, double inss, double totalADescontar, double adiantamentos, double importanciaAPagar, String operacao, String dataProcessamento, String tipo)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE processamento_salario SET idFuncionario=?, nomeTrabalhador=?, diasDeTrabalho=?, salarioBrutoMensal=?, subsidioAlimentacao=?, ajudaDeCusto=?, ajudaDeDeslocacao=?, pagamentoFerias=?, diversosSubsidios=?, totalRetribuicao=?, emprestimoMedico=?, irps=?, ipa=?, inss=?, totalADescontar=?, adiantamentos=?, importanciaAPagar=?, dataProcessamento=? operacao=? WHERE id=?";
+                String sqlInsert = "UPDATE processamento_salario SET idFuncionario=?, nomeTrabalhador=?, diasDeTrabalho=?, salarioBrutoMensal=?, subsidioAlimentacao=?, ajudaDeCusto=?, ajudaDeDeslocacao=?, pagamentoFerias=?, diversosSubsidios=?, totalRetribuicao=?, emprestimoMedico=?, irps=?, ipa=?, inss=?, totalADescontar=?, adiantamentos=?, importanciaAPagar=?, dataProcessamento=? operacao=?, tipo=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("idFuncionario", idFuncionario);
                 comando.Parameters.AddWithValue("nomeTrabalhador", nomeTrabalhador);
@@ -81,6 +82,7 @@ namespace Facturix_Salários.Controllers
                 comando.Parameters.AddWithValue("importanciaAPagar", importanciaAPagar);
                 comando.Parameters.AddWithValue("operacao", operacao);
                 comando.Parameters.AddWithValue("dataProcessamento", dataProcessamento);
+                comando.Parameters.AddWithValue("tipo", tipo);
                 comando.Parameters.AddWithValue("id", id);
                 comando.ExecuteNonQuery();
             }
@@ -126,7 +128,8 @@ namespace Facturix_Salários.Controllers
                     double importanciaAPagar = leitor.GetDouble(17);  
                     String operacao = leitor.GetString(18);
                     String dataProcessamento = leitor.GetString(19);
-                    listaProcessamento.Add(new ModeloProcessamentoDeSalario(id, idFuncionario, nomeTrabalhador, diasDeTrabalho, salarioBrutosMensal, subAlimentacao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento));
+                    String tipo = leitor.GetString(20);
+                    listaProcessamento.Add(new ModeloProcessamentoDeSalario(id, idFuncionario, nomeTrabalhador, diasDeTrabalho, salarioBrutosMensal, subAlimentacao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, tipo));
                 }
             }
             catch (Exception)
@@ -173,7 +176,8 @@ namespace Facturix_Salários.Controllers
                     double importanciaAPagar = leitor.GetDouble(17);
                     String operacao = leitor.GetString(18);
                     String dataProcessamento = leitor.GetString(19);
-                    listaProcessamento.Add(new ModeloProcessamentoDeSalario(id, idFuncionario, nomeTrabalhador, diasDeTrabalho, salarioBrutosMensal, subAlimentacao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento));
+                    String tipo = leitor.GetString(20);
+                    listaProcessamento.Add(new ModeloProcessamentoDeSalario(id, idFuncionario, nomeTrabalhador, diasDeTrabalho, salarioBrutosMensal, subAlimentacao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, tipo));
                 }
             }
             catch (Exception)
