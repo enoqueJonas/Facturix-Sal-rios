@@ -242,5 +242,17 @@ namespace Facturix_Salários
             frmProcessamentoEmLote f = new frmProcessamentoEmLote();
             f.Show();
         }
+
+        private void individualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProcessamentoIndividual f = new frmProcessamentoIndividual();
+            f.Show();
+        }
+
+        private void listagemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListagemFuncionarios f = new frmListagemFuncionarios();
+            f.Show();
+        }
     }
 }

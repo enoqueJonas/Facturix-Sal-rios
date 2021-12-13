@@ -194,6 +194,12 @@
     <Compile Include="Controllers\ControllerRegrasDePonto.cs" />
     <Compile Include="Controllers\ControllerRelogioDePonto.cs" />
     <Compile Include="Controllers\ControllerTurno.cs" />
+    <Compile Include="Formularios\frmListagemFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmListagemFuncionarios.Designer.cs">
+      <DependentUpon>frmListagemFuncionarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmProcessamentoDeSalario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -495,6 +501,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmCadastrarSundicatos.resx">
       <DependentUpon>frmCadastrarSundicatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmListagemFuncionarios.resx">
+      <DependentUpon>frmListagemFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmProcessamentoDeSalario.resx">
       <DependentUpon>frmProcessamentoDeSalario.cs</DependentUpon>

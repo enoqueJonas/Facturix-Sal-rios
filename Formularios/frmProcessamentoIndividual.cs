@@ -16,5 +16,16 @@ namespace Facturix_Salários.Formularios
         {
             InitializeComponent();
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            frmReportProcessamento f = new frmReportProcessamento();
+            f.Show();
+        }
+
+        private void frmProcessamentoIndividual_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = nrRegistonr;
+        }
     }
 }

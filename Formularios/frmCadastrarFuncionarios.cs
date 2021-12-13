@@ -1,5 +1,6 @@
 ﻿using Facturix_Salários.Controllers;
 using Facturix_Salários.Modelos;
+using Facturix_Salários.Formularios;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections;

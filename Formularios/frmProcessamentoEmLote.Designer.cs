@@ -51,6 +51,7 @@
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnRefrescar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nrAno)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -234,21 +235,26 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btnRefrescar);
             this.panel2.Controls.Add(this.dataProcessamentoSalario);
-            this.panel2.Location = new System.Drawing.Point(25, 146);
+            this.panel2.Location = new System.Drawing.Point(25, 139);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(888, 296);
+            this.panel2.Size = new System.Drawing.Size(888, 309);
             this.panel2.TabIndex = 28;
             // 
             // dataProcessamentoSalario
             // 
             this.dataProcessamentoSalario.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataProcessamentoSalario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataProcessamentoSalario.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataProcessamentoSalario.Location = new System.Drawing.Point(23, 20);
             this.dataProcessamentoSalario.Name = "dataProcessamentoSalario";
             this.dataProcessamentoSalario.RowHeadersVisible = false;
             this.dataProcessamentoSalario.Size = new System.Drawing.Size(840, 254);
             this.dataProcessamentoSalario.TabIndex = 2;
+            this.dataProcessamentoSalario.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataProcessamentoSalario_CellBeginEdit);
+            this.dataProcessamentoSalario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProcessamentoSalario_CellClick);
+            this.dataProcessamentoSalario.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProcessamentoSalario_CellDoubleClick);
             // 
             // panel3
             // 
@@ -353,6 +359,16 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // btnRefrescar
+            // 
+            this.btnRefrescar.Location = new System.Drawing.Point(23, 280);
+            this.btnRefrescar.Name = "btnRefrescar";
+            this.btnRefrescar.Size = new System.Drawing.Size(108, 23);
+            this.btnRefrescar.TabIndex = 3;
+            this.btnRefrescar.Text = "Refrescar";
+            this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
+            // 
             // frmProcessamentoEmLote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,5 +416,6 @@
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnRefrescar;
     }
 }

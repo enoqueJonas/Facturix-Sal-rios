@@ -15,9 +15,96 @@ namespace Facturix_Salários.Formularios
 {
     public partial class frmProcessamentoEmLote : Form
     {
-        private int nrMes, idFuncionario, diasDeTrabalho;
+        private int nrMes, idFuncionario, diasDeTrabalho, codigoCelSelecionada;
         private String nomeDoTrabalhador, operacao, dataProcessamento;
         private double salarioBrutoMensal = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, irps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
+
+        private void dataProcessamentoSalario_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {         
+            if (e.RowIndex >= 0 && e.ColumnIndex == 2)
+            {
+                                                                            
+            }
+        }
+
+        private void dataProcessamentoSalario_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataProcessamentoSalario.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+        }
+
+        private void btnRefrescar_Click(object sender, EventArgs e)
+        {
+            refrescar();
+        }
+
+        private void dataProcessamentoSalario_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataProcessamentoSalario.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(codigoCelSelecionada);
+            ArrayList listaContas = ControllerConta.recuperarComCod(codigoCelSelecionada);
+            ArrayList listaDependentes = ControllerDependente.recuperarComCodFuncionario(codigoCelSelecionada);
+            frmCadastrarFuncionarios f = new frmCadastrarFuncionarios();
+            foreach (ModeloFuncionario func in listaFuncionarios) 
+            {
+                f.txtCodigo.Text = func.getCodigo() + "";
+                f.txtNome.Text = func.getNome();
+                f.txtConjugue.Text = func.getConjugue();
+                f.txtEmail.Text = func.getEmail();
+                f.txtCell.Text = func.getCell();
+                f.txtCellSec.Text = func.getCellSec();
+                f.txtTel.Text = func.getTel();
+                f.cbSexo.Text = func.getSexo();
+                f.cbEstadoCivil.Text = func.getEstadoCivil();
+                f.cbDeficiencia.Text = func.getDeficiencia();
+                f.dtNascimento.Value = Convert.ToDateTime(func.getDataNascimento());
+                if (System.IO.File.Exists(func.getLinkImagem()))
+                {
+                    f.pbFoto.Image = Image.FromFile(func.getLinkImagem());
+                }
+                f.txtCodPostal.Text = func.getCodigoPostal() + "";
+                f.txtMorada.Text = func.getMoradaGen();
+                f.txtBairro.Text = func.getBairro();
+                f.txtLocalidade.Text = func.getLocalidade();
+                f.cbContrato.Text = func.getTipoContrato();
+                f.dtDataAdmissao.Value = Convert.ToDateTime(func.getDataAdmissao());
+                f.dtDataDemissao.Value = Convert.ToDateTime(func.getDataDemissao());
+                f.cbProfissao.Text = func.getProfissao();
+                f.cbCategoria.Text = func.getCategoria();
+                f.cbSeguro.Text = func.getSeguro();
+                f.cbLocalTrabalho.Text = func.getLocalTrabalho();
+                f.cbRegime.Text = func.getRegime();
+                f.txtBi.Text = func.getBi();
+                f.txtNrBenificiario.Text = func.getNumeroBenificiario();
+                f.txtNrFiscal.Text = func.getNumeroFiscal() + "";
+                f.txtVencimento.Text = func.getVencimento() + "";
+                f.txtAlimentacao.Text = func.getSubAlimentacao() + "";
+                f.txtSubTransporte.Text = func.getSubTransporte() + "";
+                f.txtHoraSemana.Text = func.getHoras() + "";
+                f.txtNrDependentes.Text = func.getDependentes() + "";
+                f.cbHabilitacoes.Text = func.getHabilitacoes();
+                f.txtNacionalidade.Text = func.getNacionalidade();
+                f.txtUltimo.Text = func.getUltimoEmprego();
+                f.cbTurno.Text = func.getTurno();
+                f.txtImpostoM.Text = func.getImpostoMunicipal() + "";
+                f.cbCentrocusto.Text = func.getCentroDeCusto();
+                f.txtSeguranca.Text = func.getSegurancaSocial();
+            }
+            foreach (ModeloConta conta in listaContas)
+            {
+                if (codigoCelSelecionada == conta.idFuncionario)
+                {
+                    f.txtNrConta.Text = conta.conta;
+                    f.txtNib.Text = conta.nib;
+                    f.txtBanco.Text = conta.banco;
+                }
+            }
+            f.Show();
+            f.TopMost = true;
+        }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -69,8 +156,10 @@ namespace Facturix_Salários.Formularios
             refrescar();
         }
 
-        private void refrescar()
+        public void refrescar()
         {
+            frmListagemFuncionarios listf = new frmListagemFuncionarios();
+            List<int> listagemFuncionario = listf.getFuncionarios();
             ArrayList listaFuncionario = ControllerFuncionario.recuperar();
             List<int> funcionariosValidos = getFuncionariosValidos();
             ArrayList listaIrps = ControllerIRPS.recuperar();
@@ -95,9 +184,9 @@ namespace Facturix_Salários.Formularios
             dt.Columns.Add("Importância a pagar");
             foreach (ModeloFuncionario f in listaFuncionario)
             {
-                for (int i = 0; i < funcionariosValidos.Count; i++) 
+                for (int i = 0; i < listagemFuncionario.Count; i++) 
                 {
-                    if (f.getCodigo() == funcionariosValidos[i])
+                    if (f.getCodigo() == funcionariosValidos[i] && f.getCodigo() == listagemFuncionario[i])
                     {
                         DataRow dRow = dt.NewRow();
                         idFuncionario = f.getCodigo();
@@ -208,11 +297,11 @@ namespace Facturix_Salários.Formularios
                 importanciaAPagar = Math.Round((salarioBrutoMensal + totalRetribuicao) - totalDescontar, 2, MidpointRounding.AwayFromZero);
                 if (cbOperacao.Text.Equals("Processar"))
                 {
-                                    id = id + 1;
+                    id = id + 1;
                     ControllerProcessamentoDeSalario.Guardar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioBrutoMensal, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, tipo);
                 } else if (cbOperacao.Text.Equals("Anular")) 
                 {
-                    ControllerProcessamentoDeSalario.atualizar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioBrutoMensal, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, tipo);
+                    ControllerProcessamentoDeSalario.Guardar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioBrutoMensal, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, tipo);
                 }
             }
         }
