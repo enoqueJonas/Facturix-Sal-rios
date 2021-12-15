@@ -185,6 +185,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ControlleFuncionarioRemuneracoes.cs" />
     <Compile Include="Controllers\ControllerDepartamento.cs" />
     <Compile Include="Controllers\ControllerEmpresa.cs" />
     <Compile Include="Controllers\ControllerFeriado.cs" />
@@ -193,7 +194,20 @@
     <Compile Include="Controllers\ControllerProcessamentoDeSalario.cs" />
     <Compile Include="Controllers\ControllerRegrasDePonto.cs" />
     <Compile Include="Controllers\ControllerRelogioDePonto.cs" />
+    <Compile Include="Controllers\ControllerRemuneracoes.cs" />
     <Compile Include="Controllers\ControllerTurno.cs" />
+    <Compile Include="Formularios\frmAdicionarFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAdicionarFuncionario.Designer.cs">
+      <DependentUpon>frmAdicionarFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAdicionarRemuneracao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAdicionarRemuneracao.Designer.cs">
+      <DependentUpon>frmAdicionarRemuneracao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmListagemFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +231,18 @@
     </Compile>
     <Compile Include="Formularios\frmProcessamentoIndividual.Designer.cs">
       <DependentUpon>frmProcessamentoIndividual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRemuneracoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRemuneracoes.Designer.cs">
+      <DependentUpon>frmRemuneracoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTabelaDeRemuneracoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTabelaDeRemuneracoes.Designer.cs">
+      <DependentUpon>frmTabelaDeRemuneracoes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReportProcessamento.cs">
       <SubType>Form</SubType>
@@ -413,6 +439,7 @@
     <Compile Include="Modelos\ModeloEstabelecimento.cs" />
     <Compile Include="Modelos\ModeloFeriado.cs" />
     <Compile Include="Modelos\ModeloFinalDeSemana.cs" />
+    <Compile Include="Modelos\ModeloFuncionarioRemuneracoes.cs" />
     <Compile Include="Modelos\ModeloHabilitacao.cs" />
     <Compile Include="Modelos\ModeloHorarios.cs" />
     <Compile Include="Modelos\ModeloIntervalo.cs" />
@@ -423,6 +450,7 @@
     <Compile Include="Modelos\ModeloCategoria.cs" />
     <Compile Include="Modelos\ModeloRegrasDePonto.cs" />
     <Compile Include="Modelos\ModeloRelogioDePonto.cs" />
+    <Compile Include="Modelos\ModeloRemuneracoes.cs" />
     <Compile Include="Modelos\ModeloSeguro.cs" />
     <Compile Include="Modelos\ModeloSindicato.cs" />
     <Compile Include="Modelos\ModeloTabela.cs" />
@@ -472,6 +500,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserPrivilege.cs" />
+    <EmbeddedResource Include="Formularios\frmAdicionarFuncionario.resx">
+      <DependentUpon>frmAdicionarFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAdicionarRemuneracao.resx">
+      <DependentUpon>frmAdicionarRemuneracao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmConectarFPScanner.resx">
       <DependentUpon>frmConectarFPScanner.cs</DependentUpon>
     </EmbeddedResource>
@@ -513,6 +547,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmProcessamentoIndividual.resx">
       <DependentUpon>frmProcessamentoIndividual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRemuneracoes.resx">
+      <DependentUpon>frmRemuneracoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTabelaDeRemuneracoes.resx">
+      <DependentUpon>frmTabelaDeRemuneracoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportProcessamento.resx">
       <DependentUpon>frmReportProcessamento.cs</DependentUpon>

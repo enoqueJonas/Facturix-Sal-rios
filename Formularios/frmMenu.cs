@@ -254,5 +254,11 @@ namespace Facturix_Salários
             frmListagemFuncionarios f = new frmListagemFuncionarios();
             f.Show();
         }
+
+        private void remuneraçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTabelaDeRemuneracoes f = new frmTabelaDeRemuneracoes();
+            f.Show();
+        }
     }
 }

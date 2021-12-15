@@ -15,16 +15,17 @@ namespace Facturix_Salários
     public partial class frmCadastrarFuncionarios : Form
     {
         String linkImagem = "";
+        public String qtd = "", valorUnit = "";
         private int codigoCelSelecionada;
         public frmCadastrarFuncionarios()
         {
             InitializeComponent();
         }
         /// <summary>Monta a lista de dependestes na DataGridView.</summary>
-        private void refrescarDependentes() 
+        private void refrescarDependentes()
         {
             int idFunc = 0;
-            if (txtCodigo.Text != "") 
+            if (txtCodigo.Text != "")
             {
                 idFunc = int.Parse(txtCodigo.Text);
             }
@@ -36,7 +37,7 @@ namespace Facturix_Salários
             dt.Columns.Add("Grau Parent.");
             foreach (ModeloDependente func in listaDependentes)
             {
-                if (idFunc == func.getIdFuncionario()) 
+                if (idFunc == func.getIdFuncionario())
                 {
                     DataRow dRow = dt.NewRow();
                     dRow["Registo n°"] = func.getId();
@@ -52,42 +53,42 @@ namespace Facturix_Salários
             dataDependentes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataDependentes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
-        private void refrescarVencimento() 
+        private void refrescarVencimento()
         {
             int idFunc = 0;
             //double valor = 0;
             if (txtCodigo.Text != "")
             {
-                idFunc = int.Parse(txtCodigo.Text);  
+                idFunc = int.Parse(txtCodigo.Text);
             }
             ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(idFunc);
             DataTable dt = new DataTable();
             dt.Columns.Add("Designação");
             dt.Columns.Add("Vencimento");
-            foreach (ModeloFuncionario func in listaFuncionarios)
-            {
-                if (lblSubComunicacao.Text.Equals("Sub. Comunicação:"))
-                {
-                    DataRow dRow = dt.NewRow();
-                    dRow["Designação"] = "Subsídio de Comunicação";
-                    dRow["Vencimento"] = func.getVencimento();
-                    dt.Rows.Add(dRow);
-                }
-                if (lblSubTransporte.Text.Equals("Sub. Transporte:"))
-                {
-                    DataRow dRow = dt.NewRow();
-                    dRow["Designação"] = "Subsídio de Transporte";
-                    dRow["Vencimento"] = func.getSubTransporte();
-                    dt.Rows.Add(dRow);
-                }
-                if (lblSubAlimentacao.Text.Equals("Sub. Alimentação:"))
-                {
-                    DataRow dRow = dt.NewRow();
-                    dRow["Designação"] = "Subsídio de Alimentação";
-                    dRow["Vencimento"] = func.getSubAlimentacao();
-                    dt.Rows.Add(dRow);
-                }
-            }
+            //foreach (ModeloFuncionario func in listaFuncionarios)
+            //{
+            //    if (lblSubComunicacao.Text.Equals("Sub. Comunicação:"))
+            //    {
+            //        DataRow dRow = dt.NewRow();
+            //        dRow["Designação"] = "Subsídio de Comunicação";
+            //        dRow["Vencimento"] = func.getVencimento();
+            //        dt.Rows.Add(dRow);
+            //    }
+            //    if (lblSubTransporte.Text.Equals("Sub. Transporte:"))
+            //    {
+            //        DataRow dRow = dt.NewRow();
+            //        dRow["Designação"] = "Subsídio de Transporte";
+            //        dRow["Vencimento"] = func.getSubTransporte();
+            //        dt.Rows.Add(dRow);
+            //    }
+            //    if (lblSubAlimentacao.Text.Equals("Sub. Alimentação:"))
+            //    {
+            //        DataRow dRow = dt.NewRow();
+            //        dRow["Designação"] = "Subsídio de Alimentação";
+            //        dRow["Vencimento"] = func.getSubAlimentacao();
+            //        dt.Rows.Add(dRow);
+            //    }
+            //}
             dataSubsidios.DataSource = dt;
             if (dt == null)
                 dt.Clear();
@@ -98,7 +99,7 @@ namespace Facturix_Salários
         }
 
         /// <summary>Adiciona Items como seguro, contrato... nas ComboBox.</summary>
-        private void adicionarItemsCb() 
+        private void adicionarItemsCb()
         {
             ArrayList listaCategorias = ControllerCategoria.recuperar();
             ArrayList listaContratos = ControllerContrato.recuperar();
@@ -138,7 +139,7 @@ namespace Facturix_Salários
         }
 
         /// <summary>Ativa ou distativa(dependendo do parametro recebiodo) as labels do modo edição.</summary>
-        private void mostrarLabels(Boolean estado) 
+        private void mostrarLabels(Boolean estado)
         {
             lblMod1.Visible = estado;
             lblMod2.Visible = estado;
@@ -181,18 +182,19 @@ namespace Facturix_Salários
             lblMod39.Visible = estado;
             lblMod40.Visible = estado;
             lblMod41.Visible = estado;
-            lblMod42.Visible = estado;
+            //lblMod42.Visible = estado;
         }
 
         /// <summary>Foca na TextBox txtNome.</summary>
-        private void porFoco() 
+        private void porFoco()
         {
             this.ActiveControl = txtNome;
         }
 
         /// <summary>Restringe Textboxs para apenas aceitar números.</summary>
-        private void aceitarApenasNumeros(KeyPressEventArgs e) {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&(e.KeyChar != '.'))
+        private void aceitarApenasNumeros(KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -211,7 +213,7 @@ namespace Facturix_Salários
         }
 
         /// <summary>Procura o último ID do do registo.</summary>
-        private int getCod() 
+        private int getCod()
         {
             int cod = 0;
             ArrayList listaFunc = ControllerFuncionario.recuperar();
@@ -226,47 +228,47 @@ namespace Facturix_Salários
         public void impedirBotoes()
         {
             //|| txtNrFiscal.Text == ""
-            if (txtNome.Text == "" )
-                {
-                    btnAdicionar.Enabled = true;
-                    btnAtualizar.Enabled = false;
-                    btnCancelar.Enabled = false;
-                    btnConfirmar.Enabled = false;
-                    btnEliminar.Enabled = false;
-                    btnImprimir.Enabled = false;
-                    btnAdicionar.FlatStyle = FlatStyle.Standard;
-                    btnAtualizar.FlatStyle = FlatStyle.Flat;
-                    btnCancelar.FlatStyle = FlatStyle.Flat;
-                    btnConfirmar.FlatStyle = FlatStyle.Flat;
-                    btnEliminar.FlatStyle = FlatStyle.Flat;
-                    btnImprimir.FlatStyle = FlatStyle.Flat;
-                    btnCancelar.Cursor = System.Windows.Forms.Cursors.Default;
-                    btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
-                    btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
-                    btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
+            if (txtNome.Text == "")
+            {
+                btnAdicionar.Enabled = true;
+                btnAtualizar.Enabled = false;
+                btnCancelar.Enabled = false;
+                btnConfirmar.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnImprimir.Enabled = false;
+                btnAdicionar.FlatStyle = FlatStyle.Standard;
+                btnAtualizar.FlatStyle = FlatStyle.Flat;
+                btnCancelar.FlatStyle = FlatStyle.Flat;
+                btnConfirmar.FlatStyle = FlatStyle.Flat;
+                btnEliminar.FlatStyle = FlatStyle.Flat;
+                btnImprimir.FlatStyle = FlatStyle.Flat;
+                btnCancelar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
             }
             else
-                if (txtNome.Text != "" )
-                {
-                    btnAtualizar.Enabled = true;
-                    btnCancelar.Enabled = true;
-                    btnConfirmar.Enabled = true;
-                    btnEliminar.Enabled = true;
-                    btnImprimir.Enabled = true;
-                    btnAtualizar.FlatStyle = FlatStyle.Standard;
-                    btnCancelar.FlatStyle = FlatStyle.Standard;
-                    btnConfirmar.FlatStyle = FlatStyle.Standard;
-                    btnEliminar.FlatStyle = FlatStyle.Standard;
-                    btnImprimir.FlatStyle = FlatStyle.Standard;
-                    btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-                    btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-                    btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
-                    btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
+                if (txtNome.Text != "")
+            {
+                btnAtualizar.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnConfirmar.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnImprimir.Enabled = true;
+                btnAtualizar.FlatStyle = FlatStyle.Standard;
+                btnCancelar.FlatStyle = FlatStyle.Standard;
+                btnConfirmar.FlatStyle = FlatStyle.Standard;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnImprimir.FlatStyle = FlatStyle.Standard;
+                btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
             }
         }
 
         /// <summary>Grava na base de dados se o registo não existie, e atualiza se existir.</summary>
-        private void gravar  ()
+        private void gravar()
         {
             ArrayList listaFuncionarios = ControllerFuncionario.recuperar();
             int id = int.Parse(txtCodigo.Text);
@@ -278,7 +280,8 @@ namespace Facturix_Salários
             {
                 codPostal = 0000;
             }
-            else {
+            else
+            {
                 codPostal = int.Parse(txtCodPostal.Text);
             }
             String cell = txtCell.Text;
@@ -322,7 +325,7 @@ namespace Facturix_Salários
             {
                 vencimento = 0;
             }
-            else 
+            else
             {
                 vencimento = double.Parse(txtVencimento.Text);
             }
@@ -330,31 +333,31 @@ namespace Facturix_Salários
             {
                 subAlimentacao = 0;
             }
-            else 
+            else
             {
                 subAlimentacao = double.Parse(txtAlimentacao.Text);
             }
-            if (txtSubTransporte.Text == "")
-            {
-                subTransporte = 0;
-            }
-            else 
-            {
-                subTransporte = double.Parse(txtSubTransporte.Text);
-            }
-            if (txtSubComunicacao.Text == "")
-            {
-                subComunicacao = 0;
-            }
-            else 
-            {
-                subComunicacao = double.Parse(txtSubComunicacao.Text);
-            }
+            //if (txtSubTransporte.Text == "")
+            //{
+            //    subTransporte = 0;
+            //}
+            //else
+            //{
+            //    subTransporte = double.Parse(txtSubTransporte.Text);
+            //}
+            //if (txtSubComunicacao.Text == "")
+            //{
+            //    subComunicacao = 0;
+            //}
+            //else
+            //{
+            //    subComunicacao = double.Parse(txtSubComunicacao.Text);
+            //}
             if (txtHoraSemana.Text == "")
             {
                 horas = 0;
             }
-            else 
+            else
             {
                 horas = float.Parse(txtHoraSemana.Text);
             }
@@ -362,7 +365,7 @@ namespace Facturix_Salários
             {
                 impostoMunicipal = 0;
             }
-            else 
+            else
             {
                 impostoMunicipal = float.Parse(txtImpostoM.Text);
             }
@@ -384,7 +387,8 @@ namespace Facturix_Salários
             {
                 dependentes = 0;
             }
-            else {
+            else
+            {
                 dependentes = int.Parse(txtNrDependentes.Text);
             }
             String habilitacoes = cbHabilitacoes.Text;
@@ -402,7 +406,7 @@ namespace Facturix_Salários
             int idIRPS = 0;
             foreach (ModeloFuncionario func in listaFuncionarios)
             {
-                if (func.getCodigo() == id) 
+                if (func.getCodigo() == id)
                 {
                     existe = true;
                 }
@@ -410,7 +414,7 @@ namespace Facturix_Salários
             ArrayList listaIRPS = ControllerIRPS.recuperar();
             foreach (ModeloIRPS f in listaIRPS)
             {
-                if (f.getSalarioMax() == 0 && vencimento < f.getSalarioMin()) 
+                if (f.getSalarioMax() == 0 && vencimento < f.getSalarioMin())
                 {
                     idIRPS = f.getId();
                     break;
@@ -421,7 +425,8 @@ namespace Facturix_Salários
                     {
                         idIRPS = f.getId();
                     }
-                } else if (f.getSalarioMax() == 0 && vencimento >=f.getSalarioMin()) 
+                }
+                else if (f.getSalarioMax() == 0 && vencimento >= f.getSalarioMin())
                 {
                     idIRPS = f.getId();
                 }
@@ -433,7 +438,7 @@ namespace Facturix_Salários
                 adicionar();
                 setCod();
             }
-            else 
+            else
             {
                 ControllerFuncionario.atualizar(id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao);
                 ControllerConta.atualizar(id, banco, nib, conta);
@@ -443,7 +448,7 @@ namespace Facturix_Salários
         }
 
         /// <summary>Monta no form os dados do registo.</summary>
-        private void montarCaixasDeTexto(ArrayList listaFuncionarios, ArrayList listaContas, int cod) 
+        private void montarCaixasDeTexto(ArrayList listaFuncionarios, ArrayList listaContas, int cod)
         {
             foreach (ModeloFuncionario func in listaFuncionarios)
             {
@@ -462,7 +467,7 @@ namespace Facturix_Salários
                 {
                     pbFoto.Image = Image.FromFile(func.getLinkImagem());
                 }
-                else 
+                else
                 {
                     pbFoto.Image = null;
                 }
@@ -483,7 +488,7 @@ namespace Facturix_Salários
                 txtNrFiscal.Text = func.getNumeroFiscal() + "";
                 txtVencimento.Text = func.getVencimento() + "";
                 txtAlimentacao.Text = func.getSubAlimentacao() + "";
-                txtSubTransporte.Text = func.getSubTransporte() + "";
+                //txtSubTransporte.Text = func.getSubTransporte() + "";
                 txtHoraSemana.Text = func.getHoras() + "";
                 txtNrDependentes.Text = func.getDependentes() + "";
                 txtNacionalidade.Text = func.getNacionalidade();
@@ -492,7 +497,7 @@ namespace Facturix_Salários
                 txtImpostoM.Text = func.getImpostoMunicipal() + "";
                 cbCentrocusto.Text = func.getCentroDeCusto();
                 txtSeguranca.Text = func.getSegurancaSocial();
-                txtSubComunicacao.Text = func.getSubComunicacao()+"";
+                //txtSubComunicacao.Text = func.getSubComunicacao() + "";
                 foreach (ModeloConta conta in listaContas)
                 {
                     if (cod == conta.idFuncionario)
@@ -525,14 +530,14 @@ namespace Facturix_Salários
             limparCaixasDependente();
         }
 
-        private void imprimir() 
+        private void imprimir()
         {
             ArrayList listaFunc = ControllerFuncionario.recuperar();
             int codTextBox = int.Parse(txtCodigo.Text);
             int codFuncionario = 0;
             foreach (ModeloFuncionario func in listaFunc)
             {
-                if (codTextBox == func.getCodigo()) 
+                if (codTextBox == func.getCodigo())
                 {
                     codFuncionario = func.getCodigo();
                 }
@@ -546,7 +551,7 @@ namespace Facturix_Salários
                 try
                 {
                     conexao.Open();
-                    MySqlCommand comando = new MySqlCommand("SELECT nome, email, numeroFiscal FROM funcionario where id="+codTextBox+"", conexao);
+                    MySqlCommand comando = new MySqlCommand("SELECT nome, email, numeroFiscal FROM funcionario where id=" + codTextBox + "", conexao);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(comando);
                     DataSet ds = new DataSet();
                     adapter.Fill(ds, "funcionario");
@@ -601,7 +606,7 @@ namespace Facturix_Salários
             txtNrBenificiario.Text = "";
             txtNrFiscal.Text = "";
             txtVencimento.Text = "";
-            txtSubTransporte.Text = "";
+            //txtSubTransporte.Text = "";
             txtAlimentacao.Text = "";
             txtHoraSemana.Text = "";
             dtNascimento.Value = DateTime.Now;
@@ -633,20 +638,20 @@ namespace Facturix_Salários
             limparCaixas();
         }
 
-        private void gravarDependente() 
+        private void gravarDependente()
         {
             ArrayList listaFunc = ControllerFuncionario.recuperar();
             int idFunc = int.Parse(txtCodigo.Text);
             String nome = txtNomeDep.Text;
             String dt = dtNascimentoDep.Value.Date.ToString("yyyy-MM-dd");
-            String dataNasc = dt.Substring(0,9);
+            String dataNasc = dt.Substring(0, 9);
             String grauParen = cbParentescoDep.Text;
             ControllerDependente.Guardar(idFunc, nome, dataNasc, grauParen);
             limparCaixasDependente();
             refrescarDependentes();
         }
 
-        private void modificarDependente() 
+        private void modificarDependente()
         {
             String nome = txtNomeDep.Text;
             string dataNasc = dtNascimentoDep.Text;
@@ -686,7 +691,7 @@ namespace Facturix_Salários
             {
                 cod = getCod();
             }
-            else 
+            else
             {
                 cod = int.Parse(txtCodigo.Text) - 1;
             }
@@ -747,7 +752,7 @@ namespace Facturix_Salários
                 this.ActiveControl = btnCarregarImagem;
                 e.SuppressKeyPress = true;
             }
-            if (e.Alt && e.KeyCode == Keys.C) 
+            if (e.Alt && e.KeyCode == Keys.C)
             {
                 gravarDependente();
             }
@@ -871,7 +876,7 @@ namespace Facturix_Salários
         }
 
         /// <summary>Muda Largura das DataGridView Cells.</summary>
-        private void mudarLarguraCelulas() 
+        private void mudarLarguraCelulas()
         {
             dataDependentes.Columns["Registo n°"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataDependentes.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -932,11 +937,11 @@ namespace Facturix_Salários
 
         }
 
-  
+
 
         private void txtMorada_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtMorada_KeyDown(object sender, KeyEventArgs e)
@@ -1170,7 +1175,8 @@ namespace Facturix_Salários
 
         private void btnCarregarImagem_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) {
+            if (e.KeyCode == Keys.Enter)
+            {
                 mexerTeclado(sender, e);
             }
         }
@@ -1208,7 +1214,8 @@ namespace Facturix_Salários
                     File.Copy(linkImagem, appPath + iName);
                     txtLink.Text = "";
                 }
-                else {
+                else
+                {
                     MessageBox.Show("Link de imagem inválido!");
                 }
                 e.SuppressKeyPress = true;
@@ -1253,7 +1260,7 @@ namespace Facturix_Salários
 
         private void txtBanco_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
         }
 
         private void txtVencimento_KeyPress(object sender, KeyPressEventArgs e)
@@ -1288,12 +1295,12 @@ namespace Facturix_Salários
 
         private void txtNacionalidade_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender,e);
+            mexerTeclado(sender, e);
         }
 
         private void txtSeguro_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void txtUltimo_KeyDown(object sender, KeyEventArgs e)
@@ -1333,7 +1340,7 @@ namespace Facturix_Salários
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            imprimir(); 
+            imprimir();
         }
 
         private void txtLink_TextChanged(object sender, EventArgs e)
@@ -1380,14 +1387,14 @@ namespace Facturix_Salários
             modificarDependente();
         }
 
-        private void limparCaixasDependente() 
+        private void limparCaixasDependente()
         {
             txtNomeDep.Text = "";
             cbParentescoDep.Text = "";
             dtNascimentoDep.Value = DateTime.Now;
         }
 
-        private void eliminarDependente() 
+        private void eliminarDependente()
         {
             ControllerDependente.remover(codigoCelSelecionada);
             refrescarDependentes();
@@ -1512,7 +1519,7 @@ namespace Facturix_Salários
 
         private void txtImpostoM_TextChanged(object sender, EventArgs e)
         {
-            if (txtImpostoM.Text == "%") 
+            if (txtImpostoM.Text == "%")
             {
                 txtImpostoM.Text = "";
             }
@@ -1535,6 +1542,18 @@ namespace Facturix_Salários
         private void btnRegressar_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+        }
+
+        private void btnAdicionarRemuneracao_Click_1(object sender, EventArgs e)
+        {
+            frmAdicionarRemuneracao f = new frmAdicionarRemuneracao();
+            f.Show();
+        }
+
+        private void btnEditarRemuneracoes_Click(object sender, EventArgs e)
+        {
+            frmAdicionarRemuneracao f = new frmAdicionarRemuneracao();
+            MessageBox.Show(qtd);
         }
     }
 }

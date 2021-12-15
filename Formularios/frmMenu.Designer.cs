@@ -49,6 +49,8 @@ namespace Facturix_Salários
             this.individualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.remuneraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +60,8 @@ namespace Facturix_Salários
             this.cadastros,
             this.configurador,
             this.processamentoToolStripMenuItem,
-            this.funcionáriosToolStripMenuItem});
+            this.funcionáriosToolStripMenuItem,
+            this.tabelasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1091, 24);
@@ -210,9 +213,24 @@ namespace Facturix_Salários
             // listagemToolStripMenuItem
             // 
             this.listagemToolStripMenuItem.Name = "listagemToolStripMenuItem";
-            this.listagemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listagemToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.listagemToolStripMenuItem.Text = "Listagem";
             this.listagemToolStripMenuItem.Click += new System.EventHandler(this.listagemToolStripMenuItem_Click);
+            // 
+            // tabelasToolStripMenuItem
+            // 
+            this.tabelasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.remuneraçõesToolStripMenuItem});
+            this.tabelasToolStripMenuItem.Name = "tabelasToolStripMenuItem";
+            this.tabelasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.tabelasToolStripMenuItem.Text = "Tabelas";
+            // 
+            // remuneraçõesToolStripMenuItem
+            // 
+            this.remuneraçõesToolStripMenuItem.Name = "remuneraçõesToolStripMenuItem";
+            this.remuneraçõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.remuneraçõesToolStripMenuItem.Text = "Remunerações";
+            this.remuneraçõesToolStripMenuItem.Click += new System.EventHandler(this.remuneraçõesToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -259,6 +277,8 @@ namespace Facturix_Salários
         private System.Windows.Forms.ToolStripMenuItem individualToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem funcionáriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listagemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tabelasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem remuneraçõesToolStripMenuItem;
     }
 }
 

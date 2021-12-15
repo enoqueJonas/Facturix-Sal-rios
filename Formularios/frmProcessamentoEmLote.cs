@@ -45,63 +45,32 @@ namespace Facturix_Salários.Formularios
             DataGridViewRow row = dataProcessamentoSalario.Rows[rowIndex];
             codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
             ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(codigoCelSelecionada);
-            ArrayList listaContas = ControllerConta.recuperarComCod(codigoCelSelecionada);
+            ArrayList listaIrps = ControllerIRPS.recuperar();
             ArrayList listaDependentes = ControllerDependente.recuperarComCodFuncionario(codigoCelSelecionada);
-            frmCadastrarFuncionarios f = new frmCadastrarFuncionarios();
+            frmProcessamentoIndividual f = new frmProcessamentoIndividual();
+            int codIrps = 0;
+            double valorIrps = 0, emprestimo = 0, ipa = 0, adiantamentos = 0;
             foreach (ModeloFuncionario func in listaFuncionarios) 
             {
-                f.txtCodigo.Text = func.getCodigo() + "";
+                f.nrRegistonr.Value = func.getCodigo();
                 f.txtNome.Text = func.getNome();
-                f.txtConjugue.Text = func.getConjugue();
-                f.txtEmail.Text = func.getEmail();
-                f.txtCell.Text = func.getCell();
-                f.txtCellSec.Text = func.getCellSec();
-                f.txtTel.Text = func.getTel();
-                f.cbSexo.Text = func.getSexo();
-                f.cbEstadoCivil.Text = func.getEstadoCivil();
-                f.cbDeficiencia.Text = func.getDeficiencia();
-                f.dtNascimento.Value = Convert.ToDateTime(func.getDataNascimento());
-                if (System.IO.File.Exists(func.getLinkImagem()))
-                {
-                    f.pbFoto.Image = Image.FromFile(func.getLinkImagem());
-                }
-                f.txtCodPostal.Text = func.getCodigoPostal() + "";
-                f.txtMorada.Text = func.getMoradaGen();
-                f.txtBairro.Text = func.getBairro();
-                f.txtLocalidade.Text = func.getLocalidade();
-                f.cbContrato.Text = func.getTipoContrato();
-                f.dtDataAdmissao.Value = Convert.ToDateTime(func.getDataAdmissao());
-                f.dtDataDemissao.Value = Convert.ToDateTime(func.getDataDemissao());
-                f.cbProfissao.Text = func.getProfissao();
-                f.cbCategoria.Text = func.getCategoria();
-                f.cbSeguro.Text = func.getSeguro();
-                f.cbLocalTrabalho.Text = func.getLocalTrabalho();
-                f.cbRegime.Text = func.getRegime();
-                f.txtBi.Text = func.getBi();
-                f.txtNrBenificiario.Text = func.getNumeroBenificiario();
-                f.txtNrFiscal.Text = func.getNumeroFiscal() + "";
-                f.txtVencimento.Text = func.getVencimento() + "";
-                f.txtAlimentacao.Text = func.getSubAlimentacao() + "";
-                f.txtSubTransporte.Text = func.getSubTransporte() + "";
-                f.txtHoraSemana.Text = func.getHoras() + "";
-                f.txtNrDependentes.Text = func.getDependentes() + "";
-                f.cbHabilitacoes.Text = func.getHabilitacoes();
-                f.txtNacionalidade.Text = func.getNacionalidade();
-                f.txtUltimo.Text = func.getUltimoEmprego();
-                f.cbTurno.Text = func.getTurno();
-                f.txtImpostoM.Text = func.getImpostoMunicipal() + "";
-                f.cbCentrocusto.Text = func.getCentroDeCusto();
-                f.txtSeguranca.Text = func.getSegurancaSocial();
+                emprestimo = 0;
+                f.txtemprestimoMedico.Text = emprestimo + "";
+                ipa = func.getImpostoMunicipal();
+                f.txtIpa.Text = ipa + "";
+                adiantamentos = 0;
+                f.txtadiantamentos.Text = adiantamentos  + "";
+                codIrps = func.getIdIRPS();
             }
-            foreach (ModeloConta conta in listaContas)
+            foreach (ModeloIRPS conta in listaIrps)
             {
-                if (codigoCelSelecionada == conta.idFuncionario)
+                if (codIrps == conta.getId())
                 {
-                    f.txtNrConta.Text = conta.conta;
-                    f.txtNib.Text = conta.nib;
-                    f.txtBanco.Text = conta.banco;
+                    valorIrps = conta.getValor();
+                    f.txtIrps.Text = valorIrps + "";
                 }
             }
+            f.txtTotalDescontar.Text = valorIrps + emprestimo + ipa + adiantamentos+"";
             f.Show();
             f.TopMost = true;
         }
@@ -184,9 +153,9 @@ namespace Facturix_Salários.Formularios
             dt.Columns.Add("Importância a pagar");
             foreach (ModeloFuncionario f in listaFuncionario)
             {
-                for (int i = 0; i < listagemFuncionario.Count; i++) 
+                for (int i = 0; i < funcionariosValidos.Count; i++) 
                 {
-                    if (f.getCodigo() == funcionariosValidos[i] && f.getCodigo() == listagemFuncionario[i])
+                    if (f.getCodigo() == funcionariosValidos[i])
                     {
                         DataRow dRow = dt.NewRow();
                         idFuncionario = f.getCodigo();

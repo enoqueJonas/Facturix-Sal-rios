@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 using MySql.Data.MySqlClient;
+using Facturix_Salários.Formularios;
 
 namespace Facturix_Salários
 {
@@ -126,9 +127,6 @@ namespace Facturix_Salários
                 f.txtBi.Text = func.getBi();
                 f.txtNrBenificiario.Text = func.getNumeroBenificiario();
                 f.txtNrFiscal.Text = func.getNumeroFiscal() + "";
-                f.txtVencimento.Text = func.getVencimento() + "";
-                f.txtAlimentacao.Text = func.getSubAlimentacao() + "";
-                f.txtSubTransporte.Text = func.getSubTransporte() + "";
                 f.txtHoraSemana.Text = func.getHoras() + "";
                 f.txtNrDependentes.Text = func.getDependentes() + "";
                 f.cbHabilitacoes.Text = func.getHabilitacoes();
@@ -211,10 +209,12 @@ namespace Facturix_Salários
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            frmCadastrarFuncionarios f = new frmCadastrarFuncionarios();
+            //frmCadastrarFuncionarios f = new frmCadastrarFuncionarios();
+            //f.Show();
+            //f.setCod();
+            //this.Close();
+            frmAdicionarFuncionario f = new frmAdicionarFuncionario();
             f.Show();
-            f.setCod();
-            this.Close();
         }
 
         private void txtLocalizar_TextChanged(object sender, EventArgs e)

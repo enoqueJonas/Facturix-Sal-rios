@@ -40,18 +40,31 @@
             this.cbGrupo = new System.Windows.Forms.ComboBox();
             this.cbNatureza = new System.Windows.Forms.ComboBox();
             this.cbQuantidade = new System.Windows.Forms.ComboBox();
-            this.cbValorUnitario = new System.Windows.Forms.ComboBox();
             this.chbSegurancaSocial = new System.Windows.Forms.CheckBox();
             this.chbIrps = new System.Windows.Forms.CheckBox();
             this.chbSeguro = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl6 = new System.Windows.Forms.Label();
+            this.lbl5 = new System.Windows.Forms.Label();
+            this.lbl4 = new System.Windows.Forms.Label();
+            this.lbl3 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbl9 = new System.Windows.Forms.Label();
+            this.lbl8 = new System.Windows.Forms.Label();
+            this.lbl7 = new System.Windows.Forms.Label();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAdicionar = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbInsento = new System.Windows.Forms.ComboBox();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.lbl10 = new System.Windows.Forms.Label();
+            this.cbValorUnit = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -60,7 +73,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 18);
+            this.label1.Location = new System.Drawing.Point(17, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 0;
@@ -69,7 +82,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 70);
+            this.label2.Location = new System.Drawing.Point(17, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 0;
@@ -79,7 +92,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 97);
+            this.label3.Location = new System.Drawing.Point(17, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 0;
@@ -89,7 +102,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 44);
+            this.label4.Location = new System.Drawing.Point(17, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 0;
@@ -99,7 +112,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 124);
+            this.label5.Location = new System.Drawing.Point(17, 124);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 0;
@@ -109,7 +122,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 151);
+            this.label6.Location = new System.Drawing.Point(17, 151);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 13);
             this.label6.TabIndex = 0;
@@ -118,14 +131,14 @@
             // 
             // txtRegistoNr
             // 
-            this.txtRegistoNr.Location = new System.Drawing.Point(94, 15);
+            this.txtRegistoNr.Location = new System.Drawing.Point(96, 15);
             this.txtRegistoNr.Name = "txtRegistoNr";
             this.txtRegistoNr.Size = new System.Drawing.Size(100, 20);
             this.txtRegistoNr.TabIndex = 1;
             // 
             // txtPercentagem
             // 
-            this.txtPercentagem.Location = new System.Drawing.Point(94, 41);
+            this.txtPercentagem.Location = new System.Drawing.Point(96, 41);
             this.txtPercentagem.Name = "txtPercentagem";
             this.txtPercentagem.Size = new System.Drawing.Size(100, 20);
             this.txtPercentagem.TabIndex = 1;
@@ -133,7 +146,24 @@
             // cbGrupo
             // 
             this.cbGrupo.FormattingEnabled = true;
-            this.cbGrupo.Location = new System.Drawing.Point(94, 67);
+            this.cbGrupo.Items.AddRange(new object[] {
+            "Vencimento",
+            "Subsídio de Alimentação",
+            "Subsídio de Transporte",
+            "Subsídio de Natal",
+            "Subsídio de Comunicação",
+            "Subsídio de Falhas",
+            "Subsídio de Férias",
+            "Subsídio de Turnos",
+            "Ajuda De Custos",
+            "Diuturnidades",
+            "Hora Suplementar",
+            "Outras Remunerações Regulares",
+            "Outras Remunerações irregulares",
+            "Falta(Vencimento)",
+            "Falta(Turno)",
+            "Falta(Alimentação)"});
+            this.cbGrupo.Location = new System.Drawing.Point(96, 67);
             this.cbGrupo.Name = "cbGrupo";
             this.cbGrupo.Size = new System.Drawing.Size(229, 21);
             this.cbGrupo.TabIndex = 2;
@@ -141,7 +171,24 @@
             // cbNatureza
             // 
             this.cbNatureza.FormattingEnabled = true;
-            this.cbNatureza.Location = new System.Drawing.Point(94, 94);
+            this.cbNatureza.Items.AddRange(new object[] {
+            "A- Ajudas De Custo e Transportes",
+            "B- Prémios, bónus e outros mensais",
+            "C- Comissões",
+            "D- Compensação por cessação do contrato",
+            "E- Subsídio de férias ",
+            "F- Honorários de prestação de serviços",
+            "G- Subsídios singulares mensais",
+            "H- Subsídio de Natal",
+            "I-  Prémios, bónus e outros não mensais",
+            "J- Subsídio de Alimentação",
+            "K- Trabalho suplementar",
+            "L- Trabalho nocturno",
+            "M-  Subsídios regulares mensais",
+            "N- Férias pagas não gozadas",
+            "O- Diferenças de vencimento ",
+            "P- Compensação do contrato interminente"});
+            this.cbNatureza.Location = new System.Drawing.Point(96, 94);
             this.cbNatureza.Name = "cbNatureza";
             this.cbNatureza.Size = new System.Drawing.Size(229, 21);
             this.cbNatureza.TabIndex = 2;
@@ -149,23 +196,20 @@
             // cbQuantidade
             // 
             this.cbQuantidade.FormattingEnabled = true;
-            this.cbQuantidade.Location = new System.Drawing.Point(94, 121);
+            this.cbQuantidade.Items.AddRange(new object[] {
+            "Definido pelo utilizador",
+            "1 Unidade",
+            "Dias de Vencimento",
+            "Dias de Alimentação"});
+            this.cbQuantidade.Location = new System.Drawing.Point(96, 121);
             this.cbQuantidade.Name = "cbQuantidade";
             this.cbQuantidade.Size = new System.Drawing.Size(229, 21);
             this.cbQuantidade.TabIndex = 2;
             // 
-            // cbValorUnitario
-            // 
-            this.cbValorUnitario.FormattingEnabled = true;
-            this.cbValorUnitario.Location = new System.Drawing.Point(94, 148);
-            this.cbValorUnitario.Name = "cbValorUnitario";
-            this.cbValorUnitario.Size = new System.Drawing.Size(229, 21);
-            this.cbValorUnitario.TabIndex = 2;
-            // 
             // chbSegurancaSocial
             // 
             this.chbSegurancaSocial.AutoSize = true;
-            this.chbSegurancaSocial.Location = new System.Drawing.Point(10, 19);
+            this.chbSegurancaSocial.Location = new System.Drawing.Point(20, 19);
             this.chbSegurancaSocial.Name = "chbSegurancaSocial";
             this.chbSegurancaSocial.Size = new System.Drawing.Size(110, 17);
             this.chbSegurancaSocial.TabIndex = 3;
@@ -175,7 +219,7 @@
             // chbIrps
             // 
             this.chbIrps.AutoSize = true;
-            this.chbIrps.Location = new System.Drawing.Point(10, 42);
+            this.chbIrps.Location = new System.Drawing.Point(20, 42);
             this.chbIrps.Name = "chbIrps";
             this.chbIrps.Size = new System.Drawing.Size(51, 17);
             this.chbIrps.TabIndex = 3;
@@ -185,7 +229,7 @@
             // chbSeguro
             // 
             this.chbSeguro.AutoSize = true;
-            this.chbSeguro.Location = new System.Drawing.Point(10, 65);
+            this.chbSeguro.Location = new System.Drawing.Point(20, 65);
             this.chbSeguro.Name = "chbSeguro";
             this.chbSeguro.Size = new System.Drawing.Size(60, 17);
             this.chbSeguro.TabIndex = 3;
@@ -194,12 +238,22 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbValorUnitario);
+            this.groupBox1.Controls.Add(this.lbl6);
+            this.groupBox1.Controls.Add(this.lbl5);
+            this.groupBox1.Controls.Add(this.lbl4);
+            this.groupBox1.Controls.Add(this.lbl3);
+            this.groupBox1.Controls.Add(this.lbl2);
+            this.groupBox1.Controls.Add(this.lbl7);
+            this.groupBox1.Controls.Add(this.lbl1);
             this.groupBox1.Controls.Add(this.cbNatureza);
+            this.groupBox1.Controls.Add(this.cbInsento);
+            this.groupBox1.Controls.Add(this.cbValorUnit);
             this.groupBox1.Controls.Add(this.cbQuantidade);
             this.groupBox1.Controls.Add(this.cbGrupo);
+            this.groupBox1.Controls.Add(this.txtValor);
             this.groupBox1.Controls.Add(this.txtPercentagem);
             this.groupBox1.Controls.Add(this.txtRegistoNr);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -208,21 +262,132 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(21, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(343, 183);
+            this.groupBox1.Size = new System.Drawing.Size(345, 210);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
+            // 
+            // lbl6
+            // 
+            this.lbl6.AutoSize = true;
+            this.lbl6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl6.Location = new System.Drawing.Point(6, 151);
+            this.lbl6.Name = "lbl6";
+            this.lbl6.Size = new System.Drawing.Size(13, 13);
+            this.lbl6.TabIndex = 3;
+            this.lbl6.Text = "6";
+            this.lbl6.Visible = false;
+            // 
+            // lbl5
+            // 
+            this.lbl5.AutoSize = true;
+            this.lbl5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl5.Location = new System.Drawing.Point(6, 125);
+            this.lbl5.Name = "lbl5";
+            this.lbl5.Size = new System.Drawing.Size(13, 13);
+            this.lbl5.TabIndex = 3;
+            this.lbl5.Text = "5";
+            this.lbl5.Visible = false;
+            // 
+            // lbl4
+            // 
+            this.lbl4.AutoSize = true;
+            this.lbl4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl4.Location = new System.Drawing.Point(6, 97);
+            this.lbl4.Name = "lbl4";
+            this.lbl4.Size = new System.Drawing.Size(13, 13);
+            this.lbl4.TabIndex = 3;
+            this.lbl4.Text = "4";
+            this.lbl4.Visible = false;
+            // 
+            // lbl3
+            // 
+            this.lbl3.AutoSize = true;
+            this.lbl3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl3.Location = new System.Drawing.Point(6, 71);
+            this.lbl3.Name = "lbl3";
+            this.lbl3.Size = new System.Drawing.Size(13, 13);
+            this.lbl3.TabIndex = 3;
+            this.lbl3.Text = "3";
+            this.lbl3.Visible = false;
+            // 
+            // lbl2
+            // 
+            this.lbl2.AutoSize = true;
+            this.lbl2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl2.Location = new System.Drawing.Point(6, 44);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(13, 13);
+            this.lbl2.TabIndex = 3;
+            this.lbl2.Text = "2";
+            this.lbl2.Visible = false;
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl1.Location = new System.Drawing.Point(6, 18);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(13, 13);
+            this.lbl1.TabIndex = 3;
+            this.lbl1.Text = "1";
+            this.lbl1.Visible = false;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.chbSeguro);
             this.groupBox2.Controls.Add(this.chbIrps);
             this.groupBox2.Controls.Add(this.chbSegurancaSocial);
-            this.groupBox2.Location = new System.Drawing.Point(382, 101);
+            this.groupBox2.Controls.Add(this.lbl10);
+            this.groupBox2.Controls.Add(this.lbl9);
+            this.groupBox2.Controls.Add(this.lbl8);
+            this.groupBox2.Location = new System.Drawing.Point(381, 79);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(134, 94);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Descontos";
+            // 
+            // lbl9
+            // 
+            this.lbl9.AutoSize = true;
+            this.lbl9.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl9.Location = new System.Drawing.Point(6, 43);
+            this.lbl9.Name = "lbl9";
+            this.lbl9.Size = new System.Drawing.Size(13, 13);
+            this.lbl9.TabIndex = 3;
+            this.lbl9.Text = "9";
+            this.lbl9.Visible = false;
+            // 
+            // lbl8
+            // 
+            this.lbl8.AutoSize = true;
+            this.lbl8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl8.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl8.Location = new System.Drawing.Point(6, 20);
+            this.lbl8.Name = "lbl8";
+            this.lbl8.Size = new System.Drawing.Size(13, 13);
+            this.lbl8.TabIndex = 3;
+            this.lbl8.Text = "8";
+            this.lbl8.Visible = false;
+            // 
+            // lbl7
+            // 
+            this.lbl7.AutoSize = true;
+            this.lbl7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl7.Location = new System.Drawing.Point(6, 178);
+            this.lbl7.Name = "lbl7";
+            this.lbl7.Size = new System.Drawing.Size(13, 13);
+            this.lbl7.TabIndex = 3;
+            this.lbl7.Text = "7";
+            this.lbl7.Visible = false;
             // 
             // btnRegressar
             // 
@@ -238,6 +403,7 @@
             this.btnRegressar.Text = "Regressar";
             this.btnRegressar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRegressar.UseVisualStyleBackColor = true;
+            this.btnRegressar.Click += new System.EventHandler(this.btnRegressar_Click);
             // 
             // btnConfirmar
             // 
@@ -253,6 +419,7 @@
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // btnCancelar
             // 
@@ -268,6 +435,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnEliminar
             // 
@@ -283,6 +451,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // panel1
             // 
@@ -292,7 +461,7 @@
             this.panel1.Controls.Add(this.btnConfirmar);
             this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.btnEliminar);
-            this.panel1.Location = new System.Drawing.Point(21, 213);
+            this.panel1.Location = new System.Drawing.Point(21, 239);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(494, 77);
             this.panel1.TabIndex = 3010;
@@ -311,19 +480,79 @@
             this.btnAdicionar.Text = "\r\nAdicionar";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(17, 177);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Isento Até:";
+            this.label7.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // cbInsento
+            // 
+            this.cbInsento.FormattingEnabled = true;
+            this.cbInsento.Items.AddRange(new object[] {
+            "Definido pelo utilizador",
+            "5% do vencimento base"});
+            this.cbInsento.Location = new System.Drawing.Point(96, 174);
+            this.cbInsento.Name = "cbInsento";
+            this.cbInsento.Size = new System.Drawing.Size(159, 21);
+            this.cbInsento.TabIndex = 2;
+            // 
+            // txtValor
+            // 
+            this.txtValor.Location = new System.Drawing.Point(261, 175);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(64, 20);
+            this.txtValor.TabIndex = 1;
+            this.txtValor.Text = "MZN";
+            this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValor.Click += new System.EventHandler(this.txtValor_Click);
+            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
+            // 
+            // lbl10
+            // 
+            this.lbl10.AutoSize = true;
+            this.lbl10.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl10.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl10.Location = new System.Drawing.Point(6, 66);
+            this.lbl10.Name = "lbl10";
+            this.lbl10.Size = new System.Drawing.Size(19, 13);
+            this.lbl10.TabIndex = 3;
+            this.lbl10.Text = "10";
+            this.lbl10.Visible = false;
+            // 
+            // cbValorUnit
+            // 
+            this.cbValorUnit.FormattingEnabled = true;
+            this.cbValorUnit.Items.AddRange(new object[] {
+            "Definido pelo utilizador",
+            "1 dia de Vencimento",
+            "1 dia de Alimentação",
+            "1 hora de vencimento",
+            "1 diuturnidade"});
+            this.cbValorUnit.Location = new System.Drawing.Point(96, 147);
+            this.cbValorUnit.Name = "cbValorUnit";
+            this.cbValorUnit.Size = new System.Drawing.Size(229, 21);
+            this.cbValorUnit.TabIndex = 2;
             // 
             // frmRemuneracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(535, 307);
+            this.ClientSize = new System.Drawing.Size(535, 330);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmRemuneracoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Remunerações";
+            this.Load += new System.EventHandler(this.frmRemuneracoes_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -341,15 +570,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtRegistoNr;
-        private System.Windows.Forms.TextBox txtPercentagem;
-        private System.Windows.Forms.ComboBox cbGrupo;
-        private System.Windows.Forms.ComboBox cbNatureza;
-        private System.Windows.Forms.ComboBox cbQuantidade;
-        private System.Windows.Forms.ComboBox cbValorUnitario;
-        private System.Windows.Forms.CheckBox chbSegurancaSocial;
-        private System.Windows.Forms.CheckBox chbIrps;
-        private System.Windows.Forms.CheckBox chbSeguro;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnRegressar;
@@ -358,5 +578,27 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Label lbl6;
+        private System.Windows.Forms.Label lbl5;
+        private System.Windows.Forms.Label lbl4;
+        private System.Windows.Forms.Label lbl3;
+        private System.Windows.Forms.Label lbl2;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Label lbl9;
+        private System.Windows.Forms.Label lbl8;
+        private System.Windows.Forms.Label lbl7;
+        public System.Windows.Forms.TextBox txtRegistoNr;
+        public System.Windows.Forms.TextBox txtPercentagem;
+        public System.Windows.Forms.ComboBox cbGrupo;
+        public System.Windows.Forms.ComboBox cbNatureza;
+        public System.Windows.Forms.ComboBox cbQuantidade;
+        public System.Windows.Forms.CheckBox chbSegurancaSocial;
+        public System.Windows.Forms.CheckBox chbIrps;
+        public System.Windows.Forms.CheckBox chbSeguro;
+        public System.Windows.Forms.ComboBox cbInsento;
+        public System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbl10;
+        public System.Windows.Forms.ComboBox cbValorUnit;
     }
 }

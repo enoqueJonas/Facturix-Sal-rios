@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Facturix_Salários
 {
     partial class frmCadastrarFuncionarios
@@ -29,10 +31,10 @@ namespace Facturix_Salários
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastrarFuncionarios));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -138,9 +140,6 @@ namespace Facturix_Salários
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataSubsidios = new System.Windows.Forms.DataGridView();
-            this.lblMod42 = new System.Windows.Forms.Label();
-            this.lbl43 = new System.Windows.Forms.Label();
             this.lblMod41 = new System.Windows.Forms.Label();
             this.lblMod40 = new System.Windows.Forms.Label();
             this.lblMod37 = new System.Windows.Forms.Label();
@@ -171,10 +170,11 @@ namespace Facturix_Salários
             this.txtHoraSemana = new System.Windows.Forms.TextBox();
             this.lblSubAlimentacao = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.lblSubComunicacao = new System.Windows.Forms.Label();
-            this.lblSubTransporte = new System.Windows.Forms.Label();
-            this.txtSubComunicacao = new System.Windows.Forms.TextBox();
-            this.txtSubTransporte = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnAdicionarRemuneracao = new System.Windows.Forms.Button();
+            this.btnEditarRemuneracoes = new System.Windows.Forms.Button();
+            this.btnEliminarRemuneracoes = new System.Windows.Forms.Button();
+            this.dataSubsidios = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataDependentes = new System.Windows.Forms.DataGridView();
@@ -207,6 +207,7 @@ namespace Facturix_Salários
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSubsidios)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -1028,7 +1029,7 @@ namespace Facturix_Salários
             // 
             this.txtNacionalidade.Location = new System.Drawing.Point(349, 184);
             this.txtNacionalidade.Name = "txtNacionalidade";
-            this.txtNacionalidade.Size = new System.Drawing.Size(292, 20);
+            this.txtNacionalidade.Size = new System.Drawing.Size(289, 20);
             this.txtNacionalidade.TabIndex = 16;
             this.txtNacionalidade.TextChanged += new System.EventHandler(this.txtNacionalidade_TextChanged);
             this.txtNacionalidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNacionalidade_KeyDown);
@@ -1106,7 +1107,7 @@ namespace Facturix_Salários
             "Viúvo"});
             this.cbEstadoCivil.Location = new System.Drawing.Point(505, 132);
             this.cbEstadoCivil.Name = "cbEstadoCivil";
-            this.cbEstadoCivil.Size = new System.Drawing.Size(136, 21);
+            this.cbEstadoCivil.Size = new System.Drawing.Size(133, 21);
             this.cbEstadoCivil.TabIndex = 12;
             this.cbEstadoCivil.SelectedIndexChanged += new System.EventHandler(this.cbEstadoCivil_SelectedIndexChanged);
             this.cbEstadoCivil.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbEstadoCivil_KeyDown);
@@ -1155,7 +1156,7 @@ namespace Facturix_Salários
             // 
             this.txtEmail.Location = new System.Drawing.Point(505, 106);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(136, 20);
+            this.txtEmail.Size = new System.Drawing.Size(133, 20);
             this.txtEmail.TabIndex = 9;
             this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
@@ -1173,7 +1174,7 @@ namespace Facturix_Salários
             // 
             this.txtCell.Location = new System.Drawing.Point(505, 81);
             this.txtCell.Name = "txtCell";
-            this.txtCell.Size = new System.Drawing.Size(136, 20);
+            this.txtCell.Size = new System.Drawing.Size(133, 20);
             this.txtCell.TabIndex = 6;
             this.txtCell.TextChanged += new System.EventHandler(this.txtCell_TextChanged);
             this.txtCell.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCell_KeyDown);
@@ -1210,16 +1211,16 @@ namespace Facturix_Salários
             // 
             this.txtBairro.Location = new System.Drawing.Point(505, 56);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(136, 20);
+            this.txtBairro.Size = new System.Drawing.Size(133, 20);
             this.txtBairro.TabIndex = 3;
             this.txtBairro.TextChanged += new System.EventHandler(this.txtBairro_TextChanged);
             this.txtBairro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBairro_KeyDown);
             // 
             // txtMorada
             // 
-            this.txtMorada.Location = new System.Drawing.Point(79, 57);
+            this.txtMorada.Location = new System.Drawing.Point(77, 57);
             this.txtMorada.Name = "txtMorada";
-            this.txtMorada.Size = new System.Drawing.Size(337, 20);
+            this.txtMorada.Size = new System.Drawing.Size(343, 20);
             this.txtMorada.TabIndex = 2;
             this.txtMorada.TextChanged += new System.EventHandler(this.txtMorada_TextChanged_1);
             this.txtMorada.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMorada_KeyDown);
@@ -1228,7 +1229,7 @@ namespace Facturix_Salários
             // 
             this.txtNome.Location = new System.Drawing.Point(245, 31);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(396, 20);
+            this.txtNome.Size = new System.Drawing.Size(393, 20);
             this.txtNome.TabIndex = 1;
             this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged_1);
             this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
@@ -1411,9 +1412,6 @@ namespace Facturix_Salários
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.groupBox4.Controls.Add(this.dataSubsidios);
-            this.groupBox4.Controls.Add(this.lblMod42);
-            this.groupBox4.Controls.Add(this.lbl43);
             this.groupBox4.Controls.Add(this.lblMod41);
             this.groupBox4.Controls.Add(this.lblMod40);
             this.groupBox4.Controls.Add(this.lblMod37);
@@ -1444,10 +1442,7 @@ namespace Facturix_Salários
             this.groupBox4.Controls.Add(this.txtHoraSemana);
             this.groupBox4.Controls.Add(this.lblSubAlimentacao);
             this.groupBox4.Controls.Add(this.label37);
-            this.groupBox4.Controls.Add(this.lblSubComunicacao);
-            this.groupBox4.Controls.Add(this.lblSubTransporte);
-            this.groupBox4.Controls.Add(this.txtSubComunicacao);
-            this.groupBox4.Controls.Add(this.txtSubTransporte);
+            this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Location = new System.Drawing.Point(13, 21);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(819, 441);
@@ -1455,79 +1450,16 @@ namespace Facturix_Salários
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dados Financeiros";
             // 
-            // dataSubsidios
-            // 
-            this.dataSubsidios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataSubsidios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataSubsidios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataSubsidios.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataSubsidios.EnableHeadersVisualStyles = false;
-            this.dataSubsidios.Location = new System.Drawing.Point(8, 228);
-            this.dataSubsidios.Name = "dataSubsidios";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataSubsidios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataSubsidios.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataSubsidios.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataSubsidios.Size = new System.Drawing.Size(806, 199);
-            this.dataSubsidios.TabIndex = 3014;
-            // 
-            // lblMod42
-            // 
-            this.lblMod42.AutoSize = true;
-            this.lblMod42.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblMod42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblMod42.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod42.Location = new System.Drawing.Point(28, 183);
-            this.lblMod42.Name = "lblMod42";
-            this.lblMod42.Size = new System.Drawing.Size(21, 15);
-            this.lblMod42.TabIndex = 3010;
-            this.lblMod42.Text = "42";
-            this.lblMod42.Visible = false;
-            // 
-            // lbl43
-            // 
-            this.lbl43.AutoSize = true;
-            this.lbl43.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl43.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lbl43.Location = new System.Drawing.Point(426, 182);
-            this.lbl43.Name = "lbl43";
-            this.lbl43.Size = new System.Drawing.Size(21, 15);
-            this.lbl43.TabIndex = 3009;
-            this.lbl43.Text = "43";
-            this.lbl43.Visible = false;
-            // 
             // lblMod41
             // 
             this.lblMod41.AutoSize = true;
             this.lblMod41.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblMod41.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMod41.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod41.Location = new System.Drawing.Point(426, 153);
+            this.lblMod41.Location = new System.Drawing.Point(434, 139);
             this.lblMod41.Name = "lblMod41";
             this.lblMod41.Size = new System.Drawing.Size(21, 15);
-            this.lblMod41.TabIndex = 3009;
+            this.lblMod41.TabIndex = 3042;
             this.lblMod41.Text = "41";
             this.lblMod41.Visible = false;
             // 
@@ -1537,10 +1469,10 @@ namespace Facturix_Salários
             this.lblMod40.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblMod40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMod40.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod40.Location = new System.Drawing.Point(28, 152);
+            this.lblMod40.Location = new System.Drawing.Point(36, 138);
             this.lblMod40.Name = "lblMod40";
             this.lblMod40.Size = new System.Drawing.Size(21, 15);
-            this.lblMod40.TabIndex = 3009;
+            this.lblMod40.TabIndex = 3041;
             this.lblMod40.Text = "40";
             this.lblMod40.Visible = false;
             // 
@@ -1550,10 +1482,10 @@ namespace Facturix_Salários
             this.lblMod37.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblMod37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMod37.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod37.Location = new System.Drawing.Point(426, 93);
+            this.lblMod37.Location = new System.Drawing.Point(434, 79);
             this.lblMod37.Name = "lblMod37";
             this.lblMod37.Size = new System.Drawing.Size(21, 15);
-            this.lblMod37.TabIndex = 3010;
+            this.lblMod37.TabIndex = 3044;
             this.lblMod37.Text = "37";
             this.lblMod37.Visible = false;
             // 
@@ -1563,10 +1495,10 @@ namespace Facturix_Salários
             this.lblMod38.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblMod38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMod38.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod38.Location = new System.Drawing.Point(28, 121);
+            this.lblMod38.Location = new System.Drawing.Point(36, 107);
             this.lblMod38.Name = "lblMod38";
             this.lblMod38.Size = new System.Drawing.Size(21, 15);
-            this.lblMod38.TabIndex = 3010;
+            this.lblMod38.TabIndex = 3045;
             this.lblMod38.Text = "38";
             this.lblMod38.Visible = false;
             // 
@@ -1576,10 +1508,10 @@ namespace Facturix_Salários
             this.lblMod39.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblMod39.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMod39.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod39.Location = new System.Drawing.Point(426, 124);
+            this.lblMod39.Location = new System.Drawing.Point(434, 110);
             this.lblMod39.Name = "lblMod39";
             this.lblMod39.Size = new System.Drawing.Size(21, 15);
-            this.lblMod39.TabIndex = 3011;
+            this.lblMod39.TabIndex = 3046;
             this.lblMod39.Text = "39";
             this.lblMod39.Visible = false;
             // 
@@ -1589,10 +1521,10 @@ namespace Facturix_Salários
             this.lblMod36.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblMod36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMod36.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod36.Location = new System.Drawing.Point(28, 91);
+            this.lblMod36.Location = new System.Drawing.Point(36, 77);
             this.lblMod36.Name = "lblMod36";
             this.lblMod36.Size = new System.Drawing.Size(21, 15);
-            this.lblMod36.TabIndex = 3011;
+            this.lblMod36.TabIndex = 3047;
             this.lblMod36.Text = "36";
             this.lblMod36.Visible = false;
             // 
@@ -1602,10 +1534,10 @@ namespace Facturix_Salários
             this.lblMod35.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblMod35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMod35.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod35.Location = new System.Drawing.Point(426, 69);
+            this.lblMod35.Location = new System.Drawing.Point(434, 55);
             this.lblMod35.Name = "lblMod35";
             this.lblMod35.Size = new System.Drawing.Size(21, 15);
-            this.lblMod35.TabIndex = 3012;
+            this.lblMod35.TabIndex = 3048;
             this.lblMod35.Text = "35";
             this.lblMod35.Visible = false;
             // 
@@ -1615,10 +1547,10 @@ namespace Facturix_Salários
             this.lblMod34.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblMod34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMod34.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod34.Location = new System.Drawing.Point(28, 62);
+            this.lblMod34.Location = new System.Drawing.Point(36, 48);
             this.lblMod34.Name = "lblMod34";
             this.lblMod34.Size = new System.Drawing.Size(21, 15);
-            this.lblMod34.TabIndex = 3012;
+            this.lblMod34.TabIndex = 3049;
             this.lblMod34.Text = "34";
             this.lblMod34.Visible = false;
             // 
@@ -1628,10 +1560,10 @@ namespace Facturix_Salários
             this.lblMod33.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblMod33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMod33.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod33.Location = new System.Drawing.Point(426, 40);
+            this.lblMod33.Location = new System.Drawing.Point(434, 26);
             this.lblMod33.Name = "lblMod33";
             this.lblMod33.Size = new System.Drawing.Size(21, 15);
-            this.lblMod33.TabIndex = 3013;
+            this.lblMod33.TabIndex = 3050;
             this.lblMod33.Text = "33";
             this.lblMod33.Visible = false;
             // 
@@ -1641,22 +1573,20 @@ namespace Facturix_Salários
             this.lblMod32.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblMod32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMod32.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblMod32.Location = new System.Drawing.Point(28, 33);
+            this.lblMod32.Location = new System.Drawing.Point(36, 19);
             this.lblMod32.Name = "lblMod32";
             this.lblMod32.Size = new System.Drawing.Size(21, 15);
-            this.lblMod32.TabIndex = 3013;
+            this.lblMod32.TabIndex = 3051;
             this.lblMod32.Text = "32";
             this.lblMod32.Visible = false;
             // 
             // txtAlimentacao
             // 
-            this.txtAlimentacao.Location = new System.Drawing.Point(171, 59);
+            this.txtAlimentacao.Location = new System.Drawing.Point(179, 45);
             this.txtAlimentacao.Name = "txtAlimentacao";
             this.txtAlimentacao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAlimentacao.Size = new System.Drawing.Size(236, 20);
-            this.txtAlimentacao.TabIndex = 34;
-            this.txtAlimentacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAlimentacao_KeyDown);
-            this.txtAlimentacao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAlimentacao_KeyPress);
+            this.txtAlimentacao.TabIndex = 3018;
             // 
             // cbTurno
             // 
@@ -1664,216 +1594,242 @@ namespace Facturix_Salários
             this.cbTurno.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.cbTurno.Location = new System.Drawing.Point(542, 151);
+            this.cbTurno.Location = new System.Drawing.Point(550, 107);
             this.cbTurno.Margin = new System.Windows.Forms.Padding(2);
             this.cbTurno.Name = "cbTurno";
             this.cbTurno.Size = new System.Drawing.Size(236, 21);
-            this.cbTurno.TabIndex = 41;
-            this.cbTurno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbTurno_KeyDown);
+            this.cbTurno.TabIndex = 3025;
             // 
             // Label34
             // 
             this.Label34.AutoSize = true;
-            this.Label34.Location = new System.Drawing.Point(454, 63);
+            this.Label34.Location = new System.Drawing.Point(462, 49);
             this.Label34.Name = "Label34";
             this.Label34.Size = new System.Drawing.Size(38, 13);
-            this.Label34.TabIndex = 220;
+            this.Label34.TabIndex = 3028;
             this.Label34.Text = "( Nib ):";
             // 
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(452, 155);
+            this.label41.Location = new System.Drawing.Point(460, 111);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(35, 13);
-            this.label41.TabIndex = 233;
+            this.label41.TabIndex = 3039;
             this.label41.Text = "Turno";
             // 
             // txtNib
             // 
-            this.txtNib.Location = new System.Drawing.Point(542, 61);
+            this.txtNib.Location = new System.Drawing.Point(550, 47);
             this.txtNib.Name = "txtNib";
             this.txtNib.Size = new System.Drawing.Size(236, 20);
-            this.txtNib.TabIndex = 35;
-            this.txtNib.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNib_KeyDown);
-            this.txtNib.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNib_KeyPress);
+            this.txtNib.TabIndex = 3019;
             // 
             // txtImpostoM
             // 
-            this.txtImpostoM.Location = new System.Drawing.Point(171, 181);
+            this.txtImpostoM.Location = new System.Drawing.Point(179, 139);
             this.txtImpostoM.Name = "txtImpostoM";
             this.txtImpostoM.Size = new System.Drawing.Size(44, 20);
-            this.txtImpostoM.TabIndex = 42;
+            this.txtImpostoM.TabIndex = 3026;
             this.txtImpostoM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtImpostoM.TextChanged += new System.EventHandler(this.txtImpostoM_TextChanged);
-            this.txtImpostoM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImpostoM_KeyDown);
-            this.txtImpostoM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImpostoM_KeyPress);
             // 
             // Label40
             // 
             this.Label40.AutoSize = true;
-            this.Label40.Location = new System.Drawing.Point(453, 93);
+            this.Label40.Location = new System.Drawing.Point(461, 79);
             this.Label40.Name = "Label40";
             this.Label40.Size = new System.Drawing.Size(64, 13);
-            this.Label40.TabIndex = 221;
+            this.Label40.TabIndex = 3029;
             this.Label40.Text = "N.de Conta:";
             // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(54, 184);
+            this.label39.Location = new System.Drawing.Point(62, 142);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(120, 13);
-            this.label39.TabIndex = 232;
+            this.label39.TabIndex = 3038;
             this.label39.Text = "Imposto municipal (IPA):";
             // 
             // txtNrConta
             // 
-            this.txtNrConta.Location = new System.Drawing.Point(542, 90);
+            this.txtNrConta.Location = new System.Drawing.Point(550, 76);
             this.txtNrConta.Name = "txtNrConta";
             this.txtNrConta.Size = new System.Drawing.Size(236, 20);
-            this.txtNrConta.TabIndex = 37;
-            this.txtNrConta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNrConta_KeyDown);
-            this.txtNrConta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNrConta_KeyPress);
+            this.txtNrConta.TabIndex = 3021;
             // 
             // txtSeguranca
             // 
-            this.txtSeguranca.Location = new System.Drawing.Point(542, 121);
+            this.txtSeguranca.Location = new System.Drawing.Point(179, 107);
             this.txtSeguranca.Name = "txtSeguranca";
             this.txtSeguranca.Size = new System.Drawing.Size(236, 20);
-            this.txtSeguranca.TabIndex = 39;
-            this.txtSeguranca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeguranca_KeyDown);
+            this.txtSeguranca.TabIndex = 3023;
             // 
             // Label33
             // 
             this.Label33.AutoSize = true;
-            this.Label33.Location = new System.Drawing.Point(453, 37);
+            this.Label33.Location = new System.Drawing.Point(461, 23);
             this.Label33.Name = "Label33";
             this.Label33.Size = new System.Drawing.Size(41, 13);
-            this.Label33.TabIndex = 222;
+            this.Label33.TabIndex = 3030;
             this.Label33.Text = "Banco:";
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(453, 128);
+            this.label38.Location = new System.Drawing.Point(62, 110);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(61, 13);
-            this.label38.TabIndex = 230;
+            this.label38.TabIndex = 3037;
             this.label38.Text = "Seg.Social:";
             // 
             // txtBanco
             // 
-            this.txtBanco.Location = new System.Drawing.Point(542, 35);
+            this.txtBanco.Location = new System.Drawing.Point(550, 21);
             this.txtBanco.Name = "txtBanco";
             this.txtBanco.Size = new System.Drawing.Size(236, 20);
-            this.txtBanco.TabIndex = 33;
-            this.txtBanco.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBanco_KeyDown);
-            this.txtBanco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBanco_KeyPress);
+            this.txtBanco.TabIndex = 3017;
             // 
             // cbCentrocusto
             // 
             this.cbCentrocusto.FormattingEnabled = true;
-            this.cbCentrocusto.Location = new System.Drawing.Point(542, 182);
+            this.cbCentrocusto.Location = new System.Drawing.Point(551, 136);
             this.cbCentrocusto.Margin = new System.Windows.Forms.Padding(2);
             this.cbCentrocusto.Name = "cbCentrocusto";
             this.cbCentrocusto.Size = new System.Drawing.Size(236, 21);
-            this.cbCentrocusto.TabIndex = 43;
-            this.cbCentrocusto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbCentrocusto_KeyDown);
+            this.cbCentrocusto.TabIndex = 3027;
             // 
             // txtVencimento
             // 
-            this.txtVencimento.Location = new System.Drawing.Point(171, 33);
+            this.txtVencimento.Location = new System.Drawing.Point(179, 19);
             this.txtVencimento.Name = "txtVencimento";
             this.txtVencimento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtVencimento.Size = new System.Drawing.Size(236, 20);
-            this.txtVencimento.TabIndex = 32;
-            this.txtVencimento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVencimento_KeyDown);
-            this.txtVencimento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVencimento_KeyPress);
+            this.txtVencimento.TabIndex = 3016;
             // 
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(453, 184);
+            this.label32.Location = new System.Drawing.Point(461, 142);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(85, 13);
-            this.label32.TabIndex = 227;
+            this.label32.TabIndex = 3036;
             this.label32.Text = "Centro de custo:";
             // 
             // Label28
             // 
             this.Label28.AutoSize = true;
-            this.Label28.Location = new System.Drawing.Point(54, 36);
+            this.Label28.Location = new System.Drawing.Point(62, 22);
             this.Label28.Name = "Label28";
             this.Label28.Size = new System.Drawing.Size(66, 13);
-            this.Label28.TabIndex = 223;
+            this.Label28.TabIndex = 3031;
             this.Label28.Text = "Vencimento:";
             // 
             // txtHoraSemana
             // 
-            this.txtHoraSemana.Location = new System.Drawing.Point(171, 152);
+            this.txtHoraSemana.Location = new System.Drawing.Point(179, 76);
             this.txtHoraSemana.Name = "txtHoraSemana";
             this.txtHoraSemana.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtHoraSemana.Size = new System.Drawing.Size(236, 20);
-            this.txtHoraSemana.TabIndex = 40;
-            this.txtHoraSemana.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtHoraSemana_KeyDown);
-            this.txtHoraSemana.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoraSemana_KeyPress);
+            this.txtHoraSemana.TabIndex = 3024;
             // 
             // lblSubAlimentacao
             // 
             this.lblSubAlimentacao.AutoSize = true;
-            this.lblSubAlimentacao.Location = new System.Drawing.Point(54, 63);
+            this.lblSubAlimentacao.Location = new System.Drawing.Point(62, 49);
             this.lblSubAlimentacao.Name = "lblSubAlimentacao";
             this.lblSubAlimentacao.Size = new System.Drawing.Size(93, 13);
-            this.lblSubAlimentacao.TabIndex = 224;
+            this.lblSubAlimentacao.TabIndex = 3032;
             this.lblSubAlimentacao.Text = "Sub. Alimentação:";
             // 
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(54, 155);
+            this.label37.Location = new System.Drawing.Point(62, 79);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(98, 13);
-            this.label37.TabIndex = 226;
+            this.label37.TabIndex = 3035;
             this.label37.Text = "Horas por Semana:";
             // 
-            // lblSubComunicacao
+            // groupBox5
             // 
-            this.lblSubComunicacao.AutoSize = true;
-            this.lblSubComunicacao.Location = new System.Drawing.Point(54, 123);
-            this.lblSubComunicacao.Name = "lblSubComunicacao";
-            this.lblSubComunicacao.Size = new System.Drawing.Size(100, 13);
-            this.lblSubComunicacao.TabIndex = 225;
-            this.lblSubComunicacao.Text = "Sub. Comunicação:";
+            this.groupBox5.Controls.Add(this.btnAdicionarRemuneracao);
+            this.groupBox5.Controls.Add(this.btnEditarRemuneracoes);
+            this.groupBox5.Controls.Add(this.btnEliminarRemuneracoes);
+            this.groupBox5.Controls.Add(this.dataSubsidios);
+            this.groupBox5.Location = new System.Drawing.Point(39, 174);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(747, 243);
+            this.groupBox5.TabIndex = 3015;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Remunerações";
             // 
-            // lblSubTransporte
+            // btnAdicionarRemuneracao
             // 
-            this.lblSubTransporte.AutoSize = true;
-            this.lblSubTransporte.Location = new System.Drawing.Point(54, 92);
-            this.lblSubTransporte.Name = "lblSubTransporte";
-            this.lblSubTransporte.Size = new System.Drawing.Size(86, 13);
-            this.lblSubTransporte.TabIndex = 225;
-            this.lblSubTransporte.Text = "Sub. Transporte:";
+            this.btnAdicionarRemuneracao.Location = new System.Drawing.Point(380, 13);
+            this.btnAdicionarRemuneracao.Name = "btnAdicionarRemuneracao";
+            this.btnAdicionarRemuneracao.Size = new System.Drawing.Size(87, 30);
+            this.btnAdicionarRemuneracao.TabIndex = 3015;
+            this.btnAdicionarRemuneracao.Text = "Adicionar";
+            this.btnAdicionarRemuneracao.UseVisualStyleBackColor = true;
+            this.btnAdicionarRemuneracao.Click += new System.EventHandler(this.btnAdicionarRemuneracao_Click_1);
             // 
-            // txtSubComunicacao
+            // btnEditarRemuneracoes
             // 
-            this.txtSubComunicacao.Location = new System.Drawing.Point(171, 121);
-            this.txtSubComunicacao.Name = "txtSubComunicacao";
-            this.txtSubComunicacao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSubComunicacao.Size = new System.Drawing.Size(236, 20);
-            this.txtSubComunicacao.TabIndex = 38;
-            this.txtSubComunicacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSubTransporte_KeyDown);
-            this.txtSubComunicacao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSubTransporte_KeyPress);
+            this.btnEditarRemuneracoes.Location = new System.Drawing.Point(505, 13);
+            this.btnEditarRemuneracoes.Name = "btnEditarRemuneracoes";
+            this.btnEditarRemuneracoes.Size = new System.Drawing.Size(87, 30);
+            this.btnEditarRemuneracoes.TabIndex = 3015;
+            this.btnEditarRemuneracoes.Text = "Editar";
+            this.btnEditarRemuneracoes.UseVisualStyleBackColor = true;
+            this.btnEditarRemuneracoes.Click += new System.EventHandler(this.btnEditarRemuneracoes_Click);
             // 
-            // txtSubTransporte
+            // btnEliminarRemuneracoes
             // 
-            this.txtSubTransporte.Location = new System.Drawing.Point(171, 90);
-            this.txtSubTransporte.Name = "txtSubTransporte";
-            this.txtSubTransporte.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSubTransporte.Size = new System.Drawing.Size(236, 20);
-            this.txtSubTransporte.TabIndex = 36;
-            this.txtSubTransporte.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSubTransporte_KeyDown);
-            this.txtSubTransporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSubTransporte_KeyPress);
+            this.btnEliminarRemuneracoes.Location = new System.Drawing.Point(625, 13);
+            this.btnEliminarRemuneracoes.Name = "btnEliminarRemuneracoes";
+            this.btnEliminarRemuneracoes.Size = new System.Drawing.Size(87, 30);
+            this.btnEliminarRemuneracoes.TabIndex = 3015;
+            this.btnEliminarRemuneracoes.Text = "Eliminar";
+            this.btnEliminarRemuneracoes.UseVisualStyleBackColor = true;
+            // 
+            // dataSubsidios
+            // 
+            this.dataSubsidios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataSubsidios.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataSubsidios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataSubsidios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataSubsidios.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataSubsidios.EnableHeadersVisualStyles = false;
+            this.dataSubsidios.Location = new System.Drawing.Point(33, 49);
+            this.dataSubsidios.Name = "dataSubsidios";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataSubsidios.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataSubsidios.RowHeadersVisible = false;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataSubsidios.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dataSubsidios.Size = new System.Drawing.Size(679, 174);
+            this.dataSubsidios.TabIndex = 3014;
             // 
             // tabPage3
             // 
@@ -1906,6 +1862,7 @@ namespace Facturix_Salários
             // dataDependentes
             // 
             this.dataDependentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataDependentes.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataDependentes.Location = new System.Drawing.Point(15, 18);
             this.dataDependentes.Name = "dataDependentes";
             this.dataDependentes.RowHeadersVisible = false;
@@ -2232,7 +2189,7 @@ namespace Facturix_Salários
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(877, 609);
+            this.ClientSize = new System.Drawing.Size(874, 609);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -2255,6 +2212,7 @@ namespace Facturix_Salários
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataSubsidios)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
@@ -2348,28 +2306,6 @@ namespace Facturix_Salários
         internal System.Windows.Forms.TextBox txtUltimo;
         internal System.Windows.Forms.Label label30;
         internal System.Windows.Forms.TextBox txtSeguro;
-        public System.Windows.Forms.ComboBox cbTurno;
-        internal System.Windows.Forms.Label label41;
-        internal System.Windows.Forms.TextBox txtImpostoM;
-        internal System.Windows.Forms.Label label39;
-        internal System.Windows.Forms.TextBox txtSeguranca;
-        internal System.Windows.Forms.Label label38;
-        public System.Windows.Forms.ComboBox cbCentrocusto;
-        internal System.Windows.Forms.Label label32;
-        internal System.Windows.Forms.TextBox txtHoraSemana;
-        internal System.Windows.Forms.Label label37;
-        internal System.Windows.Forms.TextBox txtSubTransporte;
-        internal System.Windows.Forms.Label lblSubTransporte;
-        internal System.Windows.Forms.TextBox txtAlimentacao;
-        internal System.Windows.Forms.Label lblSubAlimentacao;
-        internal System.Windows.Forms.Label Label28;
-        internal System.Windows.Forms.TextBox txtVencimento;
-        internal System.Windows.Forms.TextBox txtBanco;
-        internal System.Windows.Forms.Label Label33;
-        internal System.Windows.Forms.TextBox txtNrConta;
-        internal System.Windows.Forms.Label Label40;
-        internal System.Windows.Forms.TextBox txtNib;
-        internal System.Windows.Forms.Label Label34;
         private System.Windows.Forms.Button btnRegressar;
         private System.Windows.Forms.GroupBox groupBox4;
         internal System.Windows.Forms.Label label42;
@@ -2419,20 +2355,41 @@ namespace Facturix_Salários
         internal System.Windows.Forms.Label lblMod17;
         internal System.Windows.Forms.Label lblMod16;
         internal System.Windows.Forms.Label lblMod15;
-        internal System.Windows.Forms.Label lblMod42;
-        internal System.Windows.Forms.Label lblMod40;
-        internal System.Windows.Forms.Label lblMod38;
-        internal System.Windows.Forms.Label lblMod36;
-        internal System.Windows.Forms.Label lblMod34;
-        internal System.Windows.Forms.Label lblMod32;
-        internal System.Windows.Forms.Label lblMod41;
-        internal System.Windows.Forms.Label lblMod37;
-        internal System.Windows.Forms.Label lblMod39;
-        internal System.Windows.Forms.Label lblMod35;
-        internal System.Windows.Forms.Label lblMod33;
         private System.Windows.Forms.DataGridView dataSubsidios;
-        internal System.Windows.Forms.Label lblSubComunicacao;
-        internal System.Windows.Forms.TextBox txtSubComunicacao;
-        internal System.Windows.Forms.Label lbl43;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnAdicionarRemuneracao;
+        private System.Windows.Forms.Button btnEditarRemuneracoes;
+        private System.Windows.Forms.Button btnEliminarRemuneracoes;
+        internal System.Windows.Forms.Label lblMod41;
+        internal System.Windows.Forms.Label lblMod40;
+        internal System.Windows.Forms.Label lblMod37;
+        internal System.Windows.Forms.Label lblMod38;
+        internal System.Windows.Forms.Label lblMod39;
+        internal System.Windows.Forms.Label lblMod36;
+        internal System.Windows.Forms.Label lblMod35;
+        internal System.Windows.Forms.Label lblMod34;
+        internal System.Windows.Forms.Label lblMod33;
+        internal System.Windows.Forms.Label lblMod32;
+        internal System.Windows.Forms.TextBox txtAlimentacao;
+        public System.Windows.Forms.ComboBox cbTurno;
+        internal System.Windows.Forms.Label Label34;
+        internal System.Windows.Forms.Label label41;
+        internal System.Windows.Forms.TextBox txtNib;
+        internal System.Windows.Forms.TextBox txtImpostoM;
+        internal System.Windows.Forms.Label Label40;
+        internal System.Windows.Forms.Label label39;
+        internal System.Windows.Forms.TextBox txtNrConta;
+        internal System.Windows.Forms.TextBox txtSeguranca;
+        internal System.Windows.Forms.Label Label33;
+        internal System.Windows.Forms.Label label38;
+        internal System.Windows.Forms.TextBox txtBanco;
+        public System.Windows.Forms.ComboBox cbCentrocusto;
+        internal System.Windows.Forms.TextBox txtVencimento;
+        internal System.Windows.Forms.Label label32;
+        internal System.Windows.Forms.Label Label28;
+        internal System.Windows.Forms.TextBox txtHoraSemana;
+        internal System.Windows.Forms.Label lblSubAlimentacao;
+        internal System.Windows.Forms.Label label37;
+        private EventHandler btnAdicionarRemuneracao_Click;
     }
 }
