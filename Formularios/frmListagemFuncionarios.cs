@@ -71,8 +71,17 @@ namespace Facturix_Salários.Formularios
         private void btnContinuar_Click(object sender, EventArgs e)
         {
             getFuncionarios();
-            frmProcessamentoEmLote f = new frmProcessamentoEmLote();
-            f.Show();
+            if (getFuncionarios().Count > 1 && getFuncionarios().Count != 0)
+            {
+                frmProcessamentoEmLote f = new frmProcessamentoEmLote();
+                f.Show();
+                this.Hide();
+            } else if (getFuncionarios().Count == 1 && getFuncionarios().Count != 0) 
+            {
+                frmProcessamentoIndividual f = new frmProcessamentoIndividual();
+                f.Show();
+                this.Hide();
+            }
         }
 
         public List<int> getFuncionarios() 

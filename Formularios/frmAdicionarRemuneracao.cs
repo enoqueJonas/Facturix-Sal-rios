@@ -13,14 +13,15 @@ using Facturix_Salários.Controllers;
 
 namespace Facturix_Salários.Formularios
 {
-    public partial class frmAdicionarRemuneracao : Form
-    {
-        public String qtd, valorUnit;
+    public partial class frmAdicionarRemuneracao : Form { 
+    
         public frmAdicionarRemuneracao()
         {
             InitializeComponent();
         }
 
+        public String natureza;
+        public int cod = 0, qtd = 0, valorUnit = 0;
         private void frmAdicionarRemuneracao_Load(object sender, EventArgs e)
         {
             adicionarItemsCb();
@@ -41,35 +42,55 @@ namespace Facturix_Salários.Formularios
             this.Close();
         }
 
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperar();
+            natureza = cbRemuneracoes.Text;
+            foreach (ModeloRemuneracoes r in listaRemuneracoes) 
+            {
+                if (natureza.Equals(r.getNatureza())) {
+                    cod = r.getId();
+                }
+            }
+
+            if (txtqtd.Text!="")
+                qtd = int.Parse(txtqtd.Text);
+
+            if (txtval.Text!="")
+                valorUnit = int.Parse(txtval.Text);
+
+            this.Close();
+        }
+
         private void cbRemuneracoes_SelectedIndexChanged(object sender, EventArgs e)
         {
             ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperar();
             String natureza = cbRemuneracoes.Text;
             frmCadastrarFuncionarios f = new frmCadastrarFuncionarios();
-            foreach (ModeloRemuneracoes r in listaRemuneracoes)
-            {
-                if (natureza.Equals(r.getNatureza()) && r.getQuantidade() != "Definido pelo utilizador")
-                {
-                    txtqtd.Enabled = false;
-                    txtqtd.ReadOnly = true;
-                    f.qtd = r.getQuantidade();
-                }
-                else 
-                {
-                    txtqtd.Enabled = true;
-                    txtqtd.ReadOnly = false;
-                }
-                if (natureza.Equals(r.getNatureza()) && r.getValorUnitario() != "Definido pelo utilizador")
-                {
-                    txtval.Enabled = false;
-                    txtval.ReadOnly = true;
-                    valorUnit = r.getValorUnitario();
-                }
-                else {
-                    txtval.Enabled = true;
-                    txtval.ReadOnly = false;
-                }
-            }
+            //foreach (ModeloRemuneracoes r in listaRemuneracoes)
+            //{
+            //    if (natureza.Equals(r.getNatureza()) && r.getQuantidade() != "Definido pelo utilizador")
+            //    {
+            //        txtqtd.Enabled = false;
+            //        txtqtd.ReadOnly = true;
+            //        f.qtd = r.getQuantidade();
+            //    }
+            //    else 
+            //    {
+            //        txtqtd.Enabled = true;
+            //        txtqtd.ReadOnly = false;
+            //    }
+            //    if (natureza.Equals(r.getNatureza()) && r.getValorUnitario() != "Definido pelo utilizador")
+            //    {
+            //        txtval.Enabled = false;
+            //        txtval.ReadOnly = true;
+            //        valorUnit = r.getValorUnitario();
+            //    }
+            //    else {
+            //        txtval.Enabled = true;
+            //        txtval.ReadOnly = false;
+            //    }
+            //}
         }
     }
 }

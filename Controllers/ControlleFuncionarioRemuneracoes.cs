@@ -10,20 +10,21 @@ using Facturix_Salários.Modelos;
 
 namespace Facturix_Salários.Controllers
 {
-    class ControlleFuncionarioRemuneracoes
+    class ControllerFuncionarioRemuneracoes
     {
-        public static void gravar(int id, int idFuncionario, int idRemuneracao, double valor)
+        public static void gravar(int id, int idFuncionario, int idRemuneracao, double valor, int quantidade)
         {
             MySqlConnection conexao = Conexao.conectar();
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into funcionario_remuneracoes(id, idFuncionario, idRemuneracao, valor) values(?,?,?,?)";
+                String sqlInsert = "INSERT into funcionario_remuneracoes(id, idFuncionario, idRemuneracao, valorUnitario, quantidade) values(?,?,?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", id);
                 comando.Parameters.AddWithValue("idFuncionario", idFuncionario);
                 comando.Parameters.AddWithValue("idRemuneracao", idRemuneracao);
-                comando.Parameters.AddWithValue("valor", valor);
+                comando.Parameters.AddWithValue("valorUnitario", valor);
+                comando.Parameters.AddWithValue("quantidade", quantidade);
                 comando.ExecuteNonQuery();
                 //MessageBox.Show("Funcionario_Remuneracao cadastrado com sucesso!");
             }
@@ -38,18 +39,19 @@ namespace Facturix_Salários.Controllers
             }
         }
 
-        public static void atualizar(int id, int idFuncionario, int idRemuneracao, double valor)
+        public static void atualizar(int id, int idFuncionario, int idRemuneracao, double valor, int quantidade)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE funcionario_remuneracoes SET idFuncionario=?, idRemuneracao=?, valor=? WHERE id=?";
+                String sqlInsert = "UPDATE funcionario_remuneracoes SET idFuncionario=?, idRemuneracao=?, valorUnitario=?, quantidade=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("idFuncionario", idFuncionario);
                 comando.Parameters.AddWithValue("idRemuneracao", idRemuneracao);
-                comando.Parameters.AddWithValue("valor", valor);
+                comando.Parameters.AddWithValue("valorUnitario", valor);
+                comando.Parameters.AddWithValue("quantidade", quantidade);
                 comando.Parameters.AddWithValue("id", id);
                 comando.ExecuteNonQuery();
             }
@@ -80,7 +82,8 @@ namespace Facturix_Salários.Controllers
                     int idFuncionario = leitor.GetInt16(1);
                     int idRemuneracao = leitor.GetInt16(2);
                     double valor = leitor.GetDouble(3);
-                    listafunionarioRemuneracoes.Add(new ModeloFuncionarioRemuneracoes(id, idFuncionario, idRemuneracao, valor));
+                    int qtd = leitor.GetInt16(4);
+                    listafunionarioRemuneracoes.Add(new ModeloFuncionarioRemuneracoes(id, idFuncionario, idRemuneracao, valor, qtd));
                 }
             }
             catch (Exception)
@@ -133,7 +136,8 @@ namespace Facturix_Salários.Controllers
                     int idFuncionario = leitor.GetInt16(1);
                     int idRemuneracao = leitor.GetInt16(2);
                     double valor = leitor.GetDouble(3);
-                    listafunionarioRemuneracoes.Add(new ModeloFuncionarioRemuneracoes(id, idFuncionario, idRemuneracao, valor));
+                    int qtd = leitor.GetInt16(4);
+                    listafunionarioRemuneracoes.Add(new ModeloFuncionarioRemuneracoes(id, idFuncionario, idRemuneracao, valor, qtd));
                 }
             }
             catch (Exception)

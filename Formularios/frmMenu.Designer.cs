@@ -59,9 +59,9 @@ namespace Facturix_Salários
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastros,
             this.configurador,
-            this.processamentoToolStripMenuItem,
             this.funcionáriosToolStripMenuItem,
-            this.tabelasToolStripMenuItem});
+            this.tabelasToolStripMenuItem,
+            this.processamentoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1091, 24);
@@ -187,18 +187,19 @@ namespace Facturix_Salários
             this.processamentoToolStripMenuItem.Name = "processamentoToolStripMenuItem";
             this.processamentoToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.processamentoToolStripMenuItem.Text = "Processamento";
+            this.processamentoToolStripMenuItem.Visible = false;
             // 
             // processamentoSaToolStripMenuItem
             // 
             this.processamentoSaToolStripMenuItem.Name = "processamentoSaToolStripMenuItem";
-            this.processamentoSaToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.processamentoSaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.processamentoSaToolStripMenuItem.Text = "Em lote";
             this.processamentoSaToolStripMenuItem.Click += new System.EventHandler(this.processamentoSaToolStripMenuItem_Click);
             // 
             // individualToolStripMenuItem
             // 
             this.individualToolStripMenuItem.Name = "individualToolStripMenuItem";
-            this.individualToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.individualToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.individualToolStripMenuItem.Text = "Individual";
             this.individualToolStripMenuItem.Click += new System.EventHandler(this.individualToolStripMenuItem_Click);
             // 
@@ -228,7 +229,7 @@ namespace Facturix_Salários
             // remuneraçõesToolStripMenuItem
             // 
             this.remuneraçõesToolStripMenuItem.Name = "remuneraçõesToolStripMenuItem";
-            this.remuneraçõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.remuneraçõesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.remuneraçõesToolStripMenuItem.Text = "Remunerações";
             this.remuneraçõesToolStripMenuItem.Click += new System.EventHandler(this.remuneraçõesToolStripMenuItem_Click);
             // 

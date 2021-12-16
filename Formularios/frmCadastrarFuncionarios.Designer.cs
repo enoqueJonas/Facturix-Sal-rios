@@ -1792,6 +1792,7 @@ namespace Facturix_Salários
             this.btnEliminarRemuneracoes.TabIndex = 3015;
             this.btnEliminarRemuneracoes.Text = "Eliminar";
             this.btnEliminarRemuneracoes.UseVisualStyleBackColor = true;
+            this.btnEliminarRemuneracoes.Click += new System.EventHandler(this.btnEliminarRemuneracoes_Click);
             // 
             // dataSubsidios
             // 
@@ -1830,6 +1831,7 @@ namespace Facturix_Salários
             this.dataSubsidios.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataSubsidios.Size = new System.Drawing.Size(679, 174);
             this.dataSubsidios.TabIndex = 3014;
+            this.dataSubsidios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataSubsidios_CellClick);
             // 
             // tabPage3
             // 

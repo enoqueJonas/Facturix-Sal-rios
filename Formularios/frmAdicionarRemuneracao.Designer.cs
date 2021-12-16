@@ -135,6 +135,7 @@
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // frmAdicionarRemuneracao
             // 
@@ -162,13 +163,13 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbRemuneracoes;
-        private System.Windows.Forms.TextBox txtval;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtqtd;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnRegressar;
         private System.Windows.Forms.Button btnConfirmar;
+        public System.Windows.Forms.ComboBox cbRemuneracoes;
+        public System.Windows.Forms.TextBox txtval;
+        public System.Windows.Forms.TextBox txtqtd;
     }
 }

@@ -66,15 +66,13 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txtTotalRemuneracoes = new System.Windows.Forms.TextBox();
-            this.txtAjudaDeCusto = new System.Windows.Forms.TextBox();
-            this.txtSubTransporte = new System.Windows.Forms.TextBox();
             this.txtSubAlimentacao = new System.Windows.Forms.TextBox();
             this.txtVencimento = new System.Windows.Forms.TextBox();
+            this.txtOutrasRemuneracoes = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nrAno)).BeginInit();
@@ -364,6 +362,7 @@
             // 
             // dataProcessamentoSalario
             // 
+            this.dataProcessamentoSalario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataProcessamentoSalario.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataProcessamentoSalario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataProcessamentoSalario.Location = new System.Drawing.Point(23, 16);
@@ -454,6 +453,7 @@
             this.btnMostrar.Text = "Consultar";
             this.btnMostrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
             // btnCancelar
             // 
@@ -474,19 +474,15 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.txtTotalRemuneracoes);
-            this.groupBox3.Controls.Add(this.txtAjudaDeCusto);
-            this.groupBox3.Controls.Add(this.txtSubTransporte);
+            this.groupBox3.Controls.Add(this.txtOutrasRemuneracoes);
             this.groupBox3.Controls.Add(this.txtSubAlimentacao);
             this.groupBox3.Controls.Add(this.txtVencimento);
             this.groupBox3.Location = new System.Drawing.Point(413, 180);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(297, 151);
+            this.groupBox3.Size = new System.Drawing.Size(297, 101);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Remunerações";
@@ -495,30 +491,11 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(17, 123);
+            this.label16.Location = new System.Drawing.Point(430, 303);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(94, 13);
             this.label16.TabIndex = 14;
             this.label16.Text = "Total Remune.:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(18, 97);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 13);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Ajuda de Custo:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(18, 70);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(86, 13);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Sub. Transporte:";
             // 
             // label14
             // 
@@ -540,24 +517,10 @@
             // 
             // txtTotalRemuneracoes
             // 
-            this.txtTotalRemuneracoes.Location = new System.Drawing.Point(129, 120);
+            this.txtTotalRemuneracoes.Location = new System.Drawing.Point(542, 300);
             this.txtTotalRemuneracoes.Name = "txtTotalRemuneracoes";
             this.txtTotalRemuneracoes.Size = new System.Drawing.Size(141, 20);
             this.txtTotalRemuneracoes.TabIndex = 15;
-            // 
-            // txtAjudaDeCusto
-            // 
-            this.txtAjudaDeCusto.Location = new System.Drawing.Point(129, 94);
-            this.txtAjudaDeCusto.Name = "txtAjudaDeCusto";
-            this.txtAjudaDeCusto.Size = new System.Drawing.Size(141, 20);
-            this.txtAjudaDeCusto.TabIndex = 15;
-            // 
-            // txtSubTransporte
-            // 
-            this.txtSubTransporte.Location = new System.Drawing.Point(129, 67);
-            this.txtSubTransporte.Name = "txtSubTransporte";
-            this.txtSubTransporte.Size = new System.Drawing.Size(141, 20);
-            this.txtSubTransporte.TabIndex = 15;
             // 
             // txtSubAlimentacao
             // 
@@ -573,15 +536,33 @@
             this.txtVencimento.Size = new System.Drawing.Size(141, 20);
             this.txtVencimento.TabIndex = 15;
             // 
+            // txtOutrasRemuneracoes
+            // 
+            this.txtOutrasRemuneracoes.Location = new System.Drawing.Point(129, 67);
+            this.txtOutrasRemuneracoes.Name = "txtOutrasRemuneracoes";
+            this.txtOutrasRemuneracoes.Size = new System.Drawing.Size(141, 20);
+            this.txtOutrasRemuneracoes.TabIndex = 15;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(18, 70);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(41, 13);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Outros:";
+            // 
             // frmProcessamentoIndividual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(745, 622);
+            this.ClientSize = new System.Drawing.Size(741, 622);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.txtTotalRemuneracoes);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmProcessamentoIndividual";
@@ -601,6 +582,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -627,8 +609,6 @@
         private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
@@ -646,11 +626,11 @@
         public System.Windows.Forms.TextBox txtIpa;
         public System.Windows.Forms.TextBox txtTotalDescontar;
         public System.Windows.Forms.DataGridView dataProcessamentoSalario;
-        public System.Windows.Forms.TextBox txtAjudaDeCusto;
-        public System.Windows.Forms.TextBox txtSubTransporte;
         public System.Windows.Forms.TextBox txtSubAlimentacao;
         public System.Windows.Forms.TextBox txtVencimento;
         public System.Windows.Forms.TextBox txtTotalRemuneracoes;
         public System.Windows.Forms.TextBox txtadiantamentos;
+        private System.Windows.Forms.Label label12;
+        public System.Windows.Forms.TextBox txtOutrasRemuneracoes;
     }
 }

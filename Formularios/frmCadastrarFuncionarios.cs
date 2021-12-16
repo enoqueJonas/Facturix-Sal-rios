@@ -15,8 +15,8 @@ namespace Facturix_Salários
     public partial class frmCadastrarFuncionarios : Form
     {
         String linkImagem = "";
-        public String qtd = "", valorUnit = "";
-        private int codigoCelSelecionada;
+        //public String qtd = "", valorUnit = "";
+        private int codigoCelSelecionada, codigoCelSelecionadaVencimento;
         public frmCadastrarFuncionarios()
         {
             InitializeComponent();
@@ -55,43 +55,37 @@ namespace Facturix_Salários
         }
         private void refrescarVencimento()
         {
-            int idFunc = 0;
-            //double valor = 0;
-            if (txtCodigo.Text != "")
-            {
-                idFunc = int.Parse(txtCodigo.Text);
-            }
-            ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(idFunc);
+            int idFunc = int.Parse(txtCodigo.Text);
+            ArrayList listaRemenuracoes = ControllerRemuneracoes.recuperar();
+            ArrayList listaFuncRemuneracao = ControllerFuncionarioRemuneracoes.recuperar();
             DataTable dt = new DataTable();
-            dt.Columns.Add("Designação");
-            dt.Columns.Add("Vencimento");
-            //foreach (ModeloFuncionario func in listaFuncionarios)
-            //{
-            //    if (lblSubComunicacao.Text.Equals("Sub. Comunicação:"))
-            //    {
-            //        DataRow dRow = dt.NewRow();
-            //        dRow["Designação"] = "Subsídio de Comunicação";
-            //        dRow["Vencimento"] = func.getVencimento();
-            //        dt.Rows.Add(dRow);
-            //    }
-            //    if (lblSubTransporte.Text.Equals("Sub. Transporte:"))
-            //    {
-            //        DataRow dRow = dt.NewRow();
-            //        dRow["Designação"] = "Subsídio de Transporte";
-            //        dRow["Vencimento"] = func.getSubTransporte();
-            //        dt.Rows.Add(dRow);
-            //    }
-            //    if (lblSubAlimentacao.Text.Equals("Sub. Alimentação:"))
-            //    {
-            //        DataRow dRow = dt.NewRow();
-            //        dRow["Designação"] = "Subsídio de Alimentação";
-            //        dRow["Vencimento"] = func.getSubAlimentacao();
-            //        dt.Rows.Add(dRow);
-            //    }
-            //}
-            dataSubsidios.DataSource = dt;
-            if (dt == null)
-                dt.Clear();
+            dt.Columns.Add("Registo n°");
+            dt.Columns.Add("Natureza");
+            dt.Columns.Add("Valor Unit.");
+            dt.Columns.Add("Quantidade");
+            dt.Columns.Add("Total");
+            foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracao)
+            {
+                DataRow dRow = dt.NewRow();
+                if (idFunc == fr.getIdFuncionario()) 
+                {
+                    dRow["Registo n°"] = fr.getId();
+                    foreach (ModeloRemuneracoes r in listaRemenuracoes)
+                    {
+                        if (fr.getIdRemuneracao() == r.getId())
+                        {
+                            dRow["Natureza"] = r.getNatureza();
+                        }
+                    }
+                    dRow["Valor Unit."] = fr.getValor();
+                    dRow["Quantidade"] = fr.getQtd();
+                    dRow["Total"] = fr.getValor()*fr.getQtd() + "";
+                }
+                dt.Rows.Add(dRow);
+            }
+            DataView dtView = new DataView(dt);
+            DataTable dtTable = dtView.ToTable(true, "Registo n°", "Natureza", "Valor Unit.", "Quantidade", "Total");
+            dataSubsidios.DataSource = dtTable;
             dataSubsidios.Refresh();
             dataSubsidios.AllowUserToAddRows = false;
             dataSubsidios.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
@@ -665,6 +659,7 @@ namespace Facturix_Salários
         {
             adicionar();
             impedirBotoes();
+            refrescarVencimento();
         }
 
         private void btnProximo_Click(object sender, EventArgs e)
@@ -703,10 +698,11 @@ namespace Facturix_Salários
 
         private void txtNovo_Click(object sender, EventArgs e)
         {
+            removerRemuneracoes();
+            refrescarVencimento();
             limparCaixas();
             impedirBotoes();
             mostrarLabels(false);
-            refrescarVencimento();
         }
 
         private void frmFuncionarios_KeyDown(object sender, KeyEventArgs e)
@@ -844,7 +840,7 @@ namespace Facturix_Salários
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-            dataSubsidios.Columns["Vencimento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dataSubsidios.Columns["Vencimento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //setCod();
             adicionarItemsCb();
             porFoco();
@@ -1515,6 +1511,26 @@ namespace Facturix_Salários
                     }
                     break;
             }
+
+            removerRemuneracoes();
+        }
+
+        private void removerRemuneracoes() 
+        {
+            ArrayList listaFuncRemuneracoes = ControllerFuncionarioRemuneracoes.recuperar();
+            ArrayList listaFunc = ControllerFuncionario.recuperar();
+            int id = 0;
+            foreach (ModeloFuncionario f in listaFunc)
+            {
+                foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes) 
+                {
+                    if (f.getCodigo() != fr.getIdFuncionario()) 
+                    {
+                        id = fr.getId();
+                    }
+                }
+            }
+            ControllerFuncionarioRemuneracoes.remover(id);
         }
 
         private void txtImpostoM_TextChanged(object sender, EventArgs e)
@@ -1544,16 +1560,64 @@ namespace Facturix_Salários
             mexerTeclado(sender, e);
         }
 
+        private int getCodRemuneracao() 
+        {
+            ArrayList listaFuncRemuneracao = ControllerFuncionarioRemuneracoes.recuperar();
+            int cod = 0;
+            foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracao) 
+            {
+                if (fr.getId()!=0) 
+                {
+                    cod = fr.getId();
+                }
+            }
+            return cod;
+        }
+
         private void btnAdicionarRemuneracao_Click_1(object sender, EventArgs e)
         {
             frmAdicionarRemuneracao f = new frmAdicionarRemuneracao();
-            f.Show();
+            f.ShowDialog();
+            int cod = f.cod, qtd = f.qtd, idFunc = int.Parse(txtCodigo.Text);
+            double valor = f.valorUnit;
+            ControllerFuncionarioRemuneracoes.gravar(getCodRemuneracao()+1, idFunc, cod, valor, qtd);
+            refrescarVencimento();
         }
 
         private void btnEditarRemuneracoes_Click(object sender, EventArgs e)
         {
             frmAdicionarRemuneracao f = new frmAdicionarRemuneracao();
-            MessageBox.Show(qtd);
+            ArrayList listaFuncRemuneracoes = ControllerFuncionarioRemuneracoes.recuperarComCod(codigoCelSelecionadaVencimento);
+            int id = 0;
+            ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperar();
+            foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes) 
+            {
+                id = fr.getIdRemuneracao();
+                f.txtqtd.Text = fr.getQtd() + "";
+                f.txtval.Text = fr.getValor() + "";
+            }
+            foreach (ModeloRemuneracoes r in listaRemuneracoes) 
+            {
+                if (r.getId() == id) 
+                {
+                    f.cbRemuneracoes.Text = r.getNatureza();
+                }
+            }
+            f.ShowDialog();
+            
+        }
+
+        private void btnEliminarRemuneracoes_Click(object sender, EventArgs e)
+        {
+            ControllerFuncionarioRemuneracoes.remover(codigoCelSelecionadaVencimento);
+            refrescarVencimento();
+        }
+
+        private void dataSubsidios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataSubsidios.Rows[rowIndex];
+            codigoCelSelecionadaVencimento = int.Parse(row.Cells[0].Value.ToString());
         }
     }
 }

@@ -106,7 +106,9 @@ namespace Facturix_Salários.Formularios
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            gravar();
+            //gravar();
+            frmConfirmarProcessamento f = new frmConfirmarProcessamento();
+            f.ShowDialog();
             refrescar();
         }
 
@@ -128,7 +130,7 @@ namespace Facturix_Salários.Formularios
         public void refrescar()
         {
             frmListagemFuncionarios listf = new frmListagemFuncionarios();
-            List<int> listagemFuncionario = listf.getFuncionarios();
+            //List<int> listagemFuncionario = listf.getFuncionarios();
             ArrayList listaFuncionario = ControllerFuncionario.recuperar();
             List<int> funcionariosValidos = getFuncionariosValidos();
             ArrayList listaIrps = ControllerIRPS.recuperar();
@@ -374,12 +376,12 @@ namespace Facturix_Salários.Formularios
                         funcionario.Add(f.getCodigo());
                         listaCadastroFuncionarios.Add(new ModeloFuncionario(f.getCodigo(), f.getIdIRPS(), f.getNome(), f.getCell(), f.getCellSec(), f.getTel(), f.getEmail(), f.getEstadoCivil(), f.getDeficiencia(), f.getConjugue(), f.getSexo(), f.getDataNascimento(), f.getLinkImagem(), f.getCodigoPostal(), f.getBairro(), f.getLocalidade(), f.getMoradaGen(), f.getTipoContrato(), f.getDataAdmissao(), f.getDataDemissao(), f.getProfissao(), f.getCategoria(), f.getSeguro(), f.getLocalTrabalho(), f.getRegime(), f.getBi(), f.getNumeroBenificiario(), f.getNumeroFiscal(), f.getVencimento(), f.getSubAlimentacao(), f.getSubTransporte(), f.getHoras(), f.getDependentes(), f.getHabilitacoes(), f.getNacionalidade(), f.getUltimoEmprego(), f.getTurno(), f.getImpostoMunicipal(), f.getCentroDeCusto(), f.getSegurancaSocial(), f.getSindicato(), f.getSubComunicacao()));
                         break;
-                    } else if (dataAdimissao.Year <= ano && dataAdimissao.Month <= nrMes && dataRelogio.Month == nrMes && dataRelogio.Year == ano && processaodo == true && cbOperacao.Text == "Anular") 
-                    {
-                        funcionario.Add(f.getCodigo());
-                        listaCadastroFuncionarios.Add(new ModeloFuncionario(f.getCodigo(), f.getIdIRPS(), f.getNome(), f.getCell(), f.getCellSec(), f.getTel(), f.getEmail(), f.getEstadoCivil(), f.getDeficiencia(), f.getConjugue(), f.getSexo(), f.getDataNascimento(), f.getLinkImagem(), f.getCodigoPostal(), f.getBairro(), f.getLocalidade(), f.getMoradaGen(), f.getTipoContrato(), f.getDataAdmissao(), f.getDataDemissao(), f.getProfissao(), f.getCategoria(), f.getSeguro(), f.getLocalTrabalho(), f.getRegime(), f.getBi(), f.getNumeroBenificiario(), f.getNumeroFiscal(), f.getVencimento(), f.getSubAlimentacao(), f.getSubTransporte(), f.getHoras(), f.getDependentes(), f.getHabilitacoes(), f.getNacionalidade(), f.getUltimoEmprego(), f.getTurno(), f.getImpostoMunicipal(), f.getCentroDeCusto(), f.getSegurancaSocial(), f.getSindicato(), f.getSubComunicacao()));
-                        break;
-                    }
+                    } //else if (dataAdimissao.Year <= ano && dataAdimissao.Month <= nrMes && dataRelogio.Month == nrMes && dataRelogio.Year == ano && processaodo == true && cbOperacao.Text == "Anular") 
+                    //{
+                    //    funcionario.Add(f.getCodigo());
+                    //    listaCadastroFuncionarios.Add(new ModeloFuncionario(f.getCodigo(), f.getIdIRPS(), f.getNome(), f.getCell(), f.getCellSec(), f.getTel(), f.getEmail(), f.getEstadoCivil(), f.getDeficiencia(), f.getConjugue(), f.getSexo(), f.getDataNascimento(), f.getLinkImagem(), f.getCodigoPostal(), f.getBairro(), f.getLocalidade(), f.getMoradaGen(), f.getTipoContrato(), f.getDataAdmissao(), f.getDataDemissao(), f.getProfissao(), f.getCategoria(), f.getSeguro(), f.getLocalTrabalho(), f.getRegime(), f.getBi(), f.getNumeroBenificiario(), f.getNumeroFiscal(), f.getVencimento(), f.getSubAlimentacao(), f.getSubTransporte(), f.getHoras(), f.getDependentes(), f.getHabilitacoes(), f.getNacionalidade(), f.getUltimoEmprego(), f.getTurno(), f.getImpostoMunicipal(), f.getCentroDeCusto(), f.getSegurancaSocial(), f.getSindicato(), f.getSubComunicacao()));
+                    //    break;
+                    //}
                 }
             }
             return funcionario;
