@@ -57,31 +57,33 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataProcessamentoSalario = new System.Windows.Forms.DataGridView();
+            this.btnRefrescar = new System.Windows.Forms.Button();
+            this.btnAdicionarRemuneracao = new System.Windows.Forms.Button();
+            this.btnEditarRemuneracoes = new System.Windows.Forms.Button();
+            this.btnEliminarRemuneracoes = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
-            this.btnMostrar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtTotalRemuneracoes = new System.Windows.Forms.TextBox();
+            this.txtOutrasRemuneracoes = new System.Windows.Forms.TextBox();
             this.txtSubAlimentacao = new System.Windows.Forms.TextBox();
             this.txtVencimento = new System.Windows.Forms.TextBox();
-            this.txtOutrasRemuneracoes = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtTotalRemuneracoes = new System.Windows.Forms.TextBox();
+            this.dataProcessamentoSalario = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nrAno)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrDias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrRegistonr)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataProcessamentoSalario)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataProcessamentoSalario)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -151,38 +153,49 @@
             // 
             // txtTotalDescontar
             // 
+            this.txtTotalDescontar.Enabled = false;
             this.txtTotalDescontar.Location = new System.Drawing.Point(129, 120);
             this.txtTotalDescontar.Name = "txtTotalDescontar";
+            this.txtTotalDescontar.ReadOnly = true;
             this.txtTotalDescontar.Size = new System.Drawing.Size(141, 20);
-            this.txtTotalDescontar.TabIndex = 15;
+            this.txtTotalDescontar.TabIndex = 13;
+            this.txtTotalDescontar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtadiantamentos
             // 
             this.txtadiantamentos.Location = new System.Drawing.Point(129, 94);
             this.txtadiantamentos.Name = "txtadiantamentos";
             this.txtadiantamentos.Size = new System.Drawing.Size(141, 20);
-            this.txtadiantamentos.TabIndex = 15;
+            this.txtadiantamentos.TabIndex = 12;
+            this.txtadiantamentos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtadiantamentos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtadiantamentos_KeyDown);
             // 
             // txtIpa
             // 
             this.txtIpa.Location = new System.Drawing.Point(129, 67);
             this.txtIpa.Name = "txtIpa";
             this.txtIpa.Size = new System.Drawing.Size(141, 20);
-            this.txtIpa.TabIndex = 15;
+            this.txtIpa.TabIndex = 11;
+            this.txtIpa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtIpa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIpa_KeyDown);
             // 
             // txtIrps
             // 
             this.txtIrps.Location = new System.Drawing.Point(129, 41);
             this.txtIrps.Name = "txtIrps";
             this.txtIrps.Size = new System.Drawing.Size(141, 20);
-            this.txtIrps.TabIndex = 15;
+            this.txtIrps.TabIndex = 10;
+            this.txtIrps.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtIrps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIrps_KeyDown);
             // 
             // txtemprestimoMedico
             // 
             this.txtemprestimoMedico.Location = new System.Drawing.Point(129, 15);
             this.txtemprestimoMedico.Name = "txtemprestimoMedico";
             this.txtemprestimoMedico.Size = new System.Drawing.Size(141, 20);
-            this.txtemprestimoMedico.TabIndex = 15;
+            this.txtemprestimoMedico.TabIndex = 9;
+            this.txtemprestimoMedico.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtemprestimoMedico.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtemprestimoMedico_KeyDown);
             // 
             // groupBox2
             // 
@@ -204,7 +217,7 @@
             this.groupBox2.Location = new System.Drawing.Point(31, 17);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(679, 151);
-            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
             // dtDataProcessamento
@@ -214,7 +227,8 @@
             this.dtDataProcessamento.Location = new System.Drawing.Point(525, 104);
             this.dtDataProcessamento.Name = "dtDataProcessamento";
             this.dtDataProcessamento.Size = new System.Drawing.Size(127, 20);
-            this.dtDataProcessamento.TabIndex = 21;
+            this.dtDataProcessamento.TabIndex = 8;
+            this.dtDataProcessamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtDataProcessamento_KeyDown);
             // 
             // dtDataHorasExtraEFaltas
             // 
@@ -223,7 +237,8 @@
             this.dtDataHorasExtraEFaltas.Location = new System.Drawing.Point(351, 103);
             this.dtDataHorasExtraEFaltas.Name = "dtDataHorasExtraEFaltas";
             this.dtDataHorasExtraEFaltas.Size = new System.Drawing.Size(127, 20);
-            this.dtDataHorasExtraEFaltas.TabIndex = 22;
+            this.dtDataHorasExtraEFaltas.TabIndex = 7;
+            this.dtDataHorasExtraEFaltas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtDataHorasExtraEFaltas_KeyDown);
             // 
             // cbMes
             // 
@@ -233,7 +248,8 @@
             this.cbMes.Location = new System.Drawing.Point(506, 65);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(146, 21);
-            this.cbMes.TabIndex = 19;
+            this.cbMes.TabIndex = 195;
+            this.cbMes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbMes_KeyDown);
             // 
             // cbTipoProcessamento
             // 
@@ -243,7 +259,8 @@
             this.cbTipoProcessamento.Location = new System.Drawing.Point(82, 65);
             this.cbTipoProcessamento.Name = "cbTipoProcessamento";
             this.cbTipoProcessamento.Size = new System.Drawing.Size(152, 21);
-            this.cbTipoProcessamento.TabIndex = 20;
+            this.cbTipoProcessamento.TabIndex = 3;
+            this.cbTipoProcessamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbTipoProcessamento_KeyDown);
             // 
             // nrAno
             // 
@@ -260,26 +277,30 @@
             0});
             this.nrAno.Name = "nrAno";
             this.nrAno.Size = new System.Drawing.Size(150, 20);
-            this.nrAno.TabIndex = 16;
+            this.nrAno.TabIndex = 4;
             this.nrAno.Value = new decimal(new int[] {
             2021,
             0,
             0,
             0});
+            this.nrAno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nrAno_KeyDown);
             // 
             // nrDias
             // 
             this.nrDias.Location = new System.Drawing.Point(82, 104);
             this.nrDias.Name = "nrDias";
             this.nrDias.Size = new System.Drawing.Size(150, 20);
-            this.nrDias.TabIndex = 17;
+            this.nrDias.TabIndex = 6;
+            this.nrDias.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nrDias_KeyDown);
             // 
             // nrRegistonr
             // 
             this.nrRegistonr.Location = new System.Drawing.Point(84, 28);
             this.nrRegistonr.Name = "nrRegistonr";
             this.nrRegistonr.Size = new System.Drawing.Size(150, 20);
-            this.nrRegistonr.TabIndex = 18;
+            this.nrRegistonr.TabIndex = 1;
+            this.nrRegistonr.ValueChanged += new System.EventHandler(this.nrRegistonr_ValueChanged);
+            this.nrRegistonr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nrRegistonr_KeyDown);
             // 
             // txtNome
             // 
@@ -287,6 +308,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(302, 20);
             this.txtNome.TabIndex = 15;
+            this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
             // 
             // label4
             // 
@@ -355,21 +377,56 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.dataProcessamentoSalario);
+            this.panel2.Controls.Add(this.btnRefrescar);
+            this.panel2.Controls.Add(this.btnAdicionarRemuneracao);
+            this.panel2.Controls.Add(this.btnEditarRemuneracoes);
+            this.panel2.Controls.Add(this.btnEliminarRemuneracoes);
             this.panel2.Location = new System.Drawing.Point(31, 347);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(679, 162);
             this.panel2.TabIndex = 5;
             // 
-            // dataProcessamentoSalario
+            // btnRefrescar
             // 
-            this.dataProcessamentoSalario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataProcessamentoSalario.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dataProcessamentoSalario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataProcessamentoSalario.Location = new System.Drawing.Point(23, 16);
-            this.dataProcessamentoSalario.Name = "dataProcessamentoSalario";
-            this.dataProcessamentoSalario.RowHeadersVisible = false;
-            this.dataProcessamentoSalario.Size = new System.Drawing.Size(628, 123);
-            this.dataProcessamentoSalario.TabIndex = 2;
+            this.btnRefrescar.Location = new System.Drawing.Point(24, 132);
+            this.btnRefrescar.Name = "btnRefrescar";
+            this.btnRefrescar.Size = new System.Drawing.Size(87, 26);
+            this.btnRefrescar.TabIndex = 3016;
+            this.btnRefrescar.Text = "Refrescar";
+            this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
+            // 
+            // btnAdicionarRemuneracao
+            // 
+            this.btnAdicionarRemuneracao.Location = new System.Drawing.Point(318, 4);
+            this.btnAdicionarRemuneracao.Name = "btnAdicionarRemuneracao";
+            this.btnAdicionarRemuneracao.Size = new System.Drawing.Size(87, 30);
+            this.btnAdicionarRemuneracao.TabIndex = 3016;
+            this.btnAdicionarRemuneracao.Text = "Adicionar";
+            this.btnAdicionarRemuneracao.UseVisualStyleBackColor = true;
+            this.btnAdicionarRemuneracao.Click += new System.EventHandler(this.btnAdicionarRemuneracao_Click);
+            // 
+            // btnEditarRemuneracoes
+            // 
+            this.btnEditarRemuneracoes.Enabled = false;
+            this.btnEditarRemuneracoes.Location = new System.Drawing.Point(443, 4);
+            this.btnEditarRemuneracoes.Name = "btnEditarRemuneracoes";
+            this.btnEditarRemuneracoes.Size = new System.Drawing.Size(87, 30);
+            this.btnEditarRemuneracoes.TabIndex = 3017;
+            this.btnEditarRemuneracoes.Text = "Editar";
+            this.btnEditarRemuneracoes.UseVisualStyleBackColor = true;
+            this.btnEditarRemuneracoes.Click += new System.EventHandler(this.btnEditarRemuneracoes_Click);
+            // 
+            // btnEliminarRemuneracoes
+            // 
+            this.btnEliminarRemuneracoes.Enabled = false;
+            this.btnEliminarRemuneracoes.Location = new System.Drawing.Point(563, 4);
+            this.btnEliminarRemuneracoes.Name = "btnEliminarRemuneracoes";
+            this.btnEliminarRemuneracoes.Size = new System.Drawing.Size(87, 30);
+            this.btnEliminarRemuneracoes.TabIndex = 3018;
+            this.btnEliminarRemuneracoes.Text = "Eliminar";
+            this.btnEliminarRemuneracoes.UseVisualStyleBackColor = true;
+            this.btnEliminarRemuneracoes.Click += new System.EventHandler(this.btnEliminarRemuneracoes_Click);
             // 
             // panel1
             // 
@@ -377,8 +434,6 @@
             this.panel1.Controls.Add(this.btnRegressar);
             this.panel1.Controls.Add(this.btnImprimir);
             this.panel1.Controls.Add(this.btnConfirmar);
-            this.panel1.Controls.Add(this.btnMostrar);
-            this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Location = new System.Drawing.Point(31, 523);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
@@ -401,6 +456,7 @@
             this.btnRegressar.Text = "Regressar";
             this.btnRegressar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRegressar.UseVisualStyleBackColor = true;
+            this.btnRegressar.Click += new System.EventHandler(this.btnRegressar_Click);
             // 
             // btnImprimir
             // 
@@ -409,7 +465,7 @@
             this.btnImprimir.ForeColor = System.Drawing.Color.Black;
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnImprimir.Location = new System.Drawing.Point(450, 6);
+            this.btnImprimir.Location = new System.Drawing.Point(302, 6);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(2);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(69, 60);
@@ -427,7 +483,7 @@
             this.btnConfirmar.ForeColor = System.Drawing.Color.Black;
             this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConfirmar.Location = new System.Drawing.Point(301, 6);
+            this.btnConfirmar.Location = new System.Drawing.Point(24, 6);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(69, 60);
@@ -436,41 +492,7 @@
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfirmar.UseVisualStyleBackColor = true;
-            // 
-            // btnMostrar
-            // 
-            this.btnMostrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnMostrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMostrar.ForeColor = System.Drawing.Color.Black;
-            this.btnMostrar.Image = ((System.Drawing.Image)(resources.GetObject("btnMostrar.Image")));
-            this.btnMostrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMostrar.Location = new System.Drawing.Point(23, 6);
-            this.btnMostrar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(69, 60);
-            this.btnMostrar.TabIndex = 20000;
-            this.btnMostrar.TabStop = false;
-            this.btnMostrar.Text = "Consultar";
-            this.btnMostrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMostrar.UseVisualStyleBackColor = true;
-            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(164, 6);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(69, 60);
-            this.btnCancelar.TabIndex = 3000;
-            this.btnCancelar.TabStop = false;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // groupBox3
             // 
@@ -487,15 +509,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Remunerações";
             // 
-            // label16
+            // label12
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(430, 303);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(94, 13);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "Total Remune.:";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(18, 70);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(41, 13);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Outros:";
             // 
             // label14
             // 
@@ -515,49 +536,72 @@
             this.label15.TabIndex = 14;
             this.label15.Text = "Vencimento:";
             // 
-            // txtTotalRemuneracoes
-            // 
-            this.txtTotalRemuneracoes.Location = new System.Drawing.Point(542, 300);
-            this.txtTotalRemuneracoes.Name = "txtTotalRemuneracoes";
-            this.txtTotalRemuneracoes.Size = new System.Drawing.Size(141, 20);
-            this.txtTotalRemuneracoes.TabIndex = 15;
-            // 
-            // txtSubAlimentacao
-            // 
-            this.txtSubAlimentacao.Location = new System.Drawing.Point(129, 41);
-            this.txtSubAlimentacao.Name = "txtSubAlimentacao";
-            this.txtSubAlimentacao.Size = new System.Drawing.Size(141, 20);
-            this.txtSubAlimentacao.TabIndex = 15;
-            // 
-            // txtVencimento
-            // 
-            this.txtVencimento.Location = new System.Drawing.Point(129, 15);
-            this.txtVencimento.Name = "txtVencimento";
-            this.txtVencimento.Size = new System.Drawing.Size(141, 20);
-            this.txtVencimento.TabIndex = 15;
-            // 
             // txtOutrasRemuneracoes
             // 
             this.txtOutrasRemuneracoes.Location = new System.Drawing.Point(129, 67);
             this.txtOutrasRemuneracoes.Name = "txtOutrasRemuneracoes";
             this.txtOutrasRemuneracoes.Size = new System.Drawing.Size(141, 20);
             this.txtOutrasRemuneracoes.TabIndex = 15;
+            this.txtOutrasRemuneracoes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtOutrasRemuneracoes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtOutrasRemuneracoes_KeyDown);
             // 
-            // label12
+            // txtSubAlimentacao
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(18, 70);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 13);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Outros:";
+            this.txtSubAlimentacao.Location = new System.Drawing.Point(129, 41);
+            this.txtSubAlimentacao.Name = "txtSubAlimentacao";
+            this.txtSubAlimentacao.Size = new System.Drawing.Size(141, 20);
+            this.txtSubAlimentacao.TabIndex = 14;
+            this.txtSubAlimentacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSubAlimentacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSubAlimentacao_KeyDown);
+            // 
+            // txtVencimento
+            // 
+            this.txtVencimento.Location = new System.Drawing.Point(129, 15);
+            this.txtVencimento.Name = "txtVencimento";
+            this.txtVencimento.Size = new System.Drawing.Size(141, 20);
+            this.txtVencimento.TabIndex = 13;
+            this.txtVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtVencimento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVencimento_KeyDown);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(430, 303);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(94, 13);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "Total Remune.:";
+            // 
+            // txtTotalRemuneracoes
+            // 
+            this.txtTotalRemuneracoes.Enabled = false;
+            this.txtTotalRemuneracoes.Location = new System.Drawing.Point(542, 300);
+            this.txtTotalRemuneracoes.Name = "txtTotalRemuneracoes";
+            this.txtTotalRemuneracoes.ReadOnly = true;
+            this.txtTotalRemuneracoes.Size = new System.Drawing.Size(141, 20);
+            this.txtTotalRemuneracoes.TabIndex = 17;
+            this.txtTotalRemuneracoes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // dataProcessamentoSalario
+            // 
+            this.dataProcessamentoSalario.AllowUserToAddRows = false;
+            this.dataProcessamentoSalario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataProcessamentoSalario.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dataProcessamentoSalario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataProcessamentoSalario.Location = new System.Drawing.Point(24, 40);
+            this.dataProcessamentoSalario.Name = "dataProcessamentoSalario";
+            this.dataProcessamentoSalario.RowHeadersVisible = false;
+            this.dataProcessamentoSalario.Size = new System.Drawing.Size(625, 92);
+            this.dataProcessamentoSalario.TabIndex = 3019;
+            this.dataProcessamentoSalario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProcessamentoSalario_CellClick);
             // 
             // frmProcessamentoIndividual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(741, 622);
+            this.ClientSize = new System.Drawing.Size(741, 611);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -577,10 +621,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nrDias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrRegistonr)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataProcessamentoSalario)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataProcessamentoSalario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -606,8 +650,6 @@
         private System.Windows.Forms.Button btnRegressar;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnConfirmar;
-        private System.Windows.Forms.Button btnMostrar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
@@ -625,12 +667,16 @@
         public System.Windows.Forms.TextBox txtIrps;
         public System.Windows.Forms.TextBox txtIpa;
         public System.Windows.Forms.TextBox txtTotalDescontar;
-        public System.Windows.Forms.DataGridView dataProcessamentoSalario;
         public System.Windows.Forms.TextBox txtSubAlimentacao;
         public System.Windows.Forms.TextBox txtVencimento;
         public System.Windows.Forms.TextBox txtTotalRemuneracoes;
         public System.Windows.Forms.TextBox txtadiantamentos;
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.TextBox txtOutrasRemuneracoes;
+        private System.Windows.Forms.Button btnAdicionarRemuneracao;
+        private System.Windows.Forms.Button btnEditarRemuneracoes;
+        private System.Windows.Forms.Button btnEliminarRemuneracoes;
+        private System.Windows.Forms.Button btnRefrescar;
+        private System.Windows.Forms.DataGridView dataProcessamentoSalario;
     }
 }

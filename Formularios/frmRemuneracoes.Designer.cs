@@ -49,22 +49,22 @@
             this.lbl4 = new System.Windows.Forms.Label();
             this.lbl3 = new System.Windows.Forms.Label();
             this.lbl2 = new System.Windows.Forms.Label();
+            this.lbl7 = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
+            this.cbInsento = new System.Windows.Forms.ComboBox();
+            this.cbValorUnit = new System.Windows.Forms.ComboBox();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbl10 = new System.Windows.Forms.Label();
             this.lbl9 = new System.Windows.Forms.Label();
             this.lbl8 = new System.Windows.Forms.Label();
-            this.lbl7 = new System.Windows.Forms.Label();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbInsento = new System.Windows.Forms.ComboBox();
-            this.txtValor = new System.Windows.Forms.TextBox();
-            this.lbl10 = new System.Windows.Forms.Label();
-            this.cbValorUnit = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -142,6 +142,7 @@
             this.txtPercentagem.Name = "txtPercentagem";
             this.txtPercentagem.Size = new System.Drawing.Size(100, 20);
             this.txtPercentagem.TabIndex = 1;
+            this.txtPercentagem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPercentagem_KeyDown);
             // 
             // cbGrupo
             // 
@@ -167,6 +168,7 @@
             this.cbGrupo.Name = "cbGrupo";
             this.cbGrupo.Size = new System.Drawing.Size(229, 21);
             this.cbGrupo.TabIndex = 2;
+            this.cbGrupo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbGrupo_KeyDown);
             // 
             // cbNatureza
             // 
@@ -191,7 +193,8 @@
             this.cbNatureza.Location = new System.Drawing.Point(96, 94);
             this.cbNatureza.Name = "cbNatureza";
             this.cbNatureza.Size = new System.Drawing.Size(229, 21);
-            this.cbNatureza.TabIndex = 2;
+            this.cbNatureza.TabIndex = 3;
+            this.cbNatureza.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbNatureza_KeyDown);
             // 
             // cbQuantidade
             // 
@@ -204,7 +207,8 @@
             this.cbQuantidade.Location = new System.Drawing.Point(96, 121);
             this.cbQuantidade.Name = "cbQuantidade";
             this.cbQuantidade.Size = new System.Drawing.Size(229, 21);
-            this.cbQuantidade.TabIndex = 2;
+            this.cbQuantidade.TabIndex = 4;
+            this.cbQuantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbQuantidade_KeyDown);
             // 
             // chbSegurancaSocial
             // 
@@ -326,6 +330,18 @@
             this.lbl2.Text = "2";
             this.lbl2.Visible = false;
             // 
+            // lbl7
+            // 
+            this.lbl7.AutoSize = true;
+            this.lbl7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl7.Location = new System.Drawing.Point(6, 178);
+            this.lbl7.Name = "lbl7";
+            this.lbl7.Size = new System.Drawing.Size(13, 13);
+            this.lbl7.TabIndex = 3;
+            this.lbl7.Text = "7";
+            this.lbl7.Visible = false;
+            // 
             // lbl1
             // 
             this.lbl1.AutoSize = true;
@@ -337,6 +353,55 @@
             this.lbl1.TabIndex = 3;
             this.lbl1.Text = "1";
             this.lbl1.Visible = false;
+            // 
+            // cbInsento
+            // 
+            this.cbInsento.FormattingEnabled = true;
+            this.cbInsento.Items.AddRange(new object[] {
+            "Definido pelo utilizador",
+            "5% do vencimento base"});
+            this.cbInsento.Location = new System.Drawing.Point(96, 174);
+            this.cbInsento.Name = "cbInsento";
+            this.cbInsento.Size = new System.Drawing.Size(159, 21);
+            this.cbInsento.TabIndex = 6;
+            this.cbInsento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbInsento_KeyDown);
+            // 
+            // cbValorUnit
+            // 
+            this.cbValorUnit.FormattingEnabled = true;
+            this.cbValorUnit.Items.AddRange(new object[] {
+            "Definido pelo utilizador",
+            "1 dia de Vencimento",
+            "1 dia de Alimentação",
+            "1 hora de vencimento",
+            "1 diuturnidade"});
+            this.cbValorUnit.Location = new System.Drawing.Point(96, 147);
+            this.cbValorUnit.Name = "cbValorUnit";
+            this.cbValorUnit.Size = new System.Drawing.Size(229, 21);
+            this.cbValorUnit.TabIndex = 5;
+            this.cbValorUnit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbValorUnit_KeyDown);
+            // 
+            // txtValor
+            // 
+            this.txtValor.Location = new System.Drawing.Point(261, 175);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(64, 20);
+            this.txtValor.TabIndex = 7;
+            this.txtValor.Text = "MZN";
+            this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValor.Click += new System.EventHandler(this.txtValor_Click);
+            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
+            this.txtValor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtValor_KeyDown);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(17, 177);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Isento Até:";
+            this.label7.Click += new System.EventHandler(this.label2_Click);
             // 
             // groupBox2
             // 
@@ -352,6 +417,18 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Descontos";
+            // 
+            // lbl10
+            // 
+            this.lbl10.AutoSize = true;
+            this.lbl10.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl10.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl10.Location = new System.Drawing.Point(6, 66);
+            this.lbl10.Name = "lbl10";
+            this.lbl10.Size = new System.Drawing.Size(19, 13);
+            this.lbl10.TabIndex = 3;
+            this.lbl10.Text = "10";
+            this.lbl10.Visible = false;
             // 
             // lbl9
             // 
@@ -376,18 +453,6 @@
             this.lbl8.TabIndex = 3;
             this.lbl8.Text = "8";
             this.lbl8.Visible = false;
-            // 
-            // lbl7
-            // 
-            this.lbl7.AutoSize = true;
-            this.lbl7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl7.Location = new System.Drawing.Point(6, 178);
-            this.lbl7.Name = "lbl7";
-            this.lbl7.Size = new System.Drawing.Size(13, 13);
-            this.lbl7.TabIndex = 3;
-            this.lbl7.Text = "7";
-            this.lbl7.Visible = false;
             // 
             // btnRegressar
             // 
@@ -481,64 +546,6 @@
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 177);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Isento Até:";
-            this.label7.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // cbInsento
-            // 
-            this.cbInsento.FormattingEnabled = true;
-            this.cbInsento.Items.AddRange(new object[] {
-            "Definido pelo utilizador",
-            "5% do vencimento base"});
-            this.cbInsento.Location = new System.Drawing.Point(96, 174);
-            this.cbInsento.Name = "cbInsento";
-            this.cbInsento.Size = new System.Drawing.Size(159, 21);
-            this.cbInsento.TabIndex = 2;
-            // 
-            // txtValor
-            // 
-            this.txtValor.Location = new System.Drawing.Point(261, 175);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(64, 20);
-            this.txtValor.TabIndex = 1;
-            this.txtValor.Text = "MZN";
-            this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtValor.Click += new System.EventHandler(this.txtValor_Click);
-            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
-            // 
-            // lbl10
-            // 
-            this.lbl10.AutoSize = true;
-            this.lbl10.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl10.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl10.Location = new System.Drawing.Point(6, 66);
-            this.lbl10.Name = "lbl10";
-            this.lbl10.Size = new System.Drawing.Size(19, 13);
-            this.lbl10.TabIndex = 3;
-            this.lbl10.Text = "10";
-            this.lbl10.Visible = false;
-            // 
-            // cbValorUnit
-            // 
-            this.cbValorUnit.FormattingEnabled = true;
-            this.cbValorUnit.Items.AddRange(new object[] {
-            "Definido pelo utilizador",
-            "1 dia de Vencimento",
-            "1 dia de Alimentação",
-            "1 hora de vencimento",
-            "1 diuturnidade"});
-            this.cbValorUnit.Location = new System.Drawing.Point(96, 147);
-            this.cbValorUnit.Name = "cbValorUnit";
-            this.cbValorUnit.Size = new System.Drawing.Size(229, 21);
-            this.cbValorUnit.TabIndex = 2;
             // 
             // frmRemuneracoes
             // 

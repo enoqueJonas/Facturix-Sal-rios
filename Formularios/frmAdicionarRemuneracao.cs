@@ -42,23 +42,62 @@ namespace Facturix_Salários.Formularios
             this.Close();
         }
 
-        private void btnConfirmar_Click(object sender, EventArgs e)
+        private int getCodFuncionarioRemu() 
         {
-            ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperar();
-            natureza = cbRemuneracoes.Text;
-            foreach (ModeloRemuneracoes r in listaRemuneracoes) 
+            int cod = 0;
+            ArrayList lista = ControllerFuncionarioRemuneracoes.recuperar();
+            foreach (ModeloFuncionarioRemuneracoes f in lista) 
             {
-                if (natureza.Equals(r.getNatureza())) {
-                    cod = r.getId();
+                if (f.getId()!=0) 
+                {
+                    cod = f.getId();
                 }
             }
-
-            if (txtqtd.Text!="")
+            return cod;
+        }
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            ArrayList listaRemuneracoes = ControllerFuncionarioRemuneracoes.recuperar();
+            ArrayList lista = ControllerRemuneracoes.recuperar();
+            int idRem = 0;
+            int idFunc = 0;
+            String natureza = cbRemuneracoes.Text;
+            if (txtqtd.Text != "")
                 qtd = int.Parse(txtqtd.Text);
 
-            if (txtval.Text!="")
+            if (txtval.Text != "")
                 valorUnit = int.Parse(txtval.Text);
 
+            if (txtIdFuncionario.Text!="")
+                idFunc = int.Parse(txtIdFuncionario.Text);
+
+            //if(txtIdRemuneracao.Text!="")
+            //    idRem = int.Parse(txtIdFuncionario.Text);
+
+            foreach (ModeloRemuneracoes r in lista) 
+            {
+                if (r.getNatureza().Equals(natureza))
+                    idRem = r.getId();
+            }
+
+            Boolean existe = false;
+            foreach (ModeloFuncionarioRemuneracoes r in listaRemuneracoes) 
+            {
+                if (idFunc == r.getIdFuncionario() && idRem == r.getIdRemuneracao()) 
+                {
+                    cod = r.getId();
+                    existe = true;
+                }
+            }
+            if (existe)
+            {
+                ControllerFuncionarioRemuneracoes.atualizar(cod, idFunc, idRem, valorUnit, qtd);
+            }
+            else 
+            {
+                cod = getCodFuncionarioRemu() + 1;
+                ControllerFuncionarioRemuneracoes.gravar(cod, idFunc, idRem, valorUnit, qtd);
+            }
             this.Close();
         }
 

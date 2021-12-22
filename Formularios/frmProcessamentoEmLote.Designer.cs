@@ -44,14 +44,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnRefrescar = new System.Windows.Forms.Button();
             this.dataProcessamentoSalario = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
-            this.btnMostrar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnRefrescar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nrAno)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -72,8 +70,7 @@
             // 
             this.cbOperacao.FormattingEnabled = true;
             this.cbOperacao.Items.AddRange(new object[] {
-            "Processar",
-            "Anular"});
+            "Processar"});
             this.cbOperacao.Location = new System.Drawing.Point(93, 14);
             this.cbOperacao.Name = "cbOperacao";
             this.cbOperacao.Size = new System.Drawing.Size(107, 21);
@@ -108,6 +105,7 @@
             this.chbSubFerias.TabIndex = 2;
             this.chbSubFerias.Text = "Sub. de férias";
             this.chbSubFerias.UseVisualStyleBackColor = true;
+            this.chbSubFerias.Visible = false;
             this.chbSubFerias.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // chbExtraordinario
@@ -119,6 +117,7 @@
             this.chbExtraordinario.TabIndex = 2;
             this.chbExtraordinario.Text = "Extraordinário";
             this.chbExtraordinario.UseVisualStyleBackColor = true;
+            this.chbExtraordinario.Visible = false;
             this.chbExtraordinario.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // cbMes
@@ -137,15 +136,16 @@
             "Outubro",
             "Novembro",
             "Dezembro"});
-            this.cbMes.Location = new System.Drawing.Point(758, 17);
+            this.cbMes.Location = new System.Drawing.Point(739, 19);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(105, 21);
             this.cbMes.TabIndex = 22;
+            this.cbMes.Visible = false;
             this.cbMes.SelectedIndexChanged += new System.EventHandler(this.cbMes_SelectedIndexChanged);
             // 
             // nrAno
             // 
-            this.nrAno.Location = new System.Drawing.Point(631, 17);
+            this.nrAno.Location = new System.Drawing.Point(263, 54);
             this.nrAno.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -169,7 +169,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(582, 19);
+            this.label3.Location = new System.Drawing.Point(214, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 20;
@@ -197,19 +197,21 @@
             // 
             this.dtFaltasHorasExtra.CustomFormat = "dd/MM/yyyy";
             this.dtFaltasHorasExtra.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFaltasHorasExtra.Location = new System.Drawing.Point(327, 51);
+            this.dtFaltasHorasExtra.Location = new System.Drawing.Point(739, 56);
             this.dtFaltasHorasExtra.Name = "dtFaltasHorasExtra";
             this.dtFaltasHorasExtra.Size = new System.Drawing.Size(107, 20);
             this.dtFaltasHorasExtra.TabIndex = 26;
+            this.dtFaltasHorasExtra.Visible = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(226, 56);
+            this.label6.Location = new System.Drawing.Point(638, 61);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 13);
             this.label6.TabIndex = 25;
             this.label6.Text = "Faltas/H. Extras:";
+            this.label6.Visible = false;
             // 
             // panel1
             // 
@@ -242,6 +244,16 @@
             this.panel2.Size = new System.Drawing.Size(888, 309);
             this.panel2.TabIndex = 28;
             // 
+            // btnRefrescar
+            // 
+            this.btnRefrescar.Location = new System.Drawing.Point(23, 280);
+            this.btnRefrescar.Name = "btnRefrescar";
+            this.btnRefrescar.Size = new System.Drawing.Size(108, 23);
+            this.btnRefrescar.TabIndex = 3;
+            this.btnRefrescar.Text = "Refrescar";
+            this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
+            // 
             // dataProcessamentoSalario
             // 
             this.dataProcessamentoSalario.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -250,7 +262,7 @@
             this.dataProcessamentoSalario.Location = new System.Drawing.Point(23, 20);
             this.dataProcessamentoSalario.Name = "dataProcessamentoSalario";
             this.dataProcessamentoSalario.RowHeadersVisible = false;
-            this.dataProcessamentoSalario.Size = new System.Drawing.Size(840, 254);
+            this.dataProcessamentoSalario.Size = new System.Drawing.Size(836, 254);
             this.dataProcessamentoSalario.TabIndex = 2;
             this.dataProcessamentoSalario.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataProcessamentoSalario_CellBeginEdit);
             this.dataProcessamentoSalario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProcessamentoSalario_CellClick);
@@ -262,8 +274,6 @@
             this.panel3.Controls.Add(this.btnRegressar);
             this.panel3.Controls.Add(this.btnImprimir);
             this.panel3.Controls.Add(this.btnConfirmar);
-            this.panel3.Controls.Add(this.btnMostrar);
-            this.panel3.Controls.Add(this.btnCancelar);
             this.panel3.Location = new System.Drawing.Point(25, 466);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
@@ -295,7 +305,7 @@
             this.btnImprimir.ForeColor = System.Drawing.Color.Black;
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnImprimir.Location = new System.Drawing.Point(591, 6);
+            this.btnImprimir.Location = new System.Drawing.Point(412, 6);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(2);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(69, 60);
@@ -313,7 +323,7 @@
             this.btnConfirmar.ForeColor = System.Drawing.Color.Black;
             this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConfirmar.Location = new System.Drawing.Point(398, 6);
+            this.btnConfirmar.Location = new System.Drawing.Point(23, 6);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(69, 60);
@@ -324,57 +334,12 @@
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // btnMostrar
-            // 
-            this.btnMostrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnMostrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMostrar.ForeColor = System.Drawing.Color.Black;
-            this.btnMostrar.Image = ((System.Drawing.Image)(resources.GetObject("btnMostrar.Image")));
-            this.btnMostrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMostrar.Location = new System.Drawing.Point(23, 6);
-            this.btnMostrar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(69, 60);
-            this.btnMostrar.TabIndex = 20000;
-            this.btnMostrar.TabStop = false;
-            this.btnMostrar.Text = "Consultar";
-            this.btnMostrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMostrar.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(214, 6);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(69, 60);
-            this.btnCancelar.TabIndex = 3000;
-            this.btnCancelar.TabStop = false;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnRefrescar
-            // 
-            this.btnRefrescar.Location = new System.Drawing.Point(23, 280);
-            this.btnRefrescar.Name = "btnRefrescar";
-            this.btnRefrescar.Size = new System.Drawing.Size(108, 23);
-            this.btnRefrescar.TabIndex = 3;
-            this.btnRefrescar.Text = "Refrescar";
-            this.btnRefrescar.UseVisualStyleBackColor = true;
-            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
-            // 
             // frmProcessamentoEmLote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(936, 556);
+            this.ClientSize = new System.Drawing.Size(941, 556);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -409,13 +374,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataProcessamentoSalario;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnRegressar;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnConfirmar;
-        private System.Windows.Forms.Button btnMostrar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnRefrescar;
+        public System.Windows.Forms.DataGridView dataProcessamentoSalario;
     }
 }

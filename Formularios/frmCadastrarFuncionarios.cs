@@ -80,8 +80,8 @@ namespace Facturix_Salários
                     dRow["Valor Unit."] = fr.getValor();
                     dRow["Quantidade"] = fr.getQtd();
                     dRow["Total"] = fr.getValor()*fr.getQtd() + "";
+                    dt.Rows.Add(dRow);
                 }
-                dt.Rows.Add(dRow);
             }
             DataView dtView = new DataView(dt);
             DataTable dtTable = dtView.ToTable(true, "Registo n°", "Natureza", "Valor Unit.", "Quantidade", "Total");
@@ -1577,10 +1577,8 @@ namespace Facturix_Salários
         private void btnAdicionarRemuneracao_Click_1(object sender, EventArgs e)
         {
             frmAdicionarRemuneracao f = new frmAdicionarRemuneracao();
+            f.txtIdFuncionario.Text = txtCodigo.Text;
             f.ShowDialog();
-            int cod = f.cod, qtd = f.qtd, idFunc = int.Parse(txtCodigo.Text);
-            double valor = f.valorUnit;
-            ControllerFuncionarioRemuneracoes.gravar(getCodRemuneracao()+1, idFunc, cod, valor, qtd);
             refrescarVencimento();
         }
 
@@ -1617,7 +1615,16 @@ namespace Facturix_Salários
         {
             int rowIndex = e.RowIndex;
             DataGridViewRow row = dataSubsidios.Rows[rowIndex];
-            codigoCelSelecionadaVencimento = int.Parse(row.Cells[0].Value.ToString());
+            try
+            {
+                codigoCelSelecionadaVencimento = int.Parse(row.Cells[0].Value.ToString());
+            }
+            catch (Exception err) 
+            {
+            
+            }
+            btnEditarRemuneracoes.Enabled = true;
+            btnEliminarRemuneracoes.Enabled = true;
         }
     }
 }

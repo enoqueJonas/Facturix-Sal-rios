@@ -42,6 +42,7 @@ namespace Facturix_Salários.Controllers
                 comando.Parameters.AddWithValue("dataProcessamento", dataProcessamento);
                 comando.Parameters.AddWithValue("tipo", tipo);
                 comando.ExecuteNonQuery();
+                //MessageBox.Show("Salário/os processado/os com sucesso!");
             }
             catch (Exception err)
             {
@@ -61,9 +62,8 @@ namespace Facturix_Salários.Controllers
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE processamento_salario SET idFuncionario=?, nomeTrabalhador=?, diasDeTrabalho=?, salarioBrutoMensal=?, subsidioAlimentacao=?, ajudaDeCusto=?, ajudaDeDeslocacao=?, pagamentoFerias=?, diversosSubsidios=?, totalRetribuicao=?, emprestimoMedico=?, irps=?, ipa=?, inss=?, totalADescontar=?, adiantamentos=?, importanciaAPagar=?, operacao=?, dataProcessamento=?, tipo=? WHERE id=?";
+                String sqlInsert = "UPDATE processamento_salario SET nomeTrabalhador=?, diasDeTrabalho=?, salarioBrutoMensal=?, subsidioAlimentacao=?, ajudaDeCusto=?, ajudaDeDeslocacao=?, pagamentoFerias=?, diversosSubsidios=?, totalRetribuicao=?, emprestimoMedico=?, irps=?, ipa=?, inss=?, totalADescontar=?, adiantamentos=?, importanciaAPagar=?, operacao=?, dataProcessamento=?, tipo=? WHERE idFuncionario=? AND id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
-                comando.Parameters.AddWithValue("idFuncionario", idFuncionario);
                 comando.Parameters.AddWithValue("nomeTrabalhador", nomeTrabalhador);
                 comando.Parameters.AddWithValue("diasDeTrabalho", diasDeTrabalho);
                 comando.Parameters.AddWithValue("salarioBrutoMensal", salarioBrutoMensal);
@@ -83,6 +83,7 @@ namespace Facturix_Salários.Controllers
                 comando.Parameters.AddWithValue("operacao", operacao);
                 comando.Parameters.AddWithValue("dataProcessamento", dataProcessamento);
                 comando.Parameters.AddWithValue("tipo", tipo);
+                comando.Parameters.AddWithValue("idFuncionario", idFuncionario);
                 comando.Parameters.AddWithValue("id", id);
                 comando.ExecuteNonQuery();
             }

@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace Facturix_Salários.Formularios
 {
-    public partial class frmConfirmarProcessamento : Form
+    public partial class frmConfirmarProcessamnetoSalario : Form
     {
-        public frmConfirmarProcessamento()
+        public frmConfirmarProcessamnetoSalario()
         {
             InitializeComponent();
-        }
-
-        private void btnRegressar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnConfirmar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -38,6 +38,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
+            this.txtIdRemuneracao = new System.Windows.Forms.TextBox();
+            this.txtIdFuncionario = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,6 +139,22 @@
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
+            // txtIdRemuneracao
+            // 
+            this.txtIdRemuneracao.Location = new System.Drawing.Point(292, 73);
+            this.txtIdRemuneracao.Name = "txtIdRemuneracao";
+            this.txtIdRemuneracao.Size = new System.Drawing.Size(100, 20);
+            this.txtIdRemuneracao.TabIndex = 2;
+            this.txtIdRemuneracao.Visible = false;
+            // 
+            // txtIdFuncionario
+            // 
+            this.txtIdFuncionario.Location = new System.Drawing.Point(292, 47);
+            this.txtIdFuncionario.Name = "txtIdFuncionario";
+            this.txtIdFuncionario.Size = new System.Drawing.Size(100, 20);
+            this.txtIdFuncionario.TabIndex = 2;
+            this.txtIdFuncionario.Visible = false;
+            // 
             // frmAdicionarRemuneracao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,6 +162,8 @@
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(420, 173);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.txtIdFuncionario);
+            this.Controls.Add(this.txtIdRemuneracao);
             this.Controls.Add(this.txtqtd);
             this.Controls.Add(this.txtval);
             this.Controls.Add(this.label3);
@@ -171,5 +191,7 @@
         public System.Windows.Forms.ComboBox cbRemuneracoes;
         public System.Windows.Forms.TextBox txtval;
         public System.Windows.Forms.TextBox txtqtd;
+        public System.Windows.Forms.TextBox txtIdRemuneracao;
+        public System.Windows.Forms.TextBox txtIdFuncionario;
     }
 }
