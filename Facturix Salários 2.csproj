@@ -131,7 +131,7 @@
       <HintPath>packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="Riss.Devices">
-      <HintPath>..\SDK-CS-Desktop-Software(2960)\RL10079DesktopDemo\Data\C#\Riss.Devices.dll</HintPath>
+      <HintPath>..\..\..\Desktop\SDK-CS-Desktop-Software(2960)\RL10079DesktopDemo\Data\C#\Riss.Devices.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -187,6 +187,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ControlleFuncionarioRemuneracoes.cs" />
     <Compile Include="Controllers\ControllerDepartamento.cs" />
+    <Compile Include="Controllers\ControllerDiasDeTrabalho.cs" />
     <Compile Include="Controllers\ControllerEmpresa.cs" />
     <Compile Include="Controllers\ControllerFeriado.cs" />
     <Compile Include="Controllers\ControllerFinalDeSemana.cs" />
@@ -441,6 +442,7 @@
     <Compile Include="Modelos\ModeloContrato.cs" />
     <Compile Include="Modelos\ModeloDepartamento.cs" />
     <Compile Include="Modelos\ModeloDependente.cs" />
+    <Compile Include="Modelos\ModeloDiasDeTrabalho.cs" />
     <Compile Include="Modelos\ModeloEmpresa.cs" />
     <Compile Include="Modelos\ModeloEstabelecimento.cs" />
     <Compile Include="Modelos\ModeloFeriado.cs" />

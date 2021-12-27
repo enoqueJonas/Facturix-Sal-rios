@@ -468,6 +468,39 @@ namespace Facturix_Salários
             }
         }
 
+        public static void atualizarVenc
+           (
+               int codigo,
+               double vencimento,
+               double subAlimentacao,
+               double ipa
+           )
+        {
+            MySqlConnection conexao = Conexao.conectar();
+
+            try
+            {
+                conexao.Open();
+                String sqlUpdate = "UPDATE funcionario SET vencimento=?, subAlimentacao=?, impostoMunicipal=? WHERE id=?; ";
+                MySqlCommand comando = new MySqlCommand(sqlUpdate, conexao);
+                comando.Parameters.AddWithValue("vencimento", vencimento);
+                comando.Parameters.AddWithValue("subAlimentacao", subAlimentacao);
+                comando.Parameters.AddWithValue("impostoMunicipal", ipa);
+                comando.Parameters.AddWithValue("id", codigo);
+                comando.ExecuteNonQuery();
+                //MessageBox.Show("Vencimento de funcionário atualizado com sucesso!");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Não foi possível atualizar o vencimento do funcionário! Contacte o técnico!!");
+            }
+            finally
+            {
+                if (conexao != null)
+                    conexao.Close();
+            }
+        }
+
         public static void remover(int codigo)
         {
             MySqlConnection conexao = Conexao.conectar();

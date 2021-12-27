@@ -36,6 +36,8 @@ namespace Facturix_Salários.Formularios
             refrescar();
         }
 
+        public int codRecebido;
+
         private void dataProcessamentoSalario_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
@@ -61,6 +63,8 @@ namespace Facturix_Salários.Formularios
                 codIrps = func.getIdIRPS();
                 vencimento = func.getVencimento();
                 f.txtVencimento.Text = vencimento + " ";
+                subAlimentacao = func.getSubAlimentacao();
+                f.txtSubAlimentacao.Text = subAlimentacao + "";
             }
             foreach (ModeloIRPS conta in listaIrps)
             {
@@ -78,23 +82,26 @@ namespace Facturix_Salários.Formularios
                 {
                     foreach (ModeloRemuneracoes r in listaRemenuracoes)
                     {
-                        if (r.getGrupo().Equals("Subsídio de Alimentação"))
-                        {
-                            subAlimentacao = fr.getValor() * fr.getQtd();
-                        }
-                        else {
-                            outroSub = (fr.getValor() * fr.getQtd()) + outroSub;
-                        }
+                        outroSub = (fr.getValor() * fr.getQtd()) + outroSub;
                     }
                 }
 
             }
+            ArrayList listaDias = ControllerDiasDeTrabalho.recuperar();
+            foreach (ModeloDiasDeTrabalho d in listaDias)
+            {
+                if (d.getIdFunc() == codigoCelSelecionada)
+                {
+                    diasDeTrabalho = d.getDiasDeTrabalho();
+                }
+            }
             f.nrDias.Value = diasDeTrabalho;
-            f.txtSubAlimentacao.Text = subAlimentacao + "";
             f.txtOutrasRemuneracoes.Text = outroSub + "";
             f.txtTotalDescontar.Text = valorIrps + emprestimo + ipa + adiantamentos+"";
             f.txtTotalRemuneracoes.Text = subAlimentacao + vencimento + outroSub + "";
-            f.Show();
+            f.ShowDialog();
+            codRecebido = f.idFunc;
+            //diasDeTrabalho = f.diasDeTrabalho;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -156,7 +163,7 @@ namespace Facturix_Salários.Formularios
 
         public void refrescar()
         {
-            frmListagemFuncionarios listf = new frmListagemFuncionarios();
+            //frmListagemFuncionarios listf = new frmListagemFuncionarios();
             //List<int> listagemFuncionario = listf.getFuncionarios();
             ArrayList listaFuncionario = ControllerFuncionario.recuperar();
             List<int> funcionariosValidos = getFuncionariosValidos();
@@ -182,10 +189,10 @@ namespace Facturix_Salários.Formularios
             dt.Columns.Add("Importância a pagar");
             foreach (ModeloFuncionario f in listaFuncionario)
             {
-                int idFuncionario, diasDeTrabalho;
+                int idFuncionario;
                 String nomeDoTrabalhador;
                 double salarioLiquido = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, irps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
-
+                ArrayList listaDias = ControllerDiasDeTrabalho.recuperar();
                 for (int i = 0; i < funcionariosValidos.Count; i++) 
                 {
                     if (f.getCodigo() == funcionariosValidos[i])
@@ -197,8 +204,14 @@ namespace Facturix_Salários.Formularios
                         nomeDoTrabalhador = f.getNome();
                         dRow["Nome do funcionário"] = nomeDoTrabalhador;
 
-                        diasDeTrabalho = getDiasDeTrabalho(funcionariosValidos[i]);
-                        dRow["Dias de trab."] = diasDeTrabalho;
+                        foreach (ModeloDiasDeTrabalho d in listaDias) 
+                        {
+                            if (d.getIdFunc() == f.getCodigo()) 
+                            {
+                                diasDeTrabalho = d.getDiasDeTrabalho();
+                                dRow["Dias de trab."] = diasDeTrabalho;
+                            }
+                        }
 
                         salarioLiquido = Math.Round((f.getVencimento() / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);                 
                         dRow["Mensal"] = salarioLiquido;
@@ -306,7 +319,7 @@ namespace Facturix_Salários.Formularios
 
         private void gravar() 
         {
-            int idFuncionario, diasDeTrabalho;
+            int idFuncionario;
             String nomeDoTrabalhador, operacao, dataProcessamento;
             double salarioLiquido = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, irps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
 
@@ -315,13 +328,14 @@ namespace Facturix_Salários.Formularios
             dataProcessamento = dtProcessamento.Value.Date.ToString("yyyy-MM-dd");
             double valorIrps = 0;
             List<int> lista = getFuncionariosValidos();
-            List<int> codigoFuncionarioDtView = new List<int>(); ;
+            List<int> codigoFuncionarioDtView = new List<int>();
             int mesRecebido = dtProcessamento.Value.Month;
             int anoRecebido = dtProcessamento.Value.Year;
             int anoProcessado, mesProcessado;
             DateTime dtProcessado;
             Boolean existe = false;
-            ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperar();
+            ArrayList listaDias = ControllerDiasDeTrabalho.recuperar();
+            ArrayList listaFuncs = ControllerFuncionario.recuperar();
             ArrayList listaFuncRemuneracoes = ControllerFuncionarioRemuneracoes.recuperar();
             ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
             ArrayList listaIrps = ControllerIRPS.recuperar();
@@ -331,15 +345,15 @@ namespace Facturix_Salários.Formularios
                 codigoFuncionarioDtView.Add(int.Parse(row.Cells[0].Value.ToString()));
             }
 
-            foreach (ModeloFuncionario f in listaCadastroFuncionarios) 
+            foreach (ModeloFuncionario f in listaFuncs) 
             {
                 idFuncionario = f.getCodigo();
                 nomeDoTrabalhador = f.getNome();
-                diasDeTrabalho = getDiasDeTrabalho(f.getCodigo());
                 ajudaDeCusto = 0;
                 ajudaDeslocacao = 0;
                 pagamentoFerias = 0;
                 emprestimoMedico = 0;
+                subAlimentacao = f.getSubAlimentacao();
                 foreach (ModeloIRPS ir in listaIrps)
                 {
                     if (f.getIdIRPS() == ir.getId())
@@ -350,21 +364,7 @@ namespace Facturix_Salários.Formularios
                 {
                     if (idFuncionario == fr.getIdFuncionario())
                     {
-                        foreach (ModeloRemuneracoes r in listaRemuneracoes)
-                        {
-                            if (r.getGrupo().Equals("Subsídio de Alimentação"))
-                            {
-                                subAlimentacao = fr.getValor() * fr.getQtd();
-                            }
-                            else
-                            {
-                                diversosSubsidios = (fr.getValor() * fr.getQtd()) + diversosSubsidios;
-                            }
-                        }
-                    }
-                    else {
-                        subAlimentacao = 0;
-                        diversosSubsidios = 0;
+                        diversosSubsidios = (fr.getValor() * fr.getQtd()) + diversosSubsidios;
                     }
 
                 }
@@ -384,25 +384,36 @@ namespace Facturix_Salários.Formularios
                     }
                 }
 
-                salarioLiquido = Math.Round((f.getVencimento() / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
-                inss = Math.Round((salarioLiquido * 0.07), 2, MidpointRounding.AwayFromZero); ;
-                totalDescontar = emprestimoMedico + adiantamentos + irps + ipa + inss;
-                totalRetribuicao = subAlimentacao + salarioLiquido + diversosSubsidios + ajudaDeCusto + ajudaDeslocacao + pagamentoFerias;
-                importanciaAPagar = totalRetribuicao - totalDescontar;
-
-                if (codigoFuncionarioDtView[i] == f.getCodigo())
+                foreach (ModeloDiasDeTrabalho d in listaDias)
                 {
-                    if (existe)
+                    if (d.getIdFunc() == idFuncionario)
                     {
-                        ControllerProcessamentoDeSalario.atualizar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioLiquido, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, operacao);
-                    }
-                    else
-                    {
-                        id = getCodProcessamento() + 1;
-                        ControllerProcessamentoDeSalario.Guardar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioLiquido, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, operacao);
+                        diasDeTrabalho = d.getDiasDeTrabalho();
                     }
                 }
-                i++;
+
+                salarioLiquido = Math.Round((f.getVencimento() / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
+                inss = Math.Round((salarioLiquido * 0.07), 2, MidpointRounding.AwayFromZero); 
+                totalDescontar = emprestimoMedico + adiantamentos + irps + ipa + inss;
+                totalRetribuicao = Math.Round(subAlimentacao + salarioLiquido + diversosSubsidios + ajudaDeCusto + ajudaDeslocacao + pagamentoFerias, 2, MidpointRounding.AwayFromZero);
+                importanciaAPagar = Math.Round(totalRetribuicao - totalDescontar, 2, MidpointRounding.AwayFromZero);
+
+                for (int j = 0; j< codigoFuncionarioDtView.Count; j++) 
+                {
+                    if (codigoFuncionarioDtView[j] == f.getCodigo())
+                    {
+                        if (existe)
+                        {
+                            ControllerProcessamentoDeSalario.atualizar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioLiquido, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, operacao);
+                        }
+                        else
+                        {
+                            id = getCodProcessamento() + 1;
+                            ControllerProcessamentoDeSalario.Guardar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioLiquido, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, operacao);
+                            break;
+                        }
+                    }
+                }
             }
         }
 
@@ -419,6 +430,7 @@ namespace Facturix_Salários.Formularios
             }
             return cod;
         }
+
         private int getMes(String mes) 
         {
             int nr = 0;
@@ -498,7 +510,7 @@ namespace Facturix_Salários.Formularios
             }
             return funcionario;
         }
-
+        
         private int getDiasDeTrabalho(int codFunc)
         {
             ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperarComCod(codFunc);
@@ -516,6 +528,12 @@ namespace Facturix_Salários.Formularios
             }
             return dias/2;
         }
+
+        private void frmProcessamentoEmLote_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ControllerDiasDeTrabalho.remover();
+        }
+
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
             String mes = cbMes.Text;

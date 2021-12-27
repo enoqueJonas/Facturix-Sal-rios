@@ -26,6 +26,7 @@ namespace Facturix_Salários.Formularios
         private void frmListagemFuncionarios_Load(object sender, EventArgs e)
         {
             refrescar();
+            ControllerDiasDeTrabalho.remover();
         }
 
         private void refrescar()
@@ -73,14 +74,14 @@ namespace Facturix_Salários.Formularios
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            getFuncionarios();
-            if (getFuncionarios().Count > 1 && getFuncionarios().Count != 0)
-            {
+            //getFuncionarios();
+            //if (getFuncionarios().Count > 1 && getFuncionarios().Count != 0)
+            //{
                 carregarFuncionariosLote();
-            } else if (getFuncionarios().Count == 1 && getFuncionarios().Count != 0) 
-            {
-                carregarFuncionarioIndividual();
-            }
+            //} else if (getFuncionarios().Count == 1 && getFuncionarios().Count != 0) 
+            //{
+            //    carregarFuncionarioIndividual();
+            //}
         }
 
         private int getDiasDeTrabalho(int codFunc)
@@ -98,6 +99,7 @@ namespace Facturix_Salários.Formularios
             {
                 dias = dias - 1;
             }
+            ControllerDiasDeTrabalho.gravar(codFunc, dias / 2);
             return dias / 2;
         }
         public void carregarFuncionariosLote()
@@ -259,6 +261,9 @@ namespace Facturix_Salários.Formularios
         public List<int> getFuncionarios() 
         {
             List<int> listaFuncionarios = new List<int>();
+            List<int> listaValida = new List<int>();
+            ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperar();
+            //ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
             foreach (DataGridViewRow row in dataFuncionarios.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
@@ -268,7 +273,20 @@ namespace Facturix_Salários.Formularios
                     codigoCelSelecionada = int.Parse(row.Cells[1].Value.ToString());
                 }
             }
-            return listaFuncionarios;
+            foreach (ModeloRelogioDePonto r in listaRelogioDePonto)
+            {
+                for (int i = 0; i < listaFuncionarios.Count; i++)
+                {
+                    if (listaFuncionarios[i] == r.getIdUsuario())
+                    {
+                        listaValida.Add(r.getIdUsuario());
+                        break;
+                    }
+                }
+            }
+            HashSet<int> unique = new HashSet<int>(listaValida);
+            List<int> listaSemRep = unique.ToList();
+            return listaSemRep;
         }
     }
 }

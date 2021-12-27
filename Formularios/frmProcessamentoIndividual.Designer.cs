@@ -41,26 +41,15 @@
             this.txtIrps = new System.Windows.Forms.TextBox();
             this.txtemprestimoMedico = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dtDataProcessamento = new System.Windows.Forms.DateTimePicker();
-            this.dtDataHorasExtraEFaltas = new System.Windows.Forms.DateTimePicker();
             this.cbMes = new System.Windows.Forms.ComboBox();
-            this.cbTipoProcessamento = new System.Windows.Forms.ComboBox();
             this.nrAno = new System.Windows.Forms.NumericUpDown();
             this.nrDias = new System.Windows.Forms.NumericUpDown();
             this.nrRegistonr = new System.Windows.Forms.NumericUpDown();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnRefrescar = new System.Windows.Forms.Button();
-            this.btnAdicionarRemuneracao = new System.Windows.Forms.Button();
-            this.btnEditarRemuneracoes = new System.Windows.Forms.Button();
-            this.btnEliminarRemuneracoes = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
@@ -72,18 +61,24 @@
             this.txtOutrasRemuneracoes = new System.Windows.Forms.TextBox();
             this.txtSubAlimentacao = new System.Windows.Forms.TextBox();
             this.txtVencimento = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.txtTotalRemuneracoes = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnEliminarRemuneracoes = new System.Windows.Forms.Button();
+            this.btnEditarRemuneracoes = new System.Windows.Forms.Button();
+            this.btnAdicionarRemuneracao = new System.Windows.Forms.Button();
+            this.btnRefrescar = new System.Windows.Forms.Button();
             this.dataProcessamentoSalario = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nrAno)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrDias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrRegistonr)).BeginInit();
-            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataProcessamentoSalario)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -98,7 +93,7 @@
             this.groupBox1.Controls.Add(this.txtIpa);
             this.groupBox1.Controls.Add(this.txtIrps);
             this.groupBox1.Controls.Add(this.txtemprestimoMedico);
-            this.groupBox1.Location = new System.Drawing.Point(31, 180);
+            this.groupBox1.Location = new System.Drawing.Point(31, 146);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(297, 151);
             this.groupBox1.TabIndex = 1;
@@ -199,46 +194,20 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dtDataProcessamento);
-            this.groupBox2.Controls.Add(this.dtDataHorasExtraEFaltas);
             this.groupBox2.Controls.Add(this.cbMes);
-            this.groupBox2.Controls.Add(this.cbTipoProcessamento);
             this.groupBox2.Controls.Add(this.nrAno);
             this.groupBox2.Controls.Add(this.nrDias);
             this.groupBox2.Controls.Add(this.nrRegistonr);
             this.groupBox2.Controls.Add(this.txtNome);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(31, 17);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(679, 151);
+            this.groupBox2.Size = new System.Drawing.Size(679, 113);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            // 
-            // dtDataProcessamento
-            // 
-            this.dtDataProcessamento.CustomFormat = "dd/MM/yyyy";
-            this.dtDataProcessamento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDataProcessamento.Location = new System.Drawing.Point(525, 104);
-            this.dtDataProcessamento.Name = "dtDataProcessamento";
-            this.dtDataProcessamento.Size = new System.Drawing.Size(127, 20);
-            this.dtDataProcessamento.TabIndex = 8;
-            this.dtDataProcessamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtDataProcessamento_KeyDown);
-            // 
-            // dtDataHorasExtraEFaltas
-            // 
-            this.dtDataHorasExtraEFaltas.CustomFormat = "dd/MM/yyyy";
-            this.dtDataHorasExtraEFaltas.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDataHorasExtraEFaltas.Location = new System.Drawing.Point(351, 103);
-            this.dtDataHorasExtraEFaltas.Name = "dtDataHorasExtraEFaltas";
-            this.dtDataHorasExtraEFaltas.Size = new System.Drawing.Size(127, 20);
-            this.dtDataHorasExtraEFaltas.TabIndex = 7;
-            this.dtDataHorasExtraEFaltas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtDataHorasExtraEFaltas_KeyDown);
             // 
             // cbMes
             // 
@@ -250,17 +219,6 @@
             this.cbMes.Size = new System.Drawing.Size(146, 21);
             this.cbMes.TabIndex = 195;
             this.cbMes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbMes_KeyDown);
-            // 
-            // cbTipoProcessamento
-            // 
-            this.cbTipoProcessamento.FormattingEnabled = true;
-            this.cbTipoProcessamento.Items.AddRange(new object[] {
-            "Vencimento"});
-            this.cbTipoProcessamento.Location = new System.Drawing.Point(82, 65);
-            this.cbTipoProcessamento.Name = "cbTipoProcessamento";
-            this.cbTipoProcessamento.Size = new System.Drawing.Size(152, 21);
-            this.cbTipoProcessamento.TabIndex = 3;
-            this.cbTipoProcessamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbTipoProcessamento_KeyDown);
             // 
             // nrAno
             // 
@@ -287,7 +245,7 @@
             // 
             // nrDias
             // 
-            this.nrDias.Location = new System.Drawing.Point(82, 104);
+            this.nrDias.Location = new System.Drawing.Point(84, 67);
             this.nrDias.Name = "nrDias";
             this.nrDias.Size = new System.Drawing.Size(150, 20);
             this.nrDias.TabIndex = 6;
@@ -319,24 +277,6 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Nome:";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(486, 106);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(33, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Data:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(259, 105);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Faltas/H. Extras:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -349,20 +289,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 106);
+            this.label5.Location = new System.Drawing.Point(23, 69);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 12;
             this.label5.Text = "Dias:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Processar:";
             // 
             // label1
             // 
@@ -373,68 +304,13 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Registo n°:";
             // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.dataProcessamentoSalario);
-            this.panel2.Controls.Add(this.btnRefrescar);
-            this.panel2.Controls.Add(this.btnAdicionarRemuneracao);
-            this.panel2.Controls.Add(this.btnEditarRemuneracoes);
-            this.panel2.Controls.Add(this.btnEliminarRemuneracoes);
-            this.panel2.Location = new System.Drawing.Point(31, 347);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(679, 162);
-            this.panel2.TabIndex = 5;
-            // 
-            // btnRefrescar
-            // 
-            this.btnRefrescar.Location = new System.Drawing.Point(24, 132);
-            this.btnRefrescar.Name = "btnRefrescar";
-            this.btnRefrescar.Size = new System.Drawing.Size(87, 26);
-            this.btnRefrescar.TabIndex = 3016;
-            this.btnRefrescar.Text = "Refrescar";
-            this.btnRefrescar.UseVisualStyleBackColor = true;
-            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
-            // 
-            // btnAdicionarRemuneracao
-            // 
-            this.btnAdicionarRemuneracao.Location = new System.Drawing.Point(318, 4);
-            this.btnAdicionarRemuneracao.Name = "btnAdicionarRemuneracao";
-            this.btnAdicionarRemuneracao.Size = new System.Drawing.Size(87, 30);
-            this.btnAdicionarRemuneracao.TabIndex = 3016;
-            this.btnAdicionarRemuneracao.Text = "Adicionar";
-            this.btnAdicionarRemuneracao.UseVisualStyleBackColor = true;
-            this.btnAdicionarRemuneracao.Click += new System.EventHandler(this.btnAdicionarRemuneracao_Click);
-            // 
-            // btnEditarRemuneracoes
-            // 
-            this.btnEditarRemuneracoes.Enabled = false;
-            this.btnEditarRemuneracoes.Location = new System.Drawing.Point(443, 4);
-            this.btnEditarRemuneracoes.Name = "btnEditarRemuneracoes";
-            this.btnEditarRemuneracoes.Size = new System.Drawing.Size(87, 30);
-            this.btnEditarRemuneracoes.TabIndex = 3017;
-            this.btnEditarRemuneracoes.Text = "Editar";
-            this.btnEditarRemuneracoes.UseVisualStyleBackColor = true;
-            this.btnEditarRemuneracoes.Click += new System.EventHandler(this.btnEditarRemuneracoes_Click);
-            // 
-            // btnEliminarRemuneracoes
-            // 
-            this.btnEliminarRemuneracoes.Enabled = false;
-            this.btnEliminarRemuneracoes.Location = new System.Drawing.Point(563, 4);
-            this.btnEliminarRemuneracoes.Name = "btnEliminarRemuneracoes";
-            this.btnEliminarRemuneracoes.Size = new System.Drawing.Size(87, 30);
-            this.btnEliminarRemuneracoes.TabIndex = 3018;
-            this.btnEliminarRemuneracoes.Text = "Eliminar";
-            this.btnEliminarRemuneracoes.UseVisualStyleBackColor = true;
-            this.btnEliminarRemuneracoes.Click += new System.EventHandler(this.btnEliminarRemuneracoes_Click);
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnRegressar);
             this.panel1.Controls.Add(this.btnImprimir);
             this.panel1.Controls.Add(this.btnConfirmar);
-            this.panel1.Location = new System.Drawing.Point(31, 523);
+            this.panel1.Location = new System.Drawing.Point(31, 489);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(679, 74);
@@ -502,7 +378,7 @@
             this.groupBox3.Controls.Add(this.txtOutrasRemuneracoes);
             this.groupBox3.Controls.Add(this.txtSubAlimentacao);
             this.groupBox3.Controls.Add(this.txtVencimento);
-            this.groupBox3.Location = new System.Drawing.Point(413, 180);
+            this.groupBox3.Location = new System.Drawing.Point(413, 146);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(297, 101);
             this.groupBox3.TabIndex = 1;
@@ -563,25 +439,67 @@
             this.txtVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtVencimento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVencimento_KeyDown);
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(430, 303);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(94, 13);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "Total Remune.:";
-            // 
             // txtTotalRemuneracoes
             // 
             this.txtTotalRemuneracoes.Enabled = false;
-            this.txtTotalRemuneracoes.Location = new System.Drawing.Point(542, 300);
+            this.txtTotalRemuneracoes.Location = new System.Drawing.Point(542, 266);
             this.txtTotalRemuneracoes.Name = "txtTotalRemuneracoes";
             this.txtTotalRemuneracoes.ReadOnly = true;
             this.txtTotalRemuneracoes.Size = new System.Drawing.Size(141, 20);
             this.txtTotalRemuneracoes.TabIndex = 17;
             this.txtTotalRemuneracoes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(430, 269);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(94, 13);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "Total Remune.:";
+            // 
+            // btnEliminarRemuneracoes
+            // 
+            this.btnEliminarRemuneracoes.Enabled = false;
+            this.btnEliminarRemuneracoes.Location = new System.Drawing.Point(563, 10);
+            this.btnEliminarRemuneracoes.Name = "btnEliminarRemuneracoes";
+            this.btnEliminarRemuneracoes.Size = new System.Drawing.Size(87, 28);
+            this.btnEliminarRemuneracoes.TabIndex = 3018;
+            this.btnEliminarRemuneracoes.Text = "Eliminar";
+            this.btnEliminarRemuneracoes.UseVisualStyleBackColor = true;
+            this.btnEliminarRemuneracoes.Click += new System.EventHandler(this.btnEliminarRemuneracoes_Click);
+            // 
+            // btnEditarRemuneracoes
+            // 
+            this.btnEditarRemuneracoes.Enabled = false;
+            this.btnEditarRemuneracoes.Location = new System.Drawing.Point(443, 10);
+            this.btnEditarRemuneracoes.Name = "btnEditarRemuneracoes";
+            this.btnEditarRemuneracoes.Size = new System.Drawing.Size(87, 28);
+            this.btnEditarRemuneracoes.TabIndex = 3017;
+            this.btnEditarRemuneracoes.Text = "Editar";
+            this.btnEditarRemuneracoes.UseVisualStyleBackColor = true;
+            this.btnEditarRemuneracoes.Click += new System.EventHandler(this.btnEditarRemuneracoes_Click);
+            // 
+            // btnAdicionarRemuneracao
+            // 
+            this.btnAdicionarRemuneracao.Location = new System.Drawing.Point(318, 10);
+            this.btnAdicionarRemuneracao.Name = "btnAdicionarRemuneracao";
+            this.btnAdicionarRemuneracao.Size = new System.Drawing.Size(87, 28);
+            this.btnAdicionarRemuneracao.TabIndex = 3016;
+            this.btnAdicionarRemuneracao.Text = "Adicionar";
+            this.btnAdicionarRemuneracao.UseVisualStyleBackColor = true;
+            this.btnAdicionarRemuneracao.Click += new System.EventHandler(this.btnAdicionarRemuneracao_Click);
+            // 
+            // btnRefrescar
+            // 
+            this.btnRefrescar.Location = new System.Drawing.Point(24, 132);
+            this.btnRefrescar.Name = "btnRefrescar";
+            this.btnRefrescar.Size = new System.Drawing.Size(87, 26);
+            this.btnRefrescar.TabIndex = 3016;
+            this.btnRefrescar.Text = "Refrescar";
+            this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
             // 
             // dataProcessamentoSalario
             // 
@@ -596,12 +514,33 @@
             this.dataProcessamentoSalario.TabIndex = 3019;
             this.dataProcessamentoSalario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProcessamentoSalario_CellClick);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dataProcessamentoSalario);
+            this.panel2.Controls.Add(this.btnRefrescar);
+            this.panel2.Controls.Add(this.btnAdicionarRemuneracao);
+            this.panel2.Controls.Add(this.btnEditarRemuneracoes);
+            this.panel2.Controls.Add(this.btnEliminarRemuneracoes);
+            this.panel2.Controls.Add(this.groupBox4);
+            this.panel2.Location = new System.Drawing.Point(31, 313);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(679, 162);
+            this.panel2.TabIndex = 5;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(679, 162);
+            this.groupBox4.TabIndex = 3020;
+            this.groupBox4.TabStop = false;
+            // 
             // frmProcessamentoIndividual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(741, 611);
+            this.ClientSize = new System.Drawing.Size(739, 582);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -620,11 +559,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.nrAno)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrDias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrRegistonr)).EndInit();
-            this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataProcessamentoSalario)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -636,16 +575,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnRegressar;
         private System.Windows.Forms.Button btnImprimir;
@@ -653,13 +588,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         public System.Windows.Forms.TextBox txtemprestimoMedico;
-        public System.Windows.Forms.DateTimePicker dtDataProcessamento;
-        public System.Windows.Forms.DateTimePicker dtDataHorasExtraEFaltas;
         public System.Windows.Forms.ComboBox cbMes;
-        public System.Windows.Forms.ComboBox cbTipoProcessamento;
         public System.Windows.Forms.NumericUpDown nrAno;
         public System.Windows.Forms.NumericUpDown nrDias;
         public System.Windows.Forms.NumericUpDown nrRegistonr;
@@ -673,10 +604,13 @@
         public System.Windows.Forms.TextBox txtadiantamentos;
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.TextBox txtOutrasRemuneracoes;
-        private System.Windows.Forms.Button btnAdicionarRemuneracao;
-        private System.Windows.Forms.Button btnEditarRemuneracoes;
+        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnEliminarRemuneracoes;
+        private System.Windows.Forms.Button btnEditarRemuneracoes;
+        private System.Windows.Forms.Button btnAdicionarRemuneracao;
         private System.Windows.Forms.Button btnRefrescar;
         private System.Windows.Forms.DataGridView dataProcessamentoSalario;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

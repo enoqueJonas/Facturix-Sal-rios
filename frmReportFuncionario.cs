@@ -36,5 +36,10 @@ namespace Facturix_Salários
                     break;
             }
         }
+
+        private void frmReportFuncionario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

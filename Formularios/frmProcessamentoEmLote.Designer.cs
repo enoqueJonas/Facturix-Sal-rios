@@ -80,7 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(226, 20);
+            this.label2.Location = new System.Drawing.Point(208, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 0;
@@ -89,7 +89,7 @@
             // chbVencimento
             // 
             this.chbVencimento.AutoSize = true;
-            this.chbVencimento.Location = new System.Drawing.Point(263, 18);
+            this.chbVencimento.Location = new System.Drawing.Point(245, 52);
             this.chbVencimento.Name = "chbVencimento";
             this.chbVencimento.Size = new System.Drawing.Size(82, 17);
             this.chbVencimento.TabIndex = 2;
@@ -99,7 +99,7 @@
             // chbSubFerias
             // 
             this.chbSubFerias.AutoSize = true;
-            this.chbSubFerias.Location = new System.Drawing.Point(363, 18);
+            this.chbSubFerias.Location = new System.Drawing.Point(345, 52);
             this.chbSubFerias.Name = "chbSubFerias";
             this.chbSubFerias.Size = new System.Drawing.Size(91, 17);
             this.chbSubFerias.TabIndex = 2;
@@ -111,7 +111,7 @@
             // chbExtraordinario
             // 
             this.chbExtraordinario.AutoSize = true;
-            this.chbExtraordinario.Location = new System.Drawing.Point(471, 18);
+            this.chbExtraordinario.Location = new System.Drawing.Point(453, 52);
             this.chbExtraordinario.Name = "chbExtraordinario";
             this.chbExtraordinario.Size = new System.Drawing.Size(90, 17);
             this.chbExtraordinario.TabIndex = 2;
@@ -136,7 +136,7 @@
             "Outubro",
             "Novembro",
             "Dezembro"});
-            this.cbMes.Location = new System.Drawing.Point(739, 19);
+            this.cbMes.Location = new System.Drawing.Point(376, 16);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(105, 21);
             this.cbMes.TabIndex = 22;
@@ -145,7 +145,7 @@
             // 
             // nrAno
             // 
-            this.nrAno.Location = new System.Drawing.Point(263, 54);
+            this.nrAno.Location = new System.Drawing.Point(257, 17);
             this.nrAno.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -169,7 +169,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(214, 56);
+            this.label3.Location = new System.Drawing.Point(208, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 20;
@@ -339,13 +339,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(941, 556);
+            this.ClientSize = new System.Drawing.Size(939, 556);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmProcessamentoEmLote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Processamento em lote";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmProcessamentoEmLote_FormClosing);
             this.Load += new System.EventHandler(this.frmProcessamentoEmLote_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nrAno)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -186,7 +186,7 @@ namespace Facturix_Salários.Formularios
             try
             {
                 gravar();
-                MessageBox.Show("Salário/os processado/os com sucesso!");
+                MessageBox.Show("Os dados para o procesaamento foram atualizados com sucesso!");
             }
             catch (Exception err) 
             {
@@ -194,55 +194,59 @@ namespace Facturix_Salários.Formularios
             }
         }
 
+        public int diasDeTrabalho, codEnviado, idFunc;
+        public double ajudaDeCusto = 0, ajudaDeDeslocacao = 0, pagamentoFerias = 0, inss, totalADescontar, totalRetribuicoes, importanciaAPagar, salarioBruto, subAlimentacao, ipa;
         private void gravar() 
         {
-            int id = 0;
-            int idFunc = Convert.ToInt16(nrRegistonr.Value);
-            String nome = txtNome.Text;
-            String operacao = cbTipoProcessamento.Text;
-            String dataProcessamnto = dtDataProcessamento.Value.ToString("yyyy-MM-dd");
-            int mesRecebido = dtDataProcessamento.Value.Month;
-            int anoRecebido = dtDataProcessamento.Value.Year;
-            int anoProcessado, mesProcessado;
-            DateTime dtProcessado;
-            int diasDeTrabalho = Convert.ToInt16(nrDias.Value);
-            double emprestimoMedico = double.Parse(txtemprestimoMedico.Text);
-            double irps = double.Parse(txtIrps.Text);
-            double ipa = double.Parse(txtIpa.Text);
-            double adiantamentos = double.Parse(txtadiantamentos.Text);
-            double salarioBruto = double.Parse(txtVencimento.Text);
-            double subAlimentcao = double.Parse(txtSubAlimentacao.Text);
-            double diversosSubsidios = double.Parse(txtOutrasRemuneracoes.Text);
-            double ajudaDeCusto = 0, ajudaDeDeslocacao = 0, pagamentoFerias = 0, inss, totalADescontar, totalRetribuicoes, importanciaAPagar, salarioLiquido;
-            
-            salarioLiquido = Math.Round((salarioBruto / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
-            inss = Math.Round((salarioLiquido * 0.07), 2, MidpointRounding.AwayFromZero); ;
-            totalADescontar = emprestimoMedico + adiantamentos + irps + ipa + inss;
-            totalRetribuicoes = subAlimentcao + salarioLiquido + diversosSubsidios + ajudaDeCusto + ajudaDeDeslocacao + pagamentoFerias;
-            importanciaAPagar = totalRetribuicoes - totalADescontar;
-           
-            Boolean existe = false;
-            ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
-            foreach (ModeloProcessamentoDeSalario f in listaProcessamento)
-            {
-                dtProcessado = Convert.ToDateTime(f.getDataProcessamento());
-                anoProcessado = dtProcessado.Year;
-                mesProcessado = dtProcessado.Month;
-                if (f.getIdFuncionario() == idFunc && anoProcessado == anoRecebido && mesProcessado == mesRecebido)
-                {
-                    existe = true;
-                    id = f.getId();
-                }
-            }
+            //int id = 0;
+            idFunc = Convert.ToInt16(nrRegistonr.Value);
+            //String nome = txtNome.Text;
+            //String operacao = cbTipoProcessamento.Text;
+            //String dataProcessamnto = dtDataProcessamento.Value.ToString("yyyy-MM-dd");
+            //int mesRecebido = dtDataProcessamento.Value.Month;
+            //int anoRecebido = dtDataProcessamento.Value.Year;
+            //int anoProcessado, mesProcessado;
+            //DateTime dtProcessado;
+            diasDeTrabalho = Convert.ToInt16(nrDias.Value);
+            //double emprestimoMedico = double.Parse(txtemprestimoMedico.Text);
+            //double irps = double.Parse(txtIrps.Text);
+            ipa = double.Parse(txtIpa.Text);
+            //double adiantamentos = double.Parse(txtadiantamentos.Text);
+            salarioBruto = double.Parse(txtVencimento.Text);
+            subAlimentacao = double.Parse(txtSubAlimentacao.Text);
+            ControllerDiasDeTrabalho.atualizar(idFunc, diasDeTrabalho);
+            ControllerFuncionario.atualizarVenc(idFunc, salarioBruto, subAlimentacao, ipa);
+            //double diversosSubsidios = double.Parse(txtOutrasRemuneracoes.Text);
+            //double ajudaDeCusto = 0, ajudaDeDeslocacao = 0, pagamentoFerias = 0, inss, totalADescontar, totalRetribuicoes, importanciaAPagar, salarioLiquido;
 
-            if (existe)
-            {
-                ControllerProcessamentoDeSalario.atualizar(id, idFunc, nome, diasDeTrabalho, salarioLiquido, subAlimentcao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicoes, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamnto, operacao);
-            }
-            else {
-                id = getCodProcessamento() + 1;
-                ControllerProcessamentoDeSalario.Guardar(id, idFunc, nome, diasDeTrabalho, salarioLiquido, subAlimentcao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicoes, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamnto, operacao);
-            }
+            //salarioLiquido = Math.Round((salarioBruto / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
+            //inss = Math.Round((salarioLiquido * 0.07), 2, MidpointRounding.AwayFromZero); ;
+            //totalADescontar = emprestimoMedico + adiantamentos + irps + ipa + inss;
+            //totalRetribuicoes = subAlimentcao + salarioLiquido + diversosSubsidios + ajudaDeCusto + ajudaDeDeslocacao + pagamentoFerias;
+            //importanciaAPagar = totalRetribuicoes - totalADescontar;
+
+            //Boolean existe = false;
+            //ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
+            //foreach (ModeloProcessamentoDeSalario f in listaProcessamento)
+            //{
+            //    dtProcessado = Convert.ToDateTime(f.getDataProcessamento());
+            //    anoProcessado = dtProcessado.Year;
+            //    mesProcessado = dtProcessado.Month;
+            //    if (f.getIdFuncionario() == idFunc && anoProcessado == anoRecebido && mesProcessado == mesRecebido)
+            //    {
+            //        existe = true;
+            //        id = f.getId();
+            //    }
+            //}
+
+            //if (existe)
+            //{
+            //    ControllerProcessamentoDeSalario.atualizar(id, idFunc, nome, diasDeTrabalho, salarioLiquido, subAlimentcao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicoes, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamnto, operacao);
+            //}
+            //else {
+            //    id = getCodProcessamento() + 1;
+            //    ControllerProcessamentoDeSalario.Guardar(id, idFunc, nome, diasDeTrabalho, salarioLiquido, subAlimentcao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicoes, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamnto, operacao);
+            //}
         }
 
         private int getCodRemuneracao()

@@ -53,8 +53,9 @@
             this.ClientSize = new System.Drawing.Size(901, 519);
             this.Controls.Add(this.crDataTable);
             this.Name = "frmReportFuncionario";
-            this.Text = "frmReportFuncionario";
+            this.Text = "Imprimir";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmReportFuncionario_FormClosing);
+            this.Load += new System.EventHandler(this.frmReportFuncionario_Load);
             this.ResumeLayout(false);
 
         }
