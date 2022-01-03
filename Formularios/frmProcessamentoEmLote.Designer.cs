@@ -140,7 +140,6 @@
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(105, 21);
             this.cbMes.TabIndex = 22;
-            this.cbMes.Visible = false;
             this.cbMes.SelectedIndexChanged += new System.EventHandler(this.cbMes_SelectedIndexChanged);
             // 
             // nrAno
@@ -233,6 +232,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(888, 104);
             this.panel1.TabIndex = 27;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 

@@ -173,5 +173,20 @@ namespace Facturix_Salários.Conexoes
         {
 
         }
+
+        private void frmConectarFPScanner_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende Voltar ao menu principal?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
+            }
+        }
     }
 }

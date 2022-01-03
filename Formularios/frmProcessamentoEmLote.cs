@@ -164,11 +164,11 @@ namespace Facturix_Salários.Formularios
             try
             {
                 gravar();
-                MessageBox.Show("Salário/os processado/os com sucesso!");
+                MessageBox.Show("Salário/os processado/os com sucesso!", "Atenção!", MessageBoxButtons.OK ,MessageBoxIcon.Information);
             }
             catch (Exception err) 
             {
-                MessageBox.Show(err.Message, "Erro");
+                MessageBox.Show( err.Message,"Falha ao processar Salário/os", MessageBoxButtons.OK, MessageBoxIcon.Error); 
             }
 
         }
@@ -241,25 +241,25 @@ namespace Facturix_Salários.Formularios
                         }
 
                         salarioLiquido = Math.Round((f.getVencimento() / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);                 
-                        dRow["Mensal"] = salarioLiquido;
+                        dRow["Mensal"] = string.Format("{0:#,##0.00}", salarioLiquido);
 
                         subAlimentacao = f.getSubAlimentacao();
-                        dRow["SUB. ALIM."] = subAlimentacao;
+                        dRow["SUB. ALIM."] = string.Format("{0:#,##0.00}", subAlimentacao);
 
                         ajudaDeCusto = 0;
-                        dRow["AJUD. CUST."] = ajudaDeCusto = 0; ;
+                        dRow["AJUD. CUST."] = string.Format("{0:#,##0.00}", ajudaDeCusto);
 
                         ajudaDeslocacao = f.getSubTransporte();
-                        dRow["AJUD. DESL."] = ajudaDeslocacao;
+                        dRow["AJUD. DESL."] = string.Format("{0:#,##0.00}", ajudaDeslocacao);
 
                         pagamentoFerias = 0;
-                        dRow["PAG. FÉRIAS"] = pagamentoFerias = 0;
+                        dRow["PAG. FÉRIAS"] = string.Format("{0:#,##0.00}", pagamentoFerias);
 
                         diversosSubsidios = f.getSubComunicacao();
-                        dRow["DIVERSOS SUB EFIC."] = diversosSubsidios;
+                        dRow["DIVERSOS SUB EFIC."] = string.Format("{0:#,##0.00}", diversosSubsidios);
 
                         totalRetribuicao = salarioLiquido + f.getSubAlimentacao() + f.getSubTransporte() + f.getSubComunicacao();
-                        dRow["TOTAL"] = totalRetribuicao;
+                        dRow["TOTAL"] = string.Format("{0:#,##0.00}", totalRetribuicao);
 
                         emprestimoMedico = 0;
                         dRow["EMPRÉSTIMO ASSIST. MÉDICA"] = emprestimoMedico;
@@ -269,20 +269,20 @@ namespace Facturix_Salários.Formularios
                             if (f.getIdIRPS() == ir.getId())
                                 valorIrps = ir.getValor();
                         }
-                        dRow["IRPS"] = valorIrps;
+                        dRow["IRPS"] = string.Format("{0:#,##0.00}", valorIrps);
 
                         ipa = f.getImpostoMunicipal();
-                        dRow["IPA"] = ipa;
+                        dRow["IPA"] = string.Format("{0:#,##0.00}", ipa);
 
                         inss = f.getVencimento() * 0.07;
-                        dRow["INSS"] = inss;
+                        dRow["INSS"] = string.Format("{0:#,##0.00}", inss);
 
                         totalDescontar = valorIrps + f.getImpostoMunicipal() + emprestimoMedico + ipa + inss;
-                        dRow["Total a descontar"] = totalDescontar;
+                        dRow["Total a descontar"] = string.Format("{0:#,##0.00}", totalDescontar);
 
                         adiantamentos = 0;
-                        dRow["Adiantamento"] = adiantamentos;
-                        dRow["Importância a pagar"] = (salarioLiquido + totalRetribuicao) - totalDescontar;
+                        dRow["Adiantamento"] = string.Format("{0:#,##0.00}", adiantamentos);
+                        dRow["Importância a pagar"] = string.Format("{0:#,##0.00}", (salarioLiquido + totalRetribuicao) - totalDescontar);
                         dt.Rows.Add(dRow);                       
                     }
                 }
@@ -520,6 +520,8 @@ namespace Facturix_Salários.Formularios
             ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperar();
             ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
             decimal ano = nrAno.Value;
+            String mes = cbMes.Text;
+            int nrMes = getMes(mes), nrMesRelogio;
             DateTime dataAdimissao, dataRelogio/*, dataProcessamento*/;
             foreach (ModeloFuncionario f in listaFuncionarios) 
             {
@@ -527,7 +529,8 @@ namespace Facturix_Salários.Formularios
                 foreach (ModeloRelogioDePonto r in listaRelogioDePonto) 
                 {
                     dataRelogio = Convert.ToDateTime(r.getData());
-                    if (dataAdimissao.Year <= ano && dataRelogio.Year == ano && f.getCodigo() == r.getIdUsuario())
+                    nrMesRelogio = dataRelogio.Month;
+                    if (dataAdimissao.Year <= ano && dataRelogio.Year == ano && f.getCodigo() == r.getIdUsuario() && nrMes == nrMesRelogio)
                     {
                         funcionario.Add(f.getCodigo());
                         listaCadastroFuncionarios.Add(new ModeloFuncionario(f.getCodigo(), f.getIdIRPS(), f.getNome(), f.getCell(), f.getCellSec(), f.getTel(), f.getEmail(), f.getEstadoCivil(), f.getDeficiencia(), f.getConjugue(), f.getSexo(), f.getDataNascimento(), f.getLinkImagem(), f.getCodigoPostal(), f.getBairro(), f.getLocalidade(), f.getMoradaGen(), f.getTipoContrato(), f.getDataAdmissao(), f.getDataDemissao(), f.getProfissao(), f.getCategoria(), f.getSeguro(), f.getLocalTrabalho(), f.getRegime(), f.getBi(), f.getNumeroBenificiario(), f.getNumeroFiscal(), f.getVencimento(), f.getSubAlimentacao(), f.getSubTransporte(), f.getHoras(), f.getDependentes(), f.getHabilitacoes(), f.getNacionalidade(), f.getUltimoEmprego(), f.getTurno(), f.getImpostoMunicipal(), f.getCentroDeCusto(), f.getSegurancaSocial(), f.getSindicato(), f.getSubComunicacao()));
@@ -559,6 +562,17 @@ namespace Facturix_Salários.Formularios
         private void frmProcessamentoEmLote_FormClosing(object sender, FormClosingEventArgs e)
         {
             ControllerDiasDeTrabalho.remover();
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende Voltar ao menu principal?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
+            }
         }
 
         private void frmProcessamentoEmLote_KeyDown(object sender, KeyEventArgs e)
@@ -588,6 +602,11 @@ namespace Facturix_Salários.Formularios
             }
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
             String mes = cbMes.Text;
@@ -597,7 +616,7 @@ namespace Facturix_Salários.Formularios
 
         private void nrAno_ValueChanged(object sender, EventArgs e)
         {
-            //refrescar();
+            refrescar();
         }
     }
 }

@@ -108,11 +108,11 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("sindicato", sindicato);
                 comando.Parameters.AddWithValue("subComunicacao", subComunicacao);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Funcionário cadastrado com sucesso!");
+                //MessageBox.Show("Funcionário cadastrado com sucesso!");
             }
             catch(Exception err)
             {
-                MessageBox.Show("Não foi possível cadastrar o  Funcionário! Contacte o técnico!");
+                //MessageBox.Show("Não foi possível cadastrar o  Funcionário! Contacte o técnico!");
             }
             finally
             {
@@ -455,11 +455,11 @@ namespace Facturix_Salários
                 comando.Parameters.AddWithValue("subComunicacao", subComunicacao);
                 comando.Parameters.AddWithValue("id", codigo);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Funcionário atualizado com sucesso!");
+                //MessageBox.Show("Funcionário atualizado com sucesso!");
             }
             catch (Exception err)
             {
-                MessageBox.Show("Não foi possível atualizar o  Funcionário! Contacte o técnico!!");
+                //MessageBox.Show("Não foi possível atualizar o  Funcionário! Contacte o técnico!!");
             }
             finally
             {
@@ -511,11 +511,11 @@ namespace Facturix_Salários
                 MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
                 comando.Parameters.Add(new MySqlParameter("id", codigo));
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Funcionário removido!");
+                //MessageBox.Show("Funcionário removido!");
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Não foi possível remover o  Funcionário! Contacte o técnico!!");
+                //MessageBox.Show(err.Message, "Não foi possível remover o  Funcionário! Contacte o técnico!!");
             }
             finally
             {

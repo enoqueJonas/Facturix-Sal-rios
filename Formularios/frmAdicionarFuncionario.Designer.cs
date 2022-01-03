@@ -206,7 +206,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown nrRegistoNumero;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -217,5 +216,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnRegressar;
         private System.Windows.Forms.Button btnConfirmar;
+        public System.Windows.Forms.TextBox txtNome;
     }
 }

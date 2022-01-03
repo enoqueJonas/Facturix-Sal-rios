@@ -35,9 +35,13 @@ namespace Facturix_Salários.Formularios
                 MySqlDataAdapter adapter = new MySqlDataAdapter(Query1, conexao);
 
                 DataSet Ds = new DtSetProcessamento();
-
-                adapter.Fill(Ds, "dtTableProcessamento");
-
+                DataTable dt0 = new DataTable("processamento_salario");
+                adapter.Fill(dt0);
+                Ds.Tables.Clear();
+                Ds.Tables.Add(dt0);
+                var s = dt0.Copy();
+                s.TableName = "dtTableProcessamento";
+                Ds.Tables.Add(s);
                 if (Ds.Tables[0].Rows.Count == 0)
                 {
                     MessageBox.Show("No data Found", "CrystalReportWithOracle");
@@ -57,7 +61,7 @@ namespace Facturix_Salários.Formularios
             }
             catch (Exception err) 
             {
-                MessageBox.Show(err.Message, "Não foi possível imprimir!");
+                MessageBox.Show(err.Message, "Não foi possível preencher o report!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

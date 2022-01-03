@@ -463,6 +463,7 @@
             this.Name = "frmConectarFPScanner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conectar Scanner";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmConectarFPScanner_FormClosing);
             this.Load += new System.EventHandler(this.frmConectarFPScanner_Load);
             this.group.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

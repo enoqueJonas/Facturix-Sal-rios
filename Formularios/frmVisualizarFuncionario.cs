@@ -149,7 +149,7 @@ namespace Facturix_Salários
                 }
             }
             f.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -231,8 +231,16 @@ namespace Facturix_Salários
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            eliminar();
-            mostrarNumeroFuncionarios();
+            try
+            {
+                eliminar();
+                mostrarNumeroFuncionarios();
+                MessageBox.Show("Funcionário removido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Não foi possível eliminar o Funcionário! Contacte o técnico!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dataFuncionarios_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -278,19 +286,17 @@ namespace Facturix_Salários
 
         private void frmVisualizarFuncionario_FormClosing(object sender, FormClosingEventArgs e)
         {
-            /*
-                switch (e.CloseReason)
-                {
-                    case CloseReason.UserClosing:
-                        if (MessageBox.Show("Pretende fechar o formulário Visualização de Funcionários?", "Atenção!",
-                                            MessageBoxButtons.YesNo,
-                                            MessageBoxIcon.Question) == DialogResult.No)
-                        {
-                            e.Cancel = true;
-                        }
-                        break;
-                }
-                */
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende Voltar ao menu principal?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
             }
+        }
     }
 }

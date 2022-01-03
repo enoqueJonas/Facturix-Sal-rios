@@ -154,9 +154,9 @@ namespace Facturix_Salários.Formularios
                             dRow["Natureza"] = r.getNatureza();
                         }
                     }
-                    dRow["Valor Unit."] = fr.getValor();
+                    dRow["Valor Unit."] = string.Format("{0:#,##0.00}", fr.getValor());
                     dRow["Quantidade"] = fr.getQtd();
-                    dRow["Total"] = fr.getValor() * fr.getQtd() + "";
+                    dRow["Total"] = string.Format("{0:#,##0.00}", fr.getValor() * fr.getQtd());
                 }
                     dt.Rows.Add(dRow);
             }
@@ -354,7 +354,7 @@ namespace Facturix_Salários.Formularios
                 f.txtIdFuncionario.Text = fr.getIdFuncionario()+"";
                 f.txtIdRemuneracao.Text = id+"";
                 f.txtqtd.Text = fr.getQtd() + "";
-                f.txtval.Text = fr.getValor() + "";
+                f.txtval.Text = string.Format("{0:#,##0.00}", fr.getValor());
             }
             foreach (ModeloRemuneracoes r in listaRemuneracoes)
             {

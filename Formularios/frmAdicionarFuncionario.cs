@@ -25,7 +25,7 @@ namespace Facturix_Salários.Formularios
             nrRegistoNumero.Value = getCod() + 1;
             txtVencimento.LostFocus += new EventHandler(txtVencimento_LostFocus);
             txtAlimentacao.LostFocus += new EventHandler(txtAlimentacao_LostFocus);
-            txtNome.Focus();
+            this.ActiveControl = txtNome;
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -92,7 +92,7 @@ namespace Facturix_Salários.Formularios
             f.Show();
             this.Close();
             frmVisualizarFuncionario frm = new frmVisualizarFuncionario();
-            frm.Close();
+            frm.Hide();
         }
 
         private void nrRegistoNumero_KeyDown(object sender, KeyEventArgs e)

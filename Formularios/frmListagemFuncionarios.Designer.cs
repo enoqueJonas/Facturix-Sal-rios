@@ -77,6 +77,7 @@
             this.Name = "frmListagemFuncionarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listagem de Funcionários";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmListagemFuncionarios_FormClosing);
             this.Load += new System.EventHandler(this.frmListagemFuncionarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataFuncionarios)).EndInit();
             this.ResumeLayout(false);

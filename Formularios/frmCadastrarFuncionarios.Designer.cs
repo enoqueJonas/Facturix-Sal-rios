@@ -1737,7 +1737,7 @@ namespace Facturix_Salários
             // 
             this.txtHoraSemana.Location = new System.Drawing.Point(179, 76);
             this.txtHoraSemana.Name = "txtHoraSemana";
-            this.txtHoraSemana.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtHoraSemana.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtHoraSemana.Size = new System.Drawing.Size(236, 20);
             this.txtHoraSemana.TabIndex = 35;
             this.txtHoraSemana.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtHoraSemana_KeyDown_1);

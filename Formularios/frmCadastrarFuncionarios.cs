@@ -426,17 +426,34 @@ namespace Facturix_Salários
             }
             if (existe == false)
             {
-                ControllerFuncionario.Guardar(id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao);
-                ControllerConta.Guardar(id, banco, nib, conta);
-                adicionar();
-                setCod();
+                try
+                {
+                    ControllerFuncionario.Guardar(id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao);
+                    ControllerConta.Guardar(id, banco, nib, conta);
+                    adicionar();
+                    setCod();
+                    MessageBox.Show("Funcionário cadastrado com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception err) 
+                {
+                    MessageBox.Show(err.Message, "Não foi possível cadastrar o Funcionário!Contacte o técnico!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                ControllerFuncionario.atualizar(id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao);
-                ControllerConta.atualizar(id, banco, nib, conta);
-                limparCaixas();
-                mostrarLabels(false);
+
+                try
+                {
+                    ControllerFuncionario.atualizar(id, idIRPS, nome, cell, cellSec, telefone, email, estadoCivil, def, conj, sexo, dataNasc, linkImagem, codPostal, bairro, localidade, morada, tipoContrato, dataAdmissao, dataDemissao, profissao, categoria, seguro, localTrabalho, regime, bi, numeroBenificiario, numeroFiscal, vencimento, subAlimentacao, subTransporte, horas, dependentes, habilitacoes, nacionalidade, ultimoEmprego, turno, impostoMunicipal, centroDeCusto, segurancaSocial, sindicato, subComunicacao);
+                    ControllerConta.atualizar(id, banco, nib, conta);
+                    limparCaixas();
+                    mostrarLabels(false);
+                    MessageBox.Show("Funcionário atualizado com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message, "Não foi possível atualizar o  Funcionário! Contacte o técnico!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -555,7 +572,7 @@ namespace Facturix_Salários
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show(err.Message.Trim(), "Nao foi possivel preencher report");
+                    MessageBox.Show(err.Message, "Não foi possível preencher o report! Contacte o técnico!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -565,7 +582,7 @@ namespace Facturix_Salários
             }
             else
             {
-                MessageBox.Show("Nenhum funcionário com esse número de registo existe na base de dados! Selecione um funcionário válido!");
+                MessageBox.Show("Nenhum funcionário com esse número de registo existe na base de dados! Selecione um funcionário válido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         private void adicionar()
@@ -774,9 +791,17 @@ namespace Facturix_Salários
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            remover();
-            impedirBotoes();
-            refrescarVencimento();
+            try
+            {
+                remover();
+                impedirBotoes();
+                refrescarVencimento();
+                MessageBox.Show("Funcionário removido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception err) 
+            {
+                MessageBox.Show(err.Message, "Não foi possível eliminar o Funcionário! Contacte o técnico!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
@@ -849,35 +874,12 @@ namespace Facturix_Salários
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            this.dataSubsidios.Columns["Valor Unit."].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataSubsidios.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //dataSubsidios.Columns["Vencimento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //setCod();
             adicionarItemsCb();
             porFoco();
-            /*
-            MySqlConnection conexao = Conexao.conectar();
-            try
-            {
-                conexao.Open();
-                refrescarDependentes();
-                mudarLarguraCelulas();
-                foreach (DataGridViewColumn col in dataDependentes.Columns)
-                {
-                    col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
-                setCod();
-                adicionarItemsCb();
-                porFoco();
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show("Não foi possível conectar a base de dados! Contacte o suporte técnico!" );
-            }
-            finally 
-            {
-                if (conexao != null)
-                    conexao.Close();
-            }
-            */
         }
 
         private void txtAlimentacao_LostFocus(object sender, EventArgs e)
@@ -1282,8 +1284,14 @@ namespace Facturix_Salários
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            gravar();
-            impedirBotoes();
+            try
+            {
+                gravar();
+                impedirBotoes();
+            }
+            catch (Exception err) 
+            {
+            }          
         }
 
         private void cbDeficiencia_KeyDown(object sender, KeyEventArgs e)
@@ -1842,7 +1850,7 @@ namespace Facturix_Salários
             switch (e.CloseReason)
             {
                 case CloseReason.UserClosing:
-                    if (MessageBox.Show("Pretende fechar o formulário Cadastro de funcionários?", "Atenção!",
+                    if (MessageBox.Show("Pretende Voltar ao menu principal?", "Atenção!",
                                         MessageBoxButtons.YesNo,
                                         MessageBoxIcon.Question) == DialogResult.No)
                     {
@@ -1968,7 +1976,7 @@ namespace Facturix_Salários
             {
                 id = fr.getIdRemuneracao();
                 f.txtqtd.Text = fr.getQtd() + "";
-                f.txtval.Text = fr.getValor() + "";
+                f.txtval.Text = string.Format("{0:#,##0.00}", fr.getValor());
             }
             foreach (ModeloRemuneracoes r in listaRemuneracoes)
             {
