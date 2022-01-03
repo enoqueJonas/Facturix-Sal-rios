@@ -31,6 +31,69 @@ namespace Facturix_Salários.Formularios
             this.ActiveControl = txtNome;
             dataProcessamentoSalario.AllowUserToAddRows = false;
             refrescarVencimento();
+            txtOutrasRemuneracoes.LostFocus += new EventHandler(txtOutrasRemuneracoes_LostFocus);
+            txtVencimento.LostFocus += new EventHandler(txtVencimento_LostFocus);
+            txtSubAlimentacao.LostFocus += new EventHandler(txtSubAlimentacao_LostFocus);
+            txtemprestimoMedico.LostFocus += new EventHandler(txtemprestimoMedico_LostFocus);
+            txtIrps.LostFocus += new EventHandler(txtIrps_LostFocus);
+            txtIpa.LostFocus += new EventHandler(txtIpa_LostFocus);
+            txtadiantamentos.LostFocus += new EventHandler(txtadiantamentos_LostFocus);
+        }
+
+        private void txtVencimento_LostFocus(object sender, EventArgs e)
+        {
+            if (txtVencimento.Text!= "") 
+            {
+                txtVencimento.Text = string.Format("{0:#,##0.00}", double.Parse(txtVencimento.Text));
+            }
+        }
+
+        private void txtSubAlimentacao_LostFocus(object sender, EventArgs e)
+        {
+            if (txtSubAlimentacao.Text != "")
+            {
+                txtSubAlimentacao.Text = string.Format("{0:#,##0.00}", double.Parse(txtSubAlimentacao.Text));
+            }
+        }
+
+        private void txtemprestimoMedico_LostFocus(object sender, EventArgs e)
+        {
+            if (txtemprestimoMedico.Text != "")
+            {
+                txtemprestimoMedico.Text = string.Format("{0:#,##0.00}", double.Parse(txtemprestimoMedico.Text));
+            }
+        }
+
+        private void txtIrps_LostFocus(object sender, EventArgs e)
+        {
+            if (txtIrps.Text != "")
+            {
+                txtIrps.Text = string.Format("{0:#,##0.00}", double.Parse(txtIrps.Text));
+            }
+        }
+
+        private void txtIpa_LostFocus(object sender, EventArgs e)
+        {
+            if (txtIpa.Text != "")
+            {
+                txtIpa.Text = string.Format("{0:#,##0.00}", double.Parse(txtIpa.Text));
+            }
+        }
+
+        private void txtadiantamentos_LostFocus(object sender, EventArgs e)
+        {
+            if (txtadiantamentos.Text != "")
+            {
+                txtadiantamentos.Text = string.Format("{0:#,##0.00}", double.Parse(txtadiantamentos.Text));
+            }
+        }
+
+        private void txtOutrasRemuneracoes_LostFocus(object sender, EventArgs e)
+        {
+            if (txtOutrasRemuneracoes.Text != "")
+            {
+                txtOutrasRemuneracoes.Text = string.Format("{0:#,##0.00}", double.Parse(txtOutrasRemuneracoes.Text));
+            }
         }
 
         Control ctrl;

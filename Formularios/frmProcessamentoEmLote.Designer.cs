@@ -348,6 +348,7 @@
             this.Text = "Processamento em lote";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmProcessamentoEmLote_FormClosing);
             this.Load += new System.EventHandler(this.frmProcessamentoEmLote_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmProcessamentoEmLote_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.nrAno)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

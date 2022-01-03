@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Facturix_Salários.Controllers;
 using Facturix_Salários.Modelos;
+using Facturix_Salários.Reports;
+using MySql.Data.MySqlClient;
 
 namespace Facturix_Salários.Formularios
 {
@@ -57,21 +59,21 @@ namespace Facturix_Salários.Formularios
                 emprestimo = 0;
                 f.txtemprestimoMedico.Text = emprestimo + "";
                 ipa = func.getImpostoMunicipal();
-                f.txtIpa.Text = ipa + "";
+                f.txtIpa.Text = string.Format("{0:#,##0.00}", ipa);
                 adiantamentos = 0;
                 f.txtadiantamentos.Text = adiantamentos  + "";
                 codIrps = func.getIdIRPS();
                 vencimento = func.getVencimento();
-                f.txtVencimento.Text = vencimento + " ";
+                f.txtVencimento.Text = string.Format("{0:#,##0.00}", vencimento);
                 subAlimentacao = func.getSubAlimentacao();
-                f.txtSubAlimentacao.Text = subAlimentacao + "";
+                f.txtSubAlimentacao.Text = string.Format("{0:#,##0.00}", subAlimentacao);
             }
             foreach (ModeloIRPS conta in listaIrps)
             {
                 if (codIrps == conta.getId())
                 {
                     valorIrps = conta.getValor();
-                    f.txtIrps.Text = valorIrps + "";
+                    f.txtIrps.Text = string.Format("{0:#,##0.00}", valorIrps);
                 }
             }
             ArrayList listaRemenuracoes = ControllerRemuneracoes.recuperar();
@@ -96,9 +98,9 @@ namespace Facturix_Salários.Formularios
                 }
             }
             f.nrDias.Value = diasDeTrabalho;
-            f.txtOutrasRemuneracoes.Text = outroSub + "";
-            f.txtTotalDescontar.Text = valorIrps + emprestimo + ipa + adiantamentos+"";
-            f.txtTotalRemuneracoes.Text = subAlimentacao + vencimento + outroSub + "";
+            f.txtOutrasRemuneracoes.Text = string.Format("{0:#,##0.00}", outroSub);
+            f.txtTotalDescontar.Text = string.Format("{0:#,##0.00}", valorIrps + emprestimo + ipa + adiantamentos);
+            f.txtTotalRemuneracoes.Text = string.Format("{0:#,##0.00}", subAlimentacao + vencimento + outroSub);
             f.ShowDialog();
             codRecebido = f.idFunc;
             //diasDeTrabalho = f.diasDeTrabalho;
@@ -123,7 +125,32 @@ namespace Facturix_Salários.Formularios
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             frmReportProcessamento f = new frmReportProcessamento();
-            f.Show();
+            //reportProcessamento objRpt = new reportProcessamento();
+
+
+            //String ConnStr = "Server=localhost; Uid= root; Pwd=; Database=facturixsalario";
+
+            //MySqlConnection myConnection = new MySqlConnection(ConnStr);
+
+
+            //String Query1 = "SELECT numeroBenificiario, numeroFiscal, categoria, seguro, segurancaSocial from funcionario";
+
+            //MySqlDataAdapter adapter = new MySqlDataAdapter(Query1, ConnStr);
+
+            //DataSet Ds = new DataSet();
+            //// here my_dt is the name of the DataTable which we 
+            //// created in the designer view.
+            //adapter.Fill(Ds, "dtTableProcessamento");
+
+            //if (Ds.Tables[0].Rows.Count == 0)
+            //{
+            //    MessageBox.Show("No data Found", "CrystalReportWithOracle");
+            //    return;
+            //}
+            //// Setting data source of our report object
+            //objRpt.SetDataSource(Ds);
+            //f.crystalReportViewer1.ReportSource = objRpt;
+            f.ShowDialog();
         }
 
         private void cbOperacao_SelectedIndexChanged(object sender, EventArgs e)
@@ -532,6 +559,33 @@ namespace Facturix_Salários.Formularios
         private void frmProcessamentoEmLote_FormClosing(object sender, FormClosingEventArgs e)
         {
             ControllerDiasDeTrabalho.remover();
+        }
+
+        private void frmProcessamentoEmLote_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F5")
+            {
+                try
+                {
+                    gravar();
+                    MessageBox.Show("Salário/os processado/os com sucesso!");
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message, "Erro");
+                }
+            }
+
+            if(e.KeyCode.ToString() == "F7")
+            {
+                frmReportProcessamento f = new frmReportProcessamento();
+                f.Show();
+            }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
 
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)

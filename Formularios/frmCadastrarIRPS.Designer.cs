@@ -128,6 +128,7 @@
             // 
             // dtViewIRPS
             // 
+            this.dtViewIRPS.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dtViewIRPS.Location = new System.Drawing.Point(35, 188);
             this.dtViewIRPS.Name = "dtViewIRPS";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;

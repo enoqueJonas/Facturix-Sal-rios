@@ -112,7 +112,7 @@ namespace Facturix_Salários
             }
             catch(Exception err)
             {
-                MessageBox.Show(err.Message, "Não foi possível cadastrar o  Funcionário! Contacte o técnico!");
+                MessageBox.Show("Não foi possível cadastrar o  Funcionário! Contacte o técnico!");
             }
             finally
             {
@@ -459,7 +459,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Não foi possível atualizar o  Funcionário! Contacte o técnico!!");
+                MessageBox.Show("Não foi possível atualizar o  Funcionário! Contacte o técnico!!");
             }
             finally
             {

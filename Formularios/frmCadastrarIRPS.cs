@@ -132,6 +132,9 @@ namespace Facturix_Salários.Formularios.Cadastros
             dtViewIRPS.Paint += new PaintEventHandler(dtViewIRPS_Paint);
             dtViewIRPS.Scroll += new ScrollEventHandler(dtViewIRPS_scroll);
             dtViewIRPS.ColumnWidthChanged += new DataGridViewColumnEventHandler(dtViewIRPS_ColumnWidthChanged);
+            txtSalarioMax.LostFocus += new EventHandler(txtSalarioMax_LostFocus);
+            txtSalarioMin.LostFocus += new EventHandler(txtSalarioMin_LostFocus);
+            txtValor.LostFocus += new EventHandler(txtValor_LostFocus);
             refrescar();
             mudarLarguraCelulas();
             dtViewIRPS.AutoResizeColumnHeadersHeight();
@@ -148,6 +151,20 @@ namespace Facturix_Salários.Formularios.Cadastros
             }
             setCod();
             impedirBotoes();
+        }
+
+        private void txtSalarioMin_LostFocus(object sender, EventArgs e)
+        {
+            txtSalarioMin.Text = string.Format("{0:#,##0.00}", double.Parse(txtSalarioMin.Text));
+        }
+
+        private void txtSalarioMax_LostFocus(object sender, EventArgs e)
+        {
+            txtSalarioMax.Text = string.Format("{0:#,##0.00}", double.Parse(txtSalarioMax.Text));
+        }
+         private void txtValor_LostFocus(object sender, EventArgs e)
+        {
+            txtValor.Text = string.Format("{0:#,##0.00}", double.Parse(txtValor.Text));
         }
 
         private void mudarLarguraCelulas()
@@ -499,7 +516,7 @@ namespace Facturix_Salários.Formularios.Cadastros
             switch (e.CloseReason)
             {
                 case CloseReason.UserClosing:
-                    if (MessageBox.Show("Pretende fechar o formulário Cadastro de IRPS?", "Atenção!",
+                    if (MessageBox.Show("Pretende retornar ao menu geral?", "Atenção!",
                                         MessageBoxButtons.YesNo,
                                         MessageBoxIcon.Question) == DialogResult.No)
                     {

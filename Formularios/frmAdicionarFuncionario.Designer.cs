@@ -34,10 +34,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.nrRegistoNumero = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtVencimento = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtAlimentacao = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtVencimento = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
@@ -60,7 +60,8 @@
             this.txtNome.Location = new System.Drawing.Point(99, 56);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(347, 20);
-            this.txtNome.TabIndex = 1;
+            this.txtNome.TabIndex = 2;
+            this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
             // 
             // label2
             // 
@@ -76,7 +77,8 @@
             this.nrRegistoNumero.Location = new System.Drawing.Point(99, 21);
             this.nrRegistoNumero.Name = "nrRegistoNumero";
             this.nrRegistoNumero.Size = new System.Drawing.Size(80, 20);
-            this.nrRegistoNumero.TabIndex = 2;
+            this.nrRegistoNumero.TabIndex = 1;
+            this.nrRegistoNumero.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nrRegistoNumero_KeyDown);
             // 
             // groupBox1
             // 
@@ -91,21 +93,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Adicionar Remunerações";
             // 
-            // label3
+            // txtAlimentacao
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Vencimento Mensal:";
-            // 
-            // txtVencimento
-            // 
-            this.txtVencimento.Location = new System.Drawing.Point(165, 31);
-            this.txtVencimento.Name = "txtVencimento";
-            this.txtVencimento.Size = new System.Drawing.Size(184, 20);
-            this.txtVencimento.TabIndex = 1;
+            this.txtAlimentacao.Location = new System.Drawing.Point(165, 57);
+            this.txtAlimentacao.Name = "txtAlimentacao";
+            this.txtAlimentacao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtAlimentacao.Size = new System.Drawing.Size(184, 20);
+            this.txtAlimentacao.TabIndex = 4;
+            this.txtAlimentacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAlimentacao_KeyDown);
             // 
             // label4
             // 
@@ -116,12 +111,24 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Sub. de Alimentação:";
             // 
-            // txtAlimentacao
+            // txtVencimento
             // 
-            this.txtAlimentacao.Location = new System.Drawing.Point(165, 57);
-            this.txtAlimentacao.Name = "txtAlimentacao";
-            this.txtAlimentacao.Size = new System.Drawing.Size(184, 20);
-            this.txtAlimentacao.TabIndex = 1;
+            this.txtVencimento.Location = new System.Drawing.Point(165, 31);
+            this.txtVencimento.Name = "txtVencimento";
+            this.txtVencimento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtVencimento.Size = new System.Drawing.Size(184, 20);
+            this.txtVencimento.TabIndex = 3;
+            this.txtVencimento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVencimento_KeyDown);
+            this.txtVencimento.Leave += new System.EventHandler(this.txtVencimento_Leave);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(47, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Vencimento Mensal:";
             // 
             // groupBox2
             // 
@@ -144,7 +151,7 @@
             this.btnRegressar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegressar.Name = "btnRegressar";
             this.btnRegressar.Size = new System.Drawing.Size(69, 60);
-            this.btnRegressar.TabIndex = 900004;
+            this.btnRegressar.TabIndex = 6;
             this.btnRegressar.TabStop = false;
             this.btnRegressar.Text = "Regressar";
             this.btnRegressar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -162,7 +169,7 @@
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(69, 60);
-            this.btnConfirmar.TabIndex = 900003;
+            this.btnConfirmar.TabIndex = 5;
             this.btnConfirmar.TabStop = false;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -174,17 +181,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(488, 294);
+            this.ClientSize = new System.Drawing.Size(484, 304);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.nrRegistoNumero);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "frmAdicionarFuncionario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Funcionário";
             this.Load += new System.EventHandler(this.frmAdicionarFuncionario_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmAdicionarFuncionario_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.nrRegistoNumero)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

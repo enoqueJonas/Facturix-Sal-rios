@@ -200,6 +200,7 @@
             // dataProfissao
             // 
             this.dataProfissao.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataProfissao.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataProfissao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataProfissao.Location = new System.Drawing.Point(48, 152);
             this.dataProfissao.Name = "dataProfissao";

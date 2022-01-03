@@ -200,6 +200,7 @@
             // dataEst
             // 
             this.dataEst.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataEst.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataEst.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataEst.Location = new System.Drawing.Point(50, 151);
             this.dataEst.Name = "dataEst";

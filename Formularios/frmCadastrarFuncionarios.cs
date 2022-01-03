@@ -67,7 +67,7 @@ namespace Facturix_Salários
             foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracao)
             {
                 DataRow dRow = dt.NewRow();
-                if (idFunc == fr.getIdFuncionario()) 
+                if (idFunc == fr.getIdFuncionario())
                 {
                     dRow["Registo n°"] = fr.getId();
                     foreach (ModeloRemuneracoes r in listaRemenuracoes)
@@ -77,9 +77,9 @@ namespace Facturix_Salários
                             dRow["Natureza"] = r.getNatureza();
                         }
                     }
-                    dRow["Valor Unit."] = fr.getValor();
+                    dRow["Valor Unit."] = string.Format("{0:#,##0.00}", fr.getValor());
                     dRow["Quantidade"] = fr.getQtd();
-                    dRow["Total"] = fr.getValor()*fr.getQtd() + "";
+                    dRow["Total"] = string.Format("{0:#,##0.00}", fr.getValor() * fr.getQtd());
                     dt.Rows.Add(dRow);
                 }
             }
@@ -225,24 +225,23 @@ namespace Facturix_Salários
             if (txtNome.Text == "")
             {
                 btnAdicionar.Enabled = true;
+                btnMostrar.Enabled = true;
                 btnAtualizar.Enabled = false;
-                btnCancelar.Enabled = false;
                 btnConfirmar.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnImprimir.Enabled = false;
                 btnAdicionar.FlatStyle = FlatStyle.Standard;
                 btnAtualizar.FlatStyle = FlatStyle.Flat;
-                btnCancelar.FlatStyle = FlatStyle.Flat;
                 btnConfirmar.FlatStyle = FlatStyle.Flat;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
                 btnImprimir.FlatStyle = FlatStyle.Flat;
-                btnCancelar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnMostrar.FlatStyle = FlatStyle.Standard;
                 btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
             }
-            else
-                if (txtNome.Text != "")
+            else if (txtNome.Text != "")
             {
                 btnAtualizar.Enabled = true;
                 btnCancelar.Enabled = true;
@@ -480,15 +479,15 @@ namespace Facturix_Salários
                 txtBi.Text = func.getBi();
                 txtNrBenificiario.Text = func.getNumeroBenificiario();
                 txtNrFiscal.Text = func.getNumeroFiscal() + "";
-                txtVencimento.Text = func.getVencimento() + "";
-                txtAlimentacao.Text = func.getSubAlimentacao() + "";
+                txtVencimento.Text = string.Format("{0:#,##0.00}", func.getVencimento());
+                txtAlimentacao.Text = string.Format("{0:#,##0.00}", func.getSubAlimentacao());
                 //txtSubTransporte.Text = func.getSubTransporte() + "";
                 txtHoraSemana.Text = func.getHoras() + "";
                 txtNrDependentes.Text = func.getDependentes() + "";
                 txtNacionalidade.Text = func.getNacionalidade();
                 txtUltimo.Text = func.getUltimoEmprego();
                 cbTurno.Text = func.getTurno();
-                txtImpostoM.Text = func.getImpostoMunicipal() + "";
+                txtImpostoM.Text = string.Format("{0:#,##0.00}", func.getImpostoMunicipal());
                 cbCentrocusto.Text = func.getCentroDeCusto();
                 txtSeguranca.Text = func.getSegurancaSocial();
                 //txtSubComunicacao.Text = func.getSubComunicacao() + "";
@@ -573,6 +572,7 @@ namespace Facturix_Salários
         {
             limparCaixas();
             setCod();
+            porFoco();
         }
 
         private void limparCaixas()
@@ -587,6 +587,7 @@ namespace Facturix_Salários
             txtEmail.Text = "";
             txtCellSec.Text = "";
             cbSexo.Text = "";
+            cbTurno.Text = "";
             txtLocalidade.Text = "";
             cbEstadoCivil.Text = "";
             cbDeficiencia.Text = "";
@@ -609,6 +610,7 @@ namespace Facturix_Salários
             cbContrato.Text = "";
             cbLocalTrabalho.Text = "";
             cbSeguro.Text = "";
+            txtSeguro.Text = "";
             cbHabilitacoes.Text = "";
             txtBi.Text = "";
             txtNrConta.Text = "";
@@ -622,7 +624,6 @@ namespace Facturix_Salários
             cbCentrocusto.Text = "";
             txtSeguranca.Text = "";
             cbSindicato.Text = "";
-            porFoco();
         }
         private void remover()
         {
@@ -698,8 +699,6 @@ namespace Facturix_Salários
 
         private void txtNovo_Click(object sender, EventArgs e)
         {
-            removerRemuneracoes();
-            refrescarVencimento();
             limparCaixas();
             impedirBotoes();
             mostrarLabels(false);
@@ -723,7 +722,9 @@ namespace Facturix_Salários
             }
             if (e.KeyCode.ToString() == "F4" && btnCancelar.Enabled)
             {
+                //removerRemuneracoes();
                 limparCaixas();
+                impedirBotoes();
                 mostrarLabels(false);
             }
             if (e.KeyCode.ToString() == "F5" && btnConfirmar.Enabled)
@@ -807,27 +808,33 @@ namespace Facturix_Salários
                 btnImprimir.Enabled = false;
                 btnMostrar.Enabled = false;
                 btnEliminar.Enabled = false;
+                btnAtualizar.Enabled = false;
                 btnAdicionar.FlatStyle = FlatStyle.Standard;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
                 btnMostrar.FlatStyle = FlatStyle.Flat;
                 btnImprimir.FlatStyle = FlatStyle.Flat;
                 btnAdicionar.FlatStyle = FlatStyle.Flat;
+                btnAtualizar.FlatStyle = FlatStyle.Flat;
                 btnAdicionar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnImprimir.Cursor = System.Windows.Forms.Cursors.Default;
                 btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
             }
             else
             {
                 btnMostrar.Enabled = true;
                 btnImprimir.Enabled = true;
                 btnEliminar.Enabled = true;
+                btnAtualizar.Enabled = true;
                 btnEliminar.FlatStyle = FlatStyle.Standard;
                 btnImprimir.FlatStyle = FlatStyle.Standard;
                 btnMostrar.FlatStyle = FlatStyle.Standard;
+                btnAtualizar.FlatStyle = FlatStyle.Standard;
                 btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
                 btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
                 btnMostrar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             }
         }
         private void f_funcionarios_Load(object sender, EventArgs e)
@@ -836,6 +843,8 @@ namespace Facturix_Salários
             refrescarDependentes();
             refrescarVencimento();
             mudarLarguraCelulas();
+            txtAlimentacao.LostFocus += new EventHandler(txtAlimentacao_LostFocus);
+            txtVencimento.LostFocus += new EventHandler(txtVencimento_LostFocus);
             foreach (DataGridViewColumn col in dataDependentes.Columns)
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -871,6 +880,22 @@ namespace Facturix_Salários
             */
         }
 
+        private void txtAlimentacao_LostFocus(object sender, EventArgs e)
+        {
+            if (txtAlimentacao.Text != "") 
+            {
+                txtAlimentacao.Text = string.Format("{0:#,##0.00}", double.Parse(txtAlimentacao.Text));
+            }
+        }
+        
+        private void txtVencimento_LostFocus(object sender, EventArgs e)
+        {
+            if (txtVencimento.Text!="") 
+            {
+                txtVencimento.Text = string.Format("{0:#,##0.00}", double.Parse(txtVencimento.Text));
+            }
+        }
+
         /// <summary>Muda Largura das DataGridView Cells.</summary>
         private void mudarLarguraCelulas()
         {
@@ -893,13 +918,13 @@ namespace Facturix_Salários
         private void mexerTeclado(object sender, KeyEventArgs e)
         {
             ctrl = (Control)sender;
-            if (ctrl is TextBox)
+            if (ctrl is TextBox || ctrl is ComboBox || ctrl is DateTimePicker || ctrl is Button)
             {
-                if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down || e.Alt && e.KeyCode == Keys.Right)
+                if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Right)
                 {
                     this.SelectNextControl(ctrl, true, true, true, true);
                 }
-                else if (e.Alt && e.KeyCode == Keys.Up || e.Alt && e.KeyCode == Keys.Left)
+                else if (e.Alt && e.Alt && e.KeyCode == Keys.Left)
                 {
                     this.SelectNextControl(ctrl, false, true, true, true);
                 }
@@ -912,24 +937,60 @@ namespace Facturix_Salários
                 {
                     this.SelectNextControl(ctrl, true, true, true, true);
                 }
-                else if (e.KeyCode == Keys.Up && e.Control)
-                {
-                    this.SelectNextControl(ctrl, false, true, true, true);
-                }
+                //else if (e.KeyCode == Keys.Up && e.Alt)
+                //{
+                //    this.SelectNextControl(ctrl, false, true, true, true);
+                //}
                 else
                     return;
             }
             e.Handled = true;
             e.SuppressKeyPress = true;
+
+            //ctrl = (Control)sender;
+            //    if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down || e.Alt && e.KeyCode == Keys.Right)
+            //    {
+            //        this.SelectNextControl(ctrl, true, true, true, true);
+            //    }
+            //    else if (e.Alt && e.KeyCode == Keys.Up || e.Alt && e.KeyCode == Keys.Left)
+            //    {
+            //        this.SelectNextControl(ctrl, false, true, true, true);
+            //    }
+            //    if (e.KeyCode == Keys.Enter)
+            //    {
+            //        this.SelectNextControl(ctrl, true, true, true, true);
+            //    }
+            //    else if (e.KeyCode == Keys.Up && e.Control)
+            //    {
+            //        this.SelectNextControl(ctrl, false, true, true, true);
+            //    }
+            //e.Handled = true;
+            //e.SuppressKeyPress = true;
         }
         private void txtNome_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            ctrl = (Control)sender;
+            if (ctrl is TextBox || ctrl is ComboBox || ctrl is DateTimePicker || ctrl is Button)
+            {
+                if (e.Alt && e.KeyCode == Keys.Down)
+                {
+                    this.ActiveControl = txtMorada;
+                }
+            }
         }
 
         private void txtBi_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = cbLocalTrabalho;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtUltimo;
+            }
 
         }
 
@@ -942,63 +1003,164 @@ namespace Facturix_Salários
 
         private void txtMorada_KeyDown(object sender, KeyEventArgs e)
         {
-
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtNome;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtLocalidade;
+            }
         }
 
         private void txtBairro_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtNome;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtCell;
+            }
         }
 
         private void txtCodPostal_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtMorada;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtCellSec;
+            }
         }
 
         private void txtLocalidade_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtMorada;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtTel;
+            }
         }
 
         private void txtCell_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtBairro;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtEmail;
+            }
         }
 
         private void txtCellSec_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtCodPostal;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = dtNascimento;
+            }
         }
 
         private void txtTel_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtLocalidade;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = cbSexo;
+            }
         }
 
         private void txtEmail_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtCell;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = cbEstadoCivil;
+            }
         }
 
         private void dtNascimento_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtCellSec;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtConjugue;
+            }
         }
 
         private void cbSexo_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtTel;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtConjugue;
+            }
         }
 
         private void cbEstadoCivil_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtEmail;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtConjugue;
+            }
         }
 
         private void txtConjugue_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = cbEstadoCivil;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtNrDependentes;
+            }
         }
 
         private void dtNascimento_ValueChanged(object sender, EventArgs e)
@@ -1019,6 +1181,14 @@ namespace Facturix_Salários
         private void txtNrBenificiario_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = cbRegime;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = cbSindicato;
+            }
         }
 
         private void txtNrFiscal_TextChanged(object sender, EventArgs e)
@@ -1029,6 +1199,14 @@ namespace Facturix_Salários
         private void txtNrFiscal_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = cbHabilitacoes;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = cbSindicato;
+            }
         }
 
         private void txtVencimento_KeyDown(object sender, KeyEventArgs e)
@@ -1106,57 +1284,170 @@ namespace Facturix_Salários
         {
             gravar();
             impedirBotoes();
-            refrescarVencimento();
         }
 
         private void cbDeficiencia_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            ctrl = (Control)sender;
+            if (ctrl is TextBox || ctrl is ComboBox || ctrl is DateTimePicker || ctrl is Button)
+            {
+                if (e.Alt && e.KeyCode == Keys.Up)
+                {
+                    e.Handled = true;
+                    txtConjugue.Focus();
+                }
+                else if (e.Alt && e.KeyCode == Keys.Down)
+                {
+                    e.Handled = true;
+                    dtDataAdmissao.Focus();
+                }
+                else
+                    return;
+            }
         }
 
         private void cbContrato_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtNrDependentes;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbProfissao;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtLink;
+            }
         }
 
         private void dtDataAdmissao_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (ctrl is TextBox || ctrl is ComboBox || ctrl is DateTimePicker || ctrl is Button)
+            {
+                if (e.Alt && e.KeyCode == Keys.Up)
+                {
+                    e.Handled = true;
+                    this.ActiveControl = cbDeficiencia;
+                }
+                if (e.Alt && e.KeyCode == Keys.Down)
+                {
+                    e.Handled = true;
+                    this.ActiveControl = cbCategoria;
+                }
+            }
         }
 
         private void dtDataDemissao_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtNacionalidade;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbSeguro;
+            }
         }
 
         private void cbProfissao_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbContrato;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbLocalTrabalho;
+            }
         }
 
         private void cbCategoria_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = dtDataAdmissao;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbRegime;
+            }
         }
 
         private void cbSeguro_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = dtDataDemissao;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbHabilitacoes;
+            }
         }
 
         private void cbLocalTrabalho_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbProfissao;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtBi;
+            }
         }
 
         private void cbRegime_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbCategoria;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtNrBenificiario;
+            }
         }
 
         private void cbHabilitacoes_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbSeguro;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtNrFiscal;
+            }
         }
 
         private void cbDependentes_KeyDown(object sender, KeyEventArgs e)
@@ -1171,9 +1462,13 @@ namespace Facturix_Salários
 
         private void btnCarregarImagem_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.Alt && e.KeyCode == Keys.Down || e.KeyCode == Keys.Enter)
             {
-                mexerTeclado(sender, e);
+                this.ActiveControl = txtLink;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = txtNacionalidade;
             }
         }
 
@@ -1193,7 +1488,18 @@ namespace Facturix_Salários
 
         private void txtLink_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Left || e.KeyCode == Keys.Enter)
+            {
+                this.ActiveControl = txtNacionalidade;
+            }
+            if(e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = cbContrato;
+            }
+            if(e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = btnCarregarImagem;
+            }
             OpenFileDialog opFile = new OpenFileDialog();
             string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\ProImages\";
             if (e.KeyCode == Keys.Enter)
@@ -1236,7 +1542,7 @@ namespace Facturix_Salários
         private void txtNome_TextChanged_1(object sender, EventArgs e)
         {
             impedirBotoes();
-            atualizarBotoes();
+            //atualizarBotoes();
         }
 
         private void txtHoraSemana_KeyPress(object sender, KeyPressEventArgs e)
@@ -1292,6 +1598,18 @@ namespace Facturix_Salários
         private void txtNacionalidade_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if ( e.Alt && e.KeyCode == Keys.Right || e.KeyCode == Keys.Enter)
+            {
+                this.ActiveControl = txtLink;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtConjugue;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = dtDataDemissao;
+            }
         }
 
         private void txtSeguro_TextChanged(object sender, EventArgs e)
@@ -1302,6 +1620,14 @@ namespace Facturix_Salários
         private void txtUltimo_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtBi;
+            }
+            //if (e.Alt && e.KeyCode == Keys.Down)
+            //{
+            //    this.ActiveControl = cbSindicato;
+            //}
         }
 
         private void txtSeguro_KeyDown(object sender, KeyEventArgs e)
@@ -1332,6 +1658,19 @@ namespace Facturix_Salários
 
         private void btnImprimir_KeyDown(object sender, KeyEventArgs e)
         {
+            //mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = btnRegressar;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up) 
+            {
+                this.ActiveControl = cbSindicato;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left) 
+            {
+                this.ActiveControl = btnEliminar;
+            }
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -1511,20 +1850,18 @@ namespace Facturix_Salários
                     }
                     break;
             }
-
-            removerRemuneracoes();
         }
 
-        private void removerRemuneracoes() 
+        private void removerRemuneracoes()
         {
             ArrayList listaFuncRemuneracoes = ControllerFuncionarioRemuneracoes.recuperar();
             ArrayList listaFunc = ControllerFuncionario.recuperar();
             int id = 0;
             foreach (ModeloFuncionario f in listaFunc)
             {
-                foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes) 
+                foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes)
                 {
-                    if (f.getCodigo() != fr.getIdFuncionario()) 
+                    if (f.getCodigo() != fr.getIdFuncionario())
                     {
                         id = fr.getId();
                     }
@@ -1544,29 +1881,68 @@ namespace Facturix_Salários
         private void txtNrDependentes_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtConjugue;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = cbContrato;
+            }
         }
 
         private void cbSindicato_KeyDown(object sender, KeyEventArgs e)
         {
             mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right || e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                this.ActiveControl = btnAdicionar;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtNrBenificiario;
+            }
+            //if (e.Alt && e.KeyCode == Keys.Down)
+            //{
+            //    this.ActiveControl = cbSindicato;
+            //}
         }
 
         private void btnAdicionar_KeyDown(object sender, KeyEventArgs e)
         {
+            //mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = btnMostrar;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = cbSindicato;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = cbSindicato;
+            }
         }
 
         private void btnRegressar_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender, e);
+            //mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = btnImprimir;
+            }
         }
 
-        private int getCodRemuneracao() 
+        private int getCodRemuneracao()
         {
             ArrayList listaFuncRemuneracao = ControllerFuncionarioRemuneracoes.recuperar();
             int cod = 0;
-            foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracao) 
+            foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracao)
             {
-                if (fr.getId()!=0) 
+                if (fr.getId() != 0)
                 {
                     cod = fr.getId();
                 }
@@ -1588,27 +1964,324 @@ namespace Facturix_Salários
             ArrayList listaFuncRemuneracoes = ControllerFuncionarioRemuneracoes.recuperarComCod(codigoCelSelecionadaVencimento);
             int id = 0;
             ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperar();
-            foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes) 
+            foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes)
             {
                 id = fr.getIdRemuneracao();
                 f.txtqtd.Text = fr.getQtd() + "";
                 f.txtval.Text = fr.getValor() + "";
             }
-            foreach (ModeloRemuneracoes r in listaRemuneracoes) 
+            foreach (ModeloRemuneracoes r in listaRemuneracoes)
             {
-                if (r.getId() == id) 
+                if (r.getId() == id)
                 {
                     f.cbRemuneracoes.Text = r.getNatureza();
                 }
             }
             f.ShowDialog();
-            
+
         }
 
         private void btnEliminarRemuneracoes_Click(object sender, EventArgs e)
         {
             ControllerFuncionarioRemuneracoes.remover(codigoCelSelecionadaVencimento);
             refrescarVencimento();
+        }
+
+        private void txtVencimento_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtVencimento_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+            //if (e.Alt && e.KeyCode == Keys.Up)
+            //{
+            //    e.Handled = true;
+            //    this.ActiveControl = txtNrBenificiario;
+            //}
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtAlimentacao;
+            }
+        }
+
+        private void txtBanco_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtNib;
+            }
+        }
+
+        private void txtAlimentacao_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtVencimento;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtHoraSemana;
+            }
+        }
+
+        private void txtNib_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtBanco;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtNrConta;
+            }
+        }
+
+        private void txtHoraSemana_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtAlimentacao;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtSeguranca;
+            }
+        }
+
+        private void txtNrConta_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtNib;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbTurno;
+            }
+        }
+
+        private void txtSeguranca_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtHoraSemana;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtImpostoM;
+            }
+        }
+
+        private void cbTurno_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtNrConta;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbCentrocusto;
+            }
+        }
+
+        private void txtImpostoM_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtSeguranca;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = btnAdicionarRemuneracao;
+            }
+        }
+
+        private void cbCentrocusto_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbTurno;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                e.Handled = true;
+                this.ActiveControl = btnAdicionarRemuneracao;
+            }
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                e.Handled = true;
+                this.ActiveControl = btnAdicionarRemuneracao;
+            }
+        }
+
+        private void btnMostrar_KeyDown(object sender, KeyEventArgs e)
+        {
+            //mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = btnAtualizar;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = cbSindicato;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = btnAdicionar;
+            }
+
+        }
+
+        private void btnAtualizar_KeyDown(object sender, KeyEventArgs e)
+        {
+            //mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = btnCancelar;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = cbSindicato;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = btnMostrar;
+            }
+        }
+
+        private void btnCancelar_KeyDown(object sender, KeyEventArgs e)
+        {
+            //mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = btnConfirmar;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = cbSindicato;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = btnAtualizar;
+            }
+        }
+
+        private void btnConfirmar_KeyDown(object sender, KeyEventArgs e)
+        {
+            //mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = btnEliminar;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = cbSindicato;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = btnCancelar;
+            }
+        }
+
+        private void btnEliminar_KeyDown(object sender, KeyEventArgs e)
+        {
+            //mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = btnImprimir;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = cbSindicato;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = btnConfirmar;
+            }
+        }
+
+        private void btnAdicionarRemuneracao_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbCentrocusto;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                e.Handled = true;
+                this.ActiveControl = txtImpostoM;
+            }if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                e.Handled = true;
+                this.ActiveControl = btnEditarRemuneracoes;
+            }
+        }
+
+        private void btnEditarRemuneracoes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbCentrocusto;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                e.Handled = true;
+                this.ActiveControl = btnAdicionarRemuneracao;
+            }
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                e.Handled = true;
+                this.ActiveControl = btnEliminarRemuneracoes;
+            }
+        }
+
+        private void btnEliminarRemuneracoes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+                this.ActiveControl = cbCentrocusto;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                e.Handled = true;
+                this.ActiveControl = btnEditarRemuneracoes;
+            }
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
 
         private void dataSubsidios_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1619,9 +2292,9 @@ namespace Facturix_Salários
             {
                 codigoCelSelecionadaVencimento = int.Parse(row.Cells[0].Value.ToString());
             }
-            catch (Exception err) 
+            catch (Exception err)
             {
-            
+                
             }
             btnEditarRemuneracoes.Enabled = true;
             btnEliminarRemuneracoes.Enabled = true;

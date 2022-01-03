@@ -200,6 +200,7 @@
             // dataCentroDeCusto
             // 
             this.dataCentroDeCusto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataCentroDeCusto.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataCentroDeCusto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataCentroDeCusto.Location = new System.Drawing.Point(48, 152);
             this.dataCentroDeCusto.Name = "dataCentroDeCusto";

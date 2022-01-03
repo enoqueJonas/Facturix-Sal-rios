@@ -28,6 +28,15 @@ namespace Facturix_Salários.Formularios
 		private void frmRemuneracoes_Load(object sender, EventArgs e)
 		{
 			txtRegistoNr.Text = getCod() + 1 + "";
+			txtValor.LostFocus += new EventHandler(txtValor_LostFocus);
+		}
+
+		private void txtValor_LostFocus(object sender, EventArgs e)
+		{
+			if (txtValor.Text!= "") 
+			{
+				txtValor.Text = string.Format("{0:#,##0.00}", double.Parse(txtValor.Text));
+			}
 		}
 
 		Control ctrl;
@@ -53,7 +62,7 @@ namespace Facturix_Salários.Formularios
 				{
 					this.SelectNextControl(ctrl, true, true, true, true);
 				}
-				else if (e.KeyCode == Keys.Up && e.Control)
+				else if (e.KeyCode == Keys.Up && e.Alt)
 				{
 					this.SelectNextControl(ctrl, false, true, true, true);
 				}
@@ -222,6 +231,41 @@ namespace Facturix_Salários.Formularios
 		private void txtValor_KeyDown(object sender, KeyEventArgs e)
 		{
 			mexerTeclado(sender, e);
+		}
+
+		private void frmRemuneracoes_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode.ToString() == "F1")
+			{
+				limpar();
+				txtRegistoNr.Text = getCod() + 1 + "";
+			}
+			if (e.KeyCode.ToString() == "F4")
+			{
+				limpar();
+				mudarVisibilidadeLabels(false);
+			}
+			if (e.KeyCode.ToString() == "F5")
+			{
+				gravar();
+				limpar();
+				mudarVisibilidadeLabels(false);
+				txtRegistoNr.Text = getCod() + 1 + "";
+			}
+			if (e.KeyCode.ToString() == "F6")
+			{
+				int cod = int.Parse(txtRegistoNr.Text);
+				ControllerRemuneracoes.remover(cod);
+			}
+			if (e.KeyCode == Keys.Escape)
+			{
+				this.Close();
+			}
+		}
+
+		private void txtRegistoNr_TextChanged(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

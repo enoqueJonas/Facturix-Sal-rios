@@ -222,6 +222,7 @@
             // dataSeguro
             // 
             this.dataSeguro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataSeguro.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataSeguro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataSeguro.Location = new System.Drawing.Point(48, 152);
             this.dataSeguro.Name = "dataSeguro";

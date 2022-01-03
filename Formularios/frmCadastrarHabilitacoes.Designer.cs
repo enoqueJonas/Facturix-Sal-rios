@@ -200,6 +200,7 @@
             // dataHabilitacoes
             // 
             this.dataHabilitacoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataHabilitacoes.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataHabilitacoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataHabilitacoes.Location = new System.Drawing.Point(48, 152);
             this.dataHabilitacoes.Name = "dataHabilitacoes";

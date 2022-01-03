@@ -56,6 +56,7 @@
             // dataFuncionarios
             // 
             this.dataFuncionarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataFuncionarios.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -254,7 +255,7 @@
             this.KeyPreview = true;
             this.Name = "frmVisualizarFuncionario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Visualização de Funcionários";
+            this.Text = "Listagem de Funcionários";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVisualizarFuncionario_FormClosing);
             this.Load += new System.EventHandler(this.frmVisualizarF_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmVisualizarF_KeyDown);

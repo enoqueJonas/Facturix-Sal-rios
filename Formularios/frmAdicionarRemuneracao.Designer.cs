@@ -60,13 +60,16 @@
             this.cbRemuneracoes.Size = new System.Drawing.Size(242, 21);
             this.cbRemuneracoes.TabIndex = 1;
             this.cbRemuneracoes.SelectedIndexChanged += new System.EventHandler(this.cbRemuneracoes_SelectedIndexChanged);
+            this.cbRemuneracoes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbRemuneracoes_KeyDown);
             // 
             // txtval
             // 
             this.txtval.Location = new System.Drawing.Point(150, 73);
             this.txtval.Name = "txtval";
+            this.txtval.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtval.Size = new System.Drawing.Size(100, 20);
-            this.txtval.TabIndex = 2;
+            this.txtval.TabIndex = 4;
+            this.txtval.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtval_KeyDown);
             // 
             // label2
             // 
@@ -92,6 +95,7 @@
             this.txtqtd.Name = "txtqtd";
             this.txtqtd.Size = new System.Drawing.Size(100, 20);
             this.txtqtd.TabIndex = 2;
+            this.txtqtd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtqtd_KeyDown);
             // 
             // panel1
             // 
@@ -144,16 +148,18 @@
             this.txtIdRemuneracao.Location = new System.Drawing.Point(292, 73);
             this.txtIdRemuneracao.Name = "txtIdRemuneracao";
             this.txtIdRemuneracao.Size = new System.Drawing.Size(100, 20);
-            this.txtIdRemuneracao.TabIndex = 2;
+            this.txtIdRemuneracao.TabIndex = 5;
             this.txtIdRemuneracao.Visible = false;
+            this.txtIdRemuneracao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIdRemuneracao_KeyDown);
             // 
             // txtIdFuncionario
             // 
             this.txtIdFuncionario.Location = new System.Drawing.Point(292, 47);
             this.txtIdFuncionario.Name = "txtIdFuncionario";
             this.txtIdFuncionario.Size = new System.Drawing.Size(100, 20);
-            this.txtIdFuncionario.TabIndex = 2;
+            this.txtIdFuncionario.TabIndex = 3;
             this.txtIdFuncionario.Visible = false;
+            this.txtIdFuncionario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIdFuncionario_KeyDown);
             // 
             // frmAdicionarRemuneracao
             // 
@@ -170,10 +176,12 @@
             this.Controls.Add(this.cbRemuneracoes);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "frmAdicionarRemuneracao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Remuneração";
             this.Load += new System.EventHandler(this.frmAdicionarRemuneracao_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmAdicionarRemuneracao_KeyDown);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

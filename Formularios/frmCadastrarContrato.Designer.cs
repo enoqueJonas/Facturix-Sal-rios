@@ -200,6 +200,7 @@
             // dataContrato
             // 
             this.dataContrato.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataContrato.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataContrato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataContrato.Location = new System.Drawing.Point(50, 151);
             this.dataContrato.Name = "dataContrato";
@@ -239,7 +240,7 @@
             this.panel3.Controls.Add(this.Label1);
             this.panel3.Location = new System.Drawing.Point(12, 12);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(580, 82);
+            this.panel3.Size = new System.Drawing.Size(588, 82);
             this.panel3.TabIndex = 3006;
             // 
             // frmCadastrarContrato

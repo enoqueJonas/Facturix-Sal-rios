@@ -126,6 +126,7 @@
     <Reference Include="MySql.Data.EntityFrameworkCore, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.EntityFrameworkCore.8.0.22\lib\netstandard2.0\MySql.Data.EntityFrameworkCore.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
@@ -197,6 +198,14 @@
     <Compile Include="Controllers\ControllerRelogioDePonto.cs" />
     <Compile Include="Controllers\ControllerRemuneracoes.cs" />
     <Compile Include="Controllers\ControllerTurno.cs" />
+    <Compile Include="DataSets\DtSetProcessamento.cs">
+      <DependentUpon>DtSetProcessamento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\DtSetProcessamento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtSetProcessamento.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmAdicionarFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -646,6 +655,17 @@
       <LastGenOutput>reportProcessamento.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="DataSets\DtSetProcessamento.xsc">
+      <DependentUpon>DtSetProcessamento.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DtSetProcessamento.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DtSetProcessamento.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\DtSetProcessamento.xss">
+      <DependentUpon>DtSetProcessamento.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

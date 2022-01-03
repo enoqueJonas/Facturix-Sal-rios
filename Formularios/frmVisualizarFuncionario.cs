@@ -136,6 +136,8 @@ namespace Facturix_Salários
                 f.txtImpostoM.Text = func.getImpostoMunicipal() + "";
                 f.cbCentrocusto.Text = func.getCentroDeCusto();
                 f.txtSeguranca.Text = func.getSegurancaSocial();
+                f.txtVencimento.Text = string.Format("{0:#,##0.00}", func.getVencimento());
+                f.txtAlimentacao.Text = string.Format("{0:#,##0.00}", func.getSubAlimentacao());
                 foreach (ModeloConta conta in listaContas)
                 {
                     if (codigoCelSelecionada == conta.idFuncionario)
@@ -160,10 +162,8 @@ namespace Facturix_Salários
             fecharJanela(e);
             if (e.KeyCode.ToString() == "F1")
             {
-                frmCadastrarFuncionarios f = new frmCadastrarFuncionarios();
+                frmAdicionarFuncionario f = new frmAdicionarFuncionario();
                 f.Show();
-                f.setCod();
-                this.Close();
             }
             if (e.KeyCode.ToString() == "F2")
             {

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.reportProcessamento1 = new Facturix_Salários.Reports.reportProcessamento();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -41,7 +41,7 @@
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.ReportSource = this.reportProcessamento1;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(863, 568);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1033, 568);
             this.crystalReportViewer1.TabIndex = 0;
             // 
             // frmReportProcessamento
@@ -49,18 +49,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(863, 568);
+            this.ClientSize = new System.Drawing.Size(1033, 568);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "frmReportProcessamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatório de salário";
+            this.Load += new System.EventHandler(this.frmReportProcessamento_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private Reports.reportProcessamento reportProcessamento1;
+        public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }

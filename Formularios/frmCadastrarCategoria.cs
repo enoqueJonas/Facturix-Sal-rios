@@ -308,7 +308,7 @@ namespace Facturix_Salários
             switch (e.CloseReason)
             {
                 case CloseReason.UserClosing:
-                    if (MessageBox.Show("Pretende fechar o formulário Cadastro de Categorias?", "Atenção!",
+                    if (MessageBox.Show("Pretende retornar ao menu geral??", "Atenção!",
                                         MessageBoxButtons.YesNo,
                                         MessageBoxIcon.Question) == DialogResult.No)
                     {

@@ -25,6 +25,7 @@ namespace Facturix_Salários.Formularios
         private void frmAdicionarRemuneracao_Load(object sender, EventArgs e)
         {
             adicionarItemsCb();
+            txtval.LostFocus += new EventHandler(txtval_LostFocus);
         }
 
         private void adicionarItemsCb() 
@@ -42,6 +43,14 @@ namespace Facturix_Salários.Formularios
             this.Close();
         }
 
+        private void txtval_LostFocus(object sender, EventArgs e)
+        {
+            if (txtval.Text != "")
+            {
+                txtval.Text = string.Format("{0:#,##0.00}", double.Parse(txtval.Text));
+            }
+        }
+
         private int getCodFuncionarioRemu() 
         {
             int cod = 0;
@@ -55,7 +64,20 @@ namespace Facturix_Salários.Formularios
             }
             return cod;
         }
-        private void btnConfirmar_Click(object sender, EventArgs e)
+
+        private void frmAdicionarRemuneracao_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F5")
+            {
+                adicionar();
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
+        private void adicionar() 
         {
             ArrayList listaRemuneracoes = ControllerFuncionarioRemuneracoes.recuperar();
             ArrayList lista = ControllerRemuneracoes.recuperar();
@@ -68,22 +90,22 @@ namespace Facturix_Salários.Formularios
             if (txtval.Text != "")
                 valorUnit = int.Parse(txtval.Text);
 
-            if (txtIdFuncionario.Text!="")
+            if (txtIdFuncionario.Text != "")
                 idFunc = int.Parse(txtIdFuncionario.Text);
 
             //if(txtIdRemuneracao.Text!="")
             //    idRem = int.Parse(txtIdFuncionario.Text);
 
-            foreach (ModeloRemuneracoes r in lista) 
+            foreach (ModeloRemuneracoes r in lista)
             {
                 if (r.getNatureza().Equals(natureza))
                     idRem = r.getId();
             }
 
             Boolean existe = false;
-            foreach (ModeloFuncionarioRemuneracoes r in listaRemuneracoes) 
+            foreach (ModeloFuncionarioRemuneracoes r in listaRemuneracoes)
             {
-                if (idFunc == r.getIdFuncionario() && idRem == r.getIdRemuneracao()) 
+                if (idFunc == r.getIdFuncionario() && idRem == r.getIdRemuneracao())
                 {
                     cod = r.getId();
                     existe = true;
@@ -93,12 +115,80 @@ namespace Facturix_Salários.Formularios
             {
                 ControllerFuncionarioRemuneracoes.atualizar(cod, idFunc, idRem, valorUnit, qtd);
             }
-            else 
+            else
             {
                 cod = getCodFuncionarioRemu() + 1;
                 ControllerFuncionarioRemuneracoes.gravar(cod, idFunc, idRem, valorUnit, qtd);
             }
             this.Close();
+        }
+
+        Control ctrl;
+        private void mexerTeclado(object sender, KeyEventArgs e)
+        {
+            ctrl = (Control)sender;
+            if (ctrl is TextBox)
+            {
+                if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down || e.Alt && e.KeyCode == Keys.Right)
+                {
+                    this.SelectNextControl(ctrl, true, true, true, true);
+                }
+                else if (e.Alt && e.KeyCode == Keys.Up || e.Alt && e.KeyCode == Keys.Left)
+                {
+                    this.SelectNextControl(ctrl, false, true, true, true);
+                }
+                else
+                    return;
+            }
+            else
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    this.SelectNextControl(ctrl, true, true, true, true);
+                }
+                else if (e.KeyCode == Keys.Up && e.Alt)
+                {
+                    this.SelectNextControl(ctrl, false, true, true, true);
+                }
+                else
+                    return;
+            }
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+        }
+
+        private void cbRemuneracoes_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+        }
+
+        private void txtqtd_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+        }
+
+        private void txtIdFuncionario_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+        }
+
+        private void txtval_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down) 
+            {
+                btnConfirmar.Focus();
+            }
+        }
+
+        private void txtIdRemuneracao_KeyDown(object sender, KeyEventArgs e)
+        {
+            mexerTeclado(sender, e);
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            adicionar();
         }
 
         private void cbRemuneracoes_SelectedIndexChanged(object sender, EventArgs e)

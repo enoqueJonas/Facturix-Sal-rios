@@ -135,6 +135,7 @@
             this.txtRegistoNr.Name = "txtRegistoNr";
             this.txtRegistoNr.Size = new System.Drawing.Size(100, 20);
             this.txtRegistoNr.TabIndex = 1;
+            this.txtRegistoNr.TextChanged += new System.EventHandler(this.txtRegistoNr_TextChanged);
             // 
             // txtPercentagem
             // 
@@ -556,10 +557,12 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.KeyPreview = true;
             this.Name = "frmRemuneracoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Remunerações";
             this.Load += new System.EventHandler(this.frmRemuneracoes_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmRemuneracoes_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
