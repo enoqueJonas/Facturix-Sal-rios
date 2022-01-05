@@ -177,7 +177,6 @@
             // dtProcessamento
             // 
             this.dtProcessamento.CustomFormat = "dd/MM/yyyy";
-            this.dtProcessamento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtProcessamento.Location = new System.Drawing.Point(93, 51);
             this.dtProcessamento.Name = "dtProcessamento";
             this.dtProcessamento.Size = new System.Drawing.Size(107, 20);

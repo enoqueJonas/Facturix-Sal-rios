@@ -30,18 +30,18 @@ namespace Facturix_Salários.Formularios
             {
                 conexao.Open();
 
-                String Query1 = "SELECT categoria, numeroBenificiario, numeroFiscal from funcionario";
+                //String Query1 = "SELECT categoria, numeroBenificiario, numeroFiscal, vencimento from funcionario WHERE exists (select nomeTrabalhador from processamento_salario)";
+                String Query2 = "SELECT nomeTrabalhador, diasDeTrabalho, salarioBrutoMensal, subsidioAlimentacao, importanciaAPagar, totalADescontar, totalRetribuicao, dataProcessamento, ajudaDeDeslocacao, ajudaDeCusto, categoria, numeroBenificiario, numeroFiscal, vencimento from processamento_salario, funcionario WHERE processamento_salario.nomeTrabalhador = funcionario.nome;";
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter(Query1, conexao);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(Query2, conexao);
 
                 DataSet Ds = new DtSetProcessamento();
-                DataTable dt0 = new DataTable("processamento_salario");
-                adapter.Fill(dt0);
-                Ds.Tables.Clear();
-                Ds.Tables.Add(dt0);
-                var s = dt0.Copy();
-                s.TableName = "dtTableProcessamento";
-                Ds.Tables.Add(s);
+
+                adapter.Fill(Ds, "dtTableProcessamento");
+
+                //adapter = new MySqlDataAdapter(Query2, conexao);
+                //adapter.Fill(Ds, "dtTableProcessamento");
+
                 if (Ds.Tables[0].Rows.Count == 0)
                 {
                     MessageBox.Show("No data Found", "CrystalReportWithOracle");

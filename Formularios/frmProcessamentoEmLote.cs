@@ -164,7 +164,7 @@ namespace Facturix_Salários.Formularios
             try
             {
                 gravar();
-                MessageBox.Show("Salário/os processado/os com sucesso!", "Atenção!", MessageBoxButtons.OK ,MessageBoxIcon.Information);
+                MessageBox.Show("Salário/os processado/os com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception err) 
             {
@@ -218,10 +218,13 @@ namespace Facturix_Salários.Formularios
             {
                 int idFuncionario;
                 String nomeDoTrabalhador;
-                double salarioLiquido = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, irps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
+                double salarioBrutoMensal = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, irps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
                 ArrayList listaDias = ControllerDiasDeTrabalho.recuperar();
+                ArrayList listaFuncRemuneracoes = ControllerFuncionarioRemuneracoes.recuperar();
+
                 for (int i = 0; i < funcionariosValidos.Count; i++) 
                 {
+                    
                     if (f.getCodigo() == funcionariosValidos[i])
                     {
                         DataRow dRow = dt.NewRow();
@@ -230,6 +233,15 @@ namespace Facturix_Salários.Formularios
 
                         nomeDoTrabalhador = f.getNome();
                         dRow["Nome do funcionário"] = nomeDoTrabalhador;
+
+                        foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes)
+                        {
+                            if (idFuncionario == fr.getIdFuncionario())
+                            {
+                                diversosSubsidios = (fr.getValor() * fr.getQtd()) + diversosSubsidios;
+                            }
+
+                        }
 
                         foreach (ModeloDiasDeTrabalho d in listaDias) 
                         {
@@ -240,8 +252,8 @@ namespace Facturix_Salários.Formularios
                             }
                         }
 
-                        salarioLiquido = Math.Round((f.getVencimento() / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);                 
-                        dRow["Mensal"] = string.Format("{0:#,##0.00}", salarioLiquido);
+                        salarioBrutoMensal = Math.Round((f.getVencimento() / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);                 
+                        dRow["Mensal"] = string.Format("{0:#,##0.00}", salarioBrutoMensal);
 
                         subAlimentacao = f.getSubAlimentacao();
                         dRow["SUB. ALIM."] = string.Format("{0:#,##0.00}", subAlimentacao);
@@ -249,16 +261,15 @@ namespace Facturix_Salários.Formularios
                         ajudaDeCusto = 0;
                         dRow["AJUD. CUST."] = string.Format("{0:#,##0.00}", ajudaDeCusto);
 
-                        ajudaDeslocacao = f.getSubTransporte();
+                        ajudaDeslocacao = 0;
                         dRow["AJUD. DESL."] = string.Format("{0:#,##0.00}", ajudaDeslocacao);
 
                         pagamentoFerias = 0;
                         dRow["PAG. FÉRIAS"] = string.Format("{0:#,##0.00}", pagamentoFerias);
 
-                        diversosSubsidios = f.getSubComunicacao();
                         dRow["DIVERSOS SUB EFIC."] = string.Format("{0:#,##0.00}", diversosSubsidios);
 
-                        totalRetribuicao = salarioLiquido + f.getSubAlimentacao() + f.getSubTransporte() + f.getSubComunicacao();
+                        totalRetribuicao = salarioBrutoMensal + subAlimentacao + diversosSubsidios + ajudaDeslocacao + ajudaDeCusto + pagamentoFerias;
                         dRow["TOTAL"] = string.Format("{0:#,##0.00}", totalRetribuicao);
 
                         emprestimoMedico = 0;
@@ -274,15 +285,18 @@ namespace Facturix_Salários.Formularios
                         ipa = f.getImpostoMunicipal();
                         dRow["IPA"] = string.Format("{0:#,##0.00}", ipa);
 
-                        inss = f.getVencimento() * 0.07;
+                        inss = salarioBrutoMensal * 0.07;
                         dRow["INSS"] = string.Format("{0:#,##0.00}", inss);
 
-                        totalDescontar = valorIrps + f.getImpostoMunicipal() + emprestimoMedico + ipa + inss;
                         dRow["Total a descontar"] = string.Format("{0:#,##0.00}", totalDescontar);
 
                         adiantamentos = 0;
                         dRow["Adiantamento"] = string.Format("{0:#,##0.00}", adiantamentos);
-                        dRow["Importância a pagar"] = string.Format("{0:#,##0.00}", (salarioLiquido + totalRetribuicao) - totalDescontar);
+
+                        totalDescontar = valorIrps + emprestimoMedico + ipa + inss + adiantamentos;
+
+                        importanciaAPagar = totalRetribuicao - totalDescontar;
+                        dRow["Importância a pagar"] = string.Format("{0:#,##0.00}", importanciaAPagar);
                         dt.Rows.Add(dRow);                       
                     }
                 }
@@ -348,7 +362,7 @@ namespace Facturix_Salários.Formularios
         {
             int idFuncionario;
             String nomeDoTrabalhador, operacao, dataProcessamento;
-            double salarioLiquido = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, irps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
+            double salarioLiquido = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, idIrps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
 
             int id = 0, i = 0;
             operacao = cbOperacao.Text;
@@ -421,25 +435,32 @@ namespace Facturix_Salários.Formularios
 
                 salarioLiquido = Math.Round((f.getVencimento() / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
                 inss = Math.Round((salarioLiquido * 0.07), 2, MidpointRounding.AwayFromZero); 
-                totalDescontar = emprestimoMedico + adiantamentos + irps + ipa + inss;
+                totalDescontar = emprestimoMedico + adiantamentos + valorIrps + ipa + inss;
                 totalRetribuicao = Math.Round(subAlimentacao + salarioLiquido + diversosSubsidios + ajudaDeCusto + ajudaDeslocacao + pagamentoFerias, 2, MidpointRounding.AwayFromZero);
                 importanciaAPagar = Math.Round(totalRetribuicao - totalDescontar, 2, MidpointRounding.AwayFromZero);
 
-                for (int j = 0; j< codigoFuncionarioDtView.Count; j++) 
+                if (codigoFuncionarioDtView != null)
                 {
-                    if (codigoFuncionarioDtView[j] == f.getCodigo())
+                    for (int j = 0; j < codigoFuncionarioDtView.Count; j++)
                     {
-                        if (existe)
+                        if (codigoFuncionarioDtView[j] == f.getCodigo())
                         {
-                            ControllerProcessamentoDeSalario.atualizar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioLiquido, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, operacao);
-                        }
-                        else
-                        {
-                            id = getCodProcessamento() + 1;
-                            ControllerProcessamentoDeSalario.Guardar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioLiquido, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, irps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, operacao);
-                            break;
-                        }
+                            if (existe)
+                            {
+                                ControllerProcessamentoDeSalario.atualizar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioLiquido, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, valorIrps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, operacao);
+                            }
+                            else
+                            {
+                                id = getCodProcessamento() + 1;
+                                ControllerProcessamentoDeSalario.Guardar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioLiquido, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, valorIrps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, operacao);
+                                break;
+                            }
+                        }                        
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Lista de funcionários vazia", "Não foi possível processar salário/os!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

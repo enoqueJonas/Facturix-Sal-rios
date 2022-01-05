@@ -4,5 +4,12 @@
 
     partial class DtSetProcessamento
     {
+        partial class dtTableProcessamentoDataTable
+        {
+        }
+
+        partial class dtTableFuncionarioDataTable
+        {
+        }
     }
 }

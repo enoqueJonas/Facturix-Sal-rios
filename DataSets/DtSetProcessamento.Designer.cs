@@ -279,6 +279,30 @@ namespace Facturix_Salários.DataSets {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class dtTableProcessamentoDataTable : global::System.Data.TypedTableBase<dtTableProcessamentoRow> {
             
+            private global::System.Data.DataColumn columnimportanciaAPagar;
+            
+            private global::System.Data.DataColumn columnsalarioBrutoMensal;
+            
+            private global::System.Data.DataColumn columndiasDeTrabalho;
+            
+            private global::System.Data.DataColumn columnsubsidioAlimentacao;
+            
+            private global::System.Data.DataColumn columnajudaDeDeslocacao;
+            
+            private global::System.Data.DataColumn columnajudaDeCusto;
+            
+            private global::System.Data.DataColumn columnirps;
+            
+            private global::System.Data.DataColumn columnadiantamentos;
+            
+            private global::System.Data.DataColumn columnnomeTrabalhador;
+            
+            private global::System.Data.DataColumn columntotalADescontar;
+            
+            private global::System.Data.DataColumn columntotalRetribuicao;
+            
+            private global::System.Data.DataColumn columndataProcessamento;
+            
             private global::System.Data.DataColumn columncategoria;
             
             private global::System.Data.DataColumn columnnumeroBenificiario;
@@ -287,7 +311,7 @@ namespace Facturix_Salários.DataSets {
             
             private global::System.Data.DataColumn columndepartamento;
             
-            private global::System.Data.DataColumn columnimportanciaAPagar;
+            private global::System.Data.DataColumn columnvencimento;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -324,6 +348,102 @@ namespace Facturix_Salários.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn importanciaAPagarColumn {
+                get {
+                    return this.columnimportanciaAPagar;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn salarioBrutoMensalColumn {
+                get {
+                    return this.columnsalarioBrutoMensal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn diasDeTrabalhoColumn {
+                get {
+                    return this.columndiasDeTrabalho;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn subsidioAlimentacaoColumn {
+                get {
+                    return this.columnsubsidioAlimentacao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ajudaDeDeslocacaoColumn {
+                get {
+                    return this.columnajudaDeDeslocacao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ajudaDeCustoColumn {
+                get {
+                    return this.columnajudaDeCusto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn irpsColumn {
+                get {
+                    return this.columnirps;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn adiantamentosColumn {
+                get {
+                    return this.columnadiantamentos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn nomeTrabalhadorColumn {
+                get {
+                    return this.columnnomeTrabalhador;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn totalADescontarColumn {
+                get {
+                    return this.columntotalADescontar;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn totalRetribuicaoColumn {
+                get {
+                    return this.columntotalRetribuicao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn dataProcessamentoColumn {
+                get {
+                    return this.columndataProcessamento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn categoriaColumn {
                 get {
                     return this.columncategoria;
@@ -356,9 +476,9 @@ namespace Facturix_Salários.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn importanciaAPagarColumn {
+            public global::System.Data.DataColumn vencimentoColumn {
                 get {
-                    return this.columnimportanciaAPagar;
+                    return this.columnvencimento;
                 }
             }
             
@@ -399,14 +519,43 @@ namespace Facturix_Salários.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public dtTableProcessamentoRow AdddtTableProcessamentoRow(string categoria, string numeroBenificiario, string numeroFiscal, string departamento, double importanciaAPagar) {
+            public dtTableProcessamentoRow AdddtTableProcessamentoRow(
+                        decimal importanciaAPagar, 
+                        decimal salarioBrutoMensal, 
+                        string diasDeTrabalho, 
+                        decimal subsidioAlimentacao, 
+                        decimal ajudaDeDeslocacao, 
+                        decimal ajudaDeCusto, 
+                        decimal irps, 
+                        decimal adiantamentos, 
+                        string nomeTrabalhador, 
+                        decimal totalADescontar, 
+                        decimal totalRetribuicao, 
+                        string dataProcessamento, 
+                        string categoria, 
+                        string numeroBenificiario, 
+                        string numeroFiscal, 
+                        string departamento, 
+                        decimal vencimento) {
                 dtTableProcessamentoRow rowdtTableProcessamentoRow = ((dtTableProcessamentoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        importanciaAPagar,
+                        salarioBrutoMensal,
+                        diasDeTrabalho,
+                        subsidioAlimentacao,
+                        ajudaDeDeslocacao,
+                        ajudaDeCusto,
+                        irps,
+                        adiantamentos,
+                        nomeTrabalhador,
+                        totalADescontar,
+                        totalRetribuicao,
+                        dataProcessamento,
                         categoria,
                         numeroBenificiario,
                         numeroFiscal,
                         departamento,
-                        importanciaAPagar};
+                        vencimento};
                 rowdtTableProcessamentoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtTableProcessamentoRow);
                 return rowdtTableProcessamentoRow;
@@ -429,16 +578,52 @@ namespace Facturix_Salários.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
+                this.columnimportanciaAPagar = base.Columns["importanciaAPagar"];
+                this.columnsalarioBrutoMensal = base.Columns["salarioBrutoMensal"];
+                this.columndiasDeTrabalho = base.Columns["diasDeTrabalho"];
+                this.columnsubsidioAlimentacao = base.Columns["subsidioAlimentacao"];
+                this.columnajudaDeDeslocacao = base.Columns["ajudaDeDeslocacao"];
+                this.columnajudaDeCusto = base.Columns["ajudaDeCusto"];
+                this.columnirps = base.Columns["irps"];
+                this.columnadiantamentos = base.Columns["adiantamentos"];
+                this.columnnomeTrabalhador = base.Columns["nomeTrabalhador"];
+                this.columntotalADescontar = base.Columns["totalADescontar"];
+                this.columntotalRetribuicao = base.Columns["totalRetribuicao"];
+                this.columndataProcessamento = base.Columns["dataProcessamento"];
                 this.columncategoria = base.Columns["categoria"];
                 this.columnnumeroBenificiario = base.Columns["numeroBenificiario"];
                 this.columnnumeroFiscal = base.Columns["numeroFiscal"];
                 this.columndepartamento = base.Columns["departamento"];
-                this.columnimportanciaAPagar = base.Columns["importanciaAPagar"];
+                this.columnvencimento = base.Columns["vencimento"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
+                this.columnimportanciaAPagar = new global::System.Data.DataColumn("importanciaAPagar", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimportanciaAPagar);
+                this.columnsalarioBrutoMensal = new global::System.Data.DataColumn("salarioBrutoMensal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsalarioBrutoMensal);
+                this.columndiasDeTrabalho = new global::System.Data.DataColumn("diasDeTrabalho", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndiasDeTrabalho);
+                this.columnsubsidioAlimentacao = new global::System.Data.DataColumn("subsidioAlimentacao", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsubsidioAlimentacao);
+                this.columnajudaDeDeslocacao = new global::System.Data.DataColumn("ajudaDeDeslocacao", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnajudaDeDeslocacao);
+                this.columnajudaDeCusto = new global::System.Data.DataColumn("ajudaDeCusto", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnajudaDeCusto);
+                this.columnirps = new global::System.Data.DataColumn("irps", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnirps);
+                this.columnadiantamentos = new global::System.Data.DataColumn("adiantamentos", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnadiantamentos);
+                this.columnnomeTrabalhador = new global::System.Data.DataColumn("nomeTrabalhador", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnomeTrabalhador);
+                this.columntotalADescontar = new global::System.Data.DataColumn("totalADescontar", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotalADescontar);
+                this.columntotalRetribuicao = new global::System.Data.DataColumn("totalRetribuicao", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotalRetribuicao);
+                this.columndataProcessamento = new global::System.Data.DataColumn("dataProcessamento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndataProcessamento);
                 this.columncategoria = new global::System.Data.DataColumn("categoria", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncategoria);
                 this.columnnumeroBenificiario = new global::System.Data.DataColumn("numeroBenificiario", typeof(string), null, global::System.Data.MappingType.Element);
@@ -447,8 +632,8 @@ namespace Facturix_Salários.DataSets {
                 base.Columns.Add(this.columnnumeroFiscal);
                 this.columndepartamento = new global::System.Data.DataColumn("departamento", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndepartamento);
-                this.columnimportanciaAPagar = new global::System.Data.DataColumn("importanciaAPagar", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnimportanciaAPagar);
+                this.columnvencimento = new global::System.Data.DataColumn("vencimento", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvencimento);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -591,6 +776,206 @@ namespace Facturix_Salários.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal importanciaAPagar {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledtTableProcessamento.importanciaAPagarColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'importanciaAPagar\' in table \'dtTableProcessamento\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.importanciaAPagarColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal salarioBrutoMensal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledtTableProcessamento.salarioBrutoMensalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'salarioBrutoMensal\' in table \'dtTableProcessamento\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.salarioBrutoMensalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string diasDeTrabalho {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtTableProcessamento.diasDeTrabalhoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'diasDeTrabalho\' in table \'dtTableProcessamento\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.diasDeTrabalhoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal subsidioAlimentacao {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledtTableProcessamento.subsidioAlimentacaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'subsidioAlimentacao\' in table \'dtTableProcessamento\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.subsidioAlimentacaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal ajudaDeDeslocacao {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledtTableProcessamento.ajudaDeDeslocacaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ajudaDeDeslocacao\' in table \'dtTableProcessamento\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.ajudaDeDeslocacaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal ajudaDeCusto {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledtTableProcessamento.ajudaDeCustoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ajudaDeCusto\' in table \'dtTableProcessamento\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.ajudaDeCustoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal irps {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledtTableProcessamento.irpsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'irps\' in table \'dtTableProcessamento\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.irpsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal adiantamentos {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledtTableProcessamento.adiantamentosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'adiantamentos\' in table \'dtTableProcessamento\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.adiantamentosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string nomeTrabalhador {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtTableProcessamento.nomeTrabalhadorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nomeTrabalhador\' in table \'dtTableProcessamento\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.nomeTrabalhadorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal totalADescontar {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledtTableProcessamento.totalADescontarColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'totalADescontar\' in table \'dtTableProcessamento\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.totalADescontarColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal totalRetribuicao {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledtTableProcessamento.totalRetribuicaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'totalRetribuicao\' in table \'dtTableProcessamento\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.totalRetribuicaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string dataProcessamento {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtTableProcessamento.dataProcessamentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dataProcessamento\' in table \'dtTableProcessamento\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTableProcessamento.dataProcessamentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string categoria {
                 get {
                     try {
@@ -656,19 +1041,162 @@ namespace Facturix_Salários.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double importanciaAPagar {
+            public decimal vencimento {
                 get {
                     try {
-                        return ((double)(this[this.tabledtTableProcessamento.importanciaAPagarColumn]));
+                        return ((decimal)(this[this.tabledtTableProcessamento.vencimentoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'importanciaAPagar\' in table \'dtTableProcessamento\' is DBNul" +
-                                "l.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'vencimento\' in table \'dtTableProcessamento\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtTableProcessamento.importanciaAPagarColumn] = value;
+                    this[this.tabledtTableProcessamento.vencimentoColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsimportanciaAPagarNull() {
+                return this.IsNull(this.tabledtTableProcessamento.importanciaAPagarColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetimportanciaAPagarNull() {
+                this[this.tabledtTableProcessamento.importanciaAPagarColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IssalarioBrutoMensalNull() {
+                return this.IsNull(this.tabledtTableProcessamento.salarioBrutoMensalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetsalarioBrutoMensalNull() {
+                this[this.tabledtTableProcessamento.salarioBrutoMensalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsdiasDeTrabalhoNull() {
+                return this.IsNull(this.tabledtTableProcessamento.diasDeTrabalhoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetdiasDeTrabalhoNull() {
+                this[this.tabledtTableProcessamento.diasDeTrabalhoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IssubsidioAlimentacaoNull() {
+                return this.IsNull(this.tabledtTableProcessamento.subsidioAlimentacaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetsubsidioAlimentacaoNull() {
+                this[this.tabledtTableProcessamento.subsidioAlimentacaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsajudaDeDeslocacaoNull() {
+                return this.IsNull(this.tabledtTableProcessamento.ajudaDeDeslocacaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetajudaDeDeslocacaoNull() {
+                this[this.tabledtTableProcessamento.ajudaDeDeslocacaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsajudaDeCustoNull() {
+                return this.IsNull(this.tabledtTableProcessamento.ajudaDeCustoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetajudaDeCustoNull() {
+                this[this.tabledtTableProcessamento.ajudaDeCustoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsirpsNull() {
+                return this.IsNull(this.tabledtTableProcessamento.irpsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetirpsNull() {
+                this[this.tabledtTableProcessamento.irpsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsadiantamentosNull() {
+                return this.IsNull(this.tabledtTableProcessamento.adiantamentosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetadiantamentosNull() {
+                this[this.tabledtTableProcessamento.adiantamentosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsnomeTrabalhadorNull() {
+                return this.IsNull(this.tabledtTableProcessamento.nomeTrabalhadorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetnomeTrabalhadorNull() {
+                this[this.tabledtTableProcessamento.nomeTrabalhadorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IstotalADescontarNull() {
+                return this.IsNull(this.tabledtTableProcessamento.totalADescontarColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SettotalADescontarNull() {
+                this[this.tabledtTableProcessamento.totalADescontarColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IstotalRetribuicaoNull() {
+                return this.IsNull(this.tabledtTableProcessamento.totalRetribuicaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SettotalRetribuicaoNull() {
+                this[this.tabledtTableProcessamento.totalRetribuicaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsdataProcessamentoNull() {
+                return this.IsNull(this.tabledtTableProcessamento.dataProcessamentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetdataProcessamentoNull() {
+                this[this.tabledtTableProcessamento.dataProcessamentoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -721,14 +1249,14 @@ namespace Facturix_Salários.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsimportanciaAPagarNull() {
-                return this.IsNull(this.tabledtTableProcessamento.importanciaAPagarColumn);
+            public bool IsvencimentoNull() {
+                return this.IsNull(this.tabledtTableProcessamento.vencimentoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetimportanciaAPagarNull() {
-                this[this.tabledtTableProcessamento.importanciaAPagarColumn] = global::System.Convert.DBNull;
+            public void SetvencimentoNull() {
+                this[this.tabledtTableProcessamento.vencimentoColumn] = global::System.Convert.DBNull;
             }
         }
         

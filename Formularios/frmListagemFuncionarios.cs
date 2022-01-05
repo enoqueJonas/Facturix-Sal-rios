@@ -15,9 +15,7 @@ namespace Facturix_Salários.Formularios
 {
     public partial class frmListagemFuncionarios : Form
     {
-        private int nrMes, idFuncionario, diasDeTrabalho, codigoCelSelecionada;
-        private String nomeDoTrabalhador, operacao, dataProcessamento;
-        private double salarioBrutoMensal = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, irps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
+        private int diasDeTrabalho, codigoCelSelecionada;
 
         private void frmListagemFuncionarios_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -120,11 +118,15 @@ namespace Facturix_Salários.Formularios
         }
         public void carregarFuncionariosLote()
         {
+            int idFuncionario;
+            String nomeDoTrabalhador, operacao, dataProcessamento;
+            double salarioBrutoMensal = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, idIrps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
             frmProcessamentoEmLote frm = new frmProcessamentoEmLote();
             //List<int> listagemFuncionario = listf.getFuncionarios();
             ArrayList listaFuncionario = ControllerFuncionario.recuperar();
             List<int> funcionariosValidos = getFuncionarios();
             ArrayList listaIrps = ControllerIRPS.recuperar();
+            ArrayList listaFuncRemuneracoes = ControllerFuncionarioRemuneracoes.recuperar();
             DataTable dt = new DataTable();
             double valorIrps = 0;
             dt.Columns.Add("Registo n°");
@@ -148,11 +150,21 @@ namespace Facturix_Salários.Formularios
             {
                 for (int i = 0; i < funcionariosValidos.Count; i++)
                 {
+
                     if (f.getCodigo() == funcionariosValidos[i])
                     {
                         DataRow dRow = dt.NewRow();
                         idFuncionario = f.getCodigo();
                         dRow["Registo n°"] = idFuncionario;
+
+                        foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes)
+                        {
+                            if (idFuncionario == fr.getIdFuncionario())
+                            {
+                                diversosSubsidios = (fr.getValor() * fr.getQtd()) + diversosSubsidios;
+                            }
+
+                        }
 
                         nomeDoTrabalhador = f.getNome();
                         dRow["Nome do funcionário"] = nomeDoTrabalhador;
@@ -169,16 +181,15 @@ namespace Facturix_Salários.Formularios
                         ajudaDeCusto = 0;
                         dRow["AJUD. CUST."] = string.Format("{0:#,##0.00}", ajudaDeCusto);
 
-                        ajudaDeslocacao = f.getSubTransporte();
+                        ajudaDeslocacao = 0;
                         dRow["AJUD. DESL."] = string.Format("{0:#,##0.00}", ajudaDeslocacao);
 
                         pagamentoFerias = 0;
                         dRow["PAG. FÉRIAS"] = string.Format("{0:#,##0.00}", pagamentoFerias);
 
-                        diversosSubsidios = f.getSubComunicacao();
                         dRow["DIVERSOS SUB EFIC."] = string.Format("{0:#,##0.00}", diversosSubsidios);
 
-                        totalRetribuicao = salarioBrutoMensal + f.getSubAlimentacao() + f.getSubTransporte() + f.getSubComunicacao();
+                        totalRetribuicao = salarioBrutoMensal + subAlimentacao + diversosSubsidios + ajudaDeCusto + pagamentoFerias + ajudaDeslocacao;
                         dRow["TOTAL"] = string.Format("{0:#,##0.00}", totalRetribuicao);
 
                         emprestimoMedico = 0;
@@ -194,15 +205,17 @@ namespace Facturix_Salários.Formularios
                         ipa = f.getImpostoMunicipal();
                         dRow["IPA"] = string.Format("{0:#,##0.00}", ipa);
 
-                        inss = f.getVencimento() * 0.07;
+                        inss = salarioBrutoMensal * 0.07;
                         dRow["INSS"] = string.Format("{0:#,##0.00}", inss);
 
-                        totalDescontar = valorIrps + f.getImpostoMunicipal() + emprestimoMedico + ipa + inss;
                         dRow["Total a descontar"] = string.Format("{0:#,##0.00}", totalDescontar);
 
                         adiantamentos = 0;
                         dRow["Adiantamento"] = string.Format("{0:#,##0.00}", adiantamentos);
-                        dRow["Importância a pagar"] = string.Format("{0:#,##0.00}", (salarioBrutoMensal + totalRetribuicao) - totalDescontar);
+                        totalDescontar = valorIrps + emprestimoMedico + ipa + inss + adiantamentos;
+
+                        importanciaAPagar = totalRetribuicao - totalDescontar;
+                        dRow["Importância a pagar"] = string.Format("{0:#,##0.00}", importanciaAPagar);
                         dt.Rows.Add(dRow);
                     }
                 }
@@ -297,12 +310,12 @@ namespace Facturix_Salários.Formularios
                     if (listaFuncionarios[i] == r.getIdUsuario())
                     {
                         listaValida.Add(r.getIdUsuario());
-                        break;
                     }
                 }
             }
             HashSet<int> unique = new HashSet<int>(listaValida);
             List<int> listaSemRep = unique.ToList();
+            listaSemRep.Sort();
             return listaSemRep;
         }
     }
