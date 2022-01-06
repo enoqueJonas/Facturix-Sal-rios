@@ -39,5 +39,18 @@ namespace Facturix_Salários
                 this.Close();
             }
         }
+
+        private void frmNumeroRegisto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtNrRegisto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

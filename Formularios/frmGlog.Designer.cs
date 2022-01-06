@@ -220,6 +220,7 @@
             this.Controls.Add(this.lbl_EndDate);
             this.Controls.Add(this.lbl_BeginDate);
             this.Name = "frmGlog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatório de Ponto";
             this.Load += new System.EventHandler(this.frmGlog_Load);
             this.ResumeLayout(false);

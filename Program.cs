@@ -6,8 +6,9 @@ using System.Windows.Forms;
 
 namespace Facturix_Salários
 {
-    static class Program
+    class Program
     {
+        public int diasDeTrabalhoGeral =0;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

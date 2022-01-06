@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProcessamentoIndividual));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl5 = new System.Windows.Forms.Label();
+            this.lbl4 = new System.Windows.Forms.Label();
+            this.lbl3 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -41,35 +45,44 @@
             this.txtIrps = new System.Windows.Forms.TextBox();
             this.txtemprestimoMedico = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbl1 = new System.Windows.Forms.Label();
             this.cbMes = new System.Windows.Forms.ComboBox();
             this.nrAno = new System.Windows.Forms.NumericUpDown();
             this.nrDias = new System.Windows.Forms.NumericUpDown();
             this.nrRegistonr = new System.Windows.Forms.NumericUpDown();
+            this.txtEstado = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnMostrar = new System.Windows.Forms.Button();
+            this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.lbl7 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.lbl6 = new System.Windows.Forms.Label();
             this.txtOutrasRemuneracoes = new System.Windows.Forms.TextBox();
             this.txtSubAlimentacao = new System.Windows.Forms.TextBox();
             this.txtVencimento = new System.Windows.Forms.TextBox();
             this.txtTotalRemuneracoes = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnEliminarRemuneracoes = new System.Windows.Forms.Button();
             this.btnEditarRemuneracoes = new System.Windows.Forms.Button();
             this.btnAdicionarRemuneracao = new System.Windows.Forms.Button();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.dataProcessamentoSalario = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nrAno)).BeginInit();
@@ -83,6 +96,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbl5);
+            this.groupBox1.Controls.Add(this.lbl4);
+            this.groupBox1.Controls.Add(this.lbl3);
+            this.groupBox1.Controls.Add(this.lbl2);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label10);
@@ -93,12 +110,60 @@
             this.groupBox1.Controls.Add(this.txtIpa);
             this.groupBox1.Controls.Add(this.txtIrps);
             this.groupBox1.Controls.Add(this.txtemprestimoMedico);
-            this.groupBox1.Location = new System.Drawing.Point(31, 146);
+            this.groupBox1.Location = new System.Drawing.Point(31, 158);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(297, 151);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Descontos";
+            // 
+            // lbl5
+            // 
+            this.lbl5.AutoSize = true;
+            this.lbl5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl5.Location = new System.Drawing.Point(6, 97);
+            this.lbl5.Name = "lbl5";
+            this.lbl5.Size = new System.Drawing.Size(13, 13);
+            this.lbl5.TabIndex = 18;
+            this.lbl5.Text = "5";
+            this.lbl5.Visible = false;
+            // 
+            // lbl4
+            // 
+            this.lbl4.AutoSize = true;
+            this.lbl4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl4.Location = new System.Drawing.Point(6, 70);
+            this.lbl4.Name = "lbl4";
+            this.lbl4.Size = new System.Drawing.Size(13, 13);
+            this.lbl4.TabIndex = 18;
+            this.lbl4.Text = "4";
+            this.lbl4.Visible = false;
+            // 
+            // lbl3
+            // 
+            this.lbl3.AutoSize = true;
+            this.lbl3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl3.Location = new System.Drawing.Point(6, 44);
+            this.lbl3.Name = "lbl3";
+            this.lbl3.Size = new System.Drawing.Size(13, 13);
+            this.lbl3.TabIndex = 18;
+            this.lbl3.Text = "3";
+            this.lbl3.Visible = false;
+            // 
+            // lbl2
+            // 
+            this.lbl2.AutoSize = true;
+            this.lbl2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl2.Location = new System.Drawing.Point(6, 18);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(13, 13);
+            this.lbl2.TabIndex = 18;
+            this.lbl2.Text = "2";
+            this.lbl2.Visible = false;
             // 
             // label11
             // 
@@ -164,6 +229,7 @@
             this.txtadiantamentos.TabIndex = 12;
             this.txtadiantamentos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtadiantamentos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtadiantamentos_KeyDown);
+            this.txtadiantamentos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtemprestimoMedico_KeyPress);
             // 
             // txtIpa
             // 
@@ -173,6 +239,7 @@
             this.txtIpa.TabIndex = 11;
             this.txtIpa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtIpa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIpa_KeyDown);
+            this.txtIpa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtemprestimoMedico_KeyPress);
             // 
             // txtIrps
             // 
@@ -182,6 +249,7 @@
             this.txtIrps.TabIndex = 10;
             this.txtIrps.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtIrps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIrps_KeyDown);
+            this.txtIrps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtemprestimoMedico_KeyPress);
             // 
             // txtemprestimoMedico
             // 
@@ -191,30 +259,57 @@
             this.txtemprestimoMedico.TabIndex = 9;
             this.txtemprestimoMedico.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtemprestimoMedico.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtemprestimoMedico_KeyDown);
+            this.txtemprestimoMedico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtemprestimoMedico_KeyPress);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lbl1);
             this.groupBox2.Controls.Add(this.cbMes);
             this.groupBox2.Controls.Add(this.nrAno);
             this.groupBox2.Controls.Add(this.nrDias);
             this.groupBox2.Controls.Add(this.nrRegistonr);
+            this.groupBox2.Controls.Add(this.txtEstado);
             this.groupBox2.Controls.Add(this.txtNome);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(31, 17);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(679, 113);
+            this.groupBox2.Size = new System.Drawing.Size(671, 126);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl1.Location = new System.Drawing.Point(5, 91);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(13, 13);
+            this.lbl1.TabIndex = 18;
+            this.lbl1.Text = "1";
+            this.lbl1.Visible = false;
             // 
             // cbMes
             // 
             this.cbMes.FormattingEnabled = true;
             this.cbMes.Items.AddRange(new object[] {
-            "Vencimento"});
-            this.cbMes.Location = new System.Drawing.Point(506, 65);
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"});
+            this.cbMes.Location = new System.Drawing.Point(506, 59);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(146, 21);
             this.cbMes.TabIndex = 195;
@@ -222,14 +317,14 @@
             // 
             // nrAno
             // 
-            this.nrAno.Location = new System.Drawing.Point(350, 65);
+            this.nrAno.Location = new System.Drawing.Point(350, 59);
             this.nrAno.Maximum = new decimal(new int[] {
             2300,
             0,
             0,
             0});
             this.nrAno.Minimum = new decimal(new int[] {
-            2021,
+            2018,
             0,
             0,
             0});
@@ -245,7 +340,7 @@
             // 
             // nrDias
             // 
-            this.nrDias.Location = new System.Drawing.Point(84, 67);
+            this.nrDias.Location = new System.Drawing.Point(84, 89);
             this.nrDias.Name = "nrDias";
             this.nrDias.Size = new System.Drawing.Size(150, 20);
             this.nrDias.TabIndex = 6;
@@ -260,13 +355,34 @@
             this.nrRegistonr.ValueChanged += new System.EventHandler(this.nrRegistonr_ValueChanged);
             this.nrRegistonr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nrRegistonr_KeyDown);
             // 
+            // txtEstado
+            // 
+            this.txtEstado.Enabled = false;
+            this.txtEstado.Location = new System.Drawing.Point(84, 56);
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.ReadOnly = true;
+            this.txtEstado.Size = new System.Drawing.Size(150, 20);
+            this.txtEstado.TabIndex = 15;
+            this.txtEstado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
+            // 
             // txtNome
             // 
+            this.txtNome.Enabled = false;
             this.txtNome.Location = new System.Drawing.Point(350, 27);
             this.txtNome.Name = "txtNome";
+            this.txtNome.ReadOnly = true;
             this.txtNome.Size = new System.Drawing.Size(302, 20);
             this.txtNome.TabIndex = 15;
             this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(21, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Estado:";
             // 
             // label4
             // 
@@ -280,7 +396,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(259, 67);
+            this.label2.Location = new System.Drawing.Point(259, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 11;
@@ -289,7 +405,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 69);
+            this.label5.Location = new System.Drawing.Point(19, 91);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 12;
@@ -307,14 +423,89 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnCancelar);
+            this.panel1.Controls.Add(this.btnEliminar);
+            this.panel1.Controls.Add(this.btnMostrar);
+            this.panel1.Controls.Add(this.btnAtualizar);
             this.panel1.Controls.Add(this.btnRegressar);
             this.panel1.Controls.Add(this.btnImprimir);
             this.panel1.Controls.Add(this.btnConfirmar);
-            this.panel1.Location = new System.Drawing.Point(31, 489);
+            this.panel1.Location = new System.Drawing.Point(31, 502);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(679, 74);
+            this.panel1.Size = new System.Drawing.Size(671, 74);
             this.panel1.TabIndex = 6;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelar.Location = new System.Drawing.Point(208, 6);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(69, 60);
+            this.btnCancelar.TabIndex = 900004;
+            this.btnCancelar.TabStop = false;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEliminar.Location = new System.Drawing.Point(393, 6);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(69, 60);
+            this.btnEliminar.TabIndex = 900003;
+            this.btnEliminar.TabStop = false;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // btnMostrar
+            // 
+            this.btnMostrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnMostrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMostrar.ForeColor = System.Drawing.Color.Black;
+            this.btnMostrar.Image = ((System.Drawing.Image)(resources.GetObject("btnMostrar.Image")));
+            this.btnMostrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMostrar.Location = new System.Drawing.Point(21, 6);
+            this.btnMostrar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMostrar.Name = "btnMostrar";
+            this.btnMostrar.Size = new System.Drawing.Size(69, 60);
+            this.btnMostrar.TabIndex = 900001;
+            this.btnMostrar.TabStop = false;
+            this.btnMostrar.Text = "Consultar";
+            this.btnMostrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
+            // 
+            // btnAtualizar
+            // 
+            this.btnAtualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAtualizar.ForeColor = System.Drawing.Color.Black;
+            this.btnAtualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAtualizar.Image")));
+            this.btnAtualizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAtualizar.Location = new System.Drawing.Point(115, 6);
+            this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(69, 60);
+            this.btnAtualizar.TabIndex = 900002;
+            this.btnAtualizar.TabStop = false;
+            this.btnAtualizar.Text = "Modificar";
+            this.btnAtualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // btnRegressar
             // 
@@ -323,7 +514,7 @@
             this.btnRegressar.ForeColor = System.Drawing.Color.Black;
             this.btnRegressar.Image = ((System.Drawing.Image)(resources.GetObject("btnRegressar.Image")));
             this.btnRegressar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRegressar.Location = new System.Drawing.Point(582, 6);
+            this.btnRegressar.Location = new System.Drawing.Point(579, 6);
             this.btnRegressar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegressar.Name = "btnRegressar";
             this.btnRegressar.Size = new System.Drawing.Size(69, 60);
@@ -341,7 +532,7 @@
             this.btnImprimir.ForeColor = System.Drawing.Color.Black;
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnImprimir.Location = new System.Drawing.Point(302, 6);
+            this.btnImprimir.Location = new System.Drawing.Point(485, 6);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(2);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(69, 60);
@@ -359,7 +550,7 @@
             this.btnConfirmar.ForeColor = System.Drawing.Color.Black;
             this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConfirmar.Location = new System.Drawing.Point(24, 6);
+            this.btnConfirmar.Location = new System.Drawing.Point(301, 6);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(69, 60);
@@ -374,13 +565,15 @@
             // 
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.lbl7);
             this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.lbl6);
             this.groupBox3.Controls.Add(this.txtOutrasRemuneracoes);
             this.groupBox3.Controls.Add(this.txtSubAlimentacao);
             this.groupBox3.Controls.Add(this.txtVencimento);
-            this.groupBox3.Location = new System.Drawing.Point(413, 146);
+            this.groupBox3.Location = new System.Drawing.Point(413, 158);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(297, 101);
+            this.groupBox3.Size = new System.Drawing.Size(289, 101);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Remunerações";
@@ -403,6 +596,18 @@
             this.label14.TabIndex = 14;
             this.label14.Text = "Sub. Alimentação:";
             // 
+            // lbl7
+            // 
+            this.lbl7.AutoSize = true;
+            this.lbl7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl7.Location = new System.Drawing.Point(5, 44);
+            this.lbl7.Name = "lbl7";
+            this.lbl7.Size = new System.Drawing.Size(13, 13);
+            this.lbl7.TabIndex = 18;
+            this.lbl7.Text = "7";
+            this.lbl7.Visible = false;
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -411,6 +616,18 @@
             this.label15.Size = new System.Drawing.Size(66, 13);
             this.label15.TabIndex = 14;
             this.label15.Text = "Vencimento:";
+            // 
+            // lbl6
+            // 
+            this.lbl6.AutoSize = true;
+            this.lbl6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl6.Location = new System.Drawing.Point(5, 18);
+            this.lbl6.Name = "lbl6";
+            this.lbl6.Size = new System.Drawing.Size(13, 13);
+            this.lbl6.TabIndex = 18;
+            this.lbl6.Text = "6";
+            this.lbl6.Visible = false;
             // 
             // txtOutrasRemuneracoes
             // 
@@ -429,6 +646,7 @@
             this.txtSubAlimentacao.TabIndex = 14;
             this.txtSubAlimentacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSubAlimentacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSubAlimentacao_KeyDown);
+            this.txtSubAlimentacao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtemprestimoMedico_KeyPress);
             // 
             // txtVencimento
             // 
@@ -438,11 +656,12 @@
             this.txtVencimento.TabIndex = 13;
             this.txtVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtVencimento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVencimento_KeyDown);
+            this.txtVencimento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtemprestimoMedico_KeyPress);
             // 
             // txtTotalRemuneracoes
             // 
             this.txtTotalRemuneracoes.Enabled = false;
-            this.txtTotalRemuneracoes.Location = new System.Drawing.Point(542, 266);
+            this.txtTotalRemuneracoes.Location = new System.Drawing.Point(542, 279);
             this.txtTotalRemuneracoes.Name = "txtTotalRemuneracoes";
             this.txtTotalRemuneracoes.ReadOnly = true;
             this.txtTotalRemuneracoes.Size = new System.Drawing.Size(141, 20);
@@ -453,11 +672,19 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(430, 269);
+            this.label16.Location = new System.Drawing.Point(430, 282);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(94, 13);
             this.label16.TabIndex = 14;
             this.label16.Text = "Total Remune.:";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(671, 162);
+            this.groupBox4.TabIndex = 3020;
+            this.groupBox4.TabStop = false;
             // 
             // btnEliminarRemuneracoes
             // 
@@ -522,25 +749,17 @@
             this.panel2.Controls.Add(this.btnEditarRemuneracoes);
             this.panel2.Controls.Add(this.btnEliminarRemuneracoes);
             this.panel2.Controls.Add(this.groupBox4);
-            this.panel2.Location = new System.Drawing.Point(31, 313);
+            this.panel2.Location = new System.Drawing.Point(31, 326);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(679, 162);
+            this.panel2.Size = new System.Drawing.Size(671, 162);
             this.panel2.TabIndex = 5;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Location = new System.Drawing.Point(0, 0);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(679, 162);
-            this.groupBox4.TabIndex = 3020;
-            this.groupBox4.TabStop = false;
             // 
             // frmProcessamentoIndividual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(739, 582);
+            this.ClientSize = new System.Drawing.Size(734, 591);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -605,12 +824,25 @@
         private System.Windows.Forms.Label label12;
         public System.Windows.Forms.TextBox txtOutrasRemuneracoes;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnMostrar;
+        private System.Windows.Forms.Button btnAtualizar;
+        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnEliminarRemuneracoes;
         private System.Windows.Forms.Button btnEditarRemuneracoes;
         private System.Windows.Forms.Button btnAdicionarRemuneracao;
         private System.Windows.Forms.Button btnRefrescar;
         private System.Windows.Forms.DataGridView dataProcessamentoSalario;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Label lbl5;
+        private System.Windows.Forms.Label lbl4;
+        private System.Windows.Forms.Label lbl3;
+        private System.Windows.Forms.Label lbl2;
+        private System.Windows.Forms.Label lbl7;
+        private System.Windows.Forms.Label lbl6;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TextBox txtEstado;
     }
 }

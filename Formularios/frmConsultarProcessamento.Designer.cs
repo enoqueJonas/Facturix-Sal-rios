@@ -1,6 +1,6 @@
-﻿namespace Facturix_Salários
+﻿namespace Facturix_Salários.Formularios
 {
-    partial class frmNumeroRegisto
+    partial class frmConsultarProcessamento
     {
         /// <summary>
         /// Required designer variable.
@@ -29,42 +29,39 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNrRegisto = new System.Windows.Forms.TextBox();
+            this.txtMes = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 35);
+            this.label1.Location = new System.Drawing.Point(26, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.Size = new System.Drawing.Size(241, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Nr. Registo";
+            this.label1.Text = "Digite em algarismo o mês que pretende consultar";
             // 
-            // txtNrRegisto
+            // txtMes
             // 
-            this.txtNrRegisto.Location = new System.Drawing.Point(113, 32);
-            this.txtNrRegisto.Name = "txtNrRegisto";
-            this.txtNrRegisto.Size = new System.Drawing.Size(204, 20);
-            this.txtNrRegisto.TabIndex = 1;
-            this.txtNrRegisto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNrRegisto_KeyPress);
+            this.txtMes.Location = new System.Drawing.Point(89, 52);
+            this.txtMes.Name = "txtMes";
+            this.txtMes.Size = new System.Drawing.Size(100, 20);
+            this.txtMes.TabIndex = 1;
+            this.txtMes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMes_KeyPress);
             // 
-            // frmNumeroRegisto
+            // frmConsultarProcessamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(364, 86);
-            this.Controls.Add(this.txtNrRegisto);
+            this.ClientSize = new System.Drawing.Size(297, 109);
+            this.Controls.Add(this.txtMes);
             this.Controls.Add(this.label1);
-            this.KeyPreview = true;
-            this.Location = new System.Drawing.Point(500, 500);
-            this.Name = "frmNumeroRegisto";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pesquisar";
-            this.Load += new System.EventHandler(this.frmNumeroRegisto_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmNumeroRegisto_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmNumeroRegisto_KeyPress);
+            this.Name = "frmConsultarProcessamento";
+            this.Text = "Consultar Processamento";
+            this.Load += new System.EventHandler(this.frmConsultarProcessamento_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmConsultarProcessamento_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmConsultarProcessamento_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -73,6 +70,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNrRegisto;
+        private System.Windows.Forms.TextBox txtMes;
     }
 }

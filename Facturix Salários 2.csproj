@@ -206,12 +206,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DtSetProcessamento.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmAdiantamentos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmAdiantamentos.Designer.cs">
-      <DependentUpon>frmAdiantamentos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\frmAdicionarFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +223,12 @@
     </Compile>
     <Compile Include="Formularios\frmConfirmarProcessamnetoSalario.Designer.cs">
       <DependentUpon>frmConfirmarProcessamnetoSalario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmConsultarProcessamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmConsultarProcessamento.Designer.cs">
+      <DependentUpon>frmConsultarProcessamento.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmListagemFuncionarios.cs">
       <SubType>Form</SubType>
@@ -523,9 +523,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserPrivilege.cs" />
-    <EmbeddedResource Include="Formularios\frmAdiantamentos.resx">
-      <DependentUpon>frmAdiantamentos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAdicionarFuncionario.resx">
       <DependentUpon>frmAdicionarFuncionario.cs</DependentUpon>
     </EmbeddedResource>
@@ -564,6 +561,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmConfirmarProcessamnetoSalario.resx">
       <DependentUpon>frmConfirmarProcessamnetoSalario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmConsultarProcessamento.resx">
+      <DependentUpon>frmConsultarProcessamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmListagemFuncionarios.resx">
       <DependentUpon>frmListagemFuncionarios.cs</DependentUpon>

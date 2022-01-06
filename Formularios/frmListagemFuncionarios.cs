@@ -88,24 +88,22 @@ namespace Facturix_Salários.Formularios
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            //getFuncionarios();
-            //if (getFuncionarios().Count > 1 && getFuncionarios().Count != 0)
-            //{
-                carregarFuncionariosLote();
-            //} else if (getFuncionarios().Count == 1 && getFuncionarios().Count != 0) 
-            //{
-            //    carregarFuncionarioIndividual();
-            //}
+            carregarFuncionariosLote();
         }
 
         private int getDiasDeTrabalho(int codFunc)
         {
             ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperarComCod(codFunc);
+            int ano = DateTime.Now.Year, idFunc = 0;
+            int nrMes = DateTime.Now.Month;
+            DateTime dataProcess;
             int dias = 0;
             foreach (ModeloRelogioDePonto f in listaRelogioDePonto)
             {
-                if (codFunc == f.getIdUsuario())
+                dataProcess = Convert.ToDateTime(f.getData());
+                if (codFunc == f.getIdUsuario() && f.getEstado().Equals("Check in") && dataProcess.Year == ano && dataProcess.Month == nrMes)
                 {
+                    idFunc = f.getIdUsuario();
                     dias = dias + 1;
                 }
             }
@@ -113,9 +111,31 @@ namespace Facturix_Salários.Formularios
             {
                 dias = dias - 1;
             }
-            ControllerDiasDeTrabalho.gravar(codFunc, dias / 2);
+            if (idFunc!=0) 
+            {
+                ControllerDiasDeTrabalho.gravar(idFunc, dias/2);
+            }
             return dias / 2;
         }
+
+//private int getDiasDeTrabalho(int codFunc)
+//{
+//    ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperarComCod(codFunc);
+//    int dias = 0;
+//    foreach (ModeloRelogioDePonto f in listaRelogioDePonto)
+//    {
+//        if (codFunc == f.getIdUsuario())
+//        {
+//            dias = dias + 1;
+//        }
+//    }
+//    if (dias % 2 != 0)
+//    {
+//        dias = dias - 1;
+//    }
+//    ControllerDiasDeTrabalho.gravar(codFunc, dias / 2);
+//    return dias / 2;
+//}
         public void carregarFuncionariosLote()
         {
             int idFuncionario;
@@ -153,70 +173,73 @@ namespace Facturix_Salários.Formularios
 
                     if (f.getCodigo() == funcionariosValidos[i])
                     {
-                        DataRow dRow = dt.NewRow();
-                        idFuncionario = f.getCodigo();
-                        dRow["Registo n°"] = idFuncionario;
-
-                        foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes)
+                        diasDeTrabalho = getDiasDeTrabalho(funcionariosValidos[i]);
+                        if (diasDeTrabalho!=0) 
                         {
-                            if (idFuncionario == fr.getIdFuncionario())
+                            DataRow dRow = dt.NewRow();
+                            idFuncionario = f.getCodigo();
+                            dRow["Registo n°"] = idFuncionario;
+
+                            foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes)
                             {
-                                diversosSubsidios = (fr.getValor() * fr.getQtd()) + diversosSubsidios;
+                                if (idFuncionario == fr.getIdFuncionario())
+                                {
+                                    diversosSubsidios = (fr.getValor() * fr.getQtd()) + diversosSubsidios;
+                                }
+
                             }
 
+                            nomeDoTrabalhador = f.getNome();
+                            dRow["Nome do funcionário"] = nomeDoTrabalhador;
+
+                            dRow["Dias de trab."] = diasDeTrabalho;
+
+                            salarioBrutoMensal = Math.Round((f.getVencimento() / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
+                            dRow["Mensal"] = string.Format("{0:#,##0.00}", salarioBrutoMensal);
+
+                            subAlimentacao = f.getSubAlimentacao();
+                            dRow["SUB. ALIM."] = string.Format("{0:#,##0.00}", subAlimentacao);
+
+                            ajudaDeCusto = 0;
+                            dRow["AJUD. CUST."] = string.Format("{0:#,##0.00}", ajudaDeCusto);
+
+                            ajudaDeslocacao = 0;
+                            dRow["AJUD. DESL."] = string.Format("{0:#,##0.00}", ajudaDeslocacao);
+
+                            pagamentoFerias = 0;
+                            dRow["PAG. FÉRIAS"] = string.Format("{0:#,##0.00}", pagamentoFerias);
+
+                            dRow["DIVERSOS SUB EFIC."] = string.Format("{0:#,##0.00}", diversosSubsidios);
+
+                            totalRetribuicao = salarioBrutoMensal + subAlimentacao + diversosSubsidios + ajudaDeCusto + pagamentoFerias + ajudaDeslocacao;
+                            dRow["TOTAL"] = string.Format("{0:#,##0.00}", totalRetribuicao);
+
+                            emprestimoMedico = 0;
+                            dRow["EMPRÉSTIMO ASSIST. MÉDICA"] = string.Format("{0:#,##0.00}", emprestimoMedico);
+
+                            foreach (ModeloIRPS ir in listaIrps)
+                            {
+                                if (f.getIdIRPS() == ir.getId())
+                                    valorIrps = ir.getValor();
+                            }
+                            dRow["IRPS"] = string.Format("{0:#,##0.00}", valorIrps);
+
+                            ipa = f.getImpostoMunicipal();
+                            dRow["IPA"] = string.Format("{0:#,##0.00}", ipa);
+
+                            inss = salarioBrutoMensal * 0.07;
+                            dRow["INSS"] = string.Format("{0:#,##0.00}", inss);
+
+                            dRow["Total a descontar"] = string.Format("{0:#,##0.00}", totalDescontar);
+
+                            adiantamentos = 0;
+                            dRow["Adiantamento"] = string.Format("{0:#,##0.00}", adiantamentos);
+                            totalDescontar = valorIrps + emprestimoMedico + ipa + inss + adiantamentos;
+
+                            importanciaAPagar = totalRetribuicao - totalDescontar;
+                            dRow["Importância a pagar"] = string.Format("{0:#,##0.00}", importanciaAPagar);
+                            dt.Rows.Add(dRow);
                         }
-
-                        nomeDoTrabalhador = f.getNome();
-                        dRow["Nome do funcionário"] = nomeDoTrabalhador;
-
-                        diasDeTrabalho = getDiasDeTrabalho(funcionariosValidos[i]);
-                        dRow["Dias de trab."] = diasDeTrabalho;
-
-                        salarioBrutoMensal = Math.Round((f.getVencimento() / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
-                        dRow["Mensal"] = string.Format("{0:#,##0.00}", salarioBrutoMensal);
-
-                        subAlimentacao = f.getSubAlimentacao();
-                        dRow["SUB. ALIM."] = string.Format("{0:#,##0.00}", subAlimentacao);
-
-                        ajudaDeCusto = 0;
-                        dRow["AJUD. CUST."] = string.Format("{0:#,##0.00}", ajudaDeCusto);
-
-                        ajudaDeslocacao = 0;
-                        dRow["AJUD. DESL."] = string.Format("{0:#,##0.00}", ajudaDeslocacao);
-
-                        pagamentoFerias = 0;
-                        dRow["PAG. FÉRIAS"] = string.Format("{0:#,##0.00}", pagamentoFerias);
-
-                        dRow["DIVERSOS SUB EFIC."] = string.Format("{0:#,##0.00}", diversosSubsidios);
-
-                        totalRetribuicao = salarioBrutoMensal + subAlimentacao + diversosSubsidios + ajudaDeCusto + pagamentoFerias + ajudaDeslocacao;
-                        dRow["TOTAL"] = string.Format("{0:#,##0.00}", totalRetribuicao);
-
-                        emprestimoMedico = 0;
-                        dRow["EMPRÉSTIMO ASSIST. MÉDICA"] = string.Format("{0:#,##0.00}", emprestimoMedico);
-
-                        foreach (ModeloIRPS ir in listaIrps)
-                        {
-                            if (f.getIdIRPS() == ir.getId())
-                                valorIrps = ir.getValor();
-                        }
-                        dRow["IRPS"] = string.Format("{0:#,##0.00}", valorIrps);
-
-                        ipa = f.getImpostoMunicipal();
-                        dRow["IPA"] = string.Format("{0:#,##0.00}", ipa);
-
-                        inss = salarioBrutoMensal * 0.07;
-                        dRow["INSS"] = string.Format("{0:#,##0.00}", inss);
-
-                        dRow["Total a descontar"] = string.Format("{0:#,##0.00}", totalDescontar);
-
-                        adiantamentos = 0;
-                        dRow["Adiantamento"] = string.Format("{0:#,##0.00}", adiantamentos);
-                        totalDescontar = valorIrps + emprestimoMedico + ipa + inss + adiantamentos;
-
-                        importanciaAPagar = totalRetribuicao - totalDescontar;
-                        dRow["Importância a pagar"] = string.Format("{0:#,##0.00}", importanciaAPagar);
-                        dt.Rows.Add(dRow);
                     }
                 }
             }

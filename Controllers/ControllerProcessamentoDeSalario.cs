@@ -152,7 +152,7 @@ namespace Facturix_Salários.Controllers
             try
             {
                 conexao.Open();
-                String sqlSelect = "SELECT * from processamento_salario WHERE id=" + idFunc + "";
+                String sqlSelect = "SELECT * from processamento_salario WHERE idFuncionario=" + idFunc + "";
                 MySqlCommand comando = new MySqlCommand(sqlSelect, conexao);
                 MySqlDataReader leitor = comando.ExecuteReader();
                 while (leitor.Read())
