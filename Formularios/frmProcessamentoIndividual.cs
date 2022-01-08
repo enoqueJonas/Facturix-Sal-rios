@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Facturix_Salários.Controllers;
 using Facturix_Salários.Modelos;
+using Facturix_Salários.DataSets;
+using Facturix_Salários.Reports;
+using MySql.Data.MySqlClient;
 
 namespace Facturix_Salários.Formularios
 {
@@ -20,10 +23,59 @@ namespace Facturix_Salários.Formularios
             InitializeComponent();
         }
         int codigoCelSelecionadaVencimento;
-        private void btnImprimir_Click(object sender, EventArgs e)
+        private void imprimir() 
         {
+            ArrayList listaFunc = ControllerFuncionario.recuperar();
+            int codTextBox = Convert.ToInt16(nrRegistonr.Value);
             frmReportProcessamento f = new frmReportProcessamento();
             f.Show();
+            reportProcessamento objRpt = new reportProcessamento();
+            MySqlConnection conexao = Conexao.conectar();
+            try
+            {
+                conexao.Open();
+
+                //String Query1 = "SELECT categoria, numeroBenificiario, numeroFiscal, vencimento from funcionario WHERE exists (select nomeTrabalhador from processamento_salario)";
+                String Query2 = "SELECT nomeTrabalhador, diasDeTrabalho, salarioBrutoMensal, subsidioAlimentacao, importanciaAPagar, totalADescontar, totalRetribuicao, dataProcessamento, ajudaDeDeslocacao, ajudaDeCusto, categoria, numeroBenificiario, numeroFiscal, vencimento from processamento_salario, funcionario WHERE processamento_salario.nomeTrabalhador = funcionario.nome AND idFuncionario=" + codTextBox + "";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(Query2, conexao);
+
+                DataSet Ds = new DtSetProcessamento();
+
+                adapter.Fill(Ds, "dtTableProcessamento");
+
+                //adapter = new MySqlDataAdapter(Query2, conexao);
+                //adapter.Fill(Ds, "dtTableProcessamento");
+
+                if (Ds.Tables[0].Rows.Count == 0)
+                {
+                    MessageBox.Show("No data Found", "CrystalReportWithOracle");
+                    return;
+                }
+
+                //Setting data source of our report object
+                objRpt.SetDataSource(Ds);
+
+                //CrystalDecisions.CrystalReports.Engine.TextObject root;
+                //root = (CrystalDecisions.CrystalReports.Engine.TextObject);
+                //objRpt.ReportDefinition.ReportObjects["txt_header"];
+                //root.Text = "Sample Report By Using Data Table!!";
+
+                //Binding the crystalReportViewer with our report object. 
+                f.crystalReportViewer1.ReportSource = objRpt;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Não foi possível preencher o report! Contacte o técnico!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conexao != null)
+                    conexao.Close();
+            }
+        }
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            imprimir();
         }
 
         private void frmProcessamentoIndividual_Load(object sender, EventArgs e)
@@ -130,7 +182,7 @@ namespace Facturix_Salários.Formularios
         private void mexerTeclado(object sender, KeyEventArgs e)
         {
             ctrl = (Control)sender;
-            if (ctrl is TextBox)
+            if (ctrl is TextBox || ctrl is ComboBox || ctrl is NumericUpDown)
             {
                 if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down || e.Alt && e.KeyCode == Keys.Right)
                 {
@@ -179,6 +231,7 @@ namespace Facturix_Salários.Formularios
                 {
                     existe = true;
                     idProcessamento = p.getId();
+                    dtProcessamentoExistente = Convert.ToDateTime(p.getDataProcessamento());
                 }
             }
             return existe;
@@ -278,73 +331,141 @@ namespace Facturix_Salários.Formularios
             dataProcessamentoSalario.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
 
-        private void nrRegistonr_ValueChanged(object sender, EventArgs e)
+        private void montarCaixas(int id) 
         {
-            refrescarVencimento();
-            int id = Convert.ToUInt16(nrRegistonr.Value);
             ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(id);
             ArrayList listaIrps = ControllerIRPS.recuperar();
             ArrayList listaDependentes = ControllerDependente.recuperarComCodFuncionario(id);
             int codIrps = 0;
+            String estado = "";
             double valorIrps = 0, emprestimo = 0, ipa = 0, adiantamentos = 0, vencimento = 0, outroSub = 0, subAlimentacao = 0;
-            Boolean existe = false;
+            Boolean existe = false, existeProcess = existeProcessamento(id);
             foreach (ModeloFuncionario func in listaFuncionarios)
             {
                 txtNome.Text = func.getNome();
                 emprestimo = 0;
-                txtemprestimoMedico.Text = emprestimo + "";
                 ipa = func.getImpostoMunicipal();
-                txtIpa.Text = ipa + "";
                 adiantamentos = 0;
-                txtadiantamentos.Text = adiantamentos + "";
                 codIrps = func.getIdIRPS();
                 vencimento = func.getVencimento();
-                txtVencimento.Text = vencimento + " ";
                 subAlimentacao = func.getSubAlimentacao();
-                if (id == func.getCodigo()) 
+                if (id == func.getCodigo())
                 {
                     existe = true;
                 }
             }
-            if (existe == false)
+
+            if (existeProcess)
             {
-                nrDias.Value = 0;
-                txtNome.Text = "";
-                txtOutrasRemuneracoes.Text = "";
-                txtSubAlimentacao.Text = "";
-                txtTotalDescontar.Text = "";
-                txtTotalRemuneracoes.Text = "";
-                txtVencimento.Text = "";
-                txtemprestimoMedico.Text = "";
-                txtIrps.Text = "";
-                txtIpa.Text = "";
-                txtadiantamentos.Text = "";
-                cbMes.Text = "";
-            }
-            else 
-            {
-                foreach (ModeloIRPS conta in listaIrps)
+                ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperarComCod(id);
+                foreach (ModeloProcessamentoDeSalario p in listaProcessamento)
                 {
-                    if (codIrps == conta.getId())
-                    {
-                        valorIrps = conta.getValor();
-                        txtIrps.Text = valorIrps + "";
-                    }
+                    adiantamentos = p.getAdiantamentos();
+                    emprestimo = p.getEmprestimoMedico();
+                    valorIrps = p.getIrps();
+                    subAlimentacao = p.getSubAlimentacao();
+                    vencimento = p.getSalarioBrutoMensal();
+                    ipa = p.getIpa();
+                    outroSub = p.getDiversosSubsidios();
+                    diasDeTrabalho = p.getIdDiasDeTrabalho();
+                    estado = "Processado";
                 }
-                ArrayList listaRemenuracoes = ControllerRemuneracoes.recuperar();
-                ArrayList listaFuncRemuneracao = ControllerFuncionarioRemuneracoes.recuperar();
-                foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracao)
+            }
+            else
+            {
+                if (existe == false)
                 {
-                    if (id == fr.getIdFuncionario())
+                    nrDias.Value = 0;
+                    txtNome.Text = "";
+                    txtOutrasRemuneracoes.Text = "";
+                    txtSubAlimentacao.Text = "";
+                    txtTotalDescontar.Text = "";
+                    txtTotalRemuneracoes.Text = "";
+                    txtVencimento.Text = "";
+                    txtemprestimoMedico.Text = "";
+                    txtIrps.Text = "";
+                    txtIpa.Text = "";
+                    txtadiantamentos.Text = "";
+                    cbMes.Text = "";
+                }
+                else
+                {
+                    foreach (ModeloIRPS conta in listaIrps)
                     {
+                        if (codIrps == conta.getId())
+                        {
+                            valorIrps = conta.getValor();
+                        }
+                    }
+                    ArrayList listaRemenuracoes = ControllerRemuneracoes.recuperar();
+                    ArrayList listaFuncRemuneracao = ControllerFuncionarioRemuneracoes.recuperar();
+                    foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracao)
+                    {
+                        if (id == fr.getIdFuncionario())
+                        {
                             outroSub = (fr.getValor() * fr.getQtd()) + outroSub;
+                        }
                     }
                 }
-                txtSubAlimentacao.Text = subAlimentacao + "";
-                txtOutrasRemuneracoes.Text = outroSub + "";
-                txtTotalDescontar.Text = valorIrps + emprestimo + ipa + adiantamentos + "";
-                txtTotalRemuneracoes.Text = subAlimentacao + vencimento + outroSub + "";
+                estado = "Não processado";
             }
+            txtemprestimoMedico.Text = string.Format("{0:#,##0.00}", emprestimo);
+            txtIpa.Text = string.Format("{0:#,##0.00}", ipa);
+            txtadiantamentos.Text = string.Format("{0:#,##0.00}", adiantamentos);
+            txtVencimento.Text = string.Format("{0:#,##0.00}", vencimento);
+            txtEstado.Text = string.Format("{0:#,##0.00}", estado);
+            txtSubAlimentacao.Text = string.Format("{0:#,##0.00}", subAlimentacao);
+            txtOutrasRemuneracoes.Text = string.Format("{0:#,##0.00}", outroSub);
+            txtTotalDescontar.Text = string.Format("{0:#,##0.00}", valorIrps + emprestimo + ipa + adiantamentos);
+            txtTotalRemuneracoes.Text = string.Format("{0:#,##0.00}", subAlimentacao + vencimento + outroSub);
+            txtIrps.Text = string.Format("{0:#,##0.00}", valorIrps);
+        }
+
+        public void impedirBotoes()
+        {
+            //|| txtNrFiscal.Text == ""
+            if (txtNome.Text == "")
+            {
+                btnMostrar.Enabled = true;
+                btnAtualizar.Enabled = false;
+                btnConfirmar.Enabled = false;
+                btnEliminar.Enabled = false;
+                btnImprimir.Enabled = false;
+                btnAtualizar.FlatStyle = FlatStyle.Flat;
+                btnConfirmar.FlatStyle = FlatStyle.Flat;
+                btnEliminar.FlatStyle = FlatStyle.Flat;
+                btnImprimir.FlatStyle = FlatStyle.Flat;
+                btnMostrar.FlatStyle = FlatStyle.Standard;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
+            }
+            else if (txtNome.Text != "")
+            {
+                btnAtualizar.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnConfirmar.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnImprimir.Enabled = true;
+                btnAtualizar.FlatStyle = FlatStyle.Standard;
+                btnCancelar.FlatStyle = FlatStyle.Standard;
+                btnConfirmar.FlatStyle = FlatStyle.Standard;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnImprimir.FlatStyle = FlatStyle.Standard;
+                btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
+            }
+        }
+
+
+        private void nrRegistonr_ValueChanged(object sender, EventArgs e)
+        {
+            refrescarVencimento();
+            int id = Convert.ToUInt16(nrRegistonr.Value);
+            montarCaixas(id);
         }
 
         private int getCodProcessamento()
@@ -368,6 +489,23 @@ namespace Facturix_Salários.Formularios
                 gravar();
                 mudarVisibilidadeLabels(false);
                 MessageBox.Show("Os dados para o procesaamento foram atualizados com sucesso!");
+                btnMostrar.Enabled = true;
+                btnAtualizar.Enabled = true;
+                btnConfirmar.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnImprimir.Enabled = true;
+                btnAtualizar.FlatStyle = FlatStyle.Standard;
+                btnConfirmar.FlatStyle = FlatStyle.Standard;
+                btnCancelar.FlatStyle = FlatStyle.Standard;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnImprimir.FlatStyle = FlatStyle.Standard;
+                btnMostrar.FlatStyle = FlatStyle.Standard;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnCancelar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
             }
             catch (Exception err) 
             {
@@ -390,8 +528,8 @@ namespace Facturix_Salários.Formularios
             salarioBruto =  double.Parse(txtVencimento.Text);
             subAlimentacao = double.Parse(txtSubAlimentacao.Text);           
             double diversosSubsidios = double.Parse(txtOutrasRemuneracoes.Text);
-            ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
-            ControllerDiasDeTrabalho.gravar(idFunc, diasDeTrabalho);
+            ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperarComCod(idProcessamento);
+            //ControllerDiasDeTrabalho.gravar(idFunc, diasDeTrabalho);
             if (existe == false)
             {
                 ControllerDiasDeTrabalho.atualizar(idFunc, diasDeTrabalho);
@@ -401,48 +539,29 @@ namespace Facturix_Salários.Formularios
             {
                 foreach (ModeloProcessamentoDeSalario p in listaProcessamento)
                 {
+
                     ajudaDeCusto = p.getAjudaDeCusto();
-                    ajudaDeDeslocacao = p.getPagamentoFerias();
+                    ajudaDeDeslocacao = p.getAjudaDeslocacao();
                     pagamentoFerias = p.getPagamentoFerias();
-                    inss = p.getInss();
-                    dataProcessamento = p.getDataProcessamento();
-                    //totalADescontar = ;
-
-                    //totalRetribuicoes = ;
-
+                    diversosSubsidios = p.getDiversosSubsidios();
+                    emprestimoMedico = p.getEmprestimoMedico();
+                    adiantamentos = p.getAdiantamentos();
+                    DateTime dataP = Convert.ToDateTime(p.getDataProcessamento());
+                    dataProcessamento = dataP.ToString("yyyy-MM-dd");
                 }
-                ControllerProcessamentoDeSalario.atualizar(idProcessamento, idFunc, nome, diasDeTrabalho, salarioBruto, subAlimentacao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicoes, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, "", dataProcessamento, "");
+
+                int idFunc = Convert.ToInt16(nrRegistonr.Value);
+                if (existe == true && dtProcessamentoExistente.Date < DateTime.Now.Date)
+                {
+                    if (MessageBox.Show("O processamento já foi submetido à segurança social! Modificar o mesmo virá com Repercussões. Deseja Continuar?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        ControllerProcessamentoDeSalario.atualizar(idProcessamento, idFunc, nome, diasDeTrabalho, salarioBruto, subAlimentacao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicoes, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, "", dataProcessamento, "");
+
+                    }
+                }
             }
-            //double ajudaDeCusto = 0, ajudaDeDeslocacao = 0, pagamentoFerias = 0, inss, totalADescontar, totalRetribuicoes, importanciaAPagar, salarioLiquido;
-
-            //salarioLiquido = Math.Round((salarioBruto / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
-            //inss = Math.Round((salarioLiquido * 0.07), 2, MidpointRounding.AwayFromZero); ;
-            //totalADescontar = emprestimoMedico + adiantamentos + irps + ipa + inss;
-            //totalRetribuicoes = subAlimentcao + salarioLiquido + diversosSubsidios + ajudaDeCusto + ajudaDeDeslocacao + pagamentoFerias;
-            //importanciaAPagar = totalRetribuicoes - totalADescontar;
-
-            //Boolean existe = false;
-            //ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
-            //foreach (ModeloProcessamentoDeSalario f in listaProcessamento)
-            //{
-            //    dtProcessado = Convert.ToDateTime(f.getDataProcessamento());
-            //    anoProcessado = dtProcessado.Year;
-            //    mesProcessado = dtProcessado.Month;
-            //    if (f.getIdFuncionario() == idFunc && anoProcessado == anoRecebido && mesProcessado == mesRecebido)
-            //    {
-            //        existe = true;
-            //        id = f.getId();
-            //    }
-            //}
-
-            //if (existe)
-            //{
-            //    ControllerProcessamentoDeSalario.atualizar(id, idFunc, nome, diasDeTrabalho, salarioLiquido, subAlimentcao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicoes, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamnto, operacao);
-            //}
-            //else {
-            //    id = getCodProcessamento() + 1;
-            //    ControllerProcessamentoDeSalario.Guardar(id, idFunc, nome, diasDeTrabalho, salarioLiquido, subAlimentcao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicoes, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamnto, operacao);
-            //}
         }
 
         private int getCodRemuneracao()
@@ -507,7 +626,7 @@ namespace Facturix_Salários.Formularios
             {
                 codigoCelSelecionadaVencimento = int.Parse(row.Cells[0].Value.ToString());
             }
-            catch (Exception err) { }
+            catch (Exception er) { er.ToString(); }
             btnEditarRemuneracoes.Enabled = true;
             btnEliminarRemuneracoes.Enabled = true;
         }
@@ -546,6 +665,23 @@ namespace Facturix_Salários.Formularios
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             mudarVisibilidadeLabels(true);
+            btnMostrar.Enabled = false;
+            btnAtualizar.Enabled = false;
+            btnConfirmar.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnEliminar.Enabled = false;
+            btnImprimir.Enabled = false;
+            btnAtualizar.FlatStyle = FlatStyle.Flat;
+            btnConfirmar.FlatStyle = FlatStyle.Standard;
+            btnCancelar.FlatStyle = FlatStyle.Standard;
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnImprimir.FlatStyle = FlatStyle.Flat;
+            btnMostrar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+            btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
+            btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -553,6 +689,23 @@ namespace Facturix_Salários.Formularios
             mudarVisibilidadeLabels(false);
             limpar();
             refrescarVencimento();
+            btnMostrar.Enabled = true;
+            btnAtualizar.Enabled = true;
+            btnConfirmar.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnEliminar.Enabled = true;
+            btnImprimir.Enabled = true;
+            btnAtualizar.FlatStyle = FlatStyle.Standard;
+            btnConfirmar.FlatStyle = FlatStyle.Standard;
+            btnCancelar.FlatStyle = FlatStyle.Standard;
+            btnEliminar.FlatStyle = FlatStyle.Standard;
+            btnImprimir.FlatStyle = FlatStyle.Standard;
+            btnMostrar.FlatStyle = FlatStyle.Standard;
+            btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+            btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
+            btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
+            btnCancelar.Cursor = System.Windows.Forms.Cursors.Default;
+            btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
         }
 
         private void txtemprestimoMedico_KeyPress(object sender, KeyPressEventArgs e)
@@ -564,10 +717,325 @@ namespace Facturix_Salários.Formularios
         }
 
         int mesSelecionado;
-        private void btnMostrar_Click(object sender, EventArgs e)
+        private void mostrar() 
         {
             frmConsultarProcessamento f = new frmConsultarProcessamento();
+            f.ShowDialog();
             mesSelecionado = f.mesSelecionado;
+            int id = Convert.ToInt16(nrRegistonr.Value);
+            ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(id);
+            ArrayList listaIrps = ControllerIRPS.recuperar();
+            int codIrps = 0;
+            String estado = "";
+            double valorIrps = 0, emprestimo = 0, ipa = 0, adiantamentos = 0, vencimento = 0, outroSub = 0, subAlimentacao = 0;
+            Boolean existe = false, existeProcess = false;
+            foreach (ModeloFuncionario func in listaFuncionarios)
+            {
+                txtNome.Text = func.getNome();
+                emprestimo = 0;
+                ipa = func.getImpostoMunicipal();
+                adiantamentos = 0;
+                codIrps = func.getIdIRPS();
+                vencimento = func.getVencimento();
+                subAlimentacao = func.getSubAlimentacao();
+                if (id == func.getCodigo())
+                {
+                    existe = true;
+                }
+            }
+
+            ArrayList lista = ControllerProcessamentoDeSalario.recuperar();
+            int ano = DateTime.Now.Year;
+            int nrMes = mesSelecionado, anoProcess, mesProcess;
+            DateTime dataProcess;
+            foreach (ModeloProcessamentoDeSalario p in lista)
+            {
+                dataProcess = Convert.ToDateTime(p.getDataProcessamento());
+                anoProcess = dataProcess.Year;
+                mesProcess = dataProcess.Month;
+                if (id == p.getIdFuncionario() && anoProcess == ano && mesProcess == nrMes)
+                {
+                    existeProcess = true;
+                    idProcessamento = p.getId();
+                    dtProcessamentoExistente = Convert.ToDateTime(p.getDataProcessamento());
+                }
+            }
+            if (existeProcess)
+            {
+                ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperarComCod(id);
+                foreach (ModeloProcessamentoDeSalario p in listaProcessamento)
+                {
+                    adiantamentos = p.getAdiantamentos();
+                    emprestimo = p.getEmprestimoMedico();
+                    valorIrps = p.getIrps();
+                    subAlimentacao = p.getSubAlimentacao();
+                    vencimento = p.getSalarioBrutoMensal();
+                    ipa = p.getIpa();
+                    outroSub = p.getDiversosSubsidios();
+                    diasDeTrabalho = p.getIdDiasDeTrabalho();
+                    estado = "Processado";
+                }
+            }
+            else
+            {
+                if (existe == false)
+                {
+                    nrDias.Value = 0;
+                    txtNome.Text = "";
+                    txtOutrasRemuneracoes.Text = "";
+                    txtSubAlimentacao.Text = "";
+                    txtTotalDescontar.Text = "";
+                    txtTotalRemuneracoes.Text = "";
+                    txtVencimento.Text = "";
+                    txtemprestimoMedico.Text = "";
+                    txtIrps.Text = "";
+                    txtIpa.Text = "";
+                    txtadiantamentos.Text = "";
+                    cbMes.Text = "";
+                }
+                else
+                {
+                    foreach (ModeloIRPS conta in listaIrps)
+                    {
+                        if (codIrps == conta.getId())
+                        {
+                            valorIrps = conta.getValor();
+                        }
+                    }
+                    ArrayList listaRemenuracoes = ControllerRemuneracoes.recuperar();
+                    ArrayList listaFuncRemuneracao = ControllerFuncionarioRemuneracoes.recuperar();
+                    foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracao)
+                    {
+                        if (id == fr.getIdFuncionario())
+                        {
+                            outroSub = (fr.getValor() * fr.getQtd()) + outroSub;
+                        }
+                    }
+                }
+                estado = "Não processado";
+            }
+            txtemprestimoMedico.Text = string.Format("{0:#,##0.00}", emprestimo);
+            txtIpa.Text = string.Format("{0:#,##0.00}", ipa);
+            txtadiantamentos.Text = string.Format("{0:#,##0.00}", adiantamentos);
+            txtVencimento.Text = string.Format("{0:#,##0.00}", vencimento);
+            txtEstado.Text = string.Format("{0:#,##0.00}", estado);
+            txtSubAlimentacao.Text = string.Format("{0:#,##0.00}", subAlimentacao);
+            txtOutrasRemuneracoes.Text = string.Format("{0:#,##0.00}", outroSub);
+            txtTotalDescontar.Text = string.Format("{0:#,##0.00}", valorIrps + emprestimo + ipa + adiantamentos);
+            txtTotalRemuneracoes.Text = string.Format("{0:#,##0.00}", subAlimentacao + vencimento + outroSub);
+            txtIrps.Text = string.Format("{0:#,##0.00}", valorIrps);
+        }
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            mostrar();
+        }
+
+        DateTime dtProcessamentoExistente;
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int idFunc = Convert.ToInt16(nrRegistonr.Value);
+            Boolean existe = existeProcessamento(idFunc);
+            if (existe == true && dtProcessamentoExistente.Date < DateTime.Now.Date) 
+            {
+                if (MessageBox.Show("O processamento já foi submetido à segurança social! Eliminar o mesmo virá com Repercussões. Deseja Continuar?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    ControllerProcessamentoDeSalario.remover(idProcessamento);
+                    
+                }
+            }
+        }
+
+        private void nrAno_ValueChanged(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt16(nrRegistonr.Value);
+            montarCaixas(id);
+            refrescarVencimento();
+        }
+
+        private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt16(nrRegistonr.Value);
+            montarCaixas(id);
+            refrescarVencimento();
+        }
+
+        private void txtVencimento_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdicionarRemuneracao_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                if (btnEditarRemuneracoes.Enabled) 
+                {
+                    this.ActiveControl = btnEditarRemuneracoes;
+                }
+            }
+            if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = btnConfirmar;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtIpa;
+            }
+        }
+
+        private void btnEditarRemuneracoes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                if (btnEditarRemuneracoes.Enabled)
+                {
+                    this.ActiveControl = btnEliminar;
+                }
+            }
+            if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = btnConfirmar;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtSubAlimentacao;
+            }if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = btnAdicionarRemuneracao;
+            }
+        }
+
+        private void btnEliminarRemuneracoes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                    this.ActiveControl = btnMostrar;
+            }
+            if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = btnMostrar;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtSubAlimentacao;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = btnEditarRemuneracoes;
+            }
+        }
+
+        private void frmProcessamentoIndividual_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void frmProcessamentoIndividual_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F2" && btnMostrar.Enabled)
+            {
+                mostrar();
+            }
+            if (e.KeyCode.ToString() == "F3" && btnAtualizar.Enabled)
+            {
+                mudarVisibilidadeLabels(true);
+                btnMostrar.Enabled = false;
+                btnAtualizar.Enabled = false;
+                btnConfirmar.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnEliminar.Enabled = false;
+                btnImprimir.Enabled = false;
+                btnAtualizar.FlatStyle = FlatStyle.Flat;
+                btnConfirmar.FlatStyle = FlatStyle.Standard;
+                btnCancelar.FlatStyle = FlatStyle.Standard;
+                btnEliminar.FlatStyle = FlatStyle.Flat;
+                btnImprimir.FlatStyle = FlatStyle.Flat;
+                btnMostrar.FlatStyle = FlatStyle.Flat;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
+            }
+            if (e.KeyCode.ToString() == "F4" && btnCancelar.Enabled)
+            {
+                mudarVisibilidadeLabels(false);
+                limpar();
+                refrescarVencimento();
+                btnMostrar.Enabled = true;
+                btnAtualizar.Enabled = true;
+                btnConfirmar.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnImprimir.Enabled = true;
+                btnAtualizar.FlatStyle = FlatStyle.Standard;
+                btnConfirmar.FlatStyle = FlatStyle.Standard;
+                btnCancelar.FlatStyle = FlatStyle.Standard;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnImprimir.FlatStyle = FlatStyle.Standard;
+                btnMostrar.FlatStyle = FlatStyle.Standard;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnCancelar.Cursor = System.Windows.Forms.Cursors.Default;
+                btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
+            }
+            if (e.KeyCode.ToString() == "F5" && btnConfirmar.Enabled)
+            {
+                try
+                {
+                    gravar();
+                    mudarVisibilidadeLabels(false);
+                    MessageBox.Show("Os dados para o procesaamento foram atualizados com sucesso!");
+                    btnMostrar.Enabled = true;
+                    btnAtualizar.Enabled = true;
+                    btnConfirmar.Enabled = true;
+                    btnCancelar.Enabled = true;
+                    btnEliminar.Enabled = true;
+                    btnImprimir.Enabled = true;
+                    btnAtualizar.FlatStyle = FlatStyle.Standard;
+                    btnConfirmar.FlatStyle = FlatStyle.Standard;
+                    btnCancelar.FlatStyle = FlatStyle.Standard;
+                    btnEliminar.FlatStyle = FlatStyle.Standard;
+                    btnImprimir.FlatStyle = FlatStyle.Standard;
+                    btnMostrar.FlatStyle = FlatStyle.Standard;
+                    btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
+                    btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
+                    btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
+                    btnCancelar.Cursor = System.Windows.Forms.Cursors.Default;
+                    btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message, "Erro");
+                }
+            }
+            if (e.KeyCode.ToString() == "F6" && btnEliminar.Enabled)
+            {
+                int idFunc = Convert.ToInt16(nrRegistonr.Value);
+                Boolean existe = existeProcessamento(idFunc);
+                ArrayList lista = ControllerProcessamentoDeSalario.recuperar();
+                if (existe == true && dtProcessamentoExistente.Date < DateTime.Now.Date)
+                {
+                    if (MessageBox.Show("O processamento já foi submetido à segurança social! Eliminar o mesmo virá com Repercussões. Deseja Continuar?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        ControllerProcessamentoDeSalario.remover(idProcessamento);
+
+                    }
+                }
+            }
+            if (e.KeyCode.ToString() == "F7" && btnImprimir.Enabled)
+            {
+                imprimir();
+            }
+            if (e.KeyCode == Keys.Escape) 
+            {
+                this.Close();
+            }
         }
 
         private void cbMes_KeyDown(object sender, KeyEventArgs e)
@@ -577,7 +1045,14 @@ namespace Facturix_Salários.Formularios
 
         private void nrDias_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender, e);
+            if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtemprestimoMedico;
+            }
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = txtemprestimoMedico;
+            }
         }
 
         private void dtDataHorasExtraEFaltas_KeyDown(object sender, KeyEventArgs e)
@@ -592,37 +1067,109 @@ namespace Facturix_Salários.Formularios
 
         private void txtemprestimoMedico_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = txtVencimento;
+            }
+            if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtIrps;
+            }if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = nrDias;
+            }
         }
 
         private void txtIrps_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = txtSubAlimentacao;
+            }
+            if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtIpa;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtemprestimoMedico;
+            }
         }
 
         private void txtIpa_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = txtSubAlimentacao;
+            }
+            if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtadiantamentos;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtIrps;
+            }
         }
 
         private void txtadiantamentos_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = btnAdicionarRemuneracao;
+            }
+            if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = btnAdicionarRemuneracao;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtIpa;
+            }
         }
 
         private void txtVencimento_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = txtemprestimoMedico;
+            }
+            if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = txtSubAlimentacao;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = nrDias;
+            }
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = txtIrps;
+            }
         }
 
         private void txtSubAlimentacao_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender, e);
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                this.ActiveControl = txtIrps;
+            }
+            if (e.KeyCode == Keys.Enter || e.Alt && e.KeyCode == Keys.Down)
+            {
+                this.ActiveControl = btnAdicionarRemuneracao;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                this.ActiveControl = txtVencimento;
+            }
+            if (e.Alt && e.KeyCode == Keys.Right)
+            {
+                this.ActiveControl = txtIpa;
+            }
         }
 
         private void txtOutrasRemuneracoes_KeyDown(object sender, KeyEventArgs e)
         {
-            mexerTeclado(sender, e);
         }
     }
 }

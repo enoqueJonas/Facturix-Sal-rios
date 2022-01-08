@@ -313,6 +313,7 @@
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(146, 21);
             this.cbMes.TabIndex = 195;
+            this.cbMes.SelectedIndexChanged += new System.EventHandler(this.cbMes_SelectedIndexChanged);
             this.cbMes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbMes_KeyDown);
             // 
             // nrAno
@@ -336,6 +337,7 @@
             0,
             0,
             0});
+            this.nrAno.ValueChanged += new System.EventHandler(this.nrAno_ValueChanged);
             this.nrAno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nrAno_KeyDown);
             // 
             // nrDias
@@ -470,6 +472,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnMostrar
             // 
@@ -631,8 +634,10 @@
             // 
             // txtOutrasRemuneracoes
             // 
+            this.txtOutrasRemuneracoes.Enabled = false;
             this.txtOutrasRemuneracoes.Location = new System.Drawing.Point(129, 67);
             this.txtOutrasRemuneracoes.Name = "txtOutrasRemuneracoes";
+            this.txtOutrasRemuneracoes.ReadOnly = true;
             this.txtOutrasRemuneracoes.Size = new System.Drawing.Size(141, 20);
             this.txtOutrasRemuneracoes.TabIndex = 15;
             this.txtOutrasRemuneracoes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -655,6 +660,7 @@
             this.txtVencimento.Size = new System.Drawing.Size(141, 20);
             this.txtVencimento.TabIndex = 13;
             this.txtVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtVencimento.TextChanged += new System.EventHandler(this.txtVencimento_TextChanged);
             this.txtVencimento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVencimento_KeyDown);
             this.txtVencimento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtemprestimoMedico_KeyPress);
             // 
@@ -696,6 +702,7 @@
             this.btnEliminarRemuneracoes.Text = "Eliminar";
             this.btnEliminarRemuneracoes.UseVisualStyleBackColor = true;
             this.btnEliminarRemuneracoes.Click += new System.EventHandler(this.btnEliminarRemuneracoes_Click);
+            this.btnEliminarRemuneracoes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnEliminarRemuneracoes_KeyDown);
             // 
             // btnEditarRemuneracoes
             // 
@@ -707,6 +714,7 @@
             this.btnEditarRemuneracoes.Text = "Editar";
             this.btnEditarRemuneracoes.UseVisualStyleBackColor = true;
             this.btnEditarRemuneracoes.Click += new System.EventHandler(this.btnEditarRemuneracoes_Click);
+            this.btnEditarRemuneracoes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnEditarRemuneracoes_KeyDown);
             // 
             // btnAdicionarRemuneracao
             // 
@@ -717,6 +725,7 @@
             this.btnAdicionarRemuneracao.Text = "Adicionar";
             this.btnAdicionarRemuneracao.UseVisualStyleBackColor = true;
             this.btnAdicionarRemuneracao.Click += new System.EventHandler(this.btnAdicionarRemuneracao_Click);
+            this.btnAdicionarRemuneracao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAdicionarRemuneracao_KeyDown);
             // 
             // btnRefrescar
             // 
@@ -770,7 +779,9 @@
             this.Name = "frmProcessamentoIndividual";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Processamento Individual";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmProcessamentoIndividual_FormClosing);
             this.Load += new System.EventHandler(this.frmProcessamentoIndividual_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmProcessamentoIndividual_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

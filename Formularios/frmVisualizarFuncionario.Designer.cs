@@ -62,8 +62,8 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataFuncionarios.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataFuncionarios.Location = new System.Drawing.Point(19, 38);
@@ -77,6 +77,9 @@
             this.dataFuncionarios.TabIndex = 0;
             this.dataFuncionarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataFuncionarios_CellClick);
             this.dataFuncionarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataFuncionarios_CellDoubleClick);
+            this.dataFuncionarios.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataFuncionarios_CellEnter);
+            this.dataFuncionarios.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataFuncionarios_KeyDown);
+            this.dataFuncionarios.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataFuncionarios_KeyPress);
             // 
             // txtLocalizar
             // 
@@ -85,6 +88,7 @@
             this.txtLocalizar.Size = new System.Drawing.Size(800, 20);
             this.txtLocalizar.TabIndex = 1;
             this.txtLocalizar.TextChanged += new System.EventHandler(this.txtLocalizar_TextChanged);
+            this.txtLocalizar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLocalizar_KeyDown);
             // 
             // btnAdicionar
             // 

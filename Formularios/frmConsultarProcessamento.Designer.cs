@@ -57,7 +57,9 @@
             this.ClientSize = new System.Drawing.Size(297, 109);
             this.Controls.Add(this.txtMes);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "frmConsultarProcessamento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Processamento";
             this.Load += new System.EventHandler(this.frmConsultarProcessamento_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmConsultarProcessamento_KeyDown);

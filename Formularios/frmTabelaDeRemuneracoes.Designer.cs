@@ -63,9 +63,12 @@
             this.dataRemuneracoes.Location = new System.Drawing.Point(26, 32);
             this.dataRemuneracoes.Name = "dataRemuneracoes";
             this.dataRemuneracoes.RowHeadersVisible = false;
+            this.dataRemuneracoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataRemuneracoes.Size = new System.Drawing.Size(545, 453);
             this.dataRemuneracoes.TabIndex = 0;
             this.dataRemuneracoes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataRemuneracoes_CellDoubleClick);
+            this.dataRemuneracoes.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataRemuneracoes_CellEnter);
+            this.dataRemuneracoes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataRemuneracoes_KeyDown);
             // 
             // panel1
             // 
@@ -201,6 +204,7 @@
             this.Text = "Tabela de Remunerações";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTabelaDeRemuneracoes_FormClosing);
             this.Load += new System.EventHandler(this.frmTabelaDeRemuneracoes_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmTabelaDeRemuneracoes_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.dataRemuneracoes)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

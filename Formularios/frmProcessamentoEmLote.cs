@@ -28,9 +28,7 @@ namespace Facturix_Salários.Formularios
 
         private void dataProcessamentoSalario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int rowIndex = e.RowIndex;
-            DataGridViewRow row = dataProcessamentoSalario.Rows[rowIndex];
-            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+           
         }
 
         private void btnRefrescar_Click(object sender, EventArgs e)
@@ -38,102 +36,111 @@ namespace Facturix_Salários.Formularios
             refrescar();
         }
 
-        public int codRecebido;
+        public int diasDeTrabalhoRecebidos;
 
         private void dataProcessamentoSalario_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (cbMes.Text == "")
-            {
-                MessageBox.Show("Selecione um mês válido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
+            try
             {
                 int rowIndex = e.RowIndex;
                 DataGridViewRow row = dataProcessamentoSalario.Rows[rowIndex];
                 codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
-                ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(codigoCelSelecionada);
-                ArrayList listaIrps = ControllerIRPS.recuperar();
-                //ArrayList listaDependentes = ControllerDependente.recuperarComCodFuncionario(codigoCelSelecionada);
-                String nome = "", estado = "";
-                frmProcessamentoIndividual f = new frmProcessamentoIndividual();
-                int codIrps = 0;
-                double valorIrps = 0, emprestimo = 0, ipa = 0, adiantamentos = 0, vencimento = 0, outroSub = 0, subAlimentacao = 0;
-                diasDeTrabalho = getDiasDeTrabalho(codigoCelSelecionada);
-                Boolean existe = existeProcessamento(codigoCelSelecionada);
-                if (existe == false)
+                if (cbMes.Text == "")
                 {
-                    foreach (ModeloFuncionario func in listaFuncionarios)
-                    {
-                        nome = func.getNome();
-                        emprestimo = 0;
-                        ipa = func.getImpostoMunicipal();
-                        adiantamentos = 0;
-                        codIrps = func.getIdIRPS();
-                        vencimento = Math.Round((func.getVencimento() / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
-                        subAlimentacao = func.getSubAlimentacao();
-                    }
-
-                    foreach (ModeloIRPS conta in listaIrps)
-                    {
-                        if (codIrps == conta.getId())
-                        {
-                            valorIrps = conta.getValor();
-                        }
-                    }
-                    ArrayList listaRemenuracoes = ControllerRemuneracoes.recuperar();
-                    ArrayList listaFuncRemuneracao = ControllerFuncionarioRemuneracoes.recuperar();
-                    foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracao)
-                    {
-                        if (codigoCelSelecionada == fr.getIdFuncionario())
-                        {
-                            foreach (ModeloRemuneracoes r in listaRemenuracoes)
-                            {
-                                outroSub = (fr.getValor() * fr.getQtd()) + outroSub;
-                            }
-                        }
-
-                    }
-                    ArrayList listaDias = ControllerDiasDeTrabalho.recuperar();
-                    foreach (ModeloDiasDeTrabalho d in listaDias)
-                    {
-                        if (d.getIdFunc() == codigoCelSelecionada)
-                        {
-                            diasDeTrabalho = d.getDiasDeTrabalho();
-                        }
-                    }
-                    estado = "Não processado";
+                    MessageBox.Show("Selecione um mês válido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperarComCod(codigoCelSelecionada);
-                    foreach (ModeloProcessamentoDeSalario p in listaProcessamento)
+                    ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(codigoCelSelecionada);
+                    ArrayList listaIrps = ControllerIRPS.recuperar();
+                    //ArrayList listaDependentes = ControllerDependente.recuperarComCodFuncionario(codigoCelSelecionada);
+                    String nome = "", estado = "";
+                    frmProcessamentoIndividual f = new frmProcessamentoIndividual();
+                    int codIrps = 0;
+                    double valorIrps = 0, emprestimo = 0, ipa = 0, adiantamentos = 0, vencimento = 0, outroSub = 0, subAlimentacao = 0;
+                    diasDeTrabalho = getDiasDeTrabalho(codigoCelSelecionada);
+                    Boolean existe = existeProcessamento(codigoCelSelecionada);
+                    if (existe == false)
                     {
-                        adiantamentos = p.getAdiantamentos();
-                        emprestimo = p.getEmprestimoMedico();
-                        valorIrps = p.getIrps();
-                        subAlimentacao = p.getSubAlimentacao();
-                        vencimento = p.getSalarioBrutoMensal();
-                        ipa = p.getIpa();
-                        outroSub = p.getDiversosSubsidios();
-                        diasDeTrabalho = p.getIdDiasDeTrabalho();
-                        estado = "Processado";
+                        foreach (ModeloFuncionario func in listaFuncionarios)
+                        {
+                            nome = func.getNome();
+                            emprestimo = 0;
+                            ipa = func.getImpostoMunicipal();
+                            adiantamentos = 0;
+                            codIrps = func.getIdIRPS();
+                            vencimento = Math.Round(func.getVencimento(), 2, MidpointRounding.AwayFromZero);
+                            subAlimentacao = func.getSubAlimentacao();
+                        }
+
+                        foreach (ModeloIRPS conta in listaIrps)
+                        {
+                            if (codIrps == conta.getId())
+                            {
+                                valorIrps = conta.getValor();
+                            }
+                        }
+                        ArrayList listaRemenuracoes = ControllerRemuneracoes.recuperar();
+                        ArrayList listaFuncRemuneracao = ControllerFuncionarioRemuneracoes.recuperar();
+                        foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracao)
+                        {
+                            if (codigoCelSelecionada == fr.getIdFuncionario())
+                            {
+                                foreach (ModeloRemuneracoes r in listaRemenuracoes)
+                                {
+                                    outroSub = (fr.getValor() * fr.getQtd()) + outroSub;
+                                }
+                            }
+
+                        }
+                        if (diasDeTrabalho != 0 && diasDeTrabalho != diasDeTrabalhoRecebidos && diasDeTrabalhoRecebidos != 0)
+                        {
+                            diasDeTrabalho = diasDeTrabalhoRecebidos;
+                        }
+                        else
+                        {
+                            diasDeTrabalho = getDiasDeTrabalho(codigoCelSelecionada);
+                        }
+                        estado = "Não processado";
                     }
+                    else
+                    {
+                        ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperarComCod(codigoCelSelecionada);
+                        foreach (ModeloProcessamentoDeSalario p in listaProcessamento)
+                        {
+                            adiantamentos = p.getAdiantamentos();
+                            emprestimo = p.getEmprestimoMedico();
+                            valorIrps = p.getIrps();
+                            subAlimentacao = p.getSubAlimentacao();
+                            vencimento = p.getSalarioBrutoMensal();
+                            ipa = p.getIpa();
+                            outroSub = p.getDiversosSubsidios();
+                            diasDeTrabalho = p.getIdDiasDeTrabalho();
+                            estado = "Processado";
+                        }
+                    }
+                    f.nrAno.Value = nrAno.Value;
+                    f.cbMes.Text = cbMes.Text;
+                    f.txtNome.Text = nome;
+                    f.nrRegistonr.Value = codigoCelSelecionada;
+                    f.txtIrps.Text = string.Format("{0:#,##0.00}", valorIrps);
+                    f.txtIpa.Text = string.Format("{0:#,##0.00}", ipa);
+                    f.txtVencimento.Text = string.Format("{0:#,##0.00}", vencimento);
+                    f.txtSubAlimentacao.Text = string.Format("{0:#,##0.00}", subAlimentacao);
+                    f.txtadiantamentos.Text = string.Format("{0:#,##0.00}", adiantamentos);
+                    f.txtemprestimoMedico.Text = string.Format("{0:#,##0.00}", emprestimo);
+                    f.nrDias.Value = diasDeTrabalho;
+                    f.txtOutrasRemuneracoes.Text = string.Format("{0:#,##0.00}", outroSub);
+                    f.txtTotalDescontar.Text = string.Format("{0:#,##0.00}", valorIrps + emprestimo + ipa + adiantamentos);
+                    f.txtTotalRemuneracoes.Text = string.Format("{0:#,##0.00}", subAlimentacao + vencimento + outroSub);
+                    f.txtEstado.Text = estado;
+                    f.ShowDialog();
+                    diasDeTrabalhoRecebidos = f.diasDeTrabalho;
                 }
-                f.txtNome.Text = nome;
-                f.nrRegistonr.Value = codigoCelSelecionada;
-                f.txtIrps.Text = string.Format("{0:#,##0.00}", valorIrps);
-                f.txtIpa.Text = string.Format("{0:#,##0.00}", ipa);
-                f.txtVencimento.Text = string.Format("{0:#,##0.00}", vencimento);
-                f.txtSubAlimentacao.Text = string.Format("{0:#,##0.00}", subAlimentacao);
-                f.txtadiantamentos.Text = adiantamentos + "";
-                f.txtemprestimoMedico.Text = emprestimo + "";
-                f.nrDias.Value = diasDeTrabalho;
-                f.txtOutrasRemuneracoes.Text = string.Format("{0:#,##0.00}", outroSub);
-                f.txtTotalDescontar.Text = string.Format("{0:#,##0.00}", valorIrps + emprestimo + ipa + adiantamentos);
-                f.txtTotalRemuneracoes.Text = string.Format("{0:#,##0.00}", subAlimentacao + vencimento + outroSub);
-                f.txtEstado.Text = estado;
-                f.ShowDialog();
-                codRecebido = f.idFunc;
+            }
+            catch 
+            {
+                MessageBox.Show("Clique uma linha válida!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             //diasDeTrabalho = f.diasDeTrabalho;
         }
@@ -157,31 +164,6 @@ namespace Facturix_Salários.Formularios
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             frmReportProcessamento f = new frmReportProcessamento();
-            //reportProcessamento objRpt = new reportProcessamento();
-
-
-            //String ConnStr = "Server=localhost; Uid= root; Pwd=; Database=facturixsalario";
-
-            //MySqlConnection myConnection = new MySqlConnection(ConnStr);
-
-
-            //String Query1 = "SELECT numeroBenificiario, numeroFiscal, categoria, seguro, segurancaSocial from funcionario";
-
-            //MySqlDataAdapter adapter = new MySqlDataAdapter(Query1, ConnStr);
-
-            //DataSet Ds = new DataSet();
-            //// here my_dt is the name of the DataTable which we 
-            //// created in the designer view.
-            //adapter.Fill(Ds, "dtTableProcessamento");
-
-            //if (Ds.Tables[0].Rows.Count == 0)
-            //{
-            //    MessageBox.Show("No data Found", "CrystalReportWithOracle");
-            //    return;
-            //}
-            //// Setting data source of our report object
-            //objRpt.SetDataSource(Ds);
-            //f.crystalReportViewer1.ReportSource = objRpt;
             f.ShowDialog();
         }
 
@@ -302,9 +284,9 @@ namespace Facturix_Salários.Formularios
                                     diasBaseDados = d.getDiasDeTrabalho();
                                 }
                             }
-                            if (diasBaseDados!=0 && diasBaseDados!=diasDeTrabalho)
+                            if (diasDeTrabalho !=0 && diasDeTrabalho!=diasDeTrabalhoRecebidos && diasDeTrabalhoRecebidos != 0) 
                             {
-                                diasDeTrabalho = diasBaseDados;
+                                diasDeTrabalho = diasDeTrabalhoRecebidos;
                             }
                             else
                             {
@@ -609,7 +591,7 @@ namespace Facturix_Salários.Formularios
             ArrayList listaFuncionarios = ControllerFuncionario.recuperar();
             ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperar();
             ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
-            decimal ano = nrAno.Value;
+            decimal ano = nrAno.Value;           
             String mes = cbMes.Text;
             int nrMes = getMes(mes), nrMesRelogio;
             DateTime dataAdimissao, dataRelogio/*, dataProcessamento*/;
@@ -620,7 +602,8 @@ namespace Facturix_Salários.Formularios
                 {
                     dataRelogio = Convert.ToDateTime(r.getData());
                     nrMesRelogio = dataRelogio.Month;
-                    if (dataAdimissao.Year <= ano && f.getCodigo() == r.getIdUsuario() && nrMes == nrMesRelogio && dataRelogio.Year ==ano)
+                    diasDeTrabalho = getDiasDeTrabalho(r.getIdUsuario());
+                    if (dataAdimissao.Year <= ano && f.getCodigo() == r.getIdUsuario() && nrMes == nrMesRelogio && dataRelogio.Year ==ano && diasDeTrabalho > 0)
                     {
                         funcionario.Add(f.getCodigo());
                         listaCadastroFuncionarios.Add(new ModeloFuncionario(f.getCodigo(), f.getIdIRPS(), f.getNome(), f.getCell(), f.getCellSec(), f.getTel(), f.getEmail(), f.getEstadoCivil(), f.getDeficiencia(), f.getConjugue(), f.getSexo(), f.getDataNascimento(), f.getLinkImagem(), f.getCodigoPostal(), f.getBairro(), f.getLocalidade(), f.getMoradaGen(), f.getTipoContrato(), f.getDataAdmissao(), f.getDataDemissao(), f.getProfissao(), f.getCategoria(), f.getSeguro(), f.getLocalTrabalho(), f.getRegime(), f.getBi(), f.getNumeroBenificiario(), f.getNumeroFiscal(), f.getVencimento(), f.getSubAlimentacao(), f.getSubTransporte(), f.getHoras(), f.getDependentes(), f.getHabilitacoes(), f.getNacionalidade(), f.getUltimoEmprego(), f.getTurno(), f.getImpostoMunicipal(), f.getCentroDeCusto(), f.getSegurancaSocial(), f.getSindicato(), f.getSubComunicacao()));
@@ -637,12 +620,12 @@ namespace Facturix_Salários.Formularios
             int ano = Convert.ToInt32(nrAno.Value);
             String mes = cbMes.Text;
             int nrMes = getMes(mes), anoProcess, mesProcess;
-            DateTime dataProcess;
+            DateTime dataRelogio;
             int dias = 0;
             foreach (ModeloRelogioDePonto f in listaRelogioDePonto)
             {
-                dataProcess = Convert.ToDateTime(f.getData());
-                if (codFunc == f.getIdUsuario() && f.getEstado().Equals("Check in") && dataProcess.Year == ano && dataProcess.Month == nrMes) 
+                dataRelogio = Convert.ToDateTime(f.getData());
+                if (codFunc == f.getIdUsuario() && f.getEstado().Equals("Check in") && dataRelogio.Year == ano && dataRelogio.Month == nrMes) 
                 {
                     dias = dias + 1;
                 }

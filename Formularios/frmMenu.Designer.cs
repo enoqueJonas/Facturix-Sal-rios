@@ -44,9 +44,6 @@ namespace Facturix_Salários
             this.configurador = new System.Windows.Forms.ToolStripMenuItem();
             this.conectarScannerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.processamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.processamentoSaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.individualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,8 +57,7 @@ namespace Facturix_Salários
             this.cadastros,
             this.configurador,
             this.funcionáriosToolStripMenuItem,
-            this.tabelasToolStripMenuItem,
-            this.processamentoToolStripMenuItem});
+            this.tabelasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1091, 24);
@@ -179,43 +175,19 @@ namespace Facturix_Salários
             this.configuraçToolStripMenuItem.Text = "Informação da Empresa";
             this.configuraçToolStripMenuItem.Click += new System.EventHandler(this.configuraçToolStripMenuItem_Click);
             // 
-            // processamentoToolStripMenuItem
-            // 
-            this.processamentoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.processamentoSaToolStripMenuItem,
-            this.individualToolStripMenuItem});
-            this.processamentoToolStripMenuItem.Name = "processamentoToolStripMenuItem";
-            this.processamentoToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
-            this.processamentoToolStripMenuItem.Text = "Processamento";
-            this.processamentoToolStripMenuItem.Visible = false;
-            // 
-            // processamentoSaToolStripMenuItem
-            // 
-            this.processamentoSaToolStripMenuItem.Name = "processamentoSaToolStripMenuItem";
-            this.processamentoSaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.processamentoSaToolStripMenuItem.Text = "Em lote";
-            this.processamentoSaToolStripMenuItem.Click += new System.EventHandler(this.processamentoSaToolStripMenuItem_Click);
-            // 
-            // individualToolStripMenuItem
-            // 
-            this.individualToolStripMenuItem.Name = "individualToolStripMenuItem";
-            this.individualToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.individualToolStripMenuItem.Text = "Individual";
-            this.individualToolStripMenuItem.Click += new System.EventHandler(this.individualToolStripMenuItem_Click);
-            // 
             // funcionáriosToolStripMenuItem
             // 
             this.funcionáriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listagemToolStripMenuItem});
             this.funcionáriosToolStripMenuItem.Name = "funcionáriosToolStripMenuItem";
-            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
-            this.funcionáriosToolStripMenuItem.Text = "Funcionários";
+            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.funcionáriosToolStripMenuItem.Text = "Processamento";
             // 
             // listagemToolStripMenuItem
             // 
             this.listagemToolStripMenuItem.Name = "listagemToolStripMenuItem";
-            this.listagemToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.listagemToolStripMenuItem.Text = "Listagem";
+            this.listagemToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.listagemToolStripMenuItem.Text = "Listagem de Funcionários";
             this.listagemToolStripMenuItem.Click += new System.EventHandler(this.listagemToolStripMenuItem_Click);
             // 
             // tabelasToolStripMenuItem
@@ -223,8 +195,8 @@ namespace Facturix_Salários
             this.tabelasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.remuneraçõesToolStripMenuItem});
             this.tabelasToolStripMenuItem.Name = "tabelasToolStripMenuItem";
-            this.tabelasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.tabelasToolStripMenuItem.Text = "Tabelas";
+            this.tabelasToolStripMenuItem.Size = new System.Drawing.Size(127, 20);
+            this.tabelasToolStripMenuItem.Text = "Abonos e Descontos";
             // 
             // remuneraçõesToolStripMenuItem
             // 
@@ -273,9 +245,6 @@ namespace Facturix_Salários
         private System.Windows.Forms.ToolStripMenuItem iRPSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem conectarScannerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraçToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem processamentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem processamentoSaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem individualToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem funcionáriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listagemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tabelasToolStripMenuItem;

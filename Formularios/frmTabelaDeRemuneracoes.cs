@@ -25,6 +25,9 @@ namespace Facturix_Salários.Formularios
         private void frmTabelaDeRemuneracoes_Load(object sender, EventArgs e)
         {
             refrescar();
+            dataRemuneracoes.Focus();
+            dataRemuneracoes.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
+            dataRemuneracoes.RowsDefaultCellStyle.SelectionForeColor = Color.White;
         }
 
         public void refrescar()
@@ -141,6 +144,70 @@ namespace Facturix_Salários.Formularios
                     }
                     break;
             }
+        }
+
+        private void frmTabelaDeRemuneracoes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        int rowSelected;
+        private void dataRemuneracoes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ArrayList listaremuneracoes = ControllerRemuneracoes.recuperarComCod(codigoCelSelecionada);
+                frmRemuneracoes frm = new frmRemuneracoes();
+                frm.Show();
+                foreach (ModeloRemuneracoes r in listaremuneracoes)
+                {
+                    frm.txtPercentagem.Text = r.getPercentagem() + "";
+                    frm.txtRegistoNr.Text = r.getId() + "";
+                    frm.cbValorUnit.Text = r.getValorUnitario() + "";
+
+                    if (r.getSegurancaSocial() == true)
+                    {
+                        frm.chbSegurancaSocial.Checked = true;
+                    }
+                    else
+                    {
+                        frm.chbSegurancaSocial.Checked = false;
+                    }
+
+                    if (r.getSeguro() == true)
+                    {
+                        frm.chbSeguro.Checked = true;
+                    }
+                    else
+                    {
+                        frm.chbSeguro.Checked = false;
+                    }
+
+                    if (r.getIrps() == true)
+                    {
+                        frm.chbIrps.Checked = true;
+                    }
+                    else
+                    {
+                        frm.chbIrps.Checked = false;
+                    }
+
+                    frm.cbGrupo.Text = r.getGrupo();
+                    frm.cbNatureza.Text = r.getNatureza();
+                    frm.cbQuantidade.Text = r.getQuantidade();
+                    frm.cbInsento.Text = r.getIsento();
+                    frm.txtValor.Text = r.getValor() + "";
+                }
+                e.Handled = true;
+            }
+        }
+
+        private void dataRemuneracoes_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataRemuneracoes.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            rowSelected = rowIndex;
         }
     }
 }

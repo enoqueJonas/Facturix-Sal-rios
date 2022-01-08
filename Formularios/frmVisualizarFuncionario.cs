@@ -90,6 +90,7 @@ namespace Facturix_Salários
         private void dataFuncionarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
+            rowSelected = rowIndex;
             DataGridViewRow row = dataFuncionarios.Rows[rowIndex];
             codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
             frmCadastrarFuncionarios f = new frmCadastrarFuncionarios();
@@ -297,6 +298,127 @@ namespace Facturix_Salários
                     }
                     break;
             }
+        }
+
+        private void txtLocalizar_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (e.KeyCode == Keys.Enter) 
+            //{
+            //    dataFuncionarios.Rows[0].Selected = true;
+            //}
+            foreach (DataGridViewRow row in dataFuncionarios.Rows)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    dataFuncionarios.MultiSelect = false;
+                    dataFuncionarios.Rows[0].Selected = true;
+                    dataFuncionarios.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
+                    dataFuncionarios.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+                    dataFuncionarios.Focus();
+                }
+            }
+        }
+
+        private void dataFuncionarios_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            rowSelected = rowIndex;
+        }
+
+        int rowSelected;
+        private void dataFuncionarios_KeyDown(object sender, KeyEventArgs e)
+        {
+            int rowIndex = rowSelected;
+            while (this.IsAccessible) 
+            {
+                if (e.KeyCode == Keys.Up)
+                {
+                    dataFuncionarios.MultiSelect = false;
+                    dataFuncionarios.Rows[rowIndex].Selected = true;
+                    dataFuncionarios.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
+                    dataFuncionarios.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+                    rowIndex--;
+                }
+                if (e.KeyCode == Keys.Down)
+                {
+                    dataFuncionarios.MultiSelect = false;
+                    dataFuncionarios.Rows[rowIndex].Selected = true;
+                    dataFuncionarios.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
+                    dataFuncionarios.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+                    rowIndex++;
+                }
+            }
+            if (e.KeyCode == Keys.Enter) 
+            {
+                rowIndex = rowSelected;
+                rowSelected = rowIndex;
+                DataGridViewRow row = dataFuncionarios.Rows[rowIndex];
+                codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+                frmCadastrarFuncionarios f = new frmCadastrarFuncionarios();
+                ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(codigoCelSelecionada);
+                ArrayList listaContas = ControllerConta.recuperarComCod(codigoCelSelecionada);
+                foreach (ModeloFuncionario func in listaFuncionarios)
+                {
+                    f.txtCodigo.Text = func.getCodigo() + "";
+                    f.txtNome.Text = func.getNome();
+                    f.txtConjugue.Text = func.getConjugue();
+                    f.txtEmail.Text = func.getEmail();
+                    f.txtCell.Text = func.getCell();
+                    f.txtCellSec.Text = func.getCellSec();
+                    f.txtTel.Text = func.getTel();
+                    f.cbSexo.Text = func.getSexo();
+                    f.cbEstadoCivil.Text = func.getEstadoCivil();
+                    f.cbDeficiencia.Text = func.getDeficiencia();
+                    f.dtNascimento.Value = Convert.ToDateTime(func.getDataNascimento());
+                    if (System.IO.File.Exists(func.getLinkImagem()))
+                    {
+                        f.pbFoto.Image = Image.FromFile(func.getLinkImagem());
+                    }
+                    f.txtCodPostal.Text = func.getCodigoPostal() + "";
+                    f.txtMorada.Text = func.getMoradaGen();
+                    f.txtBairro.Text = func.getBairro();
+                    f.txtLocalidade.Text = func.getLocalidade();
+                    f.cbContrato.Text = func.getTipoContrato();
+                    f.dtDataAdmissao.Value = Convert.ToDateTime(func.getDataAdmissao());
+                    f.dtDataDemissao.Value = Convert.ToDateTime(func.getDataDemissao());
+                    f.cbProfissao.Text = func.getProfissao();
+                    f.cbCategoria.Text = func.getCategoria();
+                    f.cbSeguro.Text = func.getSeguro();
+                    f.cbLocalTrabalho.Text = func.getLocalTrabalho();
+                    f.cbRegime.Text = func.getRegime();
+                    f.txtBi.Text = func.getBi();
+                    f.txtNrBenificiario.Text = func.getNumeroBenificiario();
+                    f.txtNrFiscal.Text = func.getNumeroFiscal() + "";
+                    f.txtHoraSemana.Text = func.getHoras() + "";
+                    f.txtNrDependentes.Text = func.getDependentes() + "";
+                    f.cbHabilitacoes.Text = func.getHabilitacoes();
+                    f.txtNacionalidade.Text = func.getNacionalidade();
+                    f.txtUltimo.Text = func.getUltimoEmprego();
+                    f.cbTurno.Text = func.getTurno();
+                    f.txtImpostoM.Text = func.getImpostoMunicipal() + "";
+                    f.cbCentrocusto.Text = func.getCentroDeCusto();
+                    f.txtSeguranca.Text = func.getSegurancaSocial();
+                    f.txtVencimento.Text = string.Format("{0:#,##0.00}", func.getVencimento());
+                    f.txtAlimentacao.Text = string.Format("{0:#,##0.00}", func.getSubAlimentacao());
+                    foreach (ModeloConta conta in listaContas)
+                    {
+                        if (codigoCelSelecionada == conta.idFuncionario)
+                        {
+                            f.txtNrConta.Text = conta.conta;
+                            f.txtNib.Text = conta.nib;
+                            f.txtBanco.Text = conta.banco;
+                        }
+                    }
+                }
+                e.Handled = true;
+                f.Show();
+                this.Hide();
+            }
+        }
+
+        private void dataFuncionarios_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }
