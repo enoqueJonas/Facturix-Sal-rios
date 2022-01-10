@@ -187,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ControlleFuncionarioRemuneracoes.cs" />
+    <Compile Include="Controllers\ControllerAdiantamento.cs" />
     <Compile Include="Controllers\ControllerDepartamento.cs" />
     <Compile Include="Controllers\ControllerDiasDeTrabalho.cs" />
     <Compile Include="Controllers\ControllerEmpresa.cs" />
@@ -206,6 +207,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DtSetProcessamento.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmAdiantamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAdiantamentos.Designer.cs">
+      <DependentUpon>frmAdiantamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmAdicionarFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +224,12 @@
     </Compile>
     <Compile Include="Formularios\frmAdicionarRemuneracao.Designer.cs">
       <DependentUpon>frmAdicionarRemuneracao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAssistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAssistencia.Designer.cs">
+      <DependentUpon>frmAssistencia.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmConfirmarProcessamnetoSalario.cs">
       <SubType>Form</SubType>
@@ -235,6 +248,12 @@
     </Compile>
     <Compile Include="Formularios\frmListagemFuncionarios.Designer.cs">
       <DependentUpon>frmListagemFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmListagemFuncionariosAdiantamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmListagemFuncionariosAdiantamentos.Designer.cs">
+      <DependentUpon>frmListagemFuncionariosAdiantamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmProcessamentoDeSalario.cs">
       <SubType>Form</SubType>
@@ -453,6 +472,7 @@
     <Compile Include="ConvertObject.cs" />
     <Compile Include="MessageBoxManager.cs" />
     <Compile Include="ModeloModulo.cs" />
+    <Compile Include="Modelos\ModeloAdiantamento.cs" />
     <Compile Include="Modelos\ModeloCentroDeCusto.cs" />
     <Compile Include="Modelos\ModeloContrato.cs" />
     <Compile Include="Modelos\ModeloDepartamento.cs" />
@@ -523,11 +543,17 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserPrivilege.cs" />
+    <EmbeddedResource Include="Formularios\frmAdiantamentos.resx">
+      <DependentUpon>frmAdiantamentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAdicionarFuncionario.resx">
       <DependentUpon>frmAdicionarFuncionario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAdicionarRemuneracao.resx">
       <DependentUpon>frmAdicionarRemuneracao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAssistencia.resx">
+      <DependentUpon>frmAssistencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmConectarFPScanner.resx">
       <DependentUpon>frmConectarFPScanner.cs</DependentUpon>
@@ -567,6 +593,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmListagemFuncionarios.resx">
       <DependentUpon>frmListagemFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmListagemFuncionariosAdiantamentos.resx">
+      <DependentUpon>frmListagemFuncionariosAdiantamentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmProcessamentoDeSalario.resx">
       <DependentUpon>frmProcessamentoDeSalario.cs</DependentUpon>

@@ -30,28 +30,33 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdiantamentos));
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSalarioBruto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.nrRegisto = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDiasDeTrabalho = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtPercentagem = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl3 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
+            this.lbl4 = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.dtpAdiantamento = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
             this.dataAdiantamentos = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnRegressar = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrRegisto)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataAdiantamentos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -67,12 +72,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Salário Bruto:";
             // 
-            // textBox1
+            // txtSalarioBruto
             // 
-            this.textBox1.Location = new System.Drawing.Point(91, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtSalarioBruto.Location = new System.Drawing.Point(91, 51);
+            this.txtSalarioBruto.Name = "txtSalarioBruto";
+            this.txtSalarioBruto.Size = new System.Drawing.Size(120, 20);
+            this.txtSalarioBruto.TabIndex = 1;
+            this.txtSalarioBruto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSalarioBruto_KeyDown);
             // 
             // label2
             // 
@@ -92,19 +98,22 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Nome:";
             // 
-            // textBox3
+            // txtNome
             // 
-            this.textBox3.Location = new System.Drawing.Point(289, 16);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(302, 20);
-            this.textBox3.TabIndex = 1;
+            this.txtNome.Enabled = false;
+            this.txtNome.Location = new System.Drawing.Point(289, 16);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.ReadOnly = true;
+            this.txtNome.Size = new System.Drawing.Size(302, 20);
+            this.txtNome.TabIndex = 1;
             // 
-            // numericUpDown1
+            // nrRegisto
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(91, 17);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 2;
+            this.nrRegisto.Location = new System.Drawing.Point(91, 17);
+            this.nrRegisto.Name = "nrRegisto";
+            this.nrRegisto.Size = new System.Drawing.Size(120, 20);
+            this.nrRegisto.TabIndex = 2;
+            this.nrRegisto.ValueChanged += new System.EventHandler(this.nrRegisto_ValueChanged);
             // 
             // label4
             // 
@@ -115,12 +124,13 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Dias Trab.:";
             // 
-            // textBox2
+            // txtDiasDeTrabalho
             // 
-            this.textBox2.Location = new System.Drawing.Point(289, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(120, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtDiasDeTrabalho.Location = new System.Drawing.Point(289, 51);
+            this.txtDiasDeTrabalho.Name = "txtDiasDeTrabalho";
+            this.txtDiasDeTrabalho.Size = new System.Drawing.Size(120, 20);
+            this.txtDiasDeTrabalho.TabIndex = 1;
+            this.txtDiasDeTrabalho.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDiasDeTrabalho_KeyDown);
             // 
             // label5
             // 
@@ -131,45 +141,122 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Percent.:";
             // 
-            // textBox4
+            // txtPercentagem
             // 
-            this.textBox4.Location = new System.Drawing.Point(471, 51);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(120, 20);
-            this.textBox4.TabIndex = 1;
+            this.txtPercentagem.Location = new System.Drawing.Point(471, 51);
+            this.txtPercentagem.Name = "txtPercentagem";
+            this.txtPercentagem.Size = new System.Drawing.Size(120, 20);
+            this.txtPercentagem.TabIndex = 1;
+            this.txtPercentagem.TextChanged += new System.EventHandler(this.txtPercentagem_TextChanged);
+            this.txtPercentagem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPercentagem_KeyDown);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.numericUpDown1);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.lbl3);
+            this.panel1.Controls.Add(this.lbl2);
+            this.panel1.Controls.Add(this.lbl4);
+            this.panel1.Controls.Add(this.lbl1);
+            this.panel1.Controls.Add(this.dtpAdiantamento);
+            this.panel1.Controls.Add(this.nrRegisto);
+            this.panel1.Controls.Add(this.txtNome);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.txtPercentagem);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtDiasDeTrabalho);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtSalarioBruto);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 22);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(620, 99);
+            this.panel1.Size = new System.Drawing.Size(620, 117);
             this.panel1.TabIndex = 3;
+            // 
+            // lbl3
+            // 
+            this.lbl3.AutoSize = true;
+            this.lbl3.BackColor = System.Drawing.Color.Black;
+            this.lbl3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl3.Location = new System.Drawing.Point(411, 54);
+            this.lbl3.Name = "lbl3";
+            this.lbl3.Size = new System.Drawing.Size(13, 13);
+            this.lbl3.TabIndex = 4;
+            this.lbl3.Text = "3";
+            this.lbl3.Visible = false;
+            // 
+            // lbl2
+            // 
+            this.lbl2.AutoSize = true;
+            this.lbl2.BackColor = System.Drawing.Color.Black;
+            this.lbl2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl2.Location = new System.Drawing.Point(217, 54);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(13, 13);
+            this.lbl2.TabIndex = 4;
+            this.lbl2.Text = "2";
+            this.lbl2.Visible = false;
+            // 
+            // lbl4
+            // 
+            this.lbl4.AutoSize = true;
+            this.lbl4.BackColor = System.Drawing.Color.Black;
+            this.lbl4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl4.Location = new System.Drawing.Point(3, 89);
+            this.lbl4.Name = "lbl4";
+            this.lbl4.Size = new System.Drawing.Size(13, 13);
+            this.lbl4.TabIndex = 4;
+            this.lbl4.Text = "4";
+            this.lbl4.Visible = false;
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.BackColor = System.Drawing.Color.Black;
+            this.lbl1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl1.Location = new System.Drawing.Point(3, 54);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(13, 13);
+            this.lbl1.TabIndex = 4;
+            this.lbl1.Text = "1";
+            this.lbl1.Visible = false;
+            // 
+            // dtpAdiantamento
+            // 
+            this.dtpAdiantamento.Location = new System.Drawing.Point(91, 85);
+            this.dtpAdiantamento.Name = "dtpAdiantamento";
+            this.dtpAdiantamento.Size = new System.Drawing.Size(200, 20);
+            this.dtpAdiantamento.TabIndex = 3;
+            this.dtpAdiantamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpAdiantamento_KeyDown);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(20, 89);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Data:";
             // 
             // dataAdiantamentos
             // 
+            this.dataAdiantamentos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataAdiantamentos.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataAdiantamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataAdiantamentos.Location = new System.Drawing.Point(18, 22);
             this.dataAdiantamentos.Name = "dataAdiantamentos";
+            this.dataAdiantamentos.RowHeadersVisible = false;
+            this.dataAdiantamentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataAdiantamentos.Size = new System.Drawing.Size(580, 218);
             this.dataAdiantamentos.TabIndex = 4;
+            this.dataAdiantamentos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataAdiantamentos_CellDoubleClick);
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.dataAdiantamentos);
-            this.panel2.Location = new System.Drawing.Point(12, 137);
+            this.panel2.Location = new System.Drawing.Point(12, 159);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(619, 267);
             this.panel2.TabIndex = 5;
@@ -178,14 +265,13 @@
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.btnRegressar);
-            this.panel3.Controls.Add(this.btnImprimir);
             this.panel3.Controls.Add(this.btnConfirmar);
             this.panel3.Controls.Add(this.btnMostrar);
             this.panel3.Controls.Add(this.btnCancelar);
             this.panel3.Controls.Add(this.btnAtualizar);
             this.panel3.Controls.Add(this.btnEliminar);
             this.panel3.Controls.Add(this.btnAdicionar);
-            this.panel3.Location = new System.Drawing.Point(11, 421);
+            this.panel3.Location = new System.Drawing.Point(12, 445);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(619, 74);
@@ -207,23 +293,7 @@
             this.btnRegressar.Text = "Regressar";
             this.btnRegressar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRegressar.UseVisualStyleBackColor = true;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImprimir.ForeColor = System.Drawing.Color.Black;
-            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
-            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnImprimir.Location = new System.Drawing.Point(455, 6);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(2);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(69, 60);
-            this.btnImprimir.TabIndex = 39;
-            this.btnImprimir.TabStop = false;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnRegressar.Click += new System.EventHandler(this.btnRegressar_Click);
             // 
             // btnConfirmar
             // 
@@ -232,7 +302,7 @@
             this.btnConfirmar.ForeColor = System.Drawing.Color.Black;
             this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConfirmar.Location = new System.Drawing.Point(309, 5);
+            this.btnConfirmar.Location = new System.Drawing.Point(356, 5);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(69, 60);
@@ -241,6 +311,7 @@
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // btnMostrar
             // 
@@ -249,7 +320,7 @@
             this.btnMostrar.ForeColor = System.Drawing.Color.Black;
             this.btnMostrar.Image = ((System.Drawing.Image)(resources.GetObject("btnMostrar.Image")));
             this.btnMostrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMostrar.Location = new System.Drawing.Point(90, 5);
+            this.btnMostrar.Location = new System.Drawing.Point(102, 5);
             this.btnMostrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(69, 60);
@@ -266,7 +337,7 @@
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(236, 5);
+            this.btnCancelar.Location = new System.Drawing.Point(271, 6);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(69, 60);
@@ -275,6 +346,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAtualizar
             // 
@@ -283,7 +355,7 @@
             this.btnAtualizar.ForeColor = System.Drawing.Color.Black;
             this.btnAtualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAtualizar.Image")));
             this.btnAtualizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAtualizar.Location = new System.Drawing.Point(163, 6);
+            this.btnAtualizar.Location = new System.Drawing.Point(186, 6);
             this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(69, 60);
@@ -292,6 +364,7 @@
             this.btnAtualizar.Text = "Modificar";
             this.btnAtualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // btnEliminar
             // 
@@ -300,7 +373,7 @@
             this.btnEliminar.ForeColor = System.Drawing.Color.Black;
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEliminar.Location = new System.Drawing.Point(382, 6);
+            this.btnEliminar.Location = new System.Drawing.Point(445, 5);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(69, 60);
@@ -309,6 +382,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAdicionar
             // 
@@ -326,19 +400,23 @@
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // frmAdiantamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(645, 508);
+            this.ClientSize = new System.Drawing.Size(643, 531);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "frmAdiantamentos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adiantamentos";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.Load += new System.EventHandler(this.frmAdiantamentos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nrRegisto)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataAdiantamentos)).EndInit();
@@ -351,26 +429,31 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataAdiantamentos;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnRegressar;
-        private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbl3;
+        private System.Windows.Forms.Label lbl2;
+        private System.Windows.Forms.Label lbl4;
+        private System.Windows.Forms.Label lbl1;
+        public System.Windows.Forms.TextBox txtSalarioBruto;
+        public System.Windows.Forms.TextBox txtNome;
+        public System.Windows.Forms.NumericUpDown nrRegisto;
+        public System.Windows.Forms.TextBox txtDiasDeTrabalho;
+        public System.Windows.Forms.TextBox txtPercentagem;
+        public System.Windows.Forms.DateTimePicker dtpAdiantamento;
     }
 }

@@ -260,5 +260,11 @@ namespace Facturix_Salários
             frmTabelaDeRemuneracoes f = new frmTabelaDeRemuneracoes();
             f.Show();
         }
+
+        private void adiantamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListagemFuncionariosAdiantamentos f = new frmListagemFuncionariosAdiantamentos();
+            f.Show();
+        }
     }
 }

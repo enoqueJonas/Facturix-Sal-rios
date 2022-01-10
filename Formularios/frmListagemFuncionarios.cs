@@ -141,9 +141,12 @@ namespace Facturix_Salários.Formularios
             int idFuncionario;
             String nomeDoTrabalhador, operacao, dataProcessamento;
             double salarioBrutoMensal = 0, subAlimentacao = 0, ajudaDeCusto = 0, ajudaDeslocacao = 0, pagamentoFerias = 0, diversosSubsidios = 0, totalRetribuicao = 0, emprestimoMedico = 0, idIrps = 0, ipa = 0, inss = 0, totalDescontar = 0, adiantamentos = 0, importanciaAPagar = 0;
+            ajudaDeslocacao = 0;
             frmProcessamentoEmLote frm = new frmProcessamentoEmLote();
             //List<int> listagemFuncionario = listf.getFuncionarios();
             ArrayList listaFuncionario = ControllerFuncionario.recuperar();
+            ArrayList listaAdiantamentos = ControllerAdiantamento.recuperar();
+            ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperar();
             List<int> funcionariosValidos = getFuncionarios();
             ArrayList listaIrps = ControllerIRPS.recuperar();
             ArrayList listaFuncRemuneracoes = ControllerFuncionarioRemuneracoes.recuperar();
@@ -182,9 +185,19 @@ namespace Facturix_Salários.Formularios
 
                             foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes)
                             {
-                                if (idFuncionario == fr.getIdFuncionario())
+                                foreach (ModeloRemuneracoes r in listaRemuneracoes) 
                                 {
-                                    diversosSubsidios = (fr.getValor() * fr.getQtd()) + diversosSubsidios;
+                                    if (idFuncionario == fr.getIdFuncionario() && fr.getIdRemuneracao() == r.getId())
+                                    {
+                                        if (r.getNatureza().Equals("A- Ajudas De Custo e Transportes"))
+                                        {
+                                            ajudaDeslocacao = fr.getValor() * fr.getQtd();
+                                        }
+                                        else 
+                                        {
+                                            diversosSubsidios = (fr.getValor() * fr.getQtd()) + diversosSubsidios;
+                                        }
+                                    }
                                 }
 
                             }
@@ -194,7 +207,7 @@ namespace Facturix_Salários.Formularios
 
                             dRow["Dias de trab."] = diasDeTrabalho;
 
-                            salarioBrutoMensal = Math.Round((f.getVencimento() / 26) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
+                            salarioBrutoMensal = Math.Round((f.getVencimento() / 30) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
                             dRow["Mensal"] = string.Format("{0:#,##0.00}", salarioBrutoMensal);
 
                             subAlimentacao = f.getSubAlimentacao();
@@ -203,7 +216,6 @@ namespace Facturix_Salários.Formularios
                             ajudaDeCusto = 0;
                             dRow["AJUD. CUST."] = string.Format("{0:#,##0.00}", ajudaDeCusto);
 
-                            ajudaDeslocacao = 0;
                             dRow["AJUD. DESL."] = string.Format("{0:#,##0.00}", ajudaDeslocacao);
 
                             pagamentoFerias = 0;
@@ -227,12 +239,18 @@ namespace Facturix_Salários.Formularios
                             ipa = f.getImpostoMunicipal();
                             dRow["IPA"] = string.Format("{0:#,##0.00}", ipa);
 
-                            inss = salarioBrutoMensal * 0.07;
+                            inss = salarioBrutoMensal * 0.03;
                             dRow["INSS"] = string.Format("{0:#,##0.00}", inss);
 
                             dRow["Total a descontar"] = string.Format("{0:#,##0.00}", totalDescontar);
 
-                            adiantamentos = 0;
+                            foreach (ModeloAdiantamento a in listaAdiantamentos) 
+                            {
+                                if (a.getIdFuncionario() == f.getCodigo()) 
+                                {
+                                    adiantamentos = a.getDiantamento();
+                                }
+                            }
                             dRow["Adiantamento"] = string.Format("{0:#,##0.00}", adiantamentos);
                             totalDescontar = valorIrps + emprestimoMedico + ipa + inss + adiantamentos;
 

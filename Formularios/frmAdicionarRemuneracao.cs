@@ -21,7 +21,8 @@ namespace Facturix_Salários.Formularios
         }
 
         public String natureza;
-        public int cod = 0, qtd = 0, valorUnit = 0;
+        public int cod = 0, qtd = 0;
+        public float valorUnit = 0;
         private void frmAdicionarRemuneracao_Load(object sender, EventArgs e)
         {
             adicionarItemsCb();
@@ -88,7 +89,7 @@ namespace Facturix_Salários.Formularios
                 qtd = int.Parse(txtqtd.Text);
 
             if (txtval.Text != "")
-                valorUnit = int.Parse(txtval.Text);
+                valorUnit = float.Parse(txtval.Text);
 
             if (txtIdFuncionario.Text != "")
                 idFunc = int.Parse(txtIdFuncionario.Text);

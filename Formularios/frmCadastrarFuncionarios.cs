@@ -647,7 +647,6 @@ namespace Facturix_Salários
             int codigoFun = int.Parse(txtCodigo.Text);
             ControllerConta.remover(codigoFun);
             ControllerFuncionario.remover(codigoFun);
-            limparCaixas();
         }
 
         private void gravarDependente()
@@ -791,12 +790,15 @@ namespace Facturix_Salários
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
+            int cod = getCod() - 1;
             try
             {
                 remover();
+                MessageBox.Show("Funcionário removido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                refrescarDependentes();
+                procurar(cod);
                 impedirBotoes();
                 refrescarVencimento();
-                MessageBox.Show("Funcionário removido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception err) 
             {
