@@ -33,20 +33,17 @@
             this.cbOperacao = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.chbVencimento = new System.Windows.Forms.CheckBox();
-            this.chbSubFerias = new System.Windows.Forms.CheckBox();
-            this.chbExtraordinario = new System.Windows.Forms.CheckBox();
             this.cbMes = new System.Windows.Forms.ComboBox();
             this.nrAno = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.dtProcessamento = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.dtFaltasHorasExtra = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.dataProcessamentoSalario = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
@@ -95,30 +92,6 @@
             this.chbVencimento.TabIndex = 2;
             this.chbVencimento.Text = "Vencimento";
             this.chbVencimento.UseVisualStyleBackColor = true;
-            // 
-            // chbSubFerias
-            // 
-            this.chbSubFerias.AutoSize = true;
-            this.chbSubFerias.Location = new System.Drawing.Point(345, 52);
-            this.chbSubFerias.Name = "chbSubFerias";
-            this.chbSubFerias.Size = new System.Drawing.Size(91, 17);
-            this.chbSubFerias.TabIndex = 2;
-            this.chbSubFerias.Text = "Sub. de férias";
-            this.chbSubFerias.UseVisualStyleBackColor = true;
-            this.chbSubFerias.Visible = false;
-            this.chbSubFerias.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // chbExtraordinario
-            // 
-            this.chbExtraordinario.AutoSize = true;
-            this.chbExtraordinario.Location = new System.Drawing.Point(453, 52);
-            this.chbExtraordinario.Name = "chbExtraordinario";
-            this.chbExtraordinario.Size = new System.Drawing.Size(90, 17);
-            this.chbExtraordinario.TabIndex = 2;
-            this.chbExtraordinario.Text = "Extraordinário";
-            this.chbExtraordinario.UseVisualStyleBackColor = true;
-            this.chbExtraordinario.Visible = false;
-            this.chbExtraordinario.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // cbMes
             // 
@@ -191,38 +164,14 @@
             this.label7.TabIndex = 23;
             this.label7.Text = "Data:";
             // 
-            // dtFaltasHorasExtra
-            // 
-            this.dtFaltasHorasExtra.CustomFormat = "dd/MM/yyyy";
-            this.dtFaltasHorasExtra.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFaltasHorasExtra.Location = new System.Drawing.Point(739, 56);
-            this.dtFaltasHorasExtra.Name = "dtFaltasHorasExtra";
-            this.dtFaltasHorasExtra.Size = new System.Drawing.Size(107, 20);
-            this.dtFaltasHorasExtra.TabIndex = 26;
-            this.dtFaltasHorasExtra.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(638, 61);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 13);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "Faltas/H. Extras:";
-            this.label6.Visible = false;
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.dtFaltasHorasExtra);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.dtProcessamento);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.cbMes);
             this.panel1.Controls.Add(this.nrAno);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.chbExtraordinario);
-            this.panel1.Controls.Add(this.chbSubFerias);
             this.panel1.Controls.Add(this.chbVencimento);
             this.panel1.Controls.Add(this.cbOperacao);
             this.panel1.Controls.Add(this.label2);
@@ -270,6 +219,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnEliminar);
             this.panel3.Controls.Add(this.btnRegressar);
             this.panel3.Controls.Add(this.btnImprimir);
             this.panel3.Controls.Add(this.btnConfirmar);
@@ -278,6 +228,24 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(888, 74);
             this.panel3.TabIndex = 29;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEliminar.Location = new System.Drawing.Point(269, 6);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(69, 60);
+            this.btnEliminar.TabIndex = 900004;
+            this.btnEliminar.TabStop = false;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnRegressar
             // 
@@ -304,7 +272,7 @@
             this.btnImprimir.ForeColor = System.Drawing.Color.Black;
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnImprimir.Location = new System.Drawing.Point(412, 6);
+            this.btnImprimir.Location = new System.Drawing.Point(534, 6);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(2);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(69, 60);
@@ -338,10 +306,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(938, 556);
+            this.ClientSize = new System.Drawing.Size(937, 552);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "frmProcessamentoEmLote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Processamento em lote";
@@ -364,15 +333,11 @@
         private System.Windows.Forms.ComboBox cbOperacao;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox chbVencimento;
-        private System.Windows.Forms.CheckBox chbSubFerias;
-        private System.Windows.Forms.CheckBox chbExtraordinario;
         private System.Windows.Forms.ComboBox cbMes;
         private System.Windows.Forms.NumericUpDown nrAno;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtProcessamento;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dtFaltasHorasExtra;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
@@ -381,5 +346,6 @@
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.Button btnRefrescar;
         public System.Windows.Forms.DataGridView dataProcessamentoSalario;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

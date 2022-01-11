@@ -26,6 +26,7 @@ namespace Facturix_Salários.Controllers
             }
             catch (Exception err)
             {
+                String mess = err.Message;
                 //MessageBox.Show(err.Message, "Não foi possível cadastrar categoria! Contacte o técnico!");
             }
             finally
@@ -50,6 +51,7 @@ namespace Facturix_Salários.Controllers
             }
             catch (Exception err)
             {
+                String mess = err.Message;
                 //MessageBox.Show(err.Message, "Não foi possível atualizar a categoria! Contacte o técnico");
             }
             finally
@@ -100,6 +102,7 @@ namespace Facturix_Salários.Controllers
             }
             catch (Exception err)
             {
+                String mess = err.Message;
                 //MessageBox.Show(err.Message, "Não foi possível remover a categoria! Contacte o técnico!");
             }
             finally

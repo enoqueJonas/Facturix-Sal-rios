@@ -241,10 +241,15 @@ namespace Facturix_Salários
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            eliminar();
-            adicionar();
-            refrescar();
-            impedirBotoes();
+            if (MessageBox.Show("Tem certeza que deseja eliminar o seguro?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                eliminar();
+                adicionar();
+                refrescar();
+                impedirBotoes();
+            }
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -293,7 +298,15 @@ namespace Facturix_Salários
             }
             if (e.KeyCode.ToString() == "F6" && btnEliminar.Enabled)
             {
-                eliminar();
+                if (MessageBox.Show("Tem certeza que deseja eliminar o seguro?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    eliminar();
+                    adicionar();
+                    refrescar();
+                    impedirBotoes();
+                }
             }
             if (e.KeyCode.ToString() == "F7")
             {

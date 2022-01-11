@@ -750,7 +750,25 @@ namespace Facturix_Salários
             }
             if (e.KeyCode.ToString() == "F6" && btnEliminar.Enabled)
             {
-                remover();
+                int cod = getCod() - 1;
+                try
+                {
+                    if (MessageBox.Show("Tem certeza que deseja eliminar o funcionário?", "Atenção!",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        remover();
+                        MessageBox.Show("Funcionário removido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        refrescarDependentes();
+                        procurar(cod);
+                        impedirBotoes();
+                        refrescarVencimento();
+                    }
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message, "Não foi possível eliminar o Funcionário! Contacte o técnico!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             if (e.KeyCode.ToString() == "F7" && btnImprimir.Enabled)
             {
@@ -793,12 +811,17 @@ namespace Facturix_Salários
             int cod = getCod() - 1;
             try
             {
-                remover();
-                MessageBox.Show("Funcionário removido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                refrescarDependentes();
-                procurar(cod);
-                impedirBotoes();
-                refrescarVencimento();
+                if (MessageBox.Show("Tem certeza que deseja eliminar o funcionário?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    remover();
+                    MessageBox.Show("Funcionário removido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    refrescarDependentes();
+                    procurar(cod);
+                    impedirBotoes();
+                    refrescarVencimento();
+                }
             }
             catch (Exception err) 
             {
@@ -1293,6 +1316,7 @@ namespace Facturix_Salários
             }
             catch (Exception err) 
             {
+                String mess = err.Message;
             }          
         }
 
@@ -2304,7 +2328,7 @@ namespace Facturix_Salários
             }
             catch (Exception err)
             {
-                
+                String mess = err.Message;
             }
             btnEditarRemuneracoes.Enabled = true;
             btnEliminarRemuneracoes.Enabled = true;

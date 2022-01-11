@@ -143,10 +143,15 @@ namespace Facturix_Salários
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            eliminar();
-            limparCaixas();
-            refrescar();
-            impedirBotoes();
+            if (MessageBox.Show("Tem certeza que deseja eliminar o centro de custo?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                eliminar();
+                limparCaixas();
+                refrescar();
+                impedirBotoes();
+            }
         }
 
         private void impedirBotoes()
@@ -249,7 +254,15 @@ namespace Facturix_Salários
             }
             if (e.KeyCode.ToString() == "F6" && btnEliminar.Enabled)
             {
-                eliminar();
+                if (MessageBox.Show("Tem certeza que deseja eliminar o centro de custo?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    eliminar();
+                    limparCaixas();
+                    refrescar();
+                    impedirBotoes();
+                }
             }
             if (e.KeyCode.ToString() == "F7")
             {

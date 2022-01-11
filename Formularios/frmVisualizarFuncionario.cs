@@ -75,6 +75,7 @@ namespace Facturix_Salários
             frmNumeroRegisto f = new frmNumeroRegisto();
             f.ShowDialog();
             int cod = f.enterdCod;
+            codigoCelSelecionada = cod;
             ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(cod);
             montarDataGridView(listaFuncionarios);
         }
@@ -150,7 +151,7 @@ namespace Facturix_Salários
                 }
             }
             f.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -169,21 +170,37 @@ namespace Facturix_Salários
             if (e.KeyCode.ToString() == "F2")
             {
                 mostrar();
-            }
-            if (e.KeyCode.ToString() == "F3")
-            {
-            }
-            if (e.KeyCode.ToString() == "F4")
-            {
-               
-            }
-            if (e.KeyCode.ToString() == "F5")
-            {
-               
+                btnEliminar.Enabled = true;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnImprimir.Enabled = true;
+                btnImprimir.FlatStyle = FlatStyle.Standard;
+                btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+                btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
             }
             if (e.KeyCode.ToString() == "F6")
             {
-                
+                try
+                {
+                    try
+                    {
+                        if (MessageBox.Show("Tem certeza que deseja eliminar o funcionário?", "Atenção!",
+                                                    MessageBoxButtons.YesNo,
+                                                    MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            eliminar();
+                            mostrarNumeroFuncionarios();
+                            MessageBox.Show("Funcionário removido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show(err.Message, "Não foi possível eliminar o Funcionário! Contacte o técnico!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message, "Não foi possível eliminar o Funcionário! Contacte o técnico!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             if (e.KeyCode.ToString() == "F7")
             {
@@ -228,15 +245,26 @@ namespace Facturix_Salários
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             mostrar();
+            btnEliminar.Enabled = true;
+            btnEliminar.FlatStyle = FlatStyle.Standard;
+            btnImprimir.Enabled = true;
+            btnImprimir.FlatStyle = FlatStyle.Standard;
+            btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-                eliminar();
-                mostrarNumeroFuncionarios();
-                MessageBox.Show("Funcionário removido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (MessageBox.Show("Tem certeza que deseja eliminar o funcionário?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    eliminar();
+                    mostrarNumeroFuncionarios();
+                    MessageBox.Show("Funcionário removido com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception err)
             {
@@ -315,6 +343,12 @@ namespace Facturix_Salários
                     dataFuncionarios.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
                     dataFuncionarios.RowsDefaultCellStyle.SelectionForeColor = Color.White;
                     dataFuncionarios.Focus();
+                    btnEliminar.Enabled = true;
+                    btnEliminar.FlatStyle = FlatStyle.Standard;
+                    btnImprimir.Enabled = true;
+                    btnImprimir.FlatStyle = FlatStyle.Standard;
+                    btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+                    btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
                 }
             }
         }
@@ -323,6 +357,8 @@ namespace Facturix_Salários
         {
             int rowIndex = e.RowIndex;
             rowSelected = rowIndex;
+            DataGridViewRow row = dataFuncionarios.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
         }
 
         int rowSelected;

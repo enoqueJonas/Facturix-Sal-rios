@@ -199,7 +199,7 @@ namespace Facturix_Salários.Controllers
             try
             {
                 conexao.Open();
-                String SqlDelete = "DELETE from processamento WHERE id=?";
+                String SqlDelete = "DELETE from processamento_salario WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
                 comando.Parameters.Add(new MySqlParameter("id", codigo));
                 comando.ExecuteNonQuery();

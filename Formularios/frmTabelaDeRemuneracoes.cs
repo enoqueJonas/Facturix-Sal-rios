@@ -72,7 +72,7 @@ namespace Facturix_Salários.Formularios
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             frmNumeroRegisto f = new frmNumeroRegisto();
-            f.Show();
+            f.ShowDialog();
             int cod = f.enterdCod;
             ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperarComCod(cod);
             preencherDtView(listaRemuneracoes);
@@ -208,6 +208,55 @@ namespace Facturix_Salários.Formularios
             DataGridViewRow row = dataRemuneracoes.Rows[rowIndex];
             codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
             rowSelected = rowIndex;
+        }
+
+        private void dataRemuneracoes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataRemuneracoes.Rows[rowIndex];
+            codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+            btnEliminar.Enabled = true;
+            btnEliminar.FlatStyle = FlatStyle.Standard;
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja eliminar a remuneração?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                ControllerRemuneracoes.remover(codigoCelSelecionada);
+            }
+        }
+
+        private void frmTabelaDeRemuneracoes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                frmRemuneracoes f = new frmRemuneracoes();
+                f.Show();
+            } 
+            if (e.KeyCode == Keys.F2)
+            {
+                frmNumeroRegisto f = new frmNumeroRegisto();
+                f.ShowDialog();
+                int cod = f.enterdCod;
+                ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperarComCod(cod);
+                preencherDtView(listaRemuneracoes);
+            } 
+            if (e.KeyCode == Keys.F6 && btnEliminar.Enabled)
+            {
+                if (MessageBox.Show("Tem certeza que deseja eliminar a remuneração?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    ControllerRemuneracoes.remover(codigoCelSelecionada);
+                }
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

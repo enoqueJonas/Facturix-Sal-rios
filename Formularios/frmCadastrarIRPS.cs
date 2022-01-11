@@ -469,8 +469,14 @@ namespace Facturix_Salários.Formularios.Cadastros
             }
             if (e.KeyCode.ToString() == "F6" && btnEliminar.Enabled)
             {
-                eliminar();
-                limparCaixas();
+                if (MessageBox.Show("Tem certeza que deseja eliminar o IRPS?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    eliminar();
+                    limparCaixas();
+                    impedirBotoes();
+                }
             }
             if (e.KeyCode.ToString() == "F7")
             {
@@ -570,9 +576,14 @@ namespace Facturix_Salários.Formularios.Cadastros
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            eliminar();
-            limparCaixas();
-            impedirBotoes();
+            if (MessageBox.Show("Tem certeza que deseja eliminar o IRPS?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                eliminar();
+                limparCaixas();
+                impedirBotoes();
+            }
         }
 
         private void txtSalarioMin_TextChanged(object sender, EventArgs e)

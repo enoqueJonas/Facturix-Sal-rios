@@ -171,8 +171,13 @@ namespace Facturix_Salários.Formularios
 
 		private void btnEliminar_Click(object sender, EventArgs e)
 		{
-			int cod = int.Parse(txtRegistoNr.Text);
-			ControllerRemuneracoes.remover(cod);
+			if (MessageBox.Show("Tem certeza que deseja eliminar a remuneração?", "Atenção!",
+											MessageBoxButtons.YesNo,
+											MessageBoxIcon.Warning) == DialogResult.Yes)
+			{
+				int cod = int.Parse(txtRegistoNr.Text);
+				ControllerRemuneracoes.remover(cod);
+			}
 		}
 
 		private void btnRegressar_Click(object sender, EventArgs e)
@@ -254,8 +259,13 @@ namespace Facturix_Salários.Formularios
 			}
 			if (e.KeyCode.ToString() == "F6")
 			{
-				int cod = int.Parse(txtRegistoNr.Text);
-				ControllerRemuneracoes.remover(cod);
+				if (MessageBox.Show("Tem certeza que deseja eliminar a remuneração?", "Atenção!",
+											MessageBoxButtons.YesNo,
+											MessageBoxIcon.Warning) == DialogResult.Yes)
+				{
+					int cod = int.Parse(txtRegistoNr.Text);
+					ControllerRemuneracoes.remover(cod);
+				}
 			}
 			if (e.KeyCode == Keys.Escape)
 			{

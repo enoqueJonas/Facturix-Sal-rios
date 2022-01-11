@@ -842,7 +842,16 @@ namespace Facturix_Salários.Formularios
                                         MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     ControllerProcessamentoDeSalario.remover(idProcessamento);
-                    
+
+                }
+                else 
+                {
+                    if (MessageBox.Show("Tem certeza que deseja eliminar o processamento?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        ControllerProcessamentoDeSalario.remover(idProcessamento);
+                    }
                 }
             }
         }

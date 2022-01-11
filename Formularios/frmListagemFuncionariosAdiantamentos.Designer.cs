@@ -112,6 +112,7 @@
             this.Name = "frmListagemFuncionariosAdiantamentos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listagem de Funcionários";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmListagemFuncionariosAdiantamentos_FormClosing);
             this.Load += new System.EventHandler(this.frmListagemFuncionariosAdiantamentos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataFuncionarios)).EndInit();
             this.panel3.ResumeLayout(false);

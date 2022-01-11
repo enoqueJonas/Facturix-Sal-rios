@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdiantamentos));
             this.label1 = new System.Windows.Forms.Label();
             this.txtSalarioBruto = new System.Windows.Forms.TextBox();
@@ -55,7 +58,6 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnAdicionar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nrRegisto)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataAdiantamentos)).BeginInit();
@@ -76,6 +78,7 @@
             // 
             this.txtSalarioBruto.Location = new System.Drawing.Point(91, 51);
             this.txtSalarioBruto.Name = "txtSalarioBruto";
+            this.txtSalarioBruto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtSalarioBruto.Size = new System.Drawing.Size(120, 20);
             this.txtSalarioBruto.TabIndex = 1;
             this.txtSalarioBruto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSalarioBruto_KeyDown);
@@ -243,10 +246,28 @@
             // 
             this.dataAdiantamentos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataAdiantamentos.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataAdiantamentos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dataAdiantamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataAdiantamentos.Location = new System.Drawing.Point(18, 22);
             this.dataAdiantamentos.Name = "dataAdiantamentos";
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataAdiantamentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dataAdiantamentos.RowHeadersVisible = false;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataAdiantamentos.RowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dataAdiantamentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataAdiantamentos.Size = new System.Drawing.Size(580, 218);
             this.dataAdiantamentos.TabIndex = 4;
@@ -270,7 +291,6 @@
             this.panel3.Controls.Add(this.btnCancelar);
             this.panel3.Controls.Add(this.btnAtualizar);
             this.panel3.Controls.Add(this.btnEliminar);
-            this.panel3.Controls.Add(this.btnAdicionar);
             this.panel3.Location = new System.Drawing.Point(12, 445);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
@@ -302,7 +322,7 @@
             this.btnConfirmar.ForeColor = System.Drawing.Color.Black;
             this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConfirmar.Location = new System.Drawing.Point(356, 5);
+            this.btnConfirmar.Location = new System.Drawing.Point(323, 5);
             this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(69, 60);
@@ -320,7 +340,7 @@
             this.btnMostrar.ForeColor = System.Drawing.Color.Black;
             this.btnMostrar.Image = ((System.Drawing.Image)(resources.GetObject("btnMostrar.Image")));
             this.btnMostrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMostrar.Location = new System.Drawing.Point(102, 5);
+            this.btnMostrar.Location = new System.Drawing.Point(18, 6);
             this.btnMostrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(69, 60);
@@ -329,6 +349,7 @@
             this.btnMostrar.Text = "Consultar";
             this.btnMostrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
             // btnCancelar
             // 
@@ -337,7 +358,7 @@
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(271, 6);
+            this.btnCancelar.Location = new System.Drawing.Point(220, 6);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(69, 60);
@@ -355,7 +376,7 @@
             this.btnAtualizar.ForeColor = System.Drawing.Color.Black;
             this.btnAtualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAtualizar.Image")));
             this.btnAtualizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAtualizar.Location = new System.Drawing.Point(186, 6);
+            this.btnAtualizar.Location = new System.Drawing.Point(122, 6);
             this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(69, 60);
@@ -373,7 +394,7 @@
             this.btnEliminar.ForeColor = System.Drawing.Color.Black;
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEliminar.Location = new System.Drawing.Point(445, 5);
+            this.btnEliminar.Location = new System.Drawing.Point(426, 5);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(69, 60);
@@ -383,24 +404,6 @@
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnAdicionar
-            // 
-            this.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionar.ForeColor = System.Drawing.Color.Black;
-            this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
-            this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionar.Location = new System.Drawing.Point(17, 5);
-            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(69, 60);
-            this.btnAdicionar.TabIndex = 34;
-            this.btnAdicionar.TabStop = false;
-            this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAdicionar.UseVisualStyleBackColor = true;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // frmAdiantamentos
             // 
@@ -416,6 +419,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adiantamentos";
             this.Load += new System.EventHandler(this.frmAdiantamentos_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmAdiantamentos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.nrRegisto)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -443,7 +447,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbl3;
         private System.Windows.Forms.Label lbl2;

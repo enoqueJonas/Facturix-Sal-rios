@@ -200,10 +200,15 @@ namespace Facturix_Salários
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            eliminar();
-            limparCaixas();
-            refrescar();
-            impedirBotoes();
+            if (MessageBox.Show("Tem certeza que deseja eliminar a categoria?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                eliminar();
+                limparCaixas();
+                refrescar();
+                impedirBotoes();
+            }
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -247,7 +252,15 @@ namespace Facturix_Salários
             }
             if (e.KeyCode.ToString() == "F6" && btnEliminar.Enabled)
             {
-                eliminar();
+                if (MessageBox.Show("Tem certeza que deseja eliminar a categoria?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    eliminar();
+                    limparCaixas();
+                    refrescar();
+                    impedirBotoes();
+                }
             }
             if (e.KeyCode.ToString() == "F7")
             {

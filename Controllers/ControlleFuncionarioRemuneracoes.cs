@@ -111,6 +111,7 @@ namespace Facturix_Salários.Controllers
             }
             catch (Exception err)
             {
+                String mess =  err.Message;
                 //MessageBox.Show(err.Message, "Não foi possível remover o feriado! Contacte o técnico!");
             }
             finally

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTabelaDeRemuneracoes));
             this.dataRemuneracoes = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -51,21 +51,22 @@
             // 
             this.dataRemuneracoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataRemuneracoes.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataRemuneracoes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataRemuneracoes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataRemuneracoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataRemuneracoes.Location = new System.Drawing.Point(26, 32);
+            this.dataRemuneracoes.Location = new System.Drawing.Point(26, 23);
             this.dataRemuneracoes.Name = "dataRemuneracoes";
             this.dataRemuneracoes.RowHeadersVisible = false;
             this.dataRemuneracoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataRemuneracoes.Size = new System.Drawing.Size(545, 453);
             this.dataRemuneracoes.TabIndex = 0;
+            this.dataRemuneracoes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataRemuneracoes_CellClick);
             this.dataRemuneracoes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataRemuneracoes_CellDoubleClick);
             this.dataRemuneracoes.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataRemuneracoes_CellEnter);
             this.dataRemuneracoes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataRemuneracoes_KeyDown);
@@ -75,14 +76,14 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnRefrescar);
             this.panel1.Controls.Add(this.dataRemuneracoes);
-            this.panel1.Location = new System.Drawing.Point(158, 23);
+            this.panel1.Location = new System.Drawing.Point(158, 14);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(596, 506);
             this.panel1.TabIndex = 1;
             // 
             // btnRefrescar
             // 
-            this.btnRefrescar.Location = new System.Drawing.Point(26, 3);
+            this.btnRefrescar.Location = new System.Drawing.Point(26, 0);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(75, 23);
             this.btnRefrescar.TabIndex = 1;
@@ -96,7 +97,7 @@
             this.btnConsultar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnConsultar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConsultar.Location = new System.Drawing.Point(8, 73);
+            this.btnConsultar.Location = new System.Drawing.Point(8, 64);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(113, 40);
             this.btnConsultar.TabIndex = 8;
@@ -110,7 +111,7 @@
             this.btnAdicionar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.BackgroundImage")));
             this.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionar.Location = new System.Drawing.Point(8, 16);
+            this.btnAdicionar.Location = new System.Drawing.Point(8, 7);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(113, 40);
             this.btnAdicionar.TabIndex = 7;
@@ -126,13 +127,14 @@
             this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnEliminar.Enabled = false;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(8, 129);
+            this.btnEliminar.Location = new System.Drawing.Point(8, 120);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(113, 40);
             this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnRegressar
             // 
@@ -140,7 +142,7 @@
             this.btnRegressar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegressar.Image = ((System.Drawing.Image)(resources.GetObject("btnRegressar.Image")));
             this.btnRegressar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegressar.Location = new System.Drawing.Point(8, 184);
+            this.btnRegressar.Location = new System.Drawing.Point(8, 175);
             this.btnRegressar.Name = "btnRegressar";
             this.btnRegressar.Size = new System.Drawing.Size(114, 40);
             this.btnRegressar.TabIndex = 10;
@@ -156,7 +158,7 @@
             this.panel2.Controls.Add(this.btnAdicionar);
             this.panel2.Controls.Add(this.btnEliminar);
             this.panel2.Controls.Add(this.btnRegressar);
-            this.panel2.Location = new System.Drawing.Point(6, 23);
+            this.panel2.Location = new System.Drawing.Point(6, 14);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(130, 244);
             this.panel2.TabIndex = 11;
@@ -164,7 +166,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 9);
+            this.label2.Location = new System.Drawing.Point(26, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 26);
             this.label2.TabIndex = 8;
@@ -173,7 +175,7 @@
             // txtNumeroDeRemuneracoes
             // 
             this.txtNumeroDeRemuneracoes.Enabled = false;
-            this.txtNumeroDeRemuneracoes.Location = new System.Drawing.Point(36, 49);
+            this.txtNumeroDeRemuneracoes.Location = new System.Drawing.Point(36, 40);
             this.txtNumeroDeRemuneracoes.Name = "txtNumeroDeRemuneracoes";
             this.txtNumeroDeRemuneracoes.ReadOnly = true;
             this.txtNumeroDeRemuneracoes.Size = new System.Drawing.Size(57, 20);
@@ -185,7 +187,7 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.txtNumeroDeRemuneracoes);
-            this.panel4.Location = new System.Drawing.Point(8, 443);
+            this.panel4.Location = new System.Drawing.Point(8, 434);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(128, 86);
             this.panel4.TabIndex = 13;
@@ -195,15 +197,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(772, 547);
+            this.ClientSize = new System.Drawing.Size(767, 531);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "frmTabelaDeRemuneracoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabela de Remunerações";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTabelaDeRemuneracoes_FormClosing);
             this.Load += new System.EventHandler(this.frmTabelaDeRemuneracoes_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTabelaDeRemuneracoes_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmTabelaDeRemuneracoes_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.dataRemuneracoes)).EndInit();
             this.panel1.ResumeLayout(false);

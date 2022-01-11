@@ -19,11 +19,7 @@ namespace Facturix_Salários.Formularios
     {
         private int nrMes, diasDeTrabalho, codigoCelSelecionada;
         private void dataProcessamentoSalario_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {         
-            if (e.RowIndex >= 0 && e.ColumnIndex == 2)
-            {
-                                                                            
-            }
+        { 
         }
 
         private void dataProcessamentoSalario_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -54,7 +50,6 @@ namespace Facturix_Salários.Formularios
                     ArrayList listaFuncionarios = ControllerFuncionario.recuperarComCodigo(codigoCelSelecionada);
                     ArrayList listaIrps = ControllerIRPS.recuperar();
                     ArrayList listaAdiantamentos = ControllerAdiantamento.recuperar();
-                    //ArrayList listaDependentes = ControllerDependente.recuperarComCodFuncionario(codigoCelSelecionada);
                     String nome = "", estado = "";
                     frmProcessamentoIndividual f = new frmProcessamentoIndividual();
                     int codIrps = 0;
@@ -149,18 +144,32 @@ namespace Facturix_Salários.Formularios
             {
                 MessageBox.Show("Clique uma linha válida!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            //diasDeTrabalho = f.diasDeTrabalho;
+        }
+
+        private void impedirBotoes() 
+        {
+            if (dataProcessamentoSalario.Rows.Count != 0 && nrAno.Value != 0 && cbMes.Text != "")
+            {
+                btnEliminar.Enabled = true;
+                btnEliminar.FlatStyle = FlatStyle.Standard;
+                btnConfirmar.Enabled = true;
+                btnConfirmar.FlatStyle = FlatStyle.Standard;
+            }
+            else 
+            {
+                btnEliminar.Enabled = false;
+                btnEliminar.FlatStyle = FlatStyle.Flat;
+                btnConfirmar.Enabled = false;
+                btnConfirmar.FlatStyle = FlatStyle.Flat;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             cbOperacao.Text = "";
             chbVencimento.Checked = false;
-            chbSubFerias.Checked = false;
-            chbExtraordinario.Checked = false;
             cbMes.Text = "";
             dtProcessamento.Value = DateTime.Now;
-            dtFaltasHorasExtra.Value = DateTime.Now;
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)
@@ -184,8 +193,15 @@ namespace Facturix_Salários.Formularios
         {
             try
             {
-                gravar();
-                MessageBox.Show("Salário/os processado/os com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (cbMes.Text == "")
+                {
+                    MessageBox.Show("Selecione um mês válido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else 
+                {
+                    gravar();
+                    MessageBox.Show("Salário/os processado/os com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception err) 
             {
@@ -233,8 +249,6 @@ namespace Facturix_Salários.Formularios
 
         public void refrescar()
         {
-            //frmListagemFuncionarios listf = new frmListagemFuncionarios();
-            //List<int> listagemFuncionario = listf.getFuncionarios();
             ArrayList listaFuncionario = ControllerFuncionario.recuperar();
             List<int> funcionariosValidos = getFuncionariosValidos();
             ArrayList listaIrps = ControllerIRPS.recuperar();
@@ -251,7 +265,7 @@ namespace Facturix_Salários.Formularios
             dt.Columns.Add("PAG. FÉRIAS");
             dt.Columns.Add("DIVERSOS SUB EFIC.");
             dt.Columns.Add("TOTAL");
-            dt.Columns.Add("EMPRÉSTIMO ASSIST. MÉDICA");
+            dt.Columns.Add("ASSIST. MÉDICA");
             dt.Columns.Add("IRPS");
             dt.Columns.Add("IPA");
             dt.Columns.Add("INSS");
@@ -267,6 +281,7 @@ namespace Facturix_Salários.Formularios
                 ArrayList listaFuncRemuneracoes = ControllerFuncionarioRemuneracoes.recuperar();
                 ArrayList listaAdiantamentos = ControllerAdiantamento.recuperar();
                 ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperar();
+                ArrayList listaSeguros = ControllerSeguro.recuperar();
                 int diasBaseDados = 0;
                 ajudaDeslocacao = 0;
                 for (int i = 0; i < funcionariosValidos.Count; i++) 
@@ -297,6 +312,14 @@ namespace Facturix_Salários.Formularios
                                     }
                                 }
                             }
+                            foreach (ModeloSeguro seg in listaSeguros)
+                            {
+                                if (seg.getSeguro().Equals(f.getSeguro()))
+                                {
+                                    emprestimoMedico = f.getVencimento() * (seg.getPercentagem() / 100);
+                                }
+                            }
+
                             foreach (ModeloDiasDeTrabalho d in listaDias)
                             {
                                 if (d.getIdFunc() == f.getCodigo())
@@ -317,7 +340,6 @@ namespace Facturix_Salários.Formularios
                             ajudaDeCusto = 0;
                             pagamentoFerias = 0;
                             totalRetribuicao = salarioBrutoMensal + subAlimentacao + diversosSubsidios + ajudaDeslocacao + ajudaDeCusto + pagamentoFerias;
-                            emprestimoMedico = 0;
                             foreach (ModeloIRPS ir in listaIrps)
                             {
                                 if (f.getIdIRPS() == ir.getId())
@@ -332,6 +354,7 @@ namespace Facturix_Salários.Formularios
                         else 
                         {
                             ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperarComCod(idFuncionario);
+                            DateTime dataProcessamento = new DateTime();
                             foreach (ModeloProcessamentoDeSalario p in listaProcessamento) 
                             {
                                 salarioBrutoMensal = p.getSalarioBrutoMensal();
@@ -348,7 +371,9 @@ namespace Facturix_Salários.Formularios
                                 adiantamentos = 0;
                                 totalDescontar = p.getTotalADescontar();
                                 importanciaAPagar = p.getImportanciaApagar();
+                                dataProcessamento = Convert.ToDateTime(p.getDataProcessamento());
                             }
+                            dtProcessamento.Value = dataProcessamento;
                         }
                         foreach (ModeloAdiantamento a in listaAdiantamentos)
                         {
@@ -367,7 +392,7 @@ namespace Facturix_Salários.Formularios
                         dRow["PAG. FÉRIAS"] = string.Format("{0:#,##0.00}", pagamentoFerias);
                         dRow["DIVERSOS SUB EFIC."] = string.Format("{0:#,##0.00}", diversosSubsidios);
                         dRow["TOTAL"] = string.Format("{0:#,##0.00}", totalRetribuicao);
-                        dRow["EMPRÉSTIMO ASSIST. MÉDICA"] = emprestimoMedico;
+                        dRow["ASSIST. MÉDICA"] = string.Format("{0:#,##0.00}", emprestimoMedico);
                         dRow["IRPS"] = string.Format("{0:#,##0.00}", valorIrps);
                         dRow["IPA"] = string.Format("{0:#,##0.00}", ipa);
                         dRow["INSS"] = string.Format("{0:#,##0.00}", inss);
@@ -406,6 +431,7 @@ namespace Facturix_Salários.Formularios
             ArrayList listaFuncRemuneracoes = ControllerFuncionarioRemuneracoes.recuperar();
             ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
             ArrayList listaIrps = ControllerIRPS.recuperar();
+            ArrayList listaSeguros = ControllerSeguro.recuperar();
 
             foreach (DataGridViewRow row in dataProcessamentoSalario.Rows)
             {
@@ -426,6 +452,14 @@ namespace Facturix_Salários.Formularios
                     if (f.getIdIRPS() == ir.getId())
                         valorIrps = ir.getValor();
                 }
+                foreach (ModeloSeguro seg in listaSeguros)
+                {
+                    if (seg.getSeguro().Equals(f.getSeguro()))
+                    {
+                        emprestimoMedico = f.getVencimento() * (seg.getPercentagem() / 100);
+                    }
+                }
+
                 ipa = f.getImpostoMunicipal();
                 foreach (ModeloFuncionarioRemuneracoes fr in listaFuncRemuneracoes)
                 {
@@ -640,6 +674,46 @@ namespace Facturix_Salários.Formularios
                     MessageBox.Show(err.Message, "Erro");
                 }
             }
+            
+            if (e.KeyCode.ToString() == "F6" && btnEliminar.Enabled)
+            {
+                String data = dtProcessamento.Value.ToString("yyyy-MM-dd");
+                MySqlConnection conexao = Conexao.conectar();
+                try
+                {
+                    conexao.Open();
+                    if (dtProcessamento.Value.Date < DateTime.Now.Date)
+                    {
+                        if (MessageBox.Show("Os processamentos já foram submetidos à segurança social! Eliminar os mesmos virá com Repercussões. Deseja Continuar?", "Atenção!",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            String SqlDelete = "DELETE from processamento_salario WHERE dataProcessamento=?";
+                            MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
+                            comando.Parameters.Add(new MySqlParameter("dataProcessamento", data));
+                            comando.ExecuteNonQuery();
+                            MessageBox.Show("Processamentos removidos com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        String SqlDelete = "DELETE from processamento_salario WHERE dataProcessamento=?";
+                        MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
+                        comando.Parameters.Add(new MySqlParameter("dataProcessamento", data));
+                        comando.ExecuteNonQuery();
+                        MessageBox.Show("Processamentos removidos com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message, "Não foi possível remover os processamentos! Contacte o técnico!");
+                }
+                finally
+                {
+                    if (conexao != null)
+                        conexao.Close();
+                }
+            }
 
             if(e.KeyCode.ToString() == "F7")
             {
@@ -658,16 +732,64 @@ namespace Facturix_Salários.Formularios
 
         }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            String data = dtProcessamento.Value.ToString("yyyy-MM-dd");
+            MySqlConnection conexao = Conexao.conectar();
+            try
+            {
+                conexao.Open();
+                if (dtProcessamento.Value.Date < DateTime.Now.Date)
+                {
+                    if (MessageBox.Show("Os processamentos já foram submetidos à segurança social! Eliminar os mesmos virá com Repercussões. Deseja Continuar?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        String SqlDelete = "DELETE from processamento_salario WHERE dataProcessamento=?";
+                        MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
+                        comando.Parameters.Add(new MySqlParameter("dataProcessamento", data));
+                        comando.ExecuteNonQuery();
+                        MessageBox.Show("Processamentos removidos com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("Tem certeza que deseja eliminar os processamentos de "+ data +"?", "Atenção!",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        String SqlDelete = "DELETE from processamento_salario WHERE dataProcessamento=?";
+                        MySqlCommand comando = new MySqlCommand(SqlDelete, conexao);
+                        comando.Parameters.Add(new MySqlParameter("dataProcessamento", data));
+                        comando.ExecuteNonQuery();
+                        MessageBox.Show("Processamentos removidos com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Não foi possível remover os processamentos! Contacte o técnico!");
+            }
+            finally
+            {
+                if (conexao != null)
+                    conexao.Close();
+            }
+
+        }
+
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
             String mes = cbMes.Text;
             nrMes = getMes(mes);
             refrescar();
+            impedirBotoes();
         }
 
         private void nrAno_ValueChanged(object sender, EventArgs e)
         {
             refrescar();
+            impedirBotoes();
         }
     }
 }

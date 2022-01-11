@@ -112,6 +112,7 @@ namespace Facturix_Salários.Formularios
             ArrayList lista = ControllerFuncionario.recuperarComCodigo(idFunc);
             int diasDeTrabalho = getDiasDeTrabalho(idFunc);
             String nome = "";
+            int id = 0;
             double vencimento = 0;
             Boolean existe = false;
             foreach (ModeloFuncionario f in lista) 
@@ -119,10 +120,12 @@ namespace Facturix_Salários.Formularios
                 existe = true;
                 nome = f.getNome();
                 vencimento = f.getVencimento();
+                id = f.getCodigo();
             }
 
             if (existe)
             {
+                nrRegisto.Value = id;
                 txtNome.Text = nome;
                 txtSalarioBruto.Text = string.Format("{0:#,##0.00}", vencimento);
             }
@@ -133,6 +136,16 @@ namespace Facturix_Salários.Formularios
             }
             txtPercentagem.Text = "";
             txtDiasDeTrabalho.Text = diasDeTrabalho + "";
+        }
+
+        private void mostrar()
+        {
+            frmNumeroRegisto f = new frmNumeroRegisto();
+            f.ShowDialog();
+            int id = f.enterdCod;
+            procurar(id);
+            refrescarAdiantamentos(id);
+            impedirBotoes();
         }
 
         private void gravar() 
@@ -194,12 +207,12 @@ namespace Facturix_Salários.Formularios
             //|| txtNrFiscal.Text == ""
             if (txtPercentagem.Text == "")
             {
-                btnAdicionar.Enabled = true;
+                //btnAdicionar.Enabled = true;
                 btnMostrar.Enabled = true;
                 btnAtualizar.Enabled = false;
                 btnConfirmar.Enabled = false;
                 btnEliminar.Enabled = false;
-                btnAdicionar.FlatStyle = FlatStyle.Standard;
+                //btnAdicionar.FlatStyle = FlatStyle.Standard;
                 btnAtualizar.FlatStyle = FlatStyle.Flat;
                 btnConfirmar.FlatStyle = FlatStyle.Flat;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
@@ -230,16 +243,16 @@ namespace Facturix_Salários.Formularios
         {
             if (lbl1.Visible == true)
             {
-                btnAdicionar.Enabled = false;
+                //btnAdicionar.Enabled = false;
                 btnMostrar.Enabled = false;
                 btnEliminar.Enabled = false;
                 btnAtualizar.Enabled = false;
-                btnAdicionar.FlatStyle = FlatStyle.Standard;
+                //btnAdicionar.FlatStyle = FlatStyle.Standard;
                 btnEliminar.FlatStyle = FlatStyle.Flat;
                 btnMostrar.FlatStyle = FlatStyle.Flat;
-                btnAdicionar.FlatStyle = FlatStyle.Flat;
+                //btnAdicionar.FlatStyle = FlatStyle.Flat;
                 btnAtualizar.FlatStyle = FlatStyle.Flat;
-                btnAdicionar.Cursor = System.Windows.Forms.Cursors.Default;
+                //btnAdicionar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
@@ -464,6 +477,63 @@ namespace Facturix_Salários.Formularios
                 MessageBox.Show("Percentagem Inválida!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             txtPercentagem.Focus();
+        }
+
+        private void frmAdiantamentos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2) 
+            {
+                mostrar();
+            }
+            if (e.KeyCode == Keys.F3) 
+            {
+                mudarVisibilidadeLabels(true);
+                atualizarBotoes();
+            }
+            if (e.KeyCode == Keys.F4) 
+            {
+                mudarVisibilidadeLabels(false);
+                limpar();
+                impedirBotoes();
+            }
+            if (e.KeyCode == Keys.F5) 
+            {
+                int idFunc = Convert.ToInt16(nrRegisto.Value);
+                try
+                {
+                    gravar();
+                    mudarVisibilidadeLabels(false);
+                    refrescarAdiantamentos(idFunc);
+                    impedirBotoes();
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message, "Não foi possível efectuar a operação! Contacte o técnico.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            if (e.KeyCode == Keys.F6) 
+            {
+                int idFunc = Convert.ToInt16(nrRegisto.Value);
+                try
+                {
+                    eliminar();
+                    txtPercentagem.Text = "";
+                    refrescarAdiantamentos(idFunc);
+                    impedirBotoes();
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message, "Não foi possível efectuar a operação! Contacte o técnico.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            if (e.KeyCode == Keys.Escape) 
+            {
+                this.Close();
+            }
+        }
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            mostrar();
         }
     }
 }

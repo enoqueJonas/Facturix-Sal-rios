@@ -130,6 +130,21 @@ namespace Facturix_Salários.Formularios
             rowSelected = rowIndex;
         }
 
+        private void frmListagemFuncionariosAdiantamentos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            switch (e.CloseReason)
+            {
+                case CloseReason.UserClosing:
+                    if (MessageBox.Show("Pretende Voltar ao menu principal?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
+                    break;
+            }
+        }
+
         private void dataFuncionarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
