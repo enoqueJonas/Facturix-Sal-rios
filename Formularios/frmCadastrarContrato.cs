@@ -35,6 +35,15 @@ namespace Facturix_Salários
 
             }
         }
+
+        private Boolean estaVazio()
+        {
+            if (dataContrato.RowCount == 0)
+                return true;
+
+            return false;
+        }
+
         private void refrescar()
         {
             ArrayList listaContratos = ControllerContrato.recuperar();
@@ -51,6 +60,7 @@ namespace Facturix_Salários
             dataContrato.DataSource = dt;
             dataContrato.AllowUserToAddRows = false;
             dataContrato.Refresh();
+            lblEstado.Visible = estaVazio();
             dataContrato.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataContrato.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }

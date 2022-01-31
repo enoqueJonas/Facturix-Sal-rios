@@ -135,58 +135,128 @@ namespace Facturix_Salários
             }
         }
 
-        private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
+        void abrirFormListagemFunc() 
         {
             frmVisualizarFuncionario f = new frmVisualizarFuncionario();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFormListagemFunc)) 
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void segurosToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void seguro()
         {
             frmCadastrarSeguro f = new frmCadastrarSeguro();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void segurosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(seguro))
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmCadastrarCategoria() 
         {
             frmCadastrarCategoria f = new frmCadastrarCategoria();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmCadastrarCategoria))
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void contratosToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmCadastrarContratos() 
         {
             frmCadastrarContrato f = new frmCadastrarContrato();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void contratosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmCadastrarContratos))
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void profissãoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void abirFrmCadastrarProfissao()
         {
             frmCadastrarProfissao f = new frmCadastrarProfissao();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void profissãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abirFrmCadastrarProfissao))
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void habilitaçõToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmCadastrarHabilitacao() 
         {
             frmCadastrarHabilitacoes f = new frmCadastrarHabilitacoes();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void habilitaçõToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmCadastrarHabilitacao))
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void sindicatosToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmCadastrarSindicato() 
         {
             frmCadastrarSundicatos f = new frmCadastrarSundicatos();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void sindicatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmCadastrarSindicato))
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void estabelecimentosToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmCadastrarEstabelecimentos() 
         {
             frmCadastrarEstabelecimentos f = new frmCadastrarEstabelecimentos();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void estabelecimentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmCadastrarEstabelecimentos))
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void centrosDeCustoToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmCadastrarCentroDeCusto() 
         {
             frmCadastrarCentrosDeCusto f = new frmCadastrarCentrosDeCusto();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void centrosDeCustoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmCadastrarCentroDeCusto))
+            {
+                l.ShowDialog(this);
+            }
         }
 
         private void frmMenu_KeyDown(object sender, KeyEventArgs e)
@@ -194,10 +264,18 @@ namespace Facturix_Salários
             
         }
 
-        private void gestToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmGestaoDeUtilizadores() 
         {
             frmGestaoUtilizador f = new frmGestaoUtilizador();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void gestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmGestaoDeUtilizadores))
+            {
+                l.ShowDialog(this);
+            }
         }
 
         private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
@@ -215,56 +293,112 @@ namespace Facturix_Salários
             }
         }
 
-        private void iRPSToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmIrps() 
         {
             frmCadastrarIRPS f = new frmCadastrarIRPS();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void iRPSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmIrps))
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void conectarScannerToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmConectarScanner() 
         {
             frmConectarFPScanner f = new frmConectarFPScanner();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void conectarScannerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmConectarScanner))
+            {
+                l.ShowDialog(this);
+            }
         }
 
         private void relógioDePontoToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
 
-        private void configuraçToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmConfiguracao() 
         {
             frmNomeDaEmpresa f = new frmNomeDaEmpresa();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void configuraçToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmConfiguracao))
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void processamentoSaToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmProcesamento() 
         {
             frmProcessamentoEmLote f = new frmProcessamentoEmLote();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void processamentoSaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmProcesamento))
+            {
+                l.ShowDialog(this);
+            }
         }
 
         private void individualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmProcessamentoIndividual f = new frmProcessamentoIndividual();
-            f.Show();
+            f.ShowDialog();
         }
 
-        private void listagemToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmListagemFuncionarios() 
         {
             frmListagemFuncionarios f = new frmListagemFuncionarios();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void listagemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmListagemFuncionarios))
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void remuneraçõesToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmRemuneracoes() 
         {
             frmTabelaDeRemuneracoes f = new frmTabelaDeRemuneracoes();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void remuneraçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmRemuneracoes))
+            {
+                l.ShowDialog(this);
+            }
         }
 
-        private void adiantamentosToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void abrirFrmAdiantamentos() 
         {
             frmListagemFuncionariosAdiantamentos f = new frmListagemFuncionariosAdiantamentos();
-            f.Show();
+            f.ShowDialog();
+        }
+        private void adiantamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmAdiantamentos))
+            {
+                l.ShowDialog(this);
+            }
         }
     }
 }

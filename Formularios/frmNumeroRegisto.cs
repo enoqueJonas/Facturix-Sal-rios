@@ -31,13 +31,21 @@ namespace Facturix_Salários
 
         }
 
+        private void procurarENTER() 
+        {
+            enterdCod = int.Parse(txtNrRegisto.Text);
+            if (InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate {
+                    this.Close();
+                }));
+                return;
+            }
+        }
         private void frmNumeroRegisto_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) 
-            {
-                enterdCod = int.Parse(txtNrRegisto.Text);
-                this.Close();
-            }
+
+            procurarENTER();
         }
 
         private void frmNumeroRegisto_KeyPress(object sender, KeyPressEventArgs e)

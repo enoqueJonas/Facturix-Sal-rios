@@ -22,6 +22,13 @@ namespace Facturix_Salários.Formularios
             InitializeComponent();
         }
 
+        private Boolean estaVazio()
+        {
+            if (dataRemuneracoes.Rows.Count == 0)
+                return true;
+
+            return false;
+        }
         private void frmTabelaDeRemuneracoes_Load(object sender, EventArgs e)
         {
             refrescar();
@@ -34,6 +41,44 @@ namespace Facturix_Salários.Formularios
         {
             ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperar();
             preencherDtView(listaRemuneracoes);
+        }
+        
+        public void refrescar2()
+        {
+            ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperar();
+            preencherDtView2(listaRemuneracoes);
+        }
+
+        private void preencherDtView2(ArrayList lista)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Registo n°");
+            dt.Columns.Add("Natureza");
+            dt.Columns.Add("Grupo");
+            foreach (ModeloRemuneracoes r in lista)
+            {
+                DataRow dRow = dt.NewRow();
+                dRow["Registo n°"] = r.getId();
+                dRow["Natureza"] = r.getNatureza();
+                dRow["Grupo"] = r.getGrupo();
+                dt.Rows.Add(dRow);
+                nrSub++;
+            }
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    //load the control with the appropriate data
+                    dataRemuneracoes.DataSource = dt;
+                }));
+                return;
+            }
+            dataRemuneracoes.AllowUserToAddRows = false;
+            dataRemuneracoes.Refresh();
+            dataRemuneracoes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
+            dataRemuneracoes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            txtNumeroDeRemuneracoes.Text = nrSub + "";
         }
 
         private void preencherDtView(ArrayList lista) 
@@ -51,9 +96,18 @@ namespace Facturix_Salários.Formularios
                 dt.Rows.Add(dRow);
                 nrSub++;
             }
-            dataRemuneracoes.DataSource = dt;
+            //if (InvokeRequired)
+            //{
+            //    // after we've done all the processing, 
+            //    this.Invoke(new MethodInvoker(delegate {
+                    // load the control with the appropriate data
+                    dataRemuneracoes.DataSource = dt;
+            //    }));
+            //    return;
+            //}
             dataRemuneracoes.AllowUserToAddRows = false;
             dataRemuneracoes.Refresh();
+            lblEstado.Visible = estaVazio();
             dataRemuneracoes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataRemuneracoes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             txtNumeroDeRemuneracoes.Text = nrSub + "";
@@ -128,7 +182,10 @@ namespace Facturix_Salários.Formularios
 
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
-            refrescar();
+            using (frmLoadingScreen l = new frmLoadingScreen(refrescar2))
+            {
+                l.ShowDialog(this);
+            }
         }
 
         private void frmTabelaDeRemuneracoes_FormClosing(object sender, FormClosingEventArgs e)

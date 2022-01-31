@@ -44,6 +44,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblEstado = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataCategorias)).BeginInit();
             this.panel3.SuspendLayout();
@@ -243,12 +244,24 @@
             this.panel3.Size = new System.Drawing.Size(592, 89);
             this.panel3.TabIndex = 229;
             // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.Location = new System.Drawing.Point(225, 260);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(169, 31);
+            this.lblEstado.TabIndex = 230;
+            this.lblEstado.Text = "Sem Registo";
+            this.lblEstado.Visible = false;
+            // 
             // frmCadastrarCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(616, 546);
+            this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataCategorias);
             this.Controls.Add(this.panel1);
@@ -265,6 +278,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -285,5 +299,6 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lblEstado;
     }
 }

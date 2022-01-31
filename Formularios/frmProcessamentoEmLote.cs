@@ -29,7 +29,10 @@ namespace Facturix_Salários.Formularios
 
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
-            refrescar();
+            using (frmLoadingScreen l = new frmLoadingScreen(refrescar))
+            {
+                l.ShowDialog(this);
+            }
         }
 
         public int diasDeTrabalhoRecebidos;
@@ -53,6 +56,8 @@ namespace Facturix_Salários.Formularios
                     String nome = "", estado = "";
                     frmProcessamentoIndividual f = new frmProcessamentoIndividual();
                     int codIrps = 0;
+                    int mesRecebido = dtProcessamento.Value.Month;
+                    int anoRecebido = dtProcessamento.Value.Year;
                     double valorIrps = 0, emprestimo = 0, ipa = 0, adiantamentos = 0, vencimento = 0, outroSub = 0, subAlimentacao = 0;
                     diasDeTrabalho = getDiasDeTrabalho(codigoCelSelecionada);
                     Boolean existe = existeProcessamento(codigoCelSelecionada);
@@ -121,6 +126,18 @@ namespace Facturix_Salários.Formularios
                             estado = "Processado";
                         }
                     }
+
+                    foreach (ModeloAdiantamento ad in listaAdiantamentos)
+                    {
+                        DateTime dataAdiantamentos = Convert.ToDateTime(ad.getData());
+                        int mesAdiant = dataAdiantamentos.Month;
+                        int anoAdiant = dataAdiantamentos.Year;
+                        if (ad.getIdFuncionario() == codigoCelSelecionada && mesAdiant == mesRecebido && anoAdiant == anoRecebido)
+                        {
+                            adiantamentos = Math.Round(ad.getDiantamento(), 2, MidpointRounding.AwayFromZero);
+                        }
+                    }
+
                     f.nrAno.Value = nrAno.Value;
                     f.cbMes.Text = cbMes.Text;
                     f.txtNome.Text = nome;
@@ -188,8 +205,7 @@ namespace Facturix_Salários.Formularios
             //refrescar();
         }
 
-
-        private void btnConfirmar_Click(object sender, EventArgs e)
+        private void confirmar() 
         {
             try
             {
@@ -197,17 +213,23 @@ namespace Facturix_Salários.Formularios
                 {
                     MessageBox.Show("Selecione um mês válido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                else 
+                else
                 {
                     gravar();
-                    MessageBox.Show("Salário/os processado/os com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Salário/os processado/os com sucesso!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (Exception err) 
+            catch (Exception err)
             {
-                MessageBox.Show( err.Message,"Falha ao processar Salário/os", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                MessageBox.Show(err.Message, "Falha ao processar Salário/os", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+        }
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            confirmar();
+            frmTerminarProcessamento f = new frmTerminarProcessamento();
+            f.lista = listaDeNomes;
+            f.ShowDialog();
         }
 
         public frmProcessamentoEmLote()
@@ -223,8 +245,21 @@ namespace Facturix_Salários.Formularios
         private void frmProcessamentoEmLote_Load(object sender, EventArgs e)
         {
             //refrescar();
+            this.ActiveControl = cbOperacao;
+            if (estaVazio() == true) 
+            {
+                lblEstado.Visible = true;
+            }
         }
 
+        public Boolean estaVazio() 
+        {
+            if (dataProcessamentoSalario.Rows.Count == 0) 
+            {
+                return true;
+            }
+            return false;
+        }
         private Boolean existeProcessamento(int idFunc) 
         {
             Boolean existe = false;
@@ -284,6 +319,8 @@ namespace Facturix_Salários.Formularios
                 ArrayList listaSeguros = ControllerSeguro.recuperar();
                 int diasBaseDados = 0;
                 ajudaDeslocacao = 0;
+                int mesRecebido = dtProcessamento.Value.Month;
+                int anoRecebido = dtProcessamento.Value.Year;
                 for (int i = 0; i < funcionariosValidos.Count; i++) 
                 {
                     
@@ -375,11 +412,15 @@ namespace Facturix_Salários.Formularios
                             }
                             dtProcessamento.Value = dataProcessamento;
                         }
-                        foreach (ModeloAdiantamento a in listaAdiantamentos)
+
+                        foreach (ModeloAdiantamento ad in listaAdiantamentos)
                         {
-                            if (a.getIdFuncionario() == f.getCodigo())
+                            DateTime dataAdiantamentos = Convert.ToDateTime(ad.getData());
+                            int mesAdiant = dataAdiantamentos.Month;
+                            int anoAdiant = dataAdiantamentos.Year;
+                            if (ad.getIdFuncionario() == idFuncionario && mesAdiant == mesRecebido && anoAdiant == anoRecebido)
                             {
-                                adiantamentos = a.getDiantamento();
+                                adiantamentos = Math.Round(ad.getDiantamento(), 2, MidpointRounding.AwayFromZero);
                             }
                         }
                         dRow["Registo n°"] = idFuncionario;
@@ -405,11 +446,16 @@ namespace Facturix_Salários.Formularios
             }
             dataProcessamentoSalario.DataSource = dt;
             dataProcessamentoSalario.Refresh();
+            if (estaVazio() == true)
+            {
+                lblEstado.Visible = true;
+            }
             dataProcessamentoSalario.AllowUserToAddRows = false;
             dataProcessamentoSalario.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataProcessamentoSalario.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
 
+        public List<String> listaDeNomes = new List<string>();
         private void gravar() 
         {
             int idFuncionario;
@@ -432,6 +478,7 @@ namespace Facturix_Salários.Formularios
             ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
             ArrayList listaIrps = ControllerIRPS.recuperar();
             ArrayList listaSeguros = ControllerSeguro.recuperar();
+            ArrayList listaAdiantamentos = ControllerAdiantamento.recuperar();
 
             foreach (DataGridViewRow row in dataProcessamentoSalario.Rows)
             {
@@ -491,9 +538,20 @@ namespace Facturix_Salários.Formularios
                     }
                 }
 
+                foreach (ModeloAdiantamento ad in listaAdiantamentos) 
+                {
+                    DateTime dataAdiantamentos = Convert.ToDateTime(ad.getData());
+                    int mesAdiant = dataAdiantamentos.Month;
+                    int anoAdiant = dataAdiantamentos.Year;
+                    if (ad.getIdFuncionario() == idFuncionario && mesAdiant == mesRecebido && anoAdiant == anoRecebido) 
+                    {
+                        adiantamentos = Math.Round(ad.getDiantamento(), 2, MidpointRounding.AwayFromZero);
+                    }
+                }
+
                 salarioLiquido = Math.Round((f.getVencimento() / 30) * diasDeTrabalho, 2, MidpointRounding.AwayFromZero);
                 inss = Math.Round((salarioLiquido * 0.03), 2, MidpointRounding.AwayFromZero); 
-                totalDescontar = emprestimoMedico + adiantamentos + valorIrps + ipa + inss;
+                totalDescontar = Math.Round( emprestimoMedico + adiantamentos + valorIrps + ipa + inss, 2, MidpointRounding.AwayFromZero);
                 totalRetribuicao = Math.Round(subAlimentacao + salarioLiquido + diversosSubsidios + ajudaDeCusto + ajudaDeslocacao + pagamentoFerias, 2, MidpointRounding.AwayFromZero);
                 importanciaAPagar = Math.Round(totalRetribuicao - totalDescontar, 2, MidpointRounding.AwayFromZero);
 
@@ -506,11 +564,13 @@ namespace Facturix_Salários.Formularios
                             if (existe)
                             {
                                 ControllerProcessamentoDeSalario.atualizar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioLiquido, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, valorIrps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, operacao);
+                                listaDeNomes.Add(nomeDoTrabalhador);
                             }
                             else
                             {
                                 id = getCodProcessamento() + 1;
                                 ControllerProcessamentoDeSalario.Guardar(id, idFuncionario, nomeDoTrabalhador, diasDeTrabalho, salarioLiquido, subAlimentacao, ajudaDeCusto, ajudaDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicao, emprestimoMedico, valorIrps, ipa, inss, totalDescontar, adiantamentos, importanciaAPagar, operacao, dataProcessamento, operacao);
+                                listaDeNomes.Add(nomeDoTrabalhador);
                                 break;
                             }
                         }                        
@@ -776,6 +836,101 @@ namespace Facturix_Salários.Formularios
                     conexao.Close();
             }
 
+        }
+
+        private void cbOperacao_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.Right || e.KeyCode == Keys.Enter) 
+            {
+                nrAno.Focus();
+                e.Handled = true;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down) 
+            {
+                dtProcessamento.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void nrAno_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.Right || e.KeyCode == Keys.Enter)
+            {
+                cbMes.Focus();
+                e.Handled = true;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                chbVencimento.Focus();
+                e.Handled = true;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                cbOperacao.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void cbMes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.Right || e.KeyCode == Keys.Enter)
+            {
+                dtProcessamento.Focus();
+                e.Handled = true;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                chbVencimento.Focus();
+                e.Handled = true;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                nrAno.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void dtProcessamento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.Right || e.KeyCode == Keys.Enter)
+            {
+                chbVencimento.Focus();
+                e.Handled = true;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                cbOperacao.Focus();
+                e.Handled = true;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                cbMes.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void chbVencimento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.Right || e.KeyCode == Keys.Enter)
+            {
+                btnConfirmar.Focus();
+                e.Handled = true;
+            }
+            if (e.Alt && e.KeyCode == Keys.Down)
+            {
+                btnConfirmar.Focus();
+                e.Handled = true;
+            }
+            if (e.Alt && e.KeyCode == Keys.Left)
+            {
+                dtProcessamento.Focus();
+                e.Handled = true;
+            }
+            if (e.Alt && e.KeyCode == Keys.Up)
+            {
+                cbMes.Focus();
+                e.Handled = true;
+            }
         }
 
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)

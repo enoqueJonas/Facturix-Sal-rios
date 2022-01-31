@@ -31,10 +31,10 @@ namespace Facturix_Salários
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastrarFuncionarios));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -200,6 +200,8 @@ namespace Facturix_Salários
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
+            this.lblEstadoRem = new System.Windows.Forms.Label();
+            this.lblEstadoDep = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -472,6 +474,7 @@ namespace Facturix_Salários
             // dtDataDemissao
             // 
             this.dtDataDemissao.CustomFormat = "dd-MM-yyyy";
+            this.dtDataDemissao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtDataDemissao.Location = new System.Drawing.Point(532, 28);
             this.dtDataDemissao.Name = "dtDataDemissao";
             this.dtDataDemissao.Size = new System.Drawing.Size(106, 20);
@@ -481,6 +484,7 @@ namespace Facturix_Salários
             // dtDataAdmissao
             // 
             this.dtDataAdmissao.CustomFormat = "dd-MM-yyyy";
+            this.dtDataAdmissao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtDataAdmissao.Location = new System.Drawing.Point(322, 28);
             this.dtDataAdmissao.Name = "dtDataAdmissao";
             this.dtDataAdmissao.Size = new System.Drawing.Size(106, 20);
@@ -1056,6 +1060,7 @@ namespace Facturix_Salários
             // dtNascimento
             // 
             this.dtNascimento.CustomFormat = "dd-MM-yyyy";
+            this.dtNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtNascimento.Location = new System.Drawing.Point(77, 132);
             this.dtNascimento.MaxDate = new System.DateTime(2025, 12, 25, 0, 0, 0, 0);
             this.dtNascimento.Name = "dtNascimento";
@@ -1762,6 +1767,7 @@ namespace Facturix_Salários
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.lblEstadoRem);
             this.groupBox5.Controls.Add(this.btnAdicionarRemuneracao);
             this.groupBox5.Controls.Add(this.btnEditarRemuneracoes);
             this.groupBox5.Controls.Add(this.btnEliminarRemuneracoes);
@@ -1812,37 +1818,37 @@ namespace Facturix_Salários
             // 
             this.dataSubsidios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataSubsidios.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataSubsidios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataSubsidios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataSubsidios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataSubsidios.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataSubsidios.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataSubsidios.EnableHeadersVisualStyles = false;
             this.dataSubsidios.Location = new System.Drawing.Point(33, 49);
             this.dataSubsidios.Name = "dataSubsidios";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataSubsidios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataSubsidios.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataSubsidios.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataSubsidios.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataSubsidios.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dataSubsidios.Size = new System.Drawing.Size(679, 174);
             this.dataSubsidios.TabIndex = 3014;
             this.dataSubsidios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataSubsidios_CellClick);
@@ -1869,6 +1875,7 @@ namespace Facturix_Salários
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.lblEstadoDep);
             this.panel3.Controls.Add(this.dataDependentes);
             this.panel3.Location = new System.Drawing.Point(9, 103);
             this.panel3.Name = "panel3";
@@ -2205,6 +2212,28 @@ namespace Facturix_Salários
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             this.btnAdicionar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAdicionar_KeyDown);
             // 
+            // lblEstadoRem
+            // 
+            this.lblEstadoRem.AutoSize = true;
+            this.lblEstadoRem.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoRem.Location = new System.Drawing.Point(293, 116);
+            this.lblEstadoRem.Name = "lblEstadoRem";
+            this.lblEstadoRem.Size = new System.Drawing.Size(169, 31);
+            this.lblEstadoRem.TabIndex = 3016;
+            this.lblEstadoRem.Text = "Sem Registo";
+            this.lblEstadoRem.Visible = false;
+            // 
+            // lblEstadoDep
+            // 
+            this.lblEstadoDep.AutoSize = true;
+            this.lblEstadoDep.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoDep.Location = new System.Drawing.Point(302, 148);
+            this.lblEstadoDep.Name = "lblEstadoDep";
+            this.lblEstadoDep.Size = new System.Drawing.Size(169, 31);
+            this.lblEstadoDep.TabIndex = 8;
+            this.lblEstadoDep.Text = "Sem Registo";
+            this.lblEstadoDep.Visible = false;
+            // 
             // frmCadastrarFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2234,10 +2263,12 @@ namespace Facturix_Salários
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSubsidios)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDependentes)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -2411,5 +2442,7 @@ namespace Facturix_Salários
         internal System.Windows.Forms.TextBox txtHoraSemana;
         internal System.Windows.Forms.Label lblSubAlimentacao;
         internal System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label lblEstadoRem;
+        private System.Windows.Forms.Label lblEstadoDep;
     }
 }

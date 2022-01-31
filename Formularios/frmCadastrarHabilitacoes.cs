@@ -37,6 +37,7 @@ namespace Facturix_Salários
             dataHabilitacoes.DataSource = dt;
             dataHabilitacoes.AllowUserToAddRows = false;
             dataHabilitacoes.Refresh();
+            lblEstado.Visible = estaVazio();
             dataHabilitacoes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataHabilitacoes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
@@ -205,6 +206,14 @@ namespace Facturix_Salários
         private void porFoco()
         {
             this.ActiveControl = txtNome;
+        }
+
+        private Boolean estaVazio()
+        {
+            if (dataHabilitacoes.Rows.Count == 0)
+                return true;
+
+            return false;
         }
 
         private void frmCadastrarHabilitacoes_Load(object sender, EventArgs e)

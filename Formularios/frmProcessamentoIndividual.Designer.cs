@@ -83,6 +83,7 @@
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.dataProcessamentoSalario = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblEstado = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nrAno)).BeginInit();
@@ -752,6 +753,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblEstado);
             this.panel2.Controls.Add(this.dataProcessamentoSalario);
             this.panel2.Controls.Add(this.btnRefrescar);
             this.panel2.Controls.Add(this.btnAdicionarRemuneracao);
@@ -762,6 +764,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(671, 162);
             this.panel2.TabIndex = 5;
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.Location = new System.Drawing.Point(264, 68);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(169, 31);
+            this.lblEstado.TabIndex = 3021;
+            this.lblEstado.Text = "Sem Registo";
+            this.lblEstado.Visible = false;
             // 
             // frmProcessamentoIndividual
             // 
@@ -794,6 +807,7 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataProcessamentoSalario)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -855,5 +869,6 @@
         private System.Windows.Forms.Label lbl6;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox txtEstado;
+        private System.Windows.Forms.Label lblEstado;
     }
 }

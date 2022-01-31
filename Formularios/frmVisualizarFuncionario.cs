@@ -135,7 +135,7 @@ namespace Facturix_Salários
                 f.txtNacionalidade.Text = func.getNacionalidade();
                 f.txtUltimo.Text = func.getUltimoEmprego();
                 f.cbTurno.Text = func.getTurno();
-                f.txtImpostoM.Text = func.getImpostoMunicipal() + "";
+                f.txtImpostoM.Text = func.getImpostoMunicipal() +"";
                 f.cbCentrocusto.Text = func.getCentroDeCusto();
                 f.txtSeguranca.Text = func.getSegurancaSocial();
                 f.txtVencimento.Text = string.Format("{0:#,##0.00}", func.getVencimento());
@@ -150,7 +150,7 @@ namespace Facturix_Salários
                     }
                 }
             }
-            f.Show();
+            f.ShowDialog();
             this.Close();
         }
 
@@ -210,7 +210,7 @@ namespace Facturix_Salários
                 this.Close();
             }
         }
-
+        
         private void btnRegressar_KeyDown(object sender, KeyEventArgs e)
         {
             fecharJanela(e);
@@ -218,21 +218,22 @@ namespace Facturix_Salários
 
         private void btnRegre(object sender, KeyEventArgs e)
         {
-
+    
         }
-
+        
         private void frmVisualizarF_KeyPress(object sender, KeyPressEventArgs e)
         {
         }
 
+        private void abrirFrmAdicionarFunc() 
+        {
+            frmAdicionarFuncionario f = new frmAdicionarFuncionario();
+            f.ShowDialog();
+        }
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            //frmCadastrarFuncionarios f = new frmCadastrarFuncionarios();
-            //f.Show();
-            //f.setCod();
-            //this.Close();
-            frmAdicionarFuncionario f = new frmAdicionarFuncionario();
-            f.Show();
+            abrirFrmAdicionarFunc();
         }
 
         private void txtLocalizar_TextChanged(object sender, EventArgs e)
@@ -315,25 +316,11 @@ namespace Facturix_Salários
 
         private void frmVisualizarFuncionario_FormClosing(object sender, FormClosingEventArgs e)
         {
-            switch (e.CloseReason)
-            {
-                case CloseReason.UserClosing:
-                    if (MessageBox.Show("Pretende Voltar ao menu principal?", "Atenção!",
-                                        MessageBoxButtons.YesNo,
-                                        MessageBoxIcon.Question) == DialogResult.No)
-                    {
-                        e.Cancel = true;
-                    }
-                    break;
-            }
+           
         }
 
         private void txtLocalizar_KeyDown(object sender, KeyEventArgs e)
         {
-            //if (e.KeyCode == Keys.Enter) 
-            //{
-            //    dataFuncionarios.Rows[0].Selected = true;
-            //}
             foreach (DataGridViewRow row in dataFuncionarios.Rows)
             {
                 if (e.KeyCode == Keys.Enter)

@@ -37,6 +37,7 @@ namespace Facturix_Salários
             dataProfissao.DataSource = dt;
             dataProfissao.AllowUserToAddRows = false;
             dataProfissao.Refresh();
+            lblEstado.Visible = estaVazio();
             dataProfissao.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataProfissao.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
@@ -159,6 +160,14 @@ namespace Facturix_Salários
             {
 
             }
+        }
+
+        private Boolean estaVazio()
+        {
+            if (dataProfissao.Rows.Count == 0)
+                return true;
+
+            return false;
         }
 
         private void atualizarBotoes()

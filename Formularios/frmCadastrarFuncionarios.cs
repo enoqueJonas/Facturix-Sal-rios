@@ -49,6 +49,7 @@ namespace Facturix_Salários
             }
             dataDependentes.DataSource = dt;
             dataDependentes.Refresh();
+            lblEstadoDep.Visible = estaVazioDep();
             dataDependentes.AllowUserToAddRows = false;
             dataDependentes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataDependentes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
@@ -87,6 +88,7 @@ namespace Facturix_Salários
             DataTable dtTable = dtView.ToTable(true, "Registo n°", "Natureza", "Valor Unit.", "Quantidade", "Total");
             dataSubsidios.DataSource = dtTable;
             dataSubsidios.Refresh();
+            lblEstadoRem.Visible = estaVazioRem();
             dataSubsidios.AllowUserToAddRows = false;
             dataSubsidios.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataSubsidios.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
@@ -887,6 +889,22 @@ namespace Facturix_Salários
                 btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             }
         }
+
+        private Boolean estaVazioDep()
+        {
+            if (dataDependentes.Rows.Count == 0)
+                return true;
+
+            return false;
+        }
+        private Boolean estaVazioRem()
+        {
+            if (dataSubsidios.Rows.Count == 0)
+                return true;
+
+            return false;
+        }
+
         private void f_funcionarios_Load(object sender, EventArgs e)
         {
             impedirBotoes();
@@ -905,6 +923,8 @@ namespace Facturix_Salários
             //setCod();
             adicionarItemsCb();
             porFoco();
+            lblEstadoRem.Visible = estaVazioRem();
+            lblEstadoDep.Visible = estaVazioDep();
         }
 
         private void txtAlimentacao_LostFocus(object sender, EventArgs e)
@@ -1882,6 +1902,11 @@ namespace Facturix_Salários
                     {
                         e.Cancel = true;
                     }
+                    //else 
+                    //{
+                    //    frmVisualizarFuncionario f = new frmVisualizarFuncionario();
+                    //    f.Show();
+                    //}
                     break;
             }
         }

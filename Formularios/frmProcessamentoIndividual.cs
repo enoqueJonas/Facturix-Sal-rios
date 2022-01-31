@@ -90,6 +90,7 @@ namespace Facturix_Salários.Formularios
             txtIrps.LostFocus += new EventHandler(txtIrps_LostFocus);
             txtIpa.LostFocus += new EventHandler(txtIpa_LostFocus);
             txtadiantamentos.LostFocus += new EventHandler(txtadiantamentos_LostFocus);
+            lblEstado.Visible = estaVazio();
         }
 
         private void txtVencimento_LostFocus(object sender, EventArgs e)
@@ -146,6 +147,14 @@ namespace Facturix_Salários.Formularios
             {
                 txtOutrasRemuneracoes.Text = string.Format("{0:#,##0.00}", double.Parse(txtOutrasRemuneracoes.Text));
             }
+        }
+
+        private Boolean estaVazio() 
+        {
+            if (dataProcessamentoSalario.Rows.Count == 0)
+                return true;
+
+            return false;
         }
 
         private void limpar() 
@@ -326,6 +335,7 @@ namespace Facturix_Salários.Formularios
             DataTable dtTable = dtView.ToTable(true, "Registo n°", "Natureza", "Valor Unit.", "Quantidade", "Total");
             dataProcessamentoSalario.DataSource = dtTable;
             dataProcessamentoSalario.Refresh();
+            lblEstado.Visible = estaVazio();
             dataProcessamentoSalario.AllowUserToAddRows = false;
             dataProcessamentoSalario.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataProcessamentoSalario.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
@@ -501,8 +511,6 @@ namespace Facturix_Salários.Formularios
                 btnEliminar.FlatStyle = FlatStyle.Standard;
                 btnImprimir.FlatStyle = FlatStyle.Standard;
                 btnMostrar.FlatStyle = FlatStyle.Standard;
-                btnEliminar.Cursor = System.Windows.Forms.Cursors.Default;
-                btnAtualizar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnConfirmar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnCancelar.Cursor = System.Windows.Forms.Cursors.Default;
                 btnMostrar.Cursor = System.Windows.Forms.Cursors.Default;
@@ -518,19 +526,20 @@ namespace Facturix_Salários.Formularios
         private void gravar() 
         {
             idFunc = Convert.ToInt16(nrRegistonr.Value);
-            Boolean existe = existeProcessamento(idFunc);
+            Boolean existePro = existeProcessamento(idFunc);
             String nome = txtNome.Text, dataProcessamento = "";
             diasDeTrabalho = Convert.ToInt16(nrDias.Value);
-            double emprestimoMedico = double.Parse(txtemprestimoMedico.Text);
-            double irps = double.Parse(txtIrps.Text);
-            ipa = double.Parse(txtIpa.Text);
-            double adiantamentos = double.Parse(txtadiantamentos.Text);
-            salarioBruto =  double.Parse(txtVencimento.Text);
-            subAlimentacao = double.Parse(txtSubAlimentacao.Text);           
-            double diversosSubsidios = double.Parse(txtOutrasRemuneracoes.Text);
+            double emprestimoMedico = Math.Round(double.Parse(txtemprestimoMedico.Text), 2, MidpointRounding.AwayFromZero);
+            double irps = Math.Round(double.Parse(txtIrps.Text), 2, MidpointRounding.AwayFromZero);
+            ipa = Math.Round(double.Parse(txtIpa.Text), 2, MidpointRounding.AwayFromZero);
+            double adiantamentos;
+            salarioBruto = Math.Round(double.Parse(txtVencimento.Text), 2, MidpointRounding.AwayFromZero);
+            subAlimentacao = Math.Round(double.Parse(txtSubAlimentacao.Text), 2, MidpointRounding.AwayFromZero);           
+            double diversosSubsidios = Math.Round(double.Parse(txtOutrasRemuneracoes.Text), 2, MidpointRounding.AwayFromZero);
+            adiantamentos = Math.Round(float.Parse(txtadiantamentos.Text), 2, MidpointRounding.AwayFromZero);
             ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperarComCod(idProcessamento);
             //ControllerDiasDeTrabalho.gravar(idFunc, diasDeTrabalho);
-            if (existe == false)
+            if (existePro == false)
             {
                 ControllerDiasDeTrabalho.atualizar(idFunc, diasDeTrabalho);
                 ControllerFuncionario.atualizarVenc(idFunc, salarioBruto, subAlimentacao, ipa);
@@ -540,18 +549,17 @@ namespace Facturix_Salários.Formularios
                 foreach (ModeloProcessamentoDeSalario p in listaProcessamento)
                 {
 
-                    ajudaDeCusto = p.getAjudaDeCusto();
-                    ajudaDeDeslocacao = p.getAjudaDeslocacao();
-                    pagamentoFerias = p.getPagamentoFerias();
-                    diversosSubsidios = p.getDiversosSubsidios();
-                    emprestimoMedico = p.getEmprestimoMedico();
-                    adiantamentos = p.getAdiantamentos();
+                    ajudaDeCusto = Math.Round(p.getAjudaDeCusto(), 2, MidpointRounding.AwayFromZero);
+                    ajudaDeDeslocacao = Math.Round(p.getAjudaDeslocacao(), 2, MidpointRounding.AwayFromZero);
+                    pagamentoFerias = Math.Round(p.getPagamentoFerias(), 2, MidpointRounding.AwayFromZero);
+                    diversosSubsidios = Math.Round(p.getDiversosSubsidios(), 2, MidpointRounding.AwayFromZero);
+                    emprestimoMedico = Math.Round(p.getEmprestimoMedico(), 2, MidpointRounding.AwayFromZero);
                     DateTime dataP = Convert.ToDateTime(p.getDataProcessamento());
                     dataProcessamento = dataP.ToString("yyyy-MM-dd");
                 }
 
                 int idFunc = Convert.ToInt16(nrRegistonr.Value);
-                if (existe == true && dtProcessamentoExistente.Date < DateTime.Now.Date)
+                if (existePro == true && dtProcessamentoExistente.Date < DateTime.Now.Date)
                 {
                     if (MessageBox.Show("O processamento já foi submetido à segurança social! Modificar o mesmo virá com Repercussões. Deseja Continuar?", "Atenção!",
                                             MessageBoxButtons.YesNo,
@@ -591,7 +599,7 @@ namespace Facturix_Salários.Formularios
             //int cod = f.cod, qtd = f.qtd, idFunc = Convert.ToInt16(nrRegistonr.Value);
             //double valor = f.valorUnit;
             //ControllerFuncionarioRemuneracoes.gravar(getCodRemuneracao() + 1, idFunc, cod, valor, qtd);
-            //refrescarVencimento();
+            refrescarVencimento();
         }
 
         private void btnEditarRemuneracoes_Click(object sender, EventArgs e)
@@ -639,7 +647,10 @@ namespace Facturix_Salários.Formularios
 
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
-            refrescarVencimento();
+            using (frmLoadingScreen l = new frmLoadingScreen(refrescarVencimento))
+            {
+                l.ShowDialog(this);
+            }
         }
 
         private void nrRegistonr_KeyDown(object sender, KeyEventArgs e)

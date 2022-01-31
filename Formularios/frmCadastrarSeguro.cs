@@ -43,6 +43,7 @@ namespace Facturix_Salários
             dataSeguro.DataSource = dt;
             dataSeguro.AllowUserToAddRows = false;
             dataSeguro.Refresh();
+            lblEstado.Visible = estaVazio();
             dataSeguro.Columns["Percentagem"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataSeguro.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataSeguro.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
@@ -250,6 +251,14 @@ namespace Facturix_Salários
                 refrescar();
                 impedirBotoes();
             }
+        }
+
+        private Boolean estaVazio()
+        {
+            if (dataSeguro.Rows.Count == 0)
+                return true;
+
+            return false;
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)

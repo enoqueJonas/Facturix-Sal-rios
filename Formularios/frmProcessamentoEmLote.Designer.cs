@@ -47,6 +47,7 @@
             this.btnRegressar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
+            this.lblEstado = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nrAno)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -73,6 +74,7 @@
             this.cbOperacao.Size = new System.Drawing.Size(107, 21);
             this.cbOperacao.TabIndex = 1;
             this.cbOperacao.SelectedIndexChanged += new System.EventHandler(this.cbOperacao_SelectedIndexChanged);
+            this.cbOperacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbOperacao_KeyDown);
             // 
             // label2
             // 
@@ -92,6 +94,7 @@
             this.chbVencimento.TabIndex = 2;
             this.chbVencimento.Text = "Vencimento";
             this.chbVencimento.UseVisualStyleBackColor = true;
+            this.chbVencimento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.chbVencimento_KeyDown);
             // 
             // cbMes
             // 
@@ -114,6 +117,7 @@
             this.cbMes.Size = new System.Drawing.Size(105, 21);
             this.cbMes.TabIndex = 22;
             this.cbMes.SelectedIndexChanged += new System.EventHandler(this.cbMes_SelectedIndexChanged);
+            this.cbMes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbMes_KeyDown);
             // 
             // nrAno
             // 
@@ -137,6 +141,7 @@
             0,
             0});
             this.nrAno.ValueChanged += new System.EventHandler(this.nrAno_ValueChanged);
+            this.nrAno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nrAno_KeyDown);
             // 
             // label3
             // 
@@ -149,11 +154,13 @@
             // 
             // dtProcessamento
             // 
-            this.dtProcessamento.CustomFormat = "dd/MM/yyyy";
+            this.dtProcessamento.CustomFormat = "dd-MM-yyyy";
+            this.dtProcessamento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtProcessamento.Location = new System.Drawing.Point(93, 51);
             this.dtProcessamento.Name = "dtProcessamento";
             this.dtProcessamento.Size = new System.Drawing.Size(107, 20);
             this.dtProcessamento.TabIndex = 24;
+            this.dtProcessamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtProcessamento_KeyDown);
             // 
             // label7
             // 
@@ -185,6 +192,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.lblEstado);
             this.panel2.Controls.Add(this.btnRefrescar);
             this.panel2.Controls.Add(this.dataProcessamentoSalario);
             this.panel2.Location = new System.Drawing.Point(25, 139);
@@ -301,6 +309,17 @@
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.Location = new System.Drawing.Point(334, 128);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(198, 37);
+            this.lblEstado.TabIndex = 4;
+            this.lblEstado.Text = "Sem Registo";
+            this.lblEstado.Visible = false;
+            // 
             // frmProcessamentoEmLote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,6 +340,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataProcessamentoSalario)).EndInit();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -347,5 +367,6 @@
         private System.Windows.Forms.Button btnRefrescar;
         public System.Windows.Forms.DataGridView dataProcessamentoSalario;
         private System.Windows.Forms.Button btnEliminar;
+        public System.Windows.Forms.Label lblEstado;
     }
 }

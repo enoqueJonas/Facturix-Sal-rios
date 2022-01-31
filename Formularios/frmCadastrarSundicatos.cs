@@ -35,6 +35,7 @@ namespace Facturix_Salários
             dataGridView1.DataSource = dt;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.Refresh();
+            lblEstado.Visible = estaVazio();
             dataGridView1.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataGridView1.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
@@ -265,6 +266,14 @@ namespace Facturix_Salários
             {
                 this.Close();
             }
+        }
+
+        private Boolean estaVazio()
+        {
+            if (dataGridView1.Rows.Count == 0)
+                return true;
+
+            return false;
         }
 
         private void frmCadastrarSundicatos_Load(object sender, EventArgs e)

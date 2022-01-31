@@ -37,6 +37,14 @@ namespace Facturix_Salários
             }
         }
 
+
+        private Boolean estaVazio() 
+        {
+            if (dataCategorias.RowCount == 0)
+                return true;
+
+            return false;
+        }
         private void refrescar()
         {
             ArrayList listaCategorias = ControllerCategoria.recuperar();
@@ -53,6 +61,7 @@ namespace Facturix_Salários
             dataCategorias.DataSource = dt;
             dataCategorias.AllowUserToAddRows = false;
             dataCategorias.Refresh();
+            lblEstado.Visible = estaVazio();
             tirarFocoCelula();
         }
 
@@ -226,6 +235,7 @@ namespace Facturix_Salários
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            lblEstado.Visible = estaVazio();
         }
 
         private void frmCadastrarCategoria_KeyDown(object sender, KeyEventArgs e)

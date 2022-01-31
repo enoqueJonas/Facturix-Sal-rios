@@ -31,6 +31,7 @@
             this.dataFuncionarios = new System.Windows.Forms.DataGridView();
             this.btnContinuar = new System.Windows.Forms.Button();
             this.btnSelecionarTodos = new System.Windows.Forms.Button();
+            this.lblEstado = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataFuncionarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,12 +66,24 @@
             this.btnSelecionarTodos.UseVisualStyleBackColor = true;
             this.btnSelecionarTodos.Click += new System.EventHandler(this.btnSelecionarTodos_Click);
             // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.Location = new System.Drawing.Point(380, 224);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(169, 31);
+            this.lblEstado.TabIndex = 2;
+            this.lblEstado.Text = "Sem Registo";
+            this.lblEstado.Visible = false;
+            // 
             // frmListagemFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(942, 555);
+            this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.btnSelecionarTodos);
             this.Controls.Add(this.btnContinuar);
             this.Controls.Add(this.dataFuncionarios);
@@ -81,6 +94,7 @@
             this.Load += new System.EventHandler(this.frmListagemFuncionarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataFuncionarios)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -89,5 +103,6 @@
         private System.Windows.Forms.DataGridView dataFuncionarios;
         private System.Windows.Forms.Button btnContinuar;
         private System.Windows.Forms.Button btnSelecionarTodos;
+        private System.Windows.Forms.Label lblEstado;
     }
 }

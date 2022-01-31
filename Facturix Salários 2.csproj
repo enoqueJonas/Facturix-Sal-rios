@@ -285,6 +285,18 @@
     <Compile Include="Formularios\frmTabelaDeRemuneracoes.Designer.cs">
       <DependentUpon>frmTabelaDeRemuneracoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmTerminarProcessamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTerminarProcessamento.Designer.cs">
+      <DependentUpon>frmTerminarProcessamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoadingScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoadingScreen.Designer.cs">
+      <DependentUpon>frmLoadingScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReportProcessamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -611,6 +623,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmTabelaDeRemuneracoes.resx">
       <DependentUpon>frmTabelaDeRemuneracoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTerminarProcessamento.resx">
+      <DependentUpon>frmTerminarProcessamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoadingScreen.resx">
+      <DependentUpon>frmLoadingScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportProcessamento.resx">
       <DependentUpon>frmReportProcessamento.cs</DependentUpon>

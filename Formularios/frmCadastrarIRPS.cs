@@ -36,7 +36,7 @@ namespace Facturix_Salários.Formularios.Cadastros
             }
             else 
             {
-                salarioMax = float.Parse(txtSalarioMax.Text);
+                salarioMax = Math.Round(float.Parse(txtSalarioMax.Text), 2, MidpointRounding.AwayFromZero);
             }
             if (txtSalarioMin.Text == "")
             {
@@ -44,7 +44,7 @@ namespace Facturix_Salários.Formularios.Cadastros
             }
             else 
             {
-                salarioMin = float.Parse(txtSalarioMin.Text); 
+                salarioMin = Math.Round(float.Parse(txtSalarioMin.Text), 2, MidpointRounding.AwayFromZero); 
             }
             if (txtValor.Text == "")
             {
@@ -437,9 +437,9 @@ namespace Facturix_Salários.Formularios.Cadastros
             ArrayList listaIRPS = ControllerIRPS.recuperarComSalMin(salMin);
             foreach (ModeloIRPS ir in listaIRPS)
             {
-                txtSalarioMin.Text = ir.getSalarioMin()+"";
-                txtSalarioMax.Text = ir.getSalarioMax() + "";
-                txtCoeficiente.Text = ir.getCoeficiente() + "";
+                txtSalarioMin.Text = string.Format("{0:#,##0.00}", ir.getSalarioMin());
+                txtSalarioMax.Text = string.Format("{0:#,##0.00}", ir.getSalarioMax());
+                txtCoeficiente.Text = string.Format("{0:#,##0.00}", ir.getCoeficiente());
             }
             impedirBotoes();
         }
@@ -555,7 +555,7 @@ namespace Facturix_Salários.Formularios.Cadastros
             {
                 if (salMin == f.getSalarioMin() && dependentes == f.getNrDependentes())
                 {
-                    txtValor.Text = f.getValor() + "";
+                    txtValor.Text = string.Format("{0:#,##0.00}", f.getValor());
                     txtNrRegisto.Text = f.getId() + "";
                 }
             }

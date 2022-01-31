@@ -19,17 +19,17 @@ namespace Facturix_Salários.Formularios
 
         private void frmListagemFuncionarios_FormClosing(object sender, FormClosingEventArgs e)
         {
-            switch (e.CloseReason)
-            {
-                case CloseReason.UserClosing:
-                    if (MessageBox.Show("Pretende Voltar ao menu principal?", "Atenção!",
-                                        MessageBoxButtons.YesNo,
-                                        MessageBoxIcon.Question) == DialogResult.No)
-                    {
-                        e.Cancel = true;
-                    }
-                    break;
-            }
+            //switch (e.CloseReason)
+            //{
+            //    case CloseReason.UserClosing:
+            //        if (MessageBox.Show("Pretende Voltar ao menu principal?", "Atenção!",
+            //                            MessageBoxButtons.YesNo,
+            //                            MessageBoxIcon.Question) == DialogResult.No)
+            //        {
+            //            e.Cancel = true;
+            //        }
+            //        break;
+            //}
         }
 
         public frmListagemFuncionarios()
@@ -41,6 +41,7 @@ namespace Facturix_Salários.Formularios
         {
             refrescar();
             ControllerDiasDeTrabalho.remover();
+            lblEstado.Visible = estaVazio();
         }
 
         private void refrescar()
@@ -88,7 +89,10 @@ namespace Facturix_Salários.Formularios
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            carregarFuncionariosLote();
+            using (frmLoadingScreen l = new frmLoadingScreen(carregarFuncionariosLote))
+            {
+                l.ShowDialog(this);
+            }
         }
 
         private int getDiasDeTrabalho(int codFunc)
@@ -257,8 +261,29 @@ namespace Facturix_Salários.Formularios
             frm.dataProcessamentoSalario.AllowUserToAddRows = false;
             frm.dataProcessamentoSalario.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             frm.dataProcessamentoSalario.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            frm.Show();
-            this.Hide();
+            if (frm.estaVazio() == true) 
+            {
+                frm.lblEstado.Visible = true;
+            }
+            frm.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    this.Close();
+                }));
+                return;
+            }
+        }
+
+        public Boolean estaVazio() 
+        {
+            if (dataFuncionarios.Rows.Count == 0)
+                return true;
+
+            return false;
         }
 
         public List<int> getFuncionarios() 

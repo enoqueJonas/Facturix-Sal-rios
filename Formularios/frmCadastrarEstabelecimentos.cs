@@ -29,6 +29,7 @@ namespace Facturix_Salários
             dataEst.DataSource = dt;
             dataEst.AllowUserToAddRows = false;
             dataEst.Refresh();
+            lblEstado.Visible = estaVazio();
             dataEst.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataEst.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
         }
@@ -274,6 +275,13 @@ namespace Facturix_Salários
             this.ActiveControl = txtNome;
         }
 
+        private Boolean estaVazio() 
+        {
+            if (dataEst.Rows.Count == 0)
+                return true;
+
+            return false;
+        }
         private void frmCadastrarEstabelecimentos_Load(object sender, EventArgs e)
         {
             setCod();
