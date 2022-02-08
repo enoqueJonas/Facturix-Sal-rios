@@ -23,14 +23,30 @@ namespace Facturix_Salários.Formularios
         private void btnAnterior_Click(object sender, EventArgs e)
         {
             frmFinalDeSemana f = new frmFinalDeSemana();
-            f.Show();
+            f.ShowDialog();
             this.Close();
         }
 
         private void btnSeguinte_Click(object sender, EventArgs e)
         {
+            String tempoServico = cbServico.Text;
+            int cod;
+            ArrayList listaHorarios = ControllerHorarios.recuperar();
+            foreach (ModeloHorarios h in listaHorarios) 
+            {
+                if (h.getTempoServico().Equals(tempoServico))
+                {
+                    cod = h.getId();
+                    ControllerHorarios.atualizarEstado(cod, true);
+                }
+                else 
+                {
+                    cod = h.getId();
+                    ControllerHorarios.atualizarEstado(cod, false);
+                }
+            }
             frmDepartamentos f = new frmDepartamentos();
-            f.Show();
+            f.ShowDialog();
             this.Close();
         }
 
@@ -129,6 +145,23 @@ namespace Facturix_Salários.Formularios
             this.ActiveControl = cbServico;
             impedirBotoes();
             adicionarItemsCb();
+            ArrayList listaHorarios = ControllerHorarios.recuperar();
+            foreach (ModeloHorarios h in listaHorarios) 
+            {
+                if (h.getAtivo() == true) 
+                {
+                    cbServico.Text = h.getTempoServico();
+                    chbDeveCalcularSaidaAdiantada.Checked = h.getSaidaAdiantada();
+                    chbDeveCalcularAusencia.Checked = h.getAusencia();
+                    chbDeveCalcularAtraso.Checked = h.getAtraso();
+                    chbDeveBaterPonto.Checked = h.getBaterPonto();
+                    chbDeveMarcarPonto.Checked = h.getMarcarPonto();
+                    nrTempoDeServicoM.Value = h.getEmTempoM();
+                    nrTempoServicoH.Value = h.getEmTempoH();
+                    nrForaDeServicoH.Value = h.getForaDoTempo();
+                    nrForaDeServicoM.Value = h.getForaDoTempoM();
+                }
+            }
         }
 
         private void adicionarItemsCb() 
@@ -207,12 +240,12 @@ namespace Facturix_Salários.Formularios
 
             if (existe)
             {
-                ControllerHorarios.atualizar(cod, servico, emTempoH, emTempoM, foraDoTempoH, foraDoTempoM, deveMarcar, deveBaterPonto, saidaAdiantada, atraso, ausencia);
+                ControllerHorarios.atualizar(cod, servico, emTempoH, emTempoM, foraDoTempoH, foraDoTempoM, deveMarcar, deveBaterPonto, saidaAdiantada, atraso, ausencia, true);
             }
             else 
             {
                 cod = getCod() + 1;
-                ControllerHorarios.Guardar(cod, servico, emTempoH, emTempoM, foraDoTempoH, foraDoTempoM, deveMarcar, deveBaterPonto, saidaAdiantada, atraso, ausencia);
+                ControllerHorarios.Guardar(cod, servico, emTempoH, emTempoM, foraDoTempoH, foraDoTempoM, deveMarcar, deveBaterPonto, saidaAdiantada, atraso, ausencia, true);
             }
         }
 
@@ -250,6 +283,7 @@ namespace Facturix_Salários.Formularios
             limpar();
             impedirBotoes();
             adicionarItemsCb();
+            mudarEstadoLabels(false);
         }
 
         private void btnCancelarHora_Click(object sender, EventArgs e)
@@ -271,6 +305,7 @@ namespace Facturix_Salários.Formularios
             this.ActiveControl = cbServico;
             mudarEstadoChBoxes(true);
             impedirBotoes();
+            mudarEstadoLabels(false);
         }
 
         private void cbServico_SelectedIndexChanged(object sender, EventArgs e)

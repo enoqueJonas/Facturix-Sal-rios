@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,6 +21,14 @@ namespace Facturix_Salários
                 throw new ArgumentNullException();
             Worker = worker;
         }
+        
+        //public frmLoadingScreen(Action worker)
+        //{
+        //    InitializeComponent();
+        //    if (worker == null)
+        //        throw new ArgumentNullException();
+        //    Worker = worker;
+        //}
 
         private void frmLoadingScreen_Load(object sender, EventArgs e)
         {
@@ -37,10 +46,32 @@ namespace Facturix_Salários
             //Controls.Add(pBar);
         }
 
-        protected override void OnLoad(EventArgs e)
+        public void DoSomething(IProgress<int> progress)
+        {
+            for (int i = 1; i <= 100; i++)
+            {
+                Thread.Sleep(100);
+                if (progress != null)
+                    progress.Report(i);
+            }
+        }
+
+        protected override async void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            Task.Factory.StartNew(Worker).ContinueWith(t => { this.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
+            progressBar1.Value = 0;
+            var progress = new Progress<int>(percent =>
+            {
+                progressBar1.Value = percent;
+
+            });
+            await Task.Factory.StartNew(Worker).ContinueWith(t => { this.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
         }
+
+        //protected override void OnLoad(EventArgs e)
+        //{
+        //    base.OnLoad(e);
+        //    Task.Factory.StartNew(Worker).ContinueWith(t => { this.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
+        //}
     }
 }

@@ -117,7 +117,12 @@ namespace Facturix_Salários.Formularios
             gravar();
             this.Close();
             frmRegrasDeBatidaDePonto f = new frmRegrasDeBatidaDePonto();
-            f.Show();
+            f.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

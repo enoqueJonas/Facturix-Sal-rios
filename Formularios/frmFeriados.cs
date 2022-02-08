@@ -24,7 +24,7 @@ namespace Facturix_Salários.Formularios
         {
             this.Close();
             frmRegrasDeBatidaDePonto F = new frmRegrasDeBatidaDePonto();
-            F.Show();
+            F.ShowDialog();
         }
 
         private void frmFeriados_Load(object sender, EventArgs e)
@@ -285,7 +285,7 @@ namespace Facturix_Salários.Formularios
         private void btnSeguinte_Click(object sender, EventArgs e)
         {
             frmFinalDeSemana f = new frmFinalDeSemana();
-            f.Show();
+            f.ShowDialog();
             this.Close();
         }
     }

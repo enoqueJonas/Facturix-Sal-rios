@@ -249,7 +249,7 @@ namespace Facturix_Salários.Formularios
         private void btnAnterior_Click(object sender, EventArgs e)
         {
             frmTempoDeServico f = new frmTempoDeServico();
-            f.Show();
+            f.ShowDialog();
             this.Close();
         }
 

@@ -9,6 +9,7 @@ using Facturix_Salários.Controllers;
 using Facturix_Salários.Modelos;
 using Facturix_Salários.Conexoes;
 using ZDC2911Demo.Entity;
+using System.Threading;
 
 namespace Facturix_Salários
 {
@@ -138,7 +139,18 @@ namespace Facturix_Salários
         void abrirFormListagemFunc() 
         {
             frmVisualizarFuncionario f = new frmVisualizarFuncionario();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -152,7 +164,18 @@ namespace Facturix_Salários
         private void seguro()
         {
             frmCadastrarSeguro f = new frmCadastrarSeguro();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void segurosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -166,7 +189,18 @@ namespace Facturix_Salários
         private void abrirFrmCadastrarCategoria() 
         {
             frmCadastrarCategoria f = new frmCadastrarCategoria();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -180,7 +214,18 @@ namespace Facturix_Salários
         private void abrirFrmCadastrarContratos() 
         {
             frmCadastrarContrato f = new frmCadastrarContrato();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void contratosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -193,7 +238,18 @@ namespace Facturix_Salários
         private void abirFrmCadastrarProfissao()
         {
             frmCadastrarProfissao f = new frmCadastrarProfissao();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void profissãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -207,7 +263,18 @@ namespace Facturix_Salários
         private void abrirFrmCadastrarHabilitacao() 
         {
             frmCadastrarHabilitacoes f = new frmCadastrarHabilitacoes();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void habilitaçõToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -221,7 +288,18 @@ namespace Facturix_Salários
         private void abrirFrmCadastrarSindicato() 
         {
             frmCadastrarSundicatos f = new frmCadastrarSundicatos();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void sindicatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -235,7 +313,18 @@ namespace Facturix_Salários
         private void abrirFrmCadastrarEstabelecimentos() 
         {
             frmCadastrarEstabelecimentos f = new frmCadastrarEstabelecimentos();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void estabelecimentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -249,7 +338,18 @@ namespace Facturix_Salários
         private void abrirFrmCadastrarCentroDeCusto() 
         {
             frmCadastrarCentrosDeCusto f = new frmCadastrarCentrosDeCusto();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void centrosDeCustoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -268,7 +368,18 @@ namespace Facturix_Salários
         private void abrirFrmGestaoDeUtilizadores() 
         {
             frmGestaoUtilizador f = new frmGestaoUtilizador();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void gestToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -297,7 +408,18 @@ namespace Facturix_Salários
         private void abrirFrmIrps() 
         {
             frmCadastrarIRPS f = new frmCadastrarIRPS();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void iRPSToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -311,7 +433,18 @@ namespace Facturix_Salários
         private void abrirFrmConectarScanner() 
         {
             frmConectarFPScanner f = new frmConectarFPScanner();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void conectarScannerToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -325,11 +458,21 @@ namespace Facturix_Salários
         {
         }
 
-
         private void abrirFrmConfiguracao() 
         {
             frmNomeDaEmpresa f = new frmNomeDaEmpresa();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void configuraçToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -339,11 +482,21 @@ namespace Facturix_Salários
             }
         }
 
-
         private void abrirFrmProcesamento() 
         {
             frmProcessamentoEmLote f = new frmProcessamentoEmLote();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void processamentoSaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -356,14 +509,36 @@ namespace Facturix_Salários
         private void individualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmProcessamentoIndividual f = new frmProcessamentoIndividual();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
 
 
         private void abrirFrmListagemFuncionarios() 
         {
             frmListagemFuncionarios f = new frmListagemFuncionarios();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void listagemToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -373,11 +548,21 @@ namespace Facturix_Salários
             }
         }
 
-
         private void abrirFrmRemuneracoes() 
         {
             frmTabelaDeRemuneracoes f = new frmTabelaDeRemuneracoes();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void remuneraçõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -387,11 +572,21 @@ namespace Facturix_Salários
             }
         }
 
-
         private void abrirFrmAdiantamentos() 
         {
             frmListagemFuncionariosAdiantamentos f = new frmListagemFuncionariosAdiantamentos();
-            f.ShowDialog();
+            if (InvokeRequired)
+            {
+                // after we've done all the processing, 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // load the control with the appropriate data
+                    f.Show();
+                    f.Focus();
+                    f.TopMost = true;
+                }));
+                return;
+            }
         }
         private void adiantamentosToolStripMenuItem_Click(object sender, EventArgs e)
         {

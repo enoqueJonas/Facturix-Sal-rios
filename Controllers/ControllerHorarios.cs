@@ -11,14 +11,14 @@ namespace Facturix_Salários.Controllers
 {
     class ControllerHorarios
     {
-        public static void Guardar(int id, String tempoServico, decimal emTempoH, decimal emTempoM, decimal foraDoTempoH, decimal foraDotempoM, Boolean marcarPonto, Boolean baterPonto, Boolean saidaAdiantada, Boolean atraso, Boolean ausencia)
+        public static void Guardar(int id, String tempoServico, decimal emTempoH, decimal emTempoM, decimal foraDoTempoH, decimal foraDotempoM, Boolean marcarPonto, Boolean baterPonto, Boolean saidaAdiantada, Boolean atraso, Boolean ausencia, Boolean ativo)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into horario (id, tempoServico, emTempoH, emTempoM, foraDoTempoH, foraDotempoM, marcarPonto, baterPonto, saidaAdiantada, atraso, ausencia) values(?,?,?,?,?,?,?,?,?,?,?)";
+                String sqlInsert = "INSERT into horario (id, tempoServico, emTempoH, emTempoM, foraDoTempoH, foraDotempoM, marcarPonto, baterPonto, saidaAdiantada, atraso, ausencia, ativo) values(?,?,?,?,?,?,?,?,?,?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", id);
                 comando.Parameters.AddWithValue("tempoServico", tempoServico);
@@ -31,6 +31,7 @@ namespace Facturix_Salários.Controllers
                 comando.Parameters.AddWithValue("saidaAdiantada", saidaAdiantada);
                 comando.Parameters.AddWithValue("atraso", atraso);
                 comando.Parameters.AddWithValue("ausencia", ausencia);
+                comando.Parameters.AddWithValue("ativo", ativo);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
@@ -44,14 +45,14 @@ namespace Facturix_Salários.Controllers
             }
         }
 
-        public static void atualizar(int id, String tempoServico, decimal emTempoH, decimal emTempoM, decimal foraDoTempoH, decimal foraDotempoM, Boolean marcarPonto, Boolean baterPonto, Boolean saidaAdiantada, Boolean atraso, Boolean ausencia)
+        public static void atualizar(int id, String tempoServico, decimal emTempoH, decimal emTempoM, decimal foraDoTempoH, decimal foraDotempoM, Boolean marcarPonto, Boolean baterPonto, Boolean saidaAdiantada, Boolean atraso, Boolean ausencia, Boolean ativo)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE horario SET tempoServico=?, emTempoH=?, emTempoM=?, foraDoTempoH=?, foraDotempoM=?, marcarPonto=?, baterPonto=?, saidaAdiantada=?, atraso=?, ausencia=?WHERE id=?";
+                String sqlInsert = "UPDATE horario SET tempoServico=?, emTempoH=?, emTempoM=?, foraDoTempoH=?, foraDotempoM=?, marcarPonto=?, baterPonto=?, saidaAdiantada=?, atraso=?, ausencia=?, ativo=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("tempoServico", tempoServico);
                 comando.Parameters.AddWithValue("emTempoH", emTempoH);
@@ -63,6 +64,7 @@ namespace Facturix_Salários.Controllers
                 comando.Parameters.AddWithValue("saidaAdiantada", saidaAdiantada);
                 comando.Parameters.AddWithValue("atraso", atraso);
                 comando.Parameters.AddWithValue("ausencia", ausencia);
+                comando.Parameters.AddWithValue("ativo", ativo);
                 comando.Parameters.AddWithValue("id", id);
                 comando.ExecuteNonQuery();
             }
@@ -76,6 +78,31 @@ namespace Facturix_Salários.Controllers
                     conexao.Close();
             }
         }
+
+        public static void atualizarEstado(int id, Boolean ativo) 
+        {
+            MySqlConnection conexao = Conexao.conectar();
+
+            try
+            {
+                conexao.Open();
+                String sqlInsert = "UPDATE horario SET ativo=? WHERE id=?";
+                MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
+                comando.Parameters.AddWithValue("ativo", ativo);
+                comando.Parameters.AddWithValue("id", id);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Não foi possível atualizar o estado do horario! Contacte o técnico!");
+            }
+            finally
+            {
+                if (conexao != null)
+                    conexao.Close();
+            }
+        }
+
         public static ArrayList recuperar()
         {
             MySqlConnection conexao = Conexao.conectar();
@@ -99,7 +126,8 @@ namespace Facturix_Salários.Controllers
                     Boolean saidaAdiantada = leitor.GetBoolean(8);
                     Boolean atraso = leitor.GetBoolean(9);
                     Boolean ausencia = leitor.GetBoolean(10);
-                    listaHorarios.Add(new ModeloHorarios(id, tempoServico, emTempoH, emTempoM, foraDoTempoH, foraDoTempoM, marcarPonto, baterPonto, saidaAdiantada, atraso, ausencia));
+                    Boolean ativo = leitor.GetBoolean(11);
+                    listaHorarios.Add(new ModeloHorarios(id, tempoServico, emTempoH, emTempoM, foraDoTempoH, foraDoTempoM, marcarPonto, baterPonto, saidaAdiantada, atraso, ausencia, ativo));
                 }
             }
             catch (Exception)
@@ -137,7 +165,8 @@ namespace Facturix_Salários.Controllers
                     Boolean saidaAdiantada = leitor.GetBoolean(8);
                     Boolean atraso = leitor.GetBoolean(9);
                     Boolean ausencia = leitor.GetBoolean(10);
-                    listaHorarios.Add(new ModeloHorarios(id, tempoServico, emTempoH, emTempoM, foraDoTempoH, foraDoTempoM, marcarPonto, baterPonto, saidaAdiantada, atraso, ausencia));
+                    Boolean ativo = leitor.GetBoolean(11);
+                    listaHorarios.Add(new ModeloHorarios(id, tempoServico, emTempoH, emTempoM, foraDoTempoH, foraDoTempoM, marcarPonto, baterPonto, saidaAdiantada, atraso, ausencia, ativo));
                 }
             }
             catch (Exception)

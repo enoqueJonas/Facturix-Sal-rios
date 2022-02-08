@@ -433,7 +433,6 @@ namespace Facturix_Salários.Formularios
 
         public void impedirBotoes()
         {
-            //|| txtNrFiscal.Text == ""
             if (txtNome.Text == "")
             {
                 btnMostrar.Enabled = true;
@@ -478,19 +477,19 @@ namespace Facturix_Salários.Formularios
             montarCaixas(id);
         }
 
-        private int getCodProcessamento()
-        {
-            ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
-            int cod = 0;
-            foreach (ModeloProcessamentoDeSalario f in listaProcessamento)
-            {
-                if (f.getId() != 0)
-                {
-                    cod = f.getId();
-                }
-            }
-            return cod;
-        }
+        //private int getCodProcessamento()
+        //{
+        //    ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
+        //    int cod = 0;
+        //    foreach (ModeloProcessamentoDeSalario f in listaProcessamento)
+        //    {
+        //        if (f.getId() != 0)
+        //        {
+        //            cod = f.getId();
+        //        }
+        //    }
+        //    return cod;
+        //}
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
@@ -548,7 +547,6 @@ namespace Facturix_Salários.Formularios
             {
                 foreach (ModeloProcessamentoDeSalario p in listaProcessamento)
                 {
-
                     ajudaDeCusto = Math.Round(p.getAjudaDeCusto(), 2, MidpointRounding.AwayFromZero);
                     ajudaDeDeslocacao = Math.Round(p.getAjudaDeslocacao(), 2, MidpointRounding.AwayFromZero);
                     pagamentoFerias = Math.Round(p.getPagamentoFerias(), 2, MidpointRounding.AwayFromZero);

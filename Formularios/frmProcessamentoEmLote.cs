@@ -29,10 +29,7 @@ namespace Facturix_Salários.Formularios
 
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
-            using (frmLoadingScreen l = new frmLoadingScreen(refrescar))
-            {
-                l.ShowDialog(this);
-            }
+            refrescar();
         }
 
         public int diasDeTrabalhoRecebidos;
@@ -317,7 +314,7 @@ namespace Facturix_Salários.Formularios
                 ArrayList listaAdiantamentos = ControllerAdiantamento.recuperar();
                 ArrayList listaRemuneracoes = ControllerRemuneracoes.recuperar();
                 ArrayList listaSeguros = ControllerSeguro.recuperar();
-                int diasBaseDados = 0;
+                //int diasBaseDados = 0;
                 ajudaDeslocacao = 0;
                 int mesRecebido = dtProcessamento.Value.Month;
                 int anoRecebido = dtProcessamento.Value.Year;
@@ -357,13 +354,13 @@ namespace Facturix_Salários.Formularios
                                 }
                             }
 
-                            foreach (ModeloDiasDeTrabalho d in listaDias)
-                            {
-                                if (d.getIdFunc() == f.getCodigo())
-                                {
-                                    diasBaseDados = d.getDiasDeTrabalho();
-                                }
-                            }
+                            //foreach (ModeloDiasDeTrabalho d in listaDias)
+                            //{
+                            //    if (d.getIdFunc() == f.getCodigo())
+                            //    {
+                            //        diasBaseDados = d.getDiasDeTrabalho();
+                            //    }
+                            //}
                             if (diasDeTrabalho !=0 && diasDeTrabalho!=diasDeTrabalhoRecebidos && diasDeTrabalhoRecebidos != 0) 
                             {
                                 diasDeTrabalho = diasDeTrabalhoRecebidos;
@@ -446,10 +443,6 @@ namespace Facturix_Salários.Formularios
             }
             dataProcessamentoSalario.DataSource = dt;
             dataProcessamentoSalario.Refresh();
-            if (estaVazio() == true)
-            {
-                lblEstado.Visible = true;
-            }
             dataProcessamentoSalario.AllowUserToAddRows = false;
             dataProcessamentoSalario.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             dataProcessamentoSalario.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
@@ -657,7 +650,6 @@ namespace Facturix_Salários.Formularios
             List<int> funcionario = new List<int>();
             ArrayList listaFuncionarios = ControllerFuncionario.recuperar();
             ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperar();
-            ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
             decimal ano = nrAno.Value;           
             String mes = cbMes.Text;
             int nrMes = getMes(mes), nrMesRelogio;
@@ -680,31 +672,89 @@ namespace Facturix_Salários.Formularios
             }
             return funcionario;
         }
-        
-        private int getDiasDeTrabalho(int codFunc)
+
+        //private int getDiasDeTrabalho(int codFunc)
+        //{
+        //    ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperarComCod(codFunc);
+        //    int ano = Convert.ToInt32(nrAno.Value);
+        //    String mes = cbMes.Text;
+        //    int nrMes = getMes(mes);
+        //    DateTime dataRelogio;
+        //    int dias = 0;
+        //    foreach (ModeloRelogioDePonto f in listaRelogioDePonto)
+        //    {
+        //        dataRelogio = Convert.ToDateTime(f.getData());
+        //        if (codFunc == f.getIdUsuario() && f.getEstado().Equals("Check in") && dataRelogio.Year == ano && dataRelogio.Month == nrMes)
+        //        {
+        //            dias = dias + 1;
+        //        }
+        //    }
+        //    if (dias % 2 != 0)
+        //    {
+        //        dias = dias - 1;
+        //    }
+        //    return dias / 2;
+        //}
+
+    private int getDiasDeTrabalho(int codFunc)
+    {
+        ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperarComCod(codFunc);
+        ArrayList listaRegrasDeponto = ControllerRegrasDePonto.recuperar();
+        ArrayList listaHorarios = ControllerHorarios.recuperar();
+        int ano = Convert.ToInt32(nrAno.Value), idFunc = 0;
+        String mes = cbMes.Text;
+        int nrMes = getMes(mes), horaEntrada = 0, minutoEntrada = 0, horaSaida = 0, minutoSaida = 0;
+        DateTime dataRelogio;
+        int dias = 0;
+        String entradaNaoBatida = "", saidaNaoBatida = "";
+
+        foreach (ModeloRegrasDePonto r in listaRegrasDeponto)
         {
-            ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperarComCod(codFunc);
-            int ano = Convert.ToInt32(nrAno.Value);
-            String mes = cbMes.Text;
-            int nrMes = getMes(mes);
-            DateTime dataRelogio;
-            int dias = 0;
-            foreach (ModeloRelogioDePonto f in listaRelogioDePonto)
+            entradaNaoBatida = r.getEntradaNaoRegistada();
+            saidaNaoBatida = r.getSaidaNaoRegistada();
+        }
+
+        foreach (ModeloHorarios h in listaHorarios)
+        {
+            if (h.getAtivo())
             {
-                dataRelogio = Convert.ToDateTime(f.getData());
-                if (codFunc == f.getIdUsuario() && f.getEstado().Equals("Check in") && dataRelogio.Year == ano && dataRelogio.Month == nrMes) 
+                horaEntrada = Convert.ToInt16(h.getEmTempoH());
+                minutoEntrada = Convert.ToInt16(h.getEmTempoM());
+                horaSaida = Convert.ToInt16(h.getForaDoTempo());
+                minutoSaida = Convert.ToInt16(h.getForaDoTempoM());
+            }
+        }
+
+        foreach (ModeloRelogioDePonto f in listaRelogioDePonto)
+        {
+            dataRelogio = Convert.ToDateTime(f.getData());
+            if (codFunc == f.getIdUsuario() && f.getEstado().Equals("Check in") && dataRelogio.Year == ano && dataRelogio.Month == nrMes)
+            {
+                if(f.getSn() % 2 != 0 && entradaNaoBatida.Equals("Dia Trabalhado") && dataRelogio.Hour <= horaEntrada)
                 {
                     dias = dias + 1;
                 }
+
+                if (f.getSn() % 2 == 0 && saidaNaoBatida.Equals("Dia Trabalhado") && dataRelogio.Hour >= horaSaida)
+                {
+                    dias = dias + 1;
+                }
+                idFunc = f.getIdUsuario();
             }
-            if (dias % 2 != 0)
-            {
-                dias = dias - 1;
-            }
-            return dias/2;
+        }
+        if (dias % 2 != 0)
+        {
+            dias = dias - 1;
         }
 
-        private void frmProcessamentoEmLote_FormClosing(object sender, FormClosingEventArgs e)
+        if (idFunc != 0)
+        {
+            ControllerDiasDeTrabalho.gravar(idFunc, dias / 2);
+        }
+            return dias / 2;
+    }
+
+    private void frmProcessamentoEmLote_FormClosing(object sender, FormClosingEventArgs e)
         {
             ControllerDiasDeTrabalho.remover();
             switch (e.CloseReason)
@@ -939,12 +989,14 @@ namespace Facturix_Salários.Formularios
             nrMes = getMes(mes);
             refrescar();
             impedirBotoes();
+            lblEstado.Visible = estaVazio();
         }
 
         private void nrAno_ValueChanged(object sender, EventArgs e)
         {
             refrescar();
             impedirBotoes();
+            lblEstado.Visible = estaVazio();
         }
     }
 }

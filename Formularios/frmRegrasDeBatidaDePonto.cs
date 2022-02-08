@@ -77,7 +77,7 @@ namespace Facturix_Salários.Formularios
         {
             this.Close();
             frmNomeDaEmpresa f = new frmNomeDaEmpresa();
-            f.Show();
+            f.ShowDialog();
         }
 
         private void gravar() 
@@ -159,7 +159,7 @@ namespace Facturix_Salários.Formularios
             gravar();
             this.Close();
             frmFeriados f = new frmFeriados();
-            f.Show();
+            f.ShowDialog();
         }
     }
 }

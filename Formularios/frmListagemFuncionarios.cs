@@ -93,34 +93,127 @@ namespace Facturix_Salários.Formularios
             {
                 l.ShowDialog(this);
             }
+            
         }
 
         private int getDiasDeTrabalho(int codFunc)
         {
             ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperarComCod(codFunc);
+            ArrayList listaRegrasDeponto = ControllerRegrasDePonto.recuperar();
+            ArrayList listaHorarios = ControllerHorarios.recuperar();
             int ano = DateTime.Now.Year, idFunc = 0;
-            int nrMes = DateTime.Now.Month;
-            DateTime dataProcess;
+            int nrMes = DateTime.Now.Month, horaEntrada = 0, minutoEntrada = 0, horaSaida = 0, minutoSaida = 0;
+            DateTime dataRelogio;
             int dias = 0;
+            String entradaNaoBatida = "", saidaNaoBatida = "";
+
+            foreach (ModeloRegrasDePonto r in listaRegrasDeponto)
+            {
+                entradaNaoBatida = r.getEntradaNaoRegistada();
+                saidaNaoBatida = r.getSaidaNaoRegistada();
+            }
+
+            foreach (ModeloHorarios h in listaHorarios)
+            {
+                if (h.getAtivo())
+                {
+                    horaEntrada = Convert.ToInt16(h.getEmTempoH());
+                    minutoEntrada = Convert.ToInt16(h.getEmTempoM());
+                    horaSaida = Convert.ToInt16(h.getForaDoTempo());
+                    minutoSaida = Convert.ToInt16(h.getForaDoTempoM());
+                }
+            }
+
             foreach (ModeloRelogioDePonto f in listaRelogioDePonto)
             {
-                dataProcess = Convert.ToDateTime(f.getData());
-                if (codFunc == f.getIdUsuario() && f.getEstado().Equals("Check in") && dataProcess.Year == ano && dataProcess.Month == nrMes)
+                dataRelogio = Convert.ToDateTime(f.getData());
+                if (codFunc == f.getIdUsuario() && f.getEstado().Equals("Check in") && dataRelogio.Year == ano && dataRelogio.Month == nrMes)
                 {
+                    if (f.getSn() % 2 != 0 && entradaNaoBatida.Equals("Dia Trabalhado") && dataRelogio.Hour <= horaEntrada)
+                    {
+                        dias = dias + 1;
+                    }
+                    if (f.getSn() % 2 == 0 && saidaNaoBatida.Equals("Dia Trabalhado") && dataRelogio.Hour >= horaSaida)
+                    {
+                        dias = dias + 1;
+                    }
                     idFunc = f.getIdUsuario();
-                    dias = dias + 1;
                 }
             }
             if (dias % 2 != 0)
             {
                 dias = dias - 1;
             }
-            if (idFunc!=0) 
+
+            if (idFunc != 0)
             {
-                ControllerDiasDeTrabalho.gravar(idFunc, dias/2);
+                ControllerDiasDeTrabalho.gravar(idFunc, dias / 2);
             }
             return dias / 2;
         }
+
+        //private int getDiasDeTrabalho(int codFunc)
+        //{
+        //    ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperarComCod(codFunc);
+        //    ArrayList listaRegrasDeponto = ControllerRegrasDePonto.recuperar();
+        //    ArrayList listaHorarios = ControllerHorarios.recuperar();
+        //    int ano = DateTime.Now.Year, idFunc = 0;
+        //    int nrMes = DateTime.Now.Month, horaEntrada = 0, minutoEntrada = 0, horaSaida = 0, minutoSaida = 0;
+        //    DateTime dataRelogio;
+        //    int dias = 0;
+        //    String entradaNaoBatida = "", saidaNaoBatida = "";
+
+        //    foreach (ModeloRegrasDePonto r in listaRegrasDeponto) 
+        //    {
+        //        entradaNaoBatida = r.getEntradaNaoRegistada();
+        //        saidaNaoBatida = r.getSaidaNaoRegistada();
+        //    }
+
+        //    foreach (ModeloHorarios h in listaHorarios) 
+        //    {
+        //        if (h.getAtivo()) 
+        //        {
+        //            horaEntrada = Convert.ToInt16(h.getEmTempoH());
+        //            minutoEntrada = Convert.ToInt16(h.getEmTempoM());
+        //            horaSaida = Convert.ToInt16(h.getForaDoTempo());
+        //            minutoSaida = Convert.ToInt16(h.getForaDoTempoM());
+        //        }
+        //    }
+
+        //    foreach (ModeloRelogioDePonto f in listaRelogioDePonto)
+        //    {
+        //        dataRelogio = Convert.ToDateTime(f.getData());
+        //        if (codFunc == f.getIdUsuario() && f.getEstado().Equals("Check in") && dataRelogio.Year == ano && dataRelogio.Month == nrMes)
+        //        {
+        //            if (f.getSn() % 2 != 0 && entradaNaoBatida != "Falta" && dataRelogio.Hour > horaEntrada && diasDeTrabalho != 0)
+        //            {
+        //                dias = dias - 1;
+        //            } else if (f.getSn() % 2 != 0 && entradaNaoBatida != "Dia Trabalhado" && dataRelogio.Hour < horaEntrada) 
+        //            {
+        //                dias = dias + 1;
+        //            }
+
+        //            if (f.getSn() % 2 == 0 && saidaNaoBatida != "Falta" && dataRelogio.Hour < horaSaida)
+        //            {
+        //                dias = dias + 1;
+        //            } else if (f.getSn() % 2 == 0 && saidaNaoBatida != "Dia Trabalhado" && dataRelogio.Hour < horaSaida) 
+        //            {
+        //                dias = dias + 1;
+        //            }
+
+        //            idFunc = f.getIdUsuario();
+        //        }
+        //    }
+        //    if (dias % 2 != 0)
+        //    {
+        //        dias = dias - 1;
+        //    }
+        //    if (idFunc!=0) 
+        //    {
+        //        ControllerDiasDeTrabalho.gravar(idFunc, dias/2);
+        //    }
+        //    return dias / 2;
+        //}
 
         public void carregarFuncionariosLote()
         {
@@ -265,13 +358,15 @@ namespace Facturix_Salários.Formularios
             {
                 frm.lblEstado.Visible = true;
             }
-            frm.ShowDialog();
             if (InvokeRequired)
             {
                 // after we've done all the processing, 
                 this.Invoke(new MethodInvoker(delegate
                 {
                     // load the control with the appropriate data
+                    frm.Show();
+                    frm.Focus();
+                    frm.TopMost = true;
                     this.Close();
                 }));
                 return;

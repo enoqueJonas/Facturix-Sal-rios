@@ -240,7 +240,7 @@ namespace Facturix_Salários.Formularios
         private void btnAnterior_Click(object sender, EventArgs e)
         {
             frmFeriados f = new frmFeriados();
-            f.Show();
+            f.ShowDialog();
             this.Close();
         }
 
@@ -618,7 +618,7 @@ namespace Facturix_Salários.Formularios
         private void btnSeguinte_Click(object sender, EventArgs e)
         {
             frmTempoDeServico f = new frmTempoDeServico();
-            f.Show();
+            f.ShowDialog();
             this.Close();
         }
     }
