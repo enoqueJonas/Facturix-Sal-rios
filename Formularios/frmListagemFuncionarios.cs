@@ -40,8 +40,12 @@ namespace Facturix_Salários.Formularios
         private void frmListagemFuncionarios_Load(object sender, EventArgs e)
         {
             refrescar();
-            ControllerDiasDeTrabalho.remover();
             lblEstado.Visible = estaVazio();
+            dataFuncionarios.MultiSelect = false;
+            dataFuncionarios.Rows[0].Selected = true;
+            dataFuncionarios.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
+            dataFuncionarios.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+            dataFuncionarios.Focus();
         }
 
         private void refrescar()
@@ -89,11 +93,10 @@ namespace Facturix_Salários.Formularios
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            using (frmLoadingScreen l = new frmLoadingScreen(carregarFuncionariosLote))
-            {
-                l.ShowDialog(this);
-            }
-            
+           using (frmLoadingScreen l = new frmLoadingScreen(carregarFuncionariosLote))
+           {
+               l.ShowDialog(this);
+           }        
         }
 
         private int getDiasDeTrabalho(int codFunc)
@@ -145,10 +148,10 @@ namespace Facturix_Salários.Formularios
                 dias = dias - 1;
             }
 
-            if (idFunc != 0)
-            {
-                ControllerDiasDeTrabalho.gravar(idFunc, dias / 2);
-            }
+            //if (idFunc != 0)
+            //{
+            //    ControllerDiasDeTrabalho.gravar(idFunc, dias / 2);
+            //}
             return dias / 2;
         }
 
@@ -254,12 +257,9 @@ namespace Facturix_Salários.Formularios
             {
                 for (int i = 0; i < funcionariosValidos.Count; i++)
                 {
-
                     if (f.getCodigo() == funcionariosValidos[i])
                     {
                         diasDeTrabalho = getDiasDeTrabalho(funcionariosValidos[i]);
-                        if (diasDeTrabalho!=0) 
-                        {
                             DataRow dRow = dt.NewRow();
                             idFuncionario = f.getCodigo();
                             dRow["Registo n°"] = idFuncionario;
@@ -286,7 +286,7 @@ namespace Facturix_Salários.Formularios
                                     {
                                         if (r.getNatureza().Equals("A- Ajudas De Custo e Transportes"))
                                         {
-                                            ajudaDeslocacao = fr.getValor() * fr.getQtd();
+                                            ajudaDeCusto = fr.getValor() * fr.getQtd();
                                         }
                                         else
                                         {
@@ -295,7 +295,6 @@ namespace Facturix_Salários.Formularios
                                     }
                                 }
                             }
-
                             nomeDoTrabalhador = f.getNome();
                             dRow["Nome do funcionário"] = nomeDoTrabalhador;
 
@@ -307,7 +306,6 @@ namespace Facturix_Salários.Formularios
                             subAlimentacao = f.getSubAlimentacao();
                             dRow["SUB. ALIM."] = string.Format("{0:#,##0.00}", subAlimentacao);
 
-                            ajudaDeCusto = 0;
                             dRow["AJUD. CUST."] = string.Format("{0:#,##0.00}", ajudaDeCusto);
 
                             dRow["AJUD. DESL."] = string.Format("{0:#,##0.00}", ajudaDeslocacao);
@@ -339,18 +337,18 @@ namespace Facturix_Salários.Formularios
                                     adiantamentos = a.getDiantamento();
                                 }
                             }
+
                             dRow["Adiantamento"] = string.Format("{0:#,##0.00}", adiantamentos);
                             totalDescontar = valorIrps + emprestimoMedico + ipa + inss + adiantamentos;
 
                             importanciaAPagar = totalRetribuicao - totalDescontar;
                             dRow["Importância a pagar"] = string.Format("{0:#,##0.00}", importanciaAPagar);
                             dt.Rows.Add(dRow);
-                        }
+
                     }
                 }
             }
             frm.dataProcessamentoSalario.DataSource = dt;
-            frm.dataProcessamentoSalario.Refresh();
             frm.dataProcessamentoSalario.AllowUserToAddRows = false;
             frm.dataProcessamentoSalario.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             frm.dataProcessamentoSalario.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
@@ -365,13 +363,11 @@ namespace Facturix_Salários.Formularios
                 {
                     // load the control with the appropriate data
                     frm.Show();
-                    frm.Focus();
-                    frm.TopMost = true;
                     this.Close();
                 }));
                 return;
             }
-        }
+        } 
 
         public Boolean estaVazio() 
         {
@@ -381,12 +377,65 @@ namespace Facturix_Salários.Formularios
             return false;
         }
 
+        private void frmListagemFuncionarios_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                using (frmLoadingScreen l = new frmLoadingScreen(carregarFuncionariosLote))
+                {
+                    l.ShowDialog(this);
+                }
+            }
+        }
+
+        int rowSelected;
+        private void dataFuncionarios_KeyDown(object sender, KeyEventArgs e)
+        {
+            int rowIndex = rowSelected;
+            while (this.IsAccessible)
+            {
+                if (e.KeyCode == Keys.Up)
+                {
+                    dataFuncionarios.MultiSelect = false;
+                    dataFuncionarios.Rows[rowIndex].Selected = true;
+                    dataFuncionarios.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
+                    dataFuncionarios.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+                    rowIndex--;
+                }
+                if (e.KeyCode == Keys.Down)
+                {
+                    dataFuncionarios.MultiSelect = false;
+                    dataFuncionarios.Rows[rowIndex].Selected = true;
+                    dataFuncionarios.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
+                    dataFuncionarios.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+                    rowIndex++;
+                }
+            }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                foreach (DataGridViewRow row in dataFuncionarios.Rows)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                    if (row.Index == rowIndex) 
+                    {
+                        chk.Value = true;
+                    }
+                }
+            }
+        }
+
+        private void dataFuncionarios_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            rowSelected = rowIndex;
+            //DataGridViewRow row = dataFuncionarios.Rows[rowIndex];
+            //codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
+        }
+
         public List<int> getFuncionarios() 
         {
             List<int> listaFuncionarios = new List<int>();
-            List<int> listaValida = new List<int>();
-            ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperar();
-            //ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
             foreach (DataGridViewRow row in dataFuncionarios.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
@@ -396,20 +445,37 @@ namespace Facturix_Salários.Formularios
                     codigoCelSelecionada = int.Parse(row.Cells[1].Value.ToString());
                 }
             }
-            foreach (ModeloRelogioDePonto r in listaRelogioDePonto)
-            {
-                for (int i = 0; i < listaFuncionarios.Count; i++)
-                {
-                    if (listaFuncionarios[i] == r.getIdUsuario())
-                    {
-                        listaValida.Add(r.getIdUsuario());
-                    }
-                }
-            }
-            HashSet<int> unique = new HashSet<int>(listaValida);
-            List<int> listaSemRep = unique.ToList();
-            listaSemRep.Sort();
-            return listaSemRep;
-        }
+            return listaFuncionarios;
+        } 
+        //public List<int> getFuncionarios() 
+        //{
+        //    List<int> listaFuncionarios = new List<int>();
+        //    List<int> listaValida = new List<int>();
+        //    ArrayList listaRelogioDePonto = ControllerRelogioDePonto.recuperar();
+        //    //ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperar();
+        //    foreach (DataGridViewRow row in dataFuncionarios.Rows)
+        //    {
+        //        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+        //        if (chk.Value != null)
+        //        {
+        //            listaFuncionarios.Add(int.Parse(row.Cells[1].Value.ToString()));
+        //            codigoCelSelecionada = int.Parse(row.Cells[1].Value.ToString());
+        //        }
+        //    }
+        //    foreach (ModeloRelogioDePonto r in listaRelogioDePonto)
+        //    {
+        //        for (int i = 0; i < listaFuncionarios.Count; i++)
+        //        {
+        //            if (listaFuncionarios[i] == r.getIdUsuario())
+        //            {
+        //                listaValida.Add(r.getIdUsuario());
+        //            }
+        //        }
+        //    }
+        //    HashSet<int> unique = new HashSet<int>(listaValida);
+        //    List<int> listaSemRep = unique.ToList();
+        //    listaSemRep.Sort();
+        //    return listaSemRep;
+        //}
     }
 }

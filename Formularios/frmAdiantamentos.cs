@@ -100,10 +100,10 @@ namespace Facturix_Salários.Formularios
             {
                 dias = dias - 1;
             }
-            if (idFunc != 0)
-            {
-                ControllerDiasDeTrabalho.gravar(idFunc, dias / 2);
-            }
+            //if (idFunc != 0)
+            //{
+            //    ControllerDiasDeTrabalho.gravar(idFunc, dias / 2);
+            //}
             return dias / 2;
         }
 

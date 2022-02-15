@@ -139,7 +139,6 @@ namespace Facturix_Salários.Formularios
             codigoCelSelecionada = int.Parse(row.Cells[0].Value.ToString());
             ArrayList listaremuneracoes = ControllerRemuneracoes.recuperarComCod(codigoCelSelecionada);
             frmRemuneracoes frm = new frmRemuneracoes();
-            frm.Show();
             foreach (ModeloRemuneracoes r in listaremuneracoes)
             {
                 frm.txtPercentagem.Text = r.getPercentagem()+"";
@@ -177,6 +176,8 @@ namespace Facturix_Salários.Formularios
                 frm.cbQuantidade.Text = r.getQuantidade();
                 frm.cbInsento.Text = r.getIsento();
                 frm.txtValor.Text = r.getValor()+"";
+                this.TopMost = false;
+                frm.ShowDialog();
             }
         }
 

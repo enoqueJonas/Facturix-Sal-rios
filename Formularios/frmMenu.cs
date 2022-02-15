@@ -139,27 +139,27 @@ namespace Facturix_Salários
         void abrirFormListagemFunc() 
         {
             frmVisualizarFuncionario f = new frmVisualizarFuncionario();
-            if (InvokeRequired)
-            {
-                // after we've done all the processing, 
-                this.Invoke(new MethodInvoker(delegate
-                {
+            //if (InvokeRequired)
+            //{
+            //    // after we've done all the processing, 
+            //    this.Invoke(new MethodInvoker(delegate
+            //    {
                     // load the control with the appropriate data
                     f.Show();
-                    f.Focus();
-                    f.TopMost = true;
-                }));
-                return;
-            }
-        }
-        private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (frmLoadingScreen l = new frmLoadingScreen(abrirFormListagemFunc)) 
-            {
-                l.ShowDialog(this);
-            }
+            //    }));
+            //    return;
+            //}
+            f.Focus();
         }
 
+        private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //using (frmLoadingScreen l = new frmLoadingScreen(abrirFormListagemFunc)) 
+            //{
+            //    l.ShowDialog(this);
+            //}
+            abrirFormListagemFunc();
+        }
 
         private void seguro()
         {
@@ -527,25 +527,22 @@ namespace Facturix_Salários
         private void abrirFrmListagemFuncionarios() 
         {
             frmListagemFuncionarios f = new frmListagemFuncionarios();
-            if (InvokeRequired)
-            {
-                // after we've done all the processing, 
-                this.Invoke(new MethodInvoker(delegate
-                {
+            //if (InvokeRequired)
+            //{
+            //    // after we've done all the processing, 
+            //    this.Invoke(new MethodInvoker(delegate
+            //    {
                     // load the control with the appropriate data
                     f.Show();
                     f.Focus();
-                    f.TopMost = true;
-                }));
-                return;
-            }
+            //        f.TopMost = true;
+            //    }));
+            //    return;
+            //}
         }
         private void listagemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (frmLoadingScreen l = new frmLoadingScreen(abrirFrmListagemFuncionarios))
-            {
-                l.ShowDialog(this);
-            }
+            abrirFrmListagemFuncionarios();
         }
 
         private void abrirFrmRemuneracoes() 

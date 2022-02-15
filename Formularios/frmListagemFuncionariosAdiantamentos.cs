@@ -66,10 +66,10 @@ namespace Facturix_Salários.Formularios
             {
                 dias = dias - 1;
             }
-            if (idFunc != 0)
-            {
-                ControllerDiasDeTrabalho.gravar(idFunc, dias / 2);
-            }
+            //if (idFunc != 0)
+            //{
+            //    ControllerDiasDeTrabalho.gravar(idFunc, dias / 2);
+            //}
             return dias / 2;
         }
 
@@ -161,6 +161,8 @@ namespace Facturix_Salários.Formularios
                 f.txtSalarioBruto.Text = string.Format("{0:#,##0.00}", func.getVencimento());
                 f.txtDiasDeTrabalho.Text = diasDeTrabalho + "";
             }
+            this.TopMost = false;
+            f.TopMost = true;
             f.Show();
         }
     }

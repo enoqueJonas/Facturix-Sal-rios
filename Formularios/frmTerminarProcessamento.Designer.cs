@@ -81,7 +81,10 @@
             this.Name = "frmTerminarProcessamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Processamento";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTerminarProcessamento_FormClosing);
             this.Load += new System.EventHandler(this.frmTerminarProcessamento_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTerminarProcessamento_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmTerminarProcessamento_KeyPress);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 

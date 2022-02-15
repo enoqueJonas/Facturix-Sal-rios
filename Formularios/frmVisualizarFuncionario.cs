@@ -21,16 +21,23 @@ namespace Facturix_Salários
             InitializeComponent();
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            Focus();
+        }
+
         int codigoCelSelecionada;
         private void frmVisualizarF_Load(object sender, EventArgs e)
         {
-                refrescar();
-                foreach (DataGridViewColumn col in dataFuncionarios.Columns)
-                {
-                    col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
-                this.ActiveControl = txtLocalizar;
-                mostrarNumeroFuncionarios();
+            refrescar();
+            foreach (DataGridViewColumn col in dataFuncionarios.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            this.BringToFront(); 
+            this.Activate();
+            this.ActiveControl = txtLocalizar;
+            mostrarNumeroFuncionarios();
         }
 
         private void mostrarNumeroFuncionarios() 
@@ -150,8 +157,8 @@ namespace Facturix_Salários
                     }
                 }
             }
-            f.ShowDialog();
-            this.Close();
+            this.TopMost = false;
+            f.Show();
         }
 
         private void btnRegressar_Click(object sender, EventArgs e)

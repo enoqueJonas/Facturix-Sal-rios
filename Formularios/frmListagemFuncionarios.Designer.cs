@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListagemFuncionarios));
             this.dataFuncionarios = new System.Windows.Forms.DataGridView();
             this.btnContinuar = new System.Windows.Forms.Button();
             this.btnSelecionarTodos = new System.Windows.Forms.Button();
@@ -45,14 +46,19 @@
             this.dataFuncionarios.RowHeadersVisible = false;
             this.dataFuncionarios.Size = new System.Drawing.Size(894, 468);
             this.dataFuncionarios.TabIndex = 0;
+            this.dataFuncionarios.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataFuncionarios_CellEnter);
+            this.dataFuncionarios.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataFuncionarios_KeyDown);
             // 
             // btnContinuar
             // 
-            this.btnContinuar.Location = new System.Drawing.Point(804, 513);
+            this.btnContinuar.Image = ((System.Drawing.Image)(resources.GetObject("btnContinuar.Image")));
+            this.btnContinuar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnContinuar.Location = new System.Drawing.Point(797, 512);
             this.btnContinuar.Name = "btnContinuar";
-            this.btnContinuar.Size = new System.Drawing.Size(114, 30);
+            this.btnContinuar.Size = new System.Drawing.Size(121, 31);
             this.btnContinuar.TabIndex = 1;
             this.btnContinuar.Text = "Processar Sal.";
+            this.btnContinuar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnContinuar.UseVisualStyleBackColor = true;
             this.btnContinuar.Click += new System.EventHandler(this.btnContinuar_Click);
             // 
@@ -60,9 +66,9 @@
             // 
             this.btnSelecionarTodos.Location = new System.Drawing.Point(24, 512);
             this.btnSelecionarTodos.Name = "btnSelecionarTodos";
-            this.btnSelecionarTodos.Size = new System.Drawing.Size(114, 30);
+            this.btnSelecionarTodos.Size = new System.Drawing.Size(121, 31);
             this.btnSelecionarTodos.TabIndex = 1;
-            this.btnSelecionarTodos.Text = "Selecionar Todos";
+            this.btnSelecionarTodos.Text = "&Selecionar Todos";
             this.btnSelecionarTodos.UseVisualStyleBackColor = true;
             this.btnSelecionarTodos.Click += new System.EventHandler(this.btnSelecionarTodos_Click);
             // 
@@ -87,11 +93,13 @@
             this.Controls.Add(this.btnSelecionarTodos);
             this.Controls.Add(this.btnContinuar);
             this.Controls.Add(this.dataFuncionarios);
+            this.KeyPreview = true;
             this.Name = "frmListagemFuncionarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listagem de Funcionários";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmListagemFuncionarios_FormClosing);
             this.Load += new System.EventHandler(this.frmListagemFuncionarios_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmListagemFuncionarios_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataFuncionarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

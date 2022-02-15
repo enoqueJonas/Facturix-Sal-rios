@@ -789,6 +789,7 @@
             this.Controls.Add(this.txtTotalRemuneracoes);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
+            this.KeyPreview = true;
             this.Name = "frmProcessamentoIndividual";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Processamento Individual";

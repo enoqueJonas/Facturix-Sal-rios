@@ -36,6 +36,25 @@ namespace Facturix_Salários.Formularios
         private void btnRegressar_Click(object sender, EventArgs e)
         {
             this.Close();
+            lista.Clear();
+        }
+
+        private void frmTerminarProcessamento_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            lista.Clear();
+        }
+
+        private void frmTerminarProcessamento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void frmTerminarProcessamento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

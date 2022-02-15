@@ -11,16 +11,17 @@ namespace Facturix_Salários.Controllers
 {
     class ControllerDiasDeTrabalho
     {
-        public static void gravar(int id, int diasDeTrabalho)
+        public static void gravar(int id, int diasDeTrabalho, String data)
         {
             MySqlConnection conexao = Conexao.conectar();
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into dias_de_trabalho (idFunc, diasDeTrabalho) values(?,?)";
+                String sqlInsert = "INSERT into dias_de_trabalho (idFunc, diasDeTrabalho, data) values(?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("idFunc", id);
                 comando.Parameters.AddWithValue("diasDeTrabalho", diasDeTrabalho);
+                comando.Parameters.AddWithValue("data", data);
                 comando.ExecuteNonQuery();
                 //MessageBox.Show("Dias cadastrados com sucesso!");
             }
@@ -36,17 +37,18 @@ namespace Facturix_Salários.Controllers
             }
         }
 
-        public static void atualizar(int id, int diasDeTrabalho)
+        public static void atualizar(int id, int diasDeTrabalho, String data)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE dias_de_trabalho SET diasDeTrabalho=? WHERE idFunc=?";
+                String sqlInsert = "UPDATE dias_de_trabalho SET diasDeTrabalho=? WHERE idFunc=? AND data=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("diasDeTrabalho", diasDeTrabalho);
                 comando.Parameters.AddWithValue("idFunc", id);
+                comando.Parameters.AddWithValue("data", data);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
@@ -75,7 +77,9 @@ namespace Facturix_Salários.Controllers
                 {
                     int id = leitor.GetInt16(0);
                     int categoria = leitor.GetInt16(1);
-                    lista.Add(new ModeloDiasDeTrabalho(id, categoria));
+                    DateTime data = leitor.GetDateTime(2);
+                    String dt = data.ToString();
+                    lista.Add(new ModeloDiasDeTrabalho(id, categoria, dt));
                 }
             }
             catch (Exception)

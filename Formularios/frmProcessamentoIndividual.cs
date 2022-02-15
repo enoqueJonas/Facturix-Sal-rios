@@ -257,7 +257,7 @@ namespace Facturix_Salários.Formularios
             {
                 nr = 2;
             }
-            if (mes.ToLower().Equals("marco"))
+            if (mes.ToLower().Equals("março"))
             {
                 nr = 3;
             }
@@ -532,15 +532,21 @@ namespace Facturix_Salários.Formularios
             double irps = Math.Round(double.Parse(txtIrps.Text), 2, MidpointRounding.AwayFromZero);
             ipa = Math.Round(double.Parse(txtIpa.Text), 2, MidpointRounding.AwayFromZero);
             double adiantamentos;
+            int ano = Convert.ToInt16(nrAno.Value);
+            String mesString = cbMes.Text;
+            int mes = getMes(mesString);
             salarioBruto = Math.Round(double.Parse(txtVencimento.Text), 2, MidpointRounding.AwayFromZero);
             subAlimentacao = Math.Round(double.Parse(txtSubAlimentacao.Text), 2, MidpointRounding.AwayFromZero);           
             double diversosSubsidios = Math.Round(double.Parse(txtOutrasRemuneracoes.Text), 2, MidpointRounding.AwayFromZero);
             adiantamentos = Math.Round(float.Parse(txtadiantamentos.Text), 2, MidpointRounding.AwayFromZero);
             ArrayList listaProcessamento = ControllerProcessamentoDeSalario.recuperarComCod(idProcessamento);
+            String dataString = "" + ano + "-" + mes + "-5";
+            //DateTime data = DateTime.Now;
+            //dataString = data.ToString("yyyy-MM-dd");
             //ControllerDiasDeTrabalho.gravar(idFunc, diasDeTrabalho);
             if (existePro == false)
             {
-                ControllerDiasDeTrabalho.atualizar(idFunc, diasDeTrabalho);
+                ControllerDiasDeTrabalho.gravar(idFunc, diasDeTrabalho, dataString);
                 ControllerFuncionario.atualizarVenc(idFunc, salarioBruto, subAlimentacao, ipa);
             }
             else 
@@ -554,6 +560,7 @@ namespace Facturix_Salários.Formularios
                     emprestimoMedico = Math.Round(p.getEmprestimoMedico(), 2, MidpointRounding.AwayFromZero);
                     DateTime dataP = Convert.ToDateTime(p.getDataProcessamento());
                     dataProcessamento = dataP.ToString("yyyy-MM-dd");
+                    diasDeTrabalho = Convert.ToInt16(nrDias.Value);
                 }
 
                 int idFunc = Convert.ToInt16(nrRegistonr.Value);
@@ -566,6 +573,10 @@ namespace Facturix_Salários.Formularios
                         ControllerProcessamentoDeSalario.atualizar(idProcessamento, idFunc, nome, diasDeTrabalho, salarioBruto, subAlimentacao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicoes, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, "", dataProcessamento, "");
 
                     }
+                }
+                else if(existePro)
+                {
+                    ControllerProcessamentoDeSalario.atualizar(idProcessamento, idFunc, nome, diasDeTrabalho, salarioBruto, subAlimentacao, ajudaDeCusto, ajudaDeDeslocacao, pagamentoFerias, diversosSubsidios, totalRetribuicoes, emprestimoMedico, irps, ipa, inss, totalADescontar, adiantamentos, importanciaAPagar, "", dataProcessamento, "");
                 }
             }
         }
@@ -645,10 +656,7 @@ namespace Facturix_Salários.Formularios
 
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
-            using (frmLoadingScreen l = new frmLoadingScreen(refrescarVencimento))
-            {
-                l.ShowDialog(this);
-            }
+            refrescarVencimento();
         }
 
         private void nrRegistonr_KeyDown(object sender, KeyEventArgs e)
@@ -696,7 +704,6 @@ namespace Facturix_Salários.Formularios
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             mudarVisibilidadeLabels(false);
-            limpar();
             refrescarVencimento();
             btnMostrar.Enabled = true;
             btnAtualizar.Enabled = true;
@@ -980,7 +987,6 @@ namespace Facturix_Salários.Formularios
             if (e.KeyCode.ToString() == "F4" && btnCancelar.Enabled)
             {
                 mudarVisibilidadeLabels(false);
-                limpar();
                 refrescarVencimento();
                 btnMostrar.Enabled = true;
                 btnAtualizar.Enabled = true;
