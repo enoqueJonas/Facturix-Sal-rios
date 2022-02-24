@@ -31,7 +31,7 @@ namespace Facturix_Salários.Formularios
                 conexao.Open();
 
                 //String Query1 = "SELECT categoria, numeroBenificiario, numeroFiscal, vencimento from funcionario WHERE exists (select nomeTrabalhador from processamento_salario)";
-                String Query2 = "SELECT nomeTrabalhador, diasDeTrabalho, salarioBrutoMensal, subsidioAlimentacao, importanciaAPagar, totalADescontar, totalRetribuicao, dataProcessamento, ajudaDeDeslocacao, ajudaDeCusto, categoria, numeroBenificiario, numeroFiscal, vencimento from processamento_salario, funcionario WHERE processamento_salario.nomeTrabalhador = funcionario.nome;";
+                String Query2 = "SELECT nomeTrabalhador, diasDeTrabalho, salarioBrutoMensal, subsidioAlimentacao, importanciaAPagar, totalADescontar, totalRetribuicao, dataProcessamento, ajudaDeDeslocacao, ajudaDeCusto, categoria, numeroBenificiario, numeroFiscal, vencimento, irps, adiantamentos from processamento_salario, funcionario WHERE processamento_salario.nomeTrabalhador = funcionario.nome;";
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(Query2, conexao);
 

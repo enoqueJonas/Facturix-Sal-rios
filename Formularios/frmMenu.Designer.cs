@@ -49,6 +49,8 @@ namespace Facturix_Salários
             this.tabelasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.remuneraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adiantamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.funcionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pontualidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +60,8 @@ namespace Facturix_Salários
             this.cadastros,
             this.configurador,
             this.funcionáriosToolStripMenuItem,
-            this.tabelasToolStripMenuItem});
+            this.tabelasToolStripMenuItem,
+            this.funcionárioToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1091, 24);
@@ -203,16 +206,31 @@ namespace Facturix_Salários
             // remuneraçõesToolStripMenuItem
             // 
             this.remuneraçõesToolStripMenuItem.Name = "remuneraçõesToolStripMenuItem";
-            this.remuneraçõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.remuneraçõesToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.remuneraçõesToolStripMenuItem.Text = "Remunerações";
             this.remuneraçõesToolStripMenuItem.Click += new System.EventHandler(this.remuneraçõesToolStripMenuItem_Click);
             // 
             // adiantamentosToolStripMenuItem
             // 
             this.adiantamentosToolStripMenuItem.Name = "adiantamentosToolStripMenuItem";
-            this.adiantamentosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.adiantamentosToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.adiantamentosToolStripMenuItem.Text = "Adiantamentos";
             this.adiantamentosToolStripMenuItem.Click += new System.EventHandler(this.adiantamentosToolStripMenuItem_Click);
+            // 
+            // funcionárioToolStripMenuItem
+            // 
+            this.funcionárioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pontualidadeToolStripMenuItem});
+            this.funcionárioToolStripMenuItem.Name = "funcionárioToolStripMenuItem";
+            this.funcionárioToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.funcionárioToolStripMenuItem.Text = "Funcionário ";
+            // 
+            // pontualidadeToolStripMenuItem
+            // 
+            this.pontualidadeToolStripMenuItem.Name = "pontualidadeToolStripMenuItem";
+            this.pontualidadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pontualidadeToolStripMenuItem.Text = "Pontualidade";
+            this.pontualidadeToolStripMenuItem.Click += new System.EventHandler(this.pontualidadeToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -259,6 +277,8 @@ namespace Facturix_Salários
         private System.Windows.Forms.ToolStripMenuItem tabelasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem remuneraçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adiantamentosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem funcionárioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pontualidadeToolStripMenuItem;
     }
 }
 

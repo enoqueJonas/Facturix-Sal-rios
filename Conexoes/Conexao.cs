@@ -24,7 +24,7 @@ namespace Facturix_Salários
                 user = "root";
                 passwd = "";
                 database = "facturixsalario";
-                String connection = "Server=" + host + ";Uid=" + user + ";Pwd=" + passwd + ";Database=" + database + "";
+                String connection = "Server=" + host + ";Uid=" + user + ";Pwd=" + passwd + ";Database=" + database + ";SSL Mode=none ";
                 conexao = new MySqlConnection(connection);
             }
             catch (Exception err)

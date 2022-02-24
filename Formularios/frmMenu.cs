@@ -29,9 +29,9 @@ namespace Facturix_Salários
                 conexao.Open();
                 gravarItems();
             }
-            catch (Exception)
+            catch (Exception err)
             {
-                MessageBox.Show("Não foi possível conectar a base de dados! Contacte o suporte técnico!" +tel);
+                MessageBox.Show(err.Message, "Não foi possível conectar a base de dados! Contacte o suporte técnico!" +tel);
             }
             finally
             {
@@ -591,6 +591,12 @@ namespace Facturix_Salários
             {
                 l.ShowDialog(this);
             }
+        }
+
+        private void pontualidadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListagemDeFuncionariosDiasDeTrabalho f = new frmListagemDeFuncionariosDiasDeTrabalho();
+            f.Show();
         }
     }
 }

@@ -11,14 +11,14 @@ namespace Facturix_Salários.Controllers
 {
     class ControllerFinalDeSemana
     {
-        public static void Guardar(int id,String fds, Boolean segundaManha, Boolean segundaTarde, Boolean tercaManha, Boolean tercaTarde, Boolean quartaManha, Boolean quartaTarde, Boolean quintaManha, Boolean quintaTarde, Boolean sextaManha, Boolean sextaTarde, Boolean sabadoManha, Boolean sabadoTarde, Boolean domingoManha, Boolean domingoTarde)
+        public static void Guardar(int id,String fds, Boolean segundaManha, Boolean segundaTarde, Boolean tercaManha, Boolean tercaTarde, Boolean quartaManha, Boolean quartaTarde, Boolean quintaManha, Boolean quintaTarde, Boolean sextaManha, Boolean sextaTarde, Boolean sabadoManha, Boolean sabadoTarde, Boolean domingoManha, Boolean domingoTarde, Boolean ativo)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "INSERT into fim_de_semana (id, finalDeSemana, segundaManha, segundaTarde, tercaManha, tercaTarde, quartaManha, quartaTarde, quintaManha, quintaTarde, sextaManha, sextaTarde, sabadoManha, sabadoTarde, domingoManha, domingoTarde) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                String sqlInsert = "INSERT into fim_de_semana (id, finalDeSemana, segundaManha, segundaTarde, tercaManha, tercaTarde, quartaManha, quartaTarde, quintaManha, quintaTarde, sextaManha, sextaTarde, sabadoManha, sabadoTarde, domingoManha, domingoTarde, ativo) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("id", id);
                 comando.Parameters.AddWithValue("finalDeSemana", fds);
@@ -36,6 +36,7 @@ namespace Facturix_Salários.Controllers
                 comando.Parameters.AddWithValue("sabadoTarde", sabadoTarde);
                 comando.Parameters.AddWithValue("domingoManha", domingoManha);
                 comando.Parameters.AddWithValue("domingoTarde", domingoTarde);
+                comando.Parameters.AddWithValue("ativo", ativo);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
@@ -49,14 +50,14 @@ namespace Facturix_Salários.Controllers
             }
         }
 
-        public static void atualizar(int id,String fds, Boolean segundaManha, Boolean segundaTarde, Boolean tercaManha, Boolean tercaTarde, Boolean quartaManha, Boolean quartaTarde, Boolean quintaManha, Boolean quintaTarde, Boolean sextaManha, Boolean sextaTarde, Boolean sabadoManha, Boolean sabadoTarde, Boolean domingoManha, Boolean domingoTarde)
+        public static void atualizar(int id,String fds, Boolean segundaManha, Boolean segundaTarde, Boolean tercaManha, Boolean tercaTarde, Boolean quartaManha, Boolean quartaTarde, Boolean quintaManha, Boolean quintaTarde, Boolean sextaManha, Boolean sextaTarde, Boolean sabadoManha, Boolean sabadoTarde, Boolean domingoManha, Boolean domingoTarde, Boolean ativo)
         {
             MySqlConnection conexao = Conexao.conectar();
 
             try
             {
                 conexao.Open();
-                String sqlInsert = "UPDATE fim_de_semana SET finalDeSemana=?, segundaManha=?, segundaTarde=?, tercaManha=?, tercaTarde=?, quartaManha=?, quartaTarde=?, quintaManha=?, quintaTarde=?, sextaManha=?, sextaTarde=?, sabadoManha=?, sabadoTarde=?, domingoManha=?, domingoTarde=? WHERE id=?";
+                String sqlInsert = "UPDATE fim_de_semana SET finalDeSemana=?, segundaManha=?, segundaTarde=?, tercaManha=?, tercaTarde=?, quartaManha=?, quartaTarde=?, quintaManha=?, quintaTarde=?, sextaManha=?, sextaTarde=?, sabadoManha=?, sabadoTarde=?, domingoManha=?, domingoTarde=?, ativo=? WHERE id=?";
                 MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
                 comando.Parameters.AddWithValue("finalDeSemana", fds);
                 comando.Parameters.AddWithValue("segundaManha", segundaManha);
@@ -73,12 +74,37 @@ namespace Facturix_Salários.Controllers
                 comando.Parameters.AddWithValue("sabadoTarde", sabadoTarde);
                 comando.Parameters.AddWithValue("domingoManha", domingoManha);
                 comando.Parameters.AddWithValue("domingoTarde", domingoTarde);
+                comando.Parameters.AddWithValue("ativo", ativo);
                 comando.Parameters.AddWithValue("id", id);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Não foi possível atualizar o Fim de semana! Contacte o técnico!");
+            }
+            finally
+            {
+                if (conexao != null)
+                    conexao.Close();
+            }
+        }
+
+        public static void atualizarAtivo(int id, Boolean ativo)
+        {
+            MySqlConnection conexao = Conexao.conectar();
+
+            try
+            {
+                conexao.Open();
+                String sqlInsert = "UPDATE fim_de_semana SET ativo=? WHERE id=?";
+                MySqlCommand comando = new MySqlCommand(sqlInsert, conexao);
+                comando.Parameters.AddWithValue("ativo", ativo);
+                comando.Parameters.AddWithValue("id", id);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Não foi possível atualizar o Fim de semana ativo! Contacte o técnico!");
             }
             finally
             {
@@ -114,7 +140,8 @@ namespace Facturix_Salários.Controllers
                     Boolean sat = leitor.GetBoolean(13);
                     Boolean dm = leitor.GetBoolean(14);
                     Boolean dt = leitor.GetBoolean(15);
-                    listaHorarios.Add(new ModeloFinalDeSemana(id,fds, sm, st, tm, tt, qm, qt, qnm, qnt, sxm, sxt, sam, sat, dm, dt));
+                    Boolean ativo = leitor.GetBoolean(16);
+                    listaHorarios.Add(new ModeloFinalDeSemana(id,fds, sm, st, tm, tt, qm, qt, qnm, qnt, sxm, sxt, sam, sat, dm, dt, ativo));
                 }
             }
             catch (Exception)
@@ -157,7 +184,8 @@ namespace Facturix_Salários.Controllers
                     Boolean sat = leitor.GetBoolean(13);
                     Boolean dm = leitor.GetBoolean(14);
                     Boolean dt = leitor.GetBoolean(15);
-                    listaHorarios.Add(new ModeloFinalDeSemana(id, fds, sm, st, tm, tt, qm, qt, qnm, qnt, sxm, sxt, sam, sat, dm, dt));
+                    Boolean ativo = leitor.GetBoolean(16);
+                    listaHorarios.Add(new ModeloFinalDeSemana(id, fds, sm, st, tm, tt, qm, qt, qnm, qnt, sxm, sxt, sam, sat, dm, dt, ativo));
                 }
             }
             catch (Exception)

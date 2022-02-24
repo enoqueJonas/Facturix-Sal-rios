@@ -80,6 +80,7 @@
             // 
             this.cbMes.FormattingEnabled = true;
             this.cbMes.Items.AddRange(new object[] {
+            "",
             "Janeiro",
             "Fevereiro",
             "Março",

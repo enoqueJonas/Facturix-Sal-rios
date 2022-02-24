@@ -42,7 +42,8 @@ namespace Facturix_Salários.Formularios
             refrescar();
             lblEstado.Visible = estaVazio();
             dataFuncionarios.MultiSelect = false;
-            dataFuncionarios.Rows[0].Selected = true;
+            if(dataFuncionarios.Rows.Count > 0)
+                dataFuncionarios.Rows[0].Selected = true;
             dataFuncionarios.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
             dataFuncionarios.RowsDefaultCellStyle.SelectionForeColor = Color.White;
             dataFuncionarios.Focus();

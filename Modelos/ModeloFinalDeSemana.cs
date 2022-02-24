@@ -9,10 +9,10 @@ namespace Facturix_Salários.Modelos
     class ModeloFinalDeSemana
     {
         private int id;
-        private Boolean segundaManha, segundaTarde, tercaManha, tercaTarde, quartaManha, quartaTarde, quintaManha, quintaTarde, sextaManha, sextaTarde, sabadoManha, sabadoTarde, domingoManha, domingoTarde;
+        private Boolean segundaManha, segundaTarde, tercaManha, tercaTarde, quartaManha, quartaTarde, quintaManha, quintaTarde, sextaManha, sextaTarde, sabadoManha, sabadoTarde, domingoManha, domingoTarde, ativo;
         private String fds;
 
-        public ModeloFinalDeSemana(int id,String fds, Boolean segundaManha, Boolean segundaTarde, Boolean tercaManha, Boolean tercaTarde, Boolean quartaManha, Boolean quartaTarde, Boolean quintaManha, Boolean quintaTarde, Boolean sextaManha, Boolean sextaTarde, Boolean sabadoManha, Boolean sabadoTarde, Boolean domingoManha, Boolean domingoTarde) 
+        public ModeloFinalDeSemana(int id,String fds, Boolean segundaManha, Boolean segundaTarde, Boolean tercaManha, Boolean tercaTarde, Boolean quartaManha, Boolean quartaTarde, Boolean quintaManha, Boolean quintaTarde, Boolean sextaManha, Boolean sextaTarde, Boolean sabadoManha, Boolean sabadoTarde, Boolean domingoManha, Boolean domingoTarde, Boolean ativo) 
         {
             this.id = id;
             this.fds = fds;
@@ -30,6 +30,7 @@ namespace Facturix_Salários.Modelos
             this.sabadoTarde = sabadoTarde;
             this.domingoManha = domingoManha;
             this.domingoTarde = domingoTarde;
+            this.ativo = ativo;
         }
 
         public int getId() { return id; }
@@ -48,5 +49,6 @@ namespace Facturix_Salários.Modelos
         public Boolean getSabadoT() { return sabadoTarde; }
         public Boolean getDomingoM() { return domingoManha; }
         public Boolean getDomingoT() { return domingoTarde; }
+        public Boolean getAtivo() { return ativo; }
     }
 }

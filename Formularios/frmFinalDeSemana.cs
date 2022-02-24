@@ -216,11 +216,11 @@ namespace Facturix_Salários.Formularios
             if (existe == false)
             {
                 id = getCod() + 1;
-                ControllerFinalDeSemana.Guardar(id, fds, segundaM, segundaT, tercaM, tercaT, quartaM, quartaT, quintaM, quintaT, sextaM, sextaT, sabadoM, sabadoT, domingoM, domingoT);
+                ControllerFinalDeSemana.Guardar(id, fds, segundaM, segundaT, tercaM, tercaT, quartaM, quartaT, quintaM, quintaT, sextaM, sextaT, sabadoM, sabadoT, domingoM, domingoT, true);
             }
             else 
             {
-                ControllerFinalDeSemana.atualizar(id, fds, segundaM, segundaT, tercaM, tercaT, quartaM, quartaT, quintaM, quintaT, sextaM, sextaT, sabadoM, sabadoT, domingoM, domingoT);
+                ControllerFinalDeSemana.atualizar(id, fds, segundaM, segundaT, tercaM, tercaT, quartaM, quartaT, quintaM, quintaT, sextaM, sextaT, sabadoM, sabadoT, domingoM, domingoT, true);
             }
         }
 
@@ -512,6 +512,23 @@ namespace Facturix_Salários.Formularios
                 chbDomingoT.Checked = false;
                 chbDomingo.Checked = false;
             }
+            int id = 0;
+            if (cbFinalDeSemana.Text != "")
+            {
+                foreach (ModeloFinalDeSemana m in listaFinalDeSemana)
+                {
+                    if (fds.Equals(m.getFds()))
+                    {
+                        id = m.getId();
+                        ControllerFinalDeSemana.atualizarAtivo(id, true);
+                    }
+                    else
+                    {
+                        id = m.getId();
+                        ControllerFinalDeSemana.atualizarAtivo(id, false);
+                    }
+                }
+            }
         }
 
         private void chbSegundaM_CheckStateChanged(object sender, EventArgs e)
@@ -592,6 +609,25 @@ namespace Facturix_Salários.Formularios
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             gravar();
+            int id = 0;
+            if (cbFinalDeSemana.Text != "")
+            {
+                String fds = cbFinalDeSemana.Text;
+                ArrayList listaFinalDeSemana = ControllerFinalDeSemana.recuperar();
+                foreach (ModeloFinalDeSemana m in listaFinalDeSemana)
+                {
+                    if (fds.Equals(m.getFds()))
+                    {
+                        id = m.getId();
+                        ControllerFinalDeSemana.atualizarAtivo(id, true);
+                    }
+                    else
+                    {
+                        id = m.getId();
+                        ControllerFinalDeSemana.atualizarAtivo(id, false);
+                    }
+                }
+            }
             limpar();
             mudarEstadoCHB(false);
             impedirBotoes();
@@ -617,6 +653,25 @@ namespace Facturix_Salários.Formularios
 
         private void btnSeguinte_Click(object sender, EventArgs e)
         {
+            int id = 0;
+            if (cbFinalDeSemana.Text != "")
+            {
+                String fds = cbFinalDeSemana.Text;
+                ArrayList listaFinalDeSemana = ControllerFinalDeSemana.recuperar();
+                foreach (ModeloFinalDeSemana m in listaFinalDeSemana)
+                {
+                    if (fds.Equals(m.getFds()))
+                    {
+                        id = m.getId();
+                        ControllerFinalDeSemana.atualizarAtivo(id, true);
+                    }
+                    else
+                    {
+                        id = m.getId();
+                        ControllerFinalDeSemana.atualizarAtivo(id, false);
+                    }
+                }
+            }
             frmTempoDeServico f = new frmTempoDeServico();
             f.ShowDialog();
             this.Close();
